@@ -23,7 +23,7 @@ func main() {
 		log.Fatal("Failed to initialize knowledge database:", err)
 	}
 
-	// Initialize Ollama client
+	// Initialize Ollama client (model can be changed via footer click)
 	ollamaClient := ollama.NewClient("http://localhost:11434", "gemma3:1b")
 
 	// Initialize BeanBot UI

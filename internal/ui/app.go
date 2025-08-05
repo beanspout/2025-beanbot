@@ -21,6 +21,8 @@ type BeanBot struct {
 	knowledgeDB  *knowledge.KnowledgeDatabase
 	ollamaClient *ollama.Client
 	submitBtn    *widget.Button
+	statusLabel  *widget.Label // Add reference to status label for updates
+	debugMode    bool          // Debug mode flag
 }
 
 // NewBeanBot creates a new BeanBot UI instance with all required dependencies
@@ -58,26 +60,44 @@ func (b *BeanBot) createFooter() *fyne.Container {
 	status := widget.NewLabelWithStyle("🤖 BeanBot AI ⏳ warming up...",
 		fyne.TextAlignCenter, fyne.TextStyle{Bold: true})
 
+	// Store reference to status label
+	b.statusLabel = status
+
+	// Make status clickable for model selection
+	statusButton := widget.NewButton("", func() {
+		b.showModelSelectionDialog()
+	})
+	statusButton.Importance = widget.LowImportance
+
+	// Create a container that overlays the button on the label
+	statusContainer := container.NewStack(status, statusButton)
+
 	// Test Ollama connection
 	go func() {
+		b.debugLog("Testing Ollama connection to %s", b.ollamaClient.TestConnection())
 		if b.ollamaClient.TestConnection() {
+			b.debugLog("Ollama connection successful, searching for available models")
 			// Try to get available models
 			available, model := b.ollamaClient.FindAvailableModel()
 			if available {
-				status.SetText(fmt.Sprintf("🤖 BeanBot AI - %s ✅ ready to help!", model))
+				b.debugLog("Found available model: %s", model)
+				status.SetText(fmt.Sprintf("🤖 BeanBot AI - %s ✅ ready to help! (click to change)", model))
 				// Update the client to use the found model
 				b.ollamaClient.SetModel(model)
+				b.debugLog("Set active model to: %s", model)
 			} else {
+				b.debugLog("No models found available")
 				status.SetText("🤖 BeanBot AI ❌ models missing")
 			}
 		} else {
+			b.debugLog("Ollama connection failed - server offline")
 			status.SetText("🤖 BeanBot AI ❌ offline")
 		}
 	}()
 
 	return container.NewVBox(
 		widget.NewSeparator(),
-		status,
+		statusContainer,
 	)
 }
 
@@ -141,6 +161,9 @@ func (b *BeanBot) handleTroubleshootingRequest(userInput string, responseEntry *
 		return
 	}
 
+	b.debugLog("Handling troubleshooting request: %s", userInput)
+	b.debugLog("Current model: %s", b.ollamaClient.GetCurrentModel())
+
 	// Show progress by changing button text
 	originalText := b.submitBtn.Text
 	b.submitBtn.SetText("Processing...")
@@ -154,26 +177,33 @@ func (b *BeanBot) handleTroubleshootingRequest(userInput string, responseEntry *
 			b.submitBtn.Enable()
 		}()
 
+		b.debugLog("Building troubleshooting context...")
 		// Build context from knowledge database
 		context := b.buildTroubleshootingContext(userInput)
+		b.debugLog("Context length: %d characters", len(context))
 
 		// Create prompt for Ollama
 		prompt := b.createTroubleshootingPrompt(userInput, context)
+		b.debugLog("Prompt length: %d characters", len(prompt))
 
 		// Check if this is a direct response (not a prompt for Ollama)
 		if strings.Contains(context, "outside my technical troubleshooting expertise") {
+			b.debugLog("Using direct response (outside expertise)")
 			responseEntry.ParseMarkdown(context)
 			return
 		}
 
+		b.debugLog("Sending request to Ollama with model: %s", b.ollamaClient.GetCurrentModel())
 		// Get response from Ollama
 		response, err := b.ollamaClient.GenerateResponse(prompt)
 		if err != nil {
+			b.debugLog("Error getting AI response: %v", err)
 			log.Printf("Error getting AI response: %v", err)
 			responseEntry.ParseMarkdown(fmt.Sprintf("Error getting AI response: %v", err))
 			return
 		}
 
+		b.debugLog("Received response from Ollama, length: %d characters", len(response))
 		// Display response in the same window
 		responseEntry.ParseMarkdown(response)
 	}()
@@ -447,4 +477,77 @@ func (b *BeanBot) findMostRelevantSection(content, userInput string, maxLength i
 	}
 
 	return bestSection
+}
+
+// showModelSelectionDialog shows a dialog to select available models
+func (b *BeanBot) showModelSelectionDialog() {
+	// Check if Ollama is available
+	if !b.ollamaClient.TestConnection() {
+		dialog.ShowInformation("Ollama Offline", "Ollama is not available. Please start Ollama to use AI models.", b.window)
+		return
+	}
+
+	// Get available models
+	models, err := b.ollamaClient.GetAvailableModels()
+	if err != nil {
+		dialog.ShowError(fmt.Errorf("failed to get available models: %w", err), b.window)
+		return
+	}
+
+	if len(models) == 0 {
+		dialog.ShowInformation("No Models", "No models are installed. Please install a model using 'ollama pull <model>'", b.window)
+		return
+	}
+
+	// Get current model
+	currentModel := b.ollamaClient.GetCurrentModel()
+
+	// Create selection list
+	list := widget.NewList(
+		func() int { return len(models) },
+		func() fyne.CanvasObject {
+			return widget.NewLabel("Model")
+		},
+		func(id widget.ListItemID, obj fyne.CanvasObject) {
+			label := obj.(*widget.Label)
+			model := models[id]
+			if model == currentModel {
+				label.SetText(fmt.Sprintf("✓ %s (current)", model))
+				label.TextStyle = fyne.TextStyle{Bold: true}
+			} else {
+				label.SetText(fmt.Sprintf("  %s", model))
+				label.TextStyle = fyne.TextStyle{}
+			}
+		},
+	)
+
+	list.OnSelected = func(id widget.ListItemID) {
+		selectedModel := models[id]
+		if selectedModel != currentModel {
+			// Update the model
+			b.ollamaClient.SetModel(selectedModel)
+			// Update the status label
+			b.statusLabel.SetText(fmt.Sprintf("🤖 BeanBot AI - %s ✅ ready to help! (click to change)", selectedModel))
+		}
+	}
+
+	// Create dialog
+	dialog.ShowCustom("Select AI Model", "Close", container.NewBorder(
+		widget.NewLabel("Available Models:"),
+		nil, nil, nil,
+		container.NewScroll(list),
+	), b.window)
+}
+
+// EnableDebugMode enables debug logging
+func (b *BeanBot) EnableDebugMode() {
+	b.debugMode = true
+	log.Println("[DEBUG] Debug mode enabled")
+}
+
+// debugLog logs debug information if debug mode is enabled
+func (b *BeanBot) debugLog(format string, args ...interface{}) {
+	if b.debugMode {
+		log.Printf("[DEBUG] "+format, args...)
+	}
 }
