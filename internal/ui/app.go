@@ -3,6 +3,7 @@ package ui
 import (
 	"fmt"
 	"log"
+	"path/filepath"
 	"strings"
 
 	"fyne.io/fyne/v2"
@@ -106,7 +107,7 @@ func (b *BeanBot) createFooter() *fyne.Container {
 func (b *BeanBot) createMainContent() fyne.CanvasObject {
 	// Create input area components - clean chat interface without labels
 	inputEntry := widget.NewMultiLineEntry()
-	inputEntry.SetPlaceHolder("Describe your engineering issue... (Example: I'm having trouble with system communication or getting an error message)")
+	inputEntry.SetPlaceHolder("Describe your issue, ... (Example: I'm having trouble with system communication or getting an error message, hint: Upload screenshots or logs so I can get more context on your problem)")
 	inputEntry.Wrapping = fyne.TextWrapWord   // Enable word wrapping for input too
 	inputEntry.Resize(fyne.NewSize(800, 100)) // Set a reasonable height for input
 
@@ -124,6 +125,8 @@ func (b *BeanBot) createMainContent() fyne.CanvasObject {
 	clearBtn := widget.NewButton("Clear", func() {
 		// Clear the input field
 		inputEntry.SetText("")
+		// Clear user uploads
+		b.knowledgeDB.ClearUserUploads()
 		// Reset response area to welcome message
 		responseText.ParseMarkdown("\n\n\n\n## 🤖 Hi there! \n\n### What engineering challenge can I help you with today? 💭")
 		// Scroll to top when clearing
@@ -132,11 +135,17 @@ func (b *BeanBot) createMainContent() fyne.CanvasObject {
 		}
 	})
 
+	// Create upload button to add user files
+	uploadBtn := widget.NewButton("Upload Files", func() {
+		b.handleFileUpload(responseText)
+	})
+	uploadBtn.Importance = widget.MediumImportance
+
 	// Store reference to button for progress handling
 	b.submitBtn = submitBtn
 
-	// Fixed content for bottom section (input area) - clean chat-style layout with equal-sized buttons
-	buttonContainer := container.NewGridWithColumns(2, submitBtn, clearBtn)
+	// Fixed content for bottom section (input area) - clean chat-style layout with three buttons
+	buttonContainer := container.NewGridWithColumns(3, submitBtn, uploadBtn, clearBtn)
 	bottomSection := container.NewVBox(
 		inputEntry,
 		buttonContainer,
@@ -259,11 +268,152 @@ func (b *BeanBot) handleEngineeringRequest(userInput string, responseEntry *widg
 	}()
 }
 
+// handleFileUpload handles user file uploads using Windows system dialog
+func (b *BeanBot) handleFileUpload(responseEntry *widget.RichText) {
+	b.debugLog("Opening file upload dialog")
+
+	// Show the system file dialog
+	files, err := ShowFileDialog()
+	if err != nil {
+		b.debugLog("Error opening file dialog: %v", err)
+		dialog.ShowError(fmt.Errorf("failed to open file dialog: %w", err), b.window)
+		return
+	}
+
+	if len(files) == 0 {
+		b.debugLog("No files selected")
+		return // User cancelled
+	}
+
+	b.debugLog("Processing %d uploaded files", len(files))
+
+	// Show processing message
+	responseEntry.ParseMarkdown("\n\n\n\n## 📁 Processing uploaded files... \n\n### ✨ Please wait while I analyze your files ✨")
+
+	// Process files in background
+	go func() {
+		var processedFiles []string
+		var errors []string
+
+		for _, filePath := range files {
+			err := b.knowledgeDB.ProcessUserUpload(filePath)
+			if err != nil {
+				b.debugLog("Error processing file %s: %v", filePath, err)
+				errors = append(errors, fmt.Sprintf("• %s: %v", filePath, err))
+			} else {
+				b.debugLog("Successfully processed file: %s", filePath)
+				processedFiles = append(processedFiles, filePath)
+			}
+		}
+
+		// Build response message
+		var message strings.Builder
+		message.WriteString("\n\n\n\n## 📁 File Upload Complete! \n\n")
+
+		if len(processedFiles) > 0 {
+			message.WriteString("### ✅ Successfully uploaded and processed:\n\n")
+			for i, file := range processedFiles {
+				fileName := filepath.Base(file)
+				message.WriteString(fmt.Sprintf("%d. **%s**\n", i+1, fileName))
+			}
+			message.WriteString("\n*These files are now available for your questions and will be included in AI responses.*\n\n")
+		}
+
+		if len(errors) > 0 {
+			message.WriteString("### ❌ Failed to process:\n\n")
+			for _, errMsg := range errors {
+				message.WriteString(errMsg + "\n")
+			}
+			message.WriteString("\n")
+		}
+
+		// Show currently uploaded files
+		uploadedList := b.knowledgeDB.GetUploadedFilesList()
+		if len(uploadedList) > 0 {
+			message.WriteString("### 📋 All uploaded files in this session:\n\n")
+			for i, file := range uploadedList {
+				message.WriteString(fmt.Sprintf("%d. %s\n", i+1, file))
+			}
+			message.WriteString("\n*Use 'Clear' button to remove uploaded files and start fresh.*\n")
+		}
+
+		responseEntry.ParseMarkdown(message.String())
+	}()
+}
+
 // buildEngineeringContext builds context from the knowledge database and returns sources
 func (b *BeanBot) buildEngineeringContext(userInput string) (string, []string) {
 	var context strings.Builder
 	var sources []string
 	lowerInput := strings.ToLower(userInput)
+
+	// PRIORITY 0: Include user-uploaded files first (highest priority)
+	// User uploads get preferential treatment - include them more liberally since user specifically uploaded them
+	userUploads := b.knowledgeDB.GetUserUploads()
+	b.debugLog("Processing user uploads: found %d uploaded files", len(userUploads))
+
+	for filename, content := range userUploads {
+		b.debugLog("Checking uploaded file: %s, content length: %d", filename, len(content))
+
+		// For user uploads, use much more liberal inclusion criteria
+		// Include if ANY of these conditions are met:
+		// 1. Contains any word from user input (even short words)
+		// 2. User input is very short (general query - include all uploads)
+		// 3. Contains common troubleshooting keywords
+		// 4. File has substantial content (user uploaded it for a reason)
+		shouldInclude := false
+
+		if len(strings.TrimSpace(lowerInput)) <= 10 {
+			// Very short queries - include all uploaded files
+			shouldInclude = true
+			b.debugLog("Including %s: short user query", filename)
+		} else if len(content) > 50 {
+			// Check for any word matches (much more liberal than IsRelevantContent)
+			inputWords := strings.Fields(lowerInput)
+			lowerContent := strings.ToLower(content)
+
+			for _, word := range inputWords {
+				if len(word) > 2 && strings.Contains(lowerContent, word) {
+					shouldInclude = true
+					b.debugLog("Including %s: found word match '%s'", filename, word)
+					break
+				}
+			}
+
+			// Also include if content has technical keywords
+			technicalKeywords := []string{"error", "problem", "issue", "step", "solution", "configure", "install", "troubleshoot"}
+			for _, keyword := range technicalKeywords {
+				if strings.Contains(lowerContent, keyword) {
+					shouldInclude = true
+					b.debugLog("Including %s: contains technical keyword '%s'", filename, keyword)
+					break
+				}
+			}
+		}
+
+		if shouldInclude {
+			b.debugLog("File %s is included for user input", filename)
+			// Remove timestamp prefix for display
+			displayName := filename
+			if strings.Contains(filename, "_") {
+				parts := strings.SplitN(filename, "_", 3)
+				if len(parts) >= 3 {
+					displayName = parts[2] // Get the original filename part
+				}
+			}
+
+			context.WriteString(fmt.Sprintf("From User Upload (%s):\n", displayName))
+			sources = append(sources, "User Upload: "+displayName)
+			// Give more content space to user uploads since they're specifically relevant
+			if len(content) > 800 {
+				context.WriteString(content[:800] + "...\n\n")
+			} else {
+				context.WriteString(content + "\n\n")
+			}
+		} else {
+			b.debugLog("File %s is NOT included for user input '%s'", filename, lowerInput)
+		}
+	}
 
 	// Check if this is a technical engineering question vs general question
 	isTechnicalQuestion := strings.Contains(lowerInput, "error") ||

@@ -4,7 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/NZ26RQ_gme/lsie-beanbot/internal/models"
 	"github.com/go-ole/go-ole"
@@ -20,6 +22,10 @@ type KnowledgeDatabase struct {
 	wordContents  map[string]string
 	imageContents map[string]string
 	filePaths     map[string]string // Maps filename to full relative path
+	// User uploaded files (temporary for current session)
+	userUploads map[string]string    // Maps uploaded filename to content
+	uploadPaths map[string]string    // Maps uploaded filename to temp path
+	uploadTime  map[string]time.Time // Maps uploaded filename to upload time
 }
 
 // NewKnowledgeDatabase creates and initializes the knowledge database
@@ -30,6 +36,9 @@ func NewKnowledgeDatabase() (*KnowledgeDatabase, error) {
 		wordContents:  make(map[string]string),
 		imageContents: make(map[string]string),
 		filePaths:     make(map[string]string),
+		userUploads:   make(map[string]string),
+		uploadPaths:   make(map[string]string),
+		uploadTime:    make(map[string]time.Time),
 	}
 
 	// Load JSON data
@@ -76,6 +85,16 @@ func (kb *KnowledgeDatabase) GetImageContents() map[string]string {
 // GetFilePaths returns the mapping of filename to relative path
 func (kb *KnowledgeDatabase) GetFilePaths() map[string]string {
 	return kb.filePaths
+}
+
+// GetUserUploads returns the user uploaded file contents
+func (kb *KnowledgeDatabase) GetUserUploads() map[string]string {
+	return kb.userUploads
+}
+
+// GetUploadPaths returns the mapping of uploaded filename to temp path
+func (kb *KnowledgeDatabase) GetUploadPaths() map[string]string {
+	return kb.uploadPaths
 }
 
 // formatHierarchicalPath converts a full path to hierarchical folder/file format
@@ -486,4 +505,100 @@ func (kb *KnowledgeDatabase) extractImageContent(filePath string) string {
 	content.WriteString("Image content: screenshot diagram flowchart error message interface\n")
 
 	return content.String()
+}
+
+// ProcessUserUpload processes a user-uploaded file and adds it to the temporary knowledge base
+func (kb *KnowledgeDatabase) ProcessUserUpload(filePath string) error {
+	// Get the base filename
+	filename := filepath.Base(filePath)
+	lowerName := strings.ToLower(filename)
+
+	// Create a unique identifier to avoid conflicts
+	timestamp := time.Now()
+	uniqueFilename := fmt.Sprintf("upload_%d_%s", timestamp.Unix(), filename)
+
+	fmt.Printf("[DEBUG] ProcessUserUpload: Processing file %s as %s\n", filePath, uniqueFilename)
+
+	// Process based on file type
+	var content string
+	var err error
+
+	if strings.HasSuffix(lowerName, ".txt") {
+		data, readErr := os.ReadFile(filePath)
+		if readErr == nil {
+			content = string(data)
+			fmt.Printf("[DEBUG] ProcessUserUpload: Loaded .txt file, content length: %d\n", len(content))
+		} else {
+			err = readErr
+		}
+	} else if strings.HasSuffix(lowerName, ".html") {
+		data, readErr := os.ReadFile(filePath)
+		if readErr == nil {
+			content = kb.extractHTMLContent(string(data))
+			fmt.Printf("[DEBUG] ProcessUserUpload: Processed .html file, content length: %d\n", len(content))
+		} else {
+			err = readErr
+		}
+	} else if strings.HasSuffix(lowerName, ".pdf") {
+		content = kb.extractPDFText(filePath)
+		if content == "" {
+			content = "Failed to extract text from uploaded PDF - " + filename
+		}
+		fmt.Printf("[DEBUG] ProcessUserUpload: Processed .pdf file, content length: %d\n", len(content))
+	} else if strings.HasSuffix(lowerName, ".docx") {
+		content = kb.extractWordContent(filePath)
+		if content == "" {
+			content = "Failed to extract text from uploaded Word document - " + filename
+		}
+		fmt.Printf("[DEBUG] ProcessUserUpload: Processed .docx file, content length: %d\n", len(content))
+	} else if strings.HasSuffix(lowerName, ".png") || strings.HasSuffix(lowerName, ".jpg") ||
+		strings.HasSuffix(lowerName, ".jpeg") || strings.HasSuffix(lowerName, ".bmp") ||
+		strings.HasSuffix(lowerName, ".gif") || strings.HasSuffix(lowerName, ".tiff") {
+		content = kb.extractImageContent(filePath)
+		if content == "" {
+			content = "Failed to process uploaded image - " + filename
+		}
+		fmt.Printf("[DEBUG] ProcessUserUpload: Processed image file, content length: %d\n", len(content))
+	} else {
+		// For unsupported file types, try to read as text
+		data, readErr := os.ReadFile(filePath)
+		if readErr == nil {
+			content = string(data)
+			fmt.Printf("[DEBUG] ProcessUserUpload: Loaded unknown file type as text, content length: %d\n", len(content))
+		} else {
+			return fmt.Errorf("unsupported file type: %s", filename)
+		}
+	}
+
+	if err != nil {
+		return fmt.Errorf("failed to process uploaded file %s: %w", filename, err)
+	}
+
+	// Store the processed content
+	kb.userUploads[uniqueFilename] = content
+	kb.uploadPaths[uniqueFilename] = filePath
+	kb.uploadTime[uniqueFilename] = timestamp
+
+	fmt.Printf("[DEBUG] ProcessUserUpload: Stored file %s with content length %d\n", uniqueFilename, len(content))
+	fmt.Printf("[DEBUG] ProcessUserUpload: Total uploaded files now: %d\n", len(kb.userUploads))
+
+	return nil
+}
+
+// ClearUserUploads removes all user-uploaded files from the temporary knowledge base
+func (kb *KnowledgeDatabase) ClearUserUploads() {
+	kb.userUploads = make(map[string]string)
+	kb.uploadPaths = make(map[string]string)
+	kb.uploadTime = make(map[string]time.Time)
+}
+
+// GetUploadedFilesList returns a list of currently uploaded files with timestamps
+func (kb *KnowledgeDatabase) GetUploadedFilesList() []string {
+	var files []string
+	for filename, timestamp := range kb.uploadTime {
+		// Remove the upload prefix for display
+		displayName := strings.TrimPrefix(filename, fmt.Sprintf("upload_%d_", timestamp.Unix()))
+		files = append(files, fmt.Sprintf("%s (uploaded %s)", displayName, timestamp.Format("15:04:05")))
+	}
+	return files
 }
