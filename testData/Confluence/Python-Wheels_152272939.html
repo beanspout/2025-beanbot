@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : Python Wheels</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="248348840.html">Computer Installs &amp; Patch Script</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : Python Wheels
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Chelsea Flattery</span>, last updated on Sep 01, 2022
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="contentLayout2">
+<div class="columnLayout two-equal" data-layout="two-equal">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<div class='plugin-tabmeta-details'><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><th class="confluenceTh">Target release</th><td class="confluenceTd"></td></tr><tr><th class="confluenceTh">Epic</th><td class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-14?src=confmacro">BTSICOTS-14</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><th class="confluenceTh">Document status</th><td class="confluenceTd"><div class="content-wrapper"><span class="status-macro aui-lozenge">DRAFT</span></div></td></tr><tr><th class="confluenceTh">Document owner</th><td class="confluenceTd"><div class="content-wrapper"><p><a class="confluence-userlink user-mention" data-username="pzqjxw" href="https://tslm-confluence.gm.com/display/~pzqjxw" data-linked-resource-id="4849670" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">Chelsea Flattery</a> </p></div></td></tr><tr><th class="confluenceTh"><br/></th><td class="confluenceTd"><br/></td></tr></tbody></table></div></div></div>
+</div>
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<div class="panel" style="border-color: black;border-style: solid;border-width: 2px;"><div class="panelHeader" style="border-bottom-width: 2px;border-bottom-style: solid;border-bottom-color: black;color: black;"><b>Table of Contents</b></div><div class="panelContent">
+<p><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1754406066557 {padding: 0px;}
+div.rbtoc1754406066557 ul {margin-left: 0px;}
+div.rbtoc1754406066557 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1754406066557'>
+<ul class='toc-indentation'>
+<li><a href='#PythonWheels-Goals'>Goals</a></li>
+<li><a href='#PythonWheels-Requirements'>Requirements</a></li>
+<li><a href='#PythonWheels-ReleasesSinceLastUpgrade'>Releases Since Last Upgrade</a></li>
+<li><a href='#PythonWheels-Methodology'>Methodology</a></li>
+<li><a href='#PythonWheels-HowtoTestPythonWheels'>How to Test Python Wheels</a></li>
+<li><a href='#PythonWheels-HowtoTroubleshootInstallations'>How to Troubleshoot Installations</a>
+<ul class='toc-indentation'>
+<li><a href='#PythonWheels-VersionMismatch'>Version Mismatch</a></li>
+<li><a href='#PythonWheels-FileIssue'>File Issue</a></li>
+</ul>
+</li>
+</ul>
+</div></p>
+</div></div></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<hr/></div>
+</div>
+</div>
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h2 id="PythonWheels-Goals"><span style="font-size: 20.0px;letter-spacing: -0.008em;">Goals</span></h2><ul><li>Upgrade python wheels as new version of Python are deployed, or as new and compatible python wheels are released</li></ul><h2 id="PythonWheels-Requirements">Requirements</h2><p></p><div class="table-wrap"><table class="relative-table wrapped confluenceTable" style="width: 70.2869%;"><colgroup><col style="width: 10.6586%;"/><col style="width: 10.6586%;"/><col style="width: 11.8261%;"/><col style="width: 11.8261%;"/><col style="width: 28.7637%;"/><col style="width: 26.2857%;"/></colgroup><tbody><tr><th class="confluenceTh">Product</th><th class="confluenceTh">Current Version</th><th class="confluenceTh">Installed Date</th><th class="confluenceTh">Upgrade Version</th><th colspan="1" class="confluenceTh"><strong>Source</strong></th><th colspan="1" class="confluenceTh">BTSI COTS Jira Link</th></tr><tr><td class="confluenceTd"><span style="color:var(--ds-background-accent-gray-bolder,#626f86);"><span style="background-color: rgb(245,245,245);"><em>Pip</em></span></span></td><td class="confluenceTd"><span style="color:var(--ds-background-accent-gray-bolder,#626f86);"><span style="background-color: rgb(245,245,245);"><em>22.0.3</em></span></span></td><td class="confluenceTd">3/1/2022</td><td class="confluenceTd"><p></p></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/pip/" class="external-link" rel="nofollow">https://pypi.org/project/pip/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-15?src=confmacro">BTSICOTS-15</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">setuptools</td><td colspan="1" class="confluenceTd">57.4.0</td><td colspan="1" class="confluenceTd">8/11/2021, tar added 1/18/2022</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/setuptools/" class="external-link" rel="nofollow">https://pypi.org/project/setuptools/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-16?src=confmacro">BTSICOTS-16</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">pycparser</td><td colspan="1" class="confluenceTd">2.20</td><td colspan="1" class="confluenceTd">8/12/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/pycparser/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/pycparser/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-17?src=confmacro">BTSICOTS-17</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">pythonnet</td><td colspan="1" class="confluenceTd">2.5.2</td><td colspan="1" class="confluenceTd">8/12/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/pythonnet/" class="external-link" rel="nofollow">https://pypi.org/project/pythonnet/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-18?src=confmacro">BTSICOTS-18</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">toml</td><td colspan="1" class="confluenceTd">0.10.2</td><td colspan="1" class="confluenceTd">8/12/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/toml/" class="external-link" rel="nofollow">https://pypi.org/project/toml/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-19?src=confmacro">BTSICOTS-19</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">pylint</td><td colspan="1" class="confluenceTd">2.9.6</td><td colspan="1" class="confluenceTd">8/12/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/pylint/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/pylint/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-20?src=confmacro">BTSICOTS-20</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">Pillow</td><td colspan="1" class="confluenceTd">8.3.1</td><td colspan="1" class="confluenceTd">8/12/2021. tar added 1/18/2022</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/Pillow/" class="external-link" rel="nofollow">https://pypi.org/project/Pillow/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-21?src=confmacro">BTSICOTS-21</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">matplotlib</td><td colspan="1" class="confluenceTd">3.4.2</td><td colspan="1" class="confluenceTd">8/12/2021. tar added 1/18/2022</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/matplotlib/" class="external-link" rel="nofollow">https://pypi.org/project/matplotlib/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-22?src=confmacro">BTSICOTS-22</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">certifi</td><td colspan="1" class="confluenceTd">2021.5.30</td><td colspan="1" class="confluenceTd">8/12/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/certifi/" class="external-link" rel="nofollow">https://pypi.org/project/certifi/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-23?src=confmacro">BTSICOTS-23</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">urllib3</td><td colspan="1" class="confluenceTd">1.26.6</td><td colspan="1" class="confluenceTd">8/12/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/urllib3/" class="external-link" rel="nofollow">https://pypi.org/project/urllib3/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-24?src=confmacro">BTSICOTS-24</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">idna</td><td colspan="1" class="confluenceTd">3.2</td><td colspan="1" class="confluenceTd">8/12/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/idna/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/idna/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-25?src=confmacro">BTSICOTS-25</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">charset-normalizer</td><td colspan="1" class="confluenceTd">2.0.4</td><td colspan="1" class="confluenceTd">8/12/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/charset-normalizer/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/charset-normalizer/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-26?src=confmacro">BTSICOTS-26</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">requests</td><td colspan="1" class="confluenceTd">2.26.0</td><td colspan="1" class="confluenceTd">8/12/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/requests/" class="external-link" rel="nofollow">https://pypi.org/project/requests/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-27?src=confmacro">BTSICOTS-27</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">msgpack</td><td colspan="1" class="confluenceTd">1.0.2</td><td colspan="1" class="confluenceTd">8/12/2021, tar added 9/27/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/msgpack/" class="external-link" rel="nofollow">https://pypi.org/project/msgpack/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-28?src=confmacro">BTSICOTS-28</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">influxdb</td><td colspan="1" class="confluenceTd">5.3.1</td><td colspan="1" class="confluenceTd">4/22/2022</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/influxdb/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/influxdb/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-29?src=confmacro">BTSICOTS-29</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">sentry-sdk</td><td colspan="1" class="confluenceTd">1.3.1</td><td colspan="1" class="confluenceTd">8/12/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/sentry-sdk/" class="external-link" rel="nofollow">https://pypi.org/project/sentry-sdk/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-30?src=confmacro">BTSICOTS-30</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">typed-ast</td><td colspan="1" class="confluenceTd">1.4.3</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/typed-ast/" class="external-link" rel="nofollow">https://pypi.org/project/typed-ast/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-31?src=confmacro">BTSICOTS-31</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">defusedxml</td><td colspan="1" class="confluenceTd">0.7.1</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/defusedxml/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/defusedxml/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-32?src=confmacro">BTSICOTS-32</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">astroid</td><td colspan="1" class="confluenceTd">2.6.6</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/astroid/" class="external-link" rel="nofollow">https://pypi.org/project/astroid/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-33?src=confmacro">BTSICOTS-33</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">wrapt</td><td colspan="1" class="confluenceTd">1.12.1</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><p><a href="https://pypi.org/project/wrapt/" class="external-link" title="Follow link" rel="nofollow">https://pypi.org/project/wrapt/</a></p></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-34?src=confmacro">BTSICOTS-34</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">lazy-object-proxy</td><td colspan="1" class="confluenceTd">1.6.0</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/lazy-object-proxy/" class="external-link" rel="nofollow">https://pypi.org/project/lazy-object-proxy/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-35?src=confmacro">BTSICOTS-35</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">backports.functionals-lru-cache</td><td colspan="1" class="confluenceTd">1.6.4</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/backports.functools-lru-cache/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/backports.functools-lru-cache/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-36?src=confmacro">BTSICOTS-36</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">backports.csv</td><td colspan="1" class="confluenceTd">1.0.7</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/backports.csv/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/backports.csv/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-37?src=confmacro">BTSICOTS-37</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">colorama</td><td colspan="1" class="confluenceTd">0.4.4</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/colorama/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/colorama/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-38?src=confmacro">BTSICOTS-38</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">configparser</td><td colspan="1" class="confluenceTd">5.0.2</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/configparser/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/configparser/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-39?src=confmacro">BTSICOTS-39</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">contextlib2</td><td colspan="1" class="confluenceTd">21.6.0</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/contextlib2/" class="external-link" rel="nofollow">https://pypi.org/project/contextlib2/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-40?src=confmacro">BTSICOTS-40</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">enum34</td><td colspan="1" class="confluenceTd">1.1.10</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/enum34/" class="external-link" rel="nofollow">https://pypi.org/project/enum34/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-41?src=confmacro">BTSICOTS-41</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">et-xmlfile</td><td colspan="1" class="confluenceTd">1.1.0</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/et-xmlfile/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/et-xmlfile/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-42?src=confmacro">BTSICOTS-42</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">smmap</td><td colspan="1" class="confluenceTd">4.0.0</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/smmap/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/smmap/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-43?src=confmacro">BTSICOTS-43</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">gitdb</td><td colspan="1" class="confluenceTd">4.0.7</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/gitdb/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/gitdb/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-44?src=confmacro">BTSICOTS-44</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">gitdb2</td><td colspan="1" class="confluenceTd">4.0.2</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/gitdb2/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/gitdb2/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-45?src=confmacro">BTSICOTS-45</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">GitPython</td><td colspan="1" class="confluenceTd">3.1.18</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/GitPython/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/GitPython/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-46?src=confmacro">BTSICOTS-46</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">isort</td><td colspan="1" class="confluenceTd">5.9.3</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/isort/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/isort/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-47?src=confmacro">BTSICOTS-47</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">jdcal</td><td colspan="1" class="confluenceTd">1.4.1</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/jdcal/" class="external-link" rel="nofollow">https://pypi.org/project/jdcal/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-48?src=confmacro">BTSICOTS-48</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">mccabe</td><td colspan="1" class="confluenceTd">0.6.1</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/mccabe/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/mccabe/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-49?src=confmacro">BTSICOTS-49</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">odfpy</td><td colspan="1" class="confluenceTd">1.4.1</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/odfpy/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/odfpy/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-50?src=confmacro">BTSICOTS-50</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">openpyxl</td><td colspan="1" class="confluenceTd">3.0.7</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/openpyxl/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/openpyxl/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-51?src=confmacro">BTSICOTS-51</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">prometheus-client</td><td colspan="1" class="confluenceTd">0.11.0</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/prometheus-client/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/prometheus-client/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-52?src=confmacro">BTSICOTS-52</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">psutil</td><td colspan="1" class="confluenceTd">5.8.0</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/psutil/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/psutil/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-53?src=confmacro">BTSICOTS-53</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">pyad</td><td colspan="1" class="confluenceTd">0.6.0</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/pyad/" class="external-link" rel="nofollow">https://pypi.org/project/pyad/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-54?src=confmacro">BTSICOTS-54</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">pyparsing</td><td colspan="1" class="confluenceTd">2.4.7</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/pyparsing/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/pyparsing/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-55?src=confmacro">BTSICOTS-55</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">pyserial</td><td colspan="1" class="confluenceTd">3.5</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/pyserial/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/pyserial/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-56?src=confmacro">BTSICOTS-56</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">raven</td><td colspan="1" class="confluenceTd">6.1</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/raven/" class="external-link" rel="nofollow">https://pypi.org/project/raven/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-57?src=confmacro">BTSICOTS-57</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">six</td><td colspan="1" class="confluenceTd">1.16.0</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/six/" class="external-link" rel="nofollow">https://pypi.org/project/six/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-58?src=confmacro">BTSICOTS-58</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">unicodecsv</td><td colspan="1" class="confluenceTd">0.14.1</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/unicodecsv/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/unicodecsv/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-59?src=confmacro">BTSICOTS-59</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">xlrd</td><td colspan="1" class="confluenceTd">2.0.1</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/xlrd/" class="external-link" rel="nofollow">https://pypi.org/project/xlrd/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-60?src=confmacro">BTSICOTS-60</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">xlwt</td><td colspan="1" class="confluenceTd">1.3.0</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/xlwt/" class="external-link" rel="nofollow">https://pypi.org/project/xlwt/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-61?src=confmacro">BTSICOTS-61</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">tablib</td><td colspan="1" class="confluenceTd">3.00</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/tablib/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/tablib/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-62?src=confmacro">BTSICOTS-62</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">numpy</td><td colspan="1" class="confluenceTd">1.21.1</td><td colspan="1" class="confluenceTd">8/11/2021, zip added 1/18/2022</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/numpy/" class="external-link" rel="nofollow">https://pypi.org/project/numpy/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-63?src=confmacro">BTSICOTS-63</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">pywin32</td><td colspan="1" class="confluenceTd">301</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/pywin32/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/pywin32/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-64?src=confmacro">BTSICOTS-64</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">scipy</td><td colspan="1" class="confluenceTd">1.7.1</td><td colspan="1" class="confluenceTd">8/12/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/scipy/" class="external-link" rel="nofollow">https://pypi.org/project/scipy/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-65?src=confmacro">BTSICOTS-65</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">npTDMS</td><td colspan="1" class="confluenceTd">1.3.1</td><td colspan="1" class="confluenceTd">8/12/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/npTDMS/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/npTDMS/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-66?src=confmacro">BTSICOTS-66</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">docopt</td><td colspan="1" class="confluenceTd">0.6.2</td><td colspan="1" class="confluenceTd">8/12/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/docopt/" class="external-link" rel="nofollow">https://pypi.org/project/docopt/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-67?src=confmacro">BTSICOTS-67</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">lxml</td><td colspan="1" class="confluenceTd">4.6.3</td><td colspan="1" class="confluenceTd">8/12/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/lxml/" class="external-link" rel="nofollow">https://pypi.org/project/lxml/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-68?src=confmacro">BTSICOTS-68</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">python-docx</td><td colspan="1" class="confluenceTd">0.8.11</td><td colspan="1" class="confluenceTd">8/12/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/python-docx/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/python-docx/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-69?src=confmacro">BTSICOTS-69</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">pytz</td><td colspan="1" class="confluenceTd">2021.1</td><td colspan="1" class="confluenceTd">8/12/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/pytz/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/pytz/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-70?src=confmacro">BTSICOTS-70</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">kiwisolver</td><td colspan="1" class="confluenceTd">1.3.1</td><td colspan="1" class="confluenceTd">8/12/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/kiwisolver/" class="external-link" rel="nofollow">https://pypi.org/project/kiwisolver/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-71?src=confmacro">BTSICOTS-71</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">cycler</td><td colspan="1" class="confluenceTd">0.10.0</td><td colspan="1" class="confluenceTd">8/12/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/cycler/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/cycler/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-72?src=confmacro">BTSICOTS-72</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">python-dateutil</td><td colspan="1" class="confluenceTd">2.8.2</td><td colspan="1" class="confluenceTd">8/12/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/python-dateutil/" class="external-link" rel="nofollow">https://pypi.org/project/python-dateutil/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-73?src=confmacro">BTSICOTS-73</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">comtypes</td><td colspan="1" class="confluenceTd">1.1.10</td><td colspan="1" class="confluenceTd">8/12/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/comtypes/" class="external-link" rel="nofollow">https://pypi.org/project/comtypes/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-74?src=confmacro">BTSICOTS-74</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">pyYAML</td><td colspan="1" class="confluenceTd">5.4.1</td><td colspan="1" class="confluenceTd">8/12/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/PyYAML/" class="external-link" rel="nofollow">https://pypi.org/project/PyYAML/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-75?src=confmacro">BTSICOTS-75</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">tzlocal</td><td colspan="1" class="confluenceTd">2.1</td><td colspan="1" class="confluenceTd">8/12/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/tzlocal/" class="external-link" rel="nofollow">https://pypi.org/project/tzlocal/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-76?src=confmacro">BTSICOTS-76</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">packaging</td><td colspan="1" class="confluenceTd">21</td><td colspan="1" class="confluenceTd">8/11/2021, tar added 1/18/2022</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/packaging/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/packaging/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-77?src=confmacro">BTSICOTS-77</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">singledispatch</td><td colspan="1" class="confluenceTd">3.6.2</td><td colspan="1" class="confluenceTd">8/11/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/singledispatch/" class="external-link" rel="nofollow">https://pypi.org/project/singledispatch/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-78?src=confmacro">BTSICOTS-78</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">smmap2</td><td colspan="1" class="confluenceTd">2.0.5</td><td colspan="1" class="confluenceTd">8/12/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/smmap2/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/smmap2/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-79?src=confmacro">BTSICOTS-79</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">pandas</td><td colspan="1" class="confluenceTd">1.3.2</td><td colspan="1" class="confluenceTd">9/1/2021</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/pandas/" class="external-link" rel="nofollow">https://pypi.org/project/pandas/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-80?src=confmacro">BTSICOTS-80</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">simplejson</td><td colspan="1" class="confluenceTd">3.17.6</td><td colspan="1" class="confluenceTd">3/1/2022</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/simplejson/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/simplejson/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-81?src=confmacro">BTSICOTS-81</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">pytool</td><td colspan="1" class="confluenceTd">3.16.2</td><td colspan="1" class="confluenceTd">3/1/2022</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/pytool/" class="external-link" rel="nofollow">https://pypi.org/project/pytool/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-82?src=confmacro">BTSICOTS-82</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">Rx</td><td colspan="1" class="confluenceTd">3.2.0</td><td colspan="1" class="confluenceTd">3/14/2022</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a title="Follow link" href="https://pypi.org/project/Rx/" class="external-link" rel="nofollow">https://pypi.org/project/Rx/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-83?src=confmacro">BTSICOTS-83</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr><tr><td colspan="1" class="confluenceTd">influxdb-client</td><td colspan="1" class="confluenceTd">1.26.0</td><td colspan="1" class="confluenceTd">3/14/2022</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><a href="https://pypi.org/project/influxdb-client/" title="Follow link" class="external-link" rel="nofollow">https://pypi.org/project/influxdb-client/</a></td><td colspan="1" class="confluenceTd"><div class="content-wrapper"><p><span class="aui-message aui-message-warning jim-error-message jim-error-message-single">
+        <span class="icon-in-pdf"></span>
+     <a href="https://tslm-jira.gm.com/browse/BTSICOTS-84?src=confmacro">BTSICOTS-84</a> - Jira issue doesn&#39;t exist or you don&#39;t have permission to view it.
+    </span>
+</p></div></td></tr></tbody></table></div><h2 id="PythonWheels-ReleasesSinceLastUpgrade">Releases Since Last Upgrade</h2><p></p><p><br/></p><p><br/></p><p><br/><br/></p><h2 id="PythonWheels-Methodology">Methodology</h2><p>To release a new python wheel or an update to existing python wheels, it is necessary to update the requirements.txt file in the Z:\Patches\To_Deploy\python3_wheels directory with the name and/or new version number.</p><p>The order in which the wheels must be listed in the requirements.txt file is determined by the components needed for each wheel.  For example, Pythonnet requires the numpy wheel to be installed prior to installing Pythonnet, so any new updates would require numpy to be installed/updated prior to Pythonnet. </p><p>The cmd prompt will display which wheel dependencies are required during installation.  If a dependency isn't found, no python wheels will be updated or installed.  It's all or nothing.<br/><br/><span style="font-size: 20.0px;letter-spacing: -0.008em;">How to Download Python Wheels</span></p><p>Go to the linked Pypi page above.  When updating the wheel, you need to verify the Python version on the left side of the page.</p><p>If the currently deployed version of Python is not supported by the wheel, select the Release history page and find the newest version of the wheel that supports the deployed Python version.</p><p>Go to the Download files page and select the file that matches the build of the PCs in the lab (currently x64).  Some wheels only have tar ball format, zip format, or are not PC build specific. </p><h2 id="PythonWheels-HowtoTestPythonWheels">How to Test Python Wheels</h2><p>Put the downloaded wheel or source file into the distribution folder on your local drive, i.e. C:\Temp\To_Deploy\python3_wheels.  Open the requirement.txt file on your local drive and update the version number to match the new wheel's version.  Any additional wheels can be added to the end of the list to begin with. </p><p>All wheels must be tested prior to making updates to the Z: drive wheelhouse, as the files go live when the patch script detects an update to the requirements.txt file.</p><p>Open the cmd prompt and run <em style="text-align: left;">py -3 -m pip install -r C:\Temp\To_Deploy\python3_wheels\requirement.txt --no-index --find-links file:C:\Temp\To_Deploy\python3_wheels<br/></em></p><p>Running this command will go through each wheel one at a time and start the install process.  If a wheel fails to install the cmd prompt will report the reasoning.  This could be due to a version mismatch, missing dependency, or in rare cases, the wheel file being unusable.</p><h2 id="PythonWheels-HowtoTroubleshootInstallations">How to Troubleshoot Installations</h2><p>The most common installation issue is a missing dependency.  The cmd error output will state if this is due to a version mismatch, i.e. numpy must be version X.X to support pythonnet, a file issue, i.e. the x64 version isn't downloaded or won't load, or the version number in the requirement.txt didn't match the file in the wheelhouse folder.</p><h4 id="PythonWheels-VersionMismatch">Version Mismatch</h4><p>This is the most common issue encountered when installing new python wheels or updating existing wheels.  The specific dependency wheel should be listed in the error message by name and version number.  Frequently it will state the minimum required version, indicated by &quot;&gt;3.x.&quot; </p><p>First, if the wheel the installation depends on is already in deployment, move the target wheel's entry in requirement.txt so it installs after the dependency is installed.  You will likely need to do this a few times if the wheel has multiple dependencies. </p><h4 id="PythonWheels-FileIssue">File Issue</h4><p>If the cmd error states that there isn't a compatible version that matches the requirement.txt it is likely due to the version of the computer not matching the python wheel.  You may notice that everything installs on TCWS but not on certain laptops.  To resolve this, from the python wheel's download page, select the x64 version, tar/zip source file, or the universal wheel file and add those to the distribution folder.</p><p><br/></p></div>
+</div>
+</div>
+</div>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

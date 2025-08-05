@@ -1,0 +1,32 @@
+WS01
+	TC27 - Thermotron, Talks Over GSD
+	TC32 - CSZ, Talks Over Modbus, Digi Port 3
+WS02
+	TC28 - Thermotron, Talks Over GSD
+	TC33 - CSZ, Talks Over Modbus, Digi Port 3
+WS03
+	TC29 - Thermotron, Talks Over GSD
+	TC34 - CSZ, Talks Over Modbus, Digi Port 3
+WS04
+	TC30 - CSZ, Talks Over Modbus, Digi Port 2
+	TC35 - CSZ, Talks Over Modbus, Digi Port 3
+WS05
+	TC31 - CSZ, Talks Over Modbus, Digi Port 2
+	TC36 - CSZ, Talks Over Modbus, Digi Port 3
+WS06
+	TC37 - CSZ, Talks Over Modbus, Digi Port 2
+	TC40 - CSZ, Talks Over Modbus, Digi Port 3
+WS07
+	TC38 - CSZ, Talks Over Modbus, Digi Port 3
+	TC41 - CSZ, Talks Over Modbus, Digi Port 2
+WS08
+	TC39 - CSZ, Talks Over Modbus, Digi Port 2
+	TC42 - CSZ, Talks Over Modbus, Digi Port 3
+WS09
+	TC71 - CSZ, Talks Over Modbus, Digi Port 1
+	TC72 - CSZ, Talks Over Modbus, Digi Port 2
+	TC75 - CSZ, Talks Over Modbus, Digi Port 3
+WS10
+	TC73 - CSZ, Talks Over Modbus, Digi Port 1
+	TC74 - CSZ, Talks Over Modbus, Digi Port 2
+	TC76 - CSZ, Talks Over Modbus, Digi Port 3

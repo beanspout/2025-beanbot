@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : Trevor&#39;s Handover Notes and Documents</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : Trevor&#39;s Handover Notes and Documents
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Trevor J Smith (C) [X]</span> on Sep 01, 2022
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p><em>These tasks are in no particular order or order of importance.</em></p><p><strong>Task 1: Ongoing Battery Test Lab iTest Issues and Tasks</strong></p><ul><li>See &quot;To-Do List.txt&quot;<ul><li>This text document outlines previously completed and ongoing battery test lab issues and tasks</li></ul></li><li>See &quot;Standardizing Drivers and COM Ports.txt&quot;<ul><li>The test cell operators want the solutions to have a standardized driver setup as well as standardized Digi ports for the chambers</li><li>This text document outlines what needs to be changed on each test PC and how to change it</li></ul></li><li>Some projects have been completed, but still kept in &quot;To-Do List.txt&quot; to help with documenting the solutions in case they arise again</li><li>One issue will need to be closely monitored, and maybe specific chamber / work station PC information will need to be recorded each time it happens:<ul><li>Sometimes at the end of a test, chamber temperature control will stop, even though the chamber display shows we are controlling temperature still, but it just keeps drifting towards room temp</li><li>Other times there is random chamber temperature control loss while on test, which after 20 minutes causes an error and shuts down the test if the setpoint and actual temperature drift apart by 5 degrees or more for 20 minutes</li><li>WSUS02 Chamber 2 stopped test due to the timeout error caused by the setpoint and actual temp drifting by 5 degrees or more for 20 minutes, but when I checked the chamber layout, it had reached temperature and was maintaining it</li></ul></li></ul><p><strong>Task 2: BcTS to BTS Upgrades</strong></p><ul><li>See Confluence page at: <a href="Upgrading-Cell-Lab-Test-Stands-to-iTest-BTS_145162368.html">Upgrading Cell Lab Test Stands to iTest BTS</a><ul><li>WSUS01 still needs a verification that the data is being uploaded to iCentral, otherwise the upgrade on WSUS01 is complete</li></ul></li><li>The Confluence page should have everything you need to follow to properly upgrade each test cell PC</li><li>Have one of the test engineers (either Jack, Justin, or Steve) double check the solution settings for chamber channel assignments and circuit channel assignments</li><li>The remaining solutions should all be configured correctly, for the most part, except maybe some of the channel assignments</li></ul><p><strong>Task 3: Gas Sensor Module Development</strong></p><ul><li>See Confluence page at: <a href="145162378.html">Cell Lab Gas Sensor Module (Ss1)</a></li><li>Jeff Poole and Andy McMichael are the primary contacts</li><li>Testing of the module in the Battery Cell Lab chambers won't be for some time still while the connectors are being built</li></ul><p><strong>Task 4: Cell Test Data Linkage</strong></p><ul><li>Weekly meetings being planned</li><li>Idea is to somewhat automate test requests based on test requirements</li><li>I attended one introductory meeting to the issue, so I don't have much to report on this one</li></ul><p><strong>Task 5: Upgrading New LabMinder PC</strong></p><ul><li>This should be able to be done at any time without disrupting tests</li><li>There is a Sysini.txt document in Z:\A_N_D_Folder\BcTS to BTS Upgrades ToDo that has the necessary Sys.ini settings that will need to be copied over to each of the 4.1 solutions, based on the current settings in the BcTS solutions that are communicating with the 3.4 LabMinder</li><li>vsSysLMPC=USWTLTD60602J4 (OLD) in Sysini.txt is the PC name of the 3.4 LabMinder, vsSysLMPC=USWTLTD0148239 will be the PC name of the 4.1 LabMinder PC</li><li>There is a Solution.LabMinder.4.1 zipped folder in Z:\A_N_D_Folder\BcTS to BTS Upgrades ToDo that can be used as there is a 4.1 Automation Panel display that replicates the one from the 3.4 BcTS LabMinder solution</li><li>Still need to figure out whether iTest 4.1 BTS can run the solution or if it needs to be iTest 4.1 Standard like the iTest 3.4 version that currently runs the LabMinder solution<ul><li>Might just be able to use iTest 4.1 BTS with the solution set to SystemType=Battery in Powertek.ini</li></ul></li></ul><p><strong>General Notes</strong></p><ul><li>SysUtilization.pkl in Z:\A_N_D_Folder\Trevors Files is an old change to all of the solutions to commonize and expand on the SysUtilization picklist that used to be in the 4.1 solutions<ul><li>This was left in the folder for reference and so if the test lab operators wanted to change the options in the picklist, the base version of the file was still available as a backup</li></ul></li><li>Battery Test Cell Lab Setups.txt just outlines the configuration for each of the stands, including the chamber type they talk to, the driver used to talk to the chamber (Thermotron - GSD , CSZ - Modbus), and the Digi device port they are CURRENTLY connected to (this will change for WSUS07 once the driver change is made per Standardizing Drivers and COM Ports.txt)</li><li>All relevant files and folders I used are stored in Z:\A_N_D_Folder\Trevors Files for reference or if they are going to be needed for projects I didn't complete while at GM</li></ul>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/153387194/153387197.txt">Additional Notes to BTS Install Guide.txt</a> (text/plain)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/153387194/153387198.txt">Battery Test Cell Lab Setups.txt</a> (text/plain)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/153387194/153387199.txt">Current Test Cell License Keys.txt</a> (text/plain)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/153387194/153387200.txt">Solution LabMinder Settings.txt</a> (text/plain)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/153387194/153387201.txt">Standardizing Drivers and COM Ports.txt</a> (text/plain)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/153387194/153387202.txt">To-Do List.txt</a> (text/plain)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : How to set up the iTest Simulator</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="248348827.html">A&amp;D Software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Pack-Lab-related-articles_248348842.html">Pack Lab related articles</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : How to set up the iTest Simulator
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Collin Winans</span>, last updated on Aug 23, 2023
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>The simulator is dependent on the <span style="letter-spacing: 0.0px;"><a href="https://tslm-bitbucket.gm.com/users/hz1214/repos/batterysim/browse" class="external-link" rel="nofollow">batterySim</a> repo, which contains the pack/cell simulation framework.</span></p><p>I created a branch called <a href="https://tslm-bitbucket.gm.com/projects/BTSILIB/repos/solution_common/browse?at=refs%2Fheads%2Ffeature%2Fblinc1-simulation" class="external-link" rel="nofollow">feature/blinc1-simulation</a> in the solution_common repo to demonstrate how to use this framework. I also made rough simulations of the other test stand hardware in this branch.</p><h1 id="HowtosetuptheiTestSimulator-Setup">Setup</h1><ol><li>Create a folder under C:\apps\ADT\iTest3.9 called solution_common_sim. Since it will include the batterySim repo as a <a href="https://git-scm.com/book/en/v2/Git-Tools-Submodules" class="external-link" rel="nofollow">submodule</a>, the repo can sometimes do weird things when only one branch contains the submodule, which it makes it a pain to switch branches.</li><li>Go to the git command line in Sourcetree and enter the following commands. Getting the submodule to populate is a bit different than simply cloning the branch. If you don't initialize and update the submodule, then the batterySim folder will be empty.<ul><li><p style="margin-left: 30.0px;"><code>git clone <a href="ssh://git@tslm-bitbucket.gm.com/btsilib/solution_common.git" rel="nofollow">ssh://git@tslm-bitbucket.gm.com/btsilib/solution_common.git</a> solution_common_sim</code></p></li><li><p style="margin-left: 30.0px;"><code>git checkout feature/blinc1-simulation</code></p></li><li><p style="margin-left: 30.0px;"><code>git submodule init</code></p></li><li><p style="margin-left: 30.0px;"><code>git submodule update</code></p><ul><li><code>NOTE: submodule link no longer works due to permissions(?) changes</code></li></ul></li></ul></li><li>Go to Fault_Queue.py under C:\apps\ADT\iTest3.9\solution_common_sim\EXECUTE and comment out the following lines that creates PagerDuty incidents and add a pass. Since this branch is entirely simulated, I find pagerduty to be rather useless. There's no point in waking up someone at 2am because my pack (that doesn't exist) is about to catch fire.</li></ol><p style="margin-left: 0.375in;"><code># iThread = threading.Thread(target=IncidentThread, args=(PDServices,rdb,fault_args,))</code></p><p style="margin-left: 0.375in;"><code># iThread.start()</code></p><p style="margin-left: 0.375in;"><code>pass</code></p><p style="margin-left: 30.0px;">I chose not to commit this change to the branch because I don't want to accidentally merge it into a branch that might run with a real pack.</p><h1 id="HowtosetuptheiTestSimulator-Parameters">Parameters</h1><p>The BLINC1 simulation setup happens in EXECUTE/BLINC1_Simulator.py</p><p style="margin-left: 30.0px;"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="400" src="attachments/111968796/111968797.png" data-image-src="attachments/111968796/111968797.png" data-unresolved-comment-count="0" data-linked-resource-id="111968797" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2021-10-15_11-54-1.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="111968796" data-linked-resource-container-version="7" tabindex="0" alt=""></span></p><p>A lot of the heat transfer/capacity parameters are completely arbitrary. I made them up and they aren't necessarily accurate to how the real pack behaves. You can play with them if you want to speed up or slow down how fast the pack responds to chamber/coolant temperatures</p><p>Below the parameters is the setup of the pack/cycler/isolation circuit. The isolation circuit is a bit tricky, so I created a Visio circuit diagram in C:\apps\ADT\iTest3.9\solution_common_sim\Documentation\SimulatorWithHVIM.vsdx</p><p style="margin-left: 30.0px;"><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image" draggable="false" src="attachments/111968796/111968798.png" data-image-src="attachments/111968796/111968798.png" data-unresolved-comment-count="0" data-linked-resource-id="111968798" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2021-10-15_12-0-15.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="111968796" data-linked-resource-container-version="7" tabindex="0" alt=""></span></p><h1 id="HowtosetuptheiTestSimulator-StartingtheSimulator">Starting the Simulator</h1><p>In order to actually use the BLINC1 simulation, you have to open up the Parameters.ini file for your desired pack (I wrote it for BEV3, not sure if anything else will work without modifying BLINC1_Simulator.py) and change <code>numBatt1ControllerType</code> to -1. The other parameters can stay the same.</p><p>Then start iTest as normal.</p><p>On the &quot;Verify Channel Equipment&quot; popup, select the hardware to simulate. I always select all of them as Sim. In the branch, I disabled the drivers for chamber/cycler/chiller and wrote extra procedures/calculations to simulate the behavior of actual hardware. <em>Theoretically</em> you could do a blend of real/simulated hardware (assuming you re-enable the correct drivers in Test Manager, but I've never tried it.</p><p>Note: you must select &quot;No Hardware&quot; otherwise it will fault for not monitoring the gas sensors</p><p style="margin-left: 30.0px;"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/111968796/136118385.png" data-image-src="attachments/111968796/136118385.png" data-unresolved-comment-count="0" data-linked-resource-id="136118385" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-4-28_8-33-55.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="111968796" data-linked-resource-container-version="7" tabindex="0" alt=""></span></p><p>Once iTest finishes initializing, you should be able to select a pack and run tests. It's nowhere near complete, and it's certainly not perfect. But it might be useful in some circumstances.</p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/111968796/111968797.png">image2021-10-15_11-54-1.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/111968796/111968798.png">image2021-10-15_12-0-15.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/111968796/111968856.png">image2021-10-15_13-31-56.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/111968796/136118385.png">image2022-4-28_8-33-55.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:00</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

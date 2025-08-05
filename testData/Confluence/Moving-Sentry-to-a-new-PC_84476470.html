@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : Moving Sentry to a new PC</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Lab-Documentation_80216116.html">Lab Documentation</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : Moving Sentry to a new PC
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> James Jezewski</span>, last updated on Feb 10, 2021
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>The sentry PC is now <a href="http://usmpgtd9481gpp:9000/" class="external-link" rel="nofollow">http://usmpgtd9481gpp:9000/</a></p><p>The instance is running on docker on windows, and god help you if you ever need to update it.  It expects a full internet connection and doesn't like being behind a firewall.</p><p>First, the important folders:</p><ul><li>`C:\Temp\onpremise-master` is where the docker config files are stored and will need to be migrated to the new PC.  Yes I know this is a terrible location, but I wasn't expecting the files to be needed outside the docker container.</li><li>`C:\Docker\DockerDesktop\DockerDesktop` This is where the docker VM is stored.</li></ul><p>The docker folder can be set here:</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/84476470/84476471.png" data-image-src="attachments/84476470/84476471.png" data-unresolved-comment-count="0" data-linked-resource-id="84476471" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2021-2-10_8-17-32.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="84476470" data-linked-resource-container-version="2" tabindex="0" alt=""></span></p><p>Also to note, this needs to be set as well:</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/84476470/84476472.png" data-image-src="attachments/84476470/84476472.png" data-unresolved-comment-count="0" data-linked-resource-id="84476472" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2021-2-10_8-17-56.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="84476470" data-linked-resource-container-version="2" tabindex="0" alt=""></span></p><p><br/></p><p>To restart:</p><p>I think someone just needs to use remote desktop to connect to the PC, and docker should launch, and the Sentry VM should launch as well.  If you are unable to launch docker, ensure you are added to the `docker users` group on the PC</p><p><br/></p><p>If you need to restore the configuration:</p><p><a href="https://tslm-bitbucket.gm.com/projects/BTSILIB/repos/sentry_configuration/browse" class="external-link" rel="nofollow">https://tslm-bitbucket.gm.com/projects/BTSILIB/repos/sentry_configuration/browse</a> those are the configuration files</p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/84476470/84476471.png">image2021-2-10_8-17-32.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/84476470/84476472.png">image2021-2-10_8-17-56.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

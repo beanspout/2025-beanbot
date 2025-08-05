@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : Pack Checkout and Container Files</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BRFM-Communication-Overview_111968663.html">BRFM Communication Overview</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BRFM-Flash-Container-Instructions_153387083.html">BRFM Flash Container Instructions</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : Pack Checkout and Container Files
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Benjamin Fenner [X]</span> on Jan 20, 2023
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="PackCheckoutandContainerFiles-Problem">Problem</h2><p>General issues with Pack Checkout</p><h2 id="PackCheckoutandContainerFiles-Solution">Solution</h2><p>Confirming iTest is connected to the MRS Box</p><ul><li>On BLINC1 Display press the Show MRS Box Status.<ul><li>If MRS Box isn’t working<ul><li>Check Power Harness and Firmware version.</li><li>Confirm ISO boxes are connected to the correct PC.</li><li>HS1 can signals may be nonactive/suspended check in VechicleSpy.</li><li>MRS Box may not being getting power. Look on the MRS Box in the white connections for a green light (Light is easy to miss).</li><li>CAN signals may be disconnected.</li></ul></li></ul></li><li>Powered on button is pressed but system faults.<ul><li>Confirm that the cycler is on, isn’t knifed, has OK safety limits.</li><li>Is the power supply connected? Confirm that if the harness is connected and the iTest a 12V has feedback.</li><li>For Truck Packs.<ul><li>Branch is old, or the MRS box is the wrong version which can be checked in the MRS Box Status display.</li><li>Look at the voltages on the SPI and Cycler and confirm that they match.<ul><li>If not the CMUs may not be mapped correctly.</li><li>Swap MAC addresses – Press the 12V Button, Then the Run Manual Comms Button.<ul><li>You’ll need to connect the manager, put the manager in standby, Set manager ACL, copy the MAC addresses and reorder them (Top half to the bottom). {Connect to Manager 5,0,1,60, Get Manager ACL 9, Set Manager ACL 8 (copy the list of MAC addresses and paste them into the cmd) enter, 6,0.</li></ul></li></ul></li></ul></li></ul></li><li>HV Wiring Polarity Fault</li></ul><ul><li style="list-style-type: none;"><ul><li>Ready the Cycler.</li></ul></li><li>ADI_WIL_ERR_TIMEOUT Fault<ul><li>Is the 12V Power Button On? (Green)</li><li>Use the VehicleSpy to resynch offset.</li><li>Unplug the all WeMes and reconnect them to a different USB port.</li></ul></li><li>ACL/MAC Address(es) do not Match<ul><li>Open Manual Comms.<ul><li>Set Manager ACL 10, How many new ACLs, Index number (where the incorrect MAC address is in the list), Set Manager Mode 8, 2, 12, 11.</li></ul></li><li>Confirming that Container Files match what’s already there<ul><li>Before or after you flash container files you may want to confirm what the current firmware version is.</li><li>For BMS<ul><li>Select the firmware version folder…</li><li>C:\Apps\ADT\iTest4.1\solution_common\EXECUTE\BRFM_Comm\v1.1.0\bms\bmsc-output</li><li>In the above folder path open the “adi_bms_defs.h” file in notpad.<ul><li>Confirm that the ADI_BMS_VERSION and ADI_BMS)CONTAINER_FILE_CRC matches the values in the pinnacle tester.</li><li><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/172098061/172098062.png" data-image-src="attachments/172098061/172098062.png" data-unresolved-comment-count="0" data-linked-resource-id="172098062" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2023-1-20_9-6-20.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="172098061" data-linked-resource-container-version="1" tabindex="0" alt=""></span></li></ul></li></ul></li></ul></li></ul></li></ul><h2 id="PackCheckoutandContainerFiles-Relatedarticles">Related articles</h2><p></p><p>
+
+
+
+
+
+
+
+
+
+
+
+<ul class="content-by-label">
+        <li>
+        <div>
+                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+
+        <div class="details">
+                        <a href="/spaces/BTSILSIE/pages/172098061/Pack+Checkout+and+Container+Files">Pack Checkout and Container Files</a>
+                
+                        
+                    </div>
+    </li>
+        <li>
+        <div>
+                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+
+        <div class="details">
+                        <a href="/spaces/BTSILSIE/pages/147652659/Request+Visual+Studio">Request Visual Studio</a>
+                
+                        
+                    </div>
+    </li>
+        <li>
+        <div>
+                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+
+        <div class="details">
+                        <a href="/spaces/BTSILSIE/pages/114229264/How+to+Add+iTest+Common+Solution+Support+for+New+Version+of+WIL">How to Add iTest Common Solution Support for New Version of WIL</a>
+                
+                        
+                    </div>
+    </li>
+        <li>
+        <div>
+                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+
+        <div class="details">
+                        <a href="/spaces/BTSILSIE/pages/111968663/BRFM+Communication+Overview">BRFM Communication Overview</a>
+                
+                        
+                    </div>
+    </li>
+    </ul>
+</p><p><br/></p><p><br/></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/172098061/172098062.png">image2023-1-20_9-6-20.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

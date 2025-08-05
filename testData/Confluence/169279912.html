@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : Jenkins Good Practices &amp; File Management</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="248348834.html">CI/CD Software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Jenkins-for-Solution-Common_152272898.html">Jenkins for Solution Common</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : Jenkins Good Practices &amp; File Management
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Constantin Balan</span>, last updated on Jan 04, 2023
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="JenkinsGoodPractices&amp;FileManagement-JenkinsLogs"><u>Jenkins Logs</u></h2><p><u>System Logs:</u></p><p>The Jenkins system logs are found in the &lt;JENKINS_HOME&gt;/logs/ folder on Windows systems. This is where you can find anything related to the running of the Jenkins process. If you ever have issues with Jenkins running/starting, you can check here for any errors being thrown.</p><p><u>Job Logs:</u></p><p>Each Jenkins job has the option to discard old builds. However if you are logged in as an admin you can navigate to:</p><p><strong><a href="http://10.56.175.138:8081/manage/configure" class="external-link" rel="nofollow">Dashboard &gt; Manage Jenkins &gt; Configure System &gt; Global Build Discarders</a></strong></p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="250" width="422" src="attachments/169279912/169279916.png" data-image-src="attachments/169279912/169279916.png" data-unresolved-comment-count="0" data-linked-resource-id="169279916" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-12-8_14-2-25.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="169279912" data-linked-resource-container-version="6" tabindex="0" alt=""></span></p><p>Here you can set a log rotation up for the jobs that will keep logs based max number of jobs, or based on number of days since the build ran. It is suggested to have a log rotation set up because otherwise the computer where the builds are running will eventually run out of space due to this mechanic being the only way to automatically clear logs on a Windows OS.</p><h2 id="JenkinsGoodPractices&amp;FileManagement-JenkinsJobs"><u>Jenkins Jobs</u></h2><p><u>Jobs Directory:</u></p><p>The jobs directory contains directories of every single job you have set up on the Jenkins instance. Each job will have a <em><strong>config.xml </strong></em>file, as well as a sub-directory of <em><strong>builds</strong></em>. The sub-directory will have all of the build logs of the retained builds as well as a copy of the config file that was present at runtime. There could potentially be more/other files that are included, but these are the primary ones relevant to our pipeline. Below is a visualization of the directory structure:</p><p><em><strong><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="250" width="504" src="attachments/169279912/169279918.png" data-image-src="attachments/169279912/169279918.png" data-unresolved-comment-count="0" data-linked-resource-id="169279918" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-12-8_14-29-39.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="169279912" data-linked-resource-container-version="6" tabindex="0" alt=""></span></strong></em></p><p><u>Workspaces:</u></p><p>Workspaces are the directories where Jenkins jobs are executed. Workspaces should be ephemeral (not permanent, short lived). So when finishing a job in a workspace, the best practice would be to configure the workspace to clear once it's complete. If there are and files left in the workspace when a new build runs, they could potentially affect the job in unforeseen ways. This is why making sure the workspace always is consistent when running is the most effective and reduces the chance of unnecessary build errors. Doing a workspace clear both <strong>before </strong>and <strong>after</strong> a build runs would be the best way of doing this. The clear after a build runs should only be done on successful builds because doing it on a failed build will potentially delete some evidence on why the build failed (We don't want that, that ain't good).</p><p><br/></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/169279912/169279916.png">image2022-12-8_14-2-25.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/169279912/169279918.png">image2022-12-8_14-29-39.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

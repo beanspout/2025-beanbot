@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : BRFM Flash Container Instructions</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BRFM-Communication-Overview_111968663.html">BRFM Communication Overview</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : BRFM Flash Container Instructions
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Eric Zhang</span> on Aug 26, 2022
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>A common issue with BRFM packs is a mismatch in the expected container files on the communication devices versus the container files we have in Solution Common. This issue manifests in a fault stating that the containers are mismatched and to check BRFM_core.log for details. Within the log, you should find an ERROR: line with the message of either  &quot;{} container hash for {} mismatch! Expecting {} but received {}&quot; or &quot;{} container version for {} mismatch! Expecting {} but received {}&quot;. The messages will tell you which devices (managers or nodes) have container mismatches and what those mismatches are. Each instance of BRFM comm will start the log with a list of supported (solution common) container versions and hashes and will follow with a list of container details found on the pack devices.</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="400" src="attachments/153387083/153387084.png" data-image-src="attachments/153387083/153387084.png" data-unresolved-comment-count="0" data-linked-resource-id="153387084" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="BRFM_Core_Log.PNG" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="153387083" data-linked-resource-container-version="1" tabindex="0" alt=""></span></p><p>The next step is to flash the container files in solution common onto the devices with mismatches mentioned in the log. </p><ol><li>Open the manual comm screen through the Run Manual Comm button found on the BEV screen</li><li><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/153387083/153387085.png" data-image-src="attachments/153387083/153387085.png" data-unresolved-comment-count="0" data-linked-resource-id="153387085" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="RunManualComm.PNG" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="153387083" data-linked-resource-container-version="1" tabindex="0" alt=""></span></li><li>Connect to the managers with input 5. The connection must be successful to send container files to any device. </li><li><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="400" src="attachments/153387083/153387086.png" data-image-src="attachments/153387083/153387086.png" data-unresolved-comment-count="0" data-linked-resource-id="153387086" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="ConnecttoManagers.PNG" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="153387083" data-linked-resource-container-version="1" tabindex="0" alt=""></span></li><li>If you are flashing for managers only, you can skip to step X. Otherwise you also need to connect to the nodes necessary.</li><li>To connect to the nodes, change the system mode to COMISSIONING with input 8.</li><li><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/153387083/153387087.png" data-image-src="attachments/153387083/153387087.png" data-unresolved-comment-count="0" data-linked-resource-id="153387087" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="CommissioningMode.PNG" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="153387083" data-linked-resource-container-version="1" tabindex="0" alt=""></span></li><li>Check that the nodes are connected by viewing the network status with input 12. Wait up to 5 min if any nodes are not connected and keep checking the network status in the meantime.</li><li><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="250" src="attachments/153387083/153387088.png" data-image-src="attachments/153387083/153387088.png" data-unresolved-comment-count="0" data-linked-resource-id="153387088" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="NetworkStatus.PNG" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="153387083" data-linked-resource-container-version="1" tabindex="0" alt=""></span></li><li>Make sure to switch the system mode back to STANDBY with input 8 before sending the files</li><li><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/153387083/153387089.png" data-image-src="attachments/153387083/153387089.png" data-unresolved-comment-count="0" data-linked-resource-id="153387089" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Standby.PNG" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="153387083" data-linked-resource-container-version="1" tabindex="0" alt=""></span></li><li>Send the files to the devices with input X. Make sure you select the correct devices. Note that sometimes the ALL options fail in which case you may have to send files to each device individually. Be sure to select 1 for container file for the file type choice, updating the software file for example can cause firmware issues. </li><li><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="400" src="attachments/153387083/153387090.png" data-image-src="attachments/153387083/153387090.png" data-unresolved-comment-count="0" data-linked-resource-id="153387090" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="SendFileToDevice.PNG" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="153387083" data-linked-resource-container-version="1" tabindex="0" alt=""></span></li><li>Pass the full file path when prompted. Make sure you choose the right container. PMS and EMS are flashed for managers. BMS is flashed for nodes. Make sure the container files you are selected come from the firmware version directory matching the firmware on the devices. All container files will be named similarly and end in .bin.</li><li><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="400" src="attachments/153387083/153387091.png" data-image-src="attachments/153387083/153387091.png" data-unresolved-comment-count="0" data-linked-resource-id="153387091" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Success.PNG" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="153387083" data-linked-resource-container-version="1" tabindex="0" alt=""></span></li><li>While the program response may look different for successful flashes depending on firmware version, you can always double check the correct file was flashed with input 22 Get Container Details</li></ol><p><br/></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/153387083/153387084.png">BRFM_Core_Log.PNG</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/153387083/153387085.png">RunManualComm.PNG</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/153387083/153387086.png">ConnecttoManagers.PNG</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/153387083/153387087.png">CommissioningMode.PNG</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/153387083/153387088.png">NetworkStatus.PNG</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/153387083/153387089.png">Standby.PNG</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/153387083/153387090.png">SendFileToDevice.PNG</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/153387083/153387091.png">Success.PNG</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

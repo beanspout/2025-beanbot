@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : Quick Update</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BRFM-Communication-Overview_111968663.html">BRFM Communication Overview</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BRFM-Flash-Container-Instructions_153387083.html">BRFM Flash Container Instructions</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : Quick Update
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Benjamin Fenner [X]</span> on Oct 11, 2023
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p><br/></p><p>Things to keep in mind when updating container files. </p><ul><li>Version of the BRFM being used.</li><li>Version of the modules.</li><li>Weather the DUT is a dual or single manager. (Pretty much any DUT with more than 12 modules is dual)</li><li>If cheetah boxes are present. </li></ul><p><br/></p><p>BEV3 12 modules or less Pack.</p><ul><li>With manual coms open:<ul><li>2 - Get Cheetah device info<ul><li>confirm that that there is one available.</li></ul></li><li>4 - Query manager info<ul><li>The version should match the BRFM version you have selected.</li></ul></li><li>8 - Set Manager System Mode<ul><li>enter 2, Commissioning Mode</li></ul></li><li>12 - Get Network Status<ul><li>We are looking for all modules/nodes to be connected for each MAC address. Could take more than a few queries (reentering 12) before all connect.</li><li>Sometimes some never say &quot;connected&quot;, but it's okay to move forward.</li><li>Other times if all do not connect and it's been about three minutes sense the first connection this usually means that the BRFM and modules are different versions. Inform the VE.</li></ul></li><li>18 - Send File to Device<ul><li>You can update container files in any order (BMS, PMS, or EMS).</li><li>Do send the correct files look into the current version of the BRFM folder and copying the .bin file.<ul><li>C:\Apps\ADT\iTest4.1\solution_common\EXECUTE\BRFM_Comm</li></ul></li><li>If there is an error retry</li></ul></li><li>22 - Get Container Details<ul><li>Confirm that the container files have been updated. In each of the folders with the .bin file there is a .h file with the hash to compare too.</li></ul></li></ul></li></ul><p><br/></p><p>BET modules or less Pack.</p><ul><li>With manual coms open:<ul><li>2 - Get Cheetah device info<ul><li>confirm that that there are two available.</li></ul></li><li>4 - Query manager info<ul><li>The version should match the BRFM version you have selected and is a DUAL manager.</li></ul></li><li>8 - Set Manager System Mode<ul><li>enter 2, Commissioning Mode</li></ul></li><li>12 - Get Network Status<ul><li>We are looking for all modules/nodes to be connected for each MAC address. Could take more than a few queries (reentering 12) before all connect.</li><li>Sometimes some never say &quot;connected&quot;, but it's okay to move forward.</li><li>Other times if all do not connect and it's been about three minutes sense the first connection this usually means that the BRFM and modules are different versions. Inform the VE.</li></ul></li><li>18 - Send File to Device<ul><li>You can update container files in any order (BMS, PMS, or EMS) PMS and EMS need to be updated for both managers. The managers have both A and B manager container files.<ul><li>The bt3a  files needs to be the first manager. </li></ul></li><li>Do send the correct files look into the current version of the BRFM folder and copying the .bin file.<ul><li>C:\Apps\ADT\iTest4.1\solution_common\EXECUTE\BRFM_Comm</li></ul></li><li>If there is an error retry</li></ul></li><li>22 - Get Container Details<ul><li>Confirm that the container files have been updated. In each of the folders with the .bin file there is a .h file with the hash to compare too.</li></ul></li></ul></li></ul><p><br/></p><p>BEV3+ modules or less Pack.</p><ul><li>With manual coms open:<ul><li>2 - Get Cheetah device info<ul><li>confirm that that there is one for modules and two for packs available.</li></ul></li><li>4 - Query manager info<ul><li>The version should match the BRFM version you have selected. For packs BRFM is dual and in most module testing it's single.</li></ul></li><li>8 - Set Manager System Mode<ul><li>enter 2, Commissioning Mode</li></ul></li><li>12 - Get Network Status<ul><li>We are looking for all modules/nodes to be connected for each MAC address. Could take more than a few queries (reentering 12) before all connect.</li><li>Sometimes some never say &quot;connected&quot;, but it's okay to move forward.</li><li>Other times if all do not connect and it's been about three minutes sense the first connection this usually means that the BRFM and modules are different versions. Inform the VE.</li></ul></li><li>18 - Send File to Device<ul><li>You can update container files in any order (BMS, PMS, or EMS) PMS and EMS need to be updated for both managers with the same container files. Module testing usually has one manager.</li><li>Do send the correct files look into the current version of the BRFM folder and copying the .bin file.<ul><li>C:\Apps\ADT\iTest4.1\solution_common\EXECUTE\BRFM_Comm</li></ul></li><li>If there is an error retry</li></ul></li><li>22 - Get Container Details<ul><li>Confirm that the container files have been updated. In each of the folders with the .bin file there is a .h file with the hash to compare too.</li></ul></li></ul></li></ul>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

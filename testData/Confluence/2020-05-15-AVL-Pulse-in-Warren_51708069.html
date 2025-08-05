@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : 2020-05-15 AVL Pulse in Warren</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Meeting-notes_16601925.html">Meeting notes</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : 2020-05-15 AVL Pulse in Warren
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> James Jezewski</span>, last updated on Jun 05, 2020
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="id-20200515AVLPulseinWarren-Date">Date</h2><p><time datetime="2020-05-15" class="date-past">15 May 2020</time></p><h2 id="id-20200515AVLPulseinWarren-Attendees">Attendees</h2><ul><li><p><a class="confluence-userlink user-mention" data-username="mzq7h3" href="https://tslm-confluence.gm.com/display/~mzq7h3" data-linked-resource-id="4849673" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">James Jezewski</a></p></li><li><p><a class="confluence-userlink user-mention" data-username="jz3lbc" href="https://tslm-confluence.gm.com/display/~jz3lbc" data-linked-resource-id="4849671" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">Justin Hermann</a></p></li><li>Brian Klotz</li></ul><h2 id="id-20200515AVLPulseinWarren-Goals">Goals</h2><p>Just want a quick touch base and determine what requirements would need to be satisfied to utilize AVL Pulse for the battery lab.</p><p>Please feel free to forward to any additional people</p><p>
+<span class="jira-issue resolved" data-jira-key="BCIS-436" >
+                    <a href="https://tslm-jira.gm.com/browse/BCIS-436?src=confmacro" class="jira-issue-key"><img class="icon"
+                src="https://tslm-jira.gm.com/secure/viewavatar?size=xsmall&amp;avatarId=10318&amp;avatarType=issuetype" alt="$type"/>BCIS-436</a>
+                            -
+            <span class="summary">Investigate use of AVL Pulse for GBSL-W utilization tracking</span>
+                                                <span class="aui-lozenge aui-lozenge-subtle             aui-lozenge-success
+     jira-macro-single-issue-export-pdf">Done</span>
+                </span>
+</p><h2 id="id-20200515AVLPulseinWarren-Discussionitems">Discussion items</h2><p><strong>Considerations:</strong></p><ul><li>Would there be a new AVL pulse server exclusively for Battery lab?<ul><li>No, one central server, but we'd have our own dashboards and such</li></ul></li><li>What data is the pulse server expecting to determine utilization?<ul><li>Via text file on a share drive<ul><li>Event driven</li><li><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="250" src="attachments/51708069/51708071.png" data-image-src="attachments/51708069/51708071.png" data-unresolved-comment-count="0" data-linked-resource-id="51708071" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2020-5-15_9-10-51.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="51708069" data-linked-resource-container-version="7" tabindex="0" alt=""></span></li></ul></li><li>Webservice a post<ul><li>There may not be a auth</li></ul></li></ul></li><li>How much work would be required by the LSIE team?<ul><li>Looks like we'd need to update all branches of our code to support it</li><li>Whenever we update a utilization code, wed run the script to update pulse via POST or update the text message</li></ul></li><li>How would the battery lab in China be integrated?<ul><li>It would just be another location but would be implemented at the same time as ours</li></ul></li><li>How much would the additional license for pulse cost?<ul><li>We have 450 seats currently for Test Cells</li></ul></li></ul><p>Who is using it:</p><ul><li>Brake lab, MPG is using it</li><li>AVL Pulse is the CAT &quot;common&quot; application for visualization of test stand utilization</li></ul><p>What does Brian need from GBSL-W/S to add boards to Pulse?</p><ul><li>Layout of boards, i.e. what test stand types, areas, etc. - We can use Deb Watson's reports to start</li><li>We will need to have a stand alone application that provides a GUI to prompt users to enter codes - Is this LSIEs? AND?<ul><li><span style="letter-spacing: 0.0em;">Our team will update the code that calls the utilization prompt and update it to support pulse and the Pontiac codes</span></li></ul></li></ul><h1 id="id-20200515AVLPulseinWarren-Actionitems"><span style="letter-spacing: 0.0em;">Action items</span></h1><ul class="inline-task-list" data-inline-tasks-content-id="51708069"><li class="checked" data-inline-task-id="2">Justin will provide Brian with the layout of our Test Cells for the pulse dashboard</li></ul>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/51708069/51708071.png">image2020-5-15_9-10-51.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="comments" class="pageSectionTitle">Comments:</h2>
+                        </div>
+
+                        <table border="0" width="100%">
+                                                        <tr>
+                                <td >
+                                    <a name="comment-53608602"></a>
+                                    <font class="smallfont">$contentConverter.convertToXHtml($comment)</font>
+                                    <div align="left" class="smallfont" style="color: #666666; width: 98%; margin-bottom: 10px;">
+                                        <img src="images/icons/contenttypes/comment_16.png" height="16" width="16" border="0" align="absmiddle"/>
+                                        Posted by jz3lbc at Jun 05, 2020 08:29
+                                    </div>
+                                </td>
+                            </tr>
+                                                    </table>
+                    </div>
+                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

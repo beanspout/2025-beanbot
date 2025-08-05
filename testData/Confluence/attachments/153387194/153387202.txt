@@ -1,0 +1,15 @@
+ISSUE #		WS0X		DESCRIPTION											STATUS		NOTES
+	1		WS01-03		Humidity control not working correctly on test		COMPLETED		Sometimes a setpoint is residual, which can cause the humidity control to turn on during startup
+	1.5		WS01-03		Ecc1 humidity control indicator shows Ecc2 status	IN-PROGRESS		Can probably change the indicator to be numEcc1WetDry instead of numEcc2WetDry
+	2		ALL			Schedule won't run because of name length			COMPLETED		Bug report #31386 set to be for 4.3
+	3		ALL			Chamber temp defaults to 0 instead of 25			IN-PROGRESS		Couldn't replicate as of 8-8-22
+	4		ALL			Chamber temp control turns off at the end of test	IN-PROGRESS		Temp control was still set to on but chamber temp starts drifting back to room temp instead of setpoint
+	5		ALL			Update cell solutions to have QuickExit=FALSE		COMPLETED		
+	6		Not-Inst	Update Config.ini to have correct $DATADIR			IN-PROGRESS		The Config.ini file will need to be edited from the new 4.1 $SYSTEMDIR once the upgrades are done
+	7		ALL			Update "Slots" in Biterode 1 for Temp10-18 to 3		COMPLETED		
+	8		Not-Inst	Make "Slots" and QuickExit=FALSE change to base		COMPLETED		
+	9		Laptops		Test Manager loading .tsc files and builds are slow	COMPLETED		Findings reported to Paul
+	10		ALL			Update the SysUtilization.pkl file in all test PCs	COMPLETED
+	11		4.1 PCs		Update Sys.ini in 4.1 solutions for LabMinder		IN-PROGRESS
+	12		WS05		Chamber temp control turned off during test			IN-PROGRESS		Not happening because of a procedure or the driver, numEcc1XHeatCool changed to -1 during test which
+																							only happens if flgEccXChamberOn drops from a 1 to a 0...

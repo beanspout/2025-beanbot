@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : How to Add iTest Common Solution Support for New Version of WIL</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BRFM-Communication-Overview_111968663.html">BRFM Communication Overview</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : How to Add iTest Common Solution Support for New Version of WIL
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Mingxian Tay</span> on Oct 28, 2021
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Every now and then, the vendor (Analog Device Inc.) will release new version of wBMS Interface Library (WIL) that includes bug fixes, new features and improvements, as well as support for new hardware. When new version is released, GBSL will be expected to add support for the versions at some point, so it may be necessary to update/upgrade existing BRFM codes to support latest WIL version. Here's a simple step-by-step guide that provides general idea on how to update the codes to support latest version of WIL.</p><h2 id="HowtoAddiTestCommonSolutionSupportforNewVersionofWIL-Step-by-stepguide">Step-by-step guide</h2><p>There are two major sections where the codes will need to be updated when new WIL version is released: C/C++ section and Python section. C/C++ section is where the WIL source codes and wrapper codes for the DLL locate, while Python section is where iTest and BRFM interface scripts locate.</p><div role="region" aria-label="Tip" class="confluence-information-macro  confluence-information-macro-tip" ><span role="presentation" class="aui-icon aui-icon-small aui-iconfont-approve confluence-information-macro-icon" ></span><div class="confluence-information-macro-body">Read the release note for new version first before updating the codes to understand what changes will be needed.</div></div><p><br/></p><div class="sectionColumnWrapper"><div class="sectionMacro"><h3 id="HowtoAddiTestCommonSolutionSupportforNewVersionofWIL-C/C++Section">C/C++ Section</h3><div class="sectionMacroRow"><div class="columnMacro"><p>Here's the step-by-step guide to update C/C++ codes:</p><ol><li>Obtain latest WIL executable from WBMS SharePoint or BRFM team and then run the executable to extract the codes.</li><li>Read the release note to determine if this is a major update (e.g., major interface or functional changes).<ol><li>If it is a major change, create a new branch off last branch on USB_SPI_Comm repo and then work off new branch.</li><li>If it is NOT a major change, nothing special needs to be done.</li></ol></li><li>Replace existing WIL folder with latest WIL codes. Make sure Visual Studio is closed before modification.<ol><li>Delete ALL folders inside VRFM_Pinnacle\WIL folder in the USB_SPI_Comm repo folder.</li><li>Copy all except Docs folder from latest WIL folder to VRFM_Pinnacle\WIL folder</li></ol></li><li>Update existing header and source file lists in Visual Studio VRFM_Pinnacle project<ol><li>Open VS project by double-clicking VRFM_Pinnacle.vcxproj OR VRFM_Pinnacle.sln</li><li>In Solution Explorer column, locate the WIL filter for both Header and Source files<ol><li><strong>Remove, not delete,</strong> the files under WIL filters</li><li>Right click on WIL filter, select &quot;Add&quot; and then &quot;Existing items...&quot;</li><li>Navigate to the folder where newly added WIL codes are stored<ol><li>For header files, select only .h files</li><li>For Source files, select only .c or .cpp files</li></ol></li></ol></li></ol></li><li>Commit the changes on SourceTree/Git.<ol><li>Mention &quot;Replaced existing WIL folder with WIL vX.X.X&quot; in commit message where X.X.X refers to the latest version info.</li></ol></li><li>Add Git tag to the commit<ol><li>Use the format: &quot;WIL_vX.X.X&quot; where X.X.X refers to the latest WIL version</li></ol></li><li>Update VRFM_Pinnacle codes to adopt to latest WIL source codes</li><li>Compile the changes into DLL<ol><li>Ensure &quot;Release&quot; and &quot;x86&quot; are selected before building solution</li></ol></li><li>Update VRFM_Pinnacle_Tester project accordingly and then compile into .exe files<ol><li>Ensure &quot;Release&quot; and &quot;x86&quot; are selected before building solution</li></ol></li><li>Commit new changes to Git and add appropriate commit messages</li></ol><p><br/></p><div role="region" aria-label="Note" class="confluence-information-macro  confluence-information-macro-note" ><p class="title conf-macro-render">Compile DLL First</p><span role="presentation" class="aui-icon aui-icon-small aui-iconfont-warning confluence-information-macro-icon" ></span><div class="confluence-information-macro-body"><p>Always compile VRFM_Pinnacle.dll <strong>first</strong> before compiling VRFM_Pinnacle_Tester.exe.</p></div></div></div><div class="columnMacro"><p>Here's the flowchart showing the process of upgrading WIL in C++/C code section:</p><p><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image" draggable="false" src="attachments/114229264/114229314.png" data-image-src="attachments/114229264/114229314.png" data-unresolved-comment-count="0" data-linked-resource-id="114229314" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2021-10-22_11-37-30.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="114229264" data-linked-resource-container-version="1" tabindex="0" alt=""></span></p></div></div></div></div><div class="sectionColumnWrapper"><div class="sectionMacro"><h3 id="HowtoAddiTestCommonSolutionSupportforNewVersionofWIL-PythonSection">Python Section</h3><div class="sectionMacroRow"><div role="region" aria-label="Note" class="confluence-information-macro  confluence-information-macro-note" ><span role="presentation" class="aui-icon aui-icon-small aui-iconfont-warning confluence-information-macro-icon" ></span><div class="confluence-information-macro-body"><p>Because Python interfaces directly with compiled DLL, it is critical that C/C++ section gets updated to latest WIL version <strong>before updating Python section</strong>. </p></div></div><p class="auto-cursor-target">Depending on how much changes are added in C/C++ section, Python section may or may not needed to be updated at all. For example, if WIL updates only include internal C code changes that don't affect functionalities of existing codes, then chances are that Python scripts may not need to be updated at all. Here's a quick checklist that can help you determine if Python scripts need updates (note that this list is <strong>not exhaustive</strong>):</p><ol><li class="auto-cursor-target">Have the function interfaces (e.g. function names or arguments) changed in <em>VRFM_Pinnacle.h</em>?<ol><li class="auto-cursor-target">If yes, update <em>brfm_py.py</em> to match latest function interfaces in <em>VRFM_Pinnacle.h</em>.<ol><li class="auto-cursor-target">Also update <em>brfm_wil_types.py </em>and <em>brfm_wil_constants.py</em> appropriately if there are new adi_wil types and constants available and needed.</li></ol></li><li class="auto-cursor-target">If no, brfm_py.py needs no updates.</li></ol></li><li>Have the functionalities from WIL changed (e.g. change in obtaining measurement data, adding/removing WIL functionalities, etc.)?<ol><li>If yes, investigate the updates to determine how the changes affect <em>brfm_comm.py</em>, <em>brfm_core.py</em>, <em>brfm_py.py, </em>and other related Python scripts.</li><li>If no, there are no need to update Python scripts.</li></ol></li></ol></div></div></div><p><br/></p><h2 id="HowtoAddiTestCommonSolutionSupportforNewVersionofWIL-Relatedarticles">Related articles</h2><p></p><p>
+
+
+
+
+
+
+
+
+
+
+
+<ul class="content-by-label">
+        <li>
+        <div>
+                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+
+        <div class="details">
+                        <a href="/spaces/BTSILSIE/pages/172098061/Pack+Checkout+and+Container+Files">Pack Checkout and Container Files</a>
+                
+                        
+                    </div>
+    </li>
+        <li>
+        <div>
+                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+
+        <div class="details">
+                        <a href="/spaces/BTSILSIE/pages/147652659/Request+Visual+Studio">Request Visual Studio</a>
+                
+                        
+                    </div>
+    </li>
+        <li>
+        <div>
+                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+
+        <div class="details">
+                        <a href="/spaces/BTSILSIE/pages/111968663/BRFM+Communication+Overview">BRFM Communication Overview</a>
+                
+                        
+                    </div>
+    </li>
+    </ul>
+</p><p><br/></p><p><br/></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/114229264/111969214.png">image2021-10-20_13-12-23.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/114229264/114229313.png">image2021-10-22_11-30-32.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/114229264/114229314.png">image2021-10-22_11-37-30.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

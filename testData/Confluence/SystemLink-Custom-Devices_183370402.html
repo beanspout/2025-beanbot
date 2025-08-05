@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : SystemLink Custom Devices</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="NI-Software_248348831.html">NI Software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="WBCIC---Wallace-Battery-Cell-Innovation-Center_183370389.html">WBCIC - Wallace Battery Cell Innovation Center</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : SystemLink Custom Devices
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Collin Winans</span>, last updated on Apr 12, 2024
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Note: this might get moved to a Bitbucket repo in the future, for now I'm stashing the most recent version from NI here.</p><p><br/></p><p>Any PC running a BTS test for BCIC will need the BCIC custom devices installed. The lab PCs should already have this (installed by UTAC during comissioning). I find it's useful to have a fake &quot;test site&quot; set up on my laptop for script development purposes.</p><p><br/></p><p>The nipkg file should open with NI Package Manager and install</p><p>v2.0.0.16</p><p><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="/download/attachments/183370402/bcic-custom-devices_2.0.0.16_windows_x64.nipkg?version=1&amp;modificationDate=1712346497315&amp;api=v2" data-nice-type="null" data-file-src="/download/attachments/183370402/bcic-custom-devices_2.0.0.16_windows_x64.nipkg?version=1&amp;modificationDate=1712346497315&amp;api=v2" data-linked-resource-id="260768485" data-linked-resource-type="attachment" data-linked-resource-container-id="183370402" data-linked-resource-default-alias="bcic-custom-devices_2.0.0.16_windows_x64.nipkg" data-mime-type="application/octet-stream" data-has-thumbnail="false" data-linked-resource-version="1" data-can-edit="true" aria-label="bcic-custom-devices_2.0.0.16_windows_x64.nipkg" draggable="false"><img src="download/resources/com.atlassian.confluence.plugins.confluence-view-file-macro:view-file-macro-resources/images/placeholder-medium-file.png" height="250" alt="" draggable="false"/><span class="title">bcic-custom-devices_2.0.0.16_windows_x64.nipkg</span></a><span class="companion-edit-button-placeholder edit-button-overlay" data-linked-resource-container-id="183370402" data-linked-resource-id="260768485" data-template-name="companionEditIcon" data-source-location="embedded-attachment"></span></span></p><p><br/></p><p>Put the lookup table plugin into C:\Users\Public\Documents\National Instruments\Battery Test System\Compiler\Plugins</p><p><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="/download/attachments/183370402/LookupTableInterface.lvlibp?version=2&amp;modificationDate=1712928227853&amp;api=v2" data-nice-type="null" data-file-src="/download/attachments/183370402/LookupTableInterface.lvlibp?version=2&amp;modificationDate=1712928227853&amp;api=v2" data-linked-resource-id="260768487" data-linked-resource-type="attachment" data-linked-resource-container-id="183370402" data-linked-resource-default-alias="LookupTableInterface.lvlibp" data-mime-type="application/octet-stream" data-has-thumbnail="false" data-linked-resource-version="2" data-can-edit="true" aria-label="LookupTableInterface.lvlibp" draggable="false"><img src="download/resources/com.atlassian.confluence.plugins.confluence-view-file-macro:view-file-macro-resources/images/placeholder-medium-file.png" height="250" alt="" draggable="false"/><span class="title">LookupTableInterface.lvlibp</span></a><span class="companion-edit-button-placeholder edit-button-overlay" data-linked-resource-container-id="183370402" data-linked-resource-id="260768487" data-template-name="companionEditIcon" data-source-location="embedded-attachment"></span></span></p><p><br/></p><p><br/></p><p>Old Versions:</p><p>v2.0.0.15</p><p><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="/download/attachments/183370402/bcic-custom-devices_2.0.0.15_windows_x64.nipkg?version=1&amp;modificationDate=1682953166583&amp;api=v2" data-nice-type="null" data-file-src="/download/attachments/183370402/bcic-custom-devices_2.0.0.15_windows_x64.nipkg?version=1&amp;modificationDate=1682953166583&amp;api=v2" data-linked-resource-id="196378658" data-linked-resource-type="attachment" data-linked-resource-container-id="183370402" data-linked-resource-default-alias="bcic-custom-devices_2.0.0.15_windows_x64.nipkg" data-mime-type="application/octet-stream" data-has-thumbnail="false" data-linked-resource-version="1" data-can-edit="true" aria-label="bcic-custom-devices_2.0.0.15_windows_x64.nipkg" draggable="false"><img src="download/resources/com.atlassian.confluence.plugins.confluence-view-file-macro:view-file-macro-resources/images/placeholder-medium-file.png" height="250" alt="" draggable="false"/><span class="title">bcic-custom-devices_2.0.0.15_windows_x64.nipkg</span></a><span class="companion-edit-button-placeholder edit-button-overlay" data-linked-resource-container-id="183370402" data-linked-resource-id="196378658" data-template-name="companionEditIcon" data-source-location="embedded-attachment"></span></span></p><p>v2.0.0.8</p><p><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="/download/attachments/183370402/bcic-custom-devices_2.0.0.8_windows_x64.nipkg?version=1&amp;modificationDate=1677514759681&amp;api=v2" data-nice-type="null" data-file-src="/download/attachments/183370402/bcic-custom-devices_2.0.0.8_windows_x64.nipkg?version=1&amp;modificationDate=1677514759681&amp;api=v2" data-linked-resource-id="183370403" data-linked-resource-type="attachment" data-linked-resource-container-id="183370402" data-linked-resource-default-alias="bcic-custom-devices_2.0.0.8_windows_x64.nipkg" data-mime-type="application/octet-stream" data-has-thumbnail="false" data-linked-resource-version="1" data-can-edit="true" aria-label="bcic-custom-devices_2.0.0.8_windows_x64.nipkg" draggable="false"><img src="download/resources/com.atlassian.confluence.plugins.confluence-view-file-macro:view-file-macro-resources/images/placeholder-medium-file.png" height="250" alt="" draggable="false"/><span class="title">bcic-custom-devices_2.0.0.8_windows_x64.nipkg</span></a><span class="companion-edit-button-placeholder edit-button-overlay" data-linked-resource-container-id="183370402" data-linked-resource-id="183370403" data-template-name="companionEditIcon" data-source-location="embedded-attachment"></span></span></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/183370402/183370403.nipkg">bcic-custom-devices_2.0.0.8_windows_x64.nipkg</a> (application/octet-stream)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/183370402/196378658.nipkg">bcic-custom-devices_2.0.0.15_windows_x64.nipkg</a> (application/octet-stream)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/183370402/260768485.nipkg">bcic-custom-devices_2.0.0.16_windows_x64.nipkg</a> (application/octet-stream)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/183370402/263946331.lvlibp">LookupTableInterface.lvlibp</a> (application/octet-stream)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/183370402/260768487.lvlibp">LookupTableInterface.lvlibp</a> (application/octet-stream)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

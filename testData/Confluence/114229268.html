@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : Test Engineer Tells You Their Stand isn&#39;t Showing Up on Grafana</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Grafana_248348836.html">Grafana</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : Test Engineer Tells You Their Stand isn&#39;t Showing Up on Grafana
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Chelsea Flattery</span>, last updated by <span class='editor'> Constantin Balan</span> on Sep 13, 2022
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>So there's four actors involved here:</p><p>Test Stand (iTest)</p><p>telegraf</p><p>influxdb/iCentral datasource</p><p>Grafana</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/114229268/153387431.png" data-image-src="attachments/114229268/153387431.png" data-unresolved-comment-count="0" data-linked-resource-id="153387431" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-9-13_12-39-23.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="114229268" data-linked-resource-container-version="7" tabindex="0" alt=""></span>(Image is accurate as of 9/13/2022)</p><p>The test stand runs<span> </span><strong>telegraf<span> </span></strong>as a service, which will automatically send PC Stats like uptime, RAM, disk space. </p><p>Once <strong>iTest</strong> goes through SysInit.TSC the SysMetricsStart and SysInfluxStart scripts will use<span> </span><strong>telegraf<span> </span></strong>to send data to<span> </span><strong>influxdb </strong>or Grafana will pull from <strong>iCentral</strong>.</p><p><strong>Influxdb<span> </span></strong>sends data points to<span> </span><strong>Grafana</strong>, which lives on a server in the data center, so<span> </span><strong>Grafana<span> </span></strong>can visualize the data points in graph form.</p><p><strong>iCentral</strong> is the existing database for all of the iTest channels included in <strong>The Master Names List</strong>. iCentral has a plugin to send this data to Grafana in the form of data points.</p><p><br/></p><p>What this means is, there are 4 - 5 points of possible failure that all react in different ways.</p><h4 id="TestEngineerTellsYouTheirStandisn&#39;tShowingUponGrafana-FailurePoints:">Failure Points:</h4><p>Test Stands, if not running SysMetricsWD (watch dog) and SysInfluxWD will not send any test data, only system stats through telegraf</p><p>Telegraf could have been stopped or some other act of computer gremlins which would make it send nothing, no stats, no data points</p><p>(Currently not being used) Influxdb can get restarted by GM IT's ASIS deployment system triggering a shutdown or it can take in so much data that it starts to hiccup and will only send partial data points to Grafana</p><p>iCentral's <strong>Upload</strong> drive could be full, preventing all data from being uploaded to iCentral.</p><p>Grafana could be in an IT maintenance window (<a title="https://appdashboard.cpi.gm.com/" style="text-decoration: none;" href="https://appdashboard.cpi.gm.com/" class="external-link" rel="nofollow">https://appdashboard.cpi.gm.com/</a>) or something happens at the data center, causing it to stop working.</p><p><br/></p><h4 id="TestEngineerTellsYouTheirStandisn&#39;tShowingUponGrafana-Howdoweknowsomethingdoesn&#39;twork?">How do we know something doesn't work?</h4><p><strong>Test Stand</strong> - The most tricky.. You'll know this isn't working when a Test Engineer says that iTest is running and none of their data is in Grafana. If the stand is sending System Stats, you know that telegraf is working but SysMetrics and SysInflux watch dogs are not working, i.e. no iTest test data can be collected.</p><p><strong>Telegraf</strong> - Test Engineer complains that there is no data in Grafana and the System Stats are not displaying.</p><p><strong>(Not currently active) Influxdb</strong> - Grafana is running but there are error messages like this:</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="166" width="488" src="attachments/114229268/114229270.png" data-image-src="attachments/114229268/114229270.png" data-unresolved-comment-count="0" data-linked-resource-id="114229270" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2021-10-19_16-13-39.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="114229268" data-linked-resource-container-version="7" tabindex="0" alt=""></span></p><p>If you are seeing this message, you're using the wrong dashboards or the wrong Grafana website.  Go to Dashboards - Manage - iCentral - iCentral Quick Overview</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="250" src="attachments/114229268/147652757.png" data-image-src="attachments/114229268/147652757.png" data-unresolved-comment-count="0" data-linked-resource-id="147652757" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-8-10_10-58-0.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="114229268" data-linked-resource-container-version="7" tabindex="0" alt=""></span></p><p><strong>iCentral </strong>- If the dashboards are loading but not displaying any information, check the <strong>Upload</strong> drive</p><p><strong>Grafana</strong>: The website won't load. At all. You may also see something like this if the server needs to be rebooted:</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="70" width="626" src="attachments/114229268/114229271.png" data-image-src="attachments/114229268/114229271.png" data-unresolved-comment-count="0" data-linked-resource-id="114229271" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2021-10-19_16-13-54.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="114229268" data-linked-resource-container-version="7" tabindex="0" alt=""></span></p><p><br/></p><h4 id="TestEngineerTellsYouTheirStandisn&#39;tShowingUponGrafana-Sohowdowefixit?">So how do we fix it?</h4><p><strong>Test Stand</strong> - Emad created a fix for this in addition to a message to reboot the PC if there has been a lot of uptime between ending one test and starting another.  If all else fails, you can manually restart them by sending mailslots to the DataEngine: &quot;EXECUTE SysInfluxStart&quot; and &quot;EXECUTE SysMetricsStart&quot;</p><p><strong>Telegraf</strong> - This can be restarted while iTest is running, it won't hurt anything. Open cmd as an administrator and send &quot;net start telegraf&quot;</p><p>If it tells you that telegraf is running, send &quot;net stop telegraf&quot; wait a few seconds then send &quot;net start telegraf&quot;</p><p><strong>(Not currently active) Influx</strong> -<span> </span><a href="https://tslm-confluence.gm.com/display/BTSILSIE/Make+Influx+Work+Again" style="text-decoration: none;" rel="nofollow">https://tslm-confluence.gm.com/display/BTSILSIE/Make+Influx+Work+Again</a></p><p><strong>iCentral</strong> - <a href="How-to-Fix-the-iCentral-Grafana-plugin_136118394.html">How to Fix the iCentral Grafana plugin</a></p><p><strong>Grafana</strong> - When IT hosted things stop working, Grafana or the camera Relay Server, you message George Baseski and ask him to restart whichever application is down</p><p><br/></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/114229268/114229270.png">image2021-10-19_16-13-39.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/114229268/114229271.png">image2021-10-19_16-13-54.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/114229268/147652757.png">image2022-8-10_10-58-0.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/114229268/178651190.png">image2022-9-13_12-39-23.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/114229268/153387431.png">image2022-9-13_12-39-23.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

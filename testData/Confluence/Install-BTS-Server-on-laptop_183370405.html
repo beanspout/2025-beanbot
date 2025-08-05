@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : Install BTS Server on laptop</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="NI-Software_248348831.html">NI Software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="WBCIC---Wallace-Battery-Cell-Innovation-Center_183370389.html">WBCIC - Wallace Battery Cell Innovation Center</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : Install BTS Server on laptop
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Collin Winans</span>, last updated on Apr 12, 2024
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>I recommend installing BTS server/client on your laptop, it will allow you to experiment with tests/changes without affecting the production server in the lab. You can search for it in NI Package Manager, you won’t need a license for it.</p><p><br/></p><p>This is the server software:</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/183370405/183370406.png" data-image-src="attachments/183370405/183370406.png" data-unresolved-comment-count="0" data-linked-resource-id="183370406" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2023-2-27_11-22-49.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="183370405" data-linked-resource-container-version="7" tabindex="0" alt=""></span></p><p><br/></p><p>This is the client software:</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/183370405/263946329.png" data-image-src="attachments/183370405/263946329.png" data-unresolved-comment-count="0" data-linked-resource-id="263946329" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2024-4-12_9-9-2.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="183370405" data-linked-resource-container-version="7" tabindex="0" alt=""></span></p><p><br/></p><p>You will need a license to run the BTS client, the LSIE team has a handful of licenses for development purposes. They are assigned to individual users, talk to Joe Juricic to get activated.</p><p>In NI License Manager, add the GM license server:</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/183370405/263946334.png" data-image-src="attachments/183370405/263946334.png" data-unresolved-comment-count="0" data-linked-resource-id="263946334" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2024-4-12_10-34-52.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="183370405" data-linked-resource-container-version="7" tabindex="0" alt=""></span></p><p><br/></p><p>Once the software is installed, you will need to add the Lookup Table plugin for our application:</p><p><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="/download/attachments/183370405/LookupTable.dll?version=2&amp;modificationDate=1712927187330&amp;api=v2" data-nice-type="null" data-file-src="/download/attachments/183370405/LookupTable.dll?version=2&amp;modificationDate=1712927187330&amp;api=v2" data-linked-resource-id="183370409" data-linked-resource-type="attachment" data-linked-resource-container-id="183370405" data-linked-resource-default-alias="LookupTable.dll" data-mime-type="application/octet-stream" data-has-thumbnail="false" data-linked-resource-version="2" data-can-edit="true" aria-label="LookupTable.dll" draggable="false"><img src="download/resources/com.atlassian.confluence.plugins.confluence-view-file-macro:view-file-macro-resources/images/placeholder-small-file.png" height="150" alt="" draggable="false"/><span class="title">LookupTable.dll</span></a><span class="companion-edit-button-placeholder edit-button-overlay" data-linked-resource-container-id="183370405" data-linked-resource-id="183370409" data-template-name="companionEditIcon" data-source-location="embedded-attachment"></span></span><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="/download/attachments/183370405/LookupTableInterface.lvlibp?version=2&amp;modificationDate=1712927187745&amp;api=v2" data-nice-type="null" data-file-src="/download/attachments/183370405/LookupTableInterface.lvlibp?version=2&amp;modificationDate=1712927187745&amp;api=v2" data-linked-resource-id="183370408" data-linked-resource-type="attachment" data-linked-resource-container-id="183370405" data-linked-resource-default-alias="LookupTableInterface.lvlibp" data-mime-type="application/octet-stream" data-has-thumbnail="false" data-linked-resource-version="2" data-can-edit="true" aria-label="LookupTableInterface.lvlibp" draggable="false"><img src="download/resources/com.atlassian.confluence.plugins.confluence-view-file-macro:view-file-macro-resources/images/placeholder-small-file.png" height="150" alt="" draggable="false"/><span class="title">LookupTableInterface.lvlibp</span></a><span class="companion-edit-button-placeholder edit-button-overlay" data-linked-resource-container-id="183370405" data-linked-resource-id="183370408" data-template-name="companionEditIcon" data-source-location="embedded-attachment"></span></span></p><ol><li>Put the LookupTableInterface.lvlibp in C:\Users\Public\Documents\National Instruments\Battery Test System\Compiler\Plugins (this is for the client)</li><li>Put the Dll in C:\Program Files\National Instruments\Battery Test System\PackageLoader and C:\Program Files\National Instruments\Battery Test System\WebApplication (these are for the server)</li><li>Restart the NI Battery Test Web Service</li><li>Check the server logs C:\ProgramData\National Instruments\Battery Test System\SystemDefinitionWebAPI to make sure you see the Lookup Table plugin<br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="150" src="attachments/183370405/255852998.png" data-image-src="attachments/183370405/255852998.png" data-unresolved-comment-count="0" data-linked-resource-id="255852998" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2024-3-11_10-19-3.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="183370405" data-linked-resource-container-version="7" tabindex="0" alt=""></span></li><li>Install the client custom devices as explained here: <a href="SystemLink-Custom-Devices_183370402.html">SystemLink Custom Devices</a></li></ol><p><br/></p><p>There is also a config file we will need to modify to get the BTS server to use the Systemlink Server for login (Note: this might be different in the future if SystemLink migrates to a new server/version). Replace the file in <span><span class="ui-provider vy b c d e f g h i j k l m n o p q r s t u v w x y z ab ac ae af ag ah ai aj ak">C:\Program Files\National Instruments\Battery Test System\WebApplication\appsettings.json</span></span></p><p><span><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="/download/attachments/183370405/appsettings.json?version=1&amp;modificationDate=1677515196171&amp;api=v2" data-nice-type="null" data-file-src="/download/attachments/183370405/appsettings.json?version=1&amp;modificationDate=1677515196171&amp;api=v2" data-linked-resource-id="183370411" data-linked-resource-type="attachment" data-linked-resource-container-id="183370405" data-linked-resource-default-alias="appsettings.json" data-mime-type="application/octet-stream" data-has-thumbnail="false" data-linked-resource-version="1" data-can-edit="true" aria-label="appsettings.json" draggable="false"><img src="download/resources/com.atlassian.confluence.plugins.confluence-view-file-macro:view-file-macro-resources/images/placeholder-medium-file.png" height="250" alt="" draggable="false"/><span class="title">appsettings.json</span></a><span class="companion-edit-button-placeholder edit-button-overlay" data-linked-resource-container-id="183370405" data-linked-resource-id="183370411" data-template-name="companionEditIcon" data-source-location="embedded-attachment"></span></span></span></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/183370405/183370406.png">image-2023-2-27_11-22-49.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/183370405/263946328.lvlibp">LookupTableInterface.lvlibp</a> (application/octet-stream)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/183370405/263946327.dll">LookupTable.dll</a> (application/octet-stream)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/183370405/183370410.zip">Lookup Table 2022-11-14.zip</a> (application/zip)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/183370405/183370411.json">appsettings.json</a> (application/octet-stream)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/183370405/255852998.png">image-2024-3-11_10-19-3.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/183370405/183370409.dll">LookupTable.dll</a> (application/octet-stream)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/183370405/183370408.lvlibp">LookupTableInterface.lvlibp</a> (application/octet-stream)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/183370405/263946329.png">image-2024-4-12_9-9-2.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/183370405/263946334.png">image-2024-4-12_10-34-52.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : MAB Rescue</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="NI-Software_248348831.html">NI Software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="WBCIC---Wallace-Battery-Cell-Innovation-Center_183370389.html">WBCIC - Wallace Battery Cell Innovation Center</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : MAB Rescue
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Collin Winans</span> on Mar 28, 2023
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>If the PXI chassis is taking an IP address in the range 26.X.X.X then it is not authenticated on the network.</p><p>The first time it is connected to the network, it will need to be added to the MAC Address Bypass (MAB) system. I usually send a batch of MAC addresses to Joe Juricic, but you could technically submit an IT ticket here: <a href="https://itcatalog.gm.com/portal/shop/catalog/b565f986-b3b3-4c77-948b-f22a7cde3faf" class="external-link" rel="nofollow">https://itcatalog.gm.com/portal/shop/catalog/b565f986-b3b3-4c77-948b-f22a7cde3faf</a> (it's not a fast process, sometimes it takes several weeks to complete)</p><p>For MAB v1, any time the device disconnects from the network (e.g. a reboot) it will need to be &quot;rescued.&quot; Eventually we are supposed to move to MAB v2, which can auto-rescue and won't require the following steps. For now we are stuck with this process.</p><p><br/></p><p>Rescuing the MAB will create a short time window where the device is allowed to connect.</p><p><a href="https://mabrescue.cpi.gm.com/" class="external-link" rel="nofollow">https://mabrescue.cpi.gm.com/</a></p><p>Enter the MAC address for the PXI into the first window (you can get the MAC from the NI Max software on the HMI PC):</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/191332373/191332374.png" data-image-src="attachments/191332373/191332374.png" data-unresolved-comment-count="0" data-linked-resource-id="191332374" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2023-3-28_16-29-14.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="191332373" data-linked-resource-container-version="1" tabindex="0" alt=""></span></p><p>If it is not in the MAB system then you will get an error and you need to add it through an IT ticket: <a href="https://itcatalog.gm.com/portal/shop/catalog/b565f986-b3b3-4c77-948b-f22a7cde3faf" class="external-link" rel="nofollow">https://itcatalog.gm.com/portal/shop/catalog/b565f986-b3b3-4c77-948b-f22a7cde3faf</a></p><p>If the device is in MAB then you will see the following window:</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="250" src="attachments/191332373/191332375.png" data-image-src="attachments/191332373/191332375.png" data-unresolved-comment-count="0" data-linked-resource-id="191332375" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2023-3-28_16-32-36.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="191332373" data-linked-resource-container-version="1" tabindex="0" alt=""></span></p><p>Select a time duration, then click rescue. This will start the time to allow reconnecting to the network.</p><p>Reboot the PXI, it should connect and get a new IP address in the 10.X.X.X range</p><p>Congratulations, you have now rescued a MAB <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-external-resource" draggable="false" alt="Party popper" height="20px" width="20px" src="https://statics.teams.cdn.office.net/evergreen-assets/personal-expressions/v2/assets/emoticons/1f389_partypopper/default/20_f.png?v=v10" data-image-src="https://statics.teams.cdn.office.net/evergreen-assets/personal-expressions/v2/assets/emoticons/1f389_partypopper/default/20_f.png?v=v10"></span></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/191332373/191332374.png">image-2023-3-28_16-29-14.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/191332373/191332375.png">image-2023-3-28_16-32-36.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

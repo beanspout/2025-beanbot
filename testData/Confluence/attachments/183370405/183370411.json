@@ -1,0 +1,44 @@
+{
+  "AllowedHosts": "*",
+  "Urls": "http://0.0.0.0:60002",
+  "HttpRequest": {
+    "ActivityTimeoutInSeconds": "300"
+  },
+  "SystemLink": {
+    "Url": "https://tse-systemlink-server.edc.nam.gm.com/"
+  },
+  "SystemDefinitionService": {
+    "SnippetProviderHostUrl": "http://localhost:8002"
+  },
+  "StorageRoot": "C:\\ProgramData\\National Instruments\\Battery Test System\\FileStorage",
+  "TestSequenceProfile": {
+    "MaximumSize": 1048576
+  },
+  "IsDemoMode": false,
+  "DetailedErrors": true,
+  "WebPageHostPagePlugin": [
+    {
+      "Label": "Web VI Page",
+      "Tooltip": "This is custom web VI page",
+      "Source": "/plugins/staticpluginsample/index.html",
+      "ComponentTypeIdentifier": "IFrameComponent",
+      "IconClass": "fas fa-desktop",
+      "PageKey": "CustomVI",
+      "ShowInNavigation": true,
+      "PageName": "vipage",
+      "Tags": [ "demo" ]
+    }
+  ],
+  "WebPageHostComponentPlugin": [
+    {
+      "Source": "/plugins/staticpluginsample/index.html",
+      "WebPageHostComponentTypeIdentifier": "IFrameComponent",
+      "ComponentTypeIdentifier": "HomeChart"
+    },
+    {
+      "Source": "/plugins/staticpluginsample/index.html",
+      "WebPageHostComponentTypeIdentifier": "IFrameComponent",
+      "ComponentTypeIdentifier": "TestMonitorPluginB"
+    }
+  ]
+}

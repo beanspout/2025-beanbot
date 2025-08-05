@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : 2021-05-26 Meeting notes</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Meeting-notes_16601925.html">Meeting notes</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : 2021-05-26 Meeting notes
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Paul Rabahy</span>, last updated on May 26, 2021
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="id-20210526Meetingnotes-Date">Date</h2><p><time datetime="2021-05-26" class="date-past">26 May 2021</time></p><h2 id="id-20210526Meetingnotes-ThegoalofthismeetingistodiscussthesafetysystemsinthelabprimarilyfocusingonthegasdetectionsensoranditsintegrationintooutTestAutomationSystem(iTest).">The goal of this meeting is to discuss the safety systems in the lab primarily focusing on the gas detection sensor and its integration into out Test Automation System (iTest).</h2><p>The three areas of risk that I see are</p><ol><li>Injury to lab personnel</li><li>Damage to the DUT</li><li>Damage to lab equipment</li></ol><p>Questions that I would like to answer</p><ol><li>Are the gas sensors sufficient to mitigate the risks listed above without integration with the TAS?</li><li>Can integration with the TAS improve the reactions to gas being detected?</li><li>What actions should the TAS take in response to gas being detected?</li><li>How do users need to interact with the gas sensors?</li></ol><h2 id="id-20210526Meetingnotes-Discussionitems">Discussion items</h2><p>What is the difference between a pack sitting in the lab and in a chamber?</p><ul><li>Area gas sensors have been installed.</li><li>Door open policy should make venting more visible.</li><li>What about packs that are in crates?</li></ul><p>Other safety systems</p><ul><li>Safety TCs (Set to 85°C default)<ul><li>Chad would like to see fewer thermocouples</li><li>Investigate chamber thermocouples instead of on the pack</li><li>What is the temperature delta from the pack surface ↔ pack internals ↔ chamber ambient?</li></ul></li><li>Packs have thermistors in them<ul><li>The communication to the pack isn't reliable</li></ul></li><li>There are 2 light trees<ul><li>This can be confusing</li><li>Andy's team is working on removing the chamber light stack and leaving the gas sensor stack</li></ul></li></ul><p>Gas sensors</p><ul><li>Cortek system records 3 signals (Malfunction, CO, LEL)<ul><li>Alerts security.</li><li>Alerts Tony M.</li><li>Turns on Lights/Siren at the chamber.<ul><li>Significantly louder than anything else in the lab</li></ul></li></ul></li><li>Has the ability to integrate into a TAS<ul><li>TAS integration will not impact the Cortek reaction.</li></ul></li><li>Can we demonstrate this system?<ul><li>Should we take a recording of the system triggering for training purposes?</li></ul></li></ul><p>TAS Integration</p><ul><li>The TAS system can shutdown the Chiller, Chamber, and Cycler.</li><li>The TAS system will shutdown an entire area (North lab, South lab, Development area)</li></ul><h2 id="id-20210526Meetingnotes-Actionitems">Action items</h2><ul class="inline-task-list" data-inline-tasks-content-id="98336944"><li data-inline-task-id="1">Any test with active chemistry must have an integration with the TAS that shuts down all energy sources to the DUT</li><li data-inline-task-id="3">Take a recording of the system triggering for training purposes.</li></ul>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

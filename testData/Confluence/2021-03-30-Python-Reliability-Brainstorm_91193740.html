@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : 2021-03-30 Python Reliability Brainstorm</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Meeting-notes_16601925.html">Meeting notes</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : 2021-03-30 Python Reliability Brainstorm
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Paul Rabahy</span> on Mar 30, 2021
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="id-20210330PythonReliabilityBrainstorm-Date">Date</h2><p><time datetime="2021-03-30" class="date-past">30 Mar 2021</time></p><h2 id="id-20210330PythonReliabilityBrainstorm-Attendees">Attendees</h2><ul><li><p><a class="confluence-userlink user-mention" data-username="rzcn94" href="https://tslm-confluence.gm.com/display/~rzcn94" data-linked-resource-id="4849668" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">Paul Rabahy</a></p></li><li><p></p></li></ul><h2 id="id-20210330PythonReliabilityBrainstorm-Goals">Goals</h2><ul><li>Come up with a plan to improve the reliability of python scripts in solution_common</li></ul><h2 id="id-20210330PythonReliabilityBrainstorm-Discussionitems">Discussion items</h2><div class="table-wrap"><table class="relative-table confluenceTable" style="width: 49.308%;"><colgroup><col style="width: 6.40999%;"/><col style="width: 30.8012%;"/><col style="width: 6.077%;"/><col style="width: 56.5245%;"/></colgroup><tbody><tr><th class="confluenceTh">Time</th><th class="confluenceTh">Item</th><th class="confluenceTh">Who</th><th class="confluenceTh">Notes</th></tr><tr><td class="confluenceTd">5 min</td><td class="confluenceTd">State the problem</td><td class="confluenceTd"></td><td class="confluenceTd"><ul><li></li></ul></td></tr><tr><td class="confluenceTd">15 min</td><td class="confluenceTd">Open discussion </td><td class="confluenceTd"><br/></td><td class="confluenceTd"><ul><li>Why do we have so many scripts?<ul><li>Can the be combined together?<ul><li>If it gets too long, it can be hard to maintain.</li></ul></li></ul></li><li>Are they on the latest versions of python?</li><li>What are the features that we can/can't do from iTest?<ul><li>Can we migrate some of the scripts into iTest directly?</li></ul></li><li>Are all of the scripts still necessary?<ul><li>What does EgatedrvWriter.py do?</li></ul></li><li>Do we know what is slowing it down?<ul><li>Some PCs seem to be faster/slower.</li><li>Could it be related to Windows 7 or Windows 10?<ul><li>We might be able to track the fault count via pagerduty.</li></ul></li></ul></li><li>Only some are crashing.<ul><li>VoltTempStats and Blackbox are crashing</li><li>Comms script doesn't seem to crash</li></ul></li></ul></td></tr><tr><td colspan="1" class="confluenceTd">10 min</td><td colspan="1" class="confluenceTd">Create targeted plan to address the problem</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><ul><li>Identify scripts that are not called anywhere.</li><li>Identify scripts that run constantly<ul><li>Measure the CPU/memory usage of these scripts.</li></ul></li><li>Upgrade all scripts to python 3.</li><li>Maybe - Start using 64 bit python to allow more memory.<ul><li>Investigate if any modules are blocking the transition.</li></ul></li><li>Implement a method for catching/tracking failures.<ul><li>Bucket by SDF and Windows version</li></ul></li><li>Check with A&amp;D about possibility of overloading the RDB</li><li>Investigate if/what has changed in the recent history of the lab</li><li>Ensure that there are no busy wait (no pause) loops in python scripts</li></ul></td></tr></tbody></table></div><h2 id="id-20210330PythonReliabilityBrainstorm-Actionitems">Action items</h2><ul class="inline-task-list" data-inline-tasks-content-id="91193740"><li data-inline-task-id="1"><span>&nbsp;</span></li></ul>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

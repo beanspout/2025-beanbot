@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : Pulse Utilization Tool</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Lab-Documentation_80216116.html">Lab Documentation</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : Pulse Utilization Tool
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> James Jezewski</span>, last updated on Jan 13, 2021
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>GM has purchased a tool from AVL called Pulse. Senior lab management uses it to track utilization across all of the labs.</p><p>The utilization codes we use in the battery lab are slightly different than what the rest of global propulsion uses, so the LSIE team needed to write a wrapper that would convert the codes and send them to the pulse server.</p><p>The IT contact for the tool is Brian A. Klotz &lt;brian.a.klotz@<a href="http://gm.com" class="external-link" rel="nofollow">gm.com</a>&gt; and he should be able to answer and address any questions you have directly related to pulse</p><p>All of the pulse conversion tool source code is hosted in this folder inside of the patch script: <a href="https://tslm-bitbucket.gm.com/projects/BTSILIB/repos/patch_script/browse/PulseUtilization" class="external-link" rel="nofollow">https://tslm-bitbucket.gm.com/projects/BTSILIB/repos/patch_script/browse/PulseUtilization</a></p><p>The idea of this script is that it will be run automatically during login of the FID on a computer and always be running.  It also gets re run when the patch script (<a href="https://tslm-bitbucket.gm.com/projects/BTSILIB/repos/patch_script/pull-requests/34/overview" class="external-link" rel="nofollow">https://tslm-bitbucket.gm.com/projects/BTSILIB/repos/patch_script/pull-requests/34/overview</a>) is run during test start.</p><p><br/></p><p>All of the test cells report to Pulse as you can see below:</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/80216436/80216439.png" data-image-src="attachments/80216436/80216439.png" data-unresolved-comment-count="0" data-linked-resource-id="80216439" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2021-1-13_13-5-1.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="80216436" data-linked-resource-container-version="2" tabindex="0" alt=""></span></p><p>As of 1/13/21, if a stand is showing a status code of <strong class="tally" style="text-align: center;">10000000000 </strong>it means the utilization script is not running, or there is some other problem that is preventing the stand from communicating with the pulse server</p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/80216436/80216438.png">image2021-1-13_13-4-35.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/80216436/80216439.png">image2021-1-13_13-5-1.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

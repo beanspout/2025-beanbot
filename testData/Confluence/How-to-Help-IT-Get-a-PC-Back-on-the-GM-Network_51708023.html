@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : How to Help IT Get a PC Back on the GM Network</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="How-to-articles_25100315.html">How-to articles</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : How to Help IT Get a PC Back on the GM Network
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Chelsea Flattery</span>, last updated on Jun 02, 2020
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>If a PC is on the guest network, we need to work with Tony Barbour to get it back on the appropriate network. </p><h2 id="HowtoHelpITGetaPCBackontheGMNetwork-Step-by-stepguide">Step-by-step guide</h2><p></p><ol><li>Put in the following IT ticket: <a href="https://itcatalog.gm.com/portal/shop/catalog/50d705be-0503-4399-8e5d-d160fcd6de5a" style="letter-spacing: 0.0px;" class="external-link" rel="nofollow">https://itcatalog.gm.com/portal/shop/catalog/50d705be-0503-4399-8e5d-d160fcd6de5a</a><br/>a.  Select <strong>Private LAN Connection Issue</strong><br/>b.  Paste the hostname and wait for it to populate (may take 10 seconds)<br/>c.  Fill out the required fields, if you haven't submitted an issue for the same TWCS, select <strong>No</strong>.<br/>d.  In <strong>Additional Details</strong> state the the PC is off the network</li><li><p>Log in with ID that has admin rights<br/>Login: .\labadmin</p></li><li><p>Go to search and enter: <strong>Services</strong></p></li><li>Once the Services window is open, right click and stop the <strong>Wired Autoconfig</strong> service<br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="425" width="900" src="attachments/51708023/51708024.png" data-image-src="attachments/51708023/51708024.png" data-unresolved-comment-count="0" data-linked-resource-id="51708024" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2020-5-14_10-42-40.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="51708023" data-linked-resource-container-version="3" tabindex="0" alt=""></span></li><li>In the toolbar, right click and choose <strong>Open network and internet settings<br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="88" src="attachments/51708023/51708026.png" data-image-src="attachments/51708023/51708026.png" data-unresolved-comment-count="0" data-linked-resource-id="51708026" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2020-5-14_10-51-18.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="51708023" data-linked-resource-container-version="3" tabindex="0" alt=""></span><br/></strong></li><li>Click Change adapter options (this will look slightly different on Windows 7 PCs)<br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="144" width="507" src="attachments/51708023/51708025.png" data-image-src="attachments/51708023/51708025.png" data-unresolved-comment-count="0" data-linked-resource-id="51708025" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2020-5-14_10-47-10.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="51708023" data-linked-resource-container-version="3" tabindex="0" alt=""></span></li><li><p>Right click and <strong>Disable</strong> the NIC that has the network connection (Usually named GM LAN)</p></li><li><p>Wait 30 seconds and <strong>Enable</strong> the NIC</p></li><li>Once the network connection shows <strong>corp.gm.com</strong>, right click and run ASIS<br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="94" src="attachments/51708023/51708027.png" data-image-src="attachments/51708023/51708027.png" data-unresolved-comment-count="0" data-linked-resource-id="51708027" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2020-5-14_10-51-52.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="51708023" data-linked-resource-container-version="3" tabindex="0" alt=""></span></li><li>Send Anthony (Tony) Barbour the IP or hostname of the PC so he can remote in and complete the reconfiguration</li></ol><p><br/></p><div role="region" aria-label="Info" class="confluence-information-macro  confluence-information-macro-information" ><span role="presentation" class="aui-icon aui-icon-small aui-iconfont-info-filled confluence-information-macro-icon" ></span><div class="confluence-information-macro-body"></div></div><h2 id="HowtoHelpITGetaPCBackontheGMNetwork-Relatedarticles">Related articles</h2><p></p><p>
+
+
+
+
+
+
+
+
+
+
+
+<ul class="content-by-label">
+        <li>
+        <div>
+                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+
+        <div class="details">
+                        <a href="/spaces/BTSILSIE/pages/51708023/How+to+Help+IT+Get+a+PC+Back+on+the+GM+Network">How to Help IT Get a PC Back on the GM Network</a>
+                
+                        
+                    </div>
+    </li>
+        <li>
+        <div>
+                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+
+        <div class="details">
+                        <a href="/spaces/BTSILSIE/pages/51085328/How+to+Help+IT+With+Requests">How to Help IT With Requests</a>
+                
+                        
+                    </div>
+    </li>
+    </ul>
+</p><p><br/></p><p><br/></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/51708023/51708024.png">image2020-5-14_10-42-40.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/51708023/51708025.png">image2020-5-14_10-47-10.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/51708023/51708026.png">image2020-5-14_10-51-18.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/51708023/51708027.png">image2020-5-14_10-51-52.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

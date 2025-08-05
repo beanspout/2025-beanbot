@@ -16,13 +16,14 @@ import (
 
 // BeanBot represents the main application UI structure
 type BeanBot struct {
-	app          fyne.App
-	window       fyne.Window
-	knowledgeDB  *knowledge.KnowledgeDatabase
-	ollamaClient *ollama.Client
-	submitBtn    *widget.Button
-	statusLabel  *widget.Label // Add reference to status label for updates
-	debugMode    bool          // Debug mode flag
+	app             fyne.App
+	window          fyne.Window
+	knowledgeDB     *knowledge.KnowledgeDatabase
+	ollamaClient    *ollama.Client
+	submitBtn       *widget.Button
+	statusLabel     *widget.Label     // Add reference to status label for updates
+	debugMode       bool              // Debug mode flag
+	scrollContainer *container.Scroll // Add reference to scroll container
 }
 
 // NewBeanBot creates a new BeanBot UI instance with all required dependencies
@@ -74,10 +75,10 @@ func (b *BeanBot) createFooter() *fyne.Container {
 
 	// Test Ollama connection
 	go func() {
-		b.debugLog("Testing Ollama connection to %s", b.ollamaClient.TestConnection())
+		b.debugLog("Testing Ollama connection...")
 		if b.ollamaClient.TestConnection() {
 			b.debugLog("Ollama connection successful, searching for available models")
-			// Try to get available models
+			// Try to get available models (preferring llama3.2:1b)
 			available, model := b.ollamaClient.FindAvailableModel()
 			if available {
 				b.debugLog("Found available model: %s", model)
@@ -86,8 +87,8 @@ func (b *BeanBot) createFooter() *fyne.Container {
 				b.ollamaClient.SetModel(model)
 				b.debugLog("Set active model to: %s", model)
 			} else {
-				b.debugLog("No models found available")
-				status.SetText("🤖 BeanBot AI ❌ models missing")
+				b.debugLog("No models found")
+				status.SetText("🤖 BeanBot AI ❌ no models found - install with: ollama pull llama3.2:1b")
 			}
 		} else {
 			b.debugLog("Ollama connection failed - server offline")
@@ -105,17 +106,17 @@ func (b *BeanBot) createFooter() *fyne.Container {
 func (b *BeanBot) createMainContent() fyne.CanvasObject {
 	// Create input area components - clean chat interface without labels
 	inputEntry := widget.NewMultiLineEntry()
-	inputEntry.SetPlaceHolder("Describe your LSIE issue... (Example: I'm getting error E1001 when trying to communicate with the device)")
+	inputEntry.SetPlaceHolder("Describe your engineering issue... (Example: I'm having trouble with system communication or getting an error message)")
 	inputEntry.Wrapping = fyne.TextWrapWord   // Enable word wrapping for input too
 	inputEntry.Resize(fyne.NewSize(800, 100)) // Set a reasonable height for input
 
 	// Create response area using RichText with Border Layout Pattern (no white space)
-	responseText := widget.NewRichTextFromMarkdown("\n\n\n\n## 🤖 Hi there! \n\n### What can I help you troubleshoot today? 💭")
+	responseText := widget.NewRichTextFromMarkdown("\n\n\n\n## 🤖 Hi there! \n\n### What engineering challenge can I help you with today? 💭")
 	responseText.Wrapping = fyne.TextWrapWord
 
 	// Create submit button with handler for RichText
 	submitBtn := widget.NewButton("Ask", func() {
-		b.handleTroubleshootingRequest(inputEntry.Text, responseText)
+		b.handleEngineeringRequest(inputEntry.Text, responseText)
 	})
 	submitBtn.Importance = widget.HighImportance
 
@@ -124,7 +125,11 @@ func (b *BeanBot) createMainContent() fyne.CanvasObject {
 		// Clear the input field
 		inputEntry.SetText("")
 		// Reset response area to welcome message
-		responseText.ParseMarkdown("\n\n\n\n## 🤖 Hi there! \n\n### What can I help you troubleshoot today? 💭")
+		responseText.ParseMarkdown("\n\n\n\n## 🤖 Hi there! \n\n### What engineering challenge can I help you with today? 💭")
+		// Scroll to top when clearing
+		if b.scrollContainer != nil {
+			b.scrollContainer.ScrollToTop()
+		}
 	})
 
 	// Store reference to button for progress handling
@@ -143,26 +148,40 @@ func (b *BeanBot) createMainContent() fyne.CanvasObject {
 	leftSpacer := container.NewWithoutLayout()
 	rightSpacer := container.NewWithoutLayout()
 	centeredContent := container.NewBorder(nil, nil, leftSpacer, rightSpacer, responseText)
+
+	// Create scroll container and store reference for programmatic scrolling
+	scrollContainer := container.NewScroll(centeredContent)
+	b.scrollContainer = scrollContainer
+
 	mainContainer := container.NewBorder(
-		nil,                                  // Top - not needed (no header)
-		bottomSection,                        // Bottom - fixed size input area (chat-style)
-		nil,                                  // Left - not needed
-		nil,                                  // Right - not needed
-		container.NewScroll(centeredContent), // Center - scrollable centered RichText (takes remaining space)
+		nil,             // Top - not needed (no header)
+		bottomSection,   // Bottom - fixed size input area (chat-style)
+		nil,             // Left - not needed
+		nil,             // Right - not needed
+		scrollContainer, // Center - scrollable centered RichText (takes remaining space)
 	)
 
 	return mainContainer
 }
 
-// handleTroubleshootingRequest handles the troubleshooting request
-func (b *BeanBot) handleTroubleshootingRequest(userInput string, responseEntry *widget.RichText) {
+// handleEngineeringRequest handles the engineering support request
+func (b *BeanBot) handleEngineeringRequest(userInput string, responseEntry *widget.RichText) {
 	if strings.TrimSpace(userInput) == "" {
-		dialog.ShowError(fmt.Errorf("please describe your issue"), b.window)
+		emptyResponse := "Please describe your engineering issue to get started."
+		emptyResponse += "\n\n---\n\n**📚 Sources Referenced:**\n\n"
+		emptyResponse += "*No documents from testData were referenced because no query was provided.*\n"
+		responseEntry.ParseMarkdown(emptyResponse)
 		return
 	}
 
-	b.debugLog("Handling troubleshooting request: %s", userInput)
+	b.debugLog("Handling engineering request: %s", userInput)
 	b.debugLog("Current model: %s", b.ollamaClient.GetCurrentModel())
+
+	// Scroll to top when Ask is pressed
+	if b.scrollContainer != nil {
+		b.scrollContainer.ScrollToTop()
+		b.debugLog("Scrolled to top of response area")
+	}
 
 	// Show progress by changing button text
 	originalText := b.submitBtn.Text
@@ -177,18 +196,28 @@ func (b *BeanBot) handleTroubleshootingRequest(userInput string, responseEntry *
 			b.submitBtn.Enable()
 		}()
 
-		b.debugLog("Building troubleshooting context...")
+		b.debugLog("Building engineering context...")
 		// Build context from knowledge database
-		context := b.buildTroubleshootingContext(userInput)
+		context, sources := b.buildEngineeringContext(userInput)
 		b.debugLog("Context length: %d characters", len(context))
+		b.debugLog("Referenced %d source documents", len(sources))
 
 		// Create prompt for Ollama
-		prompt := b.createTroubleshootingPrompt(userInput, context)
+		prompt := b.createEngineeringPrompt(userInput, context)
 		b.debugLog("Prompt length: %d characters", len(prompt))
 
 		// Check if this is a direct response (not a prompt for Ollama)
 		if strings.Contains(context, "outside my technical troubleshooting expertise") {
 			b.debugLog("Using direct response (outside expertise)")
+			// Always add source information even for direct responses
+			context += "\n\n---\n\n**📚 Sources Referenced:**\n\n"
+			if len(sources) > 0 {
+				for i, source := range sources {
+					context += fmt.Sprintf("%d. %s\n", i+1, source)
+				}
+			} else {
+				context += "*No relevant documents from testData were found for this query. This response indicates the question is outside the scope of available technical documentation.*\n"
+			}
 			responseEntry.ParseMarkdown(context)
 			return
 		}
@@ -199,22 +228,44 @@ func (b *BeanBot) handleTroubleshootingRequest(userInput string, responseEntry *
 		if err != nil {
 			b.debugLog("Error getting AI response: %v", err)
 			log.Printf("Error getting AI response: %v", err)
-			responseEntry.ParseMarkdown(fmt.Sprintf("Error getting AI response: %v", err))
+			errorResponse := fmt.Sprintf("Error getting AI response: %v", err)
+			// Always add source information even for error responses
+			errorResponse += "\n\n---\n\n**📚 Sources Referenced:**\n\n"
+			if len(sources) > 0 {
+				for i, source := range sources {
+					errorResponse += fmt.Sprintf("%d. %s\n", i+1, source)
+				}
+			} else {
+				errorResponse += "*No documents from testData were referenced due to the error. Please try rephrasing your question.*\n"
+			}
+			responseEntry.ParseMarkdown(errorResponse)
 			return
 		}
 
 		b.debugLog("Received response from Ollama, length: %d characters", len(response))
+
+		// Always add source references to the response - this is mandatory
+		response += "\n\n---\n\n**📚 Sources Referenced:**\n\n"
+		if len(sources) > 0 {
+			for i, source := range sources {
+				response += fmt.Sprintf("%d. %s\n", i+1, source)
+			}
+		} else {
+			response += "*No documents from testData were referenced for this response. This answer is based on general AI knowledge and may not reflect your specific documentation or procedures.*\n"
+		}
+
 		// Display response in the same window
 		responseEntry.ParseMarkdown(response)
 	}()
 }
 
-// buildTroubleshootingContext builds context from the knowledge database
-func (b *BeanBot) buildTroubleshootingContext(userInput string) string {
+// buildEngineeringContext builds context from the knowledge database and returns sources
+func (b *BeanBot) buildEngineeringContext(userInput string) (string, []string) {
 	var context strings.Builder
+	var sources []string
 	lowerInput := strings.ToLower(userInput)
 
-	// Check if this is a technical troubleshooting question vs general question
+	// Check if this is a technical engineering question vs general question
 	isTechnicalQuestion := strings.Contains(lowerInput, "error") ||
 		strings.Contains(lowerInput, "problem") ||
 		strings.Contains(lowerInput, "troubleshoot") ||
@@ -222,9 +273,12 @@ func (b *BeanBot) buildTroubleshootingContext(userInput string) string {
 		strings.Contains(lowerInput, "connection") ||
 		strings.Contains(lowerInput, "device") ||
 		strings.Contains(lowerInput, "communication") ||
-		strings.Contains(lowerInput, "e1001") ||
-		strings.Contains(lowerInput, "e2005") ||
-		strings.Contains(lowerInput, "e3010")
+		strings.Contains(lowerInput, "system") ||
+		strings.Contains(lowerInput, "software") ||
+		strings.Contains(lowerInput, "hardware") ||
+		strings.Contains(lowerInput, "issue") ||
+		strings.Contains(lowerInput, "failure") ||
+		strings.Contains(lowerInput, "malfunction")
 
 	// For non-technical questions, use more selective context
 	if !isTechnicalQuestion {
@@ -242,7 +296,10 @@ func (b *BeanBot) buildTroubleshootingContext(userInput string) string {
 
 			// Only include if at least 2 keywords match
 			if relevantKeywords >= 2 {
-				context.WriteString(fmt.Sprintf("From %s:\n", filename))
+				hierarchicalPath := b.knowledgeDB.GetFilePaths()[filename]
+				formattedPath := b.formatHierarchicalReference(hierarchicalPath, filename)
+				context.WriteString(fmt.Sprintf("From %s:\n", formattedPath))
+				sources = append(sources, formattedPath)
 				if len(content) > 400 {
 					context.WriteString(content[:400] + "...\n\n")
 				} else {
@@ -253,20 +310,21 @@ func (b *BeanBot) buildTroubleshootingContext(userInput string) string {
 
 		// If still no relevant context, provide a general response
 		if context.Len() == 0 {
-			return fmt.Sprintf("I'm BeanBot, specifically designed for LSIE troubleshooting. Your question '%s' seems to be outside my technical troubleshooting expertise. I can help with LSIE errors, communication issues, device problems, and technical troubleshooting.", userInput)
+			return fmt.Sprintf("I'm BeanBot, specifically designed for engineering support. Your question '%s' seems to be outside my technical expertise. I can help with engineering errors, system issues, device problems, and technical troubleshooting.", userInput), []string{}
 		}
 
-		return context.String()
+		return context.String(), sources
 	}
 
-	// For technical questions, use comprehensive search with priority on LSIE_SupportDocs
-	// PRIORITY 1: Search LSIE_SupportDocs HTML files first (most comprehensive documentation)
+	// For technical questions, use comprehensive search with priority on documentation
+	// PRIORITY 1: Search HTML documentation files first (most comprehensive documentation)
 	supportDocsFound := false
 	for filename, content := range b.knowledgeDB.GetTextFiles() {
-		// Prioritize HTML files from LSIE_SupportDocs
+		// Prioritize HTML files from documentation
 		if strings.Contains(strings.ToLower(filename), ".html") {
 			if b.knowledgeDB.IsRelevantContent(lowerInput, content) {
-				context.WriteString(fmt.Sprintf("From LSIE Documentation (%s):\n", filename))
+				context.WriteString(fmt.Sprintf("From Engineering Documentation (%s):\n", filename))
+				sources = append(sources, "Engineering Documentation: "+filename)
 				if len(content) > 500 {
 					context.WriteString(content[:500] + "...\n\n")
 				} else {
@@ -284,6 +342,7 @@ func (b *BeanBot) buildTroubleshootingContext(userInput string) string {
 			b.knowledgeDB.ContainsAnyKeyword(lowerInput, errorCode.RelatedComponents) {
 
 			context.WriteString(fmt.Sprintf("Error Code %s: %s\n", errorCode.Code, errorCode.Description))
+			sources = append(sources, "Error Code: "+errorCode.Code)
 			context.WriteString("Troubleshooting Steps:\n")
 			for i, step := range errorCode.TroubleshootingSteps {
 				context.WriteString(fmt.Sprintf("%d. %s\n", i+1, step))
@@ -298,6 +357,7 @@ func (b *BeanBot) buildTroubleshootingContext(userInput string) string {
 			b.knowledgeDB.ContainsAnyKeyword(lowerInput, issue.Symptoms) {
 
 			context.WriteString(fmt.Sprintf("Common Issue: %s\n", issue.Issue))
+			sources = append(sources, "Common Issue: "+issue.Issue)
 			context.WriteString("Solutions:\n")
 			for i, solution := range issue.Solutions {
 				context.WriteString(fmt.Sprintf("%d. %s\n", i+1, solution))
@@ -311,7 +371,10 @@ func (b *BeanBot) buildTroubleshootingContext(userInput string) string {
 		// Skip HTML files as they were already processed in priority 1
 		if !strings.Contains(strings.ToLower(filename), ".html") {
 			if b.knowledgeDB.IsRelevantContent(lowerInput, content) {
-				context.WriteString(fmt.Sprintf("From %s:\n", filename))
+				hierarchicalPath := b.knowledgeDB.GetFilePaths()[filename]
+				formattedPath := b.formatHierarchicalReference(hierarchicalPath, filename)
+				context.WriteString(fmt.Sprintf("From %s:\n", formattedPath))
+				sources = append(sources, formattedPath)
 				if len(content) > 400 {
 					context.WriteString(content[:400] + "...\n\n")
 				} else {
@@ -329,7 +392,10 @@ func (b *BeanBot) buildTroubleshootingContext(userInput string) string {
 		}
 
 		if b.knowledgeDB.IsRelevantContent(lowerInput, content) {
-			context.WriteString(fmt.Sprintf("From %s:\n", filename))
+			hierarchicalPath := b.knowledgeDB.GetFilePaths()[filename]
+			formattedPath := b.formatHierarchicalReference(hierarchicalPath, filename)
+			context.WriteString(fmt.Sprintf("From %s:\n", formattedPath))
+			sources = append(sources, "PDF: "+formattedPath)
 			// For large PDFs like TLM, try to find the most relevant section
 			if len(content) > 1000 {
 				relevantSection := b.findMostRelevantSection(content, lowerInput, 800)
@@ -342,9 +408,49 @@ func (b *BeanBot) buildTroubleshootingContext(userInput string) string {
 		}
 	}
 
+	// Search through Word document content for relevant information
+	for filename, content := range b.knowledgeDB.GetWordContents() {
+		// Skip if content indicates an error or no content
+		if strings.Contains(content, "Failed to extract") || strings.Contains(content, "not supported") {
+			continue
+		}
+
+		if b.knowledgeDB.IsRelevantContent(lowerInput, content) {
+			hierarchicalPath := b.knowledgeDB.GetFilePaths()[filename]
+			formattedPath := b.formatHierarchicalReference(hierarchicalPath, filename)
+			context.WriteString(fmt.Sprintf("From Word Document (%s):\n", formattedPath))
+			sources = append(sources, "Word Document: "+formattedPath)
+			// For large Word documents, try to find the most relevant section
+			if len(content) > 1000 {
+				relevantSection := b.findMostRelevantSection(content, lowerInput, 800)
+				context.WriteString(relevantSection + "...\n\n")
+			} else if len(content) > 600 {
+				context.WriteString(content[:600] + "...\n\n")
+			} else {
+				context.WriteString(content + "\n\n")
+			}
+		}
+	}
+
+	// Search through image content for relevant information
+	for filename, content := range b.knowledgeDB.GetImageContents() {
+		// Skip if content indicates an error
+		if strings.Contains(content, "Failed to process") {
+			continue
+		}
+
+		if b.knowledgeDB.IsRelevantContent(lowerInput, content) {
+			hierarchicalPath := b.knowledgeDB.GetFilePaths()[filename]
+			formattedPath := b.formatHierarchicalReference(hierarchicalPath, filename)
+			context.WriteString(fmt.Sprintf("From Image (%s):\n", formattedPath))
+			sources = append(sources, "Image: "+formattedPath)
+			context.WriteString(content + "\n\n")
+		}
+	}
+
 	// If no specific context found, include some general troubleshooting content
 	if context.Len() == 0 {
-		context.WriteString("General iTest Troubleshooting Knowledge:\n\n")
+		context.WriteString("General Engineering Knowledge:\n\n")
 
 		// If no supportDocs were found, try to include relevant HTML documentation
 		if !supportDocsFound {
@@ -352,7 +458,10 @@ func (b *BeanBot) buildTroubleshootingContext(userInput string) string {
 			htmlCount := 0
 			for filename, content := range b.knowledgeDB.GetTextFiles() {
 				if strings.Contains(strings.ToLower(filename), ".html") && htmlCount < 2 {
-					context.WriteString(fmt.Sprintf("From iTest Documentation (%s):\n", filename))
+					hierarchicalPath := b.knowledgeDB.GetFilePaths()[filename]
+					formattedPath := b.formatHierarchicalReference(hierarchicalPath, filename)
+					context.WriteString(fmt.Sprintf("From Engineering Documentation (%s):\n", formattedPath))
+					sources = append(sources, "Engineering Documentation (General): "+formattedPath)
 					if len(content) > 300 {
 						context.WriteString(content[:300] + "...\n\n")
 					} else {
@@ -366,13 +475,17 @@ func (b *BeanBot) buildTroubleshootingContext(userInput string) string {
 		// Include all error codes as general reference
 		for _, errorCode := range b.knowledgeDB.GetData().ErrorCodes {
 			context.WriteString(fmt.Sprintf("Error Code %s: %s\n", errorCode.Code, errorCode.Description))
+			sources = append(sources, "Error Code Reference: "+errorCode.Code)
 		}
 		context.WriteString("\n")
 
 		// Include first non-HTML text file as general reference
 		for filename, content := range b.knowledgeDB.GetTextFiles() {
 			if !strings.Contains(strings.ToLower(filename), ".html") {
-				context.WriteString(fmt.Sprintf("From %s:\n", filename))
+				hierarchicalPath := b.knowledgeDB.GetFilePaths()[filename]
+				formattedPath := b.formatHierarchicalReference(hierarchicalPath, filename)
+				context.WriteString(fmt.Sprintf("From %s:\n", formattedPath))
+				sources = append(sources, "General Reference: "+formattedPath)
 				if len(content) > 300 {
 					context.WriteString(content[:300] + "...\n\n")
 				} else {
@@ -389,20 +502,20 @@ func (b *BeanBot) buildTroubleshootingContext(userInput string) string {
 		result = result[:1500] + "\n[Context truncated to prevent timeout...]"
 	}
 
-	return result
+	return result, sources
 }
 
-// createTroubleshootingPrompt creates the prompt for Ollama
-func (b *BeanBot) createTroubleshootingPrompt(userInput, context string) string {
-	// For technical questions, use the standard troubleshooting format
-	prompt := fmt.Sprintf(`You are BeanBot, an iTest troubleshooting assistant. Analyze the user's issue and provide structured troubleshooting guidance.
+// createEngineeringPrompt creates the prompt for Ollama
+func (b *BeanBot) createEngineeringPrompt(userInput, context string) string {
+	// For technical questions, use the standard engineering support format
+	prompt := fmt.Sprintf(`You are BeanBot, an engineering support assistant. Analyze the user's issue and provide structured engineering guidance based on the provided knowledge base.
 
 User Issue: %s
 
 Knowledge Base:
 %s
 
-Provide structured troubleshooting response:
+Provide structured engineering response:
 
 1. PROBLEM ANALYSIS: [Identify the core issue: What is failing? What symptoms are described? What system/component is affected?]
 
@@ -413,7 +526,7 @@ Provide structured troubleshooting response:
 
 3. IF PROBLEM PERSISTS: [Advanced troubleshooting or escalation steps]
 
-Analyze the user's description carefully and provide specific, actionable guidance based on the knowledge base.`, userInput, context)
+Important: Base your response on the knowledge base provided. If the knowledge base contains relevant information, reference it in your solution. Analyze the user's description carefully and provide specific, actionable engineering guidance.`, userInput, context)
 
 	return prompt
 } // findMostRelevantSection finds the most relevant section of a large text for the given input
@@ -481,26 +594,33 @@ func (b *BeanBot) findMostRelevantSection(content, userInput string, maxLength i
 
 // showModelSelectionDialog shows a dialog to select available models
 func (b *BeanBot) showModelSelectionDialog() {
+	b.debugLog("Opening model selection dialog")
+
 	// Check if Ollama is available
 	if !b.ollamaClient.TestConnection() {
+		b.debugLog("Ollama is not available for model selection")
 		dialog.ShowInformation("Ollama Offline", "Ollama is not available. Please start Ollama to use AI models.", b.window)
 		return
 	}
 
+	b.debugLog("Getting available models from Ollama")
 	// Get available models
 	models, err := b.ollamaClient.GetAvailableModels()
 	if err != nil {
+		b.debugLog("Failed to get available models: %v", err)
 		dialog.ShowError(fmt.Errorf("failed to get available models: %w", err), b.window)
 		return
 	}
 
+	b.debugLog("Found %d available models: %v", len(models), models)
 	if len(models) == 0 {
-		dialog.ShowInformation("No Models", "No models are installed. Please install a model using 'ollama pull <model>'", b.window)
+		dialog.ShowInformation("No Models", "No models are installed. Please install a model using:\n\nollama pull llama3.2:1b", b.window)
 		return
 	}
 
 	// Get current model
 	currentModel := b.ollamaClient.GetCurrentModel()
+	b.debugLog("Current model: %s", currentModel)
 
 	// Create selection list
 	list := widget.NewList(
@@ -511,6 +631,7 @@ func (b *BeanBot) showModelSelectionDialog() {
 		func(id widget.ListItemID, obj fyne.CanvasObject) {
 			label := obj.(*widget.Label)
 			model := models[id]
+
 			if model == currentModel {
 				label.SetText(fmt.Sprintf("✓ %s (current)", model))
 				label.TextStyle = fyne.TextStyle{Bold: true}
@@ -523,20 +644,28 @@ func (b *BeanBot) showModelSelectionDialog() {
 
 	list.OnSelected = func(id widget.ListItemID) {
 		selectedModel := models[id]
+		b.debugLog("Model selected: %s (was: %s)", selectedModel, currentModel)
 		if selectedModel != currentModel {
 			// Update the model
 			b.ollamaClient.SetModel(selectedModel)
+			b.debugLog("Model changed to: %s", selectedModel)
 			// Update the status label
 			b.statusLabel.SetText(fmt.Sprintf("🤖 BeanBot AI - %s ✅ ready to help! (click to change)", selectedModel))
 		}
 	}
 
-	// Create dialog
-	dialog.ShowCustom("Select AI Model", "Close", container.NewBorder(
+	// Create dialog with larger size
+	scrollContainer := container.NewScroll(list)
+	scrollContainer.Resize(fyne.NewSize(500, 400)) // Set explicit size for better visibility
+
+	dialogContent := container.NewBorder(
 		widget.NewLabel("Available Models:"),
 		nil, nil, nil,
-		container.NewScroll(list),
-	), b.window)
+		scrollContainer,
+	)
+	dialogContent.Resize(fyne.NewSize(520, 450)) // Set size for the entire dialog content
+
+	dialog.ShowCustom("Select AI Model", "Close", dialogContent, b.window)
 }
 
 // EnableDebugMode enables debug logging
@@ -550,4 +679,54 @@ func (b *BeanBot) debugLog(format string, args ...interface{}) {
 	if b.debugMode {
 		log.Printf("[DEBUG] "+format, args...)
 	}
+}
+
+// formatHierarchicalReference formats document references with hierarchical folder paths
+func (b *BeanBot) formatHierarchicalReference(filepath, filename string) string {
+	if filepath == "" {
+		return filename
+	}
+
+	// Keep the full filename with extension
+	baseName := filename
+
+	// Get the directory parts
+	dir := filepath
+	if strings.HasSuffix(dir, filename) {
+		dir = strings.TrimSuffix(dir, filename)
+		dir = strings.TrimSuffix(dir, "/")
+		dir = strings.TrimSuffix(dir, "\\")
+	}
+
+	// Remove testData prefix
+	dir = strings.TrimPrefix(dir, "testData/")
+	dir = strings.TrimPrefix(dir, "testData\\")
+	dir = strings.TrimPrefix(dir, "testData")
+
+	if dir == "" || dir == "." {
+		return baseName
+	}
+
+	// Split directory path and format hierarchically
+	parts := strings.Split(strings.ReplaceAll(dir, "\\", "/"), "/")
+	var pathParts []string
+	for _, part := range parts {
+		if part != "" && part != "." && part != "testData" {
+			pathParts = append(pathParts, part)
+		}
+	}
+
+	if len(pathParts) == 0 {
+		return baseName
+	}
+
+	// Format as parent/reference (no brackets, skip testData grandparent)
+	if len(pathParts) == 1 {
+		return fmt.Sprintf("%s/%s", pathParts[0], baseName)
+	} else if len(pathParts) >= 2 {
+		// Show last folder and file
+		return fmt.Sprintf("%s/%s", pathParts[len(pathParts)-1], baseName)
+	}
+
+	return baseName
 }

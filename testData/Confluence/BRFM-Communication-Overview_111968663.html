@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : BRFM Communication Overview</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : BRFM Communication Overview
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Mingxian Tay</span>, last updated on Oct 20, 2021
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h1 id="BRFMCommunicationOverview-WhatexactlyisBRFM?"><strong>What exactly is BRFM?</strong></h1><p>BRFM refers to <u>Battery Radio Frequency Module</u> and is a device responsible for managing <strong>communication</strong> between a controller external to a battery pack and monitoring devices inside the pack. BRFM is a new module and only exists on BEV3 and newer packs.</p><p>BRFM was also previously known as <strong>V</strong>ICM (Vehicle Integration Control Module) <strong>R</strong>adio <strong>F</strong>requency <strong>M</strong>odule (<strong>VRFM</strong>) with a few hardware differences. One major difference is that BRFM contains onboard environmental sensor, whereas the VRFM does <strong>not</strong> have onboard environmental sensors. In addition, VRFM only exists in <strong>Beta1</strong> build phase and is replaced with BRFM starting with <strong>Beta2 </strong>build phase.</p><h1 id="BRFMCommunicationOverview-HardwareCommunicationStructure"><strong>Hardware Communication Structure</strong></h1><div class="sectionColumnWrapper"><div class="sectionMacro"><div class="sectionMacroRow"><div class="columnMacro"><h2 id="BRFMCommunicationOverview-Controller"><u>Controller</u></h2><p>A controller is responsible for monitoring the battery pack and responding appropriately. For example, it commands the BRFM to start measurements and then ingests the measured data to monitor the status of the pack. If it detects any abnormal status or data, it will react appropriately.</p><p>Inside a vehicle, the <strong>VICM</strong> acts as the controller for battery packs that have a BRFM. However, due to the lack of VICM hardware availability, the test automation system (<strong>TAS</strong>) at GBSL, currently A&amp;D iTest software, is used to monitor the packs instead of VICM controller. </p><div role="region" aria-label="Note" class="confluence-information-macro  confluence-information-macro-note" ><p class="title conf-macro-render">isoSPI Communication Setup at GBSL</p><span role="presentation" class="aui-icon aui-icon-small aui-iconfont-warning confluence-information-macro-icon" ></span><div class="confluence-information-macro-body"><p>TAS at GBSL utilizes Cheetah USB SPI host adapter and SPI-to-isoSPI converter to conveniently communicate with BRFM in lieu of VICM controller.</p></div></div><p>The controller communicates to BRFM via isoSPI line(s). For BEV3 packs, only 1 pair of isoSPI line is used between the controller and the BRFM. However, for the BET and BEV+ packs, 2 pairs of isoSPI lines will be used instead of 1.</p><div role="region" aria-label="Info" class="confluence-information-macro  confluence-information-macro-information" ><span role="presentation" class="aui-icon aui-icon-small aui-iconfont-info-filled confluence-information-macro-icon" ></span><div class="confluence-information-macro-body"><p>When 1 pair of isoSPI line is used, the BRFM typically has <em>one</em> manager, hence <strong>single</strong> manager. When 2 pairs of isoSPI lines are used, the BRFM will have <em>two </em>managers, hence <strong>dual</strong> managers.</p></div></div><h2 id="BRFMCommunicationOverview-BatteryMonitoringSystem(BMS)"><u>Battery Monitoring System (BMS)</u></h2><p>Not to be confused with the battery management system, the battery monitoring system refers to data coming from cell monitoring unit (CMU) on the battery modules. Each battery module has a CMU that communicates wirelessly with the BRFM, and the CMU provides module-specific data such as cell voltages and thermistor temperatures. In addition to monitoring the cell status, the CMU has the ability to turn on the cell discharge switch to discharge individual cell(s) when cell balancing command is activated by controller.</p><div role="region" aria-label="Info" class="confluence-information-macro  confluence-information-macro-information" ><span role="presentation" class="aui-icon aui-icon-small aui-iconfont-info-filled confluence-information-macro-icon" ></span><div class="confluence-information-macro-body"><p>BMS comes from battery modules via wireless connection and contains <strong>module-specific</strong> data such as cell voltages and thermistor temperatures.</p></div></div><h2 id="BRFMCommunicationOverview-PackMonitoringSystem(PMS)"><u>Pack Monitoring System (PMS)</u></h2><p>Pack monitoring system refers to data coming from Bus Disconnect Signal Board (BDSB) via isoSPI connection. The BDSB is located inside the battery disconnect unit (BDU) and provides pack-specific data such as high-voltage bus bar differential voltage (also known as pack voltage), DCFC port differential voltage, shunt current (pack current), and contactor thermistor temperatures.</p><p>BEV3 packs have only <strong>one </strong>BDSB inside the BDU, while BET packs have <strong>two</strong> BDSBs inside the BDU. As the results, BET packs will have 2 separate PMS data, and each PMS data is specific to each string of the pack. String A of BET pack generally refers to top half of the pack, and string B of BET pack refers to bottom half of the pack, and there will be a PMS data for string A and another PMS data for string B.</p><div role="region" aria-label="Info" class="confluence-information-macro  confluence-information-macro-information" ><span role="presentation" class="aui-icon aui-icon-small aui-iconfont-info-filled confluence-information-macro-icon" ></span><div class="confluence-information-macro-body"><p>PMS comes from BDSB inside pack BDU via isoSPI connection and contains <strong>pack-specific</strong> data such as pack voltages, DCFC voltages, pack current, and contactor thermistor temperatures. </p></div></div><h2 id="BRFMCommunicationOverview-EnvironmentalMonitoringSystem(EMS)"><u>Environmental Monitoring System (EMS)</u></h2><p>Environmental monitoring system refers to data coming from environmental sensors via onboard connection. These sensors are embedded directly onto the BRFM board and provide environmental data inside the battery packs such as ambient temperature, ambient pressure, and ambient gas concentration percentages. EMS is a new addition to BRFM and is previously known as Battery Status Sensor (BSS), which was a separate device and connected via LIN connection.</p><div role="region" aria-label="Info" class="confluence-information-macro  confluence-information-macro-information" ><span role="presentation" class="aui-icon aui-icon-small aui-iconfont-info-filled confluence-information-macro-icon" ></span><div class="confluence-information-macro-body"><p>EMS comes from environmental sensors via BRFM onboard connection and contains <strong>ambient</strong> data inside battery packs such as ambient temperature, pressure, and gas concentration percentages.</p></div></div></div><div class="columnMacro"><p class="auto-cursor-target">Here's a simplified diagram showing overall communication structure from hardware's perspective:</p><p class="auto-cursor-target"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" width="650" src="attachments/111968663/111968666.png" data-image-src="attachments/111968663/111968666.png" data-unresolved-comment-count="0" data-linked-resource-id="111968666" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2021-10-11_11-57-31.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="111968663" data-linked-resource-container-version="10" tabindex="0" alt=""></span></p></div></div></div></div><p><br/></p><p><br/></p><h1 id="BRFMCommunicationOverview-SoftwareCommunicationStructure"><strong>Software Communication Structure</strong></h1><div role="region" aria-label="Note" class="confluence-information-macro  confluence-information-macro-note" ><span role="presentation" class="aui-icon aui-icon-small aui-iconfont-warning confluence-information-macro-icon" ></span><div class="confluence-information-macro-body"><p>VICM controller has different software structure setup, so this section only applies to the setup at GBSL.</p></div></div><p><br/></p><div class="sectionColumnWrapper"><div class="sectionMacro"><div class="sectionMacroRow"><div class="columnMacro"><h2 id="BRFMCommunicationOverview-iTestConsole"><u>iTest Console</u></h2><p>iTest Console is the primary software for the TAS at GBSL. It used to display and track data, communicate to the battery and surrounding systems, perform tests, and record data for analysis. iTest projects are known as &quot;solutions&quot;, shown below:</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="400" src="attachments/111968663/111575438.png" data-image-src="attachments/111968663/111575438.png" data-unresolved-comment-count="0" data-linked-resource-id="111575438" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2021-10-15_11-41-43.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="111968663" data-linked-resource-container-version="10" tabindex="0" alt=""></span> </p><p>You can create your own local iTest solution for your own purposes (such as for side projects or specific applications), but there is only one solution that is maintained and utilized throughout the lab. This solution is named &quot;iTest Common Solution&quot; and has a BitBucket repository (repo) where the LSIEs track the latest updates and bug fixes. Here's the link to the repo: <a href="https://tslm-bitbucket.gm.com/projects/BTSILIB/repos/solution_common/browse" class="external-link" rel="nofollow">iTest Common Solution Repo</a>. </p><p>iTest Console scripts are known as &quot;procedures&quot;, written in VCL, which the main scripting language. iTest initiates BRFM communication by executing appropriate commands in procedures which interact with supporting Python scripts to send and receive data. </p><h2 id="BRFMCommunicationOverview-PythonScripts"><u>Python Scripts</u></h2><p>The Python scripts for BRFM communication are housed in a folder named <strong>BRFM_Comm</strong> in Common Solution's Execute directory, such as C:\apps\ADT\iTestX.X\solution_common\EXECUTE\BRFM_Comm where X.X is the iTest version.</p><p>These scripts serve a few purposes such as:</p><ul style="list-style-type: square;"><li>Establish communication between iTest interface and BRFM</li><li>Execute startup and shutdown sequences specifically for BRFM</li><li>Monitor active connections between iTest and BRFM<ul style="list-style-type: square;"><li>Notify test operator(s) if BRFM communication has dropped out</li></ul></li><li>Upload battery data (e.g. cell voltages, cell temperatures, pack voltages, etc.) to iTest database</li><li>Convert raw data bytes into valid measurement data</li></ul><p>These Python scripts establish the communication with BRFM by calling the functions in precompiled dynamically linked library (DLL). This library contains wrapper functions that uses vendor-created low-level functions to execute certain commands such as connecting to and disconnecting from BRFM.</p><h2 id="BRFMCommunicationOverview-C/C++Codes"><u>C/C++ Codes</u></h2><p>In order to be able to communicate with BRFM without worrying about generating correct raw bytes for certain commands, the vendor has created a standard interface library named <strong>wBMS Interface Library</strong>, or WIL. This library is written in C Language and also used by VICM hardware integration team to integrate BRFM communication into VICM controller software. </p><p>To allow for simpler integration with Python scripts, another interface library, written in C++, is created to wrap around the C functions in WIL. This new library is named <strong>VRFM_Pinnacle,</strong> and its precompiled DLL is included in Common Solution folder.</p><p>There is a separate BitBucket repository for C/C++ Codes, and here's the link to the repo: <a href="https://tslm-bitbucket.gm.com/projects/BTSILIB/repos/usb_spi_comm/browse" class="external-link" rel="nofollow">USB_SPI_Comm Repo</a>. This repo contains both VRFM_Pinnacle and WIL codes.</p><p>The compilation of VRFM_Pinnacle and WIL into DLL is done using Microsoft Visual Studio (VS) software. The repo mentioned above contains VS-specific project property files that allow user to easily compile the libraries.</p><div role="region" aria-label="Warning" class="confluence-information-macro  confluence-information-macro-warning" ><p class="title conf-macro-render">Avoid Modification of WIL Source Codes</p><span role="presentation" class="aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-icon" ></span><div class="confluence-information-macro-body"><p>To stay consistent with VICM and vendor software, WIL source codes should <strong>not</strong> be modified under any circumstances. Consult BRFM hardware team if you run into any issue that come from WIL codes.</p></div></div><p>Ideally, VRFM_Pinnacle should only be updated and recompiled when the vendor releases new version of WIL source codes or when bugs are discovered and resolved in VRFM_Pinnacle codes. When new WIL version is released, VRFM_Pinnacle should be updated to fix any broken codes that are caused by the change in code interface.</p><h2 id="BRFMCommunicationOverview-CheetahDriver"><u>Cheetah Driver</u></h2><p>The Cheetah driver is a Windows driver created by the supplier Total Phase to allow for easy interaction with Cheetah SPI host adapter via USB port. The functions for this driver is accessible via precompiled DLL, also provided by the supplier.</p><p>Here's the link to the download site (Account may be required to download driver): <a href="https://www.totalphase.com/products/usb-drivers-windows/" class="external-link" rel="nofollow">Cheetah Windows USB Driver Download (Account required)</a>. </p><p>Here's the link to the user manual site (Account not needed): <a href="https://www.totalphase.com/support/articles/200472636" class="external-link" rel="nofollow">Cheetah SPI Adapter User Manual</a>.</p></div><div class="columnMacro"><p>Here's the diagram showing the overall communication structure from software's perspective:</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" width="175" src="attachments/111968663/111575404.png" data-image-src="attachments/111968663/111575404.png" data-unresolved-comment-count="0" data-linked-resource-id="111575404" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2021-10-14_13-40-35.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="111968663" data-linked-resource-container-version="10" tabindex="0" alt=""></span></p></div><p><br/></p></div></div></div><p><br/></p><h1 id="BRFMCommunicationOverview-BRFMVersionInfo"><strong>BRFM Version Info</strong></h1><p>BRFM version information is a crucial piece of information that can make or break communication with TAS. The version info determines which version of WIL to be used and how the measurement data to be parsed.</p><p>There are different types of version info that serve different purposes:</p><ul><li>Firmware version<ul><li>Refers to vendor-provided firmware to be flashed onto BRFM manager and nodes/CMUs</li><li>Needs to match with WIL version in order to establish communication</li></ul></li><li>Container version<ul><li>Refers to container scripts that define the measurement command and data parsing orders (usually provided by VICM hardware team)</li><li>The container version used by TAS needs to match with the container version in BRFM to properly parse measurement data</li></ul></li><li>Hardware version<ul><li>Refers to the physical hardware version (e.g. TO1, TO2, TO3, etc.)</li><li>Certain hardware version will only work with certain WIL version</li></ul></li><li>WIL version<ul><li>Refers to the interface library provided by the vendor</li><li>Certain WIL version will only work with certain hardware and firmware versions. For example:<ul><li>WIL version 1.0 only works with CMUs/nodes with TO3 hardware and firmware version 1.0</li><li>WIL version 0.112 only works with CMUs/nodes with TO2 hardware and firmware version 0.112</li></ul></li></ul></li></ul><h1 id="BRFMCommunicationOverview-Acronyms"><strong>Acronyms</strong></h1><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><th class="confluenceTh">Acronym</th><th class="confluenceTh">Definition</th></tr><tr><td class="confluenceTd"><p>BRFM</p></td><td class="confluenceTd">Battery Radio Frequency Module</td></tr><tr><td class="confluenceTd">VRFM</td><td class="confluenceTd">VICM Radio Frequency Module</td></tr><tr><td class="confluenceTd">VICM</td><td class="confluenceTd">Vehicle Integration Control Module</td></tr><tr><td class="confluenceTd">BMS</td><td class="confluenceTd">Battery Monitoring System</td></tr><tr><td class="confluenceTd">PMS</td><td class="confluenceTd">Pack Monitoring System</td></tr><tr><td class="confluenceTd">EMS</td><td class="confluenceTd">Environmental Monitoring System</td></tr><tr><td class="confluenceTd">BDU</td><td class="confluenceTd">Battery Disconnect Unit</td></tr><tr><td class="confluenceTd">BDSB</td><td class="confluenceTd">Bus Disconnect Signal Board</td></tr><tr><td class="confluenceTd">ECU</td><td class="confluenceTd">Electronic Control Unit</td></tr><tr><td class="confluenceTd">TAS</td><td class="confluenceTd">Test Automation System</td></tr><tr><td class="confluenceTd">GBSL</td><td class="confluenceTd">Global Battery Systems Lab</td></tr><tr><td class="confluenceTd">wBMS</td><td class="confluenceTd">wireless Battery Management System</td></tr><tr><td class="confluenceTd">WIL</td><td class="confluenceTd">wBMS Interface Library</td></tr><tr><td class="confluenceTd">CMU</td><td class="confluenceTd">Cell Monitoring Unit</td></tr><tr><td class="confluenceTd">DCFC</td><td class="confluenceTd">Direct Current Fast Charging</td></tr><tr><td class="confluenceTd">isoSPI</td><td class="confluenceTd">Isolated Serial Peripheral Interface</td></tr><tr><td class="confluenceTd">LIN</td><td class="confluenceTd">Local Interconnect Network</td></tr><tr><td colspan="1" class="confluenceTd">GBSL</td><td colspan="1" class="confluenceTd">Global Battery Systems Lab</td></tr><tr><td colspan="1" class="confluenceTd">DLL</td><td colspan="1" class="confluenceTd">Dynamically Linked Library</td></tr></tbody></table></div><p class="auto-cursor-target">
+
+
+
+
+
+
+
+
+
+
+<h3>Other related BRFM Pages</h3>
+
+<ul class="content-by-label">
+        <li>
+        <div>
+                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+
+        <div class="details">
+                        <a href="/spaces/BTSILSIE/pages/172098061/Pack+Checkout+and+Container+Files">Pack Checkout and Container Files</a>
+                
+                        
+                    </div>
+    </li>
+        <li>
+        <div>
+                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+
+        <div class="details">
+                        <a href="/spaces/BTSILSIE/pages/147652659/Request+Visual+Studio">Request Visual Studio</a>
+                
+                        
+                    </div>
+    </li>
+        <li>
+        <div>
+                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+
+        <div class="details">
+                        <a href="/spaces/BTSILSIE/pages/114229264/How+to+Add+iTest+Common+Solution+Support+for+New+Version+of+WIL">How to Add iTest Common Solution Support for New Version of WIL</a>
+                
+                        
+                    </div>
+    </li>
+    </ul>
+</p><p><br/></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/111968663/111968666.png">image2021-10-11_11-57-31.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/111968663/111575404.png">image2021-10-14_13-40-35.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/111968663/111575438.png">image2021-10-15_11-41-43.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : Package Loader</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="NI-Software_248348831.html">NI Software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="WBCIC---Wallace-Battery-Cell-Innovation-Center_183370389.html">WBCIC - Wallace Battery Cell Innovation Center</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : Package Loader
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Collin Winans</span>, last updated on Feb 27, 2023
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>The Package Loader ingests the test/site/DUT definition files and pushes them to the storage folder for the BTS server.</p><p><br/></p><h1 id="PackageLoader-Install">Install</h1><p>You can install BTS Server (from NI Package Manager) onto a laptop for development, and it will also install the Package Loader. See instructions here: <a href="Install-BTS-Server-on-laptop_183370405.html">Install BTS Server on laptop</a></p><p>I attached a zip of the complete Package Loader folder below too, just in case you don't want to install the full server:</p><p><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="/download/attachments/183370395/PackageLoader-2022-11-14.zip?version=1&amp;modificationDate=1677514020235&amp;api=v2" data-nice-type="Zip Archive" data-file-src="/download/attachments/183370395/PackageLoader-2022-11-14.zip?version=1&amp;modificationDate=1677514020235&amp;api=v2" data-linked-resource-id="183370398" data-linked-resource-type="attachment" data-linked-resource-container-id="183370395" data-linked-resource-default-alias="PackageLoader-2022-11-14.zip" data-mime-type="application/zip" data-has-thumbnail="false" data-linked-resource-version="1" data-can-edit="true" aria-label="PackageLoader-2022-11-14.zip" draggable="false"><img src="download/resources/com.atlassian.confluence.plugins.confluence-view-file-macro:view-file-macro-resources/images/placeholder-medium-zip.png" height="250" alt="" draggable="false"/><span class="title">PackageLoader-2022-11-14.zip</span></a><span class="companion-edit-button-placeholder edit-button-overlay" data-linked-resource-container-id="183370395" data-linked-resource-id="183370398" data-template-name="companionEditIcon" data-source-location="embedded-attachment"></span></span></p><p><br/></p><h1 id="PackageLoader-Setup">Setup</h1><p>To run the package loader for the production BTS server, set the Windows environment variable &quot;BTS_StorageRoot&quot; to &quot;\\systemlink_storage.edc.nam.gm.com\gpd_nidevsuite0006683_data002\bts\BCIC\FileStorage&quot;</p><p>For a local BTS server on a laptop, set the Windows environment variable &quot;BTS_StorageRoot&quot; to &quot;C:\ProgramData\National Instruments\Battery Test System\FileStorage&quot;</p><p><br/></p><h1 id="PackageLoader-Run">Run</h1><p>Place the new/updated definition files into a folder (you could put them anywhere, but for this example, I will put them in &quot;C:\bts-packages&quot; )</p><p>Open a command window in the package loader folder (usually C:\Program Files\National Instruments\Battery Test System\PackageLoader )</p><p>To do a dry run to test the loader without pushing the changes to BTS, run the command:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false">BatteryTestPackageLoader.exe &quot;C:\bts-packages&quot; -d</pre>
+</div></div><p>This should run without errors. Depending on what is in the folder, you may see a different number packages that loaded</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/183370395/183370413.png" data-image-src="attachments/183370395/183370413.png" data-unresolved-comment-count="0" data-linked-resource-id="183370413" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2023-2-27_11-36-48.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="183370395" data-linked-resource-container-version="2" tabindex="0" alt=""></span></p><p><br/></p><p>To run for real and upload the packages to the BTS server, remove the -d option from the above command:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false">BatteryTestPackageLoader.exe &quot;C:\bts-packages&quot;</pre>
+</div></div><p><br/></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/183370395/183370398.zip">PackageLoader-2022-11-14.zip</a> (application/zip)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/183370395/183370399.dll">LookupTable.dll</a> (application/octet-stream)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/183370395/183370400.lvlibp">LookupTableInterface.lvlibp</a> (application/octet-stream)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/183370395/183370401.zip">Lookup Table 2022-11-14.zip</a> (application/zip)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/183370395/183370413.png">image-2023-2-27_11-36-48.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

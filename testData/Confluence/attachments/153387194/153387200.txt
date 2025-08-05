@@ -1,0 +1,62 @@
+WS01
+-flgSysLabminderUsed in SysINI:
+-timSysLMDisconnect in SysINI:
+-flgSysiCentral in SysINI:
+-SysLMWatchdog.tsc Line 61:
+
+WS02
+-flgSysLabminderUsed in SysINI:
+-timSysLMDisconnect in SysINI:
+-flgSysiCentral in SysINI:
+-SysLMWatchdog.tsc Line 61:
+
+WS03
+-flgSysLabminderUsed in SysINI:
+-timSysLMDisconnect in SysINI:
+-flgSysiCentral in SysINI:
+-SysLMWatchdog.tsc Line 61:
+
+WS04
+-flgSysLabminderUsed in SysINI:
+-timSysLMDisconnect in SysINI:
+-flgSysiCentral in SysINI:
+-SysLMWatchdog.tsc Line 61:
+
+WS05
+-flgSysLabminderUsed in SysINI:
+-timSysLMDisconnect in SysINI:
+-flgSysiCentral in SysINI:
+-SysLMWatchdog.tsc Line 61:
+
+WS06
+-flgSysLabminderUsed in SysINI:
+-timSysLMDisconnect in SysINI:
+-flgSysiCentral in SysINI:
+-SysLMWatchdog.tsc Line 61:
+
+WS07
+-flgSysLabminderUsed in SysINI:
+-timSysLMDisconnect in SysINI:
+-flgSysiCentral in SysINI:
+-SysLMWatchdog.tsc Line 61:
+
+WS08
+-flgSysLabminderUsed in SysINI:
+-timSysLMDisconnect in SysINI:
+-flgSysiCentral in SysINI:
+-SysLMWatchdog.tsc Line 61:
+
+WS09
+-flgSysLabminderUsed in SysINI:
+-timSysLMDisconnect in SysINI:
+-flgSysiCentral in SysINI:
+-SysLMWatchdog.tsc Line 61:
+
+WS10
+-flgSysLabminderUsed in SysINI:
+-timSysLMDisconnect in SysINI:
+-flgSysiCentral in SysINI:
+-SysLMWatchdog.tsc Line 61:
+
+BcTS LabMinder PC
+-

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : Failed Jenkins Build Debugging Steps</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="248348834.html">CI/CD Software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Jenkins-for-Solution-Common_152272898.html">Jenkins for Solution Common</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : Failed Jenkins Build Debugging Steps
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Constantin Balan</span>, last updated on Oct 18, 2022
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p><strong>NOTE: The Bitbucket Personal Access Token is attached to Constantin Balan's account and is set to expire on <time datetime="2023-10-17" class="date-past">17 Oct 2023</time>. This token is what allows Jenkins to interact with Bitbucket.</strong></p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="250" confluence-query-params="effects=border-simple,blur-border,tape" src="attachments/152272900/152272907.jpg?effects=border-simple,blur-border,tape" data-image-src="attachments/152272900/152272907.jpg" data-unresolved-comment-count="0" data-linked-resource-id="152272907" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="sadJenkins.jpg" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/jpeg" data-linked-resource-container-id="152272900" data-linked-resource-container-version="2" tabindex="0" alt=""></span></p><p>Oh no, your Bitbucket pull request is showing the dreaded red exclamation point. <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="48" width="700" src="attachments/152272900/152272901.png" data-image-src="attachments/152272900/152272901.png" data-unresolved-comment-count="0" data-linked-resource-id="152272901" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-8-22_12-26-22.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="152272900" data-linked-resource-container-version="2" tabindex="0" alt=""></span></p><p>This means that the build of your branch failed on the Jenkins CI server. When this happens you can reach out to Constantin Balan if you have questions or concerns, but first you should try running through the following debugging steps.</p><h1 id="FailedJenkinsBuildDebuggingSteps-Step1:GototheJenkinsbuildpage">Step 1: Go to the Jenkins build page</h1><p>This step can be done in one of two ways. The <strong>first way</strong> would be to go to the Jenkins IP (You don't have to log in to view the build logs): <a href="http://10.56.175.138:8081/" class="external-link" rel="nofollow">Dashboard [Jenkins]</a>, then navigate to your branch, and then click on the most recent build which can be found in the picture below:</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="250" width="527" src="attachments/152272900/152272902.png" data-image-src="attachments/152272900/152272902.png" data-unresolved-comment-count="0" data-linked-resource-id="152272902" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-8-22_12-40-32.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="152272900" data-linked-resource-container-version="2" tabindex="0" alt=""></span></p><p>The <strong>second way</strong> would be to click on the red exclamation point from above which will bring you to a page of all of the builds on your branch pictured below:</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="197" width="800" src="attachments/152272900/152272903.png" data-image-src="attachments/152272900/152272903.png" data-unresolved-comment-count="0" data-linked-resource-id="152272903" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-8-22_12-57-25.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="152272900" data-linked-resource-container-version="2" tabindex="0" alt=""></span></p><p>From here you should be able to click on the blue text underneath &quot;Build&quot; and it will bring you to the build page.</p><h1 id="FailedJenkinsBuildDebuggingSteps-Step2:Navigatingthebuildpage">Step 2: Navigating the build page</h1><p>Once you've gotten to the most recent build page of your branch you should see the following:</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="250" width="523" src="attachments/152272900/152272904.png" data-image-src="attachments/152272900/152272904.png" data-unresolved-comment-count="0" data-linked-resource-id="152272904" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-8-22_13-5-33.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="152272900" data-linked-resource-container-version="2" tabindex="0" alt=""></span></p><p>On this page two of the options on the left will be useful for figuring out what caused the build to fail:<br/>1) <strong>Pipeline Steps</strong></p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" width="520" src="attachments/152272900/152272905.png" data-image-src="attachments/152272900/152272905.png" data-unresolved-comment-count="0" data-linked-resource-id="152272905" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-8-22_13-21-2.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="152272900" data-linked-resource-container-version="2" tabindex="0" alt=""></span></p><p>               &amp;</p><p>2) <strong>Console Output</strong></p><p><strong><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="250" width="516" src="attachments/152272900/152272906.png" data-image-src="attachments/152272900/152272906.png" data-unresolved-comment-count="0" data-linked-resource-id="152272906" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-8-22_13-24-20.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="152272900" data-linked-resource-container-version="2" tabindex="0" alt=""></span></strong></p><p>The pipeline steps page will show you at which point in the process the build failed. This page is less detailed console output, but is still there for you to use if desired. Overall console output will have the same information pipeline steps has, but in more detail.</p><h1 id="FailedJenkinsBuildDebuggingSteps-Step3:Potentialreasonsforthebuildfailing">Step 3: Potential reasons for the build failing</h1><p>There are multiple reasons why the build might fail. Some of those reasons may be related to something you changed/worked on for the branch, others are completely unrelated to any work you have done. First here are reasons the build because of the work you did on the branch.</p><h3 id="FailedJenkinsBuildDebuggingSteps-Branchrelatedbuildfailures:">Branch related build failures:</h3><div role="region" aria-label="Info" class="confluence-information-macro  confluence-information-macro-information" ><p class="title conf-macro-render">Jenkins Build Process</p><span role="presentation" class="aui-icon aui-icon-small aui-iconfont-info-filled confluence-information-macro-icon" ></span><div class="confluence-information-macro-body"><p>The current Jenkins testing set up is that the solution sanitizer will run first. If this fails, the solution common build will not run at all.</p></div></div><p><br/></p><p><strong>1) The solution sanitizer has made changes to your branch</strong></p><p>If this is the case you will see the following message → &quot;ERROR: Build failed due to sanitizer script changes&quot;. You will see which files were changed displayed in this format:</p><pre class="console-output"><span class="pipeline-node-35">These files were changed by the sanitizer:  M Sequences/CellBal1.tsc
+</span></pre><p>A way to check which lines of the file were changed would be by creating a copy of the file that was flagged, run the sanitizer on your computer locally, and then compare the two (This could be done via BeyondCompare).</p><p><strong>2) The build of your branch has given Jenkins errors</strong></p><p>If this is the case you will see the following message → &quot;ERROR: Build 'X' has failed on 'pipeline-name'&quot;. You will see the errors that were thrown in iTest displayed in the console log.</p><p><strong>3) Other</strong></p><p>If you are getting errors other than the two mentioned above, reach out to Constantin Balan because there is likely a configuration/authentication issue that needs to be extinguished</p><p><br/></p><p><br/></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/152272900/152272901.png">image2022-8-22_12-26-22.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/152272900/152272902.png">image2022-8-22_12-40-32.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/152272900/152272903.png">image2022-8-22_12-57-25.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/152272900/152272904.png">image2022-8-22_13-5-33.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/152272900/152272905.png">image2022-8-22_13-21-2.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/152272900/152272906.png">image2022-8-22_13-24-20.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/152272900/152272907.jpg">sadJenkins.jpg</a> (image/jpeg)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:00</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

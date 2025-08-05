@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : How to setup DigiBox and COM Ports</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="How-to-articles_25100315.html">How-to articles</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : How to setup DigiBox and COM Ports
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Chelsea Flattery</span>, last updated on Feb 19, 2024
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p></p><h2 id="HowtosetupDigiBoxandCOMPorts-Step-by-stepguide">Step-by-step guide</h2><ol><li>Run the DigiBox Setup64.exe (don’t do this if the PC is on the Bench, only if it’s at stand and connected to the DigiBox)<ol><li>If 20.0.0.2 doesn’t show up:<ol><li>Check NIC, they’re probably swapped or not configured</li><li>Set the IP Address/Subnet Mask for the “<strong>DigiBox</strong>” NIC to <strong>20.</strong><strong>0.0.1/255.255.255.0</strong> and click <strong>Ok</strong> and <strong>Ok</strong>.</li><li>Set the IP Address/Subnet Mask for the “<strong>IO Rack</strong>” NIC to <strong>192.</strong><strong>168.1.99/255.255.255.0</strong> and click <strong>Ok</strong> and <strong>Ok</strong>.</li></ol></li><li>If they’re swapped<ol><li>Rename DigiBox to any random name or keyboard press</li><li>Change IP to have 99 at the end to save time for later</li><li>Rename IO Rack to DigiBox and change the IP to <strong>20.</strong><strong>0.0.1</strong></li><li>Rename the other one to IO Rack and change IP to <strong>192.</strong><strong>168.1.99</strong></li><li>Click Refresh on the Digi Setup</li></ol></li></ol></li><li>If 20.0.0.2 shows up:<br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="212" width="254" src="attachments/140247252/140247255.png" data-image-src="attachments/140247252/140247255.png" data-unresolved-comment-count="0" data-linked-resource-id="140247255" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Digibox 1.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="140247252" data-linked-resource-container-version="3" tabindex="0" alt=""></span><br/><ol><li>Click Next</li><li>Use the defaults, click Finish<br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="249" width="303" src="attachments/140247252/140247256.png" data-image-src="attachments/140247252/140247256.png" data-unresolved-comment-count="0" data-linked-resource-id="140247256" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Digibox 2.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="140247252" data-linked-resource-container-version="3" tabindex="0" alt=""></span></li></ol></li><li>Right click on This PC (My Computer), select Manage<ol><li>Expand the Multi-port Serial Adapters</li><li>Select PortServer TS 4 MEI (20.0.0.2)</li><li>Right-click and select Properties<br/><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" src="attachments/140247252/140247257.png" data-image-src="attachments/140247252/140247257.png" data-unresolved-comment-count="0" data-linked-resource-id="140247257" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Digibox 3.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="140247252" data-linked-resource-container-version="3" tabindex="0" alt=""></span></li><li>In the Advanced tab, click Properties<br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="276" width="256" src="attachments/140247252/140247258.png" data-image-src="attachments/140247252/140247258.png" data-unresolved-comment-count="0" data-linked-resource-id="140247258" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Digibox 4.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="140247252" data-linked-resource-container-version="3" tabindex="0" alt=""></span></li><li>The ports need to be COM2, COM6, COM7, COM8</li><li>If ports need to be edited:<br/><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" src="attachments/140247252/140247259.png" data-image-src="attachments/140247252/140247259.png" data-unresolved-comment-count="0" data-linked-resource-id="140247259" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Digibox 5.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="140247252" data-linked-resource-container-version="3" tabindex="0" alt=""></span><br/><ol><li>Start from the bottom and change them, if a port is already used you can’t reassign it</li><li>Click the last port and click the Serial tab</li><li>Change the port from the drop-down list</li><li>Click the next port up from the bottom and do the same action.</li><li>When all ports are correct, click Apply and Ok</li></ol></li></ol></li><li>If a port is missing because it’s being used by a USB or other device:<ol><li>Expand the Ports (COM &amp; LPT) menu</li><li>Right-click on the port that is using the COM you need</li><li>Select Properties &gt; Port Settings &gt; Advanced</li><li>Change the port in the drop-down at the bottom of the Properties window<br/><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" src="attachments/140247252/140247260.png" data-image-src="attachments/140247252/140247260.png" data-unresolved-comment-count="0" data-linked-resource-id="140247260" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Digibox 6.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="140247252" data-linked-resource-container-version="3" tabindex="0" alt=""></span><br/><br/></li></ol></li></ol><div role="region" aria-label="Info" class="confluence-information-macro  confluence-information-macro-information" ><span role="presentation" class="aui-icon aui-icon-small aui-iconfont-info-filled confluence-information-macro-icon" ></span><div class="confluence-information-macro-body"><p>Turn off Power Management:</p><p>Right click and open the properties for each COM Port and USB connected device on the PC that is used for testing. Go to the Power Management tab and deselect the check box allowing the PC to put the device into power save mode.<br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="250" src="attachments/140247252/140247253.png" data-image-src="attachments/140247252/140247253.png" data-unresolved-comment-count="0" data-linked-resource-id="140247253" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-6-6_8-41-8.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="140247252" data-linked-resource-container-version="3" tabindex="0" alt=""></span></p></div></div><h2 id="HowtosetupDigiBoxandCOMPorts-Relatedarticles">Related articles</h2><p></p><p>
+
+
+
+
+
+
+
+
+
+
+
+<ul class="content-by-label">
+        <li>
+        <div>
+                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+
+        <div class="details">
+                        <a href="/spaces/BTSILSIE/pages/140247252/How+to+setup+DigiBox+and+COM+Ports">How to setup DigiBox and COM Ports</a>
+                
+                        
+                    </div>
+    </li>
+    </ul>
+</p><p><br/></p><p><br/></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/140247252/140247253.png">image2022-6-6_8-41-8.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/140247252/140247255.png">Digibox 1.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/140247252/140247256.png">Digibox 2.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/140247252/140247257.png">Digibox 3.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/140247252/140247258.png">Digibox 4.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/140247252/140247259.png">Digibox 5.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/140247252/140247260.png">Digibox 6.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

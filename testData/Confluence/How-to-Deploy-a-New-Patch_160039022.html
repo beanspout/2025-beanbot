@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : How to Deploy a New Patch</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="248348840.html">Computer Installs &amp; Patch Script</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : How to Deploy a New Patch
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Chelsea Flattery</span>, last updated on Oct 11, 2022
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>There are two deployment strategies for deploying a new patch, one is for code that doesn't require a full patch script run and the other is for code that requires the patch script to run in full. Regardless of patching strategy, this process must be done both for Warren and Shanghai, as they use different Config drives.</p><h3 id="HowtoDeployaNewPatch-PartialPatchDeployment">Partial Patch Deployment</h3><p><strong><em>When would I do this?</em></strong></p><p>If your code both needs to go live immediately (like a hotfix) and/or will run between patch script line 1 and approx. line 550</p><p>If your code does not need to go live immediately but instead will be activated by running the patch in debug mode (holding F9 while the script launches)</p><h3 id="HowtoDeployaNewPatch-FullPatchDeployment">Full Patch Deployment</h3><p><em><strong>When would I do this?</strong></em></p><p>If your code occurs after approx. line 550</p><p>If your code includes files that need to be downloaded from the Z: drive to the local test stand</p><h2 id="HowtoDeployaNewPatch-Step-by-stepguide">Step-by-step guide</h2><p>After validating your code and merging to master, pull the latest master onto your local machine.  The files in your patch_script repo will be updated to reflect the latest master and are ready to deploy.</p><h5 id="HowtoDeployaNewPatch-PartialPatchDeployment.1">Partial Patch Deployment</h5><ol><li>Navigate to Z:\Patches\patch_script</li><li>Delete Updater_old.au3, Installers_old.au3, HelperFunctions_old.au3, and InstallVehicleSpy_old.au3</li><li><strong>Rename </strong>Updater.au3, Installers.au3, HelperFunctions.au3, and InstallVehicleSpy.au3 to add _old.au3 to the end of each filename</li><li>Paste the new Updater.au3, Installers.au3, HelperFunctions.au3, and InstallVehicleSpy.au3 files</li><li>Repeat this process for China by remoting into a PC in the Shanghai lab and following the steps above, copying the patch script files from US Config drive to the China Config drive (it will be too slow to copy from your machine to the China Config drive over Remote Desktop)</li></ol><h5 id="HowtoDeployaNewPatch-FullPatchDeployment.1">Full Patch Deployment</h5><ol><li>Create a newly dated folder in Z:\Patches, i.e. 2022-10-11 for both US and China</li><li>Paste the iTest version folders from the previous patch (if unchanged) or from Z:\Patches\NextPatch (if different) into the new folder</li><li>If you are releasing an AND patch to iTest, unzip the file and place it in the AND_Config folder</li><li>Remote into a PC in Shanghai and repeat this process, copying from US Config drive to China Config drive</li><li>Complete the steps above for both US and China</li><li>Open Z:\Patches\Inventory.ini and replace the PatchVersion variable with the new patch date</li><li>Open T:\Lab_Config\Patch_Info.ini and replace the PatchVersion variable with the new patch date<br/><br/></li></ol><div role="region" aria-label="Info" class="confluence-information-macro  confluence-information-macro-information" ><span role="presentation" class="aui-icon aui-icon-small aui-iconfont-info-filled confluence-information-macro-icon" ></span><div class="confluence-information-macro-body">As soon as you change the date and save Patch_Info.ini the script goes live and the patch script will force a full run of the script because it detects a change in the patch date.</div></div><h2 id="HowtoDeployaNewPatch-Relatedarticles">Related articles</h2><p></p><p>
+
+
+
+
+
+
+
+
+
+
+
+<ul class="content-by-label">
+        <li>
+        <div>
+                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+
+        <div class="details">
+                        <a href="/spaces/BTSILSIE/pages/160039022/How+to+Deploy+a+New+Patch">How to Deploy a New Patch</a>
+                
+                        
+                    </div>
+    </li>
+    </ul>
+</p><p><br/></p><p><br/></p>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : 2020-08-17 S&amp;A Support Expectations From LSIE Team</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Meeting-notes_16601925.html">Meeting notes</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : 2020-08-17 S&amp;A Support Expectations From LSIE Team
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Paul Rabahy</span> on Aug 17, 2020
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="id-20200817S&amp;ASupportExpectationsFromLSIETeam-Date">Date</h2><p><time datetime="2020-08-17" class="date-past">17 Aug 2020</time></p><h2 id="id-20200817S&amp;ASupportExpectationsFromLSIETeam-Attendees">Attendees</h2><ul><li><p><a class="confluence-userlink user-mention" data-username="rzcn94" href="https://tslm-confluence.gm.com/display/~rzcn94" data-linked-resource-id="4849668" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">Paul Rabahy</a></p></li><li><p><a class="confluence-userlink user-mention" data-username="XZ2X8W" href="https://tslm-confluence.gm.com/display/~XZ2X8W" data-linked-resource-id="53608600" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">David Hudson</a></p></li><li>Dennis Fowler</li><li>Kyle Pfahl</li><li>Mike Saybolt</li><li>Pooja Suresh</li></ul><h2 id="id-20200817S&amp;ASupportExpectationsFromLSIETeam-Goals">Goals</h2><ul><li>How will the 2 teams handle controlling and communicating with the packs?<ul><li>Cell voltages and temperatures</li><li>Opening/Closing contactors</li><li>Recording other data provided by the pack</li></ul></li><li>Which team is responsible for writing the test scripts that will be run by S&amp;A?<ul><li>If not, what will we use instead?</li><li>If so, are there any that need to be added to Solution_Common?</li></ul></li><li>Can the LSIE team use Solution_Common to support S&amp;A?</li><li>Does the LSIE team need to support any additional testing equipment?<ul><li>Should the LSIE team support data rates of over 100hz?</li><li>Should the LSIE team support Dewesoft?</li><li>Are there any additional devices (crush machine, short circuit fixture, etc.) that we should add to Solution_Common?</li></ul></li></ul><h2 id="id-20200817S&amp;ASupportExpectationsFromLSIETeam-Non-Goals">Non-Goals</h2><ul><li>Calibration of equipment is out of scope for this meeting.<ul><li>I will schedule another meeting to figure out a more effective way of supporting calibration.</li></ul></li></ul><h2 id="id-20200817S&amp;ASupportExpectationsFromLSIETeam-Discussionitems">Discussion items</h2><div class="table-wrap"><table class="relative-table confluenceTable" style="width: 64.2348%;"><colgroup><col style="width: 4.61538%;"/><col style="width: 12.906%;"/><col style="width: 10.5128%;"/><col style="width: 71.9658%;"/></colgroup><tbody><tr><th class="confluenceTh">Time</th><th class="confluenceTh">Item</th><th class="confluenceTh">Who</th><th class="confluenceTh">Notes</th></tr><tr><td class="confluenceTd">2:30</td><td class="confluenceTd">Agenda overview</td><td class="confluenceTd"><div class="content-wrapper"><p><a class="confluence-userlink user-mention" data-username="rzcn94" href="https://tslm-confluence.gm.com/display/~rzcn94" data-linked-resource-id="4849668" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">Paul Rabahy</a></p></div></td><td class="confluenceTd"><ul><li></li></ul></td></tr><tr><td class="confluenceTd">2:36</td><td class="confluenceTd">Pack Communication</td><td class="confluenceTd"><br/></td><td class="confluenceTd"><ul><li>Currently running Q series in S&amp;A area.<ul><li>The rest of the lab is running eGate</li><li>3 high voltage IO racks are are also running ethercat</li></ul></li><li>The S&amp;A team is good with the LSIE team writing the software to control and communicate with the pack.<ul><li>S&amp;A may need to control the pack in ways that would never happen in the normal pack lab.</li><li>S&amp;A would an ability to make the solution not fault.<ul><li>Normal limits get in the way of S&amp;A testing</li><li>We still need to protect the test equipment (cyclers)<ul><li>The test equipment should already be protecting itself.</li></ul></li></ul></li><li>We need to always record data.<ul><li>Some tests cannot be re-run because they are destructive.</li></ul></li></ul></li></ul></td></tr><tr><td colspan="1" class="confluenceTd">2:51</td><td colspan="1" class="confluenceTd">Test scripts</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><ul><li>Mike S. is interested in writing test scripts.</li><li><span class="inline-comment-marker" data-ref="fe292a6b-234d-4128-a32b-4c32db35492a">For simple scripts the S&amp;A team would like to do it themselves.</span></li><li>For complex scripts the LSIE team would need to be involved.</li><li>There has been mixed success in importing/exporting test scripts at other A&amp;D customers</li><li>We need some ground rules about which team can/should touch which files.</li><li>Investigate Flexedit</li></ul></td></tr><tr><td colspan="1" class="confluenceTd">2:57</td><td colspan="1" class="confluenceTd">Solution_Common</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><ul><li>Solution_Common will be a good starting point, but will need changes listed above<ul><li>Need the ability to add more channels to record</li><li>The 2 groups will need to continue to work together</li><li>S&amp;A DUTs may not have the normal meta-data such as serial number or part numbers</li></ul></li></ul></td></tr><tr><td colspan="1" class="confluenceTd">3:06</td><td colspan="1" class="confluenceTd">Additional Testing Equipment</td><td colspan="1" class="confluenceTd"><br/></td><td colspan="1" class="confluenceTd"><ul><li>Mark 10 presses<ul><li>We have a windows DLL</li></ul></li><li>Large Press<ul><li>Ethercat</li></ul></li><li>Gas sensors<br/><ul><li>Ethercat</li></ul></li><li>No need to support over 100hz</li><li>Dewesoft<ul><li>Provide a minimal simple interface</li><li>Potentially CAN<ul><li>We want a reusable interface that will work for multiple tests</li></ul></li><li>S&amp;A team will be responsible for programming/configuring Dewsoft</li><li>LSIE team will be responsible for writing a iTest driver that follows the agreed upon handshake</li></ul></li></ul></td></tr></tbody></table></div><h2 id="id-20200817S&amp;ASupportExpectationsFromLSIETeam-Actionitems">Action items</h2><ul class="inline-task-list" data-inline-tasks-content-id="61703124"><li data-inline-task-id="1"><a class="confluence-userlink user-mention" data-username="XZ2X8W" href="https://tslm-confluence.gm.com/display/~XZ2X8W" data-linked-resource-id="53608600" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">David Hudson</a> To check about camera support in iTest.</li></ul>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

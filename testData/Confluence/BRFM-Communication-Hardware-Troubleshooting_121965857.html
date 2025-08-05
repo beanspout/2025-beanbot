@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : BRFM Communication Hardware Troubleshooting</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BRFM-Communication-Overview_111968663.html">BRFM Communication Overview</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : BRFM Communication Hardware Troubleshooting
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Rodolfo Rodriguez (He/him/his)</span>, last updated on Jan 31, 2022
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="contentLayout2">
+<div class="columnLayout single" data-layout="single">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p>The purpose of the this page is provide advice for troubleshooting common issues with the Battery Radio Frequency Module (BRFM). </p><h3 id="BRFMCommunicationHardwareTroubleshooting-BackgroundonDevices:"><strong>Background on Devices:</strong></h3><p>A Cheetah SPI host adapter (sometime referred to as Cheetah box) is required in order to communicate with BRFM using these scripts.<br/>A Cheetah SPI host adapter is essentially a SPI to USB converter. It allows the PC to be able to transmit or receive serial<br/>data via SPI protocol without interfacing with low-level codes. See <a href="https://www.totalphase.com/products/cheetah-spi/" class="external-link" rel="nofollow">https://www.totalphase.com/products/cheetah-spi/</a> for more info on Cheetah device.</p><p>The WeMe is a USB extender that extends the connection of a USB device up to 100ft. This is used to bridge the large physical distance between the test stand and Cheetah box. More information about the WeMe can be found here: <a href="https://www.amazon.com/WEme-Extender-Connection-Ethernet-Extention/dp/B01FHTCH68/ref=asc_df_B01FHTCH68/?tag=hyprod-20&amp;linkCode=df0&amp;hvadid=309776868400&amp;hvpos=&amp;hvnetw=g&amp;hvrand=9021521301248444724&amp;hvpone=&amp;hvptwo=&amp;hvqmt=&amp;hvdev=c&amp;hvdvcmdl=&amp;hvlocint=&amp;hvlocphy=9051951&amp;hvtargid=pla-551821168724&amp;th=1" class="external-link" rel="nofollow">Amazon link</a></p><h3 id="BRFMCommunicationHardwareTroubleshooting-ElectricalSchematic:">Electrical Schematic:</h3><p>This is a general schematic showing the connections of cables going from the test stand to low voltage (LV) port on the battery pack for the BRFM. It does not show return wires or the individual wires for the different contactors (positive, negative, pre-charge) on the green 12V power line.</p><p><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image" draggable="false" src="attachments/121965857/122159252.png" data-image-src="attachments/121965857/122159252.png" data-unresolved-comment-count="0" data-linked-resource-id="122159252" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="BRFM Comm.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="121965857" data-linked-resource-container-version="5" tabindex="0" alt=""></span></p><p><br/></p></div>
+</div>
+</div>
+<div class="columnLayout two-equal" data-layout="two-equal">
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<h3 id="BRFMCommunicationHardwareTroubleshooting-HardwareTroubleshooting:">Hardware Troubleshooting:</h3><p>Some of the common faults related to hardware issues are the following:</p><p><span>&quot;Failed to detect the presence of Cheetah connection!&quot;</span></p><p>If the Cheetah box is not being recognized, perform the following:</p><ol><li>Check physical connections from the PC to the Cheetah box. Verify that the WeMes, ethernet cables, USB cables, and power supply for the WeMe are connected correctly.</li><li>Check that the WeMes are working properly. All three lights should be on and the green light should be flashing. (<strong>Figure 1 and Figure 2</strong>)</li><li>Check that the moving the cables does not cause the WeMe to lose connection. If faulty ethernet cable can disrupt the connection to the Cheetah box.</li><li>Retry connecting to the cheetah box by performing the following:<br/><ol><li>Go to the VRFM or BRFM Pinnacle Tester in and run manual communication. (<strong>Figure 3</strong>) Ensure that only one window of the Pinnacle Tester is open at time. (<strong>Figure 4</strong>)</li><li>Enter 2 to &quot;Get Cheetah device info&quot;.</li></ol></li><li>Possible outcomes:<ol><li>&quot;Number of Cheetah Devices Connected: 0&quot; (<strong>Figure 5</strong>) - Verify that the IO rack is enabled in iTest and the rack is powered ON. Try disconnecting and reconnecting the WeMes and unplugging and plugging the USB cables and power supply. Also try connecting the sender WeMe to a different USB port on the PC. While it has not been confirmed whether USB 2.0 or 3.0 makes a difference, this has sometimes helped resolve connection issues.</li><li>&quot;Unable to grab a Cheetah handle; The device is busy.&quot; <strong>(Figure 6</strong>) - Verify that there are no other instances of the Pinnacle Tester open. If you tried once already to Get Cheetah device info, it may show up as busy. Close the Pinnacle Tester and try again.</li></ol></li><li>If none of these solutions work, try replacing the WeMe sender and receiver, one at a time, with a new one. Sometimes the WeMes are not reliable despite the lights flashing correctly.</li></ol><p><br/></p><p><span style="letter-spacing: 0.0px;">&quot;BRFM did not respond accordingly! Verify selected version, power, and/or harness.&quot; </span></p><p><br/></p><p><br/></p></div>
+</div>
+<div class="cell normal" data-type="normal">
+<div class="innerCell">
+<p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="400" src="attachments/121965857/126156979.jpg" data-image-src="attachments/121965857/126156979.jpg" data-unresolved-comment-count="0" data-linked-resource-id="126156979" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="20220131_111700.jpg" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/jpeg" data-linked-resource-container-id="121965857" data-linked-resource-container-version="5" tabindex="0" alt=""></span></p><p><strong>Figure 1:</strong> WeMe Sender Flashing</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/121965857/126156986.jpg" data-image-src="attachments/121965857/126156986.jpg" data-unresolved-comment-count="0" data-linked-resource-id="126156986" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="20220131_124118.jpg" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/jpeg" data-linked-resource-container-id="121965857" data-linked-resource-container-version="5" tabindex="0" alt=""></span></p><p><strong>Figure 2:</strong> WeMe Receiver Flashing</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="206" src="attachments/121965857/126156981.png" data-image-src="attachments/121965857/126156981.png" data-unresolved-comment-count="0" data-linked-resource-id="126156981" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-1-31_11-26-50.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="121965857" data-linked-resource-container-version="5" tabindex="0" alt=""></span></p><p><strong>Figure 3:</strong> Run Manual Comm button in iTest display</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="400" src="attachments/121965857/126156978.png" data-image-src="attachments/121965857/126156978.png" data-unresolved-comment-count="0" data-linked-resource-id="126156978" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-1-31_11-2-40.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="121965857" data-linked-resource-container-version="5" tabindex="0" alt=""></span></p><p><strong>Figure 4:</strong> Pinnacle Tester Main Menu</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="400" src="attachments/121965857/126156982.png" data-image-src="attachments/121965857/126156982.png" data-unresolved-comment-count="0" data-linked-resource-id="126156982" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="ZeroCheetahDetected.PNG" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="121965857" data-linked-resource-container-version="5" tabindex="0" alt=""></span></p><p><strong>Figure 5:</strong> No Cheetah Device Detected</p><p>&gt;Insert Picture here&lt;</p><p><strong>Figure 6:</strong> Cheetah Device Not Available</p></div>
+</div>
+</div>
+</div>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/121965857/122159253.png">BRFM Comm.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/121965857/122159252.png">BRFM Comm.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/121965857/126156978.png">image2022-1-31_11-2-40.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/121965857/126156979.jpg">20220131_111700.jpg</a> (image/jpeg)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/121965857/126156980.png">image2022-1-31_11-26-44.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/121965857/126156981.png">image2022-1-31_11-26-50.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/121965857/126156983.png">ZeroCheetahDetected.PNG</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/121965857/126156982.png">ZeroCheetahDetected.PNG</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/121965857/126156986.jpg">20220131_124118.jpg</a> (image/jpeg)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,166 @@
+* Desired settings will be in {xxx} to stand out
+
+** Need to edit the Module's Config.drv file and Solution's Config.drv file to get the changes to stick
+** Will need to change the following in each of the Config.drv files, FOR CHAMBERS USING Modbus:
+-Device ID (Ecc1 is 101, Ecc2 is 102, Ecc3 if needed is 103) * FOR ALL DRIVERS, INCLUDING GSD
+-Modbus_X (Ecc1 is Modbus_1, Ecc2 is Modbus_2, Ecc3 if needed is Modbus_3)
+-Port Number (Ecc1 is 2, Ecc2 is 6, Ecc3 if needed is 7) * PORT 8 IS USED FOR CALIBRATION ONLY
+-Driver Name (match to Modbus_X)
+
+*** If changing the physical port the particular chamber is connected to, you will need to make
+sure the new COM Port settings match the old COM Port settings or per the Driver's port settings
+
+WS01
+-COM Ports:
+	>COM1
+	>COM2
+	>COM6
+	>COM7
+	>COM8
+-Ecc1 Driver:
+	>Device ID: 101
+	>GSD
+	>Port Number: N/A
+-Ecc2 Driver:
+	>Device ID: 102
+	>Modbus_1 {Modbus_2}
+	>Port Number: 7
+
+WS02
+-COM Ports:
+	>COM1
+	>COM2
+	>COM3
+	>COM6
+	>COM7
+	>COM8
+-Ecc1 Driver:
+	>Device ID: 101
+	>GSD
+	>Port Number: N/A
+-Ecc2 Driver:
+	>Device ID: 102
+	>Modbus_1 {Modbus_2}
+	>Port Number: 7
+
+WS03
+-COM Ports:
+	>COM1
+	>COM2
+	>COM3
+	>COM6
+	>COM7
+	>COM8
+-Ecc1 Driver:
+	>Device ID: 101
+	>GSD
+	>Port Number: N/A
+-Ecc2 Driver:
+	>Device ID: 102
+	>Modbus_1 {Modbus_2}
+	>Port Number: 7
+
+WS04 - NOT UPGRADED YET
+-COM Ports:
+	>COM
+-Ecc1 Driver:
+	>Device ID: 101
+	>Modbus_1
+	>Port Number: 6
+-Ecc2 Driver:
+	>Device ID: 102
+	>Modbus_2
+	>Port Number: 7
+
+WS05
+-COM Ports:
+	>COM1
+	>COM2
+	>COM3
+	>COM6
+	>COM7
+	>COM8
+-Ecc1 Driver:
+	>Device ID: 102 {101}
+	>Modbus_1
+	>Port Number: 6
+-Ecc2 Driver:
+	>Device ID: 104 {102}
+	>Modbus_2
+	>Port Number: 7
+
+WS06 - NOT UPGRADED YET
+-COM Ports:
+	>COM
+-Ecc1 Driver:
+	>Device ID: 101
+	>Modbus_1
+	>Port Number: 6
+-Ecc2 Driver:
+	>Device ID: 102
+	>Modbus_2
+	>Port Number: 7
+
+WS07
+-COM Ports:
+	>COM1
+	>COM2
+	>COM6
+	>COM7
+	>COM8
+-Ecc1 Driver:
+	>Device ID: 102 {101}
+	>Modbus_1
+	>Port Number: 7 {6}
+-Ecc2 Driver:
+	>Device ID: 101 {102}
+	>Modbus_2
+	>Port Number: 6 {7}
+
+WS08 - NOT UPGRADED YET
+-COM Ports:
+	>COM
+-Ecc1 Driver:
+	>Device ID: 101
+	>Modbus_1
+	>Port Number: 6
+-Ecc2 Driver:
+	>Device ID: 102
+	>Modbus_2
+	>Port Number: 7
+
+WS09
+-COM Ports:
+	>COM2
+	>COM3
+	>COM6
+	>COM7
+	>COM8
+-Ecc1 Driver:
+	>Device ID: 101
+	>Modbus_2 {Modbus_1}
+	>Port Number: 2
+-Ecc2 Driver:
+	>Device ID: 102
+	>Modbus_1 {Modbus_2}
+	>Port Number: 6
+-Ecc3 Driver:
+	>Device ID: 104 {103}
+	>Modbus_3
+	>Port Number: 7
+
+WS10 - NOT UPGRADED YET
+-COM Ports:
+	>COM
+-Ecc1 Driver:
+	>Device ID: 101
+	>Modbus_1
+	>Port Number: 2
+-Ecc2 Driver:
+	>Device ID: 102
+	>Modbus_2
+	>Port Number: 6
+-Ecc3 Driver:
+	>Device ID: 103
+	>Modbus_3
+	>Port Number: 7

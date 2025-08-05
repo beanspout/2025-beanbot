@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : How to add a user to the LSIE Jenkins-k8s instance</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="248348834.html">CI/CD Software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Jenkins-for-Solution-Common_152272898.html">Jenkins for Solution Common</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : How to add a user to the LSIE Jenkins-k8s instance
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Constantin Balan</span> on Nov 15, 2022
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>This article is meant for Jenkins administrators. If you aren't listed as an administrator in Jenkins, you won't be able to access this flow.</p><p><strong>Step 1:</strong></p><p>First you'll have to navigate to the Jenkins-k8s link: <a href="https://jenkins-52214.op7mi.gm.com/" class="external-link" rel="nofollow">https://jenkins-52214.op7mi.gm.com/</a><br/>If you're not already logged in, your GMID &amp; password used for logging into your laptop is used here as well.</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="250" width="450" src="attachments/164331813/164331815.png" data-image-src="attachments/164331813/164331815.png" data-unresolved-comment-count="0" data-linked-resource-id="164331815" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-11-15_13-27-51.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="164331813" data-linked-resource-container-version="1" tabindex="0" alt=""></span></p><p><strong>Step 2:</strong></p><p>The next step once you're logged in is to click the &quot;<strong>Manage Jenkins</strong>&quot; tab on the left hand side of the page (pictured below).</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="250" width="536" src="attachments/164331813/164331816.png" data-image-src="attachments/164331813/164331816.png" data-unresolved-comment-count="0" data-linked-resource-id="164331816" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-11-15_13-29-52.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="164331813" data-linked-resource-container-version="1" tabindex="0" alt=""></span></p><p><strong>Step 3:</strong></p><p>Next, scroll down on the page until you see the &quot;<strong>Configure Global Security</strong>&quot; tab under the</p><p>&quot;<strong>Security</strong>&quot; section and click on it.</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="250" width="593" src="attachments/164331813/164331817.png" data-image-src="attachments/164331813/164331817.png" data-unresolved-comment-count="0" data-linked-resource-id="164331817" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-11-15_13-43-37.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="164331813" data-linked-resource-container-version="1" tabindex="0" alt=""></span></p><p><strong>Step 4:</strong></p><p>Below is the <strong>Configure Global Security </strong>page. If you scroll down to about the middle of the page, you will</p><p>see the user security matrix. For a majority of the users you are adding, we will be assigning them the &quot;<strong>Read</strong>&quot;</p><p>role under the &quot;<strong>Overall</strong>&quot; columns. Eventually we can specify more specific permissions, but other LSIE members</p><p>should be able to see what they need with that generic assigned role for now (More instructions below).</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="250" width="629" src="attachments/164331813/164331818.png" data-image-src="attachments/164331813/164331818.png" data-unresolved-comment-count="0" data-linked-resource-id="164331818" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-11-15_13-45-11.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="164331813" data-linked-resource-container-version="1" tabindex="0" alt=""></span></p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="250" width="679" src="attachments/164331813/164331819.png" data-image-src="attachments/164331813/164331819.png" data-unresolved-comment-count="0" data-linked-resource-id="164331819" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-11-15_13-45-47.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="164331813" data-linked-resource-container-version="1" tabindex="0" alt=""></span></p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="250" width="647" src="attachments/164331813/164331820.png" data-image-src="attachments/164331813/164331820.png" data-unresolved-comment-count="0" data-linked-resource-id="164331820" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-11-15_13-46-38.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="164331813" data-linked-resource-container-version="1" tabindex="0" alt=""></span></p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="250" width="639" src="attachments/164331813/164331821.png" data-image-src="attachments/164331813/164331821.png" data-unresolved-comment-count="0" data-linked-resource-id="164331821" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-11-15_13-47-35.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="164331813" data-linked-resource-container-version="1" tabindex="0" alt=""></span></p><p>Once here, you click on the &quot;<strong>Add user or group...</strong>&quot; button, and the following prompt should show up:</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="150" src="attachments/164331813/164331822.png" data-image-src="attachments/164331813/164331822.png" data-unresolved-comment-count="0" data-linked-resource-id="164331822" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-11-15_13-56-5.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="164331813" data-linked-resource-container-version="1" tabindex="0" alt=""></span></p><p>Here you enter in the GMID of the user you are trying to register. Once you do, the user will be added at the</p><p>bottom of the matrix (At this point their first and last name should take the place of their GMID). You can then check </p><p>the &quot;<strong>Read</strong>&quot; checkbox (mentioned above), and then click save at the bottom of the screen.</p><p><br/></p><p>Congrats! You've added a user to the Jenkins-k8s instance</p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/164331813/164331815.png">image2022-11-15_13-27-51.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/164331813/164331816.png">image2022-11-15_13-29-52.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/164331813/164331817.png">image2022-11-15_13-43-37.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/164331813/164331818.png">image2022-11-15_13-45-11.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/164331813/164331819.png">image2022-11-15_13-45-47.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/164331813/164331820.png">image2022-11-15_13-46-38.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/164331813/164331821.png">image2022-11-15_13-47-35.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/164331813/164331822.png">image2022-11-15_13-56-5.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:00</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

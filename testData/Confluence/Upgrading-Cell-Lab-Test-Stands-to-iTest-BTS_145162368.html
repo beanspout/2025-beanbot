@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : Upgrading Cell Lab Test Stands to iTest BTS</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="248348827.html">A&amp;D Software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Cell-Lab-related-articles_248348844.html">Cell Lab related articles</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : Upgrading Cell Lab Test Stands to iTest BTS
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Andrew White (C) [X]</span>, last updated by <span class='editor'> Trevor J Smith (C) [X]</span> on Aug 31, 2022
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>n This guide is to be used by either members of the LSIE team or A&amp;D Technology engineers in explaining and preparing them for upgrading test stands at the GM Battery Cell Lab from A&amp;DT's BcTS software to iTest BTS.</p><p>An upgrade should take approximately 3 days to complete with another day for verification testing, not including the time needed for IT to upgrade the PC to Windows 10 if it hasn't already been done.</p><p>If you run into any errors or issues and need help, refer to the &quot;Additional Notes to BTS Install Guide.txt&quot; file attached to this post as well, there are some troubleshooting tips included for issues that came up during other BTS upgrades. To access it, click the paperclip icon next to the article title and find the file from the file explorer it opens from there.</p><h2 id="UpgradingCellLabTestStandstoiTestBTS-UpgradeSteps">Upgrade Steps</h2><ol><li>Once a test stand has become available for upgrade it is important to contact Estes site IT to make sure the PC being upgraded is the latest hardware and that is is running Windows 10 OS. It is important to let IT know to save the data and files associated BcTS (file location will usually be <em>C:\ADT\iTest3.4</em>).</li><li>Once the test stand PC has be returned/confirmed by site IT, you can begin the iTest BTS install by downloading and running the install executable and associated files from <em>Z:\Patches\To_Deploy\iTestBTSInstall</em>. You will need an iTest license key to finish the install, use the &quot;SerialNumber&quot; from the Config.ini file from one of the other BTS PCs when you do the install. It doesn't matter if more than 1 PC has the same install key as another, the license permissions will be sorted out when you obtain the &quot;.v2c&quot; file from Craig at A&amp;D after sending him the &quot;.c2v&quot; file. When the SystemConfig window pops up, make sure to set iView to Enabled (this can be done after installation as well, refer to step 10). Any base solution can be created at this time, as a relevant solution will be cloned from Bitbucket later in the process.</li><li>Once iTest BTS is installed you will need to update HASP license. To do that, open the ANDRus.exe and select 'Collect Information' to update an existing license. This will generate a &quot;.c2v&quot; file that will need to be sent to Craig Giraud (<a href="mailto:cgiraud@aanddtech.com" class="external-link" rel="nofollow">cgiraud@aanddtech.com</a>) or Don Nutter (<a href="mailto:dnutter@aanddtech.com" class="external-link" rel="nofollow">dnutter@aanddtech.com</a>) at A&amp;D Technology. They will send back a &quot;.v2c&quot; update file that should be applied in the second tab of the ANDRus.exe interface. Once the update is applied, the test stand will be able run Test Manager and the iTest interface.<br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="250" src="attachments/145162368/145162373.png" data-image-src="attachments/145162368/145162373.png" data-unresolved-comment-count="0" data-linked-resource-id="145162373" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-6-30_13-16-10.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="145162368" data-linked-resource-container-version="7" tabindex="0" alt=""></span></li><li>Install Digi Realport Serial Driver from <em>Z:\_Manual_Installs\Digibox</em> using Setup64.exe<em>.</em> This will allow multiple serial connections to Windows COM ports through an ethernet cable to a Digi serial hub. Select the device at 20.0.0.2, and create 4 new COM Ports. You can leave other install settings alone.</li><li>Open Windows Device Manager and open &quot;Multi-port serial adapters&quot; and right-click and select &quot;Properties&quot; on the Digiport device driver. From the Advanced settings tab you can set the serial connection COM ports, baud rate, and other protocol settings. You will want to set the four serial connections to COM ports 2, 6, 7 and 8 to match the settings of the driver assigned to that port number, found under the particular Device settings in Test Manager.</li><li>Install VisualCN from <em>Z:\_Manual_Installs\Bitrode_Cal_Software</em> following the instructions in the README.txt.</li><li>Install SourceTree from <em>Z:\Patches\To_Deploy\SourceTree_Install.</em> Then find the appropriate test PC solution here: Z:\A_N_D_Folder\BcTS to BTS Upgrades ToDo, and unzip it in the iTest 4.1 folder.</li><li>Open TestMgr.exe and edit/confirm the circuit settings to match the test stand you are setting up. <br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" width="600" src="attachments/145162368/145162376.png" data-image-src="attachments/145162368/145162376.png" data-unresolved-comment-count="0" data-linked-resource-id="145162376" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-6-30_15-14-15.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="145162368" data-linked-resource-container-version="7" tabindex="0" alt=""></span></li><li>Start iTest and confirm all cycler and chamber drivers connect to the hardware.</li><li>Validate the PC name and workstation name. Setup iView's connection to iCentral (Server: ice-batna-win.gm.com, Port: 443) and verify that the test stand is visible in iCentral. To setup the iView connection, if you didn't set iView to &quot;Enabled&quot; during installation, you can go to iTest4.1 &gt; Execute &gt; SystemConfig.exe and enable iView from there. Do not set the port number here. Instead, after it is enabled, find the iView icon in the taskbar tray in the bottom right of the desktop, right-click it, and click &quot;Settings&quot;. After it opens, click &quot;Configure LabCentral&quot;, and this is where you will enter the port number and server address.</li><li>After connecting the PC to the iCentral server, make sure to change all relevant .ini settings to match the workstation ID so LabCentral can properly categorize the data coming from the PC. This includes vsSysID in Master.ini in $SUPPORTDIR and iCentralTestCellName in Config.ini in $SYSTEMDIR.Carefully copy and paste all additional settings in Config.ini from any of the other BTS test cell PCs, but be sure not to overwrite the correct setting for iCentralTestCellName.</li><li>Load a set of schedule and battery specimen files for validation. Work with the Cell Lab engineers and technicians to secure test articles and time for brief (2-8 hour) Validation tests. Confirm that iTest has successfully logged all data and that iTest can upload this data to iCentral.</li><li>All done!</li></ol><h2 id="UpgradingCellLabTestStandstoiTestBTS-Relatedarticles">Related articles</h2><p></p><p>
+
+
+
+
+
+
+
+
+
+
+
+<ul class="content-by-label">
+        <li>
+        <div>
+                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+
+        <div class="details">
+                        <a href="/spaces/BTSIKB/pages/115442979/I+need+to+restart+the+PC">I need to restart the PC</a>
+                
+                        
+                    </div>
+    </li>
+        <li>
+        <div>
+                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+
+        <div class="details">
+                        <a href="/spaces/BTSIKB/pages/336593069/Where+to+Find+Outage+Reports">Where to Find Outage Reports</a>
+                
+                        
+                    </div>
+    </li>
+        <li>
+        <div>
+                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+
+        <div class="details">
+                        <a href="/spaces/BTSIKB/pages/28639367/Setting+up+a+Test+in+iTest">Setting up a Test in iTest</a>
+                
+                        
+                    </div>
+    </li>
+        <li>
+        <div>
+                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+
+        <div class="details">
+                        <a href="/spaces/BTSIKB/pages/68190667/iTest+Console+or+Test+Manager+failed+to+start+because+N+A+is+not+licensed">iTest Console or Test Manager failed to start because &quot;N/A&quot; is not licensed</a>
+                
+                        
+                    </div>
+    </li>
+        <li>
+        <div>
+                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+
+        <div class="details">
+                        <a href="/spaces/BTSIKB/pages/28639356/Starting+iTest">Starting iTest</a>
+                
+                        
+                    </div>
+    </li>
+    </ul>
+</p><p><br/></p><p><br/></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/145162368/145162373.png">image2022-6-30_13-16-10.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/145162368/145162374.png">image2022-6-30_13-21-20.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/145162368/145162375.png">image2022-6-30_15-13-53.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/145162368/145162376.png">image2022-6-30_15-14-15.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/145162368/147652696">Additional Notes to BTS Install Guide</a> (application/octet-stream)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:00</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

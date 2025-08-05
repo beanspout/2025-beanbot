@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : 2020-10-23 Meeting notes - Digital Greensheet</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Meeting-notes_16601925.html">Meeting notes</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : 2020-10-23 Meeting notes - Digital Greensheet
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Chelsea Flattery</span>, last updated on Oct 23, 2020
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="id-20201023MeetingnotesDigitalGreensheet-Date">Date</h2><p><time datetime="2020-10-23" class="date-past">23 Oct 2020</time></p><h2 id="id-20201023MeetingnotesDigitalGreensheet-Attendees">Attendees</h2><ul><li><p><a class="confluence-userlink user-mention" data-username="pzqjxw" href="https://tslm-confluence.gm.com/display/~pzqjxw" data-linked-resource-id="4849670" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">Chelsea Flattery</a></p></li><li><p><a class="confluence-userlink user-mention" data-username="rzcn94" href="https://tslm-confluence.gm.com/display/~rzcn94" data-linked-resource-id="4849668" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">Paul Rabahy</a></p></li><li><a class="confluence-userlink user-mention" data-username="wz0fdw" href="https://tslm-confluence.gm.com/display/~wz0fdw" data-linked-resource-id="7242070" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">John Thornton</a></li><li><a class="confluence-userlink user-mention" data-username="dz3sk0" href="https://tslm-confluence.gm.com/display/~dz3sk0" data-linked-resource-id="7242071" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">Mingxian Tay</a></li></ul><h2 id="id-20201023MeetingnotesDigitalGreensheet-Goals">Goals</h2><ul><li>Utilization of digital greensheet<ul><li>Where will it be stored</li><li>How will it be written</li><li>Where/How will it be accessed by users</li></ul></li><li>Best means of implementation for the digital greensheet<ul><li>What system/language should be used</li><li>Is it a database?</li><li>Do we have existing software (LabCentral/PartTracker) that performs this function already?</li></ul></li><li>Create tasks<ul><li>Assign tasks</li></ul></li></ul><h2 id="id-20201023MeetingnotesDigitalGreensheet-Discussionitems">Discussion items</h2><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/><col/><col/></colgroup><tbody><tr><th class="confluenceTh">Time</th><th class="confluenceTh">Item</th><th class="confluenceTh">Who</th><th class="confluenceTh">Notes</th></tr><tr><td class="confluenceTd"></td><td class="confluenceTd"></td><td class="confluenceTd"></td><td class="confluenceTd"><ul><li></li></ul></td></tr><tr><td class="confluenceTd"><br/></td><td class="confluenceTd"> Tablets</td><td class="confluenceTd">Chelsea </td><td class="confluenceTd"><br/></td></tr></tbody></table></div><p>Data is uploaded to LabCentral, similar to Part Tracker.</p><p>Using the procedure, we can upload data at the beginning/end of the test</p><p>Part Tracker can easily track the part information, but we need to capture start/end of test events</p><p>Provide a UI to add string fields for what's happened.</p><p><br/></p><p>CSV file for each GBSL ID in Z drive for the header information with entries for what has happened. </p><p>iTest can write the test related items and users can open on the PC to add string information like &quot;swapped parts&quot;</p><p>Will Excel be on the TCWS Win10 machines</p><p>Importing CSV into a database at a later date will be relatively simple</p><p>Example:</p><p style="margin-left: 30.0px;">[Header]</p><p style="margin-left: 30.0px;">Channel1=Value</p><p style="margin-left: 30.0px;">Channel2=Value</p><p style="margin-left: 30.0px;">[Events]</p><p style="margin-left: 30.0px;">DateTime,WhoDidIt,EventText</p><p style="margin-left: 30.0px;">2020-10-23T18:18:17Z,TC10,ISO1 Test Started</p><p style="margin-left: 30.0px;">2020-10-23T18:20:17Z,TC10,ISO1 Test Completed Successfully</p><p>When did iTest start and when did it shutdown</p><p>Source for the information, was this entry written by the user or was it automated</p><p>Figure out delimiter that isn't comma for CSV file to not conflict with user input</p><p><br/></p><p>Future plan</p><p>Using a tablet or similar implementation, user can add information with date and name stamp</p><p>Procedure to manually enter notes on the main display or log header display that will pass to the database</p><p>This could be used to track changes on the test stand, a stand log that uses the same interface</p><p>Equipment issues captured to a stand log</p><p><br/></p><h3 id="id-20201023MeetingnotesDigitalGreensheet-Tasks">Tasks</h3><ul class="inline-task-list" data-inline-tasks-content-id="69767603"><li data-inline-task-id="12"><span class="placeholder-inline-tasks">Set up meeting to discuss what fields to add/remove from the existing green sheet (stand, hostname, test start and stop times)
+<span class="jira-issue resolved" data-jira-key="BCIS-605" >
+                    <a href="https://tslm-jira.gm.com/browse/BCIS-605?src=confmacro" class="jira-issue-key"><img class="icon"
+                src="https://tslm-jira.gm.com/secure/viewavatar?size=xsmall&amp;avatarId=10316&amp;avatarType=issuetype" alt="$type"/>BCIS-605</a>
+                                                <span class="aui-lozenge aui-lozenge-subtle             aui-lozenge-success
+     jira-macro-single-issue-export-pdf">Closed</span>
+                </span>
+</span></li><li data-inline-task-id="13"><span class="placeholder-inline-tasks">Determine naming convention for the file - program code file name or folder structure for ease of locating the specific green sheet 
+<span class="jira-issue resolved" data-jira-key="BCIS-606" >
+                    <a href="https://tslm-jira.gm.com/browse/BCIS-606?src=confmacro" class="jira-issue-key"><img class="icon"
+                src="https://tslm-jira.gm.com/secure/viewavatar?size=xsmall&amp;avatarId=10316&amp;avatarType=issuetype" alt="$type"/>BCIS-606</a>
+                            -
+            <span class="summary">Determine naming convention for the file - program code file name or folder structure for ease of locating the specific green sheet</span>
+                                                <span class="aui-lozenge aui-lozenge-subtle             aui-lozenge-success
+     jira-macro-single-issue-export-pdf">Closed</span>
+                </span>
+</span></li><li data-inline-task-id="14"><span class="placeholder-inline-tasks">Replicate that header information from green sheet to CSV file 
+<span class="jira-issue resolved" data-jira-key="BCIS-607" >
+                    <a href="https://tslm-jira.gm.com/browse/BCIS-607?src=confmacro" class="jira-issue-key"><img class="icon"
+                src="https://tslm-jira.gm.com/secure/viewavatar?size=xsmall&amp;avatarId=10316&amp;avatarType=issuetype" alt="$type"/>BCIS-607</a>
+                            -
+            <span class="summary">Replicate that header information from green sheet to CSV file</span>
+                                                <span class="aui-lozenge aui-lozenge-subtle             aui-lozenge-success
+     jira-macro-single-issue-export-pdf">Closed</span>
+                </span>
+</span></li><li data-inline-task-id="15"><span class="placeholder-inline-tasks">Pull the channels from iTest to fill in CSV 
+<span class="jira-issue resolved" data-jira-key="BCIS-608" >
+                    <a href="https://tslm-jira.gm.com/browse/BCIS-608?src=confmacro" class="jira-issue-key"><img class="icon"
+                src="https://tslm-jira.gm.com/secure/viewavatar?size=xsmall&amp;avatarId=10316&amp;avatarType=issuetype" alt="$type"/>BCIS-608</a>
+                            -
+            <span class="summary">Pull the channels from iTest to fill in CSV</span>
+                                                <span class="aui-lozenge aui-lozenge-subtle             aui-lozenge-success
+     jira-macro-single-issue-export-pdf">Closed</span>
+                </span>
+</span></li><li data-inline-task-id="16"><span class="placeholder-inline-tasks">Create python script to provide the interface between iTest and the file 
+<span class="jira-issue resolved" data-jira-key="BCIS-609" >
+                    <a href="https://tslm-jira.gm.com/browse/BCIS-609?src=confmacro" class="jira-issue-key"><img class="icon"
+                src="https://tslm-jira.gm.com/secure/viewavatar?size=xsmall&amp;avatarId=10316&amp;avatarType=issuetype" alt="$type"/>BCIS-609</a>
+                            -
+            <span class="summary">Create python script to provide the interface between iTest and the file</span>
+                                                <span class="aui-lozenge aui-lozenge-subtle             aui-lozenge-success
+     jira-macro-single-issue-export-pdf">Closed</span>
+                </span>
+</span></li><li data-inline-task-id="17"><span class="placeholder-inline-tasks">Create iTest procedure to interface with the python script 
+<span class="jira-issue resolved" data-jira-key="BCIS-610" >
+                    <a href="https://tslm-jira.gm.com/browse/BCIS-610?src=confmacro" class="jira-issue-key"><img class="icon"
+                src="https://tslm-jira.gm.com/secure/viewavatar?size=xsmall&amp;avatarId=10316&amp;avatarType=issuetype" alt="$type"/>BCIS-610</a>
+                            -
+            <span class="summary">Create iTest procedure to interface with the python script</span>
+                                                <span class="aui-lozenge aui-lozenge-subtle             aui-lozenge-success
+     jira-macro-single-issue-export-pdf">Closed</span>
+                </span>
+</span></li><li data-inline-task-id="18"><span class="placeholder-inline-tasks">Future Goal - Create a display for adding additional messages to the green sheet, string input ie: parts swapped</span></li></ul><h2 id="id-20201023MeetingnotesDigitalGreensheet-Actionitems">Action items</h2><ul class="inline-task-list" data-inline-tasks-content-id="69767603"><li class="checked" data-inline-task-id="20">Confirm with Tony B that Excel will be on TCWS machines with Win10 update</li></ul>
+                    </div>
+
+                                        
+                                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="comments" class="pageSectionTitle">Comments:</h2>
+                        </div>
+
+                        <table border="0" width="100%">
+                                                        <tr>
+                                <td >
+                                    <a name="comment-69767613"></a>
+                                    <font class="smallfont">$contentConverter.convertToXHtml($comment)</font>
+                                    <div align="left" class="smallfont" style="color: #666666; width: 98%; margin-bottom: 10px;">
+                                        <img src="images/icons/contenttypes/comment_16.png" height="16" width="16" border="0" align="absmiddle"/>
+                                        Posted by pzqjxw at Oct 23, 2020 14:47
+                                    </div>
+                                </td>
+                            </tr>
+                                                    </table>
+                    </div>
+                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

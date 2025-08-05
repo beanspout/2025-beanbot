@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : Cell Lab Gas Sensor Module (Ss1)</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="248348827.html">A&amp;D Software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Cell-Lab-related-articles_248348844.html">Cell Lab related articles</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Upgrading-Cell-Lab-Test-Stands-to-iTest-BTS_145162368.html">Upgrading Cell Lab Test Stands to iTest BTS</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : Cell Lab Gas Sensor Module (Ss1)
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Andrew White (C) [X]</span>, last updated by <span class='editor'> Trevor J Smith (C) [X]</span> on Aug 24, 2022
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="CellLabGasSensorModule(Ss1)-Overview">Overview</h2><p>The <a href="https://tslm-bitbucket.gm.com/projects/BTSICELL/repos/ss1.safety.system/browse" class="external-link" rel="nofollow">Gas sensor safety module (Ss1)</a> for cell lab is a stripped down version of the same set of procedures used in the wider battery lab at Warren, MI. The goal of the module is to integrate up to three analog signals from a gas detection device into the cell lab iTest solution and continuously monitor these signals and shutdown the test stand if cell off-gassing occurs. The contacts for module development information and specifics are Jeff Poole and Andy McMichael.</p><p>If one of the sensors detects a hazardous value of any of the 3 defined gas sensors, there will be relays fed a volt signal (between 12V to 15V) that when tripped, will then feed to one of the 3 analog input channels on the Bitrode cycler that voltage value and will then be read by iTest and responded to accordingly. If the LEL sensor goes off, it is designed to shut down the whole lab, sound the alarms, and close the bay doors to close off air flow to the rest of the building. If the CO or malfunction sensors go off, it will simply shut down the test and the chamber.</p><p>Per Jeff Poole, the 3 signals should be coming through channels 1, 2, and 3 on the Bitrode cycler. As of 8/24/22, the connectors have yet to be created, tested, or have the actual channels connected to on the Bitrode be standardized, so this could be subject to change. </p><h2 id="CellLabGasSensorModule(Ss1)-Integration">Integration</h2><p>There are three analog input channels set up as &quot;digital&quot; type signals for use in the module.</p><div class="panel" style="background-color: #fff;border-width: 1px;"><div class="panelContent" style="background-color: #fff;">
+<ul><li>diSs1LELSensor - set up to be used as the 'lower explosion limit' sense</li><li>diSs1COSensor - set up to be used as the Carbon Monoxide sense</li><li>diSs1SensorMalFunc - set up to be used as a general communication fault, i.e. if this sense drops then gas sensor unit is malfunctioning</li></ul><p><br/></p>
+</div></div><p>These input channels will need to be mapped to &quot;Auxillary&quot; input channels on the first Bitrode cycler for each stand. This can be achieved using the &quot;Channel Mapping&quot; feature for this module in Test Manager. The channels will read as analog input voltage signals, and are designed to trip certain faults if they read above 11 volts.</p><h2 id="CellLabGasSensorModule(Ss1)-Testing">Testing</h2><p>Once setup, the module will need to be tested. For each sense line, the signal should be manually interrupted for long enough to generate an iTest fault, or you can use an independent power supply to manually apply at least an 11V analog signal to each of the Bitrode analog channels we are monitoring*. Safety module channels can be monitored via iTest, and any irregular software behavior can be corrected by an LSIE or A&amp;D application engineer.</p><p>*NOTE: EDIT THE SYSTEM CALCULATION TO TRIGGER DUMMY FLAGS INSTEAD OF THE ACTUAL LIMIT FLAGS, OTHERWISE YOU COULD SET OFF THE LIMIT FOR THE LEL SENSOR AND DISRUPT TESTS ON OTHER CHAMBERS.</p><h2 id="CellLabGasSensorModule(Ss1)-Relatedarticles">Related articles</h2><p></p><p>
+
+
+
+
+
+
+
+
+
+
+
+<ul class="content-by-label">
+        <li>
+        <div>
+                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+
+        <div class="details">
+                        <a href="/spaces/BTSIKB/pages/115442979/I+need+to+restart+the+PC">I need to restart the PC</a>
+                
+                        
+                    </div>
+    </li>
+        <li>
+        <div>
+                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+
+        <div class="details">
+                        <a href="/spaces/BTSIKB/pages/336593069/Where+to+Find+Outage+Reports">Where to Find Outage Reports</a>
+                
+                        
+                    </div>
+    </li>
+        <li>
+        <div>
+                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+
+        <div class="details">
+                        <a href="/spaces/BTSIKB/pages/28639367/Setting+up+a+Test+in+iTest">Setting up a Test in iTest</a>
+                
+                        
+                    </div>
+    </li>
+        <li>
+        <div>
+                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+
+        <div class="details">
+                        <a href="/spaces/BTSIKB/pages/68190667/iTest+Console+or+Test+Manager+failed+to+start+because+N+A+is+not+licensed">iTest Console or Test Manager failed to start because &quot;N/A&quot; is not licensed</a>
+                
+                        
+                    </div>
+    </li>
+        <li>
+        <div>
+                <span class="icon aui-icon content-type-page" title="Page">Page:</span>        </div>
+
+        <div class="details">
+                        <a href="/spaces/BTSIKB/pages/28639356/Starting+iTest">Starting iTest</a>
+                
+                        
+                    </div>
+    </li>
+    </ul>
+</p><p><br/></p><p><br/></p>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:00</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

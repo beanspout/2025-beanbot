@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : 2020/7/27 GBSL Win10 Transition Planning Meeting</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Meeting-notes_16601925.html">Meeting notes</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : 2020/7/27 GBSL Win10 Transition Planning Meeting
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Chelsea Flattery</span>, last updated on Jul 28, 2020
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="id-2020/7/27GBSLWin10TransitionPlanningMeeting-Date">Date</h2><p><time datetime="2020-07-27" class="date-past">27 Jul 2020</time></p><h2 id="id-2020/7/27GBSLWin10TransitionPlanningMeeting-Attendees">Attendees</h2><ul><li><p><a class="confluence-userlink user-mention" data-username="pzqjxw" href="https://tslm-confluence.gm.com/display/~pzqjxw" data-linked-resource-id="4849670" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">Chelsea Flattery</a></p></li><li><p><a class="confluence-userlink user-mention" data-username="mzq7h3" href="https://tslm-confluence.gm.com/display/~mzq7h3" data-linked-resource-id="4849673" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">James Jezewski</a></p></li><li><a class="confluence-userlink user-mention" data-username="rzcn94" href="https://tslm-confluence.gm.com/display/~rzcn94" data-linked-resource-id="4849668" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">Paul Rabahy</a></li><li><a class="confluence-userlink user-mention" data-username="jz3lbc" href="https://tslm-confluence.gm.com/display/~jz3lbc" data-linked-resource-id="4849671" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">Justin Hermann</a></li><li>Joe Gleason</li><li>Anthony Barbour</li><li>Brent Griffith</li><li>Theodore Leary</li></ul><h2 id="id-2020/7/27GBSLWin10TransitionPlanningMeeting-Goals">Goals</h2><ul><li>Discuss next steps in getting Win10 implemented in the GBSL</li></ul><p><br/></p><h3 id="id-2020/7/27GBSLWin10TransitionPlanningMeeting-PreviousDiscussion">Previous Discussion</h3><p>Email sent on 7/8/2020 with the following points</p><p>With Cylance in mind, we know from past testing that Cylance has flagged:</p><ul><li>The A&amp;D Technologies folders and subprograms in the Program Files and Program Files (x86) directories</li><li>C:\ADT (and sub directories)</li><li>C:\Apps\ADT (and sub directories)</li><li>C:\Temp\To_Deploy folder</li><ul><li>This is were we deploy our lab software from the shared drive prior to install on the PC</li></ul><li>The Patches folder under \\<a href="http://ice-batna-win.gm.com" class="external-link" rel="nofollow">ice-batna-win.gm.com</a>\config drive (\\<a href="http://ice-batna-win.gm.com" class="external-link" rel="nofollow">ice-batna-win.gm.com</a>\config\Patches\) which contains:</li><ul><li>The quarterly patch from A&amp;D</li><li>AutoIT scripts that are used to deploy the patch and all assisting software (python wheels, Intrepid NeoVI software, Git, etc). </li></ul><li>The restart script in \\<a href="http://ice-batna-win.gm.com" class="external-link" rel="nofollow">ice-batna-win.gm.com</a>\config\Patches\Restart_Autologin\</li><ul><li>This automatically reboots our PCs after 10 days of uptime, while ensuring the restart doesn’t occur when the system is on test</li></ul></ul><p><br/></p><p>While many of these directories and tools have been whitelisted for Cylance in the past, there are constant changes to scripts, and things ends up getting reflagged and quarantined. </p><p>The purpose of our scripts is to prevent our team to manually install everything on 150 PCs.</p><p>Is there a way to guarantee that these directories remain excluded from the Cylance scan, so we can move forward with the Win10 update and our automated software deployment? If so, do you have an hour or 2 to work with me on configuring out setup to ensure everything works?</p><p><br/></p><h2 id="id-2020/7/27GBSLWin10TransitionPlanningMeeting-Discussionitems">Discussion items</h2><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/><col/><col/></colgroup><tbody><tr><th class="confluenceTh">Time</th><th class="confluenceTh">Item</th><th class="confluenceTh">Who</th><th class="confluenceTh">Notes</th></tr><tr><td class="confluenceTd"></td><td class="confluenceTd">Background</td><td class="confluenceTd">Chelsea</td><td class="confluenceTd"><ul><li>Brief overview of steps taken</li></ul></td></tr><tr><td class="confluenceTd"><br/></td><td class="confluenceTd"><br/></td><td class="confluenceTd"><br/></td><td class="confluenceTd"><br/></td></tr></tbody></table></div><h2 id="id-2020/7/27GBSLWin10TransitionPlanningMeeting-Actionitems">Action items</h2><ul class="inline-task-list" data-inline-tasks-content-id="60833590"><li data-inline-task-id="1">Meeting with Venu and Co. Friday</li></ul>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

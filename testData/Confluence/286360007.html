@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : List of Software &amp; Tools on the LSIE Team</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : List of Software &amp; Tools on the LSIE Team
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Constantin Balan</span>, last updated on Sep 04, 2024
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Below is a list of software and custom tools made by and used by the LSIE teams and in some cases the lab technicians.</p><h3 id="ListofSoftware&amp;ToolsontheLSIETeam-Software"><u><strong>Software</strong></u></h3><p><u><a href="https://docs.ansible.com/ansible/latest/getting_started/introduction.html" class="external-link" rel="nofollow">Ansible</a>:</u> Ansible is an automation software that can be used to automate most if not every manual task on Windows and Linux servers. Ansible runs an open-source option (currently being implemented in the battery lab) and a paid version called Ansible Automation Platform (AAP). AAP is currently in use in other departments at GM, and the idea is eventually we will get onboarded into their sphere of support once they begin supporting Windows servers.</p><p><u><a href="https://www.digi.com/products/networking/infrastructure-management/usb-connectivity/usb-over-ip/anywhereusb" class="external-link" rel="nofollow">AnywhereUSB</a>:</u> Digi's AnywhereUSB is a device that allows for multi-port USB connectivity to devices.</p><p><u><a href="https://tslm-bitbucket.gm.com/dashboard" class="external-link" rel="nofollow">Bitbucket</a>:</u> Bitbucket is a source control platform owned by Atlassian. We have multiple repositories hosted on Bitbucket for our various pieces of software. Ex. iTest solution common, the patch script, the iTest launcher, etc.</p><p><u><a href="https://tslm-confluence.gm.com/" rel="nofollow">Confluence</a>:</u> Confluence is a knowledge base tool owned by Atlassian. We use Confluence for documentation purposes on our software, tools, and processes.</p><p><u>Digibox:</u> </p><p><u><a href="https://git-scm.com/" class="external-link" rel="nofollow">Git/SCM</a>:</u> Git is a version control system used to keep, for a lack of a better word, backups of code. We use git to keep versions of our software that we publish to Bitbucket. The LSIE tends to use Git GUIs like Sourcetree to manage gitflow. There are other tools you can use Git in such as Git Tortoise and Git Bash.</p><p><u><a href="https://grafana-bat.gm.com/" class="external-link" rel="nofollow">Grafana</a>:</u> Grafana is a data visualization software. It pulls in data from data sources, in our case InfluxDB. It then can be configured to display data over time in a multitude of different graphs.</p><p><u><a href="https://icentralna.gm.com/Health" class="external-link" rel="nofollow">iCentral</a>:</u> iCentral is data aggregation and system monitoring tool for all TCWS machines running iView. Test stands will periodically publish test data to iCentral drives. There is also functionality to see a desktop view of each connected TCWS machine.</p><p><u>iView:</u> iView is a client-side software that runs along with iTest. It's used to allow iCentral to &quot;see&quot; the client iView is running on. It then sends pertinent data to iCentral.</p><p><u><a href="https://influx-bat.gm.com:8886/" class="external-link" rel="nofollow">InfluxDB</a>:</u> InfluxDB is a time-series database that is used to collect iTest data (via custom Python scripts), system stats, and specified logs (Grafana Influx engine, patch script, etc.). It receives these data points from a collection system like Telegraf or custom Python scripts and then stores the data on the Influx servers in buckets. These data points are then queried on Grafana and displayed on dashboards. </p><p><u><a href="https://jenkins-52214.op7i.gm.com/login?from=%2F" class="external-link" rel="nofollow">Jenkins</a>:</u> Jenkins is an open source CI/CD software that is hosted by the GM Jenkins team. It is being decommissioned in Q4 2024. </p><p><u><a href="https://tslm-jira.gm.com/secure/Dashboard.jspa" class="external-link" rel="nofollow">Jira</a>/<a href="https://tslm-jira.gm.com/projects/BTSIR/queues/custom/143" class="external-link" rel="nofollow">Jira Service Desk</a>:</u> Jira is a bug tracking/issue tracking software owned by Atlassian. Service Desk is a customer facing aspect of Jira that allows users to enter in tickets/issues that can automatically be filtered. We use Jira for keeping track of our work based on the projects we assign them to.</p><p><u><a href="https://gbsl.pagerduty.com/sign_in" class="external-link" rel="nofollow">PagerDuty</a>:</u> PagerDuty is an alerting software that sends pages to phone numbers, e-mails, and so on. It has an escalation system that allows alerts to be escalated to higher ups when the initial pagee misses the page. Currently in the lab we have a rotating duo of first and second shift individuals on a weekly basis.</p><p><u><a href="https://www.postgresql.org/" class="external-link" rel="nofollow">PostgreSQL Database</a>:</u> PostgreSQL is an open source relational database management system. The LSIE team has test/staging/prod instances set up with several tables already in prod such as git branch info, pc list info, and calibration info.</p><p><u><a href="https://www.sourcetreeapp.com/" class="external-link" rel="nofollow">Sourcetree</a>:</u> Sourcetree is a Git Desktop GUI owned by Atlassian. It is used to visualize branch flow and let you visualize the code inside of commits.</p><p><u><a href="https://www.influxdata.com/time-series-platform/telegraf/" class="external-link" rel="nofollow">Telegraf</a>:</u> Telegraf is a client-side data collection service. It can be configured via a .conf file that tells it what inputs and outputs to pull data in and send data to.</p><p><u>Test Automation Software (TAS)</u></p><p style="margin-left: 40.0px;"><u>A&amp;D iTest:</u></p><p style="margin-left: 40.0px;"><u>NI SystemLink:</u></p><p><u>Test.Commander:</u></p><p><u>TotalPhase USB Host Driver:</u></p><p><u>VehicleSpy:</u></p><p><u><a href="https://code.visualstudio.com/" class="external-link" rel="nofollow">Visual Studio Code</a>:</u> Visual Studio Code (VS Code) is a lightweight IDE owned by Microsoft. It's widely used as a code/text editor and can even be enabled to run as a compiler with the proper extensions installed.</p><p><strong><u>Custom Tools &amp; Languages</u></strong></p><p><u>AutoIT-Based Patch Script:</u> The patch script is a custom-built piece of software written in the Windows AutoIT automation language. It's currently used to set paths/values and install/update software relating to and supporting iTest.</p><p><u>iTest Launcher GUI:</u> The iTest GUI is a custom GUI that launches after the AutoIT patch script runs. It's used to select a branch that will be loaded into iTest to allow custom tests to be run. It currently has two version. The old version (white box with a large scrollable selection of branches) and a newer un-implemented version (Smaller/quicker version that launches in dark mode, written in Golang). Once the test cells are fitted with dedicated graphics cards, the new version will continue to be tested and rolled out once in a satisfactory state.</p><p><u>Python Support Scripts:</u> We have a multitude of python support scripts. Varying from supporting different iTest functionality to batching custom iTest data points to InfluxDB.</p><p><u>TCWS Site Logger:</u> The TCWS Site Logger is a tool is being currently developed. It will run client-side on the TCWS machines and will keep a running log of activity done on the test cells. The activity will be logged manually by users, and will then be ingested by Telegraf, sent to InfluxDB, and displayed on a Grafana dashboard.</p>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

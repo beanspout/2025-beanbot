@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : 2021-09-07 Release 3.7 notes part 1</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Meeting-notes_16601925.html">Meeting notes</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : 2021-09-07 Release 3.7 notes part 1
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Paul Rabahy</span>, last updated by <span class='editor'> Emad Eissa</span> on Sep 14, 2021
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="id-20210907Release3.7notespart1-Date">Date</h2><p><time datetime="2021-09-07" class="date-past">07 Sep 2021</time></p><h2 id="id-20210907Release3.7notespart1-Attendees">Attendees</h2><ul><li><p><a class="confluence-userlink user-mention" data-username="rzcn94" href="https://tslm-confluence.gm.com/display/~rzcn94" data-linked-resource-id="4849668" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">Paul Rabahy</a></p></li><li><p></p></li></ul><h2 id="id-20210907Release3.7notespart1-Goals">Goals</h2><ul><li>Brainstorm ideas for the version 3.7 of Solution_Common</li><li>Prioritize ideas</li><li>Set due dates/deadlines for ideas</li><li>Non-goal - Decide how many item we can/should fit into this release</li></ul><h2 id="id-20210907Release3.7notespart1-Discussionitems">Discussion items</h2><ul><li>New standards (Look in S:\For Darcy)<ul><li><span style="color:var(--ds-text-accent-blue,#0055cc);"><strong>Humid Heat Constant (Potential for hotfix)</strong></span><ul><li><span style="color:var(--ds-text-accent-blue,#0055cc);"><strong>Updated parameter</strong></span></li></ul></li><li>Frost Dew<ul><li>New release matches existing code</li></ul></li><li>PVT<ul><li>Chiller PID Tuning</li></ul></li></ul></li><li><span style="color:var(--ds-text-accent-blue,#0055cc);"><strong>Vehicle coolant control strategy</strong></span><ul><li><p><span style="color:var(--ds-text,#172b4d);">Work with VE's to ensure that it has enough parameters to avoid needing to change the code</span></p></li></ul></li><li>Re-establish/re-validate approve test matrix (program/test)</li><li>Python does not feel reliable and crashes all the time<ul><li><span style="color:var(--ds-background-accent-red-bolder,#c9372c);"><strong>Volt Temp Stats script termination - needs real fix</strong></span></li><li>Some python scripts are missing or aren't used<ul><li>Check for scripts that are only used in one branch and merge to master</li><li>Remove scripts that aren't used</li></ul></li></ul></li><li><span style="color:var(--ds-text-accent-green,#216e4e);">Combine any small fixes that are in custom branches into develop/master</span><ul><li>Reduce the number of branches in the lab</li><li>Notification of fixes that are on custom branches</li><li>Integrate small fixes as Hotfixes</li><li>Remind the operator that they aren't on the latest version of master</li></ul></li><li>An easy way to check if the stand is running the latest version of master<ul><li>Darcy already checks if a test goes down</li></ul></li><li>Sourcetree is being used. Launcher script isn't being used.</li><li><span style="color:var(--ds-text-accent-green,#216e4e);">We generate lots of data, but it isn't all useful</span><ul><li>Lots of channels that are 0 all the time</li><li>Could the names be improved?</li><li>Hard to find things in iCentral<ul><li>Not confident that all data is uploaded to iCentral</li></ul></li></ul></li><li>Low iso improvements<ul><li><span style="color:var(--ds-text-accent-blue,#0055cc);"><strong>Continue to take isolation readings after the initial fault.</strong></span></li><li><span style="color:var(--ds-background-accent-red-bolder,#c9372c);"><strong>Isolation readings on the truck are half of actual value.</strong></span><ul><li>(2 sub-packs)</li></ul></li><li>Adapt for multiple high voltage connectors</li><li>Perform ISO without turning on the pack</li><li>Make the ISO test faster by using stability parameter instead of clock time</li></ul></li><li>Integrate with new low voltage harness<ul><li>Andy working on hardware</li><li>Should enable us to pull truck branches into master</li></ul></li><li>Offsite facility support<ul><li>Due October</li></ul></li><li>Implement current limits per HV connector to protect fuse</li><li>Verify that all profiles exist<ul><li>3.2 profile in RTEC</li><li>Square in Humid Heat</li></ul></li><li>Module/Pack configuration screen<ul><li>Save values<ul><li>There is a manual re-read ini button</li><li>Doesn't appear to be 100% reliable</li></ul></li></ul></li></ul><p><span style="color:var(--ds-background-accent-red-bolder,#c9372c);">Red - Highest Priority</span></p><p><span style="color:var(--ds-text-accent-blue,#0055cc);">Blue - High Priority</span></p><p><span style="color:var(--ds-text-accent-green,#216e4e);">Green - Top Nice To Have</span></p><h2 id="id-20210907Release3.7notespart1-Actionitems">Action items</h2><ul class="inline-task-list" data-inline-tasks-content-id="108790168"><li data-inline-task-id="1"><span>&nbsp;</span></li></ul>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

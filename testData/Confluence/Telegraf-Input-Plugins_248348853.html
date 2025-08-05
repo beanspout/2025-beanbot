@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : Telegraf Input Plugins</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Telegraf_248348851.html">Telegraf</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : Telegraf Input Plugins
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Constantin Balan</span> on Feb 05, 2024
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>This page is an overview of all of the input data plugins Telegraf is pulling/is planned on pulling from the lab PCs. Inputs in Telegraf are fields sourced from different tools on the computer that aggregate the data, then push it off into an output source (in our case, InfluxDB). The ones included below are plugins that we currently have or plan on having in the near future in the <a href="https://tslm-bitbucket.gm.com/projects/BTSILIB/repos/metrics_influx/browse/telegraf.conf" class="external-link" rel="nofollow">Telegraf.conf file</a>.</p><p><u><strong>Telegraf Plugins</strong></u></p><p>The input plugins below are open source and compile their fields from <strong style="text-align: left;"><a href="https://learn.microsoft.com/en-us/windows/win32/wmisdk/wmi-start-page" class="external-link" rel="nofollow">Windows Management Instrumentation</a>. </strong></p><p><u><a href="https://github.com/influxdata/telegraf/blob/master/plugins/inputs/cpu/README.md" class="external-link" rel="nofollow">inputs.cpu</a></u></p><p style="">The<span> </span><code>cpu</code><span> </span>plugin gather metrics on the system CPUs.</p><p><a href="https://github.com/influxdata/telegraf/blob/master/plugins/inputs/disk/README.md" class="external-link" rel="nofollow"><u>inputs.disk</u></a></p><p style="">The disk input plugin gathers metrics about disk usage.</p><p style=""><u><a href="https://github.com/influxdata/telegraf/blob/master/plugins/inputs/internal/README.md" class="external-link" rel="nofollow">inputs.internal</a></u></p><p style="">The<span> </span><code>internal</code><span> </span>plugin collects metrics about the telegraf agent itself.</p><p style=""><a href="https://github.com/influxdata/telegraf/blob/master/plugins/inputs/net/README.md" class="external-link" rel="nofollow"><u>inputs.net</u></a></p><p style="">This plugin gathers metrics about network interface and protocol usage (Linux only).</p><p style=""><a href="https://github.com/influxdata/telegraf/blob/master/plugins/inputs/net_response/README.md" class="external-link" rel="nofollow"><u>inputs.net_response</u></a></p><p style="">The input plugin test UDP/TCP connections response time and can optionally verify text in the response.</p><p style=""><a href="https://github.com/influxdata/telegraf/blob/master/plugins/inputs/netstat/README.md" class="external-link" rel="nofollow"><u>inputs.netstat</u></a></p><p style="">This plugin collects TCP connections state and UDP socket counts by using<span> </span><code>lsof</code>.</p><p style=""><a href="https://github.com/influxdata/telegraf/blob/master/plugins/inputs/win_perf_counters/README.md" class="external-link" rel="nofollow"><u>inputs.win_perf_counters</u></a></p><p style="">This plugin is used to read Performance Counters on Windows operating systems.</p><p style="">The configuration is parsed and then tested for validity, such as whether the Object, Instance and Counter exist on Telegraf startup.</p><p style=""><strong>This consists of multiple custom measurements/objects that were created years ago. This is subject to change &amp; clean up.</strong></p><p style=""><br/></p><p style=""><strong><u>Telegraf Plugins to be implemented (As o</u></strong><u><strong>f<u> 2/5/2024)</u></strong></u></p><p style=""><a href="https://github.com/influxdata/telegraf/blob/master/plugins/inputs/system/README.md" class="external-link" rel="nofollow"><u>inputs.system</u></a></p><p style=""><span style="color:var(--ds-text,#172b4d);">The system plugin gathers general stats on system load, uptime, and number of users logged in. It is similar to the unix <code style="">uptime</code> command.</span></p><p style=""><u><span style="color:var(--ds-text,#172b4d);"><a href="https://github.com/influxdata/telegraf/blob/master/plugins/inputs/mem/README.md" class="external-link" rel="nofollow">inputs.mem</a></span></u></p><p style="">The mem plugin collects system memory metrics.</p><p style="">For a more complete explanation of the difference between<span> </span><em>used</em><span> </span>and<span> </span><em>actual_used</em><span> </span>RAM, see<span> </span><a style="text-decoration: underline;" href="http://www.linuxatemyram.com/" rel="nofollow" class="external-link">Linux ate my ram</a></p><p style=""><br/></p><p style=""><br/></p>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

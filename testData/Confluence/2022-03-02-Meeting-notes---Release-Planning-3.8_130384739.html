@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : 2022-03-02 Meeting notes - Release Planning 3.8</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Meeting-notes_16601925.html">Meeting notes</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : 2022-03-02 Meeting notes - Release Planning 3.8
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Skylar Katsaros</span> on Mar 15, 2022
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="id-20220302MeetingnotesReleasePlanning3.8-Date">Date</h2><p><time datetime="2022-03-02" class="date-past">02 Mar 2022</time></p><h2 id="id-20220302MeetingnotesReleasePlanning3.8-Attendees">Attendees</h2><ul><li><p><a class="confluence-userlink user-mention" data-username="mz9p03" href="https://tslm-confluence.gm.com/display/~mz9p03" data-linked-resource-id="7242067" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">Skylar Katsaros</a></p></li><li><p><a class="confluence-userlink user-mention" data-username="rzcn94" href="https://tslm-confluence.gm.com/display/~rzcn94" data-linked-resource-id="4849668" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">Paul Rabahy</a></p></li><li>Charles Quinn</li><li><a class="confluence-userlink user-mention" data-username="dzhsf2" href="https://tslm-confluence.gm.com/display/~dzhsf2" data-linked-resource-id="7242069" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">Michael Holland</a></li><li><a class="confluence-userlink user-mention" data-username="JZDJ5G" href="https://tslm-confluence.gm.com/display/~JZDJ5G" data-linked-resource-id="108790604" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">Constantin Balan</a></li><li><a class="confluence-userlink user-mention" data-username="hz1214" href="https://tslm-confluence.gm.com/display/~hz1214" data-linked-resource-id="13633975" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">Collin Winans</a></li><li><a class="confluence-userlink user-mention" data-username="pzqjxw" href="https://tslm-confluence.gm.com/display/~pzqjxw" data-linked-resource-id="4849670" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">Chelsea Flattery</a></li><li>Albert K</li><li>Alex C</li><li><a class="confluence-userlink user-mention" data-username="HZRLV3" href="https://tslm-confluence.gm.com/display/~HZRLV3" data-linked-resource-id="80117959" data-linked-resource-version="3" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">Emad Eissa</a></li><li>Nathan G</li><li><a class="confluence-userlink user-mention" data-username="RZZWQV" href="https://tslm-confluence.gm.com/display/~RZZWQV" data-linked-resource-id="80117993" data-linked-resource-version="3" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">Kazi Hossain</a></li><li><a class="confluence-userlink user-mention" data-username="NZ5FW2" href="https://tslm-confluence.gm.com/display/~NZ5FW2" data-linked-resource-id="80117994" data-linked-resource-version="3" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">Nguyen Phan</a></li><li>Nicholas R</li><li><a class="confluence-userlink user-mention" data-username="gz7z2k" href="https://tslm-confluence.gm.com/display/~gz7z2k" data-linked-resource-id="7242064" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">Eric Zhang</a></li></ul><h2 id="id-20220302MeetingnotesReleasePlanning3.8-Discussionitems">Discussion items</h2><ol><li>Charles - Button to show current SOC%<ol><li>Pass DRBTR = +/- 1 tolerance</li><li>OCV to SOC lookup normally used</li></ol></li><li>Charles - Highest value and lowest value of isolation values<ol><li>Iso1 flow chart, upper bound, lower bound, actual values received</li><li>SVE(Andrew Rohr/Adriana/Bryan Nance) team may know standard isolation values (500 ohms/volt?)</li><li>Power moding (drive vs charge mode)</li></ol></li><li>Alex - Software level included in test request (BRFM version number/BSM version)</li><li>Nathan - Dropdown before isolation test, how many high voltage connections we have<ol><li>Show correct value in case cut in half by double hook-ups</li><li>RDU/IPE connected affects values</li><li>RWD/AWD configures how it is hooked up</li></ol></li><li>Charles - Which faulted cell value is low voltage,without having to open blackbox log<ol><li>Track trends of min cell voltage</li><li>Batt1 display color code red if limit is too low</li><li>vsBLINC1MinCellVoltage; (SOC/ISO ntrans)</li></ol></li><li>Nathan - Fault messages don't have enough information to dig into issue<ol><li>What we can do to fix this or what may have caused the issue</li><li>Fault tree connected to fault message</li><li>(<a class="confluence-userlink user-mention" data-username="RZZWQV" href="https://tslm-confluence.gm.com/display/~RZZWQV" data-linked-resource-id="80117993" data-linked-resource-version="3" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">Kazi Hossain</a> may have something related to this through LabView)</li></ol></li><li>Albert - Startup process easier<ol><li>Too many windows when starting a test where VEs skip to quicken process</li><li>Determining leader stand</li></ol></li><li>Alex - Log window on bottom when iTest completes several tasks does not verify a specific process is completed<ol><li>Readying system message is clear; Engineer thinking iTest is ready to run but process was not fully finished, ends up faulting when trying to run another window/test</li><li>Last line when task is complete should be bold or says it is done completing that specific task</li><li>Status and progress notifications example: clearing a fault/reset system doesn't verify that fault has been cleared and system is ready</li></ol></li><li>Alex - Troubleshooting options for various fault messages without talking to LSIE team</li><li>Nathan - Fault message and nominal window: fault may come up when first starting test process takes too long<ol><li>Simple faults may take 10 minutes to fix before continuing to test</li></ol></li><li>Legacy packs: Do we still need to support these? HEV4, etc.</li><li>Charles - Text version of release notes; aside from PowerPoint <ol><li><a class="confluence-userlink user-mention" data-username="HZRLV3" href="https://tslm-confluence.gm.com/display/~HZRLV3" data-linked-resource-id="80117959" data-linked-resource-version="3" data-linked-resource-type="userinfo" data-base-url="https://tslm-confluence.gm.com">Emad Eissa</a></li></ol></li><li>Paul - For upcoming packs (BEV+/BEV Prime) challenges we see before the packs arrive? Anything significantly different with these packs from a communication standpoint?<ol><li>Excel database with program information reference</li></ol></li><li>Alex - Software update on existing pack: how is information transferred to LSIE team?<ol><li>Communication of a given pack</li><li>Better index of software version of pack, if new version in test request; dive in and determine differences</li><li>Alex will discuss with Rob Clark about adding textbox under DUT section on CTMS</li></ol></li></ol><p><br/></p><p><br/></p>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

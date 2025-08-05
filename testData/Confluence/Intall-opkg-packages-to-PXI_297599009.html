@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : Intall opkg packages to PXI</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="NI-Software_248348831.html">NI Software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="WBCIC---Wallace-Battery-Cell-Innovation-Center_183370389.html">WBCIC - Wallace Battery Cell Innovation Center</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : Intall opkg packages to PXI
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Collin Winans</span>, last updated on Oct 14, 2024
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>The PXIs install linux packages through a tool called opkg. (It works similar to apt, if you are familiar with linux)</p><p>Unfortunately, opkg does not seem to work directly through the GMLAN. NI has a procedure to connect a separate computer to use as a gateway via MAX:</p><p><a href="https://knowledge.ni.com/KnowledgeArticleDetails?id=kA03q000000wwuSCAQ&amp;l=en-US" class="external-link" rel="nofollow">https://knowledge.ni.com/KnowledgeArticleDetails?id=kA03q000000wwuSCAQ&amp;l=en-US</a></p><p><br/></p><p>I got this to work on my laptop by connecting an ethernet cable from my laptop to the test site local switch and setting a static IP on my laptop of 172.10.101.2</p><p>Disconnect the PXI from the GMLAN network (pull the ethernet cable from the black patch panel) but leave it connected to the local site network switch. Then follow the instructions at the above link</p><p><br/></p><p><br/></p><p>For example, I installed the following to run diagnostics for hard drive/RAM errors:</p><blockquote><p><span style="color:var(--ds-text-accent-lime-bolder,#37471f);">For this station with the input/output errors, we are suspecting a disk or memory issue, so we would like to run some tests to check them:</span><br style="text-align: left;"/><br style="text-align: left;"/><span style="color:var(--ds-text-accent-lime-bolder,#37471f);">From the terminal in the PXI (or remoting through ssh from a PC) please do:</span><br style="text-align: left;"/><br style="text-align: left;"/><span style="color:var(--ds-text-accent-lime-bolder,#37471f);">1. 'opkg install memtester' and 'opkg install smartmontools'</span><br style="text-align: left;"/><span style="color:var(--ds-text-accent-lime-bolder,#37471f);">2. run `smartctl --all /dev/nvme0`</span><br style="text-align: left;"/><span style="color:var(--ds-text-accent-lime-bolder,#37471f);">3. For running memtester, it is probably best to run from safemode (you can direct the target to restart in safe mode from MAX) to test the most amount of memory. We would like to test it with most of the free memory and for a few interactions as arguments. (For more details on memtester: <a href="https://linux.die.net/man/8/memtester" class="external-link" rel="nofollow">https://linux.die.net/man/8/memtester</a> )- Note that it is recommended to run memtester with root privileges. You should aim close to the amount of free memory you are seeing, in MAX for example, if memtester cannot allocate all of it, it will reduce the amount and try again.</span></p></blockquote>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

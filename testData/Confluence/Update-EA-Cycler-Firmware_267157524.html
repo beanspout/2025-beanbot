@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : Update EA Cycler Firmware</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="NI-Software_248348831.html">NI Software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="WBCIC---Wallace-Battery-Cell-Innovation-Center_183370389.html">WBCIC - Wallace Battery Cell Innovation Center</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : Update EA Cycler Firmware
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Collin Winans</span>, last updated on Jun 06, 2024
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Here is the official process from EA, <s>unfortunately it doesn't work because GM IT blocks all programs from writing to USB devices</s>. Tony Barbour informed me that it <em>should </em>work as long as you have USB write permissions, apparently my computer is acting up.</p><p>There are two cycler models: PSB 10010-1000 and PSB 10010-340</p><p><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="/download/attachments/267157524/EA%20Firmware%20Update%20.docx?version=1&amp;modificationDate=1713371715141&amp;api=v2" data-nice-type="Word Document" data-file-src="/download/attachments/267157524/EA%20Firmware%20Update%20.docx?version=1&amp;modificationDate=1713371715141&amp;api=v2" data-linked-resource-id="267157525" data-linked-resource-type="attachment" data-linked-resource-container-id="267157524" data-linked-resource-default-alias="EA Firmware Update .docx" data-mime-type="application/vnd.openxmlformats-officedocument.wordprocessingml.document" data-has-thumbnail="true" data-linked-resource-version="1" data-can-edit="true" aria-label="EA Firmware Update .docx" draggable="false"><img src="rest/documentConversion/latest/conversion/thumbnail/267157525/1" height="250" alt="" draggable="false"/></a><span class="companion-edit-button-placeholder edit-button-overlay" data-linked-resource-container-id="267157524" data-linked-resource-id="267157525" data-template-name="companionEditIcon" data-source-location="embedded-attachment"></span></span></p><p><br/></p><p>Here is a backdoor process to flash firmware on the KE unit (communication unit) of the cyclers. If the update fails and bricks the cycler, this should also be able to recover it. </p><p>I don't currently have a backdoor process to update the HMI (screen) or DR (power stage)</p><p><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="/download/attachments/267157524/UPDTAE_KE_FIRMWARE_1_10K.pdf?version=1&amp;modificationDate=1713371906904&amp;api=v2" data-nice-type="PDF Document" data-file-src="/download/attachments/267157524/UPDTAE_KE_FIRMWARE_1_10K.pdf?version=1&amp;modificationDate=1713371906904&amp;api=v2" data-linked-resource-id="267157526" data-linked-resource-type="attachment" data-linked-resource-container-id="267157524" data-linked-resource-default-alias="UPDTAE_KE_FIRMWARE_1_10K.pdf" data-mime-type="application/pdf" data-has-thumbnail="true" data-linked-resource-version="1" data-can-edit="true" aria-label="UPDTAE_KE_FIRMWARE_1_10K.pdf" draggable="false"><img src="rest/documentConversion/latest/conversion/thumbnail/267157526/1" height="250" alt="" draggable="false"/></a><span class="companion-edit-button-placeholder edit-button-overlay" data-linked-resource-container-id="267157524" data-linked-resource-id="267157526" data-template-name="companionEditIcon" data-source-location="embedded-attachment"></span></span><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="/download/attachments/267157524/Unbrick%20KE%20Unit%203.06.zip?version=1&amp;modificationDate=1713371923633&amp;api=v2" data-nice-type="Zip Archive" data-file-src="/download/attachments/267157524/Unbrick%20KE%20Unit%203.06.zip?version=1&amp;modificationDate=1713371923633&amp;api=v2" data-linked-resource-id="267157527" data-linked-resource-type="attachment" data-linked-resource-container-id="267157524" data-linked-resource-default-alias="Unbrick KE Unit 3.06.zip" data-mime-type="application/zip" data-has-thumbnail="false" data-linked-resource-version="1" data-can-edit="true" aria-label="Unbrick KE Unit 3.06.zip" draggable="false"><img src="download/resources/com.atlassian.confluence.plugins.confluence-view-file-macro:view-file-macro-resources/images/placeholder-medium-zip.png" height="250" alt="" draggable="false"/><span class="title">Unbrick KE Unit 3.06.zip</span></a><span class="companion-edit-button-placeholder edit-button-overlay" data-linked-resource-container-id="267157524" data-linked-resource-id="267157527" data-template-name="companionEditIcon" data-source-location="embedded-attachment"></span></span></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/267157524/267157525.docx">EA Firmware Update .docx</a> (application/vnd.openxmlformats-officedocument.wordprocessingml.document)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/267157524/267157526.pdf">UPDTAE_KE_FIRMWARE_1_10K.pdf</a> (application/pdf)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/267157524/267157527.zip">Unbrick KE Unit 3.06.zip</a> (application/zip)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

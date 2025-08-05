@@ -1,0 +1,52 @@
+[Related to bullet 1]
+-DO THIS AS SOON AS DANA GIVES YOU THE GO AHEAD ON THE NEXT PC TO UPGRADE, IT WILL SAVE TIME
+If there's a PC that needs to be upgraded, there's a ticket here to do so, 
+IT Store - Shop for Services (gm.com), selecting Technician assistance and 
+telling Andy which TCWS (test cell work station) it is should be enough.
+To get the TCWS info, simply go to Windows Settings > System > About, and
+it will simply be the device name. If you can't find it in the dropdown on the 
+IT site, select "Searched and asset not found" from the dropdown and enter the 
+necessary info from there. The PC will be down for around a day or two between 
+the upgrade and installs.
+
+[Related to bullet 3]
+-To get the .c2v file from the test cell PC to your laptop to send to Craig, place the
+.c2v file in Z:\A_N_D_Folder, and you should be able to access it from there. To map the
+Z: drive on your laptop and/or the test cell PC, in Windows File Explorer, go to This PC, and
+using the topbar options, select "Computer" > "Map Network Drive", set 'Drive' to Z: and
+'Folder' to \\ice-batna-win.gm.com\Config and you should be all set.
+
+[Related to bullet 4]
+-If you can't find the Digi serial hub:
+1. Make sure the correct ethernet cables are plugged into the correct NIC ports on the PC
+2. Use DigiDeviceDiscovery.exe in the Digibox install folder to check the status of the switch
+
+[Related to bullet 9]
+-Check that the IPs for the "IO Rack" and "Serial" Ethernet ports are set accordingly:
+IO Rack: 192.168.128.254, 255.255.255.0
+Serial: 20.0.0.1, 255.255.255.0
+
+-I would set the "StartDriver" procedures to not have the ";SILENT" handle at the end to be
+able to see what the drivers are actually doing to help troubleshoot problems. If you have
+issues with the chambers not responding but the driver is started, make sure to check the Digi
+devices either next to or behind the chambers. There should be a small black box with a black
+power cable and a blue ethernet running to one side, and a black and yellow ethernet connected
+to the other side. Make sure the black and yellow ethernet cables are connected to the middle 2
+of the 4 ports on the opposite side of the blue ethernet cable, and the yellow should be closer
+to the side of the box that the blue ethernet cable is connected to, while the black one goes
+to the other open port in the middle.
+
+-If you start iTest and the thermocouples like tBattNegative are not reading correctly, check
+CirAssignChans.dat for whether or not the respective channels are assigned to anything, check
+the assigned channels for the circuits by going to the "Circuit Editor" window under "Battery 
+Setup" in the Test Manager solution tree, and check the Bitrode driver "Assignable database" 
+at the bottom of the driver configuration window in Test Manager and make sure any of the 
+tCyclerX_1X Channels are on "Slot" 3.
+
+[Related to bullet 10]
+-If there are issues with getting iTest to connect with LabCentral, even if you use "Test
+Connection" from the iView setup from the bottom right of the taskbar tray, it may be an issue
+with LabCentral "handshaking back", in which case you just need to make an edit to the
+description of the "BcTS" Test System Group in LabCentral, under Test Systems. When you make
+an edit and select "save", it will force a communication push TO the iTest machine and you
+should be able to make a connection.

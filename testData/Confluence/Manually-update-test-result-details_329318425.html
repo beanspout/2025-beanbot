@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : Manually update test result details</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="NI-Software_248348831.html">NI Software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="WBCIC---Wallace-Battery-Cell-Innovation-Center_183370389.html">WBCIC - Wallace Battery Cell Innovation Center</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : Manually update test result details
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Collin Winans</span> on Feb 26, 2025
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p><a href="https://forums.ni.com/t5/SystemLink/how-to-modify-existing-test-result-record/td-p/4218677" class="external-link" rel="nofollow">https://forums.ni.com/t5/SystemLink/how-to-modify-existing-test-result-record/td-p/4218677</a></p><p><br/></p><p> If a SystemLink test record is created with incorrect metadata, is there a way to change it?  Specifically, if a device serial number is mistyped when the tests are run, and the results are valid, but get stored in Systemlink with the wrong serial number, is there a way to edit the existing test record to correct the SN without throwing away the test results?</p><p><br/></p><p>If you click on the ? on the top right of the page and open the HTTP API you can use the POST nitestmonitor/v2/update-results to update the test result record. In the example below, I opened Chrome's Developer Tools (Network tab) from the test result detailed view that I wanted to update. I then copied the response from the query-results call and pasted it into the swagger documentation. I then changed the serial number and submitted the response. This ensures that all of the other attributes of the test result stay the same and only the serial number is updated.</p><p><br/></p><p><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image" draggable="false" src="attachments/329318425/329318426.png" data-image-src="attachments/329318425/329318426.png" data-unresolved-comment-count="0" data-linked-resource-id="329318426" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2025-2-26_12-31-48.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="329318425" data-linked-resource-container-version="1" tabindex="0" alt=""></span></p><p><br/></p><p>thanks for the great reply!  this worked to allow me to correct some serial numbers that were entered incorrectly.</p><p><br/></p><p>for anyone else reading this who might be unfamiliar with chrome dev tools (like i was), i've attached an annotated screen capture showing what i had to do to get the XML text to modify and paste into the API interface.</p><p><br/></p><p>the 3 important selections are marked with red boxes.  to get here, view the test result you want to edit in Syslink test monitor.  then open the developer tools (ctrl+shift+i) to get the screen shown.</p><p><br/></p><ol><li data-uuid="2b5d720a-4ea5-4180-a3f9-7325f151ea7f"><span>click Network</span></li><li data-uuid="ae05911a-1c0f-47e8-891f-c3a77d09c79c"><span>enter &quot;query-results&quot; into the search field (otherwise it might be overwhelmed or bumped to the bottom of the list)</span></li><li data-uuid="d25e13cc-4765-4d95-a850-446f1d226d1c"><span>click the first instance in the list of query-results to select it</span></li><li data-uuid="0f8ee39d-47da-4167-9f07-7831f527511a"><span>click &quot;response&quot; to display the XML text (marked with green box)</span></li><li data-uuid="cf14d8b4-bdcf-4ed2-a606-578a8010f58e"><span>use home, shift+end to select the very long string of text, then copy it to a text editor for modification</span></li></ol><p><br/></p><p><br/></p><p><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image" draggable="false" src="attachments/329318425/329318427.png" data-image-src="attachments/329318425/329318427.png" data-unresolved-comment-count="0" data-linked-resource-id="329318427" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2025-2-26_12-31-48-1.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="329318425" data-linked-resource-container-version="1" tabindex="0" alt=""></span></p><p><span>marked up developer tools view</span></p><p><br/></p><p><cite>From &lt;<a href="https://forums.ni.com/t5/SystemLink/how-to-modify-existing-test-result-record/td-p/4218677" class="external-link" rel="nofollow">https://forums.ni.com/t5/SystemLink/how-to-modify-existing-test-result-record/td-p/4218677</a>&gt; </cite></p><p><br/></p><p><br/></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/329318425/329318426.png">image-2025-2-26_12-31-48.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/329318425/329318427.png">image-2025-2-26_12-31-48-1.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

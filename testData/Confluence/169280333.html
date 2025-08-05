@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTSI Lab Systems Integration : Jenkins Nodes/Agents And How They Work</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">BTSI Lab Systems Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="BTSI-LSIE_16580625.html">BTSI LSIE</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="248348834.html">CI/CD Software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Jenkins-for-Solution-Common_152272898.html">Jenkins for Solution Common</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            BTSI Lab Systems Integration : Jenkins Nodes/Agents And How They Work
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Constantin Balan</span>, last updated on Apr 26, 2023
+    
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>This is going to be a page to describe how Nodes/Agents operate, how they connect to the Jenkins controller, and relevant links for debugging &amp; general knowledge.</p><p><strong><u>Step 1: Navigating to the nodes</u></strong></p><p>Initially, you will have to go to the executors page, which you can find here on the dashboard:<br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="250" width="576" src="attachments/169280333/195788895.png" data-image-src="attachments/169280333/195788895.png" data-unresolved-comment-count="0" data-linked-resource-id="195788895" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2023-4-26_12-11-0.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="169280333" data-linked-resource-container-version="4" tabindex="0" alt=""></span></p><p><u><strong>Step 2: Creating a new node</strong></u></p><p>Once you've gotten to the nodes page, you can select the &quot;New Node&quot; button shown below:<br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="250" width="765" src="attachments/169280333/195788896.png" data-image-src="attachments/169280333/195788896.png" data-unresolved-comment-count="0" data-linked-resource-id="195788896" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2023-4-26_12-12-19.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="169280333" data-linked-resource-container-version="4" tabindex="0" alt=""></span></p><p><u><strong>Step 3:</strong></u></p><p>For you, the fields on this page will be empty. But for the sake of this tutorial/step-through I'll be using a node that I've already set up on TC26B.</p><p><u>Name:</u> This is the name you're giving your node. It's entirely up to personal preference what this is set to.</p><p><u>Description:</u> This can be anything, it has no use other than describing the node.</p><p><u># of executors:</u> The number of executors denotes the number of jobs/executors that can be running on the node at once. Due to the nature of iTest, we set this to 1.</p><p><u>Remote root directory:</u> The remote root directory should be set to where you have Jenkins installed on the node. I installed Jenkins in the C:\ directory for simplicity.</p><p><u>Labels:</u> The labels you enter correspond to the labels you may have set up in the Jenkinsfile of a job. For example, you can set up your Jenkinsfile to look for nodes with the &quot;iTest&quot; label. So if you were to set one of your labels to &quot;iTest&quot; on this page, this node would run that job. The labels are separated by a space if you have more than one.</p><p><u>Usage:</u> This depends on your use case, but for the sake of our pipelines, we'll be setting Usage to &quot;Only build jobs with label expressions matching this node&quot;.</p><p><u>Launch method:</u> Due to how our instance is set up through an IT hosted kubernetes service, we'll be using &quot;Launch agents via SSH&quot;.</p><p>When selecting &quot;Launch agents via SSH&quot;, the following options will show up:</p><p><u>Host:</u> The hostname here should be the IP of your agent. The security defined fence (SDF) may cause problems with connection here if the DNS isn't added to a list by IT, so you should make sure that the SDF isn't blocking the connection if you're running into problems.</p><p><u>Credentials:</u> Here you should be creating a username with password, where the username is the user that logs onto the node along with the password for the node.</p><p><u>Host Key Verification Strategy:</u> You can set this to &quot;Non verifying Verification Strategy&quot; due to the nature of the kubernetes server we're using. This has been confirmed to be the option to use by the IT team that hosts it. Is it the most secure way? No, but it's what we have to deal with for our given situation.</p><p><u>Availability:</u> Set this to &quot;Keep this agent online as much as possible&quot; unless you have an explicit reason to not.</p><p><u>Environment Variables:</u> In an ideal scenario, you would be able to use the jenkinsfile to pull environment variables. However I was no able to achieve this because the jenkinsfile would pull the environment variables off of the Jenkins controller instead of the node. Therefore the iTestDirectory environment variable has been hardcoded there. This isn't good practice or ideal, but it works the job we're trying to accomplish. This will have to be swapped out when the path/version of iTest gets updated, so if we were to have ten's of nodes, this causes a glaringly obvious problem. For now this is the way of getting environment variables to work on the nodes. If anyone finds a better way of doing so, please feel free to update this documentation page with the proper way of doing so. </p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="400" src="attachments/169280333/195788894.png" data-image-src="attachments/169280333/195788894.png" data-unresolved-comment-count="0" data-linked-resource-id="195788894" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2023-4-26_12-7-57.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="169280333" data-linked-resource-container-version="4" tabindex="0" alt=""></span></p><p>Once you've entered all of the fields in properly, hit &quot;Save&quot;. The agent should automatically try to connect, but if it doesn't there is a button on the node's main page to launch the agent. If everything is configured correctly, you should see this message at the bottom of the log:<br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-content-image-border" draggable="false" height="400" src="attachments/169280333/195788931.png" data-image-src="attachments/169280333/195788931.png" data-unresolved-comment-count="0" data-linked-resource-id="195788931" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2023-4-26_12-55-46.png" data-base-url="https://tslm-confluence.gm.com" data-linked-resource-content-type="image/png" data-linked-resource-container-id="169280333" data-linked-resource-container-version="4" tabindex="0" alt=""></span></p><p>Congrats, your node is connected! </p><p><a href="https://wiki.jenkins.io/JENKINS/Step-by-step-guide-to-set-up-master-and-agent-machines-on-Windows.html" class="external-link" rel="nofollow">Jenkins : Step by step guide to set up master and agent machines on Windows</a></p><p>Why we want to use agents: <a href="https://www.jenkins.io/doc/book/security/controller-isolation/" class="external-link" rel="nofollow">Controller Isolation (jenkins.io)</a></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/169280333/195788894.png">image-2023-4-26_12-7-57.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/169280333/195788895.png">image-2023-4-26_12-11-0.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/169280333/195788896.png">image-2023-4-26_12-12-19.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/169280333/195788931.png">image-2023-4-26_12-55-46.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Aug 05, 2025 11:01</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>
