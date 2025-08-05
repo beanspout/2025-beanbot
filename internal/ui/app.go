@@ -107,7 +107,7 @@ func (b *BeanBot) createFooter() *fyne.Container {
 func (b *BeanBot) createMainContent() fyne.CanvasObject {
 	// Create input area components - clean chat interface without labels
 	inputEntry := widget.NewMultiLineEntry()
-	inputEntry.SetPlaceHolder("Describe your issue, ... (Example: I'm having trouble with system communication or getting an error message, hint: Upload screenshots or logs so I can get more context on your problem)")
+	inputEntry.SetPlaceHolder("Describe your issue, ... (Example: I'm having trouble with system communication or getting an error message, hint: Upload screenshots, log files, or error reports so I can get more context on your problem)")
 	inputEntry.Wrapping = fyne.TextWrapWord   // Enable word wrapping for input too
 	inputEntry.Resize(fyne.NewSize(800, 100)) // Set a reasonable height for input
 

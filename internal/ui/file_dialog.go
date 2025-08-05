@@ -53,9 +53,11 @@ func ShowFileDialog() ([]string, error) {
 	// Create filter string for supported file types using UTF-16 directly
 	filterParts := []string{
 		"All Supported Files",
-		"*.txt;*.pdf;*.docx;*.html;*.png;*.jpg;*.jpeg;*.bmp;*.gif;*.tiff",
+		"*.txt;*.log;*.logs;*.pdf;*.docx;*.html;*.png;*.jpg;*.jpeg;*.bmp;*.gif;*.tiff",
 		"Text Files (*.txt)",
 		"*.txt",
+		"Log Files (*.log, *.logs)",
+		"*.log;*.logs",
 		"PDF Files (*.pdf)",
 		"*.pdf",
 		"Word Documents (*.docx)",

@@ -311,10 +311,28 @@ func (kb *KnowledgeDatabase) loadTextFiles(dirPath string) {
 		if entry.IsDir() {
 			// Recursively load from subdirectories
 			kb.loadTextFiles(fullPath)
-		} else if strings.HasSuffix(lowerName, ".txt") {
-			// Load text files
+		} else if strings.HasSuffix(lowerName, ".log") || strings.HasSuffix(lowerName, ".logs") ||
+			(strings.Contains(lowerName, "log") && strings.HasSuffix(lowerName, ".txt")) {
+			// Load and parse log files
 			if data, err := os.ReadFile(fullPath); err == nil {
-				kb.textFiles[entry.Name()] = string(data)
+				content := kb.parseLogFile(string(data), entry.Name())
+				if content != "" {
+					kb.textFiles[entry.Name()] = content
+					kb.filePaths[entry.Name()] = fullPath
+				}
+			}
+		} else if strings.HasSuffix(lowerName, ".txt") {
+			// Load text files (check if they might be log files)
+			if data, err := os.ReadFile(fullPath); err == nil {
+				rawContent := string(data)
+				if kb.isLogFile(rawContent) {
+					// Process as log file
+					content := kb.parseLogFile(rawContent, entry.Name())
+					kb.textFiles[entry.Name()] = content
+				} else {
+					// Regular text file
+					kb.textFiles[entry.Name()] = rawContent
+				}
 				kb.filePaths[entry.Name()] = fullPath
 			}
 		} else if strings.HasSuffix(lowerName, ".drawio") {
@@ -523,11 +541,28 @@ func (kb *KnowledgeDatabase) ProcessUserUpload(filePath string) error {
 	var content string
 	var err error
 
-	if strings.HasSuffix(lowerName, ".txt") {
+	if strings.HasSuffix(lowerName, ".log") || strings.HasSuffix(lowerName, ".logs") ||
+		strings.Contains(lowerName, "log") && strings.HasSuffix(lowerName, ".txt") {
+		// Process log files with specialized parsing
 		data, readErr := os.ReadFile(filePath)
 		if readErr == nil {
-			content = string(data)
-			fmt.Printf("[DEBUG] ProcessUserUpload: Loaded .txt file, content length: %d\n", len(content))
+			content = kb.parseLogFile(string(data), filename)
+			fmt.Printf("[DEBUG] ProcessUserUpload: Processed log file, content length: %d\n", len(content))
+		} else {
+			err = readErr
+		}
+	} else if strings.HasSuffix(lowerName, ".txt") {
+		data, readErr := os.ReadFile(filePath)
+		if readErr == nil {
+			// Check if this txt file might be a log file based on content
+			rawContent := string(data)
+			if kb.isLogFile(rawContent) {
+				content = kb.parseLogFile(rawContent, filename)
+				fmt.Printf("[DEBUG] ProcessUserUpload: Detected and processed .txt file as log, content length: %d\n", len(content))
+			} else {
+				content = rawContent
+				fmt.Printf("[DEBUG] ProcessUserUpload: Loaded .txt file, content length: %d\n", len(content))
+			}
 		} else {
 			err = readErr
 		}
@@ -601,4 +636,197 @@ func (kb *KnowledgeDatabase) GetUploadedFilesList() []string {
 		files = append(files, fmt.Sprintf("%s (uploaded %s)", displayName, timestamp.Format("15:04:05")))
 	}
 	return files
+}
+
+// isLogFile determines if a text file contains log-like content
+func (kb *KnowledgeDatabase) isLogFile(content string) bool {
+	lowerContent := strings.ToLower(content)
+	lines := strings.Split(content, "\n")
+	
+	// Check for common log indicators
+	logIndicators := []string{
+		"[debug]", "[info]", "[warn]", "[error]", "[fatal]",
+		"debug:", "info:", "warn:", "error:", "fatal:",
+		"exception", "stack trace", "traceback", 
+		"timestamp", "yyyy-mm-dd", "mm/dd/yyyy",
+		"log level", "severity", "thread", "pid:",
+		"started", "stopped", "failed", "succeeded",
+		"connection", "timeout", "retry", "attempt",
+	}
+	
+	indicators := 0
+	timePatterns := 0
+	
+	// Count how many lines have log-like patterns
+	for i, line := range lines {
+		if i > 100 { // Don't check entire huge files
+			break
+		}
+		
+		lineLower := strings.ToLower(line)
+		
+		// Check for log level indicators
+		for _, indicator := range logIndicators {
+			if strings.Contains(lineLower, indicator) {
+				indicators++
+				break
+			}
+		}
+		
+		// Check for timestamp patterns (basic patterns)
+		if strings.Contains(line, ":") && (strings.Contains(line, "/") || strings.Contains(line, "-")) {
+			// Look for patterns like 2023-08-05 14:30:25 or 08/05/2023 2:30 PM
+			if len(line) > 10 && (strings.Contains(line, "20") || strings.Contains(line, ":")) {
+				timePatterns++
+			}
+		}
+	}
+	
+	// Consider it a log file if we have enough indicators
+	return indicators > 2 || timePatterns > 3 || 
+		   strings.Contains(lowerContent, "log file") ||
+		   strings.Contains(lowerContent, "application log") ||
+		   strings.Contains(lowerContent, "system log")
+}
+
+// parseLogFile extracts meaningful information from log files
+func (kb *KnowledgeDatabase) parseLogFile(content, filename string) string {
+	var parsed strings.Builder
+	lines := strings.Split(content, "\n")
+	
+	parsed.WriteString(fmt.Sprintf("=== LOG FILE ANALYSIS: %s ===\n\n", filename))
+	
+	// Extract key information
+	errors := []string{}
+	warnings := []string{}
+	exceptions := []string{}
+	importantEvents := []string{}
+	timeRange := []string{}
+	
+	for i, line := range lines {
+		if i > 1000 { // Limit processing for very large files
+			parsed.WriteString(fmt.Sprintf("[Log analysis truncated - processed first 1000 lines of %d total lines]\n\n", len(lines)))
+			break
+		}
+		
+		lineLower := strings.ToLower(line)
+		trimmedLine := strings.TrimSpace(line)
+		
+		if trimmedLine == "" {
+			continue
+		}
+		
+		// Extract timestamps for range analysis
+		if len(timeRange) < 10 && (strings.Contains(line, ":") && 
+			(strings.Contains(line, "/") || strings.Contains(line, "-"))) {
+			timeRange = append(timeRange, trimmedLine[:min(50, len(trimmedLine))])
+		}
+		
+		// Categorize log entries
+		if strings.Contains(lineLower, "error") || strings.Contains(lineLower, "failed") ||
+		   strings.Contains(lineLower, "fatal") || strings.Contains(lineLower, "[error]") {
+			if len(errors) < 20 {
+				errors = append(errors, trimmedLine)
+			}
+		} else if strings.Contains(lineLower, "warn") || strings.Contains(lineLower, "warning") ||
+				 strings.Contains(lineLower, "[warn]") {
+			if len(warnings) < 15 {
+				warnings = append(warnings, trimmedLine)
+			}
+		} else if strings.Contains(lineLower, "exception") || strings.Contains(lineLower, "stack trace") ||
+				 strings.Contains(lineLower, "traceback") || strings.Contains(lineLower, "throw") {
+			if len(exceptions) < 10 {
+				exceptions = append(exceptions, trimmedLine)
+			}
+		} else if strings.Contains(lineLower, "started") || strings.Contains(lineLower, "stopped") ||
+				 strings.Contains(lineLower, "connected") || strings.Contains(lineLower, "disconnected") ||
+				 strings.Contains(lineLower, "timeout") || strings.Contains(lineLower, "retry") ||
+				 strings.Contains(lineLower, "config") || strings.Contains(lineLower, "initialization") {
+			if len(importantEvents) < 15 {
+				importantEvents = append(importantEvents, trimmedLine)
+			}
+		}
+	}
+	
+	// Build summary
+	parsed.WriteString("**LOG SUMMARY:**\n")
+	parsed.WriteString(fmt.Sprintf("- Total lines: %d\n", len(lines)))
+	parsed.WriteString(fmt.Sprintf("- Errors found: %d\n", len(errors)))
+	parsed.WriteString(fmt.Sprintf("- Warnings found: %d\n", len(warnings)))
+	parsed.WriteString(fmt.Sprintf("- Exceptions found: %d\n", len(exceptions)))
+	parsed.WriteString(fmt.Sprintf("- Important events: %d\n\n", len(importantEvents)))
+	
+	// Time range
+	if len(timeRange) > 0 {
+		parsed.WriteString("**TIME RANGE:**\n")
+		parsed.WriteString(fmt.Sprintf("First entry: %s\n", timeRange[0]))
+		if len(timeRange) > 1 {
+			parsed.WriteString(fmt.Sprintf("Last entry: %s\n\n", timeRange[len(timeRange)-1]))
+		} else {
+			parsed.WriteString("\n")
+		}
+	}
+	
+	// Errors section
+	if len(errors) > 0 {
+		parsed.WriteString("**ERRORS FOUND:**\n")
+		for i, err := range errors {
+			parsed.WriteString(fmt.Sprintf("%d. %s\n", i+1, err))
+		}
+		parsed.WriteString("\n")
+	}
+	
+	// Warnings section
+	if len(warnings) > 0 {
+		parsed.WriteString("**WARNINGS FOUND:**\n")
+		for i, warn := range warnings {
+			parsed.WriteString(fmt.Sprintf("%d. %s\n", i+1, warn))
+		}
+		parsed.WriteString("\n")
+	}
+	
+	// Exceptions section
+	if len(exceptions) > 0 {
+		parsed.WriteString("**EXCEPTIONS/STACK TRACES:**\n")
+		for i, exc := range exceptions {
+			parsed.WriteString(fmt.Sprintf("%d. %s\n", i+1, exc))
+		}
+		parsed.WriteString("\n")
+	}
+	
+	// Important events section
+	if len(importantEvents) > 0 {
+		parsed.WriteString("**IMPORTANT EVENTS:**\n")
+		for i, event := range importantEvents {
+			parsed.WriteString(fmt.Sprintf("%d. %s\n", i+1, event))
+		}
+		parsed.WriteString("\n")
+	}
+	
+	// Add raw excerpt for context
+	parsed.WriteString("**RAW LOG EXCERPT (last 20 lines):**\n")
+	startLine := max(0, len(lines)-20)
+	for i := startLine; i < len(lines) && i < startLine+20; i++ {
+		if strings.TrimSpace(lines[i]) != "" {
+			parsed.WriteString(fmt.Sprintf("%s\n", lines[i]))
+		}
+	}
+	
+	return parsed.String()
+}
+
+// min returns the minimum of two integers
+func min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
+}
+
+// max returns the maximum of two integers  
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
 }
