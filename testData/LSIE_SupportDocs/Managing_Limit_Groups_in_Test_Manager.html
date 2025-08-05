@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Managing Limit Groups in Test Manager</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Managing_Limit_Groups_in_Test_Manager.html">Managing Limit Groups in Test Manager</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Managing-Limit-Groups-in-Test-Manager"></a>
+<h1 >Managing Limit Groups in Test Manager<a href="#Managing-Limit-Groups-in-Test-Manager" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Managing-Limit-Groups-in-Test-Manager">Managing Limit Groups in Test Manager</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Configuring-Limit-Groups">Configuring Limit Groups</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Limit groups are used to change the high and low range for channels during different operating conditions for the test environment. For example, the default limits for a channel may be set in a wide range in order to catch abnormal operating conditions when the engine or speciment is not running. As a test proceeds, different limit groups may be applied to make that range smaller.</p>
+
+
+	<p>Limit groups can be managed in Test Manager or SolutionBuilder by using the Limit Groups editor. This document details how to manage limit groups in Test Manager. You can access this editor by selecting <strong>Channels > Limit Groups</strong> in the tree bar.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Limit Groups Editor</strong></em></span><br /><img src="attachments/download/127235/TM44_LimitGroupsEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Some features may not be available in the Limit Groups editor when using legacy limits. For more information, refer to the <a class="wiki-page" href="Limits_and_Warnings.html#Legacy-vs-32-Limits">Legacy vs 3.2 Limits</a> documentation.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Configuring-Limit-Groups"></a>
+<h2 >Configuring Limit Groups<a href="#Configuring-Limit-Groups" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest includes a default limit group (i.e., DEFAULT.LIM) that lists all channels that have limits enabled. The DEFAULT.LIM limit group serves as the foundation for other limit groups and contains the default limit settings for each channel; the default limit settings are configured in the Channel Definitions editor. This limit group cannot be removed or renamed. Changes to the DEFAULT.LIM limit group will update the channel definition (FIL) file and will require iTest to be restarted.</p>
+
+
+	<p>When adding a new limit group, the channels listed in DEFAULT.LIM will be added to the new limit group. The maximum amount of limit groups for a solution is 50; once this maximum is met, limit groups cannot be duplicated nor added.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>New Limit Group</strong></em></span><br /><img src="attachments/download/127236/TM44_NewLimitGroup.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>Use the table below to configure channel limit settings in your limit groups.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Digital input/output channel limit settings can only be edited in the Channel Definitions editor. Fields (excluding the <strong>Low/High Limit Ignore Time</strong>, <strong>Low/High Limit Action</strong>, <strong>Delay Time</strong>, and <strong>Active</strong> fields) will be read-only in the Limit Groups editor for these channel types.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>Limit Groups Editor Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Column</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Channel</td>
+			<td> (Read-only) The name of the channel.</td>
+		</tr>
+		<tr>
+			<td>Alias/Customer Name</td>
+			<td> (Read-only) The alias or customer name if defined for the channel. Use the <strong>Show Alias/Show Customer Name</strong> right-click option to display either the <strong>Alias</strong> or <strong>Customer Name</strong> columns.</td>
+		</tr>
+		<tr>
+			<td>Module ID</td>
+			<td> (Read-only) The module ID for the channel if applicable.</td>
+		</tr>
+		<tr>
+			<td>Low Limit</td>
+			<td> The lowest value at which the test specimen should run for the given channel.</td>
+		</tr>
+		<tr>
+			<td>Low Warning</td>
+			<td> The value at which a warning is issued, indicating that the channel value is approaching its low limit.</td>
+		</tr>
+		<tr>
+			<td>High Warning</td>
+			<td> The value at which a warning is issued, indicating that the channel value is approaching its high limit.</td>
+		</tr>
+		<tr>
+			<td>High Limit</td>
+			<td> The highest value at which the test specimen should run for the given channel.</td>
+		</tr>
+		<tr>
+			<td>LL Ignore Time</td>
+			<td> The amount of time that iTest waits after the channel value goes below its Low Limit/Low Warning value before starting the specified limit action. This column is also referred to as the <strong>Low Limit Ignore Time</strong>.</td>
+		</tr>
+		<tr>
+			<td>LW Ignore Time*</td>
+			<td> The amount of time that iTest waits after the channel value goes below its Low Warning value before starting the specified limit action. A blank value indicates that the Low Limit Ignore Time will be used. The default value is 0.</td>
+		</tr>
+		<tr>
+			<td>HW Ignore Time*</td>
+			<td> The amount of time that iTest waits after the channel value goes below its High Warning value before starting the specified limit action. A blank value indicates that the High Limit Ignore Time will be used. The default value is 0.</td>
+		</tr>
+		<tr>
+			<td>HL Ignore Time</td>
+			<td> The amount of time that iTest waits after the channel value exceeds the High Limit/High Warning value before starting the specified limit action. The default value is 0.</td>
+		</tr>
+		<tr>
+			<td>Low Limit Action</td>
+			<td> The action iTest performs when the associated low warning limit is met.</td>
+		</tr>
+		<tr>
+			<td>Low Warning Action</td>
+			<td> The action iTest performs when the associated low warning limit is met.</td>
+		</tr>
+		<tr>
+			<td>High Warning Action</td>
+			<td> The action iTest performs when the associated high warning limit is met.</td>
+		</tr>
+		<tr>
+			<td>Active</td>
+			<td> The state for the channel in the limit group. Possible states are <strong>Active</strong> or <strong>Inactive</strong>. If <strong>Inactive</strong> is selected, then limits are not checked for that channel when the limit group is enabled.</td>
+		</tr>
+		<tr>
+			<td>Delay Time**</td>
+			<td> The time (in seconds) to wait before checking limits on that channel. For example, you can put a 10 second delay on checking oil pressure after applying the running limit group. The delay is honored each time a limit group is applied.</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;font-style: italic;">These columns only appear in SolutionBuilder's Limit Groups editor when <code>LimitsVer >= 3.2</code></span>.<br />** <span style="font-size:0.90em;font-style: italic;">This column is not available in the DEFAULT.LIM limit group editor.</span>
+
+	<p>&nbsp;</p></p>
+
+
+	<p>The following right-click options are available in the editor:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2">Tree Bar Options</th>
+		</tr>
+		<tr>
+			<td>New LimitGroup*</td>
+			<td> Adds a new limit group to the list of limit groups. The new limit group will use the DEFAULT.LIM limit group as the foundation for the limit settings.</td>
+		</tr>
+		<tr>
+			<td>Properties...*</td>
+			<td> Launches the Limit Properties dialog, allowing you to determine if limits are active on startup.</td>
+		</tr>
+		<tr>
+			<td>Save</td>
+			<td> Saves the changes made to the limit group.</td>
+		</tr>
+		<tr>
+			<td>Duplicate...</td>
+			<td> Duplicates the selected limit group and renames it with an appended numeric. The duplicated limit group will contain the limit settings as specified in the limit group it was duplicated from.</td>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td> Deletes the selected limit group.</td>
+		</tr>
+		<tr>
+			<td>Rename...</td>
+			<td> Allows you to rename the limit group. Each limit group must have a unique name.</td>
+		</tr>
+		<tr>
+			<td>Print...</td>
+			<td> Prints a copy of the limit group. The Print dialog is displayed, allowing you to specify the printer, pages, etc.</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2">Editor Options</th>
+		</tr>
+		<tr>
+			<td>Insert Before</td>
+			<td> Launches the Channel Selection dialog, allowing you to select a channel to add to the limit group. The channel will be added before the highlighted row.</td>
+		</tr>
+		<tr>
+			<td>Add to end</td>
+			<td> Launches the Channel Selection dialog, allowing you to select a channel to add to the limit group. The channel will be added to the end of the list.</td>
+		</tr>
+		<tr>
+			<td>Show Alias/Show Customer Name</td>
+			<td> Displays either the <strong>Alias</strong> or <strong>Customer Name</strong> column, allowing you to view the channel's alias or customer name if defined for the channel.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Limits_and_Warnings.html">Limits and Warnings</a></li>
+		<li><a class="wiki-page" href="Managing_Channels_in_Test_Manager.html">Managing Channels in Test Manager</a></li>
+	</ul>
+</body>
+</html>

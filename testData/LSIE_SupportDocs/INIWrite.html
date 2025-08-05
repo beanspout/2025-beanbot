@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>INIWrite</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="INIWrite.html">INIWrite</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="INIWrite"></a>
+<h1 >INIWrite<a href="#INIWrite" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#INIWrite">INIWrite</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Command-Line">Command Line</a></li><li><a href="#Parameters">Parameters</a></li><li><a href="#Examples">Examples</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>INIWrite is a Windows application that updates the value of a keyword=value pair in an <em>.INI</em> file. If the provided keyword is a valid channel in iTest and is found in the file, the value of that keyword=value pair in the file is updated to reflect the current value of the iTest channel. The utility will update all found instances of the keyword=value pair in the <em>.INI</em> file. If a provided keyword is not found in the file, then the new keyword=value pair is added to the end of the file.</p>
+
+
+	<a name="Command-Line"></a>
+<h2 >Command Line<a href="#Command-Line" class="wiki-anchor">&para;</a></h2>
+
+
+<pre> INIWrite.exe &lt;Channel Name&gt; [File Name] </pre>
+
+	<a name="Parameters"></a>
+<h2 >Parameters<a href="#Parameters" class="wiki-anchor">&para;</a></h2>
+
+
+	<p><ins><em>&lt;Channel Name&gt;:</em></ins> The name of the iTest channel that is searched for in the target <em>.INI</em> file as the keyword portion of a keyword=value pair. If a customer name is given for this parameter, then the target <em>.INI</em> file will be searched for a keyword that matches what was given. Hence, if a customer name is provided, but the file uses the channel name as the keyword, a new keyword=value pair will be added to the end of the <em>.INI</em> file with the value of the iTest channel that is assigned to the customer name that was given.</p>
+
+
+	<p>This utility supports the use of virtual array channels. When working with virtual array channels, the array index can be included as part of the channel name (e.g., <code>voaDemoArray[1]</code>). If the array index is included, then the INIWrite utility will search the target file for that exact keyword=value pair including the array index and update the value based on the given array index. If an array channel is not indexed on the command line, then the non-indexed keyword in the file will be updated with the value from the channel's [0] array index.</p>
+
+
+	<p><ins><em>&lt;File Name&gt;:</em></ins> Optional parameter. The name of the file that is updated when INIWrite is executed. The file name must include the file extension. If the file name is not provided, the default file is the <em>Master.ini</em> file. If a fully qualified file path is not provided but a filename is provided, the file path defaults to the $SUPPORTDIR folder.</p>
+
+
+	<a name="Examples"></a>
+<h2 >Examples<a href="#Examples" class="wiki-anchor">&para;</a></h2>
+
+
+<pre> Command Line Entry:  INIWrite.exe voaDemoArray Master.ini
+* Will update the voaDemoArray keyword in the $SUPPORTDIR\Master.ini file with the voaDemoArray[0] value. </pre>
+
+<pre> Command Line Entry:  INIWrite.exe voaDemoArray[1] C:\ADT\iTest3.7\Sys.ini
+* Will update the voaDemoArray[1] keyword in the C:\ADT\iTest3.7\Sys.ini file with the voaDemoArray[1] value. </pre>
+</body>
+</html>

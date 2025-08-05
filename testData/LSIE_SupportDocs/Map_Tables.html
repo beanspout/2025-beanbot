@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Map Tables</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Map_Tables.html">Map Tables</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Map-Tables"></a>
+<h1 >Map Tables<a href="#Map-Tables" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Map-Tables">Map Tables</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Map-Table-Format">Map Table Format</a><ul><li><a href="#Restrictions">Restrictions</a></li><li><a href="#Example">Example</a></li></ul>
+</li><li><a href="#Adding-the-Maps-Folder-to-Test-Manager">Adding the Maps Folder to Test Manager</a></li><li><a href="#Creating-New-Maps">Creating New Maps</a></li><li><a href="#Specifying-Map-Properties">Specifying Map Properties</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest supports map tables, which are also referred to as breakpoint or 2D tables. This table type can be used to linearly interpolate values in iTest. The following sections discuss map table format and the process for setting up map tables for automatic use in Test Manager. For more information on manually controlling map tables, see the <a class="wiki-page" href="Advanced_Map_Table_Usage.html">Advanced Map Table Usage</a> document.</p>
+
+
+	<a name="Map-Table-Format"></a>
+<h2 >Map Table Format<a href="#Map-Table-Format" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>A map table is an X by Y grid of double precision values. The first row contains the breakpoint values for the X-axis, and the first column contains the breakpoint values for the Y-axis. This is a tab delimited file that uses the <em>.2dt</em> file extension.</p>
+
+
+	<a name="Restrictions"></a>
+<h3 >Restrictions<a href="#Restrictions" class="wiki-anchor">&para;</a></h3>
+
+
+	<ul>
+	<li>Blank lines cannot be present between rows.</li>
+		<li>The use of channel names or string values within the map table is not supported.</li>
+	</ul>
+
+
+	<a name="Example"></a>
+<h3 >Example<a href="#Example" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The first row identifies the X lookups, and the first column identifies the Y lookups. This example table is x size = 5,  y size = 4.</p>
+
+
+	<table style="margin-left: 2.5em;width:350px;">
+		<tr>
+			<td style="width:75px;text-align:center;"><strong>Y/X</strong></td>
+			<td style="width:50px;text-align:center;"><strong>10</strong></td>
+			<td style="width:50px;text-align:center;"><strong>20</strong></td>
+			<td style="width:50px;text-align:center;"><strong>30</strong></td>
+			<td style="width:50px;text-align:center;"><strong>40</strong></td>
+			<td style="width:50px;text-align:center;"><strong>100</strong></td>
+		</tr>
+		<tr>
+			<td style="text-align:center;"><strong>1</strong></td>
+			<td style="text-align:center;"> 11</td>
+			<td style="text-align:center;"> 20</td>
+			<td style="text-align:center;"> 30</td>
+			<td style="text-align:center;"> 35</td>
+			<td style="text-align:center;"> 40</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;"><strong>2</strong></td>
+			<td style="text-align:center;"> 10</td>
+			<td style="text-align:center;"> 20</td>
+			<td style="text-align:center;"> 30</td>
+			<td style="text-align:center;"> 35</td>
+			<td style="text-align:center;"> 40</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;"><strong>3</strong></td>
+			<td style="text-align:center;"> 10</td>
+			<td style="text-align:center;"> 20</td>
+			<td style="text-align:center;"> 30</td>
+			<td style="text-align:center;"> 40</td>
+			<td style="text-align:center;"> 40</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;"><strong>6</strong></td>
+			<td style="text-align:center;"> 10</td>
+			<td style="text-align:center;"> 20</td>
+			<td style="text-align:center;"> 30</td>
+			<td style="text-align:center;"> 50</td>
+			<td style="text-align:center;"> 50</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Adding-the-Maps-Folder-to-Test-Manager"></a>
+<h2 >Adding the Maps Folder to Test Manager<a href="#Adding-the-Maps-Folder-to-Test-Manager" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To create and edit maps in Test Manager, the maps editor must be manually added to the <em>moduledefinition.xml</em> file. To add the editor to Test Manager, do the following:</p>
+
+
+	<ol>
+	<li>Navigate to your $SUPPORTDIR.</li>
+		<li>Open the <em>moduledefinition.xml</em> file in a text editor.</li>
+		<li>Add the following XML element to the XML System type tag.<br /><pre>&lt;folder&gt;Maps&lt;/folder&gt;</pre></li>
+		<li>Save the file.</li>
+		<li>Open Test Manager. The <em>Maps</em> folder is visible in the tree bar as a sub-folder in the <em>Test Development</em> folder.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Test Manager Tree Node with Maps Editor</strong></em></span><br /><img src="attachments/download/27970/MapEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<a name="Creating-New-Maps"></a>
+<h2 >Creating New Maps<a href="#Creating-New-Maps" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Creating new maps in Test Manager is quite simple. To create a new map, do the following:</p>
+
+
+	<ol>
+	<li>Right-click the <em>Maps</em> folder and select <strong>New Map</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add New Map</strong></em></span><br /><img src="attachments/download/45840/AddNewMap.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>In the Input Table Size dialog, enter the number of columns and the number of rows for the map table.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Table Size</strong></em></span><br /><img src="attachments/download/45841/InputTableSize.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Enter the X and Y lookup values in the first row and the first column. Then enter values in the remaining cells.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Map Editor</strong></em></span><br /><img src="attachments/download/45931/MapEditorInterface.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the save icon or select <strong>File</strong> > <strong>Save</strong> from the main menu to save the file.</li>
+	</ol>
+
+
+	<a name="Specifying-Map-Properties"></a>
+<h2 >Specifying Map Properties<a href="#Specifying-Map-Properties" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Map properties allows you to automate map table handling. When the <strong>Enable</strong> checkbox is selected in the Map Properties dialog, iTest will automatically load the map table into memory at start-up and interpolate table values in the system's calculations at the rate of your choosing. The result channel stores the interpolated value based on the X and Y channel value lookups. In the case of an error, the result channel will be set to -99999.</p>
+
+
+	<p>To set table properties, do the following:</p>
+
+
+	<ol>
+	<li>Right-click in the table and select the <strong>Properties</strong> option.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Properties</strong></em></span><br /><img src="attachments/download/45929/MapProperties.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>In the Map Properties dialog, click the <strong>Enable</strong> checkbox to automatically use the map table during runtime at system scan rate. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Map Properties Dialog</strong></em></span><br /><img src="attachments/download/27973/MapPropertiesDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the <img src="attachments/download/27974/Dot.png" alt="" /> buttons to choose channels for the X, Y, and Result channels.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Channel Selection Dialog</strong></em></span><br /><img src="attachments/download/27975/ChannelSelection.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Use the Channel Selection dialog to select a channel, and then click <strong>OK</strong>.</li>
+		<li>Click the drop-down box next to the <strong>Rate (Hz)</strong> field to select the rate at which the map table is run. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Rate</strong></em></span><br /><img src="attachments/download/45930/Rate.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>OK</strong> when you are finished.</li>
+	</ol>
+
+
+	<p>&nbsp;</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Any status change to the <strong>Enabled</strong> checkbox or changes to the Map Table contents are only reflected after the next rebuild or restart of iTest.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#cc061c;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3741/Warning3.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>WARNING:</b></td>
+			<td style="vertical-align:top;">By default, iTest initializes channel values to 0 on startup. This will result in X and Y lookup channel values being initialized to a value of 0. This must be taken into account when designing your application. Channel values can be initialized to some other value by storing channel values in an INI file or using the persistent value setting for virtual output channels.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Advanced_Map_Table_Usage.html">Advanced Map Table Usage</a></li>
+	</ul>
+</body>
+</html>

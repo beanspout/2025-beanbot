@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>VCL</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="VCL.html">VCL</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="VCL"></a>
+<h1 >VCL<a href="#VCL" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#VCL">VCL</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#VCL-References">VCL References</a></li></ul>
+</li><li><a href="#Managing-VCL">Managing VCL</a><ul><li><a href="#Building-VCL">Building VCL</a><ul><li><a href="#Build-in-Test-Manager">Build in Test Manager</a></li><li><a href="#Build-in-SolutionBuilder">Build in SolutionBuilder</a></li></ul>
+</li><li><a href="#Using-TestStatusDisplay-to-Monitor-Procedures">Using TestStatusDisplay to Monitor Procedures</a></li><li><a href="#RebuildProcedure">RebuildProcedure</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Procedures are programming code (script) used to run iTest applications. They are written in the VCL scripting language and can be executed from numerous sources including other procedures, defined actions, and virtual controls defined in displays. Procedures can handle up to ten arguments. Procedures with arguments are also referred to as functions.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Test Manager Tree</strong></em></span><br /><img src="attachments/download/3614/VCLtree.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />Test files (<em>.tsc</em>) define only one procedure. However, test files can call other procedures. Procedures are stored in the TEST sub-directory of the current $SUPPORTDIR folder. iTest can support multiple sub-directories of the TEST directory for a logical grouping of test procedures. If a procedure is defined as a system core file (<code>SystemCoreFiles</code>) in the <em>powertek.ini</em> file, the procedure name will display in bold on the Tree Bar.</p>
+
+
+	<p>The following user guides contain more information regarding the use of VCL within the iTest products.</p>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Writing_Procedures.html">Writing Procedures</a></li>
+		<li><a class="wiki-page" href="Managing_the_VCL_Editor.html">Managing the VCL Editor</a></li>
+		<li><a class="wiki-page" href="VCL_Scripting_Language.html">VCL Scripting Language</a></li>
+		<li><a class="wiki-page" href="Debugging_Procedures.html">Debugging Procedures</a> </li>
+		<li><a class="wiki-page" href="Argument_Pass-By_Types.html">Argument Pass-By Types</a></li>
+	</ul>
+
+
+	<a name="VCL-References"></a>
+<h2 >VCL References<a href="#VCL-References" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="VCL_Function_List.html">VCL String Functions</a></li>
+		<li><a class="wiki-page" href="VCL_Math_and_Conversion_Functions.html">VCL Math and Conversion Functions</a></li>
+		<li><a class="wiki-page" href="VCL_Miscellaneous_Functions.html">VCL Miscellaneous Functions</a></li>
+		<li><a class="wiki-page" href="VCL_Schedule_Functions.html">VCL Schedule Functions</a></li>
+		<li><a class="wiki-page" href="SystemAction_VCL_Function.html">System / Module Action Functions</a></li>
+		<li><a class="wiki-page" href="VCL_Command_List.html">VCL Command List</a></li>
+		<li><a class="wiki-page" href="VCL_Array_functions.html">VCL Array Channel Functions</a></li>
+	</ul>
+
+
+	<a name="Managing-VCL"></a>
+<h1 >Managing VCL<a href="#Managing-VCL" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Building-VCL"></a>
+<h2 >Building VCL<a href="#Building-VCL" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Build process enables you to make changes to your iTest solution and rebuild it without having to shutdown and restart iTest. This feature is helpful because you can perform the necessary modifications to your VCL code, perform a build, and quickly use the changes without waiting for the test system to shutdown and restart. Please note, if you are using this feature while iTest is running, it is important to ensure that a test is not currently active.</p>
+
+
+	<p>You can also do a build while iTest is not running; performing a build in this state enables you to determine whether the solution you are using contains any compile errors.</p>
+
+
+	<a name="Build-in-Test-Manager"></a>
+<h3 >Build in Test Manager<a href="#Build-in-Test-Manager" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To access this feature from Test Manager, click the <strong>File</strong> or <strong>Debug</strong> option from the Test Manager menu bar or select the <strong>Build</strong> icon from the toolbar.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Build</strong></em></span><br /><img src="attachments/download/33822/BuildButtons.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />When selected, all VCL procedures and functions will be recompiled.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">New channels are not instantiated by a build and will result in a test build error if the channels are used in new VCL code.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>Once the build is complete, the Test Builder dialog displays. When errors are present, the dialog will display the file name that contains the error, followed by the line number in parenthesis, and a description of the error, as shown below. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>TestBuilder Errors</strong></em></span><br /><img src="attachments/download/71289/ErrorParsingTexts.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />The same list of errors will also appear in the Test Build Status tab.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Test Build Status</strong></em></span><br /><img src="attachments/download/71288/TestBuildStatus.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />To view and fix errors, locate the file and line number manually in Test Manager. Double-click on each error in the Test Build Status tab to navigate to the line number in the file. In the example below, the line that contains an error had an invalid VCL command listed. The command is the first string on the line up to any whitespace. In the example, the <em>"SysManualLogStart"</em> is not a valid VCL command. To successfully save the changes and compile the code, this line should be commented out or deleted. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Error in Code</strong></em></span><br /><img src="attachments/download/33825/TestBuildErrorInline.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />After clearing the errors, re-compile the VCL with the <strong>Build</strong> button.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">If a TestBuild message box doesn't appear, then it is being suppressed using a combination of several <em>powertek.ini</em> settings. The relevant settings are <code>TestBuilderSilent</code>, <code>TestBuilderOKMsgSilent</code>, and <code>TestBuilderIgnoreLOLError</code>. For more information, refer to the <a class="wiki-page" href="ITest_INI_Options.html#Runtime-Console">INI Options</a> section.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Build-in-SolutionBuilder"></a>
+<h3 >Build in SolutionBuilder<a href="#Build-in-SolutionBuilder" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>TestBuilder in SolutionBuilder has the following limitations:</p>
+
+
+	<ul>
+	<li>Editing capabilities are only supported for procedures exposed in SolutionBuilder.</li>
+		<li>TestBuilder's associated system channels (<code>voSysiTestBuildErrors</code> and <code>voSysTestBuildComplete</code>) are not updated.</li>
+		<li>TestBuilder doesn't use the <a class="wiki-page" href="#RebuildProcedure">RebuildProcedure</a> <em>powertek.ini</em> setting</li>
+	</ul>
+
+
+	<p>To run TestBuilder in SolutionBuilder, do the following:</p>
+
+
+	<p>Click the <strong>Build</strong> icon, located on SolutionBuilder's bottom menu. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Build</strong></em></span><br /><img src="attachments/download/71279/BuildButton.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />Upon a successful build with no errors, the following dialog will appear:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>No Errors</strong></em></span><br /><img src="attachments/download/134533/45_NoErrors.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />If errors are present in your solution, the following dialog will appear to identify the errors:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Build Errors</strong></em></span><br /><img src="attachments/download/71281/BuildErrors.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Using-TestStatusDisplay-to-Monitor-Procedures"></a>
+<h2 >Using TestStatusDisplay to Monitor Procedures<a href="#Using-TestStatusDisplay-to-Monitor-Procedures" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The TestStatusDisplay is a standalone utility that is useful for seeing what is happening in terms of running VCL procedures in real-time. This display provides many pieces of information for all of the active procedures at any given moment. A screenshot can be seen here: <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>TestStatusDisplay Interface</strong></em></span><br /><img src="attachments/download/127443/44_TestStatusDisplayInterface.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><em>TestStatusDisplay.exe</em> can be launched from a button on your console, or you can run it directly from the $EXECUTEDIR while iTest is running.</p>
+
+
+	<p>TestStatusDisplay will show up to 50 of the active procedures that are executing inside of vxin_exec. If there are more than 50 procedures running, use the <strong>Snapshot</strong> button to view the complete list. This list must be manually refreshed and shows less information than the main screen of TestStatusDisplay.</p>
+
+
+	<p>On the main TestStatusDisplay screen, you can check how long each procedure has been running, how it was started, the current line that is executing, and the current state of the procedure. All of this information provides a very useful set of metrics for helping you write new VCL code and check that it is running correctly.</p>
+
+
+	<p>For more information regarding the TestStatusDisplay feature, refer to the <a class="wiki-page" href="TestStatusDisplay.html">TestStatusDisplay</a> documentation.</p>
+
+
+	<a name="RebuildProcedure"></a>
+<h2 >RebuildProcedure<a href="#RebuildProcedure" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>There is an <em>.ini</em> option that will affect whether or not the <strong>Build</strong> menu option or the <code>$REBUILD</code> command can be executed. For example:<br /><pre>
+RebuildProcedure=MyTestCheck
+</pre></p>
+
+
+	<p>Where, <code>MyTestCheck</code> is a procedure that determines if the system is in a safe state to allow rebuilding. For example, this procedure could be coded to make sure the test specimen is not in a running condition before allowing the rebuild. If the designated rebuild procedure determines that a rebuild cannot occur, then it should provide a message to the operator and prevent the rebuild. Therefore, if your <strong>Build</strong> menu option from Test Manager is not working, determine whether there is a rebuild procedure defined in <em>powertek.ini</em>.</p>
+</body>
+</html>

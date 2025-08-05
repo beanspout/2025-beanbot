@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Customizing Moduledefinitionxml File</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Customizing-Moduledefinitionxml-File"></a>
+<h1 >Customizing Moduledefinition.xml File<a href="#Customizing-Moduledefinitionxml-File" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>To support file synchronization with LabCentral, the &lt;icentral&gt; node is added to the <em>moduledefinition.xml</em> file. It contains the details for the synchronized folder types. This node must be within the file's primary &lt;Solution&gt; node and should be the last listed node. In the example below, the system is configured to synchronize schedule (<em>.sc2</em>), picklist (<em>.pkl</em>), and log order list (<em>.lol</em>) files.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#cc061c;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3741/Warning3.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>WARNING:</b></td>
+			<td style="vertical-align:top;">Modification of the &lt;icentral&gt; node in the <em>$SYSTEMDIR\ModuleDefinition.xml</em> file is overseen from the LabCentral server. All local changes will be overwritten. Any <em>$SUPPORTDIR\ModuleDefinition.xml</em> files are not maintained by the LabCentral server, so local changes to these files will be left untouched.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+<pre>
+&lt;icentral&gt;
+
+&lt;sync&gt;
+&lt;file&gt;*.sc2&lt;/file&gt;
+&lt;localfolder&gt;$SUPPORTDIR/Schedules&lt;/localfolder&gt;
+&lt;remotefolder&gt;Schedules&lt;/remotefolder&gt;
+&lt;silent&gt;FALSE&lt;/silent&gt;
+&lt;newfiles&gt;TRUE&lt;/newfiles&gt;
+&lt;/sync&gt;
+
+&lt;sync&gt;
+&lt;file&gt;*.pkl&lt;/file&gt;
+&lt;localfolder&gt;$SUPPORTDIR/Picklists&lt;/localfolder&gt;
+&lt;remotefolder&gt;Picklists &lt;/remotefolder&gt;
+&lt;silent&gt;FALSE&lt;/silent&gt;
+&lt;/sync&gt;
+
+&lt;sync&gt;
+&lt;file&gt;*.lol&lt;/file&gt;
+&lt;localfolder&gt;$SUPPORTDIR/data&lt;/localfolder&gt;
+&lt;remotefolder&gt;LogLists &lt;/remotefolder&gt;
+&lt;/sync&gt;
+
+&lt;/icentral&gt;
+</pre>
+
+	<a name="Syntax"></a>
+<h3 >Syntax<a href="#Syntax" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The sub-tags in the &lt;icentral&gt; node are used to define how files are synchronized between the two systems. You can use the following tags in your <em>moduledefinition.xml</em>:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>&lt;icentral&gt; Tags</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Tag</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>&lt;sync&gt;</td>
+			<td>The tag that specifies a new group of files to include in the file synchronization.</td>
+		</tr>
+		<tr>
+			<td>&lt;file&gt;</td>
+			<td>The name of the file or files to synchronize. You can also just specify the file type in this field. Wildcard characters are accepted.</td>
+		</tr>
+		<tr>
+			<td>&lt;localfolder&gt;</td>
+			<td>The name of the folder on the iTest system that contains the files to synchronize (e.g., <em>C:/ADT/iTest3.7/Solution.Demo/Picklist</em> or $SUPPORTDIR/Picklist).</td>
+		</tr>
+		<tr>
+			<td>&lt;remotefolder&gt;</td>
+			<td>The relative path of the remote folder on the LabCentral system (e.g., <em>Picklists</em> [the <em>Picklists</em> folder in LabCentral's Lab Files]).</td>
+		</tr>
+		<tr>
+			<td>&lt;silent&gt;</td>
+			<td>The tag that determines whether the user has the option to download updated files from LabCentral or not. Set this setting to False to make all files an optional download. Set to True to be required downloads; if set to true, the file names will not appear in the Select Patch dialog.</td>
+		</tr>
+		<tr>
+			<td>&lt;newfiles&gt;</td>
+			<td>This is an optional tag. The default value is False. If the tag is present and set to True, then any files in the remote folder that are not in the local folder are treated as new files and downloaded, matching files are also downloaded. Otherwise, only files that match files on the local folder are downloaded to the iTest system.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+</body>
+</html>

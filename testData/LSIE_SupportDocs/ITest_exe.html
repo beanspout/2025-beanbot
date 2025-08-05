@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ITest exe</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="ITest_exe.html">ITest exe</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="iTestexe"></a>
+<h1 >iTest.exe<a href="#iTestexe" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#iTestexe">iTest.exe</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#INI-Options">INI Options</a><ul><li><a href="#AutomationPanel">AutomationPanel</a><ul><li><a href="#Examples">Examples</a></li></ul>
+</li><li><a href="#GUI">GUI</a><ul><li><a href="#Examples-2">Examples</a></li></ul>
+</li></ul>
+</li><li><a href="#Read-only-Mode">Read-only Mode</a></li><li><a href="#Launching-Scripts-or-Programs">Launching Scripts or Programs</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p><em>iTest.exe</em> is the primary application used to start iTest. It enables you to quickly open a specific display, layout, or interface, such as iTest Console or AutomationPanel. There are two INI options that are used to determine what opens when <em>iTest.exe</em> is launched: <code>AutomationPanel</code> and <code>GUI</code>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>iTest.exe Icon</strong></em></span><br /><img src="attachments/download/45699/iTest_exe.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="INI-Options"></a>
+<h2 >INI Options<a href="#INI-Options" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following <em>powertek.ini</em> options specify <em>iTest.exe</em> functionality. Use them to customize which application or interface is opened when <em>iTest.exe</em> is launched.</p>
+
+
+	<a name="AutomationPanel"></a>
+<h3 >AutomationPanel<a href="#AutomationPanel" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This INI option determines which version of iTest is launched—either iTest Console or AutomationPanel. When this setting is true, AutomationPanel is launched; when it is false, iTest Console is launched. False is the default value for this setting.</p>
+
+
+	<a name="Examples"></a>
+<h4 >Examples<a href="#Examples" class="wiki-anchor">&para;</a></h4>
+
+
+	<p><code>AutomationPanel=true</code></p>
+
+
+	<p><code>AutomationPanel=false</code></p>
+
+
+	<a name="GUI"></a>
+<h3 >GUI<a href="#GUI" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This INI option is used when you do not want to open iTest Console or AutomationPanel—such as when using iTest on a touch screen device. When you launch <em>iTest.exe</em>, it will open the layout or display using <em>DspDrv.exe</em> (for iTest Console displays) and <em>DspDrv_AP.exe</em> (for AutomationPanel layouts). When this setting is not specified, <em>iTest.exe</em> uses the <code>AutomationPanel</code> setting to determine which application to launch.</p>
+
+
+	<a name="Examples-2"></a>
+<h4 >Examples<a href="#Examples-2" class="wiki-anchor">&para;</a></h4>
+
+
+	<a name="DspDrvexe"></a>
+<h5 >DspDrv.exe<a href="#DspDrvexe" class="wiki-anchor">&para;</a></h5>
+
+
+	<p><code>GUI=dspdrv.exe $SUPPORTDIR\EXECUTE\DISPLAY\Cas1_Combustion.dsp</code></p>
+
+
+	<a name="DspDrv_APexe"></a>
+<h5 >DspDrv_AP.exe<a href="#DspDrv_APexe" class="wiki-anchor">&para;</a></h5>
+
+
+	<p><code>GUI=dspdrv_AP.exe "$SUPPORTDIR\Layouts\2. Master Schedule.layout" /MainGui</code></p>
+
+
+	<p><strong>Where</strong>:</p>
+
+
+	<p><code>/MainGui</code> is required when you want to display a layout as the primary interface. When you close this layout, iTest shuts down. When you close layouts that do not have this argument, it will not shutdown iTest; instead, it will just close the layout.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">You must use quotation marks around the file path if the name of the file has spaces in it. </td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Read-only-Mode"></a>
+<h2 >Read-only Mode<a href="#Read-only-Mode" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can make <em>iTest.exe</em> launch in read-only mode by using the <code>/readonly</code> command line argument or the <code>ReadOnly</code> advanced <em>powertek.ini</em> setting.</p>
+
+
+	<a name="Launching-Scripts-or-Programs"></a>
+<h2 >Launching Scripts or Programs<a href="#Launching-Scripts-or-Programs" class="wiki-anchor">&para;</a></h2>
+
+
+	<p><em>iTest.exe</em> will attempt to launch the following batch files in this order (if they exist) prior to launching any executables:</p>
+
+
+	<ol>
+	<li><em>$SYSTEMDIR\Execute\iTestPreload.bat</em></li>
+		<li><em>$SUPPORTDIR\Execute\iTestPreload.bat</em></li>
+	</ol>
+
+
+	<p>The batch files can be configured to run scripts or programs when <em>iTest.exe</em> is first executed. <em>iTest.exe</em> will set the following environment variables prior to launching these batch files:</p>
+
+
+	<ul>
+	<li>DATADIR</li>
+		<li>EXECUTEDIR</li>
+		<li>SUPPORTDIR</li>
+		<li>SYSTEMDIR</li>
+	</ul>
+
+
+	<p>These environment variables correspond to the similarly named iTest macros (e.g., $DATADIR, $SUPPORTDIR, etc...). They exist for the duration of this running instance of iTest.exe and are available to any child process launched by this instance of iTest.exe. For example, a batch file launched from AutomationPanel could also reference these variables.</p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="DspDrv_exe.html">DspDrv.exe</a></li>
+		<li><a class="wiki-page" href="DspDrv_AP_exe.html">DspDrv_AP.exe</a></li>
+	</ul>
+</body>
+</html>

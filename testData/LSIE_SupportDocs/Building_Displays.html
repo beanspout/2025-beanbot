@@ -1,0 +1,685 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Building Displays</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Building_Displays.html">Building Displays</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Displays"></a>
+<h1 >Displays<a href="#Displays" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Displays">Displays</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Creating-a-new-Display">Creating a new Display</a></li><li><a href="#Standard-Display">Standard Display</a></li><li><a href="#Dialog-Display">Dialog Display</a></li><li><a href="#Right-Display">Right Display</a></li></ul>
+</li><li><a href="#Themes-and-Templates">Themes and Templates</a><ul><li><a href="#Using-Themes">Using Themes</a><ul><li><a href="#Creating-a-Display-Theme">Creating a Display Theme</a></li><li><a href="#Applying-a-Display-Theme">Applying a Display Theme</a></li></ul>
+</li><li><a href="#Using-Templates">Using Templates</a><ul><li><a href="#Creating-a-Display-Template">Creating a Display Template</a></li><li><a href="#Applying-a-Display-Template">Applying a Display Template</a></li></ul>
+</li></ul>
+</li><li><a href="#Editing-Displays">Editing Displays</a><ul><li><a href="#Editing-Display-Properties">Editing Display Properties</a></li><li><a href="#Adding-Display-Objects-to-a-Display">Adding Display Objects to a Display</a><ul><li><a href="#Types-of-Display-Objects">Types of Display Objects</a></li><li><a href="#Adding-a-New-Object-to-a-Display">Adding a New Object to a Display</a></li></ul>
+</li><li><a href="#Editing-Display-Objects">Editing Display Objects</a><ul><li><a href="#Resizing-Objects">Resizing Objects</a></li><li><a href="#Moving-Objects">Moving Objects</a></li><li><a href="#MovingEditing-Groups-of-Objects">Moving/Editing Groups of Objects</a></li><li><a href="#Deleting-Objects">Deleting Objects</a></li><li><a href="#Editing-Object-Properties">Editing Object Properties</a></li><li><a href="#UndoRedo-Capabilities">Undo/Redo Capabilities</a></li></ul>
+</li></ul>
+</li><li><a href="#Array-Channels-in-Displays">Array Channels in Displays</a></li><li><a href="#Specifying-Startup-Displays">Specifying Startup Displays</a></li><li><a href="#Line-Drawing-on-Displays">Line Drawing on Displays</a></li><li><a href="#Virtual-Keyboard-Option">Virtual Keyboard Option</a><ul><li><a href="#How-to-enable-or-disable-the-Tablet-PC-Input-Panel-keyboard-in-Windows-7">How to enable or disable the Tablet PC Input Panel keyboard in Windows 7.</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest allows users to create on-screen displays, in which display objects can be added to view and manipulate channel data. Users can create the following types of displays:</p>
+
+
+	<ul>
+	<li>Standard Display</li>
+		<li>Dialog Display</li>
+		<li>Right Display</li>
+	</ul>
+
+
+	<p>To access displays, expand the <strong>Presentation</strong> folder in the Test Manager tree, and then expand the <strong>Displays</strong> folder. The folders for each display time are visible, as well as folders for <strong>Templates</strong> and <strong>Themes</strong>.</p>
+
+
+	<a name="Creating-a-new-Display"></a>
+<h2 >Creating a new Display<a href="#Creating-a-new-Display" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To create a new display, complete the procedure below:</p>
+
+
+	<ol>
+	<li>With the <strong>Displays</strong> folder expanded, expand the folder name of a display to add (e.g., the <strong>Standard</strong> folder).</li>
+		<li>Right-click the folder and select <strong>New &lt;folder name&gt; Display</strong>. A system-generated display name appears in the tree.</li>
+		<li>Right-click the name and choose the <strong>Rename</strong> option.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Rename New Display</strong></em></span><br /><img src="attachments/download/95579/display1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Right-click in the Test Manager Display Area and select <strong>Display Properties</strong> to open the Display Properties dialog box in which general display properties can be configured.</li>
+		<li>The <strong>Size &#38; Position</strong> tab displays the default display size. To change the display size, enter the new height and width values in the <strong>Size</strong> fields. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Size and Position Tab</strong></em></span><br /><img src="attachments/download/95580/standarddisplay4.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the <strong>Color</strong> tab to configure the color of the display.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Color Tab</strong></em></span><br /><img src="attachments/download/95581/standarddisplay5.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>Select</strong> to open the Color dialog box in which a predefined background color can be selected or create a custom background color for the display. Click <strong>Browse</strong> to display the Open dialog box from which a bitmap can be selected to use for the display’s background. Bitmaps are imported at the size they were created and cannot be resized on the display.</li>
+		<li>Click the <strong>Grid</strong> tab. The options on this tab allow you to show a grid of dots on the display to help you align controls. The grid does not display in the Console. <strong>Show Grid</strong> is selected by default. To change the size of the grid, enter new values (in pixels) in the <strong>Width</strong> and <strong>Height</strong> fields. Controls will <strong>Snap to Grid</strong> marks by default. If you don’t want controls to snap to the grid, deselect this option.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Grid Tab</strong></em></span><br /><img src="attachments/download/95582/standarddisplay6.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Alternatively, you can send some messages when the display opens and/or closes. To do this, click the <strong>Mailslot Messages</strong> tab. This will bring up the following screen which can be used to specify a mailslot message to send when the disply opens and one to send when the display closes.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Mailslot Messages Tab</strong></em></span><br /><img src="attachments/download/95583/DisplayMessage.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>Apply</strong> to save changes without closing the Display Properties dialog box. Click <strong>OK</strong> to save changes and close the Display Properties dialog box.</li>
+		<li>Next, select an object from the <strong>Object Bar</strong> drop-down list and click <strong>Insert</strong>, or click one of the display objects on the Display toolbar to insert an object of your choice onto the display.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select Object</strong></em></span><br /><img src="attachments/download/95584/display2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Right-click the object to open its properties dialog box, and specify the appropriate settings.</li>
+	</ol>
+
+
+	<p>For complete details on each display type, including a general description, field names/definitions and field properties, see the "Types of Display Objects" section further down on this page.</p>
+
+
+	<a name="Standard-Display"></a>
+<h2 >Standard Display<a href="#Standard-Display" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Standard displays are visible in the display area of iTest Console. They are accessible from the Command Bar, from a mailslot message to softpanel, or by selecting <strong>Displays/Standard</strong> from the toolbar.</p>
+
+
+	<p>You can use the following VCL to display a Standard Display:</p>
+
+
+<pre>"\\.\mailslot\Softpanel&gt;&gt;$UPPERDISPLAY;MyDisplay.dsp"</pre>
+
+	<p>To create a new Standard display, complete the steps in the "Displays Overview" section above.</p>
+
+
+	<a name="Dialog-Display"></a>
+<h2 >Dialog Display<a href="#Dialog-Display" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Dialog displays are custom-sized displays that are only accessible by using a mailslot message to the Softpanel. Dialog displays are floating windows with definite size and starting positions. Dialogs are typically used to notify an operator of some exceptional event, or to retrieve information from an operator. They are also used to provide task-specific controls.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Size and position of Dialog Displays will be overridden at runtime if CustomDisplayShowLastPosition is enabled in the solution&#39;s powertek.ini.</td>
+		</tr>
+	</table></p>
+
+
+	<p>For more information about the CustomDisplayShowLastPosition powertek.ini setting, see <a class="wiki-page" href="ITest_INI_Options.html#Runtime-Console">ITest INI Options</a></p>
+
+
+	<p>You can use the following VCL to display a dialog:</p>
+
+
+<pre>"\\.\mailslot\Softpanel&gt;&gt;$CUSTOMDISPLAY;MyDialog.dsp"</pre>
+
+	<p>Where MyDialog.dsp is the name of the Dialog display.</p>
+
+
+	<p>In addition to initializing dialogs using VCL, action buttons can be created on the toolbar to initialize them.</p>
+
+
+	<p>To programmatically close a dialog (for example, from a button on the dialog itself), send the DIE message to the display.</p>
+
+
+<pre>"\\.\mailslot\MyDisplay&gt;&gt;DIE"</pre>
+
+	<p>This technique also works to close standard and right displays.</p>
+
+
+	<p>To create a new Dialog display, complete the steps in the "Displays Overview" section above.</p>
+
+
+	<a name="Right-Display"></a>
+<h2 >Right Display<a href="#Right-Display" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Right Display is typically a full size display that should fill the entire screen of an auxiliary monitor. In the past the auxiliary monitor was placed to the right of the operator console, hence the name Right Display. More than two monitors are supported, so Right Display does not necessarily have to be on the right.  These displays appear on the Console if the <strong>Global Setting</strong> for number of monitors is greater than 1. Define the starting position and size using the display properties dialog. Starting position is relative to the 0,0 coordinate of the primary monitor defined in Windows.</p>
+
+
+	<p>To create a new Right display, refer to the <a class="wiki-page" href="Creating_a_Right_Display.html">Creating a Right Display</a> document.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Creating a Right display is only applicable when employing a multi-monitor configuration.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Themes-and-Templates"></a>
+<h1 >Themes and Templates<a href="#Themes-and-Templates" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Using-Themes"></a>
+<h2 >Using Themes<a href="#Using-Themes" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Themes allow you to specify colors, fonts, border types and other cosmetic settings for displays and their controls and then apply them to displays or templates you create or have already created. Themes deal only with the appearance of display objects, and not the logic or code behind them.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">While themes cover most of the properties in a display object it does not necessarily cover all of them all of the time. One reason for this is that certain hard-coded VCL names don’t match the equivalent property in the theme editor.  Another reason is that some display objects; e.g..</td>
+		</tr>
+	</table></p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Themes</strong></em></span><br /><img src="attachments/download/6716/themes.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Creating-a-Display-Theme"></a>
+<h3 >Creating a Display Theme<a href="#Creating-a-Display-Theme" class="wiki-anchor">&para;</a></h3>
+
+
+	<ol>
+	<li>Expand the <strong>Presentation</strong> folder from the Test Manager Tree, followed by the <strong>Displays</strong> folder.</li>
+		<li>Expand the <strong>Themes</strong> folder.</li>
+		<li>Right-click <strong>Themes</strong>, and then select <strong>New Themes Display</strong>. The Themes dialog box displays in the Test Manager Display Area and a new theme named <strong>Theme1</strong> is added to the Test Manager tree.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Themes Dialog Box</strong></em></span><br /><img src="attachments/download/95585/themes1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select a <strong>Background Color</strong> for the display from the list of colors. Select <strong>Custom Color</strong> from this list to create a custom color.</li>
+		<li>Select a <strong>Background Color</strong>, <strong>Foreground Color</strong>, and <strong>Font</strong> settings for <strong>Objects</strong> - <strong>General</strong>. Select <strong>Custom Color</strong> from this list to create a custom color.</li>
+		<li>Click <strong>Apply to All Objects</strong> to apply these background and foreground colors to all individual controls. The selected colors will display in the <strong>BackColor</strong> and <strong>ForeColor</strong> fields for the individual controls.</li>
+	</ol>
+
+
+	<a name="Applying-a-Display-Theme"></a>
+<h3 >Applying a Display Theme<a href="#Applying-a-Display-Theme" class="wiki-anchor">&para;</a></h3>
+
+
+	<ol>
+	<li>Expand the <strong>Presentation</strong> folder from the Test Manager Tree, followed by the <strong>Displays</strong> folder.</li>
+		<li>Double-click on the display to which you want to apply a theme.</li>
+		<li>Expand the <strong>Themes</strong> folder in the Tree Bar.</li>
+		<li>Drag the theme you wish to apply from the Tree Bar onto the Test Manager Display Area. The display as well as the controls on the display will change to the colors specified by the theme.</li>
+		<li>Click <strong>File > Save</strong> to save the updated display.</li>
+	</ol>
+
+
+	<a name="Using-Templates"></a>
+<h2 >Using Templates<a href="#Using-Templates" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Templates are preconfigured controls or groups of controls that can be used as starting points for new displays. Template displays are particularly useful when a user has a control that they wish to use over and over again. In this case that user would create a template and then apply it to a new display.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Templates</strong></em></span><br /><img src="attachments/download/95586/templates.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Creating-a-Display-Template"></a>
+<h3 >Creating a Display Template<a href="#Creating-a-Display-Template" class="wiki-anchor">&para;</a></h3>
+
+
+	<ol>
+	<li>Expand the <strong>Presentation</strong> folder from the Test Manager Tree, followed by the <strong>Displays</strong> folder.</li>
+		<li>Expand the <strong>Templates</strong> folder.</li>
+		<li>Right-click <strong>Templates</strong>, and then select <strong>New Template Display</strong>. A blank display opens in the Test Manager Display Area and a new display named <strong>Template1</strong> displays in the Tree Bar.</li>
+		<li>Right-click the new display, select <strong>Rename</strong>, type a new name, and then press <strong>ENTER</strong>.</li>
+		<li>Right-click in the Test Manager Display Area and select <strong>Display Properties</strong> to open the Display Properties dialog box in which you can configure general display properties.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Size and Position Tab</strong></em></span><br /><img src="attachments/download/95587/template1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>The <strong>Size &#38; Position</strong> tab displays the default display size (1024x460). To change the display size, enter the new height and width values in the <strong>Size</strong> fields.</li>
+		<li>Click the <strong>Color</strong> tab.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Color Tab</strong></em></span><br /><img src="attachments/download/95588/template2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>Select</strong> to open the Color dialog box in which you can select a predefined background color or create a custom background color for the display.</li>
+		<li>Click <strong>Browse</strong> to display the Open dialog box in which you can select a bitmap to use for the display’s background. Bitmaps are imported at the size they were created and cannot be resized on the display.</li>
+		<li>Click the <strong>Grid</strong> tab. The options on this tab allow you to create a grid of dots that displays on the display to help you align controls. The grid does not display on the Console.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Grid Tab</strong></em></span><br /><img src="attachments/download/95589/template3.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li><strong>Show Grid</strong> is selected by default. To change the size of the grid, enter new values (in pixels) in the <strong>Width</strong> and <strong>Height</strong> fields.</li>
+		<li>Controls will <strong>Snap To Grid</strong> marks by default. If you don’t want controls to snap to the grid, deselect this option.</li>
+		<li>Click <strong>Apply</strong> to save changes without closing the Display Properties dialog box. Click <strong>OK</strong> to save changes and close the Display Properties dialog box.</li>
+		<li>Select an object from the Object Bar list and click <strong>Insert</strong> or click on one of the controls on the Display toolbar to insert a control on the display.</li>
+		<li>Right-click the control to open its properties dialog box, and specify the appropriate settings.</li>
+		<li>Click <strong>File > Save</strong> to save the template.</li>
+	</ol>
+
+
+	<a name="Applying-a-Display-Template"></a>
+<h3 >Applying a Display Template<a href="#Applying-a-Display-Template" class="wiki-anchor">&para;</a></h3>
+
+
+	<ol>
+	<li>Expand the <strong>Presentation</strong> folder from the Test Manager Tree, followed by the <strong>Displays</strong> folder.</li>
+		<li>Expand either the <strong>Standard</strong>, <strong>Right</strong>, <strong>Softpanel</strong> or <strong>Dialog</strong> folder.</li>
+		<li>Right-click <strong>Standard</strong>, <strong>Right</strong>, or <strong>Dialog</strong> and then select <strong>New Standard Display</strong>, <strong>New Right Display</strong>, or <strong>New Dialog Display</strong>. A new display name (<strong>Display1</strong>, <strong>Right1</strong>, or <strong>Custom1</strong>) appears in the Tree Bar.</li>
+		<li>Double-click the new display in the Tree Bar to open it in the Test Manager Display Area.</li>
+		<li>Expand the <strong>Templates</strong> folder in the Tree Bar.</li>
+		<li>Click the template you want to apply to the open display, and drag it onto the Test Manager Display Area. The controls in the template are now applied to the display.</li>
+		<li>Make changes to the display as necessary.</li>
+		<li>Click <strong>File/Save</strong> to save the updated display.</li>
+	</ol>
+
+
+	<a name="Editing-Displays"></a>
+<h1 >Editing Displays<a href="#Editing-Displays" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>There are several ways in which you can edit a display. You can edit the display properties of a display, and you can also add, remove or edit display objects from a display.</p>
+
+
+	<a name="Editing-Display-Properties"></a>
+<h2 >Editing Display Properties<a href="#Editing-Display-Properties" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To modify the way the display will appear in the Console, follow the procedure below. Any changes to the display properties will affect all displays for a solution.</p>
+
+
+	<ol>
+	<li>Expand the <strong>Presentation</strong> folder in the Test Manager Tree, then right-click on <strong>Displays</strong> in the Tree Bar (you can also right-click in the Display Area). Select <strong>Properties</strong> to open the <strong>Display Properties</strong> dialog box in the Test Manager Display Area.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Display Properties Dialog</strong></em></span><br /><img src="attachments/download/95590/displayprop2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Use this dialog box to specify properties of the display on the Console. Refer to the table below for more information.</li>
+		<li>Click <strong>OK</strong> when you have finished setting display properties.</li>
+	</ol>
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Display Property Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Size</td>
+			<td>The <strong>Size &#38; Position</strong> tab displays the default display size. To change the display size, enter the new height and width values in the <strong>Size</strong> fields</td>
+		</tr>
+		<tr>
+			<td>Display Label</td>
+			<td>This setting supersedes the name given to an Indexed Display (for an explanation of an Indexed Display see the <strong>Array Channels in Displays</strong> section). </td>
+		</tr>
+		<tr>
+			<td>Background Color</td>
+			<td>Click the <strong>Select</strong> button to choose the background color of your display.</td>
+		</tr>
+		<tr>
+			<td>Background Bitmap</td>
+			<td>Click <strong>Browse</strong> to display the Open dialog box in which you can select a bitmap to use for the display’s background. Bitmaps are imported at the size they were created and cannot be resized on the display. Bitmaps smaller than the display will be tiled to fill the display</td>
+		</tr>
+		<tr>
+			<td>Show Grid</td>
+			<td><strong>Show Grid</strong> is selected by default. To change the size of the grid, enter new values (in pixels) in the <strong>Width</strong> and <strong>Height</strong> fields.</td>
+		</tr>
+		<tr>
+			<td>Snap To Grid</td>
+			<td>Controls will <strong>Snap To Grid</strong> marks by default. If you don’t want controls to snap to the grid, deselect this option</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Adding-Display-Objects-to-a-Display"></a>
+<h2 >Adding Display Objects to a Display<a href="#Adding-Display-Objects-to-a-Display" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Types-of-Display-Objects"></a>
+<h3 >Types of Display Objects<a href="#Types-of-Display-Objects" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>You can add the following objects to your displays. For complete details on each display object, including a general description and purpose, field definitions and field properties, click the links in the table below.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Display Objects</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:230px;text-align:left;"><b>Control</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td>Gauges and meters (ADT Gauge)</td>
+			<td>Display channel data, target values, data quality, limit state and high/low values. For complete details on this object see <a class="wiki-page" href="ADT_Gauge.html">ADT Gauge</a>.</td>
+		</tr>
+		<tr>
+			<td>Buttons (ADT Button)</td>
+			<td>Send mailslot messages when turned on and off. Buttons can also adjust channel values and operate as check boxes and radio buttons. For complete details on this object, see <a class="wiki-page" href="ADT_Button.html">ADT Button</a>.</td>
+		</tr>
+		<tr>
+			<td>Drop-down lists (ADT Combo)</td>
+			<td>Display a picklist of values from which users can choose during runtime on the iTest Console, or to send a mailslot message. For complete details on this object, see <a class="wiki-page" href="ADT_Combo_Box.html">ADT Combo Box</a>.</td>
+		</tr>
+		<tr>
+			<td>Data Entry fields (ADT Data Entry)</td>
+			<td>The ADT Data Entry control allows you to configure a data entry field that accepts user-entered data during runtime on the iTest Console. The data that is entered can then be used to assign a value into a channel. You can also use the ADT Data Entry control to ask users a question that allows them to input test data that is not measured by the data acquisition system. For complete details on this object, see <a class="wiki-page" href="ADT_Data_Entry.html">ADT Data Entry</a>.</td>
+		</tr>
+		<tr>
+			<td>Digital Indicators (ADT Digital)</td>
+			<td>Display one or more channel values using different colors. These are based on any configured limits and/or warnings. For complete details on this object, see <a class="wiki-page" href="ADT_Digital.html">ADT Digital</a>.</td>
+		</tr>
+		<tr>
+			<td>Indicators (ADT Indicator)</td>
+			<td>Display message strings and/or color bars that change depending upon the value of an associated database channel. For complete details on this object, see <a class="wiki-page" href="ADT_Indicator.html">ADT Indicator</a>.</td>
+		</tr>
+		<tr>
+			<td>Bars (ADT Bar)</td>
+			<td>Display a channel name and its value using a digital value and a bar that changes length to indicate the channel’s magnitude. If configured, operators can change the value on the bar using sliders. For complete details on this object, see <a class="wiki-page" href="ADT_Bar.html">ADT Bar</a>.</td>
+		</tr>
+		<tr>
+			<td>Static images (ADT Image)</td>
+			<td>Display JPEG, BMP, ICO, or DIB images. For complete details on this object, including field definitions and properties, see <a class="wiki-page" href="ADT_Image.html">ADT Image</a>.</td>
+		</tr>
+		<tr>
+			<td>Text (ADT Title)</td>
+			<td>Display static text boxes. For complete details on this object, see <a class="wiki-page" href="ADT_Title.html">ADT Title</a>.</td>
+		</tr>
+		<tr>
+			<td>Separator lines (ADT Separator)</td>
+			<td>Adds structure to the display. In addition, you can change the control’s foreground and background colors to create depth on a display. For complete details on this object, see <a class="wiki-page" href="ADT_Separator.html">ADT Separator</a>.</td>
+		</tr>
+		<tr>
+			<td>Stripcharts (ADT Strip Chart)</td>
+			<td>Graphically plot the status of selected database channels over time. Channel values display as a series of scrolling lines in the strip chart. For complete details on this object, see <a class="wiki-page" href="ADT_Stripchart.html">ADT Stripchart</a>.</td>
+		</tr>
+		<tr>
+			<td>ADT Chart Plus</td>
+			<td>This control combines the features of both a XY Plot and a Strip Chart with some additional enhancements. The ADT Chart Plus control has two modes, XY Plot mode and Strip Chart mode.  In XY Plot mode the control graphically plots the values of selected database channels over the specified X-axis channel.  In Strip Chart mode, the control graphically plots the values of selected database channels over the specified time range. For complete details on this object, see <a class="wiki-page" href="ADT_Chart_Plus.html">ADT Chart Plus</a>.</td>
+		</tr>
+		<tr>
+			<td>ADT Array Chart</td>
+			<td>The ADT Array Chart display object allows you to insert a chart object that will display all of the values of an array channel. For complete details on this object, see <a class="wiki-page" href="ADT_Array_Chart.html">ADT Array Chart</a>.</td>
+		</tr>
+		<tr>
+			<td>ActiveX dropdown</td>
+			<td>This dropdown allows you to choose and <strong>Insert</strong> an ActiveX control onto your display. This legacy feature is not actively supported and may or may not appear on your installation. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">You can use mailslot messages to change the properties of ADT display controls during runtime on the iTest Console (unless Permit Runtime Changes is turned off in the control’s properties).</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Adding-a-New-Object-to-a-Display"></a>
+<h3 >Adding a New Object to a Display<a href="#Adding-a-New-Object-to-a-Display" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following procedure provides general instructions on adding an object to your display. We will use the ADT Bar object as an example.</p>
+
+
+	<ol>
+	<li>Open the display in Test Manager.</li>
+		<li>Select the <strong>ADT Bar</strong> display object on the Display toolbar to place it in the top left corner of the Display Area. Resize and reposition the control as desired.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add ADT Bar</strong></em></span><br /><img src="attachments/download/95663/addcontrol.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 1em;" alt="" /> <br />&nbsp;</li>
+		<li>Right-click the ADT Bar object and then select <strong>Properties</strong> to open the ADT Bar Control Properties dialog box.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>ADT Bar Control Properties</strong></em></span><br /><img src="attachments/download/95664/newdisplay2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 1em;" alt="" /><br />&nbsp; </li>
+		<li>Navigate through each tabbed section of the Properties dialog and select your options/preferences. In the case of the ADT Bar, you will have the following tabs to configure:</li>
+	<ul>
+	<li>General</li>
+		<li>Scale</li>
+		<li>Tics</li>
+		<li>Slider Options</li>
+		<li>Indicators</li>
+		<li>Data Quality</li>
+		<li>Colors</li>
+		<li>Fonts</li>
+	</ul></li>
+	</ol>
+
+
+	<a name="Editing-Display-Objects"></a>
+<h2 >Editing Display Objects<a href="#Editing-Display-Objects" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Once you have placed a display object on the Display Area, you can resize, move, or delete it.</p>
+
+
+	<a name="Resizing-Objects"></a>
+<h3 >Resizing Objects<a href="#Resizing-Objects" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>After you place a display object on a screen, you can resize it using the sizing handles.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Sizing Handles</strong></em></span><br /><img src="attachments/download/6719/controls_sizing.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The middle handles on the top and bottom resize the height of the object. The middle handles on the left and right resize the width of the object. The handles in the four corners resize both the height and width of the object.</p>
+
+
+	<ol>
+	<li>Place your cursor over the sizing handle in the direction you want to resize the object. The cursor changes to an arrow that indicates the directions in which the handle can resize the object.</li>
+		<li>Click and drag the sizing handle in the direction you want to resize the object. Release the mouse button when the object is the desired size.</li>
+		<li>Repeat this process for each side of the object that you want to resize.</li>
+	</ol>
+
+
+	<a name="Moving-Objects"></a>
+<h3 >Moving Objects<a href="#Moving-Objects" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>There are several ways in which you can move objects once they have been placed on the Display Area:</p>
+
+
+	<ol>
+	<li>Click and drag an object, or a group of objects, to its new location.</li>
+		<li>Select an object or a group of objects and press the up, down, right, or left arrow keys on the keyboard. Each time you press an arrow key, the object moves one grid space as defined in the <strong>Grid</strong> tab on the Display Properties dialog box.</li>
+		<li>Select an object, right-click, and select <strong>Move to Front</strong>. This places the object in front of other objects that are in the same location. Selecting <strong>Move to Back</strong> places the object behind all other objects.</li>
+	</ol>
+
+
+	<a name="MovingEditing-Groups-of-Objects"></a>
+<h3 >Moving/Editing Groups of Objects<a href="#MovingEditing-Groups-of-Objects" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>You can move or delete objects individually or as part of a group. You can also draw a box around a group like you can in Windows.</p>
+
+
+	<p>You can also select multiple objects in the display editor and then set common properties for each. For example, you can set the colors or fonts for a group of gauges or bar objects at the same time. Select the group you want to edit, right-click to select <strong>Generic Properties</strong>,  and the following dialog will appear:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Generic Properties Right-Click Option</strong></em></span><br /><img src="attachments/download/95665/group1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Generic Properties Dialog</strong></em></span><br /><img src="attachments/download/95666/group2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>This will allow you to set a consistent size, basic color scheme, font and border type to the selected objects. The <strong>Width</strong> and <strong>Height</strong> setting must be explicitly selected to override all of the current object sizes by also checking the <strong>Apply</strong> buttons for each.</p>
+
+
+	<a name="Deleting-Objects"></a>
+<h3 >Deleting Objects<a href="#Deleting-Objects" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Right-click the object or group of objects and then select <strong>Delete</strong>.</p>
+
+
+	<a name="Editing-Object-Properties"></a>
+<h3 >Editing Object Properties<a href="#Editing-Object-Properties" class="wiki-anchor">&para;</a></h3>
+
+
+	<ol>
+	<li>Right-click an object and select <strong>Properties</strong>, which displays the properties dialog box associated with the object.</li>
+		<li>Make changes to the object and then click <strong>OK</strong>.</li>
+	</ol>
+
+
+	<a name="UndoRedo-Capabilities"></a>
+<h3 >Undo/Redo Capabilities<a href="#UndoRedo-Capabilities" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>iTest allows you to undo and redo your actions in the Display Editor. Any change to a display can be undone, and the default depth for undo is 40 actions. The default depth can be changed by modifying the <strong>UndoDepth</strong> setting in the <em>Powertek.ini</em> file.</p>
+
+
+	<p>To undo or redo an action, simply right-click in the grid area of the Display Editor and choose the appropriate option. The Ctrl-Z shortcut key is supported for the undo option.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Undo/Redo Right-Click Options</strong></em></span><br /><img src="attachments/download/95673/controls_undo.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Array-Channels-in-Displays"></a>
+<h1 >Array Channels in Displays<a href="#Array-Channels-in-Displays" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>There are three different ways to use array channel names in the display objects of a display.</p>
+
+
+	<ol>
+	<li><strong>Static Index.</strong> When you configure a display object to display an array channel, you can add a static index to the end of the channel name (e.g. arrayval[2], arrayval[3], etc). When you do this the display object will always display the value from that index of the array, regardless of any index that the display might have been launched with.</li>
+		<li><strong>No Index.</strong> When specifying an array channel in a display object, you can also choose to not specify an index. You just use the name of the array channel. This has special significance and should only be used when you intend to launch an Indexed Display screen (see next bullet).</li>
+		<li><strong>Indexed Display.</strong> When you launch a display using a softpanel mailslot message, you can also add an index to the name of the display to make it an Indexed Display. For example, if you had a display called MyDisplay you could launch it with an index using either of the following mailslot messages:<br /><pre>
+$UPPERDISPLAY;MyDisplay[2]
+$UPPERDISPLAY;MyDisplay[2].dsp
+</pre></li>
+	</ol>
+
+
+	<p>All mailslot messages for launching displays support this syntax. This sets an index within the display that can be used by any of the display objects. Only display objects which were configured to display an unindexed array channel will use this display index. Display objects which use non-array channels or array channels with a static index will ignore the display index. When a display is launched with an index, the display title will change to show the index. The mailslot name of the display will also contain the index.</p>
+
+
+	<p>For example, you could create a display called MyDisplay which contains the following:</p>
+
+
+	<ul>
+	<li>A <strong>Gauge</strong> where the channel name is set to arrayval</li>
+		<li>An <strong>Indicator</strong> where the channel name is arrayval[1]</li>
+		<li>A <strong>Bar</strong> where the channel name is HS1_SETPOINT.</li>
+	</ul>
+
+
+	<p>If you sent the message $UPPERDISPLAY;MyDisplay[2] to the softpanel then the display would be launched and the title would show MyDisplay[2].</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">A defined Display Label under the Display Properties dialog will supersede this title change.</td>
+		</tr>
+	</table></p>
+
+
+	<p>The gauge would then display the third value of arrayval because it doesn't have an index and would use the display index the display was launched with, which was 2 in this case. The indicator would display the value of the second value of the array channel because it contained a static index (the [1] part). The bar would just ignore the display index and show the normal value of HS1_SETPOINT because HS1_SETPOINT is not an array channel. To close the display, you would send a DIE message to the mailslot name \\.\\mailslot\MyDisplay[2].</p>
+
+
+	<p>Because the mailslot name contains the array index, you can launch multiple copies of the same display at the same time with different indexes.</p>
+
+
+	<p>If you don’t use an index when launching a display and the display contains objects configured with an unindexed array name, then that object will display the value of the first element of the array.</p>
+
+
+	<p>Each display also has a mailslot command that allows you to change the array indices being referenced in the display:</p>
+
+
+<pre>
+$SETARRAYINDEX &lt;new index&gt;
+
+Example: \\.\\mailslot\MyDisplay[2]&gt;&gt;$SETARRAYINDEX 5
+</pre>
+
+	<p>This message can be sent to displays to change their array index. Doing so will also change the mailslot name of the display. So if the display file is test.dsp, and it was launched as test[2].dsp, it would have a mailslot name of \\.\mailslot\test[2]. Sending it as $SETARRAYINDEX 3 would change its index to 3 and the mailslot name would become \\.\mailslot\test[3].</p>
+
+
+	<p>A macro has been added to both the <strong>ADTButton</strong> and <strong>ADTCombo</strong> display objects to help send this variable-based mailslot. When constructing a message with these objects, use the macro $DISPLAYMAILSLOT$ to represent the current mailslot name.</p>
+
+
+	<a name="Specifying-Startup-Displays"></a>
+<h1 >Specifying Startup Displays<a href="#Specifying-Startup-Displays" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>You can select the displays that automatically open when the Console starts. You can designate one Standard, Right, and Dialog display as a startup display. You cannot designate multiple displays of the same type as startup displays. For example, you can specify both a Standard display and a Right display as startup displays, but you cannot choose two Standard displays as startup displays.</p>
+
+
+	<ol>
+	<li>Expand the <strong>Presentation</strong> folder in the Test Manager Tree, followed by the <strong>Displays</strong> folder.</li>
+		<li>Expand either the <strong>Standard</strong>, <strong>Right</strong>, or <strong>Dialog</strong> folder, depending on the type of display that you want to specify as a startup display.</li>
+		<li>Right-click a display file and then click <strong>Startup Display</strong>. The display’s file icon in the Tree Bar changes to light blue to indicate that it is now a startup file.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Startup File</strong></em></span><br /><img src="attachments/download/95674/maindisplay.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>To change the startup file for a specific display type, right-click another file and then select <strong>Startup Display</strong>. The new display becomes the startup display, and the file icon for the previous startup display reverts to gray to indicate that it is no longer the startup display.</li>
+	</ol>
+
+
+	<a name="Line-Drawing-on-Displays"></a>
+<h1 >Line Drawing on Displays<a href="#Line-Drawing-on-Displays" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>When you right click in the display editor now, there is a new option for <strong>Draw Line</strong>.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Draw Line Option</strong></em></span><br /><img src="attachments/download/95680/lineDraw1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>When you select this option and release, the hand icon will appear. Move the mouse to where you want to begin the line and then hold the left mouse button to draw the line.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Draw Line</strong></em></span><br /><img src="attachments/download/95681/lineDraw2.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>To interact with a line that has already been drawn, hover the mouse over either end point of the line. Left click and drag to move the end point, or right click to do any of the following:</p>
+
+
+	<ol>
+	<li>Delete the line</li>
+		<li>Edit Properties (<strong>Line Thickness</strong>, <strong>Arrow Position</strong>)</li>
+		<li>Add or remove arrows to the endpoints</li>
+	</ol>
+
+
+	<a name="Virtual-Keyboard-Option"></a>
+<h1 >Virtual Keyboard Option<a href="#Virtual-Keyboard-Option" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>The following <em>.INI</em> option helps iTest runtime displays work better on touchscreen monitors:</p>
+
+
+<pre><code class="C syntaxhl" data-language="C"><span class="n">ShowPopupKeyboardInDisplays</span><span class="o">=</span><span class="n">TRUE</span>
+</code></pre>
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">This option is TRUE by default.</td>
+		</tr>
+	</table></p>
+
+
+	<p>The setting is only effective if the no keyboard mode has been set for Windows 7. Use the following instructions to enable this setting:</p>
+
+
+	<a name="How-to-enable-or-disable-the-Tablet-PC-Input-Panel-keyboard-in-Windows-7"></a>
+<h2 >How to enable or disable the Tablet PC Input Panel keyboard in Windows 7.<a href="#How-to-enable-or-disable-the-Tablet-PC-Input-Panel-keyboard-in-Windows-7" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Use this keyboard to type without an actual keyboard.</p>
+
+
+	<ol>
+	<li>Click <strong>Start</strong> and select <strong>Control Panel</strong>.</li>
+		<li>From the Control Panel, double click the <strong>Programs and Features</strong> item.</li>
+		<li>Click the <strong>Turn Windows features on or off</strong> item.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Turn Windows Features On/Off</strong></em></span><br /><img src="attachments/download/95682/vkeyboard1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>In the list of Windows features, scroll down to the <strong>Tablet PC Components</strong> item. If this item is not checked, check it. Click <strong>OK</strong>. At this point, Windows will install the Tablet PC Components if they weren't already installed. It might be necessary to reboot your computer when they are done installing.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Tablet PC Components</strong></em></span><br /><img src="attachments/download/95683/vkeyboard2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>After the Tablet PC Components have been installed, you must configure the Tablet PC Input Panel keyboard to run when Windows starts. Open the Windows <strong>Start</strong> Menu, find the <strong>Startup</strong> folder, right-click it, and select <strong>Explore</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Explore Option</strong></em></span><br /><img src="attachments/download/95684/vkeyboard3.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>In the window that comes up, right-click and select <strong>New > Shortcut</strong>.</li>
+		<li>Now, you must select the application to run, which is called <em>TabTip.exe</em> (this is usually located at <em>C:\Program Files\Common Files\microsoft shared\ink\TabTip.exe</em>). Either enter this location or browse to it using the <strong>Browse…</strong> button. Click <strong>Next</strong>.</li>
+		<li>Click <strong>Finish</strong> to create the shortcut which will start <em>TabTip.exe</em> when Windows starts.</li>
+		<li>Now a virtual keyboard will appear when using either the <strong>ADTDigital</strong> or <strong>ADTDataEntry</strong> display objects to enter a new value for an iTest channel. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Virtual Keyboard</strong></em></span><br /><img src="attachments/download/95685/vkeyboard4.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+</body>
+</html>

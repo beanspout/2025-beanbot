@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>INIWriteFileFast</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="INIWriteFileFast.html">INIWriteFileFast</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="INIWriteFileFast"></a>
+<h1 >INIWriteFileFast<a href="#INIWriteFileFast" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#INIWriteFileFast">INIWriteFileFast</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Command-Line">Command Line</a></li><li><a href="#Parameters">Parameters</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>INIWriteFileFast is a Windows application that updates the value of any keyword=value pairs listed in an <em>.INI</em> file. INIWriteFileFast is similar to the INIWrite tool; however, all of the keyword=value pairs listed in an <em>.INI</em> file are updated to reflect the current iTest channel values if the keywords in the file match channel names in the RDB. The use of customer names and virtual array channels in the <em>.INI</em> file is supported.</p>
+
+
+	<p>When working with virtual array channels, if the array index is included as part of the keyword listed in the <em>.INI</em> file, then the value will be updated with the value based on the given array index. If a non-indexed array channel is listed and the <code>aryIDx=</code> parameter is not used, then the value will be updated with the value from the channel's [0] array index.</p>
+
+
+	<a name="Command-Line"></a>
+<h2 >Command Line<a href="#Command-Line" class="wiki-anchor">&para;</a></h2>
+
+
+<pre> INIWriteFileFast &lt;File Name&gt; [aryIDx=n]</pre>
+
+	<a name="Parameters"></a>
+<h2 >Parameters<a href="#Parameters" class="wiki-anchor">&para;</a></h2>
+
+
+	<p><ins><em>&lt;File Name&gt;:</em></ins> The name of the file that is to be updated by this utility. It must include the fully qualified filepath and the file extension. Use of a macro, like $SUPPORTDIR, is supported. If a filepath is not provided, then this utility will default to looking for the file in the current working directory.</p>
+
+
+	<p><ins><em>&lt;aryIDx=n&gt;:</em></ins> Optional parameter. If any keywords in the file matches the name of an unindexed virtual array channel, then the value 'n' from this parameter will be used as the array index (element) of the channel when updating the value.</p>
+</body>
+</html>

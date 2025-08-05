@@ -1,0 +1,443 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Managing Procedures</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Managing_Procedures.html">Managing Procedures</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Managing-Procedures"></a>
+<h1 >Managing Procedures<a href="#Managing-Procedures" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Managing-Procedures">Managing Procedures</a><ul><li><a href="#Overview">Overview</a><ul><li><a href="#Right-Click-Procedure-List-Options">Right-Click Procedure List Options</a></li><li><a href="#Right-Click-Editor-Options">Right-Click Editor Options</a></li><li><a href="#Organizing-Procedures">Organizing Procedures</a><ul><li><a href="#Using-Drag-and-Drop">Using Drag and Drop</a></li></ul>
+</li><li><a href="#Bookmarking-in-Procedures">Bookmarking in Procedures</a></li><li><a href="#Build-Output-Bar">Build Output Bar</a></li><li><a href="#Find-and-Replace-Dialog">Find and Replace Dialog</a></li><li><a href="#Procedure-Properties">Procedure Properties</a></li><li><a href="#Procedure-Settings">Procedure Settings</a></li></ul></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Procedures are programming code or script used to run iTest applications. They are written in the VCL scripting language and can be executed from numerous sources including other procedures, actions, and virtual controls defined in displays. You can create new procedures and write procedure code in SolutionBuilder's Procedures editor. To access this editor, select <strong>Tests > Procedures</strong> in the main menu. For more information on the VCL scripting language and supported functions, see the <a class="wiki-page" href="VCL.html">VCL</a> guide.</p>
+
+
+	<p>The Procedures editor contains four sections: the list of groups and procedures, the helper bar, the editor, and the build output bar.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Procedures Editor</strong></em></span><br /><img src="attachments/download/133904/45_ProceduresEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p><a name="Right-Click-Procedure-List-Options"></a>
+<h3 >Right-Click Procedure List Options<a href="#Right-Click-Procedure-List-Options" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following options are available when you right-click in the list of procedures:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Edit Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Notes</strong></td>
+		</tr>
+		<tr>
+			<td>Add</td>
+			<td>Adds a new procedure to a group.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Remove</td>
+			<td>Removes the selected procedure from a group.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Rename...</td>
+			<td>Launches the Rename dialog to change the name of the procedure or procedure group.</td>
+			<td>For BTS systems, this option is only available when you right-click on the procedure name.</td>
+		</tr>
+		<tr>
+			<td>Duplicate</td>
+			<td>Duplicates a selected procedure and appends a numeric value to the name of the procedure (e.g., UserFileName3).</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Add Group...</td>
+			<td>Adds a new procedure group, which can be used to help organize and categorize your procedures. Empty groups are not retained in-between saves.</td>
+			<td>This option is only available for non-BTS systems.<br />&nbsp;<br />This option is disabled if the <em>SolutionBuilder.xml</em> contains <strong>&lt;ProcedureFolders&gt;</strong> settings; refer to the <a class="wiki-page" href="Customizing_SolutionBuilder.html#Procedure-Folders">Procedure Folders</a> documentation for more information.</td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td>Removes a procedure and copies it to the clipboard.</td>
+			<td>This option is only available when right-clicking on a procedure name.</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td>Copies a procedure.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td>Pastes a copied/cut procedure.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td>Undoes the last action.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td>Redoes the last undone action.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Include This Folder</td>
+			<td> Includes all procedures within the folder in the test build, and iTest checks the files for errors during the build. These procedures will be available for use in iTest. An included folder is indicated by a yellow folder icon.</td>
+			<td> This option is only available when right-clicking on a procedure folder.</td>
+		</tr>
+		<tr>
+			<td>Exclude This Folder</td>
+			<td> Excludes all procedures within the folder in the test build, and iTest will not check the files for errors during the build. These procedures will not be available for use in iTest. An excluded folder is indicated by a gray slanted folder icon.</td>
+			<td>This option is only available when right-clicking on a procedure folder.</td>
+		</tr>
+		<tr>
+			<td>View Hierarchy...</td>
+			<td>Opens the View Hierarchy dialog. This dialog displays the procedures that are executed or spawned from within the selected procedure and the order in which they are called.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Properties...</td>
+			<td>When right-clicking on a procedure name, the Procedures Properties dialog launches. This dialog can be used to specify the procedure priority level and add arguments. See the <strong>Procedure Properties</strong> section for more information.<br />&nbsp;<br />When right-clicking on a procedure folder, the Procedure Settings dialog launches. This dialog can be used to specify the <strong>Startup</strong>, <strong>Soft Stop</strong>, and <strong>Exit</strong> procedures. See the <strong>Procedure Settings</strong> section for more information.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Right-Click-Editor-Options"></a>
+<h3 >Right-Click Editor Options<a href="#Right-Click-Editor-Options" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following options are available when you right-click in the editor:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Edit Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+			<td style="width:115px;text-align:left;"><strong>Shortcut Key</strong> </td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td>Removes the selected text from the editor and copies it to the clipboard.</td>
+			<td><strong>CTRL + X</strong></td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td>Copies selected text in the editor.</td>
+			<td><strong>CTRL + V</strong></td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td>Pastes copied/cut text in the editor.</td>
+			<td><strong>CTRL + P</strong></td>
+		</tr>
+		<tr>
+			<td>Find...</td>
+			<td>Launches the Find and Replace dialog with the Find tab displayed.</td>
+			<td><strong>CTRL + F</strong></td>
+		</tr>
+		<tr>
+			<td>Replace...</td>
+			<td>Launches the Find and Replace dialog with the Replace tab displayed.</td>
+			<td><strong>CTRL + H</strong></td>
+		</tr>
+		<tr>
+			<td>Toggle Whitespace</td>
+			<td>Turns whitespace markings on/off.</td>
+			<td><strong>CTRL + W</strong></td>
+		</tr>
+		<tr>
+			<td>Make Uppercase</td>
+			<td>Makes selected text uppercase.</td>
+			<td><strong>CTRL + SHIFT + U</strong></td>
+		</tr>
+		<tr>
+			<td>Make Lowercase</td>
+			<td>Makes selected text lowercase.</td>
+			<td><strong>CTRL + U</strong></td>
+		</tr>
+		<tr>
+			<td>Comment</td>
+			<td>Comments out a line of text in the procedure. Text does not need to be selected or highlighted to comment it out.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Uncomment</td>
+			<td>Uncomments a line of text in the procedure.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td>Undoes the last action.</td>
+			<td><strong>CTRL + Z</strong></td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td>Redoes the last undone action.</td>
+			<td><strong>CTRL + Y</strong></td>
+		</tr>
+		<tr>
+			<td>Open Procedure</td>
+			<td>Opens the procedure based on the text that was clicked on. If the text clicked on is not a name of a procedure, then a dialog displays indicating that SolutionBuilder cannot find the procedure. The procedures that can be opened via this right-click option are limited to the list of procedures found in the left pane.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Next Bookmark</td>
+			<td>Navigates to the next bookmark in the procedure.</td>
+			<td><strong>F2</strong></td>
+		</tr>
+		<tr>
+			<td>Previous Bookmark</td>
+			<td>Navigates to the previous bookmark in the procedure.</td>
+			<td><strong>Shift + F2</strong></td>
+		</tr>
+		<tr>
+			<td>Preferences...</td>
+			<td>Launches the Editor Properties dialog, which enables you to modify the appearance of the editor. You can customize the font style and size, display line numbers, and enable outlines for blocks of code.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+	<a name="Organizing-Procedures"></a>
+<h3 >Organizing Procedures<a href="#Organizing-Procedures" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>You can organize procedures by using Procedure Groups. To create a procedure group, do the following:</p>
+
+
+	<ol>
+	<li>Right-click in the list of procedure files and select the <strong>Add Group...</strong> option. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add Group</strong></em></span><br /><img src="attachments/download/126019/44_AddGroupOption.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Enter a name for the group in the Add Group dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Enter Group Name</strong></em></span><br /><img src="attachments/download/114973/41_AddGroup.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<p>After you enter a new name for the group, the new group will display as a section in the procedures list. You can then add new procedures to the group.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Add Procedures to Group</strong></em></span><br /><img src="attachments/download/126020/44_AddToGroup.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Using-Drag-and-Drop"></a>
+<h4 >Using Drag and Drop<a href="#Using-Drag-and-Drop" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>You can easily organize your groups by dragging and dropping procedures from one group to another. To move procedures between groups, click the name of the procedure you want to move, drag it over top of the new group you want to add it to, and then release the mouse. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Move Procedures Between Groups</strong></em></span><br /><img src="attachments/download/126022/44_SBDragandDropGroups.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Bookmarking-in-Procedures"></a>
+<h3 >Bookmarking in Procedures<a href="#Bookmarking-in-Procedures" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>You can bookmark lines within a procedure by clicking the line in the left-side margin. Bookmarking allows you to mark lines within the editor and then quickly navigate to them. After setting a bookmark, navigation is performed using the available right-click menu options <strong>Next Bookmark</strong> and <strong>Previous Bookmark</strong> or their associated hot keys.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Bookmark Lines</strong></em></span><br /><img src="attachments/download/114974/41_BookmarkProcedures.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Build-Output-Bar"></a>
+<h3 >Build Output Bar<a href="#Build-Output-Bar" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>If there are any test build errors while building the solution, then these errors will display in the Build Output Bar at the bottom of the Procedures editor. In addition, any procedures that contain errors will display in red font in the list.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Example: Procedure with Errors</strong></em></span><br /><img src="attachments/download/133911/45_ProcedureWithErrors.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Find-and-Replace-Dialog"></a>
+<h3 >Find and Replace Dialog<a href="#Find-and-Replace-Dialog" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Find and Replace dialog allows you to search all procedures in order to find and replace keywords or channels.</p>
+
+
+	<p>To launch the Find and Replace dialog, press <strong>Ctrl + F.</strong><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Find and Replace Dialog</strong></em></span><br /><img src="attachments/download/114977/FindReplaceProcedures.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />The Replace tab allows you to replace found instances using the <strong>Replace Previous</strong>, <strong>Replace Next</strong>, and <strong>Replace All</strong> functions. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Replace Tab</strong></em></span><br /><img src="attachments/download/114975/ReplaceTab.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Find and Replace Dialog Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Value</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Find</td>
+			<td>Term being searched for.</td>
+		</tr>
+		<tr>
+			<td>Replace</td>
+			<td> Term to replace all found instances.</td>
+		</tr>
+		<tr>
+			<td>Search Type</td>
+			<td>The type of search you would like to conduct. Each type has corresponding search options defined in the Options field. Types include <strong>Standard</strong>, <strong>Extended</strong>, and <strong>Regular Expression</strong>.</td>
+		</tr>
+		<tr>
+			<td>Options</td>
+			<td> Optional search conditions. Options depend on your Search Type selection. </td>
+		</tr>
+		<tr>
+			<td>Find All</td>
+			<td>Finds all instances.</td>
+		</tr>
+		<tr>
+			<td>Mark Line</td>
+			<td>Bookmarks the procedure line containing the search result.</td>
+		</tr>
+		<tr>
+			<td>Highlight Matches</td>
+			<td> Highlights all matches found in the search.</td>
+		</tr>
+		<tr>
+			<td>Clear</td>
+			<td>Clears existing indications made through the Mark Line or Highlight Matches selections.</td>
+		</tr>
+		<tr>
+			<td>Replace All</td>
+			<td> Replaces all found instances.</td>
+		</tr>
+		<tr>
+			<td>Find Previous/Find Next</td>
+			<td>Finds the previous or next instance.</td>
+		</tr>
+		<tr>
+			<td>Replace Previous/Replace Next</td>
+			<td>Replaces the previous or next instance. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Procedure-Properties"></a>
+<h3 >Procedure Properties<a href="#Procedure-Properties" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Procedure Properties dialog allows you to add, delete, and define arguments for your procedures.</p>
+
+
+	<p>To launch the Procedure Properties dialog, right-click a procedure and select <strong>Properties</strong>. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Properties</strong></em></span><br /><img src="attachments/download/126021/44_RightClickProperties.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />The Procedure Properties dialog will launch in a new window. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Procedure Properties Dialog</strong></em></span><br /><img src="attachments/download/114976/ProcedureProperties.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />To add a new argument, right-click in the dialog and select <strong>Add to End</strong>. You can add up to ten arguments per procedure. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Add to End</strong></em></span><br /><img src="attachments/download/114979/AddtoEnd.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Procedure Properties Dialog Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Value</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Level</td>
+			<td>Defines the procedure’s priority level. Zero is the lowest priority, nine the highest. </td>
+		</tr>
+		<tr>
+			<td>Returns</td>
+			<td> Defines whether the argument returns a Number, String, or None.</td>
+		</tr>
+		<tr>
+			<td>Name</td>
+			<td>The name of the argument. Double-click this field to edit. </td>
+		</tr>
+		<tr>
+			<td>Type</td>
+			<td>The type of argument the function is expecting: Number, String, ArrayNum, or ArrayStr. ArrayNum and ArrayStr can only be passed as a Channel. </td>
+		</tr>
+		<tr>
+			<td style="width:100px;">Pass As</td>
+			<td>Defines whether the argument will be passed as a Value, Local Variable, or Channel. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>For more information on VCL procedure arguments, refer to the following document on <a class="wiki-page" href="Argument_Pass-By_Types.html">Argument Types</a>.</p>
+
+
+	<a name="Procedure-Settings"></a>
+<h3 >Procedure Settings<a href="#Procedure-Settings" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Procedure Settings dialog, available by right-clicking on a procedure folder in the procedure list and selecting <strong>Properties...</strong>,  allows you to select the <strong>Startup</strong>, <strong>Soft Stop</strong>, and <strong>Exit</strong> procedures. These types of procedures are described in the table below. Use the drop-down menu in each field to select the procedure.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Procedure Settings Dialog</strong></em></span><br /><img src="attachments/download/114981/43_ProcedureSettingsDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Procedure Setting Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Setting</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> Startup Procedure </td>
+			<td> Indicates the procedure that runs when iTest starts. Only one <strong>Startup</strong> procedure can be selected. </td>
+		</tr>
+		<tr>
+			<td>Soft Stop Procedure </td>
+			<td> Indicates the procedure that runs when you stop a test on iTest. Only one <strong>Soft Stop</strong> procedure can be selected. </td>
+		</tr>
+		<tr>
+			<td>Exit Procedure </td>
+			<td> Indicates the procedure that runs when the user exits iTest. Only one <strong>Exit</strong> procedure can be selected. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+</body>
+</html>

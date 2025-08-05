@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>How to Use the Offline Developer Suite Trial License</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="How-To_Guides.html">How-To Guides</a></li>
+<li><a href="How_to_Use_the_Offline_Developer_Suite_Trial_License.html">How to Use the Offline Developer Suite Trial License</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="How-to-Use-the-Offline-Developer-Suite-Trial-License"></a>
+<h1 >How to Use the Offline Developer Suite Trial License<a href="#How-to-Use-the-Offline-Developer-Suite-Trial-License" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The iTest installation comes with a 7 day trial license for the offline developer suite. This license will allow you to run a limited, offline version of iTest intended for app development. The 7 days of the trial will begin upon the first launch of iTest after install.</p>
+
+
+	<p>This version of iTest will have the following limitations:</p>
+
+
+	<ul>
+	<li>Hardware devices are not supported</li>
+		<li>Up to 12,000 channels are supported</li>
+		<li>Up to 2,000 user defined calculations are supported</li>
+		<li>The following <em>powertek.ini</em> options must be set: <code>SystemType=IBS</code> and <code>Simulation=TRUE</code></li>
+		<li>The iTest install serial number must be for the Offline Developer Suite</li>
+	</ul>
+
+
+	<a name="Extending-the-Trial-License"></a>
+<h2 >Extending the Trial License<a href="#Extending-the-Trial-License" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To extend your trial license beyond 7 days, you will need to collaborate with an A&#38;D representative.</p>
+
+
+	<p>Use the following instructions to generate a <em>.c2v</em> file to share with an A&#38;D representative in order to extend your trail license beyond its 7 days:</p>
+
+
+	<ol>
+	<li>Navigate to <em>AnDRus.exe</em>, located in your $EXECUTEDIR. The RUS tool will launch:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>RUS Tool</strong></em></span><br /><img src="attachments/download/99454/42_RUS.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select <strong>Update of existing protection key</strong>, then click <strong>Collect Information</strong>. </li>
+		<li>You will be prompted to save the <em>.c2v</em> file. Name the file after the cell that the license will be used in, then click <strong>Save</strong>.</li>
+		<li>Email the <em>.c2v</em> file to your A&#38;D representative. They will then use the <em>.c2v</em> file to update your license and create a <em>.v2c</em> file that will be emailed back to you.</li>
+		<li>Save the <em>.v2c</em> file to your machine for later access.</li>
+		<li>Launch  <em>AnDRus.exe</em> and select the <strong>Apply License File</strong> tab.</li>
+		<li>Click the <strong>...</strong> button and open the A&#38;D supplied <em>.v2c</em> file.  </li>
+		<li>Click the <strong>Apply Update</strong> button. When the update is finished you will see an “Update written successfully” message in the display area.</li>
+	</ol>
+
+
+	<p>For further information, reference the <a class="wiki-page" href="Repairing_a_Dongle.html">Updating a Dongle</a> and <a class="wiki-page" href="DongleUtil.html">DongleUtil</a> documentation.</p>
+</body>
+</html>

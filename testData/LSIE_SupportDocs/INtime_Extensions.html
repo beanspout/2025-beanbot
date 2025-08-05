@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>INtime Extensions</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="INtime_Extensions.html">INtime Extensions</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="INtime-Extensions"></a>
+<h1 >INtime Extensions<a href="#INtime-Extensions" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>The version of the INtime TR-OS you are running determines the <em>.rta</em> file to launch.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>INtime Version and File Extension</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>INtime Version</b> </td>
+			<td style="text-align:left;"><b>File Extension</b> </td>
+		</tr>
+		<tr>
+			<td>3.13 </td>
+			<td>&lt;filename&gt;.rta OR &lt;filename&gt;_rt.rta</td>
+		</tr>
+		<tr>
+			<td>4.2</td>
+			<td>&lt;filename&gt;_rt4x.rta</td>
+		</tr>
+		<tr>
+			<td>5.2</td>
+			<td>&lt;filename_rt5x.rta</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><strong>Example:</strong></p>
+
+
+	<p>To run the CalcEngine utility on an INTime 4.2 system, you would use the <em>CalcEngine_rt4x.rta</em> file in the <code>RTXPreload</code> <em>powertek.ini</em> setting.<br /><pre> RTXPreload=\\CalcEngine_rt4x.rta&gt;&gt; </pre></p>
+
+
+	<p>On an INtime 3.13 system, you would use the <em>CalcEngine.rta</em> file instead.<br /><pre> RTXPreload=\\CalcEngine.rta&gt;&gt; </pre></p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">In some iTest GUI editors, there may only be an option to select a file ending in a file extension that doesn't match what should be selected based on the above table. In these instances, select the option that ends with <em>.rta</em> and iTest will launch the correct INtime executable file for you.</td>
+		</tr>
+	</table>
+</body>
+</html>

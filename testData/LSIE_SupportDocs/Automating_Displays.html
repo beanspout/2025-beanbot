@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Automating displays</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Automating_displays.html">Automating displays</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Automating-Displays"></a>
+<h1 >Automating Displays<a href="#Automating-Displays" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>You can use VCL to change the appearance and behavior of iTest Console displays at runtime. This can provide you with a method of interacting with the operator and responding to changes being made in the environment and the GUI. All interaction with a display requires three elements:</p>
+
+
+	<ol>
+	<li>The exact name of the display.</li>
+		<li>The control ID of the item on that display. </li>
+		<li>The name of the property for that item.</li>
+	</ol>
+
+
+	<p>Commands to change display objects are sent in the form of a mailslot message with the destination address being the name of the display to change. The actual command is called $SETITEMPROPERTY and the syntax is:</p>
+
+
+<pre>
+MESSAGE "\\.\mailslot\displayname&gt;&gt;$SETITEMPROPERTY control-id property new-value" 
+</pre>
+
+	<p>For example, this VCL command would change the <strong>OnText</strong> property on the button with the ID of "MyButton1" on the "MyDisplay1" display:</p>
+
+
+<pre>
+MESSAGE "\\.\mailslot\MyDisplay1&gt;&gt;$SETITEMPROPERTY MyButton1 OnText New Text" 
+</pre>
+
+	<p>Note that these messages can be sent from VCL as the example above shows or from any other location that supports sending mailslot messages, such as other push buttons, picklists, etc.</p>
+
+
+	<p>To enable the $SETITEMPROPERTY command to work, it is necessary to give each display object that you want to automate a unique ID. To do this on the display objects that support automation, open the properties for that object and enter the unique ID in the <strong>Control ID</strong> field as shown here for ADTButton:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>ADTButton Control Properties</strong></em></span><br /><img src="attachments/download/96329/42_dispauto1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>For a complete reference of the iTest display objects and the properties that can be set with these messages, refer to the <a class="wiki-page" href="Properties_for_ADT_Display_Controls.html">Properties for ADT Display Controls</a> documentation.</p>
+</body>
+</html>

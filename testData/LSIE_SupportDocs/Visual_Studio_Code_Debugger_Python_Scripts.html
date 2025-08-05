@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Visual Studio Code Debugger Python Scripts</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Visual_Studio_Code_Debugger_Python_Scripts.html">Visual Studio Code Debugger Python Scripts</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Visual-Studio-Code-Debugger-Python-Scripts"></a>
+<h1 >Visual Studio Code Debugger: Python Scripts<a href="#Visual-Studio-Code-Debugger-Python-Scripts" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Visual-Studio-Code-Debugger-Python-Scripts">Visual Studio Code Debugger: Python Scripts</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#General-Steps">General Steps</a><ul><li><a href="#Modify-Python-Script">Modify Python Script</a></li><li><a href="#Configure-Visual-Studio-Code-for-Debugging">Configure Visual Studio Code for Debugging</a></li><li><a href="#Add-Python-Call-to-VCL-in-iTest">Add Python Call to VCL in iTest</a></li><li><a href="#Attach-Visual-Studio-Code-to-PythonEngine">Attach Visual Studio Code to PythonEngine</a></li></ul>
+</li><li><a href="#Debug-Active-Python-Script">Debug Active Python Script</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest.Pro includes an extension for Visual Studio Code (a.k.a. "VS Code") that allows for editing and debugging Python scripts. This guide provides support and instructions on how to debug Python scripts on a running iTest system as it executes the scripts during actual use.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">For the purposes of this guide, Solution.Demo and an example Python script (<em>Dmo1ExamplePy1.py</em>) will be used to illustrate the steps involved in this process.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><strong>Assumptions:</strong></p>
+
+
+	<ol>
+	<li>iTest 4.2 or later is installed.</li>
+		<li>Visual Studio Code is installed.</li>
+	</ol>
+
+
+	<a name="General-Steps"></a>
+<h2 >General Steps<a href="#General-Steps" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following steps describe the general process to debug a Python script using Visual Studio Code:</p>
+
+
+	<ol>
+	<li><a class="wiki-page" href="#Modify-Python-Script">Modify Python Script</a>.</li>
+		<li><a class="wiki-page" href="#Configure-Visual-Studio-Code-for-Debugging">Configure Visual Studio Code for Debugging</a>.</li>
+		<li><a class="wiki-page" href="#Add-Python-Call-to-VCL-in-iTest">Add Python Call to VCL in iTest</a>.</li>
+		<li><a class="wiki-page" href="#Attach-Visual-Studio-Code-to-PythonEngine">Attach Visual Studio Code to PythonEngine</a>.</li>
+	</ol>
+
+
+	<a name="Modify-Python-Script"></a>
+<h3 >Modify Python Script<a href="#Modify-Python-Script" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To modify a Python script using Visual Studio Code, do the following:</p>
+
+
+	<ol>
+	<li>Open the <em>$SYSTEMDIR\Solution.Demo\PythonScripts</em> folder by selecting <strong>File</strong> > <strong>Open Folder</strong> in Visual Studio Code.</li>
+		<li>Open the Python script file (e.g., <em>Dmo1ExamplePy1.py</em>).<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Dmo1ExamplePy1.py File</strong></em></span><br /><img src="attachments/download/96801/42_Dmo1ExamplePy1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>After the import statements at the top of the file, add the "import debugpy" line.<br /><pre>
+from itest import SendToMailslot
+from itest import OpenMailslot
+from itest import CloseMailslot
+from itest import RDBSetValue, RDBGetValue
+import debugpy</pre></li>
+		<li>Add the "debugpy.breakpoint()" line as the first line of the square function.<br /><pre>
+def square(channel_name):
+    debugpy.breakpoint()
+    value = RDBGetValue(channel_name)
+</pre></li>
+		<li>Save these changes.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Modified File</strong></em></span><br /><img src="attachments/download/96802/42_ModifiedFile.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<a name="Configure-Visual-Studio-Code-for-Debugging"></a>
+<h3 >Configure Visual Studio Code for Debugging<a href="#Configure-Visual-Studio-Code-for-Debugging" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Visual Studio Code will need to be configured to allow connection to the running iTest Python instance, <em>PythonEngine.exe</em>. Make sure the modified Python script file is open in Visual Studio Code.</p>
+
+
+	<ol>
+	<li>In Visual Studio Code, click <strong>Run</strong> > <strong>Add Configuration</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add Configuration</strong></em></span><br /><img src="attachments/download/96803/42_AddConfiguration.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select <strong>Attach using Process ID</strong>. This should create a <em>launch.json</em> file with a configuration allowing you to attach Visual Studio Code to a Python instance by selecting a running process.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Attach Using Process ID</strong></em></span><br /><img src="attachments/download/96804/42_AttachUsingProcessID.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>launch.json File</strong></em></span><br /><img src="attachments/download/96805/42_launchjson.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>File</strong> > <strong>Save</strong> to save the <em>launch.json</em> file.</li>
+		<li>Leave Visual Studio Code running.</li>
+	</ol>
+
+
+	<a name="Add-Python-Call-to-VCL-in-iTest"></a>
+<h3 >Add Python Call to VCL in iTest<a href="#Add-Python-Call-to-VCL-in-iTest" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>In order to call the Python square function defined in the Python script, VCL code must be added to the iTest procedure.</p>
+
+
+	<ol>
+	<li>Open the Procedure file (e.g., <em>Try.tsc</em>) in Test Manager.</li>
+		<li>In this file, after the MESSAGE line sending a $PROMPTER message to Softpanel, add the following line:<br /><pre>
++0.0 PYEXEC "Dmo1ExamplePy1 square(Counter1)", Counter2, 300
+</pre></li>
+		<li>Save this change, perform a Build, and verify there are no errors. Close Test Manager if there are no errors.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Modified Procedure</strong></em></span><br /><img src="attachments/download/96806/42_ModifiedProcedure.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<a name="Attach-Visual-Studio-Code-to-PythonEngine"></a>
+<h3 >Attach Visual Studio Code to PythonEngine<a href="#Attach-Visual-Studio-Code-to-PythonEngine" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To debug the PYEXEC call to Python that was added, Visual Studio Code must be added to PythonEngine.</p>
+
+
+	<ol>
+	<li>Open the solution (e.g., Solution.Demo) in iTest and wait for it to fully load.</li>
+		<li>In Visual Studio Code, click the <strong>Run and Debug</strong> button on the left.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Run and Debug Button</strong></em></span><br /><img src="attachments/download/96807/42_RunAndDebugButton.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>At the top of the screen, select the <strong>Python: Attach using Process Id</strong> configuration, and then click the green triangle to the left of it.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select Configuration</strong></em></span><br /><img src="attachments/download/96808/42_GreenTriangle.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select the process to attach Visual Studio Code to. iTest uses <em>PythonEngine.exe</em>, so select that one from the list of running processes on the machine. It will take a few seconds for Visual Studio Code to fully attach to <em>PythonEngine.exe</em>. When Visual Studio Code is attached, an electrical cord plug symbol ( <img src="attachments/download/95964/42_ElectricalCordSymbol.png" alt="" /> ) will display and the status bar will change colors, indicating that Visual Studio Code will be ready to debug the iTest Python scripts.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select PythonEngine</strong></em></span><br /><img src="attachments/download/96809/42_SelectPythonEngine.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Visual Studio Code Attached</strong></em></span><br /><img src="attachments/download/96810/42_VSCAttached.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Once Visual Studio Code is attached, start the modified procedure (e.g., <em>Try.tsc</em>).</li>
+		<li>After the "PYEXEC ()" command is called by iTest, Visual Studio Code should be stopped on the line after the "debugpy.breakpoint()" line added earlier. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Stopped Line</strong></em></span><br /><img src="attachments/download/96811/42_VSCStoppedLine.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<p>If Visual Studio Code does not appear to be stopped at this line, minimize the Visual Studio Code window then restore it. Visual Studio Code should now be stopped on the "value = RDBGetValue(channel_name)" line of <em>Dmo1ExamplePy1.py</em>. This is due to a bug with version 1.62.2 of Visual Studio Code; however, there may be other versions with this bug.</p>
+
+
+	<p>Now, you can use the standard debugging features of Visual Studio Code to debug this script. You can view local variables, step through code, etc.</p>
+
+
+	<a name="Debug-Active-Python-Script"></a>
+<h2 >Debug Active Python Script<a href="#Debug-Active-Python-Script" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Alternatively, you can debug the currently active Python script file using Visual Studio Code.</p>
+
+
+	<ol>
+	<li>Start iTest so shared memory is loaded.</li>
+		<li>In Visual Studio Code, open the <em>$SYSTEMDIR\Solution.Demo\PythonScripts</em> folder by selecting <strong>File</strong> > <strong>Open Folder</strong>.</li>
+		<li>Open the Python script file (e.g., <em>Dmo1ExamplePy1.py</em>).</li>
+		<li>Add <code>square("voDmo1Ch5")</code> to the Python script file. This is to ensure that the function is called since it is normally called from iTest VCL code. Do not indent this line, and remember to remove it before saving.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add Line</strong></em></span><br /><img src="attachments/download/96812/42_VSCAddSquareLine.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 1em;" alt="" /><br />&nbsp;</li>
+		<li>Create two breakpoints to demonstrate the code flow.</li>
+		<li>Click on <strong>Run</strong> > <strong>Start Debugging</strong>. Choose <strong>Python File: Debug the currently active Python file</strong> from the drop-down list that appears.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Python File: Debug the currently active Python file</strong></em></span><br /><img src="attachments/download/96813/42_VSDebugCurrentActivePythonFile.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 1em;" alt="" /><br />&nbsp;<br />The debugger starts and stops at the breakpoint on line 21. Click on <strong>Continue (F5)</strong> to continue execution, enter the square function, and stop at the next breakpoint on line 16. Click on <strong>Continue (F5)</strong> to continue execution of the script. The <code>voDmo1Ch5</code> channel can be seen to update in iTest each time the script is executed.</li>
+	</ol>
+</body>
+</html>

@@ -1,0 +1,494 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>EventViewer</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="EventViewer.html">EventViewer</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="EventViewer"></a>
+<h1 >EventViewer<a href="#EventViewer" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#EventViewer">EventViewer</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#User-Interface">User Interface</a></li><li><a href="#Initialization">Initialization</a></li><li><a href="#Mailslot-Messages">Mailslot Messages</a><ul><li><a href="#Message-Formats">Message Formats</a><ul><li><a href="#User-Defined-Mailslot-Messages">User-Defined Mailslot Messages</a></li><li><a href="#Predefined-Mailslot-Messages">Predefined Mailslot Messages</a></li><li><a href="#Additional-Mailslot-Messages">Additional Mailslot Messages</a></li></ul>
+</li></ul>
+</li><li><a href="#EventAction-Description-File">Event/Action Description File</a></li><li><a href="#Configuration">Configuration</a></li><li><a href="#Log-Files">Log Files</a><ul><li><a href="#Log-File-Naming-Convention">Log File Naming Convention</a></li><li><a href="#Writing-the-Log-to-File">Writing the Log to File</a></li><li><a href="#Log-File-Exceptions">Log File Exceptions</a></li></ul>
+</li><li><a href="#Using-EventViewer-with-AutomationPanel">Using EventViewer with AutomationPanel</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The EventViewer utility allows users to post messages when abnormalities occur during testing. These messages can also include any corrective actions or recommendations to remedy the situation. Messages are sent via mailslot messages; the proper syntax for these messages and the basic system layout are described in this document.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>EventViewer Overview</strong></em></span><br /><img src="attachments/download/95990/eventViewer_pg3_image01.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>When iTest detects an event, it sends mailslot messages to the <em>EventViewer.exe</em>. EventViewer receives these messages and separates event messages from the corrective action, and then displays the information. Simultaneously, EventViewer writes the incoming mailslot message activity to a log. The <strong>Event: Action definitions</strong> block shown above is a repository of predefined Event/Action pairs that can be used by EventViewer to interpret incoming messages. For complete details, refer to the <a class="wiki-page" href="#EventAction-Description-File">Event/Action Description File</a> section.</p>
+
+
+	<a name="User-Interface"></a>
+<h2 >User Interface<a href="#User-Interface" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The EventViewer contains the following properties in its interface:</p>
+
+
+	<ul>
+	<li>The entries in the lists are sorted in chronological order with the newest message on top.</li>
+		<li>The date and time stamp are added to all event messages.</li>
+		<li>Selecting an item in the <strong>Event</strong> message list displays the matching corrective action in the <strong>Actions</strong> list.  If no action item is available for that event entry, the <code>No action specified</code> string is displayed.</li>
+		<li>The Windows close (X) button in the upper right-hand corner hides the GUI. It does not kill the running EventViewer process.</li>
+	</ul>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>EventViewer Interface</strong></em></span><br /><img src="attachments/download/95991/eventViewer_pg4_image01.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Initialization"></a>
+<h2 >Initialization<a href="#Initialization" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Upon startup, the event messages are displayed in the event list. The event list will be populated with previous event messages retrieved from the current and previous logs. The population of this list will happen as follows:</p>
+
+
+	<ul>
+	<li>No more than MaxMessageCount entries will be allowed.</li>
+		<li>The historical event messages will be read from as many previous logs as is necessary to populate the list with MaxMessageCount entries.</li>
+		<li>The entries will be added in reverse chronological order. Starting with the newest messages and working backwards in time through the log messages and the entries made therein. The newest event message will be at the top of the list. </li>
+		<li>Only when there are not enough entries available in all the available logs will fewer than MaxMessageCount entries be made into the list.</li>
+	</ul>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">EventViewer will not display when AutomationPanel is running unless <code>MessagesPanelEvents=FALSE</code> in the <em>powertek.ini</em> file. For more information, refer to the <a class="wiki-page" href="#Using-EventViewer-with-AutomationPanel">Using EventViewer with AutomationPanel</a> section below.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Mailslot-Messages"></a>
+<h2 >Mailslot Messages<a href="#Mailslot-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Message-Formats"></a>
+<h3 >Message Formats<a href="#Message-Formats" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following three categories of mailslot messages are supported by the EventViewer:</p>
+
+
+	<ul>
+	<li>User defined</li>
+		<li>Predefined</li>
+		<li>Additional</li>
+	</ul>
+
+
+	<a name="User-Defined-Mailslot-Messages"></a>
+<h4 >User-Defined Mailslot Messages<a href="#User-Defined-Mailslot-Messages" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The syntax of this type of comma-delimited mailslot message is:</p>
+
+
+<pre>LOGEVENT, &lt;message&gt;,&lt;action&gt;,&lt;color&gt;[optional]</pre>
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>User-Defined Mailslot Messages</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>LOGEVENT</strong> </td>
+			<td style="text-align:left;"><strong>Mailslot message keyword</strong> </td>
+		</tr>
+		<tr>
+			<td>&lt;message&gt;</td>
+			<td>The event message to be displayed in the upper list. If the event message has a comma in it, the entire &lt;message&gt; must be enclosed by double quotes. Please refer to the examples below.</td>
+		</tr>
+		<tr>
+			<td>&lt;action&gt;</td>
+			<td>Action to be taken to remedy the event. This is shown in the lower list. If the action message has a comma in it, the entire &lt;action&gt; must be enclosed by double quotes. Please refer to the examples below.</td>
+		</tr>
+		<tr>
+			<td>&lt;color&gt;</td>
+			<td>Optional parameter. The color that the entry is to be displayed in both events list. If omitted, the message is displayed in red. The supported colors and corresponding icons are shown below:<br />&nbsp;<br />0 = grey<br />1 = yellow<br />2 = red    [default]<br />3 = green<br />&nbsp;<br /><img src="attachments/download/821/eventViewer_pg5.7_image01.JPG" alt="" /></td>
+		</tr>
+	</table>
+
+
+
+
+	<p>If the event message or action message contains a comma, the entire event message and/or action message must be enclosed by double quotes. Please refer to the examples below.</p>
+
+
+	<p>If the syntax of the message is incorrect or if it cannot be properly parsed, the entire mailslot message along with “Syntax error :” in front is added to the Event Messages list in red. The corrective action for that entry is set to:</p>
+
+
+<pre>Please check to make sure that the message is properly constructed.</pre>
+
+	<p>Example of message only:</p>
+
+
+<pre>LOGEVENT ,Engine coolant temperature is too high, shut the engine down, 2
+LOGEVENT, ”Engine, oil and water temp are too high”, shut the engine down, 2</pre>
+
+	<p>VCL example:</p>
+
+
+<pre>MESSAGE “ \\.\mailslot\EventViewer&gt;&gt; LOGEVENT, ~“Coolant, too hot~”,shut down,  2”</pre>
+
+	<p>Note the use of the tilde in the above VCL statement. This escape character is used when embedding a double quotation mark within a mailslot message.</p>
+
+
+	<a name="Predefined-Mailslot-Messages"></a>
+<h4 >Predefined Mailslot Messages<a href="#Predefined-Mailslot-Messages" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The syntax for this type of comma-delimited mailslot message is:</p>
+
+
+<pre>LOGEVENTBYID , &lt;path&gt;,&lt;ID&gt;,&lt;color&gt;[optional]</pre>
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Predefined Mailslot Messages</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>LOGEVENT</strong> </td>
+			<td style="text-align:left;"><strong>Mailslot message keyword</strong> </td>
+		</tr>
+		<tr>
+			<td>&lt;path&gt;</td>
+			<td>The fully-qualified path to the Event/Action definition file.</td>
+		</tr>
+		<tr>
+			<td>&lt;ID&gt;</td>
+			<td>Identifier of the predefined event/action pair in the Event/Action definition file.</td>
+		</tr>
+		<tr>
+			<td>[color]</td>
+			<td>Optional parameter. The color that the entry is to be displayed in in the events list. If omitted, the message is displayed in red. This parameter will override any message color settings defined in the <em>EventViewer.ini</em> file, if a custom color is selected.  The supported colors and corresponding icons are shown below:<br />&nbsp;<br />0 = grey<br />1 = yellow<br />2 = red    [default]<br />3 = green<br />#IRRGGBB  (I is 0-3 for icon, RRGGBB are hex value of RGB)<br />&nbsp;<br /><img src="attachments/download/821/eventViewer_pg5.7_image01.JPG" alt="" /></td>
+		</tr>
+	</table>
+
+
+
+
+	<p>Example of message only:</p>
+
+
+<pre>LOGEVENTBYID,C:\action.def,3, 2
+LOGEVENTBYID,$SUPPORTDIR\action.def,3, 2
+LOGEVENTBYID,$SUPPORTDIR\action.def,3,#3ff00ff</pre>
+
+	<p>VCL example:</p>
+
+
+<pre>MESSAGE “ \\.\mailslot\EventViewer&gt;&gt; LOGEVENTBYID,$SUPPORTDIR\action.def,3, 2" 
+MESSAGE “ \\.\mailslot\EventViewer&gt;&gt; LOGEVENTBYID,$SUPPORTDIR\action.def,3, #3ff00ff"</pre>
+
+	<a name="Additional-Mailslot-Messages"></a>
+<h4 >Additional Mailslot Messages<a href="#Additional-Mailslot-Messages" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The following five messages appear in the event list in green to indicate that they are informational entries only. They are written to the log file.</p>
+
+
+	<p><strong>DIE</strong></p>
+
+
+	<p>Sending this mailslot message terminates the EventViewer application.</p>
+
+
+	<p><strong>MINIMIZE</strong> and <strong>RESTORE</strong></p>
+
+
+	<p>These messages minimize or restore the EventViewer application to/or from the toolbar. When iTest is minimized, it sends the MINIMIZE message to the Event Viewer.  When iTest is restored, it sends the RESTORE message to the Event Viewer. These must be used in pairs.  The SHOW and HIDE have no impact. If MINIMIZE is sent, SHOW does not restore the window.</p>
+
+
+	<p><strong>SHOW</strong> and <strong>HIDE</strong></p>
+
+
+	<p>These messages show or hide the EventViewer application. It moves the EventViewer application window to the front of all windows.  These must be used in pairs. The MINIMIZE and RESTORE have no impact.  If HIDE is sent, RESTORE does not show the window.</p>
+
+
+	<a name="EventAction-Description-File"></a>
+<h2 >Event/Action Description File<a href="#EventAction-Description-File" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>This file is a comma-delimited file that contains any number of lines.  Each line represents one Event/Action pair following a unique integer identifier. For example:</p>
+
+
+<pre>101, Engine coolant temperature is too high, shut the end down
+102, “Engine, oil and water temp are too high”, shut the engine down
+2000, “Engine, oil and water temp are too high”, “Please, shut the engine down!”</pre>
+
+	<p>This file is used by the pre-defined mailslot message type described earlier in this topic.</p>
+
+
+	<p>The identifier can be any number between 0 and 2,147,483,647. If multiple lines with the same identifier are found, only the first one is valid and the rest cannot be used for logging the event message.</p>
+
+
+	<p>If the event or action message contains a comma, the entire event message and/or action message must be enclosed by double quotes.  Please refer to the examples above.</p>
+
+
+	<p>If the syntax of the message is incorrect or if it cannot be properly parsed, the entire mailslot message along with “Syntax error :” is added to the Event Messages list in red and the corrective action for that entry is set to:</p>
+
+
+<pre>Please check to make sure that the message is properly constructed.</pre>
+
+	<p>Currently, there is no iTest GUI for creating and/or editing these files.</p>
+
+
+	<a name="Configuration"></a>
+<h2 >Configuration<a href="#Configuration" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>EventViewer is configured via the <em>EventViewer.ini</em> file. This file is an ASCII text file in the format of <code>Keyword=value</code>. When changes are made to this file, EventViewer must be restarted for the changes to take effect. The entries in this file are not case sensitive. It can be accessed directly from the EventViewer GUI by selecting <strong>Edit > Configuration</strong> from the menu bar. The supported keywords are detailed in the table below:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>EventViewer Supported Keywords</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Keyword</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+			<td style="text-align:left;"><strong>Notes</strong></td>
+		</tr>
+		<tr>
+			<td>Logpath</td>
+			<td> This is the fully-qualified path to where the log files are to be stored. It does not contain the name of the log itself. The log names are automatically generated as described in the <a class="wiki-page" href="#Log-File-Naming-Convention">Log File Naming Convention</a> section below. The $SUPPORTDIR macro is supported in the <em>EventViewer.ini</em> file; by using this macro, you do not need to edit the <code>Logpath</code> entry when a new solution is selected in iTest.</td>
+			<td> The EventViewer application must be restarted when the solution is changed.</td>
+		</tr>
+		<tr>
+			<td>Language</td>
+			<td> This entry sets the target language and is used to set the time stamp format that is added to each entry placed into the event message list. Time is presented in a 24-hour format. The currently supported languages and their time stamp formats are as follows:<br /><ins><strong>English:</strong></ins> MM/DD/YYYY HH:MM:SS<br /><ins><strong>Japanese:</strong></ins> YYYY/MM/DD HH:MM:SS</td>
+			<td>This entry does not apply when AutomationPanel is running and <code>MessagesPanelEvents=TRUE</code>; it will default to the English time stamp format.</td>
+		</tr>
+		<tr>
+			<td>MaxMessageCount</td>
+			<td> This entry defines the maximum number of entries displayed in the event message list. Once the number of messages exceeds the value, the oldest message is removed when a new message is added in a first in first out (FIFO) manner.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>SaveFileDuration</td>
+			<td> This is the length in time (in months) that log files are saved. Once this duration has been exceeded, the oldest log is deleted when a new log is created. For example, assuming <code>SaveFileDuration=6</code>, and six montly logs have been saved for January through June, the log for January will be deleted when a new log is created on July 1st. <br />&nbsp;<br />When a log is soon to be deleted, a notification is sent to the user. Users are also notified that the <code>SaveFileDuration</code> setting can be lengthened to avoid this from happening in the future. There is no restriction on the duration of time in which files can be saved.<br />&nbsp;<br />A situation can occur when <code>SaveFileDuration</code> is substantially shortened, where several monthly logs are deleted. For example, if <code>SaveFileDuration</code> was previously set to 60 and 48 monthly logs were saved, then changing <code>SaveFileDuration</code> to 12 will result in the deletion of 36 monthly logs upon creation of a new log. Prior to the deletion of the old logs, users are notified as to the number of logs that are about to be deleted and given the opportunity to cancel the operation.<br />&nbsp;<br />If this value is set to 0, then log files will not be deleted. Log file rotation takes place at the application startup time. </td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>PopOnEvent</td>
+			<td> When set to TRUE, the EventViewer application will be restored and brought to the front of all other applications when a new event is received. By default, this is set to TRUE.</td>
+			<td> This entry does not apply when AutomationPanel is running and <code>MessagesPanelEvents=TRUE</code>.</td>
+		</tr>
+		<tr>
+			<td>ShowInfoMsgs</td>
+			<td> When set to TRUE, the EventViewer application will show all incoming mailslot messages. By default, this is set to FALSE.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>HeartBeatChannel</td>
+			<td> This is the user-specified application heartbeat channel (e.g., <code>voEVHeartBeat</code>). By convention, it is iTest's responsbility to ramp this value, and EventViewer's responsibility to set it to zero. If no channel is specified, then EventViewer does nothing.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>EventCountChannel</td>
+			<td> This is the user-specified application event count channel (e.g., <code>voEVEventCt</code>). For all new, incoming mailslot messages, this value is incremented by one. If no channel is specified, then EventViewer does nothing.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>MalformedEventCountChannel</td>
+			<td> This is the user-specified application malformed event count channel. For all new, incoming mailslot messages that have syntax errors or can otherwise not be properly parsed, this value is incremented by one. If no channel is specified, the EventViewer does nothing.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Message Color Settings</td>
+			<td> You can define message colors for different event types.<br />&nbsp;<br />- <ins><strong>EventType0Color:</strong></ins> Normal message; default is gray.<br />- <ins><strong>EventType1Color:</strong></ins> Warning message; default is yellow.<br />- <ins><strong>EventType2Color:</strong></ins> Error message; default is red.<br />- <ins><strong>EventType3Color:</strong></ins> Internal messages (e.g., Maximize, Restore, or Message) indicates an OK state; default is green.<br />- <ins><strong>EventType4Color:</strong></ins> Syntax error message; default is red.<br />&nbsp;<br />The color value must be a hex value starting with # (e.g., <code>EventType0Color=#888888</code>).</td>
+			<td>This entry does not apply when AutomationPanel is running and <code>MessagesPanelEvents=TRUE</code>.</td>
+		</tr>
+		<tr>
+			<td>Message Font Size</td>
+			<td> You can define the message font point size using the following entries:<br /><pre>
+ItemFontSize=&lt;Numeric Value&gt;
+MsgFontSize=&lt;Numeric Value&gt;
+</pre><br /><code>ItemFontSize</code> is for the message list (upper list), and <code>MsgFontSize</code> is for the message detail text boxes (lower list).</td>
+			<td> These entries do not apply when AutomationPanel is running and <code>MessagesPanelEvents=TRUE</code>.</td>
+		</tr>
+		<tr>
+			<td>EventViewer_SelectNewItem</td>
+			<td> When set to TRUE, the newest event in the list will be highlighted. By default, this is set to FALSE.</td>
+			<td>This entry does not apply when AutomationPanel is running and <code>MessagesPanelEvents=TRUE</code>.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>Below is an example of the <em>EventViewer.ini</em> file:<br /><pre>
+logpath=$SUPPORTDIR\logs
+language=english
+maxmessagecount=20
+savefileduration=3
+poponevent=TRUE
+showinfomsgs=FALSE
+heartbeatchannel=voEVHeartBeat
+eventcountchannel=voEVEventCt
+malformedeventcountchannel=voEVBadEventCt
+ShowActionSection=TRUE
+</pre></p>
+
+
+	<a name="Log-Files"></a>
+<h2 >Log Files<a href="#Log-Files" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The log files are ASCII text files that contain all of the Event messages and corrective actions along with the time stamp of when they were originally received. This information is stored in a comma-separated format.  The entries in this file are written as follows:</p>
+
+
+<pre>“Timestamp”, “Message Keyword”, “Event Message”, “Corrective Action” ,”color”, “message sender”{CRLF}</pre>
+
+	<p>Where CRLF is a carriage return line feed.</p>
+
+
+	<p>For example:</p>
+
+
+<pre>"03/31/2011 13:22:31", "LOGEVENT", "Event 1 in red", "Action 1", "2", "AUTOTEST"</pre>
+
+	<p>It is important to note that if either the event or action has a comma in it the entire event and/or action must be enclosed in double quotes.  The quotes will also be written to file as shown below:</p>
+
+
+<pre>"03/31/2011 13:22:31", "LOGEVENT", "”Event 1, in red”", "”Action, 1”", "2", "AUTOTEST"</pre>
+
+	<p>The writing of LOGEVENT and LOGEVENTBYID messages are handled slightly differently. The LOGEVENT messages are written as they are received. For example:</p>
+
+
+<pre>"03/31/2011 13:22:31", "LOGEVENT", "Event 1 in red", "Action 1", "2", "AUTOTEST"</pre>
+
+	<p>LOGEVENTBYID messages are handled differently due to their dependence on an external event/action definition file. Rather than writing these messages to a file as they are received, the file name and index are first converted to their corresponding event/action pair and this information is then written to the file. For example, let's assume that the following mailslot message is sent to the Event Viewer:</p>
+
+
+<pre>"\\.\mailslot\EventViewer&gt;&gt;LOGEVENTBYID,$SUPPORTDIR\eventaction.def, 11, 2”</pre>
+
+	<p>Assume that index 11 within the <em>eventaction.def</em> file is as shown:</p>
+
+
+<pre>11, predefined event number 11, predefined action number 11 from eventaction.def</pre>
+
+	<p>After this message is processed, the following will be written to file:</p>
+
+
+<pre>"04/01/2011 10:24:51", "LOGEVENTBYID", "predefined event number 11", " predefined action number 11 from eventaction.def", "2", ""\\.\mailslot\Softpanel"</pre>
+
+	<p>This was done to break the dependence of archival event messages on the event/action definition files. If this were not done and the definition file was changed or deleted, it would not be possible to re-create these messages and display them.</p>
+
+
+	<a name="Log-File-Naming-Convention"></a>
+<h3 >Log File Naming Convention<a href="#Log-File-Naming-Convention" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The names of the log files will conform to this standard:</p>
+
+
+	<p><em>EventViewer_YYYY_MM.log</em></p>
+
+
+	<p><strong>Example:</strong><br /><pre>
+EventViewer_2015_02.log 
+</pre></p>
+
+
+	<a name="Writing-the-Log-to-File"></a>
+<h3 >Writing the Log to File<a href="#Writing-the-Log-to-File" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Given the relatively low number and frequency of incoming mailslot messages, the log file will be written as the messages are arriving.  This guarantees that, given some sort of error, the historical messages are preserved.</p>
+
+
+	<a name="Log-File-Exceptions"></a>
+<h3 >Log File Exceptions<a href="#Log-File-Exceptions" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>There are certain situations when entries will not be written:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Situations</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Situation</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Non-event Messages</td>
+			<td> Only the LOGEVENT and LOGEVENTBYID mailslot messages will be logged. All other mailslot messages and miscellaneous activity that appears in the event list will not be written to file.</td>
+		</tr>
+		<tr>
+			<td>Improperly Formed Messages</td>
+			<td> Mailslot messages that do not conform to the syntax in this topic will still be displayed in the event message list. Even though they are displayed along with an appropriate corrective action, these entries will not be written to file.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Using-EventViewer-with-AutomationPanel"></a>
+<h2 >Using EventViewer with AutomationPanel<a href="#Using-EventViewer-with-AutomationPanel" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>By default, EventViewer does not display when AutomationPanel is running. This is due to the default value of the <code>MessagesPanelEvents</code> <em>powertek.ini</em> setting, which is TRUE. In order to view event messages, set the <strong>Show Events</strong> property to TRUE in the Messages panel property manager. This will display the Events tab.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Show Events Property</strong></em></span><br /><img src="attachments/download/117137/43_ShowEventsProperty.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Messages Panel - Events Tab</strong></em></span><br /><img src="attachments/download/117138/43_EventsTab.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="ITest_Advanced_INI_Options.html#Interface-Specific-Options">iTest Advanced INI Options</a></li>
+		<li><a class="wiki-page" href="AutomationPanel_Operators_Guide.html#Messages-Panel">Messages Panel</a></li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ADT Indicator</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="ADT_Indicator.html">ADT Indicator</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="ADT-Indicator-Object"></a>
+<h1 >ADT Indicator Object<a href="#ADT-Indicator-Object" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#ADT-Indicator-Object">ADT Indicator Object</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Field-Definitions">Field Definitions</a><ul><li><a href="#General-Tab">General Tab</a></li></ul>
+</li><li><a href="#ADT-Indicator-Object-Properties">ADT Indicator Object Properties</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The ADT Indicator display object will display message strings and/or color bars that change depending upon the value of an associated database channel.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>ADT Indicator</strong></em></span><br /><img src="attachments/download/6693/indicator.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Field-Definitions"></a>
+<h2 >Field Definitions<a href="#Field-Definitions" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="General-Tab"></a>
+<h3 >General Tab<a href="#General-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>General Tab</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Option</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td><strong>Channel Name</strong></td>
+			<td>Click the <strong>Channel...</strong> button to open the Channel Selection dialog, which you can use to select the database channel whose name and value will display on the ADT Indicator. Note that selecting a virtual string channel will have an effect on later settings.</td>
+		</tr>
+		<tr>
+			<td><strong>Edge</strong></td>
+			<td>Select a border for the ADT Indicator.</td>
+		</tr>
+		<tr>
+			<td><strong>Indicator Type</strong></td>
+			<td>Select whether the indicator is a string or color indicator, both a string and color indicator, or displays an image.</td>
+		</tr>
+		<tr>
+			<td><strong>Value, String, Color, Image Path</strong></td>
+			<td> <strong>Where</strong> Chan ≤ ValA / StrA + ColA, ValA < Chan ≤ ValB / Str + Col B, ValB < Chan ≤ ValC / Str + Col C, and ValC < Chan / "????" string + gray color.<br />You can also display a different image in the <strong>Image Path</strong> based on the value of a channel.<br />If a Virtual String channel has been defined, any mapping settings in terms of string or color will be ignored and only the channel name and the value will be displayed.</td>
+		</tr>
+		<tr>
+			<td><strong>Add New Row</strong></td>
+			<td>Adds a new row to the <strong>Value</strong>, <strong>String</strong>, <strong>Color</strong> table to specify additional <strong>Value</strong>, <strong>String</strong>, <strong>Color</strong> combinations.</td>
+		</tr>
+		<tr>
+			<td><strong>Delete Row</strong></td>
+			<td>Deletes an existing row.</td>
+		</tr>
+		<tr>
+			<td><strong>Label Field</strong> (located to the left of <strong>Hide Label</strong>)</td>
+			<td>Select a label for the control (<strong>Automatic</strong>, <strong>Customer Name</strong>, or <strong>Module Name</strong>) as defined for the database channel.</td>
+		</tr>
+		<tr>
+			<td><strong>Hide Label</strong></td>
+			<td>When selected, a label showing the channel (<strong>Customer Name</strong>, <strong>Module Name</strong>) will not display in the ADT Indicator.</td>
+		</tr>
+		<tr>
+			<td><strong>Show Border</strong></td>
+			<td>When selected, adds borders around the ADT Indicator control.</td>
+		</tr>
+		<tr>
+			<td><strong>Control ID</strong></td>
+			<td>Provides a unique name for the control. This name can be used in mailslot messages to change control properties during runtime on the iTest Console. </td>
+		</tr>
+		<tr>
+			<td><strong>Permit Runtime Changes</strong></td>
+			<td>When selected, allows changes to be made programmatically.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="ADT-Indicator-Object-Properties"></a>
+<h2 >ADT Indicator Object Properties<a href="#ADT-Indicator-Object-Properties" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>These properties are useful when issuing the following mailslot message:</p>
+
+
+<pre>
+\\.\mailslot\DisplayName&gt;&gt;$SETITEMPROPERTY ControlID PropertyName PropertyValue
+</pre>
+
+	<p>The following are the names of the properties that can be changed by mailslot message to the display.  These property names may or may not be the same as the property names shown on the display object property setup dialogs.  Most of these property names are self-explanatory.  The first column is the data type of the property.</p>
+
+
+	<p>The int or OLE_COLOR for color is the color RGB values.  “BSTR” means the type of the property is string.  “int”, “float”, “long”, “short”, “double” means the type of the property is number.  “Boolean” means the property value should be 1 or 0.</p>
+
+
+	<p>Font property syntax is complicated.<br />&lt;font name&gt;,&lt;bold&gt;,,&lt;italic&gt;,&lt;font size&gt;,,&lt;strikeout&gt;,&lt;underline&gt;, <br />example: Arial,0,0,0,97500,0,0,0,400</p></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>ADT Indicator Object Properties</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Type</strong></td>
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Notes</strong></td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ChannelName</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>Edge</strong></td>
+			<td>values: 5 - raised, 6 - etched, 9 - bump, 10 - sunken</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>CenterPercent</strong></td>
+			<td>center bar placement</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>EnumString</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>IndicatorType</strong></td>
+			<td>values: 0 - string, 1 - color, 2 - both, 3 - image</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>LabelField</strong>*</td>
+			<td>values are case-sensitive</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ShowBorder</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ValueStrings</strong></td>
+			<td>syntax: value, string, color, image filepath</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ChangesOK</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>BackColorEnd</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>EnableShading</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>BackColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ForeColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;">values: Automatic, Channel Name, Customer Name, Module Name, Alias, Description</span>
+
+	<p>&nbsp;</p>
+</body>
+</html>

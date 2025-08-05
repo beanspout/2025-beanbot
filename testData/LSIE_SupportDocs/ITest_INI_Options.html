@@ -1,0 +1,2208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ITest INI Options</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="ITest_INI_Options.html">ITest INI Options</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="iTest-Common-INI-Options"></a>
+<h1 >iTest Common INI Options<a href="#iTest-Common-INI-Options" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#iTest-Common-INI-Options">iTest Common INI Options</a><ul><li><a href="#AlarmStatus">AlarmStatus</a></li><li><a href="#Blackbox">Blackbox</a></li><li><a href="#Calibrate">Calibrate</a></li><li><a href="#Data-Logging">Data Logging</a></li><li><a href="#Data-Quality">Data Quality</a></li><li><a href="#eGate-Systems">eGate Systems</a></li><li><a href="#iTestBTS">iTest.BTS</a></li><li><a href="#Master-Schedules">Master Schedules</a></li><li><a href="#Miscellaneous">Miscellaneous</a></li><li><a href="#Paths">Paths</a></li><li><a href="#PIDs">PIDs</a></li><li><a href="#Runtime-Console">Runtime Console</a></li><li><a href="#Schedules">Schedules</a></li><li><a href="#SolutionBuilder">SolutionBuilder</a></li><li><a href="#Statistics">Statistics</a></li><li><a href="#Test-Manager">Test Manager</a></li></ul></li></ul>
+
+
+	<p>The <em>powertek.ini</em> file options are used to configure the solution, modify existing base functionality, or add new functionality in order to provide additional flexibility for core functions of the iTest software. These options are described in the tables below and are grouped based on relevancy. For example, any <em>powertek.ini</em> settings relevant to iTest.BTS will be listed in the <a class="wiki-page" href="#iTestBTS">iTest.BTS</a> section.</p>
+
+
+	<p>The tables below include the <strong>Version</strong>, <strong>GUI</strong>, and <strong>Application Interface</strong> (if applicable) columns to provide the following additional information:</p>
+
+
+	<ul>
+	<li><ins><strong>Version:</strong></ins> The product version the <em>powertek.ini</em> option was first introduced. </li>
+		<li><ins><strong>GUI:</strong></ins> This indicates whether the <em>powertek.ini</em> option can be edited in Test Manager's Global Settings editor.</li>
+		<li><ins><strong>Application Interface:</strong></ins> The applications that are affected by the <em>powertek.ini</em> option (e.g., iTest Console, AutomationPanel).</li>
+	</ul>
+
+
+	<a name="AlarmStatus"></a>
+<h2 >AlarmStatus<a href="#AlarmStatus" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>AlarmStatus INI Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Version</strong> </td>
+			<td style="text-align:left;"><strong>GUI</strong> </td>
+			<td style="width:500px;text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong> </td>
+		</tr>
+		<tr>
+			<td>AlarmStatusEdit</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>When set to TRUE, limits can be edited through the AlarmStatus interface. The <strong>Edit</strong> right-click option is added to AlarmStatus.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>AlarmStatusEdit=FALSE</td>
+		</tr>
+		<tr>
+			<td>AlarmStatusLimitControl</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>When set to TRUE, the ability to activate/deactivate alarms from the AlarmStatus interface is enabled.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>AlarmStatusLimitControl=FALSE</td>
+		</tr>
+		<tr>
+			<td>AlarmStatusDisplayAlias</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>When set to TRUE, AlarmStatus includes a column showing the Alias for each channel.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>AlarmStatusDisplayAlias=TRUE</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Blackbox"></a>
+<h2 >Blackbox<a href="#Blackbox" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Blackbox INI Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Version</strong> </td>
+			<td style="text-align:left;"><strong>GUI</strong> </td>
+			<td style="width:500px;text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong> </td>
+		</tr>
+		<tr>
+			<td>BlackBoxOnLimitViolation</td>
+			<td style="text-align:center;">3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>When set to TRUE, a Blackbox file is automatically saved when there is a limit violation.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>BlackBoxOnLimitViolation=FALSE</td>
+		</tr>
+		<tr>
+			<td>BlackBoxPostTrigger</td>
+			<td style="text-align:center;">3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>The number of seconds to save after the limit violation. This setting is only used when <code>BlackBoxOnLimitViolation=TRUE</code>.</td>
+			<td style="text-align:center;">1</td>
+			<td>BlackBoxPostTrigger=1</td>
+		</tr>
+		<tr>
+			<td>BlackBoxPreTrigger</td>
+			<td style="text-align:center;">3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>The maximum number of seconds to save before the limit violation. This setting is only used when <code>BlackBoxOnLimitViolation=TRUE</code>. </td>
+			<td style="text-align:center;">30</td>
+			<td>BlackBoxPreTrigger=30</td>
+		</tr>
+		<tr>
+			<td>CRSCyclicDivisor</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>The divisor of the system scan rate that sets the Blackbox rate. The system scan rate is set by the <code>SystemScanRateHz</code> <em>powertek.ini</em> setting.</td>
+			<td style="text-align:center;">1</td>
+			<td>CRSCyclicDivisor=1</td>
+		</tr>
+		<tr>
+			<td>CRSCyclicRate</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>Sets the Blackbox rate in frames per second. This setting overrides the rate derived using the <code>CRSCyclicDivisor</code>. If this setting is missing, then iTest reverts to using the <code>CRSCyclicDivisor</code> to determine the rate.</td>
+			<td style="text-align:center;">-</td>
+			<td>CRSCyclicRate=1</td>
+		</tr>
+		<tr>
+			<td>CRSCyclicTime</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>The time (in minutes) of the Blackbox.</td>
+			<td style="text-align:center;">60</td>
+			<td>CRSCyclicTime=60</td>
+		</tr>
+		<tr>
+			<td>DRBlockControlParamName </td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Legacy setting. Used internally to cleanup CRS files on the VXI crate.</td>
+			<td style="text-align:center;">CRS_BLOCK_CONTROL</td>
+			<td>DRBlockControlParamName=CRS_BLOCK_CONTROL</td>
+		</tr>
+		<tr>
+			<td>SaveBlackBox</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td> When set to TRUE, a copy of the Blackbox files (block1, index, and params) are saved when creating a new project folder or switching the project folder using the DataArchive mailslot message to Data_Engine. The copied files are stored in the previous project folder.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>SaveBlackBox=FALSE</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Calibrate"></a>
+<h2 >Calibrate<a href="#Calibrate" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Calibrate INI Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Version</strong> </td>
+			<td style="text-align:left;"><strong>GUI</strong> </td>
+			<td style="width:500px;text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong> </td>
+		</tr>
+		<tr>
+			<td>AllowHalfOrderCal</td>
+			<td style="text-align:center;">3.1</td>
+			<td style="text-align:center;">-</td>
+			<td><em>Calibrate1065.exe</em> only. Linear regression (first order) with the square root of input.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>AllowHalfOrderCal=FALSE</td>
+		</tr>
+		<tr>
+			<td>CalChanTypeExclude</td>
+			<td style="text-align:center;">3.2</td>
+			<td style="text-align:center;">-</td>
+			<td><em>Calibrate1065.exe</em> only. Exclude comma-separated types among Analog Input, Temperature, Frequency, and Virtual Input.</td>
+			<td style="text-align:center;">NONE</td>
+			<td>CalChanTypeExclude=Virtual Input</td>
+		</tr>
+		<tr>
+			<td>CalibrationInterval</td>
+			<td style="text-align:center;">3.9</td>
+			<td style="text-align:center;">-</td>
+			<td>Specifies the interval in days between the current calibration and next calibration due.</td>
+			<td style="text-align:center;">90</td>
+			<td>CalibrationInterval=90</td>
+		</tr>
+		<tr>
+			<td>CaltableUpdateStatus</td>
+			<td style="text-align:center;">4.4</td>
+			<td style="text-align:center;">-</td>
+			<td> When set to a Virtual Output channel, Calibration will enter external mode, allowing you to calibrate only one channel at a time.</td>
+			<td style="text-align:center;">NONE</td>
+			<td> CaltableUpdateStatus=Virtual Output</td>
+		</tr>
+		<tr>
+			<td>InformCalDue</td>
+			<td style="text-align:center;">3.0</td>
+			<td style="text-align:center;">-</td>
+			<td>When iTest is initialized, if this setting is set to true, the <code>voSysNumCalOverDue</code> system channel is set to the number of channels with overdue calibrations, and a message is sent to SoftPanel.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>InformCalDue=FALSE</td>
+		</tr>
+		<tr>
+			<td>InformCalWarning</td>
+			<td style="text-align:center;">3.9</td>
+			<td style="text-align:center;">-</td>
+			<td><em>Calibrate.exe</em> only. When iTest is initialized, if this setting is set to TRUE, warning messages are sent to Softpanel for channels that are 1, 2, 3, 7, 14 days from being overdue. If the date falls between 3, 7, and 14 days, the larger time period is reported. For example, 5 days out will report the calibration due in one week.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>InformCalWarning=FALSE</td>
+		</tr>
+		<tr>
+			<td>UseCal1065</td>
+			<td style="text-align:center;">3.0</td>
+			<td style="text-align:center;">-</td>
+			<td>When set to TRUE, the calibrate icon on iTest Console will launch <em>calibrate1065.exe</em>.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>UseCal1065=FALSE</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Data-Logging"></a>
+<h2 >Data Logging<a href="#Data-Logging" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Data Logging INI Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Version</strong> </td>
+			<td style="text-align:left;"><strong>GUI</strong> </td>
+			<td style="width:500px;text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong> </td>
+		</tr>
+		<tr>
+			<td>AutoFileIncrement</td>
+			<td style="text-align:center;">3.0</td>
+			<td style="text-align:center;">-</td>
+			<td>This setting is only used with Transient logs. When set to TRUE, a new data file is automatically created when the binary file size reaches the amount specified by the <code>MaxDataFileSizeMB</code> <em>powertek.ini</em> setting. If the <code>MaxDataFileSizeMB</code> <em>powertek.ini</em> setting is missing, new data files are automatically created when the binary file size reaches 1MB. When set to FALSE, a new data file is automatically created when the binary file size reaches 2GB - 5MB. The name of the file will have a number appended to it. For more information, refer to the <a class="wiki-page" href="Data_Logging_.html">Data Logging</a> documentation.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>AutoFileIncrement=FALSE</td>
+		</tr>
+		<tr>
+			<td>DataRedIgnoreDBDecimalPoint</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>When set to TRUE, the database will ignore how many decimal points are designated for each channel when creating log files. When set to FALSE, all channels are logged with the precision designated in the RDB.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>DataRedIgnoreDBDecimalPoint=FALSE</td>
+		</tr>
+		<tr>
+			<td>DataRedIgnoreLolChanges</td>
+			<td style="text-align:center;">3.6</td>
+			<td style="text-align:center;">-</td>
+			<td>When set to TRUE, if the LOL file changes since the last time data was logged, then new logs will use the last PARAMS line as the header. Missing channels will have -99999 as their value. </td>
+			<td style="text-align:center;">FALSE</td>
+			<td>DataRedIgnoreLolChanges=FALSE</td>
+		</tr>
+		<tr>
+			<td>DataRedSplitFiles</td>
+			<td style="text-align:center;">3.4</td>
+			<td style="text-align:center;">-</td>
+			<td>If the LOL file changes since the last time data was logged, the file will be split into a new file. The <code>MaxDataFileSizeMB</code>, <code>MaxConvertedFileSizeMB</code>, and <code>AutoFileIncrement</code> <em>powertek.ini</em> settings can affect how data files are being split as they are being generated. See their descriptions for more information. </td>
+			<td style="text-align:center;">FALSE</td>
+			<td>DataRedSplitFiles=FALSE</td>
+		</tr>
+		<tr>
+			<td>DataRedStringMap</td>
+			<td style="text-align:center;">3.1</td>
+			<td style="text-align:center;">-</td>
+			<td>Allows DataRed to map a value into a string before writing it to the <em>.dat</em> file. This setting has the potential to reduce your requirement for Virtual Strings by allowing you to use numeric values in VCL but log string values to data logs. \<br />&nbsp;<br />Format: <code>&lt;ChannelName&gt;,&lt;PicklistFile&gt;;&lt;ChannelName&gt;,&lt;PicklistFile&gt;</code><br />Where &lt;ChannelName&gt; can be channel name, alias, or customer name. Each group of Channel-Picklist file is separated by a semi-colon. <br />The picklist file is located in the <em>$SUPPORTDIR\Picklist\</em> directory, and it is a comma-separated file with numeric value in first column and string value in second column, e.g.,:<br /><span style="padding-left:2em;">1,charge</span><br /><span style="padding-left:2em;">2,discharge</span><br /><span style="padding-left:2em;">3,stop</span><br /><span style="padding-left:2em;">4,idle</span></td>
+			<td style="text-align:center;">-</td>
+			<td>DataRedStringMap=MyChan1,ModeValueMap.pkl;MyChan2,StatusValueMap.pkl</td>
+		</tr>
+		<tr>
+			<td>DataRedTimeStampSeconds</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>When set to TRUE, the Date/Time columns are added in data files. Time is in epoch format.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>DataRedTimeStampSeconds=FALSE</td>
+		</tr>
+		<tr>
+			<td>DRDateFormat</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>The format of the date field (%Y/%m/%d). This setting is also used to format the <code>vsSysDate</code> and the <code>vsSysDateTime</code> system channels. To learn more, see the <a class="wiki-page" href="ITest_System_Channels.html">iTest System Channels</a> guide.</td>
+			<td style="text-align:center;">%Y/%m/%d</td>
+			<td>DRDateFormat=%Y/%m/%d</td>
+		</tr>
+		<tr>
+			<td>DRHoldForReviewDir</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>The location of the current project folder.</td>
+			<td style="text-align:center;">-</td>
+			<td>DRHoldForReviewDir=$DATADIR\ProjectFolder\</td>
+		</tr>
+		<tr>
+			<td>DRTimeFormat</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>The format of the time field.</td>
+			<td style="text-align:center;"><span>H:%M:%S</span>%f</td>
+			<td>DRTimeFormat=%H:%M:%S%%f</td>
+		</tr>
+		<tr>
+			<td>ExcludeDisabledModuleLOL</td>
+			<td style="text-align:center;">3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>When set to TRUE, channels in LOL that include the disabled module ID as part of their name will be excluded from the data file. <code>ExcludeDisabledModuleLOL</code> will be treated as FALSE if <code>DataRedIgnoreLOLChanges</code> is TRUE.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>ExcludeDisabledModuleLOL=FALSE</td>
+		</tr>
+		<tr>
+			<td>FormExitNotifyMailslot</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Mailslot to notify when a Log Header Form is closed. Only works in iTest Console when the Log Header Form is opened using the $FORM mailslot message to Softpanel. </td>
+			<td style="text-align:center;">-</td>
+			<td>FormExitNotifyMailslot=\\.\Mailslot\Data_Engine</td>
+		</tr>
+		<tr>
+			<td>FormExitNotifyMessage</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Message to send when a Log Header Form is closed. Only works in iTest Console when the Log Header Form is opened using the $FORM mailslot message to Softpanel. </td>
+			<td style="text-align:center;">-</td>
+			<td>FormExitNotifyMessage=$EXIT</td>
+		</tr>
+		<tr>
+			<td>LastUserVariableList</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Header file to write to the top of each logged data file. This is written by the system (Form, New Form).</td>
+			<td style="text-align:center;">-</td>
+			<td>LastUserVariableList=sysheader.uvl</td>
+		</tr>
+		<tr>
+			<td>LogAllDBFiles</td>
+			<td style="text-align:center;">3.4</td>
+			<td style="text-align:center;">-</td>
+			<td>When setting up a data log, this option enables the user to specify a comma-separated list of <em>.fil</em> files that are included when using the <strong>All Channels</strong> option.</td>
+			<td style="text-align:center;">&lt;Empty String&gt;</td>
+			<td>LogAllDBFiles=ioSys,Customer</td>
+		</tr>
+		<tr>
+			<td>MaxConvertedFileSizeMB</td>
+			<td style="text-align:center;">4.1</td>
+			<td style="text-align:center;">-</td>
+			<td>The size in MB to limit the generated log (ASCII) file to. This setting is only applicable to <em>.dat</em> files. When set to 0, this option is inactive. The conversion is performed as a post-processing action, so its operation can be impacted if the <code>AutoFileIncrement</code> <em>powertek.ini</em> setting is also being used. For more information, refer to the <a class="wiki-page" href="Data_Logging_.html">Data Logging</a> documentation. </td>
+			<td style="text-align:center;">0</td>
+			<td>MaxConvertedFileSizeMB=1</td>
+		</tr>
+		<tr>
+			<td>MaxDataFileSizeMB</td>
+			<td style="text-align:center;">3.0</td>
+			<td style="text-align:center;">-</td>
+			<td>The size in MB to limit the binary files to when <code>AutoFileIncrement=TRUE</code>. The maximum value is 2GB - 5MB. For more information, refer to the <a class="wiki-page" href="Data_Logging_.html">Data Logging</a> documentation. </td>
+			<td style="text-align:center;">1</td>
+			<td> MaxDataFileSizeMB=5</td>
+		</tr>
+		<tr>
+			<td>MDFNameField</td>
+			<td style="text-align:center;">3.7</td>
+			<td style="text-align:center;">-</td>
+			<td>Only for data logs using the MDF output type.<br />Specifies the RDB field to be used for the main channel name (e.g., Alias, Customer Name, Module Name, etc.).</td>
+			<td style="text-align:center;">Channel Name</td>
+			<td>MDFNameField=Customer Name</td>
+		</tr>
+		<tr>
+			<td>MDFHeaderCommentMD</td>
+			<td style="text-align:center;">4.0</td>
+			<td style="text-align:center;">-</td>
+			<td>Only for data logs using the MDF output type.<br />Header name/value pairs are put into an MDF TX block by default. This option places it in an MD block if set to TRUE. Some 3rd party tools only support one type or another. </td>
+			<td style="text-align:center;">FALSE</td>
+			<td>MDFHeaderCommentMD=FALSE</td>
+		</tr>
+		<tr>
+			<td>NotifyOnDataRecovery</td>
+			<td style="text-align:center;">3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Notifies the user that outstanding binary data files have been recovered from the $DATADIR on the system running vxin_exec. Notification appears in a message box and includes the location of the recovered data files.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>NotifyOnDataRecovery=FALSE</td>
+		</tr>
+		<tr>
+			<td> RDBHeaderAdditions</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>A comma-separated list of additional <em>data.def</em> fields to add to data file headers. These are rows of values added before the Params and Units rows.</td>
+			<td style="text-align:center;">-</td>
+			<td>RDBHeaderAdditions=Field 1, Field 2, Field 3<br />&nbsp;<br />Field 1, Field 2, and Field 3 are the names of fields in <em>data.def</em>.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Data-Quality"></a>
+<h2 >Data Quality<a href="#Data-Quality" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Data Quality INI Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Version</strong> </td>
+			<td style="text-align:left;"><strong>GUI</strong> </td>
+			<td style="width:500px;text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong> </td>
+		</tr>
+		<tr>
+			<td>DataQualityProcedureFilePath</td>
+			<td style="text-align:center;">4.2</td>
+			<td style="text-align:center;">-</td>
+			<td>The location of Data Quality procedures. This option modifies which procedures appear in the Data Quality Handler drop-down menu and supports macro substitution. The results are based on a recursive search that does not filter out any invalid procedures. <br />&nbsp;<br />For more information, refer to the <a class="wiki-page" href="ITest_Data_Quality.html#Configuring-Data-Quality">Configuring Data Quality</a> documentation.</td>
+			<td> Drop-down menu populated with:<br /><span style="padding-left:1em;">- &lt;empty row&gt;</span><br /><span style="padding-left:1em;">- DQHandlerDefault</span></td>
+			<td>DataQualityProcedureFilePath=$SUPPORTDIR\Test</td>
+		</tr>
+		<tr>
+			<td>DQStatusChannels</td>
+			<td style="text-align:center;">3.0</td>
+			<td style="text-align:center;">-</td>
+			<td>Enables the <strong>Accept/Reject Data</strong> feature in the Data Quality Viewer. <br />&nbsp;<br />Format: <code>DQStatusChannels=statschan,commentchan</code>, where &lt;statschan&gt; is the channel that holds the channel value and &lt;commentchan&gt; is the channel that holds the comment when accepting/rejecting data.</td>
+			<td style="text-align:center;">NONE</td>
+			<td>DQStatusChannels=statschan,commentchan</td>
+		</tr>
+		<tr>
+			<td>DQStatusThreeColor</td>
+			<td style="text-align:center;">3.0</td>
+			<td style="text-align:center;">-</td>
+			<td>When set to TRUE, data quality values will show 25%-75% range in green, 0-25% and 75-100% in yellow,  others red. This option only affects the iTest Console Data Quality Viewer. For more information, refer to the <a class="wiki-page" href="ITest_Data_Quality.html#Defining-Status-Colors">Defining Status Colors</a> documentation.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>DQStatusThreeColor=FALSE</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="eGate-Systems"></a>
+<h2 >eGate Systems<a href="#eGate-Systems" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>eGate Systems INI Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Version</strong> </td>
+			<td style="text-align:left;"><strong>GUI</strong> </td>
+			<td style="width:500px;text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong> </td>
+		</tr>
+		<tr>
+			<td>DetectTachLoss</td>
+			<td style="text-align:center;">3.0</td>
+			<td style="text-align:center;">-</td>
+			<td>When set to TRUE, tach loss detection for the CellMinder D1 modules is enabled.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>DetectTachLoss=TRUE</td>
+		</tr>
+		<tr>
+			<td>eGateCfgDir</td>
+			<td style="text-align:center;">3.0</td>
+			<td style="text-align:center;">-</td>
+			<td>Path to cache of eGate configuration files. This setting can be placed in the solution <em>powertek.ini</em> as well. \\egatecfg\\ is appended to this setting.</td>
+			<td style="text-align:center;">-</td>
+			<td>eGateCfgDir=$SUPPORTDIR\eGateCfg</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="iTestBTS"></a>
+<h2 >iTest.BTS<a href="#iTestBTS" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>iTest.BTS INI Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Version</strong> </td>
+			<td style="text-align:left;"><strong>GUI</strong> </td>
+			<td style="width:500px;text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong> </td>
+		</tr>
+		<tr>
+			<td>BatteryAppUsesArrays</td>
+			<td style="text-align:center;">3.5</td>
+			<td style="text-align:center;">-</td>
+			<td>Set to TRUE if using arrays. This means a BTS system as opposed to a BcTS system. This setting also allows for LabCentral to identify if a connected test station is a battery system. </td>
+			<td style="text-align:center;">FALSE</td>
+			<td>BatteryAppUsesArrays=FALSE</td>
+		</tr>
+		<tr>
+			<td>BatteryCyclerSynchronous</td>
+			<td style="text-align:center;">3.6</td>
+			<td style="text-align:center;">-</td>
+			<td>Set to TRUE if you want schedules to be synchronized with schedules. You must be using a Bitrode1 - Bitrode4 driver</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>BatteryCyclerSynchronous=FALSE</td>
+		</tr>
+		<tr>
+			<td>BatteryTestPageRequiredRows</td>
+			<td style="text-align:center;">3.1</td>
+			<td style="text-align:center;">-</td>
+			<td>The number of rows in battery/battery type test page. These rows cannot be deleted.</td>
+			<td style="text-align:center;">9</td>
+			<td>BatteryTestPageRequiredRows=9</td>
+		</tr>
+		<tr>
+			<td>BatteryType</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>Specifies whether the solution is cell or pack. Functionality differs depending on what type is used.<br />&nbsp;<br /><ins><strong>Cell</strong></ins>: When this setting is set to Cell, a maximum of 64 circuits is allowed when running in non-synchronous mode, and a maximum of 16 circuits is allowed when running in synchronous mode.<br /><ins><strong>Pack</strong></ins>: When this setting is set to Pack, a maximum of 4 circuits is allowed, additional channels are available for pack management and monitoring, additional VCL procedures are available for tapering and balancing, battery specification files include startup and shutdown schedules, and AutomationPanel contains pack-specific panels.<br />&nbsp;<br />For more information regarding cell and pack solutions, refer to the <a class="wiki-page" href="Pack_vs_Cell_Solutions.html">Pack vs Cell Solutions</a> documentation.</td>
+			<td style="text-align:center;">-</td>
+			<td>BatteryType=Cell<br />BatteryType=Pack</td>
+		</tr>
+		<tr>
+			<td>BtsParamDbFiles</td>
+			<td style="text-align:center;">4.0</td>
+			<td style="text-align:center;">-</td>
+			<td>Extends BTS parameters to additional FIL file(s). The files should include additional Virtual Output Arrays with the size as -1. In addition, these files should be included in the <code>DBPreLoad</code> setting in order to be able to view and select their contents. </td>
+			<td style="text-align:center;">-</td>
+			<td>BtsParamDbFiles=dbFile1,dbFile2</td>
+		</tr>
+		<tr>
+			<td>BTSScheduleValidateSilent</td>
+			<td style="text-align:center;">3.6</td>
+			<td style="text-align:center;">-</td>
+			<td>Sets the battery column that is closest to zero as the default battery to be tested during automated testing.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>BTSScheduleValidateSilent=FALSE</td>
+		</tr>
+		<tr>
+			<td>BTSAsteriskCCOffset</td>
+			<td style="text-align:center;">4.4</td>
+			<td style="text-align:center;">-</td>
+			<td>When using an asterisk in a basic schedule Current column, reduce the CurrentHiLimit and increase CurrentLoLimit by this amount.</td>
+			<td>0.01</td>
+			<td>BTSAsteriskCCOffset=0.01</td>
+		</tr>
+		<tr>
+			<td>BTSAsteriskCVOffset</td>
+			<td style="text-align:center;">4.4</td>
+			<td style="text-align:center;">-</td>
+			<td>When using an asterisk in a basic schedule Voltage column, reduce the VoltageHiLimit and increase VoltageLoLimit by this amount.</td>
+			<td>0.01</td>
+			<td>BTSAsteriskCVOffset=0.01</td>
+		</tr>
+		<tr>
+			<td>BTSAsteriskCPOffset</td>
+			<td style="text-align:center;">4.4</td>
+			<td style="text-align:center;">-</td>
+			<td>When using an asterisk in a basic schedule Power column, reduce the PowerHiLimit and increase PowerLoLimit by this amount.</td>
+			<td>1</td>
+			<td>BTSAsteriskCPOffset=1</td>
+		</tr>
+		<tr>
+			<td>ChanAttrShowAlias</td>
+			<td style="text-align:center;">3.1</td>
+			<td style="text-align:center;">-</td>
+			<td>When set to TRUE, show alias at channel attributes spreadsheet. Otherwise, the customer name is shown.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>ChanAttrShowAlias=TRUE</td>
+		</tr>
+		<tr>
+			<td>CircuitMonitorTestExcludeFolders</td>
+			<td style="text-align:center;">3.8</td>
+			<td style="text-align:center;">X</td>
+			<td>Enables you to hide schedule sub-folders from the drop-down list in Circuit Monitor's Tests column. <br />&nbsp;<br />Syntax: <code>CircuitMonitorTestExcludeFolders=&lt;FolderName1&gt;, &lt;FolderName2&gt;</code>, where <code>&lt;FolderName&gt;</code> is the name of the schedule sub-folder to hide.<br />&nbsp; <br />Any schedules contained in the specified sub-folder will not be available. Separate multiple schedule sub-folders with commas.</td>
+			<td style="text-align:center;">&lt;Empty String&gt;</td>
+			<td>CircuitMonitorTestExcludeFolders=Folder1, Folder2</td>
+		</tr>
+		<tr>
+			<td>DspCircuitsPerRow</td>
+			<td style="text-align:center;">3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>The number of circuits in a row on auto-generated circuit monitor display monitor.dsp.</td>
+			<td style="text-align:center;">8</td>
+			<td>DspCircuitsPerRow=8</td>
+		</tr>
+		<tr>
+			<td>EOSActionPicklist    </td>
+			<td style="text-align:center;">3.1</td>
+			<td style="text-align:center;">-</td>
+			<td>The picklist file for Step Condition Setup dialog in a schedule.</td>
+			<td style="text-align:center;">&lt;Empty String&gt;</td>
+			<td>EOSActionPicklist=UserActions.pkl</td>
+		</tr>
+		<tr>
+			<td>SolutionBase</td>
+			<td style="text-align:center;">4.0</td>
+			<td style="text-align:center;">-</td>
+			<td>This option is added by SolutionBuilder when creating a solution. It is also used to check if any application patches are available.</td>
+			<td style="text-align:center;">-</td>
+			<td>SolutionBase=$SYSTEMDIR\Installation\Battery\Solution.Battery.zip</td>
+		</tr>
+		<tr>
+			<td>TestSpecLockedRows</td>
+			<td style="text-align:center;">3.4</td>
+			<td style="text-align:center;">-</td>
+			<td>The number of rows in the Schedule editor's Header tab that are locked and can't be edited when the schedule type is <strong>Basic Schedule</strong>.</td>
+			<td style="text-align:center;">2</td>
+			<td>TestSpecLockedRows=2</td>
+		</tr>
+		<tr>
+			<td>TestSpecRequiredRows</td>
+			<td style="text-align:center;">3.4</td>
+			<td style="text-align:center;">-</td>
+			<td>The number of required rows in the Schedule editor's Header tab that can't be deleted when the schedule type is <strong>Basic Schedule</strong>.</td>
+			<td style="text-align:center;">5</td>
+			<td>TestSpecRequiredRows=5</td>
+		</tr>
+		<tr>
+			<td>Traceability</td>
+			<td style="text-align:center;">3.8</td>
+			<td style="text-align:center;">-</td>
+			<td>Set to TRUE to generate ISO Traceability ZIP files in the $DATADIR while connected to LabCentral.</td>
+			<td style="text-align:center;">-</td>
+			<td>Traceability=FALSE</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Master-Schedules"></a>
+<h2 >Master Schedules<a href="#Master-Schedules" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Master Schedules INI Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Version</strong> </td>
+			<td style="text-align:left;"><strong>GUI</strong> </td>
+			<td style="width:500px;text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong> </td>
+		</tr>
+		<tr>
+			<td>MasterScheduleLogEvents</td>
+			<td style="text-align:center;">3.6</td>
+			<td style="text-align:center;">-</td>
+			<td>When set to TRUE, a MasterScheduleEvents log file is created and event data is written to it.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>MasterScheduleLogEvents=FALSE</td>
+		</tr>
+		<tr>
+			<td>MasterScheduleProcedureFilter</td>
+			<td style="text-align:center;">3.8</td>
+			<td style="text-align:center;">X</td>
+			<td>File search criteria for Master Schedule procedure steps. This setting modifies what displays in the drop-down list for a procedure step.<br />&nbsp;<br /><strong><ins>BTS systems:</ins></strong> <br />Not influenced by this setting; these solutions always use the procedures available in the User procedure folders (e.g., <em>User</em>, <em>UserCellBalance</em>, and <em>UserChargeTaper</em>).<br />&nbsp;<br /><strong><ins>non-BTS systems:</ins></strong> <br />Defaults to displaying all available procedures listed in active procedure folders.</td>
+			<td style="text-align:center;">-</td>
+			<td>MasterScheduleProcedureFilter=Test\*.tsc</td>
+		</tr>
+		<tr>
+			<td>MasterScheduleScheduleFilter</td>
+			<td style="text-align:center;">3.8</td>
+			<td style="text-align:center;">X</td>
+			<td>File search criteria for Master Schedule schedule steps. This setting modifies what displays in the drop-down list for a schedule step and is tied to the <strong>Schedules Filter</strong> property in the Master Schedule panel.</td>
+			<td style="text-align:center;">-</td>
+			<td>MasterScheduleScheduleFilter=Schedules\*.sc2</td>
+		</tr>
+		<tr>
+			<td>MasterScheduleScriptComplete</td>
+			<td style="text-align:center;">3.7</td>
+			<td style="text-align:center;">-</td>
+			<td>The procedure to run when a master schedule is finished.</td>
+			<td style="text-align:center;">-</td>
+			<td>MasterScheduleScriptComplete=CctMSComplete($index$)</td>
+		</tr>
+		<tr>
+			<td>MasterScheduleScriptContinue</td>
+			<td style="text-align:center;">3.6</td>
+			<td style="text-align:center;">-</td>
+			<td>The procedure to run when a master schedule is restarted.</td>
+			<td style="text-align:center;">-</td>
+			<td>MasterScheduleScriptContinue=CctMSResume($index$)</td>
+		</tr>
+		<tr>
+			<td>MasterScheduleScriptStart</td>
+			<td style="text-align:center;">3.6</td>
+			<td style="text-align:center;">-</td>
+			<td>The procedure to run when a master schedule is started.</td>
+			<td style="text-align:center;">-</td>
+			<td>MasterScheduleScriptStart=CctMSStart($index$)</td>
+		</tr>
+		<tr>
+			<td>MasterScheduleScriptStop</td>
+			<td style="text-align:center;">3.6</td>
+			<td style="text-align:center;">-</td>
+			<td>The procedure to run when a master schedule is stopped.</td>
+			<td style="text-align:center;">-</td>
+			<td>MasterScheduleScriptStop=CctMSStop($index$)</td>
+		</tr>
+		<tr>
+			<td>MasterScheduleStartAction</td>
+			<td style="text-align:center;">3.9</td>
+			<td style="text-align:center;">-</td>
+			<td>Determines the action (<strong>Restart</strong> or <strong>Continue</strong>) of the <strong>Start</strong> button on the Master Schedule panel. If set to Restart, the <strong>Start</strong> button will restart the master schedule from the beginning. If set to Continue, the <strong>Start</strong> button will continue the master schedule if it was stopped prematurely.</td>
+			<td style="text-align:center;">-</td>
+			<td>MasterScheduleStartAction=Restart<br />MasterScheduleStartAction=Continue</td>
+		</tr>
+		<tr>
+			<td>MasterScheduleResumeShowAdvOption</td>
+			<td style="text-align:center;">4.4</td>
+			<td style="text-align:center;">-</td>
+			<td> When set to TRUE, two additional restart options are available in the Master Schedule Restart dialog.<br /><span style="padding-left:2em;">* Restart from the beginning of the previous step.</span><br /><span style="padding-left:2em;">* Restart from the beginning of the next step.</span><br />&nbsp;<br />This setting is only applicable to non-BTS systems.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td> MasterScheduleResumeShowAdvOption=FALSE</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Miscellaneous"></a>
+<h2 >Miscellaneous<a href="#Miscellaneous" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Miscellaneous INI Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Version</strong> </td>
+			<td style="text-align:left;"><strong>GUI</strong> </td>
+			<td style="width:500px;text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong> </td>
+		</tr>
+		<tr>
+			<td>ActiveAliasFiles</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Shows the list of external alias files to be loaded. This option is typically written by Test Manager. </td>
+			<td style="text-align:center;">&lt;Empty Value&gt;</td>
+			<td>ActiveAliasFiles=Alias1, Alias2</td>
+		</tr>
+		<tr>
+			<td>AutoNameConditions</td>
+			<td style="text-align:center;">3.1</td>
+			<td style="text-align:center;">-</td>
+			<td>When set to TRUE, a step condition’s name and label is automatically generated based on the first two conditions. This also removes the <strong>Duplicate</strong> and <strong>Rename...</strong> right-click menu options from SolutionBuilder’s Step Conditions editor.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>AutoNameConditions=FALSE</td>
+		</tr>
+		<tr>
+			<td>BlockWaitTimeChannel</td>
+			<td style="text-align:center;">2.3</td>
+			<td style="text-align:center;">-</td>
+			<td>Specifies the channel that accumulates time in seconds at the sequence custom block exit condition.</td>
+			<td style="text-align:center;">-</td>
+			<td>BlockWaitTimeChannel=&lt;Channel Name&gt;</td>
+		</tr>
+		<tr>
+			<td>CommonTestGroup</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>Names of test folders to load.</td>
+			<td style="text-align:center;">NONE</td>
+			<td>CommonTestGroup=$SYSTEMDIR\Installation\External\Test</td>
+		</tr>
+		<tr>
+			<td>DataAnalysisMaxFileSize</td>
+			<td style="text-align:center;">2.3</td>
+			<td style="text-align:center;">-</td>
+			<td>The maximum number of bytes before dividing into sections in Data Analysis; this option is used to prevent running out of memory.</td>
+			<td style="text-align:center;">20000000</td>
+			<td>DataAnalysisMaxFileSize=20000000</td>
+		</tr>
+		<tr>
+			<td>DBPreLoad</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>A list of database files to load.</td>
+			<td style="text-align:center;">NONE</td>
+			<td>DBPreLoad=$SUPPORTDIR\DB\Sys.FIL>>$SUPPORTDIR\DB\Cct.FIL>>$SUPPORTDIR\DB\UserDefined.FIL</td>
+		</tr>
+		<tr>
+			<td>DBSharedMemSize</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Size of the shared memory database (RDB) in bytes. (1MB = 1*1024*1024 bytes)</td>
+			<td style="text-align:center;">16 MB</td>
+			<td>DBSharedMemSize=16</td>
+		</tr>
+		<tr>
+			<td>DefaultDatabaseFile</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Name of the first iTest channel definition file to load. This file will always be loaded to the RDB and cannot be deactivated. A fully qualified path is supported; otherwise, it defaults to the <em>$SUPPORTDIR\DB\</em> folder to find the file.</td>
+			<td style="text-align:center;">-</td>
+			<td>DefaultDatabaseFile=$SUPPORTDIR\DB\Dmo1.fil</td>
+		</tr>
+		<tr>
+			<td>DefaultUser</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>This option allows you to change the name of the default user that is logged in when iTest starts. If this option is an empty string (i.e., <code>DefaultUser=</code>), then a login prompt will be presented at startup if <code>iTestLogin=TRUE</code> in the <em>config.ini</em>. </td>
+			<td style="text-align:center;">Operator</td>
+			<td>DefaultUser=Operator</td>
+		</tr>
+		<tr>
+			<td>EnableVXBuffer</td>
+			<td style="text-align:center;">3.5</td>
+			<td style="text-align:center;">-</td>
+			<td>VXBuffer will only be created if this option is TRUE.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>EnableVXBuffer=FALSE</td>
+		</tr>
+		<tr>
+			<td>FileDialogCancelString</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>String value used by the FileDialog utility to populate the string channels with if the <strong>Cancel</strong> button is clicked.</td>
+			<td style="text-align:center;">Cancel</td>
+			<td>FileDialogCancelString=Cancel</td>
+		</tr>
+		<tr>
+			<td>FlexEditLogParsePrompt</td>
+			<td style="text-align:center;">3.6</td>
+			<td style="text-align:center;">-</td>
+			<td>FlexEdit prompts for LOG PARSE when detects a LOL file change.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>FlexEditLogParsePrompt=TRUE</td>
+		</tr>
+		<tr>
+			<td>HelpDebug</td>
+			<td style="text-align:center;">4.2</td>
+			<td style="text-align:center;">-</td>
+			<td>When set to TRUE, the help ID will be shown prior to launching the help dialog after selecting an item in the Property Manager.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>HelpDebug=TRUE</td>
+		</tr>
+		<tr>
+			<td>iTestWDTimeSecs</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Time period, in seconds, that the <code>CLOCK_TIME</code> channel must not change before the <em>iTestWD.exe</em> tool triggers a watchdog action.</td>
+			<td style="text-align:center;">5</td>
+			<td>iTestWDTimeSecs=10</td>
+		</tr>
+		<tr>
+			<td>LaunchRDBServerRC</td>
+			<td style="text-align:center;">3.5</td>
+			<td style="text-align:center;">-</td>
+			<td>RDBServerRC.exe will be auto launched if this option is TRUE.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>LaunchRDBServerRC=TRUE</td>
+		</tr>
+		<tr>
+			<td>LimitsRMISS</td>
+			<td style="text-align:center;">3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Channel value that is ignored for Limits checking.</td>
+			<td style="text-align:center;">NONE</td>
+			<td>LimitsRMISS=&lt;Channel Name&gt;</td>
+		</tr>
+		<tr>
+			<td>LimitsVer</td>
+			<td style="text-align:center;">3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>When set to 3.2, the 3.2 limits enhancement of rolling all channel limits into all groups are enabled.</td>
+			<td style="text-align:center;">0.0</td>
+			<td>LimitsVer=3.2</td>
+		</tr>
+		<tr>
+			<td>LogBackupExcludeAppFiles</td>
+			<td style="text-align:center;">3.8</td>
+			<td style="text-align:center;">-</td>
+			<td>When set to TRUE, self-appending log files (e.g., <em>iTestConsole_Main_*.log</em> and <em>AutomationPanel_Main_*.log</em>) are not backed up to the archive folders (<em>$SYSTEMDIR\Logs\Archives</em>).</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>LogBackupExcludeAppFiles=FALSE</td>
+		</tr>
+		<tr>
+			<td>MaxArraySize</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>The maximum size of file arrays in vxin_exec.</td>
+			<td style="text-align:center;">20000</td>
+			<td>MaxArraySize=20000</td>
+		</tr>
+		<tr>
+			<td>PythonScriptExcludeFilter</td>
+			<td style="text-align:center;">4.4</td>
+			<td style="text-align:center;">-</td>
+			<td> A filename filter for Python scripts, where matched scripts will not be editable via AutomationPanel's <strong>File > Edit > Script...</strong> menu option.<br />The name comparison is performed against the entire filename including the <em>.py</em> file extension.</td>
+			<td style="text-align:center;">&lt;Empty String&gt;</td>
+			<td>PythonScriptExcludeFilter=*_h.py</td>
+		</tr>
+		<tr>
+			<td>RDBServerMachineName</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>The machine name for database</td>
+			<td style="text-align:center;">-</td>
+			<td>RDBServerMachineName=MachineName</td>
+		</tr>
+		<tr>
+			<td>RebuildProcedure</td>
+			<td style="text-align:center;">3.5</td>
+			<td style="text-align:center;">-</td>
+			<td>A procedure that is executed at rebuild from iTestConsole, TestMgr, or AutomationPanel. This procedure is responsible to prompt user or check if to rebuild. To rebuild, <code>$Rebuild;TRUE</code> needs to be sent to Softpanel. This procedure will only run if AutomationPanel or iTestConsole is running.</td>
+			<td style="text-align:center;">NONE</td>
+			<td>RebuildProcedure=MyTestCheck</td>
+		</tr>
+		<tr>
+			<td>RemoteSystem</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>When set to TRUE, the RDBServer does not listen for remote connections.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>RemoteSystem=FALSE</td>
+		</tr>
+		<tr>
+			<td>Simulation</td>
+			<td style="text-align:center;">3.0</td>
+			<td style="text-align:center;">X</td>
+			<td>Run without synchronization in simulation mode when set to TRUE. This should be used instead of the NoHardware flag for simulation mode. </td>
+			<td style="text-align:center;">FALSE</td>
+			<td>Simulation=FALSE</td>
+		</tr>
+		<tr>
+			<td>SplashWndBitmapFile</td>
+			<td style="text-align:center;">3.0</td>
+			<td style="text-align:center;">-</td>
+			<td>Bitmap file, includes path, for splash window bitmap picture. The resulting splash screen dimensions are based on the file dimensions.</td>
+			<td style="text-align:center;">NONE</td>
+			<td>SplashWndBitmapFile=$SYSTEMDIR\ART\ADTLogo.bmp</td>
+		</tr>
+		<tr>
+			<td>Support1kHz</td>
+			<td style="text-align:center;">2.3</td>
+			<td style="text-align:center;">-</td>
+			<td>Set to TRUE to enable 1kHz support. <strong>NOTE:</strong> This option requires 1kHz hardware.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>Support1kHz=FALSE</td>
+		</tr>
+		<tr>
+			<td>SysLogDirStatic</td>
+			<td style="text-align:center;">4.4</td>
+			<td style="text-align:center;">-</td>
+			<td> When set to TRUE, the <em>SystemLog.slg</em> file is stored in the $DATADIR instead of the current project folder. By default, this is set to FALSE.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td> SysLogDirStatic=FALSE</td>
+		</tr>
+		<tr>
+			<td>SysLogMaxSizeMB</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>The maximum size (up to 10 MB) of the system log in Megabytes. </td>
+			<td style="text-align:center;">6</td>
+			<td>SysLogMaxSizeMB=6</td>
+		</tr>
+		<tr>
+			<td>SysLogSplitByDate</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Starts a new system log at the beginning of each day when set to TRUE. The last day is split off as <em>SystemLog_YYYYMMDD.slg</em>.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>SysLogSplitByDate=FALSE</td>
+		</tr>
+		<tr>
+			<td>SystemType</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>Defines the iTest I/O and/or the type of application defined in the solution. This setting also allows for LabCentral to identify the system type for connected test stations. Possible values are detailed in the <a class="wiki-page" href="System_Types.html">System Types</a> documentation.</td>
+			<td style="text-align:center;">-</td>
+			<td>SystemType=IBS</td>
+		</tr>
+		<tr>
+			<td>VideoTriggerChan    </td>
+			<td style="text-align:center;">3.8</td>
+			<td style="text-align:center;">X</td>
+			<td>Specifies the channel that indicates the start of video capture. The channel's value must be set to 0 before capture and 1 when capture is started, so that tools like the Data Log Browser can properly sync the data file to video.</td>
+			<td style="text-align:center;">NONE</td>
+			<td>VideoTriggerChan=&lt;Channel Name&gt;</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Paths"></a>
+<h2 >Paths<a href="#Paths" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Paths INI Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Version</strong> </td>
+			<td style="text-align:left;"><strong>GUI</strong> </td>
+			<td style="width:500px;text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong> </td>
+		</tr>
+		<tr>
+			<td>CalDatabasePath</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Location of the <em>caltable.csv</em> and the <em>calcoeffs.txt</em> files. If the destination is not defined, the default location is used.</td>
+			<td style="text-align:center;">$SUPPORTDIR</td>
+			<td>CalDatabasePath=$SUPPORTDIR</td>
+		</tr>
+		<tr>
+			<td>DatabaseDefinitionFilePath</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Location of the <em>DATA.DEF</em> file.</td>
+			<td style="text-align:center;">$SUPPORTDIR\Installation</td>
+			<td>DatabaseDefinitionFilePath=$SUPPORTDIR\Installation</td>
+		</tr>
+		<tr>
+			<td>DatabaseFieldDefinitionFilePath</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Location of the <em>datafields.def</em> file.</td>
+			<td style="text-align:center;">$SUPPORTDIR\Installation</td>
+			<td>DatabaseFieldDefinitionFilePath=$SUPPORTDIR\Installation</td>
+		</tr>
+		<tr>
+			<td>LogHistoryFilePath</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Location of the <em>history.txt</em> file.</td>
+			<td style="text-align:center;">$SUPPORTDIR</td>
+			<td>LogHistoryFilePath=$SUPPORTDIR</td>
+		</tr>
+		<tr>
+			<td>LogListFilePath</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Location of LOL files.</td>
+			<td style="text-align:center;">$SUPPORTDIR\Data</td>
+			<td>LogListFilePath=$SUPPORTDIR\Data</td>
+		</tr>
+		<tr>
+			<td>LogsetupFilePath</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Location of the <em>logsetup.dat</em> and <em>logsetup.ini</em> files.</td>
+			<td style="text-align:center;">-</td>
+			<td>LogListFilePath=$SUPPORTDIR\Data</td>
+		</tr>
+		<tr>
+			<td>MasterUserVariableListFullPath</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Location of the <em>Master.ini</em> file.</td>
+			<td style="text-align:center;">- </td>
+			<td>MasterUserVariableListFullPath=$SUPPORTDIR\Master.ini</td>
+		</tr>
+		<tr>
+			<td>PicklistFilePath</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Location of PKL files.</td>
+			<td style="text-align:center;">-</td>
+			<td>PicklistFilePath=$SUPPORTDIR\Picklist</td>
+		</tr>
+		<tr>
+			<td>TableFilePath</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Location of 2DT files. For more information on how to use this option, refer to the <a class="wiki-page" href="Advanced_Map_Table_Usage.html">Advanced Map Table Usage</a> documentation.</td>
+			<td style="text-align:center;">$SUPPORTDIR\SchedulesAndTables</td>
+			<td>TableFilePath=$SUPPORTDIR\SchedulesAndTables</td>
+		</tr>
+		<tr>
+			<td>UnitsPath</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Location of the <em>units.wmp</em> file.</td>
+			<td style="text-align:center;">$SYSTEMDIR\Installation</td>
+			<td>UnitsPath=$SYSTEMDIR\Installation</td>
+		</tr>
+		<tr>
+			<td>UserDataBasePath</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Location of the <em>users.dat</em> file used for security information.</td>
+			<td style="text-align:center;">$SYSTEMDIR\Installation</td>
+			<td>UserDataBasePath=$SYSTEMDIR\Installation</td>
+		</tr>
+		<tr>
+			<td>UserVariableListPath</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Location of UVL files.</td>
+			<td style="text-align:center;">$SUPPORTDIR\Varlists</td>
+			<td>UserVariableListPath=$SUPPORTDIR\Varlists</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="PIDs"></a>
+<h2 >PIDs<a href="#PIDs" class="wiki-anchor">&para;</a></h2>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>PID INI Settings</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Version</strong> </td>
+			<td style="text-align:left;"><strong>GUI</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong> </td>
+		</tr>
+		<tr>
+			<td>DefaultPIDGroup</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Name of the PID group from <em>pidgroups.cfg</em> to apply at startup.</td>
+			<td style="text-align:center;">-</td>
+			<td>DefaultPIDGroup=PIDGroup</td>
+		</tr>
+		<tr>
+			<td>DETACHPIDCONTROL</td>
+			<td style="text-align:center;">2.1</td>
+			<td style="text-align:center;">X</td>
+			<td>Shows the PID Control dialog as a separate window when set to TRUE. This option does not affect AutomationPanel's Mode Control dialog.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>DETACHPIDCONTROL=TRUE</td>
+		</tr>
+		<tr>
+			<td>EnablePIDTuneSliders</td>
+			<td style="text-align:center;">4.0</td>
+			<td style="text-align:center;">X</td>
+			<td>Enables slider controls for the PIDTune tool.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>EnablePIDTuneSliders=FALSE</td>
+		</tr>
+		<tr>
+			<td>HS1Label</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>Label for the left PID mode control in the Mode Control and PID Control dialogs.</td>
+			<td style="text-align:center;">-</td>
+			<td>HS1Label=DYNO_COMMAND </td>
+		</tr>
+		<tr>
+			<td>HS2Label</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>Label for the right PID mode control in the Mode Control and PID Control dialogs.</td>
+			<td style="text-align:center;">-</td>
+			<td>HS2Label=THROTTLE_COMMAND </td>
+		</tr>
+		<tr>
+			<td>InternalPids</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>When set to FALSE, the Mode Control combo box is disabled.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>InternalPids=TRUE</td>
+		</tr>
+		<tr>
+			<td>LastModeHS1</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>Initial PID to start for HS1.</td>
+			<td style="text-align:center;">-</td>
+			<td>LastModeHS1=Speed.HS1</td>
+		</tr>
+		<tr>
+			<td>LastModeHS2</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>Initial PID to start for HS2.</td>
+			<td style="text-align:center;">-</td>
+			<td>LastModeHS2=Position.HS2</td>
+		</tr>
+		<tr>
+			<td>PidControlLoopGroup1Name</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Control loop to act as HS1. Affects iTest Console's PID Control dialog, AutomationPanel's Mode Control dialog, and Test Manager's Control Modes.</td>
+			<td style="text-align:center;">HS1 or dyno_ref </td>
+			<td>PidControlLoopGroup1Name=Dt1Dyno</td>
+		</tr>
+		<tr>
+			<td>PidControlLoopGroup2Name</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Control loop to act as HS2. Affects iTest Console's PID Control dialog, AutomationPanel's Mode Control dialog, and Test Manager's Control Modes.</td>
+			<td style="text-align:center;">HS2</td>
+			<td>PidControlLoopGroup2Name=Dt1Throt</td>
+		</tr>
+		<tr>
+			<td>PIDsUseFltFdBck</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Determines whether feedbacks are filtered using database settings. When set to FALSE, unfiltered values are used.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>PIDsUseFltFdBck=FALSE</td>
+		</tr>
+		<tr>
+			<td>PidXMode</td>
+			<td style="text-align:center;">3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Name of PID file to use for Xmode functionality.</td>
+			<td style="text-align:center;">-</td>
+			<td>PidXMode=Xmode.HS1</td>
+		</tr>
+		<tr>
+			<td>PidXModeDefaultD</td>
+			<td style="text-align:center;">3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Default value used for D setting when selecting new Xmode feedback channel. </td>
+			<td style="text-align:center;">0</td>
+			<td>PidXModeDefaultD=0</td>
+		</tr>
+		<tr>
+			<td>PidXModeDefaultI</td>
+			<td style="text-align:center;">3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Default value used for I setting when selecting new Xmode feedback channel.</td>
+			<td style="text-align:center;">0.0001</td>
+			<td>PidXModeDefaultI=0.0001</td>
+		</tr>
+		<tr>
+			<td>PidXModeDefaultP</td>
+			<td style="text-align:center;">3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Default value used for P setting when selecting new Xmode feedback channel.</td>
+			<td style="text-align:center;">50</td>
+			<td>PidXModeDefaultP=50</td>
+		</tr>
+		<tr>
+			<td>PidXModeDefaultReverse</td>
+			<td style="text-align:center;">3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Default value used for Reverse setting when selecting new Xmode feedback channel.</td>
+			<td style="text-align:center;">0</td>
+			<td>PidXModeDefaultReverse=0</td>
+		</tr>
+		<tr>
+			<td>PidXModeSaveProcedure</td>
+			<td style="text-align:center;">3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Name of procedure to run when Xmode settings are saved.</td>
+			<td style="text-align:center;">-</td>
+			<td>PidXModeSaveProcedure=XModeSaved </td>
+		</tr>
+		<tr>
+			<td>ReportPidModeSwitchErrors</td>
+			<td style="text-align:center;">2.2.1</td>
+			<td style="text-align:center;">X</td>
+			<td>Report Invalid Mode Pair Messages.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>ReportPidModeSwitchErrors=TRUE</td>
+		</tr>
+		<tr>
+			<td>StartPids</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>When set to TRUE, PIDs are enabled upon startup.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>StartPids=TRUE</td>
+		</tr>
+		<tr>
+			<td>TemplateCommandVisibility</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>When set to TRUE, iTest Console's PID Control or AutomationPanel's Mode Control dialogs are shown.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>TemplateCommandVisibility=FALSE</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Runtime-Console"></a>
+<h2 >Runtime Console<a href="#Runtime-Console" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Runtime Console INI Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Version</strong> </td>
+			<td style="text-align:left;"><strong>GUI</strong></td>
+			<td style="text-align:left;"><strong>Application Interface</strong></td>
+			<td style="width:500px;text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong></td>
+		</tr>
+		<tr>
+			<td>AppLoadWaitTimeSec</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>Amount of time to wait (in seconds) for response when loading applications.</td>
+			<td style="text-align:center;">60</td>
+			<td>AppLoadWaitTimeSec=60</td>
+		</tr>
+		<tr>
+			<td>AutomationPanelMaxLayouts</td>
+			<td style="text-align:center;">3.8</td>
+			<td style="text-align:center;">X</td>
+			<td>AutomationPanel</td>
+			<td>Maximum number of AutomationPanel layouts that can be open. If this setting is not specified, the default value is 10.</td>
+			<td style="text-align:center;">10</td>
+			<td>AutomationPanelMaxLayouts=10</td>
+		</tr>
+		<tr>
+			<td>AutomationPanelNumericFormat</td>
+			<td style="text-align:center;">3.6</td>
+			<td style="text-align:center;">-</td>
+			<td>AutomationPanel</td>
+			<td>Controls the format type of numeric values of elements displayed in a panel. Supports 'F' or 'f' for Fixed-point, 'G' or 'g' for General (smallest string representation), and 'E' or 'e' for Exponential Notation. For the General and Exponential formats only, the case of the format specifier indicates whether to prefix the exponent with an uppercase or a lowercase 'E'.</td>
+			<td style="text-align:center;">F</td>
+			<td>AutomationPanelNumericFormat=F</td>
+		</tr>
+		<tr>
+			<td>AutoShowOpErrMsg</td>
+			<td style="text-align:center;">3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>Show operator message pane if there is "Error" or "Warning" in the message string.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>AutoShowOpErrMsg=FALSE</td>
+		</tr>
+		<tr>
+			<td>AutoStartPhase</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>Name of the procedure to run after Test Builder.</td>
+			<td style="text-align:center;">NONE</td>
+			<td>AutoStartPhase=SysInit</td>
+		</tr>
+		<tr>
+			<td>CalcEngineScanRateHz</td>
+			<td style="text-align:center;">3.4</td>
+			<td style="text-align:center;">X</td>
+			<td>CalcEngine</td>
+			<td>Defines the CalcEngine scan rate. By default, this value is set to the value of <code>SystemScanRateHz</code>.</td>
+			<td style="text-align:center;">Value of <code>SystemScanRateHz</code></td>
+			<td>CalcEngineScanRateHz=1</td>
+		</tr>
+		<tr>
+			<td>ChannelListPanelLabelTitle</td>
+			<td style="text-align:center;">3.6</td>
+			<td style="text-align:center;">-</td>
+			<td>AutomationPanel</td>
+			<td> This option is used to determine the column name for the channel label in the Channel Lists panel. Translation macros are supported.</td>
+			<td style="text-align:center;">-</td>
+			<td>ChannelListPanelLabelTitle=Label</td>
+		</tr>
+		<tr>
+			<td>ChannelSelectLOL</td>
+			<td style="text-align:center;">3.8</td>
+			<td style="text-align:center;">X</td>
+			<td>All</td>
+			<td>When this setting is set to TRUE, LOL files are added to the end of the Type Filter list in the Channel Selection dialog. This enables you to filter the list down to only channel names referenced in that LOL file.</td>
+			<td style="text-align:center;">-</td>
+			<td>ChannelSelectLOL=TRUE</td>
+		</tr>
+		<tr>
+			<td>ComboBoxStringName</td>
+			<td style="text-align:center;">3.1</td>
+			<td style="text-align:center;">-</td>
+			<td>iTest Console</td>
+			<td>When set to TRUE, ADTCombo will show the selected VS channel name, not its content.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>ComboBoxStringName=FALSE</td>
+		</tr>
+		<tr>
+			<td>CurrentChannelNameDisplay</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>The label field for displays when the display label type is "System Default."</td>
+			<td style="text-align:center;">-</td>
+			<td>CurrentChannelNameDisplay=Channel Name</td>
+		</tr>
+		<tr>
+			<td>CurrentChannelUnitsDisplay</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>The type of units of measurement for displays when the display units type is "Automatic."</td>
+			<td style="text-align:center;">-</td>
+			<td>CurrentChannelUnitsDisplay=Original Units</td>
+		</tr>
+		<tr>
+			<td>CustomButtonProc</td>
+			<td style="text-align:center;">3.0</td>
+			<td style="text-align:center;">-</td>
+			<td>iTest Console</td>
+			<td>Name of the procedure that will be executed when a custom stop button is clicked. Use comma-separated entries for multiple stop buttons. The number of entries must match the same number of entries in the CustomButtonText setting.</td>
+			<td style="text-align:center;">NONE</td>
+			<td>CustomButtonProc=Stop</td>
+		</tr>
+		<tr>
+			<td>CustomButtonText    </td>
+			<td style="text-align:center;">3.0</td>
+			<td style="text-align:center;">-</td>
+			<td>iTest Console</td>
+			<td>Text label on a custom stop button on the iTest Console toolbar. Use comma-separated entries for multiple stop buttons.</td>
+			<td style="text-align:center;">NONE</td>
+			<td>CustomButtonText=Stop</td>
+		</tr>
+		<tr>
+			<td>CustomDisplayShowLastPosition</td>
+			<td style="text-align:center;">3.4</td>
+			<td style="text-align:center;">-</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>When set to TRUE, each open custom display (dialog) will record its location to <em>$SUPPORTDIR\CustomDisplayPosition.ini</em> when the display is closed. When the custom display is launched again, it will be displayed at the recorded location.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>CustomDisplayShowLastPosition=FALSE</td>
+		</tr>
+		<tr>
+			<td>DataEngineDisconnectProc</td>
+			<td style="text-align:center;">4.3</td>
+			<td style="text-align:center;">-</td>
+			<td> AutomationPanel<br />iTest Console</td>
+			<td>The procedure that is executed when the specified time limit in <code>DataEngineDisconnectTimeSecs</code> reached. This procedure should attempt to place the system into a safe state. The <em>vxin_exec.log</em> file is updated when the specified procedure is executed.</td>
+			<td style="text-align:center;">-</td>
+			<td>DataEngineDisconnectProc=&lt;Procedure Name&gt;</td>
+		</tr>
+		<tr>
+			<td>DataEngineDisconnectTimeSecs</td>
+			<td style="text-align:center;">4.3</td>
+			<td style="text-align:center;">-</td>
+			<td> AutomationPanel<br />iTest Console</td>
+			<td>The time limit (in seconds) of communication loss with Data_Engine. When the specified time limit has been reached, the procedure specified in <code>DataEngineDisconnectProc</code> is executed.</td>
+			<td style="text-align:center;">-</td>
+			<td>DataEngineDisconnectTimeSecs=5</td>
+		</tr>
+		<tr>
+			<td>DefaultDisplayScreen </td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>Determines the default display screen.</td>
+			<td style="text-align:center;">NONE</td>
+			<td>DefaultDisplayScreen=Monitor 1</td>
+		</tr>
+		<tr>
+			<td>DefaultRightDisplayScreen</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>Determines the default right display screen.</td>
+			<td style="text-align:center;">NONE</td>
+			<td>DefaultRightDisplayScreen=Monitor 2</td>
+		</tr>
+		<tr>
+			<td>DisplayPreloads</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>Displays executables launched by iTest in the Windows taskbar when set to TRUE.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>DisplayPreloads=TRUE</td>
+		</tr>
+		<tr>
+			<td>ExitPhase</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>The procedure to run before exiting the system.</td>
+			<td style="text-align:center;">NONE</td>
+			<td>ExitPhase=SysExit</td>
+		</tr>
+		<tr>
+			<td>InactiveTimeoutMinutes</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>MouseKeyMonitor.exe</td>
+			<td>The amount of inactive time (in minutes) to wait before logging the user out of iTest.</td>
+			<td style="text-align:center;">NONE</td>
+			<td>InactiveTimeoutMinutes=1</td>
+		</tr>
+		<tr>
+			<td>LimitsActiveOnStartup</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>When set to TRUE, limits are checked when the system initializes.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>LimitsActiveOnStartup=FALSE</td>
+		</tr>
+		<tr>
+			<td>MaxDisplays</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>iTest Console</td>
+			<td>Maximum number of displays that can be opened simultaneously.</td>
+			<td style="text-align:center;">5</td>
+			<td>MaxDisplays=5</td>
+		</tr>
+		<tr>
+			<td>MaxWebPages</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>iTest Console</td>
+			<td>Maximum number of web pages that can be opened up simultaneously.</td>
+			<td style="text-align:center;">5</td>
+			<td>MaxWebPages=5</td>
+		</tr>
+		<tr>
+			<td>MessageFilters</td>
+			<td style="text-align:center;">3.0</td>
+			<td style="text-align:center;">-</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>String items separated by "@" so that system messages containing any of those strings will be filtered out (not shown).</td>
+			<td style="text-align:center;">-</td>
+			<td>MessageFilters=Begin Procedure@End Procedure</td>
+		</tr>
+		<tr>
+			<td>MsgTimeStampFmt</td>
+			<td style="text-align:center;">3.1</td>
+			<td style="text-align:center;">-</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>Time stamp format for the system/operator messages on Softpanel.</td>
+			<td style="text-align:center;">%H:%M:%S</td>
+			<td>MsgTimeStampFmt=%H:%M:%S</td>
+		</tr>
+		<tr>
+			<td>NumberOfMonitors </td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>Number of monitors for this system.</td>
+			<td style="text-align:center;">ONE</td>
+			<td>NumberOfMonitors=ONE</td>
+		</tr>
+		<tr>
+			<td>PreLoad</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>Executables to launch on start-up, separated with the ">>" character.</td>
+			<td style="text-align:center;">NONE</td>
+			<td>PreLoad=\\datared.exe>>\\data_engine.exe>></td>
+		</tr>
+		<tr>
+			<td>PromptDupChan</td>
+			<td style="text-align:center;">2.3</td>
+			<td style="text-align:center;">-</td>
+			<td>iTest Console</td>
+			<td>When set to TRUE, prompt user for duplicate channels at iTest Console startup.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>PromptDupChan=TRUE</td>
+		</tr>
+		<tr>
+			<td>PrompterDisplayFIFO</td>
+			<td style="text-align:center;">3.5</td>
+			<td style="text-align:center;">-</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>When set to TRUE, prompter dialogs (except simple $PLAIN ones) will be displayed in the order in which they are received.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>PrompterDisplayFIFO=FALSE</td>
+		</tr>
+		<tr>
+			<td>PrompterFontSize</td>
+			<td style="text-align:center;">3.5</td>
+			<td style="text-align:center;">-</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>Font size for the prompter text.</td>
+			<td style="text-align:center;">20</td>
+			<td>PrompterFontSize=20</td>
+		</tr>
+		<tr>
+			<td>PrompterInitialMaxWidth</td>
+			<td style="text-align:center;">3.6</td>
+			<td style="text-align:center;">-</td>
+			<td>iTest Console</td>
+			<td>If the value for the <em>powertek.ini</em> setting, PrompterInitialMaxWidth, is a positive integer (> 0) then it recommends to Windows to fit the prompter text within the width specified for this setting. If the text fits with less width specified for this setting, then the prompter width may be less.</td>
+			<td style="text-align:center;">-1 (off)</td>
+			<td>PrompterInitialMaxWidth=-1</td>
+		</tr>
+		<tr>
+			<td>PrompterSystemLevelTopMost</td>
+			<td style="text-align:center;">3.5</td>
+			<td style="text-align:center;">-</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>If TRUE, the $PROMPTER dialog will be created as top most, putting it above most other windows on the system.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>PrompterSystemLevelTopMost=FALSE</td>
+		</tr>
+		<tr>
+			<td>PrompterX</td>
+			<td style="text-align:center;">3.5</td>
+			<td style="text-align:center;">-</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>When set to TRUE, the initial position of Prompter window is from the left edge of the screen.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>PrompterX=FALSE</td>
+		</tr>
+		<tr>
+			<td>PrompterY</td>
+			<td style="text-align:center;">3.5</td>
+			<td style="text-align:center;">-</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>When set to TRUE, the initial position of Prompter window is from the top edge of the screen.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>PrompterY=FALSE</td>
+		</tr>
+		<tr>
+			<td>QuickStart</td>
+			<td style="text-align:center;">3.6</td>
+			<td style="text-align:center;">-</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>Used to speed up iTest start up. When set to TRUE, the test build process will be skipped if it can be determined that there were no changes to the support folder since the last build.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>QuickStart=FALSE</td>
+		</tr>
+		<tr>
+			<td>RTXPreLoad</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>INtime executables to launch on start-up, separated with the ">>" character. An optional -nNodeX parameter can be included to designate the node to run the INtime process on. Running on node A is not advisable.</td>
+			<td style="text-align:center;">NONE</td>
+			<td>RTXPreLoad=\\CAN_XC16_rt5x.rta -nNodeB $SUPPORTDIR\config.drv CAN_XC16>></td>
+		</tr>
+		<tr>
+			<td>ShowConsoleHelpPages</td>
+			<td style="text-align:center;">3.1</td>
+			<td style="text-align:center;">-</td>
+			<td>iTest Console</td>
+			<td>Show (TRUE) or hide (FALSE) the help page pane on command bar.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>ShowConsoleHelpPages=FALSE</td>
+		</tr>
+		<tr>
+			<td>ShowConsoleWebPages</td>
+			<td style="text-align:center;">2.3</td>
+			<td style="text-align:center;">-</td>
+			<td>iTest Console</td>
+			<td>Show (TRUE) or hide (FALSE) the web page pane on command bar.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>ShowConsoleWebPages=TRUE</td>
+		</tr>
+		<tr>
+			<td>ShowMenu</td>
+			<td style="text-align:center;">3.6</td>
+			<td style="text-align:center;">-</td>
+			<td>AutomationPanel</td>
+			<td>Show (TRUE) or hide (FALSE) the menu bar in AutomationPanel.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>ShowMenu=TRUE</td>
+		</tr>
+		<tr>
+			<td>ShowPopupKeyboardInDisplays    </td>
+			<td style="text-align:center;">3.4</td>
+			<td style="text-align:center;">-</td>
+			<td>iTest Console</td>
+			<td>When set to TRUE, certain display objects (currently ADTDigital and ADTDataEntry) will display an on-screen keyboard when being edited in a running display.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>ShowPopupKeyboardInDisplays=TRUE</td>
+		</tr>
+		<tr>
+			<td>ShowStatusBar</td>
+			<td style="text-align:center;">3.6</td>
+			<td style="text-align:center;">-</td>
+			<td>AutomationPanel</td>
+			<td>Show (TRUE) or hide (FALSE) the status bar at the bottom of AutomationPanel.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>ShowStatusBar=TRUE</td>
+		</tr>
+		<tr>
+			<td>SoftStopPhase</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>Name of the procedure to shut down the engine.</td>
+			<td style="text-align:center;">NONE</td>
+			<td>SoftStopPhase=ShutDownEngine</td>
+		</tr>
+		<tr>
+			<td>SuppressLimitsForDisabledModule</td>
+			<td style="text-align:center;">3.6</td>
+			<td style="text-align:center;">-</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>When set to TRUE, limit evaluation is skipped and violations are not reported for any channels defined by the disabled Module. Displays and GUIs are not updated during runtime to reflect whether or not the limits have been disabled due to the Module being disabled.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>SuppressLimitsForDisabledModule=FALSE</td>
+		</tr>
+		<tr>
+			<td>SystemScanRateHz</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>Defines the system scan rate.<br />Do <ins>not</ins> set <code>SystemScanRateHz</code> to 1000 when <code>Support1kHz=TRUE</code>. </td>
+			<td style="text-align:center;">10</td>
+			<td>SystemScanRateHz=10</td>
+		</tr>
+		<tr>
+			<td>TCTBShowBarFileName</td>
+			<td style="text-align:center;">3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>iTest Console</td>
+			<td>Populates the list of available Test Control Toolbars by the Test Control Toolbar's filename (excluding the file extension), instead of the Test name. </td>
+			<td style="text-align:center;">FALSE</td>
+			<td>TCTBShowBarFileName=FALSE</td>
+		</tr>
+		<tr>
+			<td>TestBuilderIgnoreLOLError</td>
+			<td style="text-align:center;">3.5</td>
+			<td style="text-align:center;">-</td>
+			<td>Test Builder</td>
+			<td>When TRUE, Test Builder will not report an error if channels listed in any of the log order list (<em>*.LOL</em>) files do not exist. </td>
+			<td style="text-align:center;">FALSE </td>
+			<td>TestBuilderIgnoreLOLError=FALSE</td>
+		</tr>
+		<tr>
+			<td>TestBuilderLimitErrorsSilent</td>
+			<td style="text-align:center;">4.0</td>
+			<td style="text-align:center;">-</td>
+			<td>Test Builder</td>
+			<td>When set to TRUE, do not show Test Builder dialog boxes for errors when building limits groups at start-up.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>TestBuilderLimitErrorsSilent=FALSE</td>
+		</tr>
+		<tr>
+			<td>TestBuilderOKMsgSilent</td>
+			<td style="text-align:center;">3.0</td>
+			<td style="text-align:center;">-</td>
+			<td>Test Builder</td>
+			<td>When set to TRUE, do not show the success dialog.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>TestBuilderOKMsgSilent=FALSE</td>
+		</tr>
+		<tr>
+			<td>TestBuilderSilent</td>
+			<td style="text-align:center;">2.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Test Builder</td>
+			<td>When set to TRUE, do not show any Test Builder Successful or error dialog boxes.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>TestBuilderSilent=FALSE</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Schedules"></a>
+<h2 >Schedules<a href="#Schedules" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Schedules INI Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Version</strong> </td>
+			<td style="text-align:left;"><strong>GUI</strong></td>
+			<td style="width:125px;text-align:left;"><strong>Application Interface</strong></td>
+			<td style="width:500px;text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong></td>
+		</tr>
+		<tr>
+			<td>ScheduleChannelName</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>Virtual string channel that holds the name of the schedule that is being loaded.</td>
+			<td style="text-align:center;">-</td>
+			<td>ScheduleChannelName=osScheduleName</td>
+		</tr>
+		<tr>
+			<td>ScheduleGoToNextScript</td>
+			<td style="text-align:center;">4.2</td>
+			<td style="text-align:center;">-</td>
+			<td>AutomationPanel (Master Schedule Panel)</td>
+			<td>Name of the procedure to call when the user clicks the go to next step icon. This procedure is only used for schedule steps, not procedure steps. If this setting is left blank, then the <code>ScheduleStopScript</code> setting will be used instead.</td>
+			<td style="text-align:center;">-</td>
+			<td>ScheduleGoToNextScript=ScheduleGoToNext</td>
+		</tr>
+		<tr>
+			<td>ScheduleGotoStepScript</td>
+			<td style="text-align:center;">3.6</td>
+			<td style="text-align:center;">-</td>
+			<td>AutomationPanel (Schedule Viewer Panel)</td>
+			<td>Name of the procedure to call when the user clicks the go to step icon.</td>
+			<td style="text-align:center;">-</td>
+			<td>ScheduleGoToStepScript=ScheduleGotoStep</td>
+		</tr>
+		<tr>
+			<td>ScheduleNextStepScript</td>
+			<td style="text-align:center;">3.6</td>
+			<td style="text-align:center;">-</td>
+			<td>AutomationPanel (Schedule Viewer Panel)</td>
+			<td>Name of the procedure to call when the user clicks the next step icon. </td>
+			<td style="text-align:center;">-</td>
+			<td>ScheduleNextStepScript=ScheduleNextStep</td>
+		</tr>
+		<tr>
+			<td>SchedulePauseScript</td>
+			<td style="text-align:center;">3.6</td>
+			<td style="text-align:center;">-</td>
+			<td>AutomationPanel (Schedule Viewer Panel)</td>
+			<td>Name of the procedure to call when the user clicks the pause schedule icon.</td>
+			<td style="text-align:center;">-</td>
+			<td>SchedulePauseScript=SchedulePause</td>
+		</tr>
+		<tr>
+			<td>ScheduleReloadScript</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>iTest Console</td>
+			<td>Name of the procedure to call when the user clicks the reload schedule icon.</td>
+			<td style="text-align:center;">-</td>
+			<td> ScheduleReloadScript=ScheduleReload</td>
+		</tr>
+		<tr>
+			<td>ScheduleResumeScript</td>
+			<td style="text-align:center;">3.6</td>
+			<td style="text-align:center;">-</td>
+			<td>AutomationPanel (Schedule Viewer Panel)</td>
+			<td>Name of the procedure to call when the user clicks the resume schedule icon.</td>
+			<td style="text-align:center;">-</td>
+			<td>ScheduleResumeScript=ScheduleResume</td>
+		</tr>
+		<tr>
+			<td>ScheduleRunScript</td>
+			<td style="text-align:center;">3.6</td>
+			<td style="text-align:center;">-</td>
+			<td>MasterSchedule Panel</td>
+			<td>Name of the procedure to call when the user runs a Schedule from within a MasterSchedule.</td>
+			<td style="text-align:center;">-</td>
+			<td>ScheduleRunScript=SysSchRun</td>
+		</tr>
+		<tr>
+			<td>ScheduleStartScript</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>AutomationPanel (Schedule Viewer Panel)<br />iTest Console</td>
+			<td>Name of the procedure to call when the user runs a Schedule in any instance other than within a MasterSchedule.</td>
+			<td style="text-align:center;">-</td>
+			<td>ScheduleStartScript=ScheduleStart</td>
+		</tr>
+		<tr>
+			<td>ScheduleStopScript</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>AutomationPanel (Schedule Viewer Panel)<br />iTest Console</td>
+			<td>Name of the procedure to call when the user clicks the stop schedule icon</td>
+			<td style="text-align:center;">-</td>
+			<td>ScheduleStopScript=ScheduleStop</td>
+		</tr>
+		<tr>
+			<td>SchRestartFileRetentionDays</td>
+			<td style="text-align:center;">4.1</td>
+			<td style="text-align:center;">-</td>
+			<td>RDBServ</td>
+			<td>Maximum age of restart files allowed in vxi folder at startup. A value of blank or <=0 means keep forever.</td>
+			<td style="text-align:center;">90</td>
+			<td>SchRestartFileRetentionDays=90</td>
+		</tr>
+		<tr>
+			<td>ShowScheduleBar</td>
+			<td style="text-align:center;">2.2</td>
+			<td style="text-align:center;">X</td>
+			<td>iTest Console</td>
+			<td>Set to TRUE to show the Schedules tab on the Outlook Bar.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>ShowScheduleBar=TRUE</td>
+		</tr>
+		<tr>
+			<td>SupportStepConditionIgnoreTime</td>
+			<td style="text-align:center;">3.4</td>
+			<td style="text-align:center;">-</td>
+			<td>iTest Console</td>
+			<td>Set to TRUE to include the step task ignore time column in the schedule editor.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>SupportStepConditionIgnoreTime=FALSE</td>
+		</tr>
+		<tr>
+			<td>TableAndScheduleDataPageName</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>iTest Console</td>
+			<td>Label for data pages.</td>
+			<td style="text-align:center;">-</td>
+			<td>TableAndScheduleDataPageName=Data</td>
+		</tr>
+		<tr>
+			<td>TableAndScheduleHeaderPageName</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>iTest Console</td>
+			<td>Label for schedule header pages.</td>
+			<td style="text-align:center;">-</td>
+			<td>TableAndScheduleHeaderPageName=Header</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="SolutionBuilder"></a>
+<h2 >SolutionBuilder<a href="#SolutionBuilder" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>SolutionBuilder INI Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Version</strong> </td>
+			<td style="text-align:left;"><strong>GUI</strong> </td>
+			<td style="width:500px;text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong> </td>
+		</tr>
+		<tr>
+			<td>LayoutPreviewLargeSize</td>
+			<td style="text-align:center;">4.0</td>
+			<td style="text-align:center;">X</td>
+			<td>Allows you to set the Width,Height of the large preview <em>.png</em> file (<em>LayoutName.layout.large.png</em>) created when saving Layouts in SolutionBuilder. If unspecified, default is 800,600. When set to empty (LayoutPreviewLargeSize=), the large preview will not be created on save. To automatically size the <em>.png</em> to the size of the layout, set Width or Height to 0. </td>
+			<td style="text-align:center;">800,600</td>
+			<td>LayoutPreviewLargeSize=1024,768</td>
+		</tr>
+		<tr>
+			<td>ReadOnlyFiles</td>
+			<td style="text-align:center;">3.8</td>
+			<td style="text-align:center;">X</td>
+			<td>Comma-separated list of procedures to make read-only in SolutionBuilder's Procedures editor (do not use file extensions). Read-only files cannot be renamed, removed, or cut from the procedures list, and the <strong>Properties</strong> right-click option is not available in the editor.</td>
+			<td style="text-align:center;">-</td>
+			<td>ReadOnlyFiles=CctBattContactsOpen,UserCircuitTasks</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Statistics"></a>
+<h2 >Statistics<a href="#Statistics" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Statistics INI Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Version</strong> </td>
+			<td style="text-align:left;"><strong>GUI</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong> </td>
+		</tr>
+		<tr>
+			<td>StatisticsActive</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Determines if Mapping and Optimization is checking statistics.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>StatisticsActive=FALSE</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Test-Manager"></a>
+<h2 >Test Manager<a href="#Test-Manager" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Test Manager INI Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Version</strong> </td>
+			<td style="text-align:left;"><strong>GUI</strong> </td>
+			<td style="width:500px;text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong> </td>
+		</tr>
+		<tr>
+			<td>DoNotPromptToDeleteChannels</td>
+			<td style="text-align:center;">4.0</td>
+			<td style="text-align:center;">-</td>
+			<td>When set to TRUE, do not prompt to delete channels in CanNeo_BUS' Channel Database that are not being used in CAN messages.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>DoNotPromptToDeleteChannels=FALSE</td>
+		</tr>
+		<tr>
+			<td>ExtraModuleIOFiles</td>
+			<td style="text-align:center;">3.0</td>
+			<td style="text-align:center;">-</td>
+			<td>Comma-separated module database files for channel assignment. It should be in module <em>powertek.ini</em>. The reference must be fully-qualified and supports use of macros (e.g., <em>$SUPPORTDIR\DB\altSys.fil.</em>).</td>
+			<td style="text-align:center;">NONE</td>
+			<td>ExtraModuleIOFiles=$SUPPORTDIR\DB\altSys.fil</td>
+		</tr>
+		<tr>
+			<td>ExtraSysIOFiles</td>
+			<td style="text-align:center;">3.0</td>
+			<td style="text-align:center;">-</td>
+			<td>Comma-separated system database files for channel assignment. It should be in solution <em>powertek.ini</em>. The reference must be fully-qualified and supports use of macros (e.g., <em>$SUPPORTDIR\DB\altSys.fil</em>).</td>
+			<td style="text-align:center;">NONE</td>
+			<td>ExtraSysIOFiles=$SUPPORTDIR\DB\altSys.fil</td>
+		</tr>
+		<tr>
+			<td>FindExclusions</td>
+			<td style="text-align:center;">4.0</td>
+			<td style="text-align:center;">-</td>
+			<td>Comma-delimited list of folders/files to ignore when using Find In Files in TestMgr and FlexEdit. If a value is found anywhere after the <em>$SUPPORTDIR\</em> part of the file path, the file is ignored. This search is case-insensitive. Wildcards are not supported.<br />&nbsp;<br />For example: <code>FindExclusions=ignore</code> would filter out a filepath such as <em>$SUPPORTDIR\ignore\*.*</em> or <em>$SUPPORTDIR\ignoreME.txt</em><br />For example: <code>FindExclusions=ignorefolder\</code> would filter out a filepath such as <em>$SUPPORTDIR\ignorefolder\*.*</em>, but not a filepath such as <em>$SUPPORTDIR\ignorefolder.txt</em><br />For example: <code>FindExclusions=\Eng1</code> would filter out a filepath such as <em>$SUPPORTDIR\DB\Eng1\*.*</em>, but not a filepath such as <em>$SUPPORTDIR\Eng1\*.*</em> </td>
+			<td style="text-align:center;">NONE </td>
+			<td>FindExclusions=\Eng1</td>
+		</tr>
+		<tr>
+			<td>PropagateExclusions</td>
+			<td style="text-align:center;">4.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Comma-delimited list of folders/files to ignore when performing both channel and customer name change propagation in TestMgr. If a value is found anywhere after the <em>$SUPPORTDIR\</em> part of the file path, the file is ignored. This search is case-insensitive. Wildcards are not supported.<br />&nbsp;<br />For example: <code>PropagateExclusions=ignore</code> would filter out a filepath such as <em>$SUPPORTDIR\ignore\*.*</em> or <em>$SUPPORTDIR\ignoreME.txt</em><br />For example: <code>PropagateExclusions=ignorefolder\</code> would filter out a filepath such as <em>$SUPPORTDIR\ignorefolder\*.*</em>, but not a filepath such as <em>$SUPPORTDIR\ignorefolder.txt</em><br />For example: <code>PropagateExclusions=\Eng1</code> would filter out a filepath such as <em>$SUPPORTDIR\DB\Eng1\*.*</em>, but not a filepath such as <em>$SUPPORTDIR\Eng1\*.*</em> </td>
+			<td style="text-align:center;">NONE</td>
+			<td>PropagateExclusions=ignore</td>
+		</tr>
+		<tr>
+			<td>MODULARITY</td>
+			<td style="text-align:center;">2.2</td>
+			<td style="text-align:center;">X</td>
+			<td>Enables modularity in Test Manager</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>MODULARITY=FALSE</td>
+		</tr>
+		<tr>
+			<td>ModuleChannelRestrict</td>
+			<td style="text-align:center;">3.6</td>
+			<td style="text-align:center;">-</td>
+			<td>If TRUE, in Test Manager, it will not allow saving a module's Procedure/Calculation/Schedule file that uses channels from outside the module.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>ModuleChannelRestrict=FALSE</td>
+		</tr>
+		<tr>
+			<td>ModuleExportFileNameFilter</td>
+			<td style="text-align:center;">3.1</td>
+			<td style="text-align:center;">-</td>
+			<td>Comma-separated list of patterns to look for when importing and exporting modules. Do not import files or folders that contain these patterns. Useful for filtering out version control system files and folders such as <em>.hg</em> and <em>.svn</em> for mercurial and subversion, respectively. This setting also filters out files and folders when performing name change propagation in Test Manager or using the Find In Files feature in both Test Manager and FlexEdit. </td>
+			<td style="text-align:center;">-</td>
+			<td>ModuleExportFileNameFilter=_.hg_</td>
+		</tr>
+		<tr>
+			<td>ProcHeaderFile</td>
+			<td style="text-align:center;">3.4</td>
+			<td style="text-align:center;">-</td>
+			<td>Path and file name for predefined procedure header. <br />For example: <code>ProcHeaderFile=$SYSTEMDIR\MyHeader.txt</code>. The content in the header file is assumed to be VCL compliant and  will be included in new procedure when it is created.<br />Only supported by the Test Manager VCL editor.</td>
+			<td style="text-align:center;">NONE</td>
+			<td>ProcHeaderFile=$SYSTEMDIR\MyHeader.txt</td>
+		</tr>
+		<tr>
+			<td>RCSENABLE</td>
+			<td style="text-align:center;">3.0</td>
+			<td style="text-align:center;">X</td>
+			<td>Enable RCS for Test Manager</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>RCSENABLE=TRUE</td>
+		</tr>
+		<tr>
+			<td>SystemCoreFiles</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Forces a prompt upon saving when the user tries to edit files considered to be core. This setting is supported by the Procedure and Channel Definition editors (<em>.tsc</em> and <em>.fil</em> files). All other file types and editors are not supported.</td>
+			<td style="text-align:center;">-</td>
+			<td>SystemCoreFiles=VXInRequired.fil, SteadySchedule.fil</td>
+		</tr>
+		<tr>
+			<td>TMShowPowertekIni</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>This setting enables you to modify <em>powertek.ini</em> options in Test Manager's Global Settings editor. When this option is set to TRUE, the Global Settings editor node displays in Test Manager's tree bar. When this option is set to FALSE, or it does not exist in the <em>powertek.ini</em> file, then the Global Settings editor node is not visible. </td>
+			<td style="text-align:center;">TRUE</td>
+			<td>TMShowPowertekIni=TRUE</td>
+		</tr>
+		<tr>
+			<td>UndoDepth</td>
+			<td style="text-align:center;">3.1</td>
+			<td style="text-align:center;">-</td>
+			<td>Sets depth of the Undo command in the display editor. The depth is the number of sequential actions that can be reverted.</td>
+			<td style="text-align:center;">40</td>
+			<td>UndoDepth=40</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,2121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>FlexEdit Design</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="FlexEdit-Design-Guide"></a>
+<h1 >FlexEdit Design Guide<a href="#FlexEdit-Design-Guide" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#FlexEdit-Design-Guide">FlexEdit Design Guide</a><ul><li><a href="#Overview">Overview</a></li></ul>
+</li><li><a href="#Test-Preparation-Categories-and-Tasks">Test Preparation Categories and Tasks</a></li><li><a href="#FlexEdit-Framework">FlexEdit Framework</a></li><li><a href="#FlexEdit-Configuration">FlexEdit Configuration</a><ul><li><a href="#ltcategoriesgt">&lt;categories&gt;</a><ul><li><a href="#ltnamegt">&lt;name&gt;</a></li><li><a href="#lticongt">&lt;icon&gt;</a></li><li><a href="#lttasksgt">&lt;tasks&gt;</a></li><li><a href="#Example">Example</a></li></ul>
+</li><li><a href="#lttaskgt">&lt;task&gt;</a><ul><li><a href="#ltnamegt-2">&lt;name&gt;</a></li><li><a href="#lticongt-2">&lt;icon&gt;</a></li><li><a href="#ltfilegt">&lt;file&gt;</a></li><li><a href="#ltsectionsgt">&lt;sections&gt;</a></li><li><a href="#ltbackcolorgt">&lt;backcolor&gt;</a></li><li><a href="#lttextcolorgt">&lt;textcolor&gt;</a></li><li><a href="#ltmaxchangt">&lt;maxchan&gt;</a></li><li><a href="#ltenableoverwritegt">&lt;enableoverwrite&gt;</a><ul><li><a href="#ltpathgt">&lt;path&gt;</a></li></ul>
+</li><li><a href="#lteditorgt">&lt;editor&gt;</a></li><li><a href="#lttooltipgt">&lt;tooltip&gt;</a></li><li><a href="#lticentralgt">&lt;icentral&gt;</a></li><li><a href="#ltsaveitemgt">&lt;saveitem&gt;</a></li><li><a href="#ltactionsgt">&lt;actions&gt;</a></li><li><a href="#ltdisablemenulistgt">&lt;disablemenulist&gt;</a><ul><li><a href="#ltmenugt">&lt;menu&gt;</a></li></ul>
+</li><li><a href="#lthelpgt">&lt;help&gt;</a><ul><li><a href="#Using-HTML">Using HTML</a></li></ul>
+</li><li><a href="#lthascheckgt">&lt;hascheck&gt;</a></li><li><a href="#ltcheckablegt">&lt;checkable&gt;</a></li><li><a href="#ltinhibitsavechannelgt">&lt;inhibitsavechannel&gt;</a></li><li><a href="#ltbuttontextgt">&lt;buttontext&gt;</a></li><li><a href="#ltsaveitemlistgt">&lt;saveitemlist&gt;</a></li><li><a href="#ltduplicategt">&lt;duplicate&gt;</a></li><li><a href="#Example-2">Example</a></li></ul>
+</li><li><a href="#lteditorgt-2">&lt;editor&gt;</a><ul><li><a href="#lttypegt">&lt;type&gt;</a></li><li><a href="#ltdllgt">&lt;dll&gt;</a></li><li><a href="#ltvaluesgt">&lt;values&gt;</a></li><li><a href="#ltmodalgt">&lt;modal&gt;</a></li><li><a href="#ltshowunitsgt">&lt;showunits&gt;</a></li><li><a href="#ltchannellistfilesgt">&lt;channellistfiles&gt;</a></li><li><a href="#ltcheckuserdefined1gt">&lt;checkuserdefined1&gt;</a></li><li><a href="#ltakafilegt">&lt;akafile&gt;</a></li><li><a href="#ltshowalias2gt">&lt;showalias2&gt;</a></li><li><a href="#ltalias2labelgt">&lt;alias2label&gt;</a></li><li><a href="#ltreadonlygt">&lt;readonly&gt;</a></li><li><a href="#ltnodeletenamesgt">&lt;nodeletenames&gt;</a></li><li><a href="#ltfilenamesubstringgt">&lt;filenamesubstring&gt;</a></li><li><a href="#ltinputchannelfiltergt">&lt;inputchannelfilter&gt;</a></li><li><a href="#ltoutputchannelfiltergt">&lt;outputchannelfilter&gt;</a></li><li><a href="#Defining-the-Fields-for-an-INI-Editor">Defining the Fields for an INI Editor</a><ul><li><a href="#ltnamegt-3">&lt;name&gt;</a></li><li><a href="#ltlabelgt">&lt;label&gt;</a></li><li><a href="#lttypegt-2">&lt;type&gt;</a></li><li><a href="#ltlengt">&lt;len&gt;</a></li><li><a href="#ltprecisiongt">&lt;precision&gt;</a></li><li><a href="#ltmingt">&lt;min&gt;</a></li><li><a href="#ltmaxgt">&lt;max&gt;</a></li><li><a href="#ltinvalidtextgt">&lt;invalidtext&gt;</a></li><li><a href="#ltinitialdirgt">&lt;initialdir&gt;</a></li><li><a href="#ltfiltergt">&lt;filter&gt;</a></li><li><a href="#ltcheckfileexistgt">&lt;checkfileexist&gt;</a></li><li><a href="#ltrootgt">&lt;root&gt;</a></li><li><a href="#ltshownewfoldergt">&lt;shownewfolder&gt;</a></li><li><a href="#ltnameonlygt">&lt;nameonly&gt;</a></li><li><a href="#ltpicklistgt">&lt;picklist&gt;</a></li><li><a href="#ltreadonlygt-2">&lt;readonly&gt;</a></li><li><a href="#ltsortvaluesgt">&lt;sortvalues&gt;</a></li><li><a href="#ltshowallchannelsgt">&lt;showallchannels&gt;</a></li></ul>
+</li><li><a href="#Controlling-the-Background-and-Text-Colors-in-the-INI-Editor">Controlling the Background and Text Colors in the INI Editor</a><ul><li><a href="#ltbackgroundcolorgt">&lt;backgroundcolor&gt;</a></li><li><a href="#lttextcolorgt-2">&lt;textcolor&gt;</a></li><li><a href="#ltsectionbackgroundcolorgt">&lt;sectionbackgroundcolor&gt;</a></li><li><a href="#ltsectiontextcolorgt">&lt;sectiontextcolor&gt;</a></li><li><a href="#ltlinecolorgt">&lt;linecolor&gt;</a></li></ul>
+</li><li><a href="#Using-Sections-to-Group-Properties-in-the-INI-Editor">Using Sections to Group Properties in the INI Editor</a><ul><li><a href="#ltsectionsgt-2">&lt;sections&gt;</a></li><li><a href="#ltsectiongt">&lt;section&gt;</a></li><li><a href="#ltnamegt-4">&lt;name&gt;</a></li><li><a href="#ltvaluesgt-2">&lt;values&gt;</a></li></ul>
+</li><li><a href="#Configure-INI-Editor-to-Display-Module-INI-Files">Configure INI Editor to Display Module INI Files</a></li><li><a href="#In-line-INI-File-Configuration">In-line INI File Configuration</a></li></ul>
+</li><li><a href="#Global-Options">Global Options</a><ul><li><a href="#ltactionsgt-2">&lt;actions&gt;</a></li><li><a href="#ltallowmultipletasksgt">&lt;allowmultipletasks&gt;</a></li><li><a href="#ltdebuggt">&lt;debug&gt;</a></li><li><a href="#ltcandebuggt">&lt;candebug&gt;</a></li><li><a href="#lthomegt">&lt;home&gt;</a></li><li><a href="#ltreadonlytextcolorgt">&lt;readonlytextcolor&gt;</a></li><li><a href="#ltsaveitemsgt">&lt;saveitems&gt;</a></li><li><a href="#ltsaveshowtaskgt">&lt;saveshowtask&gt;</a></li><li><a href="#ltserversharegt">&lt;servershare&gt;</a></li><li><a href="#lttabsgt">&lt;tabs&gt;</a></li><li><a href="#ltuploadgt">&lt;upload&gt;</a></li><li><a href="#Global-Editor-Settings">Global Editor Settings</a><ul><li><a href="#lttypegt-3">&lt;type&gt;</a></li><li><a href="#ltnodeletenamesgt-2">&lt;nodeletenames&gt;</a></li><li><a href="#ltfixedchannelgt">&lt;fixedchannel&gt;</a></li><li><a href="#ltfixedcolgt">&lt;fixedcol&gt;</a></li><li><a href="#lthiddenchannelsgt">&lt;hiddenchannels&gt;</a></li><li><a href="#ltlimitinactivecolorgt">&lt;limitinactivecolor&gt;</a></li><li><a href="#ltcolumngt">&lt;column&gt;</a></li></ul>
+</li></ul>
+</li><li><a href="#Actions">Actions</a><ul><li><a href="#ltactionsgt-3">&lt;actions&gt;</a><ul><li><a href="#lteventgt">&lt;event&gt;</a></li><li><a href="#ltcommandgt">&lt;command&gt;</a></li><li><a href="#ltcommandargsgt">&lt;commandargs&gt;</a></li><li><a href="#ltcompletechannelgt">&lt;completechannel&gt;</a></li><li><a href="#lttimeoutgt">&lt;timeout&gt;</a></li></ul>
+</li></ul>
+</li></ul>
+</li><li><a href="#Saving-and-Restoring-Configurations">Saving and Restoring Configurations</a><ul><li><a href="#Save-Configuration">Save Configuration</a><ul><li><a href="#Saving-to-LabCentral">Saving to LabCentral</a></li><li><a href="#Saving-Locally">Saving Locally</a></li><li><a href="#Saved-Files">Saved Files</a><ul><li><a href="#File-Content-Exceptions">File Content Exceptions</a></li></ul>
+</li></ul>
+</li><li><a href="#Restore-Configuration">Restore Configuration</a></li></ul>
+</li><li><a href="#Pre-Built-Mapping-DLLs">Pre-Built Mapping DLLs</a></li><li><a href="#DLL-Plug-in-API">DLL Plug-in API</a></li><li><a href="#Launching-FlexEdit-Editors-through-HTML">Launching FlexEdit Editors through HTML</a></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>FlexEdit is a generic framework that packages editors together into a workflow that can be customized for a given facility and testing methodology. This framework is compiled of the most frequent tasks that an operator must perform. This document describes this framework.</p>
+
+
+	<a name="Test-Preparation-Categories-and-Tasks"></a>
+<h1 >Test Preparation Categories and Tasks<a href="#Test-Preparation-Categories-and-Tasks" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>The following categories have been identified as an example list of tasks that an operator may perform prior to running the test.</p>
+
+
+	<ul>
+	<li>Device Configuration</li>
+		<li>Specification (Engine, Fuel, etc.)</li>
+		<li>Mapping Channel names</li>
+		<li>Signal Calibration </li>
+		<li>Limits Configuration</li>
+		<li>Calculations/Control Configuration</li>
+		<li>Data Logging Configuration</li>
+	</ul>
+
+
+	<p>Each category will likely be divided into specific tasks. Some example tasks from the categories listed above would be:</p>
+
+
+	<ul>
+	<li>Engine Definition </li>
+		<li>Emissions Setup</li>
+		<li>Calibrate Pressures</li>
+		<li>Define Calculations</li>
+		<li>Tune PIDs</li>
+		<li>MAP ECU Parameters</li>
+	</ul>
+
+
+	<a name="FlexEdit-Framework"></a>
+<h1 >FlexEdit Framework<a href="#FlexEdit-Framework" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>The FlexEdit framework consists of a new style MFC/C++ shell which has been designed to host various Document/View editors. The shell will consist of a tree view on the left which provides navigation between the categories and tasks, an editor interface on the right pane, and a message queue on the bottom of the frame. The prototype for this shell can be seen in the diagram below:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Diagram</strong></em></span><br /><img src="attachments/download/91/flexedit.JPG" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="FlexEdit-Configuration"></a>
+<h1 >FlexEdit Configuration<a href="#FlexEdit-Configuration" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>FlexEdit configuration will be accomplished via an <em>.XML</em> file. This file will be used to define all of the categories and tasks and the specific behavior and appearance of each.</p>
+
+
+	<p>The primary tag in the FlexEdit will be &lt;flexedit&gt;. The tags described within this section will be children of the root tag - flexedit.</p>
+
+
+	<a name="ltcategoriesgt"></a>
+<h2 >&lt;categories&gt;<a href="#ltcategoriesgt" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Categories will be defined in the &lt;categories&gt; element of the XML file. Each category will be defined with a &lt;category&gt; tag.</p>
+
+
+	<a name="ltnamegt"></a>
+<h3 >&lt;name&gt;<a href="#ltnamegt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The &lt;name&gt; tag will define the name that appears in the tree for that category.</p>
+
+
+	<a name="lticongt"></a>
+<h3 >&lt;icon&gt;<a href="#lticongt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The &lt;icon&gt; tag will define the icon that appears in the tree for that category. This should be the full path to a filename on the local hard drive. The iTest Macros, $SUPPORTDIR and $SYSTEMDIR, are supported in the filename.  The file can be an <em>.exe</em> file, an <em>.ico</em> file, or a <em>.bmp</em> file. In the case of an <em>.exe</em> file, it pulls the primary icon from the <em>.exe</em>. Category <em>.bmp</em> files must be 32x32.</p>
+
+
+	<a name="lttasksgt"></a>
+<h3 >&lt;tasks&gt;<a href="#lttasksgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Each category should have one or more tasks defined. These tasks will be defined in the &lt;tasks&gt; element of the <em>.XML</em> within the category.</p>
+
+
+	<a name="Example"></a>
+<h3 >Example<a href="#Example" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The example below shows the proper XML for defining one category in the config file:</p>
+
+
+<pre><code class="xml syntaxhl" data-language="xml">
+<span class="nt">&lt;categories&gt;</span>
+    <span class="nt">&lt;category&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Device Configuration<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;icon&gt;</span>c:\windows\regedit.exe<span class="nt">&lt;/icon&gt;</span>
+        <span class="nt">&lt;tasks&gt;</span>
+            <span class="nt">&lt;task&gt;</span>
+            :
+            :
+</code></pre>
+
+	<a name="lttaskgt"></a>
+<h2 >&lt;task&gt;<a href="#lttaskgt" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The &lt;tasks&gt; element of a category will include one or more &lt;tasks&gt;. These will be started with the &lt;task&gt; tag.</p>
+
+
+	<a name="ltnamegt-2"></a>
+<h3 >&lt;name&gt;<a href="#ltnamegt-2" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The &lt;name&gt; tag defines the name that appears in the tree for that category.</p>
+
+
+	<a name="lticongt-2"></a>
+<h3 >&lt;icon&gt;<a href="#lticongt-2" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The &lt;icon&gt; tag defines the icon that appears in the tree for that task. This should be the full path to a filename on the local hard drive. The iTest Macros, $SUPPORTDIR and $SYSTEMDIR, are supported in the filename.  The file can be an <em>.exe</em> file, an <em>.ico</em> file, or a <em>.bmp</em> file. In the case of an <em>.exe</em> file, it pulls the primary icon from the <em>.exe</em>. Task <em>.bmp</em> files must be 16x16.</p>
+
+
+	<a name="ltfilegt"></a>
+<h3 >&lt;file&gt;<a href="#ltfilegt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The &lt;file&gt; tag defines the file that is passed to the editor to work on. Most editors will be designed to work on one file at a time; however, some custom editors may actually read and write several files. This filename will be the primary filename that is passed to the editor.</p>
+
+
+	<p>When used with a pre-built mapping DLL, the &lt;file&gt; tag must list the <em>config.drv</em> file that the driver uses. In some cases, if the driver is associated with a Module, then the file name will be <em>&lt;mid&gt;.config.drv</em> and not <em>config.drv</em>.</p>
+
+
+	<a name="ltsectionsgt"></a>
+<h3 >&lt;sections&gt;<a href="#ltsectionsgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>A list of user groups which have access to this task. This tag is optional. If there are no groups listed, then all groups have access to it.  Logged in members of the Administrator group ignore this tag (i.e., they can always access a task). Multiple groups can be specified:</p>
+
+
+<pre><code class="xml syntaxhl" data-language="xml">    <span class="nt">&lt;sections&gt;</span>
+        <span class="nt">&lt;section&gt;</span>Engineers<span class="nt">&lt;/section&gt;</span>
+        <span class="nt">&lt;section&gt;</span>Operators<span class="nt">&lt;/section&gt;</span>
+    <span class="nt">&lt;/sections&gt;</span>
+</code></pre>
+
+	<p>In order to enable security in FlexEdit, two requirements must be met. First, iTest must have security enabled, so the setting, <code>iTestLogin=TRUE</code> must appear in <em>config.ini</em> file. Second, at least one task must have a specific group listed.</p>
+
+
+	<a name="ltbackcolorgt"></a>
+<h3 >&lt;backcolor&gt;<a href="#ltbackcolorgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The &lt;backcolor&gt; tag defines the background color of the window or tab. The color is defined by 3 numeric values in the range of 2 - 255.  These comma separated values are in the order &lt;red&gt;,&lt;green&gt;,&lt;blue&gt; (e.g., 255,0,0 is red).</p>
+
+
+	<a name="lttextcolorgt"></a>
+<h3 >&lt;textcolor&gt;<a href="#lttextcolorgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The &lt;textcolor&gt; tag defines the text or foreground color of the window or tab. The color is defined by 3 numeric values in the range of 2 - 255. These comma separated values are in the order &lt;red&gt;,&lt;green&gt;,&lt;blue&gt; (e.g., 255,0,0 is red).</p>
+
+
+	<a name="ltmaxchangt"></a>
+<h3 >&lt;maxchan&gt;<a href="#ltmaxchangt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The &lt;maxchan&gt; tag defines the maximum number of channels that can be added to the LOL file. This tag applies only to the LOL editor.</p>
+
+
+<pre><code class="xml syntaxhl" data-language="xml">
+    <span class="nt">&lt;category&gt;</span>
+        <span class="nt">&lt;name&gt;</span>LOL editor<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;tasks&gt;</span>
+            <span class="nt">&lt;task&gt;</span>
+                <span class="nt">&lt;name&gt;</span>blackbox2.LOL edit<span class="nt">&lt;/name&gt;</span>
+                <span class="nt">&lt;file&gt;</span>$SUPPORTDIR\Data\blackbox2.lol<span class="nt">&lt;/file&gt;</span>
+                <span class="nt">&lt;maxchan&gt;</span>200<span class="nt">&lt;/maxchan&gt;</span>
+            <span class="nt">&lt;/task&gt;</span>
+        <span class="nt">&lt;/tasks&gt;</span>
+    <span class="nt">&lt;/category&gt;</span>
+</code></pre>
+
+	<a name="ltenableoverwritegt"></a>
+<h3 >&lt;enableoverwrite&gt;<a href="#ltenableoverwritegt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The &lt;enableoverwrite&gt; element is used to define the filepaths that can be overwritten when using the <strong>Restore Configuration</strong>, <strong>Restore Tasks...</strong>, and <strong>Server Download</strong> features.  By default, all filepaths allow their files to be overwritten. <br /><pre><code class="xml syntaxhl" data-language="xml">    <span class="nt">&lt;enableoverwrite&gt;</span>
+        <span class="nt">&lt;path&gt;</span>c:\<span class="nt">&lt;/path&gt;</span>
+        <span class="nt">&lt;path&gt;</span>d:\itest4.1\storage\<span class="nt">&lt;/path&gt;</span>
+    <span class="nt">&lt;/enableoverwrite&gt;</span></code class><br /></pre></p>
+
+
+	<a name="ltpathgt"></a>
+<h4 >&lt;path&gt;<a href="#ltpathgt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Only files in this stored location may be overwritten by the <strong>Restore Configuration</strong>, <strong>Restore Tasks...</strong>, and <strong>Server Download</strong> features. Multiple &lt;path&gt; tags may be used. Any values must be lowercase.</p>
+
+
+	<a name="lteditorgt"></a>
+<h3 >&lt;editor&gt;<a href="#lteditorgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The &lt;editor&gt; element is optional in many cases. For some files, the editor can be determined automatically based on the file extension. However, the editor element can be used to override the default editor and in some cases is required to provide more information about a specific file type. The editor element of the XML is defined in a later section of this document.</p>
+
+
+	<a name="lttooltipgt"></a>
+<h3 > &lt;tooltip&gt;<a href="#lttooltipgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Single line tooltip to show when hovering over the node.</p>
+
+
+	<a name="lticentralgt"></a>
+<h3 >&lt;icentral&gt;<a href="#lticentralgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The &lt;icentral&gt; tag is optional. It defines the subfolder used to store the uploaded files in regards to both the Server Upload and Server Download functionality. If using a LabCental server, this would be a subfolder underneath the LabCentral Lab Files repository. If using a local network share via the &lt;servershare&gt; tag, then it would be a subfolder underneath that folder. For more information, refer to the <a class="wiki-page" href="FlexEdit.html#Server-Upload-and-Server-Download">Server Upload and Server Download</a> section.</p>
+
+
+	<a name="ltsaveitemgt"></a>
+<h3 >&lt;saveitem&gt;<a href="#ltsaveitemgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Set to FALSE to disable including this file when the operator selects to save an entire configuration (via the <strong>Save Configuration</strong> option). By default, every file will be included in the Save. The <strong>Save Configuration</strong> option will only be available to the operator if the <em>config.ini</em> file contains a reference to iCentral. See the <a class="wiki-page" href="#ltsaveitemsgt">&lt;saveitems&gt;</a> tag in the <a class="wiki-page" href="#Global-Options">Global Options</a> section for more information on this feature.</p>
+
+
+	<a name="ltactionsgt"></a>
+<h3 >&lt;actions&gt;<a href="#ltactionsgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The &lt;actions&gt; element is optional. It can be used to specify actions that occur when a task is first selected, re-selected, saved, unselected, and possibly other states. The actions element of the XML is defined in the <a class="wiki-page" href="#Actions">Actions</a> section of this document.</p>
+
+
+	<a name="ltdisablemenulistgt"></a>
+<h3 >&lt;disablemenulist&gt;<a href="#ltdisablemenulistgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Disables functionality, at the task level, related to saving and restoring configurations and tasks. If a task includes this tag, then based on the &lt;menu&gt; tag(s) value, the <strong>Server Upload/Download</strong> button will be disabled and/or the task will be skipped when performing <strong>File > Save Configuration...</strong>, <strong>File > Restore Configuration...</strong>, or <strong>File > Restore Tasks...</strong>. The relevant task actions will also not be performed.</p>
+
+
+<pre>
+&lt;disablemenulist&gt;
+   &lt;menu&gt;Save Configuration&lt;/menu&gt;
+   &lt;menu&gt;Restore Configuration&lt;/menu&gt;
+   &lt;menu&gt;Restore Tasks&lt;/menu&gt;
+   &lt;menu&gt;Server Upload&lt;/menu&gt;
+   &lt;menu&gt;Server Download&lt;/menu&gt;
+&lt;/disablemenulist&gt;
+</pre>
+
+	<a name="ltmenugt"></a>
+<h4 >&lt;menu&gt;<a href="#ltmenugt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Stores the name of the operation you want to disable. The full list of supported operations is detailed under the description of the &lt;disablemenulist&gt; tag.</p>
+
+
+	<a name="lthelpgt"></a>
+<h3 >&lt;help&gt;<a href="#lthelpgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Help lines can add text to give to the operator when the help button is pressed. Some of the editors have built-in help. These tags will override the built-in help text.</p>
+
+
+	<p>The height and width of the help dialog can be controlled using "height" and "width" attributes in the &lt;help&gt; element. This also impacts the displayed dimensions of a browser control within this dialog.</p>
+
+
+<pre> &lt;help height="100" width="200"&gt;iTest rox&lt;/help&gt; </pre>
+
+	<a name="Using-HTML"></a>
+<h4 >Using HTML<a href="#Using-HTML" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>HTML can be used by the &lt;help&gt; element in the following ways:</p>
+
+
+	<ul>
+	<li>Include HTML in the &lt;help&gt; element. Since HTML includes special XML characters, you should use a CDATA section. Use the following example for reference:</li>
+	</ul>
+
+
+<pre> &lt;help&gt;&lt;![CDATA[&lt;html&gt;helloworld!&lt;/html&gt;]]&gt;&lt;/help&gt; </pre>
+
+	<ul>
+	<li>Reference the help on a web server by putting a URL in the help element:</li>
+	</ul>
+
+
+<pre> &lt;help&gt;http://www.google.com&lt;/help&gt; </pre>
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">You must include <code>http:</code>, <code>https:</code>, or <code>file:</code> if using this method.</td>
+		</tr>
+	</table>
+
+
+
+
+	<ul>
+	<li>Reference a <em>.html</em> file on the local machine. You can use $SUPPORTDIR macro, full file path, or relative file path. Relative file paths are relative to the $SUPPORTDIR. The following example would display the <em>Main.html</em> file located in the <em>FlexEditHelp</em> folder in the $SUPPORTDIR.</li>
+	</ul>
+
+
+<pre> &lt;help&gt;FlexEditHelp\Main.html&lt;/help&gt; </pre>
+
+	<a name="lthascheckgt"></a>
+<h3 >&lt;hascheck&gt;<a href="#lthascheckgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The default value is true to show the checkbox. Set this option to false to not show the checkbox.</p>
+
+
+	<a name="ltcheckablegt"></a>
+<h3 >&lt;checkable&gt;<a href="#ltcheckablegt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Default value is true. Set this option to false to make the box only be checkable programmatically.</p>
+
+
+	<a name="ltinhibitsavechannelgt"></a>
+<h3 >&lt;inhibitsavechannel&gt;<a href="#ltinhibitsavechannelgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This tag contains the name of an iTest channel that controls whether the task data can be saved.  A value of zero allows the data to be saved.  A non-zero value inhibits the saving of the data.</p>
+
+
+	<p><strong>Example:</strong><br /><pre>
+&lt;inhibitsavechannel&gt;voInhibitFlexEditSave&lt;/inhibitsavechannel&gt;
+</pre></p>
+
+
+	<a name="ltbuttontextgt"></a>
+<h3 >&lt;buttontext&gt;<a href="#ltbuttontextgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This tag only applies to INI editor. It is used the specify the text for the button displayed at the bottom of the property grid when a BUTTON event is added to an INI task.</p>
+
+
+	<p><strong>Example:</strong><br /><pre>
+&lt;buttontext&gt;OK&lt;/buttontext&gt;
+</pre></p>
+
+
+	<a name="ltsaveitemlistgt"></a>
+<h3 >&lt;saveitemlist&gt;<a href="#ltsaveitemlistgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This element is used in conjunction with both the <strong>Save Configuration</strong> and <strong>Server Upload</strong> operations to modify the files that are saved. For each file, add it under this tag and enclose with the &lt;item&gt;&lt;/item&gt; tag.</p>
+
+
+	<p>If the task containing this element launches a plugin DLL, then the listed files will be saved in addition to the files normally saved by the plugin DLL. For all other types of tasks, the files listed under the &lt;saveitemlist&gt; tag will be saved instead of the default files normally saved by the task. For some editors, such as the AIM/AOM editors, it is strongly recommended that the default files always be included in the &lt;saveitemlist&gt; element, because not including these files can result in unexpected consequences.</p>
+
+
+	<p>The default files, by editor, are as follows:</p>
+
+
+	<ul>
+	<li><ins><strong>AIM/AOM:</strong></ins> <em>calcoeffs.txt</em> and all active <em>.FIL</em> files</li>
+	</ul>
+
+
+	<a name="ltduplicategt"></a>
+<h3 >&lt;duplicate&gt;<a href="#ltduplicategt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This tag unlocks the <strong>Duplicate</strong> and <strong>Delete</strong> right-click options on a Task's node in the FlexEdit tree bar.</p>
+
+
+	<ul>
+	<li>The <strong>Duplicate</strong> option will create a duplicate of the entire task as well as the associated &lt;file&gt;. You will be prompted to enter a new task label and file name for the duplicated task. This option is restricted only to editors for files ending with either a <em>.lol</em> (Log Order List) or <em>.sc2</em> (Schedule) file extension. Accepted values are <strong>always</strong> or <strong>offline</strong>. 
+	<ul>
+	<li><strong>always</strong> :: Duplicate option is always available. </li>
+		<li><strong>offline</strong> :: Duplicate option is only available if iTest Console and AutomationPanel is <ins>not</ins> running.</li>
+	</ul></li>
+	</ul>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Duplicate</strong></em></span><br /><img src="attachments/download/21440/Duplicate.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<ul>
+	<li>The <strong>Delete</strong> option is only enabled when iTest Console or AutomationPanel is <ins>not</ins> running. There must be more than one task in a category to delete a task. Clicking <strong>Delete</strong> will prompt you to confirm file deletion or not.</li>
+	</ul>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Delete</strong></em></span><br /><img src="attachments/download/21441/Delete.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Example-2"></a>
+<h3 >Example<a href="#Example-2" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>An example of a &lt;task&gt; element of the XML appears below.</p>
+
+
+<pre>&lt;code class="xml"&gt;
+    &lt;task&gt;
+        &lt;name&gt;CAN Devices&lt;/name&gt;
+        &lt;file&gt;https://aanddtech.com/&lt;/file&gt;
+        &lt;icon&gt;$SYSTEMDIR\Art\icons\computer.ico&lt;/icon&gt;
+        &lt;backcolor&gt;255,0,0&lt;/backcolor&gt;
+        &lt;textcolor&gt;255,255,255&lt;/textcolor&gt;
+                &lt;help&gt;Help line 1&lt;/help&gt;
+                &lt;help &gt;Help line 2&lt;/help&gt;
+    &lt;/task&gt;
+
+&lt;/code&gt;</pre>
+
+	<a name="lteditorgt-2"></a>
+<h2 >&lt;editor&gt;<a href="#lteditorgt-2" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The &lt;editor&gt; element is contained within a <a class="wiki-page" href="#lttaskgt">&lt;task&gt;</a>. This element is used to either override the default editor for a given file extension, define an editor for unknown file extensions, or provide more information required for files.</p>
+
+
+	<p>The following table summarizes the built-in rules of FlexEdit for assigning file extensions to editors and also lists the built-in editors that will be available for the first release of FlexEdit.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>File Extensions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>File Extension(s)</strong></td>
+			<td style="text-align:left;"><strong>Editor</strong></td>
+		</tr>
+		<tr>
+			<td> .2dt </td>
+			<td>  iTest <em>.2dt</em> (Maps) file editor</td>
+		</tr>
+		<tr>
+			<td> .aka  </td>
+			<td> iTest Customer Name Editor </td>
+		</tr>
+		<tr>
+			<td> .als  </td>
+			<td> iTest Alias Editor </td>
+		</tr>
+		<tr>
+			<td> .dat </td>
+			<td> iTest Dynamic Calculation Editor </td>
+		</tr>
+		<tr>
+			<td> .dll    </td>
+			<td> FlexEdit plugin – defined below </td>
+		</tr>
+		<tr>
+			<td> .drv </td>
+			<td> iTest Driver Tdaddin editor </td>
+		</tr>
+		<tr>
+			<td> .dsp </td>
+			<td> iTest Display (Runtime) </td>
+		</tr>
+		<tr>
+			<td> .exe </td>
+			<td> Launches the executable in new window. Supports modal or modeless. </td>
+		</tr>
+		<tr>
+			<td> .ini    </td>
+			<td> Generic INI File editor </td>
+		</tr>
+		<tr>
+			<td> .lim </td>
+			<td> iTest Limit file editor </td>
+		</tr>
+		<tr>
+			<td> .lol    </td>
+			<td> iTest Log Order List file editor </td>
+		</tr>
+		<tr>
+			<td> .sc2 </td>
+			<td> iTest SC2 editor </td>
+		</tr>
+		<tr>
+			<td> .html, .pdf, .htm</td>
+			<td> Generic Browser View  ... ( <span style="font-size:0.85em;">FlexEdit acts as a viewer, not an editor.</span> ) </td>
+		</tr>
+		<tr>
+			<td> .txt, .log, .cfg </td>
+			<td> Generic text editor </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="lttypegt"></a>
+<h3 >&lt;type&gt;<a href="#lttypegt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The first tag in the &lt;editor&gt; element is the &lt;type&gt; tag. This tag is used to override a given file extension with a different built-in editor, provide an editor to use for an unknown file extension, provide an editor to use with a pre-built mapping DLL, or define editors that are not related to a specific file. The generic types available in the first release of FlexEdit will be as follows:</p>
+
+
+	<ul>
+	<li>INI</li>
+		<li>HTML</li>
+		<li>TXT</li>
+		<li>AOM - Analog Output Management (No filename is required)</li>
+		<li>AIM - Analog Input Management (No filename is required)</li>
+		<li>DYNCALC - Dynamic calc editor for <em>.dat</em> files</li>
+		<li>CAV - Channel Attributes editor (No filename is required)</li>
+		<li>AKA - Customer Name editor</li>
+		<li>ALS - Alias Editor</li>
+		<li>VLIM - Vertical Limits Editor</li>
+	</ul>
+
+
+	<p>When used with a pre-built mapping DLL, the &lt;type&gt; tag contains the name of the device, as listed in the <em>config.drv</em> or <em>&lt;mid&gt;.config.drv</em> file (e.g., &lt;tag&gt;CanNeo0_HS1&lt;/tag&gt;).</p>
+
+
+	<a name="ltdllgt"></a>
+<h3 >&lt;dll&gt;<a href="#ltdllgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Which DLL to use for a DLL plug-in type editor.</p>
+
+
+	<a name="ltvaluesgt"></a>
+<h3 >&lt;values&gt;<a href="#ltvaluesgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Defines the field configuration for a INI editor. For more information, refer to the section <a class="wiki-page" href="#Defining-the-Fields-for-an-INI-Editor">Defining the Fields for an INI Editor</a>.</p>
+
+
+	<a name="ltmodalgt"></a>
+<h3 >&lt;modal&gt;<a href="#ltmodalgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Set to TRUE to launch an <em>.EXE</em> style editor with the modal option. That is, the operator will be unable to interact with FlexEdit until the EXE interface is dismissed.</p>
+
+
+	<a name="ltshowunitsgt"></a>
+<h3 >&lt;showunits&gt;<a href="#ltshowunitsgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Set to TRUE to show units in an INI editor. This will show the channel name or prompt followed by the channel's units in braces if it has them. <br /><pre>
+MaxSpeed [RPM]
+</pre></p>
+
+
+	<a name="ltchannellistfilesgt"></a>
+<h3 >&lt;channellistfiles&gt;<a href="#ltchannellistfilesgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This tag is only used for the Log Order List (LOL) editor and INI Editor (INI). It allows the user to specify a list of either <em>.LOL</em> or <em>.AKA</em> files which are used to define the set of channels which the user can add to the current file. (This feature should only be used for active customer name files; inactive <em>.aka</em> files should not be included in the list.) For example:</p>
+
+
+<pre>
+    &lt;task&gt;
+        &lt;name&gt;Main Data Log&lt;/name&gt;
+        &lt;icon&gt;$SYSTEMDIR\Art\icons\floppy disk2.ico&lt;/icon&gt;
+        &lt;file&gt;$SUPPORTDIR\Data\Main2.lol&lt;/file&gt;
+        &lt;editor&gt;
+            &lt;channellistfiles&gt;
+                &lt;file&gt;$SUPPORTDIR\data\main.lol&lt;/file&gt;
+                &lt;file&gt;$SUPPORTDIR\db\customer\caspc.aka&lt;/file&gt;
+            &lt;/channellistfiles&gt;
+        &lt;/editor&gt;
+    &lt;/task&gt;
+</pre>
+
+	<a name="ltcheckuserdefined1gt"></a>
+<h3 >&lt;checkuserdefined1&gt;<a href="#ltcheckuserdefined1gt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This tag is only used for the AIM and AOM editors. It is an indication to only add analog inputs and analog outputs to the display that have the <strong>User Defined 1</strong> RDB field value set to non-zero. The default value for this option is FALSE. If it is FALSE, all analog inputs and analog outputs are added to those displays. For more information, refer to the <a class="wiki-page" href="FlexEdit_Editors.html#Customizing-the-AIMAOM-Editors">Customizing the AIM/AOM Editors</a> documentation.</p>
+
+
+	<a name="ltakafilegt"></a>
+<h3 >&lt;akafile&gt;<a href="#ltakafilegt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This tag is only used for the AIM, AOM, and DYNCALC editors. User can specify an <em>.aka</em> file for these three editors to save new customer names to. If the specified <em>.aka</em> file not found, it will be created and set as an active <em>.aka</em> file.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#ebd700;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3740/caution.gif" alt="" /></td>
+			<td style="vertical-align:top;"><b>CAUTION:</b></td>
+			<td style="vertical-align:top;">The file designated by this tag will not be included as part of an upload using the <strong>Server Upload</strong> feature. It is included as part of an upload using the <strong>Save Configuration</strong> feature.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="ltshowalias2gt"></a>
+<h3 >&lt;showalias2&gt;<a href="#ltshowalias2gt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This tag is only used for AIM and AOM editors. This will show the <strong>Alias2</strong> column between the <strong>Channel Name</strong> column and the <strong>Customer Name</strong> column.</p>
+
+
+	<a name="ltalias2labelgt"></a>
+<h3 >&lt;alias2label&gt;<a href="#ltalias2labelgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Currently only used for AIM and AOM editors when &lt;showalias2&gt; is true. This is the text to use for column header instead of <strong>Alias2</strong>.</p>
+
+
+	<a name="ltreadonlygt"></a>
+<h3 >&lt;readonly&gt;<a href="#ltreadonlygt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Currently only used for AIM, AOM, and INI editors. Its behavior is dependent on the editor type. If this tag is not used, the behavior defaults to TRUE.</p>
+
+
+	<ul>
+	<li><ins><strong>AIM and AOM editors:</strong></ins> If set to TRUE, the customer name field is read-only. </li>
+		<li><ins><strong>INI editors:</strong></ins> If set to FALSE, the <strong>Add Channel</strong>, <strong>Edit Channel</strong>, <strong>Paste</strong>, and <strong>Delete</strong> right-click menu options are enabled.</li>
+	</ul>
+
+
+	<a name="ltnodeletenamesgt"></a>
+<h3 >&lt;nodeletenames&gt;<a href="#ltnodeletenamesgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This element is only supported for LOL types. It allows you specify the names of channels that cannot be removed from the LOL file.  Add a &lt;name&gt; tag underneath this for each channel. Note that the name specified can use the asterisk or '*' as a wildcard character to match multiple channel names. These settings will override any &lt;nodeletenames&gt; specified for &lt;globaleditor&gt;.</p>
+
+
+	<a name="ltfilenamesubstringgt"></a>
+<h3 >&lt;filenamesubstring&gt;<a href="#ltfilenamesubstringgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This tag is only used for the INI Editor (INI). This tag enables you to load all module INI files that use the following naming convention:</p>
+
+
+<pre>[MID][Keyword].ini</pre>
+
+	<p><strong>Where</strong>:</p>
+
+
+	<ul>
+	<li><em>[MID]</em>: The module ID.</li>
+		<li><em>[Keyword]</em>: The keyword value specified in the <code>&lt;filenamesubstring&gt;</code> tag of the XML file.</li>
+	</ul>
+
+
+	<p>This tag must be used in conjunction with the &lt;file&gt;allmodules&lt;/file&gt; tag. For more information, refer to the <a class="wiki-page" href="#Configure-INI-Editor-to-Display-Module-INI-Files">Configure INI Editor to Display Module INI Files</a> section.</p>
+
+
+	<a name="ltinputchannelfiltergt"></a>
+<h3 >&lt;inputchannelfilter&gt;<a href="#ltinputchannelfiltergt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This tag is only used for the Can and Asap pre-built DLL plugin editors. The tag provides for an automatic, case-sensitive filter of the list of available iTest channels for mapping when an Input interface is selected. Wildcards are not supported in the filter string. The <strong>Filter</strong> field in the editor can be used to further pare down this list.</p>
+
+
+	<p><strong>Example:</strong><br /><pre>
+&lt;inputchannelfilter&gt;In&lt;/inputchannelfilter&gt;
+</pre></p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Example of Input Channel Filter</strong></em></span><br /><img src="attachments/download/116512/43_InputChannelFilterCANExample.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="ltoutputchannelfiltergt"></a>
+<h3 >&lt;outputchannelfilter&gt;<a href="#ltoutputchannelfiltergt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This tag is only used for the Can and Asap pre-built DLL plugin editors. The tag provides for an automatic, case-sensitive filter of the list of available iTest channels for mapping when an Output interface is selected. Wildcards are not supported in the filter string. The <strong>Filter</strong> field in the editor can be used to further pare down this list.</p>
+
+
+	<p><strong>Example:</strong><br /><pre>
+&lt;outputchannelfilter&gt;Out&lt;/outputchannelfilter&gt;
+</pre></p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Example of Output Channel Filter</strong></em></span><br /><img src="attachments/download/116511/43_OutputChannelFilterCANExample.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Defining-the-Fields-for-an-INI-Editor"></a>
+<h3 >Defining the Fields for an INI Editor<a href="#Defining-the-Fields-for-an-INI-Editor" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>INI files are typically <code>name=value</code> pairs where the name refers to an iTest channel or customer name and the value is assigned to that channel in the RDB. Defining the fields for an INI editor can be done by modifying the tags in the <em>.XML</em> file or by directly modifying the <em>.INI</em> file.</p>
+
+
+	<p>To define the fields using XML, use the <a class="wiki-page" href="#values">&lt;values&gt;</a> XML element.</p>
+
+
+	<p>Each &lt;value&gt; element can be further defined by:</p>
+
+
+	<a name="ltnamegt-3"></a>
+<h4 >&lt;name&gt;<a href="#ltnamegt-3" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Defines the name portion of the <code>name=value</code> pair listed in the INI file. When the INI editor is saved, FlexEdit will update both the value stored in the <em>.INI</em> file and the iTest channel's value.</p>
+
+
+	<p><strong>Advanced Usage of &lt;name&gt; field</strong></p>
+
+
+	<p>The &lt;name&gt; field can actually be a single channel name or a pair of channels. In the case of the channel pair, the two channels are separated by a comma. When the INI form is saved, the first channel will be populated with the filepath for the selected file and the second channel will contain the base filename. This is helpful in getting around the iTest limitation of 128 bytes per Virtual String channel. Note that using a compound name is not supported when using the &lt;nameonly&gt; tag as there is no separate path to retrieve in this case.</p>
+
+
+	<p>An example of the compound name field follows:</p>
+
+
+<pre>
+     &lt;value&gt;
+       &lt;name&gt;PathChan,FileChan&lt;/name&gt;
+       &lt;label&gt;My Prompt&lt;label&gt;
+       &lt;type&gt;File&lt;/type&gt;
+       &lt;len&gt;127&lt;/len&gt;
+     &lt;/value&gt;
+</pre>
+
+	<a name="ltlabelgt"></a>
+<h4 >&lt;label&gt;<a href="#ltlabelgt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Defines the label or heading used for that cell in the editor. The label replaces the name in the cell.</p>
+
+
+	<a name="lttypegt-2"></a>
+<h4 >&lt;type&gt;<a href="#lttypegt-2" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Defines the field's data type. Values include:</p>
+
+
+	<ul>
+	<li>NUM - numeric value</li>
+		<li>EDIT - editable field </li>
+		<li>PKL - picklist</li>
+		<li>COMBO - editable field/picklist </li>
+		<li>CHECKBOX - checkbox field</li>
+		<li>CHANNEL - database channel</li>
+		<li>FILE - file path</li>
+		<li>FOLDER - folder path</li>
+	</ul>
+
+
+	<p><strong>Notes</strong>:</p>
+
+
+	<ul>
+	<li><ins><strong>CHECKBOX:</strong></ins> When initializing the CHECKBOX type, a non-zero numeric value is checked, anything else is unchecked. When saving the CHECKBOX type, checked writes out a 1 and unchecked writes out a 0. </li>
+		<li><ins><strong>NUM:</strong></ins> Num types will replace any entered digits past the 17th with zeros.</li>
+		<li><ins><strong>CHANNEL, FILE, FOLDER:</strong></ins> When these types are used and the &lt;value&gt;&lt;readonly&gt; tag is set to false, then the INI editor <strong>Clear</strong> right-click menu option is enabled.</li>
+	</ul>
+
+
+	<a name="ltlengt"></a>
+<h4 >&lt;len&gt;<a href="#ltlengt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>For EDIT or COMBO types, this is the maximum number of characters that can be typed in. For NUM types, it is the maximum number of digits in the integer portion of the numeric value. A plus or minus is included in the total. If &lt;precision&gt; is also in effect, then the maximum number is increased by the value of &lt;precision&gt; plus one more for the decimal point.</p>
+
+
+	<p>For example, the value -123.12 would have a &lt;len&gt; value of 4 and a &lt;precision&gt; value of 2.</p>
+
+
+	<p>Note that &lt;len&gt; and &lt;precision&gt; control how the numeric value is displayed in the editor. They also control the check for the maximum number of digits that can be entered.  If too many digits are entered, then the "Channel_xxx has too many digits, the limit is N" message will be displayed in a message box and the newly entered value will be discarded. The value of N is &lt;len&gt; plus &lt;precision&gt; plus one.</p>
+
+
+	<p>If this tag is missing and &lt;type&gt;=NUM, the default &lt;len&gt; value is 16. For all other types, the default &lt;len&gt; value is 127.</p>
+
+
+	<a name="ltprecisiongt"></a>
+<h4 >&lt;precision&gt;<a href="#ltprecisiongt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Number of digits of precision for numeric types. Use 0 for integers. If this tag is missing and &lt;type&gt;=NUM, then the default &lt;precision&gt; tag value is 6. If the number of entered digits is less than the &lt;precision&gt; value, then the entry will be padded to the right with zeros. For example, &lt;precision&gt;=6 and entered 0.12 will result in 0.120000 appearing in the editor.</p>
+
+
+	<a name="ltmingt"></a>
+<h4 >&lt;min&gt;<a href="#ltmingt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>For NUM types, the value you enter must be greater than or equal to this value. If not, you will get a popup error message.</p>
+
+
+	<a name="ltmaxgt"></a>
+<h4 >&lt;max&gt;<a href="#ltmaxgt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>For NUM types, the value you enter must be less than or equal to this value. If not, you will get a popup error message.</p>
+
+
+	<a name="ltinvalidtextgt"></a>
+<h4 >&lt;invalidtext&gt;<a href="#ltinvalidtextgt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>For EDIT, types you can specify invalid text strings which should not appear in the entered text. If one of these values is found, you will get a popup error message.</p>
+
+
+	<p>For some text, you must use the XML encodings (<,>,&#38;,", etc). Also, some characters (single whitespace, for instance) might need to be enclosed with &lt;![CDATA[ ]]&gt; in order to work correctly. Here is an example declaration of an edit field that forbids less than, greater than, and space characters:</p>
+
+
+<pre>&lt;code class="XML"&gt;
+&lt;value&gt;
+   &lt;name&gt;Edit1&lt;/name&gt;
+   &lt;type&gt;EDIT&lt;/type&gt;
+   &lt;invalidtext&gt;
+      &lt;text&gt;&amp;lt;&lt;/text&gt;
+      &lt;text&gt;&amp;gt;&lt;/text&gt;
+      &lt;text&gt;&lt;![CDATA[ ]]&gt;&lt;/text&gt;
+   &lt;/invalidtext&gt;
+&lt;/value&gt;
+&lt;/code&gt;</pre>
+
+	<a name="ltinitialdirgt"></a>
+<h4 >&lt;initialdir&gt;<a href="#ltinitialdirgt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>For FILE or FOLDER types, specifies the initial directory of the selection dialog when it is first displayed.</p>
+
+
+	<a name="ltfiltergt"></a>
+<h4 >&lt;filter&gt;<a href="#ltfiltergt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>For FILE types, specifies the contents of the file type pulldown in the selection dialog. Here is a sample setting that configures the filter to show <em>.txt</em> or <em>.ini</em> files:<br /><pre>&lt;code class="XML"&gt;
+   &lt;filter&gt;TXT Files (*.txt)|*.txt|INI files (*.ini)|*.ini|&lt;filter&gt;
+&lt;/code&gt;</pre></p>
+
+
+	<a name="ltcheckfileexistgt"></a>
+<h4 >&lt;checkfileexist&gt;<a href="#ltcheckfileexistgt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>For FILE types. When set to true, if the user types in a filename that is non-existent, then they will get an error message and not be able to close the file selection dialog.</p>
+
+
+	<a name="ltrootgt"></a>
+<h4 >&lt;root&gt;<a href="#ltrootgt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>For FOLDER types, specifies the root of the filesystem tree in the folder selection dialog. No ancestors of the specified path will be able to be selected in the dialog.</p>
+
+
+	<a name="ltshownewfoldergt"></a>
+<h4 >&lt;shownewfolder&gt;<a href="#ltshownewfoldergt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>For FOLDER types, specifies whether the <strong>New Folder</strong> button will be available on the folder selection dialog. Default value is false.</p>
+
+
+	<a name="ltnameonlygt"></a>
+<h4 >&lt;nameonly&gt;<a href="#ltnameonlygt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>For FILE and FOLDER types, specifies that only the file/folder name will be returned instead of the full path. Default value is false.</p>
+
+
+	<a name="ltpicklistgt"></a>
+<h4 >&lt;picklist&gt;<a href="#ltpicklistgt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>For picklist or combo types, this defines the picklist file to use.</p>
+
+
+	<a name="ltreadonlygt-2"></a>
+<h4 >&lt;readonly&gt;<a href="#ltreadonlygt-2" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The <code>&lt;readonly&gt;</code> tag prevents fields from being editable. To make a field read only, set this setting to TRUE; otherwise, set the setting to FALSE.</p>
+
+
+	<a name="ltsortvaluesgt"></a>
+<h4 >&lt;sortvalues&gt;<a href="#ltsortvaluesgt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>By default, the data from the <em>.INI</em> file is displayed in the same order as it appears in the <em>.INI</em> file.  When the tag &lt;sortvalues&gt;TRUE&lt;/sortvalues&gt; is in effect, the channel names (or labels) within each section will be sorted alphanumerically.</p>
+
+
+	<a name="ltshowallchannelsgt"></a>
+<h4 >&lt;showallchannels&gt;<a href="#ltshowallchannelsgt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>When &lt;values&gt; are in effect, only the &lt;name&gt; or &lt;label&gt; that is listed in the &lt;values&gt; element is displayed. &lt;showallchannels&gt; forces the remaining data from the <em>.INI</em> file to be displayed.</p>
+
+
+	<p><strong>Example:</strong></p>
+
+
+<pre>&lt;code class="XML"&gt;
+
+    &lt;sort&gt;FALSE&lt;/sort&gt;
+    &lt;values&gt;
+    &lt;value&gt;
+        &lt;name&gt;spdDt1DynoMax&lt;/name&gt;
+           &lt;label&gt;Max Dyno Speed&lt;/label&gt;
+        &lt;type&gt;NUM&lt;/type&gt;
+        &lt;len&gt;5&lt;/len&gt;
+    &lt;/value&gt;
+    &lt;value&gt;
+        &lt;name&gt;vsSysDynoType&lt;/name&gt;
+        &lt;type&gt;EDIT&lt;/type&gt;
+        &lt;len&gt;10&lt;/len&gt;
+    &lt;/value&gt;
+    &lt;value&gt;
+        &lt;name&gt;valDt1DynoInertia&lt;/name&gt;
+        &lt;label&gt;Dyno Inertia&lt;/label&gt;
+        &lt;type&gt;NUM&lt;/type&gt;
+        &lt;len&gt;5&lt;/len&gt;
+        &lt;precision&gt;2&lt;/precision&gt;
+        &lt;readonly&gt;TRUE&lt;/readonly&gt;
+    &lt;/value&gt;
+    &lt;value&gt;
+        &lt;name&gt;valDt1DynoEncoderRes&lt;/name&gt;
+        &lt;type&gt;COMBO&lt;/type&gt;
+        &lt;picklist&gt;modules.pkl&lt;/picklist&gt;
+    &lt;/value&gt;
+    &lt;/values&gt;
+
+&lt;/code&gt;</pre>
+
+	<a name="Controlling-the-Background-and-Text-Colors-in-the-INI-Editor"></a>
+<h3 >Controlling the Background and Text Colors in the INI Editor<a href="#Controlling-the-Background-and-Text-Colors-in-the-INI-Editor" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>These tags control the background and text colors used to display the headings and properties.  The color of the lines can also be controlled.  The colors are defined by 3 numeric values in the range of 2 - 255.  These comma separated values are in the order &lt;red&gt;,&lt;green&gt;,&lt;blue&gt; (e.g., 255,0,0 is red).</p>
+
+
+	<a name="ltbackgroundcolorgt"></a>
+<h4 >&lt;backgroundcolor&gt;<a href="#ltbackgroundcolorgt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Specify the background color for property and value fields.</p>
+
+
+	<a name="lttextcolorgt-2"></a>
+<h4 >&lt;textcolor&gt;<a href="#lttextcolorgt-2" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Specify the text color for property and value fields.</p>
+
+
+	<a name="ltsectionbackgroundcolorgt"></a>
+<h4 >&lt;sectionbackgroundcolor&gt;<a href="#ltsectionbackgroundcolorgt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Specify the background color for the header field.</p>
+
+
+	<a name="ltsectiontextcolorgt"></a>
+<h4 >&lt;sectiontextcolor&gt;<a href="#ltsectiontextcolorgt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Specify the text color for the header field.</p>
+
+
+	<a name="ltlinecolorgt"></a>
+<h4 >&lt;linecolor&gt;<a href="#ltlinecolorgt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Specify the color of the lines that divide the fields.</p>
+
+
+	<p><strong>Example:</strong></p>
+
+
+<pre>&lt;code class="XML"&gt;
+    &lt;editor&gt;
+     &lt;type&gt;ini&lt;/type&gt;
+          &lt;backgroundcolor&gt;128,128,128&lt;/backgroundcolor&gt;
+          &lt;textcolor&gt;255,255,255&lt;/textcolor&gt;
+          &lt;sectionbackgroundcolor&gt;255,255,255&lt;/sectionbackgroundcolor&gt;
+          &lt;sectiontextcolor&gt;0,0,0&lt;/sectiontextcolor&gt;
+          &lt;linecolor&gt;0,0,255&lt;/linecolor&gt;
+&lt;/code&gt;</pre>
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Line Color Example</strong></em></span><br /><img src="attachments/download/108212/inicolors.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Using-Sections-to-Group-Properties-in-the-INI-Editor"></a>
+<h3 >Using Sections to Group Properties in the INI Editor<a href="#Using-Sections-to-Group-Properties-in-the-INI-Editor" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The &lt;sections&gt;, &lt;section&gt;, and &lt;name&gt; tags are options that allow the creation of display headers and control the grouping of &lt;values&gt; under the headers.  A &lt;value&gt; contains a &lt;name&gt; tag that defines the iTest channel that will be displayed under the display header. The header from the <em>.INI</em> file is ignored. The iTest channels are displayed in the order that the &lt;sections&gt; are defined. &lt;sections&gt; and &lt;values&gt; are not sorted.</p>
+
+
+	<a name="ltsectionsgt-2"></a>
+<h4 >&lt;sections&gt;<a href="#ltsectionsgt-2" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>This tag begins the declaration of sections.</p>
+
+
+	<a name="ltsectiongt"></a>
+<h4 >&lt;section&gt;<a href="#ltsectiongt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>This tag begins the declaration of a specific section.</p>
+
+
+	<a name="ltnamegt-4"></a>
+<h4 >&lt;name&gt;<a href="#ltnamegt-4" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The name tag declares the name of the section. This name will be displayed as the header name.</p>
+
+
+	<a name="ltvaluesgt-2"></a>
+<h4 >&lt;values&gt;<a href="#ltvaluesgt-2" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The values tag declares the values that are placed in the section. These values will be displayed as the properties within the header.</p>
+
+
+	<p><strong>Example:</strong></p>
+
+
+	<p>This XML...</p>
+
+
+<pre>&lt;code class="XML"&gt;
+
+    &lt;editor&gt;
+      &lt;type&gt;ini&lt;/type&gt;
+      &lt;sortvalues&gt;TRUE&lt;/sortvalues&gt;
+      &lt;showallchannels&gt;FALSE&lt;/showallchannels&gt;
+      &lt;backgroundcolor&gt;128,128,128&lt;/backgroundcolor&gt;
+      &lt;textcolor&gt;255,255,255&lt;/textcolor&gt;
+      &lt;sectionbackgroundcolor&gt;255,255,255&lt;/sectionbackgroundcolor&gt;
+      &lt;sectiontextcolor&gt;0,0,0&lt;/sectiontextcolor&gt;
+      &lt;linecolor&gt;0,0,255&lt;/linecolor&gt;
+      &lt;sections&gt;
+        &lt;section&gt;
+          &lt;name&gt;Section 1&lt;/name&gt;
+          &lt;values&gt;
+            &lt;value&gt;
+                &lt;name&gt;vsSysDynoType&lt;/name&gt;
+                &lt;type&gt;EDIT&lt;/type&gt;
+                &lt;len&gt;10&lt;/len&gt;
+                &lt;/value&gt;
+            &lt;value&gt;
+                &lt;name&gt;spdDt1DynoMax&lt;/name&gt;
+                &lt;label&gt;Max Dyno Speed&lt;/label&gt;
+                &lt;type&gt;NUM&lt;/type&gt;
+                &lt;len&gt;5&lt;/len&gt;
+                &lt;/value&gt;
+          &lt;/values&gt;
+        &lt;/section&gt;
+        &lt;section&gt;
+          &lt;name&gt;Section 2&lt;/name&gt;
+          &lt;values&gt;
+            &lt;value&gt;
+              &lt;name&gt;valDt1DynoInertia&lt;/name&gt;
+              &lt;label&gt;Dyno Inertia&lt;/label&gt;
+              &lt;type&gt;NUM&lt;/type&gt;
+              &lt;len&gt;5&lt;/len&gt;
+              &lt;precision&gt;2&lt;/precision&gt;
+              &lt;readonly&gt;FALSE&lt;/readonly&gt;
+            &lt;/value&gt;
+            &lt;value&gt;
+              &lt;name&gt;valDt1DynoEncoderRes&lt;/name&gt;
+              &lt;type&gt;COMBO&lt;/type&gt;
+              &lt;picklist&gt;modules.pkl&lt;/picklist&gt;
+            &lt;/value&gt;
+         &lt;/values&gt;
+       &lt;/section&gt;
+     &lt;/sections&gt;
+  &lt;/editor&gt;
+
+&lt;/code&gt;</pre>
+
+	<p>Combined with this <em>.INI</em> file...</p>
+
+
+<pre>
+[Header 1]
+spdDt1DynoMax=6000
+vsSysDynoType=GE AC Dyno
+[Header 2]
+valDt1DynoInertia=1.23
+valDt1DynoEncoderRes=60
+[Header 3]
+other1=0
+other2=abc
+abc123=
+def456=
+</pre>
+
+	<p>Produces this display...</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Display Example</strong></em></span><br /><img src="attachments/download/108213/sections.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Configure-INI-Editor-to-Display-Module-INI-Files"></a>
+<h3 >Configure INI Editor to Display Module INI Files<a href="#Configure-INI-Editor-to-Display-Module-INI-Files" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <code>allmodules</code> special value for the &lt;file&gt; tag is used to display all module INI files. The module ids are located in <em>$SUPPORTDIR\VXI\sources.ary</em>. The INI substring is then appended to each module id, and these INI files are concatenated into a single file called <em>allmodules.ini</em>. The content of <em>allmodules.ini</em> is then displayed in the editor. When edits are saved, the content of <em>allmodules.ini</em> is written back to the individual INI files.</p>
+
+
+	<p>An optional tag called <a class="wiki-page" href="#filenamesubstring">&lt;filenamesubstring&gt;</a> is used to load all module INI files that use the naming convention: <em>[MID][Keyword].ini</em>. The example, <em>FlexEdit.xml</em>, shown below will load all the <em>[MID]load.ini</em> files.</p>
+
+
+	<p><strong>Example:</strong></p>
+
+
+<pre>&lt;code class="XML"&gt;
+&lt;task&gt;
+  &lt;name&gt;Module INI files&lt;/name&gt;
+   &lt;file&gt;allmodules&lt;/file&gt;
+   &lt;editor&gt;
+     &lt;type&gt;ini&lt;/type&gt;
+     &lt;filenamesubstring&gt;load&lt;/filenamesubstring&gt;
+   &lt;/editor&gt;
+&lt;/task&gt;
+&lt;/code&gt;</pre>
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Module INI Files</strong></em></span><br /><img src="attachments/download/108214/allmodules.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="In-line-INI-File-Configuration"></a>
+<h3 >In-line INI File Configuration<a href="#In-line-INI-File-Configuration" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To provide a generic file editor for INI files is a relatively simple task; however, it may be necessary to embed more information in the INI files to provide a richer interface for the operator to enter information. The FlexEdit editor will support additional configuration information provided in the comments section of the INI files in order to provide a better editor. This section describes those comments. Each relevant comment section should appear on the line above the <code>name=value</code> pair being configured.</p>
+
+
+	<p>An INI configuration line should appear as a comment (starting with asterisk) with this format:</p>
+
+
+<pre>*label=”Enter Value” type=EDIT len=10 precision=2 picklist=picklist.pkl readonly=true</pre>
+
+	<p>The <code>type=</code> entry is required. The others are optional.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Configuration Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>label</td>
+			<td>Defines the label or heading used for that column in the editor.</td>
+		</tr>
+		<tr>
+			<td>type</td>
+			<td>Defines the type of data in the column. The value can be one of NUM, EDIT, PKL, or COMBO for numeric types, edit types, read-only, picklist types, or a combination of edit/picklist.</td>
+		</tr>
+		<tr>
+			<td>len</td>
+			<td>For EDIT or COMBO types, this is the maximum number of characters that can be typed in. For numeric types, it is the number of digits.</td>
+		</tr>
+		<tr>
+			<td>precision</td>
+			<td>Number of digits of precision for numeric types. Use 0 for integers.</td>
+		</tr>
+		<tr>
+			<td>picklist</td>
+			<td>For picklist or combo types, this defines the picklist file to use.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p>The INI editor will also group sections together, so dividing the editor into sections, such as [section1], [section2], etc., will provide a like grouping of options in the INI editor. The INI editor view will have a layout similar to the following screen:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>INI Editor</strong></em></span><br /><img src="attachments/download/108215/IniEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Global-Options"></a>
+<h2 >Global Options<a href="#Global-Options" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>These options apply to the entire tool and not to any specific category or task.</p>
+
+
+	<a name="ltactionsgt-2"></a>
+<h3 >&lt;actions&gt;<a href="#ltactionsgt-2" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This XML element allows you to define extra commands to be performed during some events that are in addition to any commands defined within a &lt;task&gt;. Currently, the only supported events are before or after a <strong>Restore Configuration</strong> operation. The actions element of the XML is defined in the <a class="wiki-page" href="#Actions">Actions</a> section of this document.</p>
+
+
+	<a name="ltallowmultipletasksgt"></a>
+<h3 >&lt;allowmultipletasks&gt;<a href="#ltallowmultipletasksgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Normally, FlexEdit will only allow one editor to be specified per file. To allow multiple editors to write to the same file requires an exclusion list to be specified for those files. This element creates that list.</p>
+
+
+<pre>
+&lt;allowmultipletasks&gt;
+    &lt;file&gt;$SUPPORTDIR\config.drv&lt;/file&gt;
+&lt;/allowmultipletasks&gt;
+</pre>
+
+	<a name="ltdebuggt"></a>
+<h3 >&lt;debug&gt;<a href="#ltdebuggt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>When debugging is enabled, then a separate log file (<em>FlexEdit_Debug_&lt;date&gt;.log</em>) is created as well as a new window in the output pane. Task file open and file save calls are logged there, as well as any of the actions and events associated with a task.</p>
+
+
+	<a name="ltcandebuggt"></a>
+<h3 >&lt;candebug&gt;<a href="#ltcandebuggt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>If &lt;candebug&gt;true&lt;/candebug&gt; then Messages and Signals buttons appear for CAN bus editing.</p>
+
+
+	<a name="lthomegt"></a>
+<h3 >&lt;home&gt;<a href="#lthomegt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Specify the homepage for the main HTML landing page within FlexEdit. The default value for this page is <code>&lt;home&gt;$SYSTEMDIR/Execute/WWW/FlexEdit.htm&lt;/home&gt;</code>.</p>
+
+
+	<a name="ltreadonlytextcolorgt"></a>
+<h3 >&lt;readonlytextcolor&gt;<a href="#ltreadonlytextcolorgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Specifies the text color for read-only cells, rows, and columns in the spreadsheet. Supported editors are as follows: LIM, AKA, AIM, AOM, CAV, LOL, ALS, DYNCALC, and INI.</p>
+
+
+	<p>This tag currently has the following limitations:</p>
+
+
+	<ul>
+	<li><ins><strong>AKA Editor:</strong></ins> When the &lt;value&gt;&lt;readonly&gt; tag is TRUE, the text is always colored grey, regardless of the &lt;readonlytextcolor&gt; value.</li>
+		<li><ins><strong>AOM/AIM</strong></ins> Editor: 
+	<ul>
+	<li>The <strong>Alias2</strong> and <strong>Channel Name</strong> columns ignore the &lt;readonlytextcolor&gt; tag.</li>
+		<li>If the &lt;editor&gt;&lt;readonly&gt; tag is TRUE, &lt;readonlytextcolor&gt; will not apply to the <strong>Customer Name</strong> column.</li>
+	</ul>
+	</li>
+		<li><ins><strong>DYNCALC Editor:</strong></ins> If the &lt;fixedchannel&gt; tag is TRUE, &lt;readonlytextcolor&gt; will not apply to the Channel Name column. </li>
+		<li><ins><strong>INI Editor:</strong></ins> When the &lt;value&gt;&lt;readonly&gt; tag is TRUE, the text is always colored grey, regardless of the &lt;readonlytextcolor&gt; value.</li>
+		<li><ins><strong>LIM Editor:</strong></ins> When focus is on the row, channel names used in limit threshold cells will be displayed in black, regardless of the &lt;readonlytextcolor&gt; tag. If focus is not on the row, then the channel names are displayed using the color from the &lt;readonlytextcolor&gt; tag.</li>
+		<li><ins><strong>LOL Editor:</strong></ins> Upon opening the spreadsheet, all read-only channels will be displayed in black. You have to click on the spreadsheet for the text to reflect the &lt;readonlytextcolor&gt; tag.</li>
+	</ul>
+
+
+<pre>&lt;readonlytextcolor&gt;128,128,128&lt;/readonlytextcolor&gt; </pre>
+
+	<a name="ltsaveitemsgt"></a>
+<h3 >&lt;saveitems&gt;<a href="#ltsaveitemsgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This XML element allows you to designate additional files to be included in the <em>.zip</em> file generated by the <strong>Save Configuration</strong> operation. These files will also be restored as part of the <strong>Restore Configuration</strong> operation. Since the scope of the <strong>Server Upload</strong> operation is limited to only the selected &lt;task&gt;, this element is not used by <strong>Server Upload</strong>.</p>
+
+
+	<p>Use &lt;file&gt; tags to designate the files to be saved.</p>
+
+
+<pre>
+&lt;saveitems&gt;
+    &lt;file&gt;$SUPPORTDIR\powertek.ini&lt;/file&gt;
+&lt;/saveitems&gt;
+</pre>
+
+	<a name="ltsaveshowtaskgt"></a>
+<h3 >&lt;saveshowtask&gt;<a href="#ltsaveshowtaskgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Set this to true so that when the save all modified dialog appears, it will display the task name instead of filename and path.</p>
+
+
+	<a name="ltserversharegt"></a>
+<h3 >&lt;servershare&gt;<a href="#ltserversharegt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>If you do not have LabCentral and want to save and restore specific files or full configurations, this option will allow the use of a servershare without any revision control.</p>
+
+
+<pre>
+&lt;servershare&gt;\\server\sharename&lt;/servershare&gt;
+</pre>
+
+	<a name="lttabsgt"></a>
+<h3 >&lt;tabs&gt;<a href="#lttabsgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Set to FALSE to disable the tabbed document view within FlexEdit. This will give it a Single Document Interface sort of appearance as opposed to a Multi-Document interface.</p>
+
+
+	<a name="ltuploadgt"></a>
+<h3 >&lt;upload&gt;<a href="#ltuploadgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>If LabCentral is connected, the operator can upload and download individual files from LabCentral. Use the upload tag to turn off only the upload button. This will allow the operator read-only access to LabCentral. The default value for this option is TRUE. Set to FALSE to disable the upload button on the toolbar.</p>
+
+
+	<a name="Global-Editor-Settings"></a>
+<h3 >Global Editor Settings<a href="#Global-Editor-Settings" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Use this section of the XML to customize the columns for any spreadsheet style editor that supports global customization. Customization is the ability to define which columns are present in the editor and the order of the columns. Each column should represent a specific RDB field in most cases. Defining an entry in this element will affect every instance of the editor in the configuration. Not all editors support global customization, so each tag description will note which editors are supported.</p>
+
+
+	<p>The tags for this element are normally at the top of the XML file and the main tag, &lt;globaleditors&gt;, should be a child of the root &lt;flexedit&gt; tag.</p>
+
+
+	<p>An example syntax is as follows:</p>
+
+
+<pre>
+   &lt;globaleditors&gt;
+      &lt;globaleditor&gt;
+          &lt;type&gt;lim&lt;/type&gt;
+          &lt;columns&gt;
+              &lt;column&gt;
+                 &lt;label&gt;Name&lt;/label&gt;
+                  &lt;rdbfield&gt;Customer Name&lt;/rdbfield&gt;
+              &lt;/column&gt;
+              &lt;column&gt;
+                 &lt;label&gt;Alias&lt;/label&gt;
+                  &lt;rdbfield&gt;Alias&lt;/rdbfield&gt;
+              &lt;/column&gt;
+          &lt;/columns&gt;
+        &lt;/globaleditor&gt;
+     &lt;globaleditor&gt;
+        &lt;type&gt;lol&lt;/type&gt;
+        &lt;nodeletenames&gt;
+           &lt;name&gt;voTest1&lt;/name&gt;
+       &lt;/nodeletenames&gt;
+     &lt;/globaleditor&gt;
+   &lt;/globaleditors&gt;
+</pre>
+
+	<a name="lttypegt-3"></a>
+<h4 >&lt;type&gt;<a href="#lttypegt-3" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Specifies the file type that is being customized. Currently only LOL, LIM, DYNCALC, AKA, AIM, and AOM types are supported.</p>
+
+
+	<a name="ltnodeletenamesgt-2"></a>
+<h4 >&lt;nodeletenames&gt;<a href="#ltnodeletenamesgt-2" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The &lt;nodeletenames&gt; element is only supported for the LOL type. It allows you to specify the names of channels that cannot be removed from the LOL file. Add a &lt;name&gt; tag underneath this for each channel. Note that the &lt;name&gt; tag allows use of an asterisk or '*' as a wildcard character to match multiple channel names. This element can be overridden by using the &lt;nodeletenames&gt; element within a &lt;task&gt; element.</p>
+
+
+	<a name="ltfixedchannelgt"></a>
+<h4 >&lt;fixedchannel&gt;<a href="#ltfixedchannelgt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The &lt;fixedchannel&gt; tag is only supported for the DYNCALC type. Valid values are true/false, with it defaulting to false. If set to true, then the user will be unable to add/remove lines in the dynamic calculation file. They will also be unable to change the <strong>Channel Name</strong> field. Calculations can be removed by clearing the <strong>Formula</strong> column. Doing so will cause the line to be commented out in the dynamic calculation file. The calculation for that channel can be re-enabled by adding a formula in the <strong>Formula</strong> column.</p>
+
+
+	<a name="ltfixedcolgt"></a>
+<h4 >&lt;fixedcol&gt;<a href="#ltfixedcolgt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The &lt;fixedcol&gt; tag is only supported for the LIM, AIM, AOM, and AKA types. It enables you to scroll through the editor horizontally while maintaining a fixed view of a defined column. All columns to the left of and including the specified column are visible, regardless of scrolling. The syntax for this tag is <code>&lt;fixedcol&gt;[RDB Field Name]&lt;/fixedcol&gt;</code>, where the [RDB Field Name] would be "Customer Name", "Units Label", etc.</p>
+
+
+	<a name="lthiddenchannelsgt"></a>
+<h4 >&lt;hiddenchannels&gt;<a href="#lthiddenchannelsgt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The &lt;hiddenchannels&gt; element is only supported for the LIM type. Any channels that match the specified name(s) will not appear in the editor.  Add a &lt;name&gt; tag underneath this element for each channel that is not to be listed. The use of asterisks as wildcards is permitted in the &lt;name&gt; tag.</p>
+
+
+	<p>As an example, the following element will cause all channels that have the <em>flg</em> string in them to not be displayed:</p>
+
+
+<pre>
+&lt;hiddenchannels&gt;
+   &lt;name&gt;*flg*&lt;/name&gt;
+&lt;/hiddenchannels&gt;
+</pre>
+
+	<a name="ltlimitinactivecolorgt"></a>
+<h4 >&lt;limitinactivecolor&gt;<a href="#ltlimitinactivecolorgt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The &lt;limitinactivecolor&gt; tag is only supported for the LIM type. If this color is specified, then rows where the channel limits are inactive will have the background color set to this color. The syntax for this tag is <code>&lt;limitinactivecolor&gt;rgb(xxx,xxx,xxx)&lt;/limitinactivecolor&gt;</code>.</p>
+
+
+	<a name="ltcolumngt"></a>
+<h4 >&lt;column&gt;<a href="#ltcolumngt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The column element is only supported for LIM, AKA, AIM, and AOM types, and has three options:</p>
+
+
+	<ol>
+	<li>&lt;label&gt; is for the column label</li>
+		<li>&lt;rdbfield&gt; is to define which rdb field is being displayed for that column. </li>
+		<li>&lt;readonly&gt; is to turn off the edit capability on a column that is normally editable. Note that not all rdbfields are editable for all editors. The list of editable fields for each editor is listed below in the editor specific section.</li>
+	</ol>
+
+
+	<p>Only the rdbfield tag is required for a column. The other two tags are optional.</p>
+
+
+	<a name="Customizing-the-AIMAOM-editor-columns"></a>
+<h5 >Customizing the AIM/AOM editor columns<a href="#Customizing-the-AIMAOM-editor-columns" class="wiki-anchor">&para;</a></h5>
+
+
+	<p>For AIM and AOM types, the column element is only used to specify read-only columns, not which columns will be displayed.</p>
+
+
+	<a name="Customizing-the-LIM-editor-columns"></a>
+<h5 >Customizing the LIM editor columns<a href="#Customizing-the-LIM-editor-columns" class="wiki-anchor">&para;</a></h5>
+
+
+	<p>For LIM types, the column element is used to configure the displayed columns. This applies to all instances of the editor and will only work with non-Legacy limits, i.e. <code>LimitsVer=3.2</code>. If you are using legacy limits and you specify the globaleditor element for <em>.lim</em> files in your <em>FlexEdit.xml</em> file, you will receive an error message and you will get the traditional Test Manager version of the limits editor.</p>
+
+
+	<p>The following fields are considered writable with this editor:</p>
+
+
+	<ol>
+	<li>Low Limit</li>
+		<li>Low Warning</li>
+		<li>High Warning</li>
+		<li>High Limit</li>
+		<li>Low Limit Action</li>
+		<li>Low Warning Action</li>
+		<li>High Warning Action </li>
+		<li>High Limit Action </li>
+		<li>Low Limit Ignore Time</li>
+		<li>High Limit Ignore Time</li>
+	</ol>
+
+
+	<p>Every other RDB field added to the editor is considered read-only.</p>
+
+
+	<p>In addition to RDB fields, there are three columns that can be added that are not in the RDB. These values come from the limit group file or the Module settings. The columns can be added to the limit editor with these &lt;rdbfield&gt; names:</p>
+
+
+	<ol>
+	<li>Module ID - Display the module id for this channel. This is primarily used for sorting. It is read-only. </li>
+		<li>Delay Time - Used to designate the delay time that occurs when first applying a new limit group. </li>
+		<li>Limits Active - This is the status of that channel for the specific groups. Limits can be turned off and on for that group with this column.</li>
+	</ol>
+
+
+	<p><strong>Note</strong>:</p>
+
+
+	<ul>
+	<li>The first column will always be channel name. If your configuration has something other than channel name, channel name will be added in the first column. If the operator is not interested in seeing channel name, the column size can be made very small. The size of columns is persisted.</li>
+	</ul>
+
+
+	<a name="Customizing-the-AKA-Customer-Name-editor-columns"></a>
+<h5 >Customizing the AKA (Customer Name) editor columns<a href="#Customizing-the-AKA-Customer-Name-editor-columns" class="wiki-anchor">&para;</a></h5>
+
+
+	<p>For AKA types, the column element is used to configure the displayed columns. The default columns are <strong>Channel Name</strong>, <strong>Customer Name</strong>, <strong>Alias</strong>, and <strong>Units</strong>.</p>
+
+
+	<p>The following list details the editor's behavior depending on the tags present/not present:</p>
+
+
+	<ul>
+	<li>The &lt;readonly&gt; tag is used to define whether the column is read-only or editable. 
+	<ul>
+	<li>By default, &lt;readonly&gt; is true. Set this tag to false to edit a field in the AKA editor.</li>
+	</ul>
+	</li>
+		<li>If there is no &lt;label&gt; defined for a column, it will use the &lt;rdbfield&gt; as its label. </li>
+		<li>If the value of the &lt;rdbfield&gt; tag is "Units Label", the column is automatically set to a combo box type with units defined in <em>units.dat</em>.</li>
+		<li>If the "Channel Name" column is <em>not</em> defined, it will be inserted as the first column. </li>
+		<li>If the "Customer Name" column is <em>not</em> defined, it will be inserted next to the <strong>Channel Name</strong> column.</li>
+	</ul>
+
+
+<pre>
+&lt;globaleditors&gt;
+    &lt;globaleditor&gt;
+      &lt;type&gt;AKA&lt;/type&gt;
+      &lt;columns&gt;
+        &lt;column&gt;
+          &lt;label&gt;CommentAlias&lt;/label&gt;
+          &lt;rdbfield&gt;Alias&lt;/rdbfield&gt;
+        &lt;/column&gt;
+        &lt;column&gt;
+          &lt;label&gt;ChanName&lt;/label&gt;
+          &lt;rdbfield&gt;Channel Name&lt;/rdbfield&gt;
+        &lt;/column&gt;
+        &lt;column&gt;
+          &lt;label&gt;Units&lt;/label&gt;
+          &lt;rdbfield&gt;Units Label&lt;/rdbfield&gt;
+        &lt;/column&gt;
+        &lt;column&gt;
+          &lt;label&gt;Desc&lt;/label&gt;
+          &lt;rdbfield&gt;Description&lt;/rdbfield&gt;
+          &lt;readonly&gt;TRUE&lt;/readonly&gt;
+        &lt;/column&gt;
+      &lt;/columns&gt;
+    &lt;/globaleditor&gt;
+&lt;/globaleditors&gt;
+</pre>
+
+	<a name="Actions"></a>
+<h2 >Actions<a href="#Actions" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="ltactionsgt-3"></a>
+<h3 >&lt;actions&gt;<a href="#ltactionsgt-3" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The actions element is used to automatically perform one or more commands. These actions may be triggered through a global event, such as performing a Restore Configuration operation, or through events tied to a task.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#cc061c;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3741/Warning3.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>WARNING:</b></td>
+			<td style="vertical-align:top;">FlexEdit does not wait for an action to be completed unless the &lt;completechannel&gt; tag is present.</td>
+		</tr>
+	</table></p>
+
+
+	<p>An example syntax is as follows:<br /><pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;flexedit&gt;
+&lt;title&gt;FlexEdit Sample&lt;/title&gt;
+&lt;home&gt;$SYSTEMDIR/Execute/WWW/FlexEdit.htm&lt;/home&gt;
+&lt;debug&gt;true&lt;/debug&gt;
+&lt;tabs&gt;true&lt;/tabs&gt;
+&lt;actions&gt;
+    &lt;action&gt;
+        &lt;event&gt;BEFORERESTORECONFIGURATION&lt;/event&gt;
+        &lt;command&gt;MAILSLOT&lt;/command&gt;
+        &lt;commandargs&gt;SOFTPANEL&gt;&gt;DEBUG: global pre restore action performed&lt;/commandargs&gt;
+    &lt;/action&gt;
+    &lt;action&gt;
+        &lt;event&gt;AFTERRESTORECONFIGURATION&lt;/event&gt;
+        &lt;command&gt;MAILSLOT&lt;/command&gt;
+        &lt;commandargs&gt;SOFTPANEL&gt;&gt;DEBUG: global post restore action performed&lt;/commandargs&gt;
+    &lt;/action&gt;
+&lt;/actions&gt;
+&lt;categories&gt;
+    &lt;category&gt;
+        &lt;name&gt;FlexEdit Sample&lt;/name&gt;
+        &lt;tasks&gt;
+            &lt;task&gt;
+                &lt;name&gt;Test Notes&lt;/name&gt;
+                &lt;file&gt;$SUPPORTDIR\TestNotes.txt&lt;/file&gt;
+                &lt;action&gt;
+                    &lt;event&gt;BEFORERESTORECONFIGURATION&lt;/event&gt;
+                    &lt;command&gt;MAILSLOT&lt;/command&gt;
+                    &lt;commandargs&gt;SOFTPANEL&gt;&gt;DEBUG: task pre restore action performed&lt;/commandargs&gt;
+                &lt;/action&gt;
+                &lt;action&gt;
+                    &lt;event&gt;AFTERRESTORECONFIGURATION&lt;/event&gt;
+                    &lt;command&gt;MAILSLOT&lt;/command&gt;
+                    &lt;commandargs&gt;SOFTPANEL&gt;&gt;DEBUG: task post restore action performed&lt;/commandargs&gt;
+                &lt;/action&gt;
+            &lt;/task&gt;
+        &lt;/tasks&gt;
+    &lt;/category&gt;
+&lt;/categories&gt;
+</pre></p>
+
+
+	<p>Each action starts with the &lt;action&gt; tag and also contains the following tags:</p>
+
+
+	<a name="lteventgt"></a>
+<h4 >&lt;event&gt;<a href="#lteventgt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The &lt;event&gt; tag defines what event this action is associated with. The event can be one of:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Events</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1200px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Event</strong> </td>
+			<td style="text-align:left;"><strong>Location</strong> </td>
+			<td style="text-align:left;"><strong>Details</strong> </td>
+		</tr>
+		<tr>
+			<td>SELECT</td>
+			<td> Task</td>
+			<td>An action designated with event SELECT will fire every time the task becomes the front-most editor in the right pane, including the first time. This can occur either by clicking on the node in the Tree Bar or by switching to its tab in the editor interface (right pane). A task is still considered the selected task, even if its editor is closed, until another task has been selected.</td>
+		</tr>
+		<tr>
+			<td>FIRSTSELECT</td>
+			<td>Task</td>
+			<td>The FIRSTSELECT event only occurs the first time a task becomes the front-most editor in the right pane.</td>
+		</tr>
+		<tr>
+			<td>UNSELECT </td>
+			<td>Task</td>
+			<td>Action occurs when a selected task is no longer selected.</td>
+		</tr>
+		<tr>
+			<td>BEFORESAVE</td>
+			<td>Task</td>
+			<td>Action is triggered before a successful save is reported. When used with <strong>Save All</strong>, only editors that have unsaved changes will trigger an action. </td>
+		</tr>
+		<tr>
+			<td>AFTERSAVE</td>
+			<td>Task</td>
+			<td> Action is triggered after a successful save is reported. When used with <strong>Save All</strong>, only editors that have unsaved changes will trigger an action. </td>
+		</tr>
+		<tr>
+			<td>BEFORESAVECONFIGURATION</td>
+			<td>Task</td>
+			<td> Triggered by both the <strong>Server Upload</strong> and <strong>Save Configuration</strong> operations. The action is not triggered if the operation is cancelled. </td>
+		</tr>
+		<tr>
+			<td>AFTERSAVECONFIGURATION </td>
+			<td>Task</td>
+			<td> Triggered by both the <strong>Server Upload</strong> and <strong>Save Configuration</strong> operations. The action is not triggered if the operation is cancelled. </td>
+		</tr>
+		<tr>
+			<td rowspan="2">BEFORERESTORECONFIGURATION </td>
+			<td>Task</td>
+			<td>Triggered by both the <strong>Server Download</strong> and <strong>Restore Configuration</strong> operations. The action is not triggered if the operation is cancelled.</td>
+		</tr>
+		<tr>
+			<td>Global</td>
+			<td>Triggered by <strong>Restore Configuration</strong> operations. The action is not triggered if the operation is cancelled.</td>
+		</tr>
+		<tr>
+			<td rowspan="2">AFTERRESTORECONFIGURATION</td>
+			<td>Task</td>
+			<td>Triggered by both the <strong>Server Download</strong> and <strong>Restore Configuration</strong> operations. The action is not triggered if the operation is cancelled or if there is an error causing the restore/download to be aborted.</td>
+		</tr>
+		<tr>
+			<td>Global</td>
+			<td>Triggered by <strong>Restore Configuration</strong> operations. The action is not triggered if the operation is cancelled or if there is an error causing the restore/download to be aborted.</td>
+		</tr>
+		<tr>
+			<td rowspan="2">ERRORRESTORECONFIGURATION</td>
+			<td>Task</td>
+			<td>Triggered by both the <strong>Server Download</strong> and <strong>Restore Configuration</strong> operations. The action is only triggered if there is an error during the restore which caused the operation to be aborted. An example error condition would be if a file was missing from the <em>.zip</em> file. This event prevents any following AFTERRESTORECONFIGURATION actions.</td>
+		</tr>
+		<tr>
+			<td>Global</td>
+			<td>Triggered by <strong>Restore Configuration</strong> operations. This event prevents any following AFTERRESTORECONFIGURATION actions.</td>
+		</tr>
+		<tr>
+			<td>BUTTON </td>
+			<td> Task</td>
+			<td>The BUTTON event is only recognized by the INI editor. Adding this event to an INI editor task will cause a button to appear at the bottom of the property grid. Clicking it will run any BUTTON actions added to the Task. </td>
+		</tr>
+		<tr>
+			<td>CLICK </td>
+			<td>Task</td>
+			<td> The CLICK action is executed every time that a task is clicked on in the Tree Bar, regardless of whether it was already selected or the document was already open.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><ins><strong>Note:</strong></ins> BEFORERESTORECONFIGURATION and AFTERRESTORECONFIGURATION follow a specific timeline of event handling, as follows:</p>
+
+
+	<ol>
+	<li>BEFORERESTORECONFIGURATION performed (global action)</li>
+		<li>BEFORERESTORECONFIGURATION performed (task 1...task n action)</li>
+		<li>Files restored</li>
+		<li>AFTERRESTORECONFIGURATION performed (task 1...task n action)</li>
+		<li>AFTERRESTORECONFIGURATION performed (global action)</li>
+	</ol>
+
+
+	<a name="ltcommandgt"></a>
+<h4 >   &lt;command&gt;<a href="#ltcommandgt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The &lt;command&gt; tag defines what command to run as part of this action. This can be one of the following:</p>
+
+
+	<ul>
+	<li><ins><strong>SAVE</strong></ins> – Saves the file. </li>
+		<li><ins><strong>CHECK</strong></ins> – Checks the box on the tree view for this task. </li>
+		<li><ins><strong>MAILSLOT</strong></ins> – Sends an iTest mailslot message. </li>
+		<li><ins><strong>EXE</strong></ins> – Runs an executable or batch file. To run a batch file or vbscript, you must specify either <em>cmd.exe</em> or <em>wscript.exe</em>, respectively, in the &lt;commandargs&gt; setting followed by the file path and name of the <em>.bat</em> or <em>.vbs</em> you are trying to run and any additional arguments.</li>
+		<li><ins><strong>MSG</strong></ins> – Puts up a message box for the user.</li>
+		<li><ins><strong>CLOSE</strong></ins> - This action will close a file that is currently open in FlexEdit. You can specify the file path in &lt;commandargs&gt; setting. If the file path isn't specified, it will close the file associated with the task containing the action.</li>
+	</ul>
+
+
+	<a name="ltcommandargsgt"></a>
+<h4 >&lt;commandargs&gt;<a href="#ltcommandargsgt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>This is the argument for the MAILSLOT, EXE, or MSG commands. The mailslot args should be structured as <code>mailslot>>message</code>. For example, to send a message to the Softpanel message queue when a task is first entered, use this &lt;action&gt;. <br /><pre>
+&lt;action&gt;
+    &lt;event&gt;FIRSTSELECT&lt;/event&gt;
+    &lt;command&gt;MAILSLOT&lt;/command&gt; 
+    &lt;commandargs&gt;Softpanel&gt;&gt;Hello World&lt;/commandargs&gt;
+&lt;/action&gt;
+</pre></p>
+
+
+	<a name="ltcompletechannelgt"></a>
+<h4 >&lt;completechannel&gt;<a href="#ltcompletechannelgt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>This is the name of a channel that will be set to 0 before the action is started. After FlexEdit sets the channel value, the action is started. The channel must then be set to a non-zero value for FlexEdit to consider the action completed and continue on. If the &lt;timeout&gt; tag is missing, there is a default 10 second timeout.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">This tag is optional.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="lttimeoutgt"></a>
+<h4 >&lt;timeout&gt;<a href="#lttimeoutgt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>This setting is used in conjunction with the &lt;completechannel&gt; setting. It should be set to a number. This is the number seconds that FlexEdit will wait for the &lt;completechannel&gt; to become non-zero. If after this amount of time the channel has not changed, then FlexEdit will issue a message in the Error window and will continue executing.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">This tag is optional.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Saving-and-Restoring-Configurations"></a>
+<h1 >Saving and Restoring Configurations<a href="#Saving-and-Restoring-Configurations" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>FlexEdit is a tool that allows you to modify your test solution configuration. The resulting configuration is saved and outputted as a <em>*.zip</em> file, either to a LabCentral server or to a local folder. At a later time, these same files can be used to restore your test solution configuration to a known state. You may also restore other files, regardless of file type.</p>
+
+
+	<a name="Save-Configuration"></a>
+<h2 >Save Configuration<a href="#Save-Configuration" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Saving-to-LabCentral"></a>
+<h3 >Saving to LabCentral<a href="#Saving-to-LabCentral" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>When saving the configuration to a LabCentral server, the file structure, is as follows:<br /><pre>under Lab Files: ..\Repository\FileStorage\
+    Flexedit
+        (Solution Name)
+            (entered filename).zip
+</pre></p>
+
+
+	<p>The entered comments are visible in LabCentral in the <strong>Check-In Comment</strong> column when reviewing the managed lab files.</p>
+
+
+	<a name="Saving-Locally"></a>
+<h3 >Saving Locally<a href="#Saving-Locally" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>If a &lt;servershare&gt; tag is present in the FlexEdit XML file, then the configuration will be saved to a local folder. This local folder can either be on the same PC or can be a network share. The folder path defined in the &lt;servershare&gt; tag must be fully-qualified or a macro, such as $SYSTEMDIR, can be used.<br /><pre>
+Syntax Examples:
+&lt;serveshare&gt;C:\ADT\iTest3.6\StoredFlexEditConfig&lt;/servershare&gt;
+&lt;servershare&gt;\\FileRepository\StoredFlexEditConfig&lt;/serveshare&gt;
+&lt;servershare&gt;$SYSTEMDIR\StoredFlexEditConfig&lt;/servershare&gt;
+</pre></p>
+
+
+	<p>When stored locally, the file structure for the saved configuration, is as follows:<br /><pre>
+    &lt;servershare&gt; tag
+        FlexEdit
+            (Solution Name)
+                (entered filename).zip
+                (entered filename).zip.comment
+</pre></p>
+
+
+	<p>By default, the file is saved as a *<em>.zip</em> file; the entered comments are stored in the <em>*.zip.comment</em> file.</p>
+
+
+	<a name="Saved-Files"></a>
+<h3 >Saved Files<a href="#Saved-Files" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The configuration files to save are derived, in part, from the following elements in the FlexEdit application’s XML file:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Element/Tag Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Element or Tag</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> &lt;saveitems&gt; </td>
+			<td> Global element. Adds additional files to the saved <em>*.zip</em> file. </td>
+		</tr>
+		<tr>
+			<td> &lt;saveitemlist&gt; </td>
+			<td> Task specific element. Either replaces the files to be saved or adds additional files to be saved based on the type of task. </td>
+		</tr>
+		<tr>
+			<td> &lt;file&gt; </td>
+			<td> Task specific tag. In most cases, this is the default file to be saved to the <em>*.zip</em> file. There are exceptions to this which are listed below. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>More detailed descriptions of each of these elements/tags are available elsewhere in this document.</p>
+
+
+	<a name="File-Content-Exceptions"></a>
+<h4 >File Content Exceptions<a href="#File-Content-Exceptions" class="wiki-anchor">&para;</a></h4>
+
+
+	<ul>
+	<li>AIM/AOM edit tasks:
+	<ul>
+	<li>The &lt;file&gt; tag is not used with either the Analog Input or Analog Output edit tasks. Instead, by default, <strong>Save Configuration</strong> will collect the <em>calcoeffs.txt</em> file and any channel definition ( <em>*.fil</em> ) files. If the &lt;checkuserdefined1&gt; tag is <strong>TRUE</strong> for this task in the FlexEdit XML file, then the contents of the <em>calcoeffs.txt</em> file will be limited to only channels that have a non-zero value in the <strong>User Defined 1</strong> RDB field.</li>
+	</ul></li>
+	</ul>
+
+
+	<ul>
+	<li>Pre-Built Mapping DLL Plugin edit tasks:
+	<ul>
+	<li>For the pre-built DLL plugin tasks, the &lt;file&gt; tag is not used to determine the file(s) that <strong>Save Configuration</strong> will collect. For these tasks, the list of files are hardcoded. Due to the fact that the file lists are hard-coded, the &lt;saveitemlist&gt; element does not replace the list of files to be saved. Rather these are additional files to be saved. For more information, please see the description of the &lt;saveitemlist&gt; element elsewhere in this document.</li>
+		<li>Asap3 DLL only: While the A2L file is saved as part of the configuration, the Hex file is not.</li>
+	</ul></li>
+	</ul>
+
+
+	<a name="Restore-Configuration"></a>
+<h2 >Restore Configuration<a href="#Restore-Configuration" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Restore Configuration feature replaces the current FlexEdit settings with a previously saved configuration. You may restore default <em>*.zip</em> extensions or other file types. If there are multiple saved configurations, the user is provided a list of available configurations. As with saving configurations, the &lt;servershare&gt; tag determines whether a local folder or a LabCentral Server is searched for the saved files.</p>
+
+
+	<p>In most cases, <strong>Restore Configuration</strong> will replace the existing files with its saved files.  Exceptions:</p>
+
+
+	<ul>
+	<li>AIM/AOM edit task:  
+	<ul>
+	<li>If the &lt;checkuserdefined1&gt; tag is present, then the saved <em>calcoeffs.txt</em> file will be merged with the current <em>calcoeffs.txt</em> file in the solution. In terms of this merge, the saved file will take precedence.</li>
+	</ul>
+	</li>
+		<li>LIM edit task:
+	<ul>
+	<li>When restoring a limit group, there are two separate issues to take into account.
+	<ul>
+	<li>On a 2PC system, the <em>.lim</em> file is not copied down to the RT PC.</li>
+		<li>After the restoration is complete, the user limits are not updated, so until the limit group is reloaded (such as by using the Limits Group Apply mailslot message to Data_Engine) you will be using the previous limit settings.</li>
+	</ul>
+	</li>
+	</ul>
+	</li>
+		<li>Pre-Built Mapping DLL Plugin edit task:
+	<ul>
+	<li>Only relevant sections of the <em>config.drv</em> file will be overwritten.</li>
+		<li>Customer Name (*<em>.aka</em>) and Log Order List (*<em>.lol</em>) files are not replaced. Rather, new entries are added to the files. Existing entries are left untouched unless, in the case of Customer Names, they result in a conflict. In this case, the customer name association from the restored configuration will take precedence.</li>
+	</ul></li>
+	</ul>
+
+
+	<a name="Pre-Built-Mapping-DLLs"></a>
+<h1 >Pre-Built Mapping DLLs<a href="#Pre-Built-Mapping-DLLs" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>FlexEdit includes the use of several custom DLLs; the application provides use of the following:</p>
+
+
+	<ul>
+	<li><em>FlexEditAsap.dll</em>
+	<ul>
+	<li>Creates mappings for the Asap3Plus driver.</li>
+	</ul>
+	</li>
+		<li><em>FlexEditCan.dll</em>
+	<ul>
+	<li>Creates mappings for the CanNeo and CanXC16 drivers.</li>
+	</ul>
+	</li>
+		<li><em>FlexEditCas.dll</em>
+	<ul>
+	<li>Creates mappings for the CASPC driver.</li>
+	</ul>
+	</li>
+		<li><em>FlexEditCombustion.dll</em>
+	<ul>
+	<li>Creates mappings for the Combustion driver.</li>
+	</ul>
+	</li>
+		<li><em>FlexEditIndiset.dll</em>
+	<ul>
+	<li>Creates mappings for the Indiset driver.</li>
+	</ul>
+	</li>
+		<li><em>FlexEditXCPMaster.dll</em>
+	<ul>
+	<li>Creates mappings for the XCPMaster driver.</li>
+	</ul></li>
+	</ul>
+
+
+	<p>Any of these DLLs can be added to your FlexEdit configuration by including an additional group of syntax to the <em>FlexEdit.xml</em> file. The example below displays the addition of the FlexEditCan DLL.</p>
+
+
+<pre><code class="XML syntaxhl" data-language="XML"><span class="nt">&lt;flexedit&gt;</span>
+
+<span class="nt">&lt;servershare&gt;</span>$DATADIR\Test<span class="nt">&lt;/servershare&gt;</span>
+
+    <span class="nt">&lt;task&gt;</span>
+        <span class="nt">&lt;name&gt;</span>CAN Channel Mapping<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;icon&gt;</span>$SYSTEMDIR/Art/icons/tools.ico<span class="nt">&lt;/icon&gt;</span>
+        <span class="nt">&lt;file&gt;</span>$SUPPORTDIR\config.drv<span class="nt">&lt;/file&gt;</span>
+        <span class="nt">&lt;editor&gt;</span>
+            <span class="nt">&lt;type&gt;</span>CAN1<span class="nt">&lt;/type&gt;</span>
+            <span class="nt">&lt;dll&gt;</span>FlexEditCan.dll<span class="nt">&lt;/dll&gt;</span>
+        <span class="nt">&lt;/editor&gt;</span>
+        <span class="nt">&lt;icentral&gt;</span>CanConfigurations<span class="nt">&lt;/icentral&gt;</span>
+    <span class="nt">&lt;/task&gt;</span>
+</code></pre>
+
+	<p>The purpose of the DLLs is to enable the operator the ability to assign channels from a device to an already existing iTest channel. This can be done while iTest is running or before a test. In order to map to the channel while iTest is running, the channel name being mapped to must not have been referenced in VCL.</p>
+
+
+	<p>Each DLL performs the following basic functions:</p>
+
+
+	<ul>
+	<li>Imports a list of available data from a device specific import file, such as a WSL file for CAS, a DBC file for CAN, or an A2L file for ASAP3. </li>
+		<li>Allows these channels to be mapped to existing, generic iTest channels. </li>
+		<li>Allows the user to change the customer names for these generic iTest channels to match whatever fits their environment. </li>
+		<li>Can optionally add the mapped channels to a data log.</li>
+	</ul>
+
+
+	<p>For more information, refer to the <a class="wiki-page" href="FlexEdit_Editors.html#DLL-Mapping-Editor">DLL Mapping Editor</a> documentation.</p>
+
+
+	<a name="DLL-Plug-in-API"></a>
+<h1 >DLL Plug-in API<a href="#DLL-Plug-in-API" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>FlexEdit supports writing completely new editors as DLLs via Visual Studio. The plug-ins with Visual Studio 2010 and 2003 have been tested to verify multiple version of Visual Studio could be used for plug-in development.</p>
+
+
+	<p>The plug-in architecture is to create a CDialog class within an MFC C++ project and then tell FlexEdit the HWND for the CDialog. FlexEdit will dynamically look for this function to register your HWND: FlexEdit_Create. Here is an example:</p>
+
+
+<pre><code class="cpp syntaxhl" data-language="cpp">
+<span class="k">extern</span> <span class="s">"C"</span> <span class="n">HWND</span> <span class="nf">FlexEdit_Create</span><span class="p">(</span><span class="n">LPFLEXEDIT_CREATESTRUCT</span> <span class="n">bcs</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">AFX_MANAGE_STATE</span><span class="p">(</span><span class="n">AfxGetStaticModuleState</span><span class="p">());</span>
+   <span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">==</span> <span class="n">_tcsicmp</span><span class="p">(</span><span class="n">bcs</span><span class="o">-&gt;</span><span class="n">szType</span><span class="p">,</span> <span class="n">_T</span><span class="p">(</span><span class="s">"txt"</span><span class="p">)))</span>
+   <span class="p">{</span>
+      <span class="n">CTextDialog</span> <span class="o">*</span><span class="n">dlg</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CTextDialog</span><span class="p">;</span>
+      <span class="n">dlg</span><span class="o">-&gt;</span><span class="n">Create</span><span class="p">(</span><span class="n">dlg</span><span class="o">-&gt;</span><span class="n">IDD</span><span class="p">);</span>
+      <span class="n">SetParent</span><span class="p">(</span><span class="n">dlg</span><span class="o">-&gt;</span><span class="n">GetSafeHwnd</span><span class="p">(),</span> <span class="n">bcs</span><span class="o">-&gt;</span><span class="n">hwndParent</span><span class="p">);</span>
+      <span class="n">dlg</span><span class="o">-&gt;</span><span class="n">Load</span><span class="p">(</span><span class="n">bcs</span><span class="o">-&gt;</span><span class="n">szFilePath</span><span class="p">);</span>
+      <span class="k">return</span> <span class="n">dlg</span><span class="o">-&gt;</span><span class="n">GetSafeHwnd</span><span class="p">();</span>
+   <span class="p">}</span>
+   <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre>
+
+	<p>FlexEdit and DLLs also communicate using several Windows messages. These messages are defined in the <em>FlexEdit_Api.h</em> file. The messages are processed by the base class and turned into function calls.</p>
+
+
+	<p>Your DLL will need to implement virtual functions named <strong>SaveMappingInfo()</strong>, <strong>GetNumConfigFiles()</strong>, and <strong>GetConfigFile()</strong>. FlexEdit will call these functions to get the number and names of any files that need to be included in the LabCentral ZIP file.</p>
+
+
+<pre><code class="cpp syntaxhl" data-language="cpp">
+<span class="c1">//=============================================================================</span>
+<span class="c1">//    The CAN driver saves the mapping info in the DRV file.  We also save</span>
+<span class="c1">//    the current dialog settings so they can be restored on the next edit.</span>
+<span class="c1">//=============================================================================</span>
+<span class="cm">/*virtual*/</span><span class="kt">void</span> <span class="n">CFlexEditCan</span><span class="o">::</span><span class="n">SaveMappingInfo</span><span class="p">(</span> <span class="kt">void</span> <span class="p">)</span>
+<span class="p">{</span>
+<span class="p">}</span>
+
+<span class="c1">//=============================================================================</span>
+<span class="c1">//    We have config.drv, FlexEditCan.ini and one or more CSV files to save.</span>
+<span class="c1">//=============================================================================</span>
+<span class="cm">/*virtual*/</span> <span class="kt">int</span> <span class="n">CFlexEditCan</span><span class="o">::</span><span class="n">GetNumConfigFiles</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">m_csConfigFilePaths</span><span class="p">.</span><span class="n">GetCount</span><span class="p">();</span>
+    <span class="k">return</span> <span class="n">count</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//=============================================================================</span>
+<span class="c1">//    0 is config.drv. 1 is FlexEdit.ini. 2 and 3 are the CSV files.</span>
+<span class="c1">//=============================================================================</span>
+<span class="cm">/*virtual*/</span> <span class="n">CString</span> <span class="n">CFlexEditCan</span><span class="o">::</span><span class="n">GetConfigFile</span><span class="p">(</span> <span class="kt">int</span> <span class="n">iIndex</span> <span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">m_csConfigFilePaths</span><span class="p">.</span><span class="n">GetCount</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="p">((</span><span class="n">iIndex</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">iIndex</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">m_csConfigFilePaths</span><span class="p">.</span><span class="n">GetAt</span><span class="p">(</span> <span class="n">iIndex</span> <span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s">""</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre>
+
+	<p>Currently, there is a single message that your driver sends to FlexEdit. This message notifies FlexEdit that one or more files have been modified and the files need to be saved before closing. The message is sent using SendMessage:</p>
+
+
+<pre><code class="cpp syntaxhl" data-language="cpp">
+<span class="n">GetParent</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">SendMessage</span><span class="p">(</span><span class="n">WM_FLEXEDIT_MESSAGE</span><span class="p">,</span> <span class="n">BM_SETMODIFIEDFLAG</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+</code></pre>
+
+	<p>A full example of the plug-in architecture for a working CDialog application is provided here:</p>
+
+
+	<p><a class="attachment" href="https://aandd.plan.io/attachments/229">FlexEdit_Plugin2003.zip</a></p>
+
+
+	<a name="Launching-FlexEdit-Editors-through-HTML"></a>
+<h1 >Launching FlexEdit Editors through HTML<a href="#Launching-FlexEdit-Editors-through-HTML" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>FlexEdit is designed to trap &lt;a href &gt; links in pages that it contains that can be directed at FlexEdit itself. These links all start with the prefix FlexEdit followed by an underscore, followed by the action to perform. Currently supported links include the following:</p>
+
+
+	<ul>
+	<li>FlexEdit_AIM - Displays the Analog Input Management Screen. </li>
+		<li>FlexEdit_AOM - Displays the Analog Output Management Screen.</li>
+		<li>flexedit_opentask("taskname")</li>
+	</ul>
+
+
+	<p>A sample HTML link statement follows: <br /><pre>
+&lt;a href="FlexEdit_AIM"&gt;&lt;img src="link.gif" style="border:0;" width="9" height="9"&gt;Analog Input Management ...&lt;/a&gt; &lt;br&gt;
+</pre></p>
+</body>
+</html>

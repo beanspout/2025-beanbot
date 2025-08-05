@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ProblemReport</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Maintenance.html">ITest Maintenance</a></li>
+<li><a href="ProblemReport.html">ProblemReport</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="ProblemReport"></a>
+<h1 >ProblemReport<a href="#ProblemReport" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#ProblemReport">ProblemReport</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Using-the-Interface">Using the Interface</a></li><li><a href="#Redirecting-ProblemReport-ZIP-File">Redirecting ProblemReport ZIP File</a></li><li><a href="#Using-Command-Lines">Using Command Lines</a><ul><li><a href="#AutoCrashProblemReport">/AutoCrashProblemReport</a></li><li><a href="#Traceability">/Traceability</a></li></ul>
+</li><li><a href="#Autogenerating-ProblemReport-ZIP-File">Autogenerating ProblemReport ZIP File</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>ProblemReport creates a <em>.zip</em> file that can be used to recreate the iTest environment that a test was run in. This file is typically transferred to A&#38;D Technology to document a problem report, or it can be stored for reference.</p>
+
+
+	<p>The <em>.zip</em> file contains files that A&#38;D Technology support personnel use to perform crash forensics and diagnose problems. The following files are included in the <em>.zip</em> file:</p>
+
+
+	<ul>
+	<li>Solution Files: These can help A&#38;D Technology reproduce the problem. This normally includes log files and files from the real-time system, if applicable. </li>
+		<li>Test Notes: The contents of the Test Notes node in the Test Manager tree bar.</li>
+		<li><em>.dmp</em> files: A copy of all <em>.dmp</em> files found in the iTest folder, if applicable.</li>
+		<li><em>Config.ini</em>: The iTest configuration file.</li>
+		<li><em>version.cfg</em>: The version information for all iTest binaries on your system.</li>
+		<li><em>TAFileList.txt</em>: A list of all files in your iTest installation directory.</li>
+		<li><em>Sysinfo.txt</em>: A list of all running procedures and their memory usage at the time the <em>.zip</em> file was created by ProblemReport. </li>
+		<li><em>EnvironmentVariables.txt</em>: A list of your system environment variables. </li>
+		<li><em>DongleInfo.txt</em>: The contents of the DongleUtil dialog.</li>
+	</ul>
+
+
+	<p>ProblemReport can be run as a standalone dialog by double-clicking the <em>ProblemReport.exe</em> file in your $EXECUTEDIR, or it can be run from a command line. It's important to run ProblemReport <em>before</em> restarting iTest because older log files, that may contain important information, are erased on startup.</p>
+
+
+	<a name="Using-the-Interface"></a>
+<h2 >Using the Interface<a href="#Using-the-Interface" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can open the ProblemReport interface by running <em>ProblemReport.exe</em>, which is located in $EXECUTEDIR.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>ProblemReport</strong></em></span><br /><img src="attachments/download/95850/42_ProblemReport.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />The name of the problem report file is indicated on the ProblemReport dialog. For example, in the image above, the problem report file will be labeled <em>ProblemReport_20211118_0800.zip</em>.  In the main text box, enter a description of the issue you are experiencing, steps to reproduce the issue, and any other information.</p>
+
+
+	<p>You can choose to exclude the logs directories and/or the support directory from the ProblemReport <em>.zip</em> file. If you select the checkbox to exclude the logs directory, it excludes the <em>$SUPPORTDIR\logs</em> folder and the <em>$SUPPORTDIR\CrateSupport\logs</em> folder from the <em>.zip</em> file . If you select the checkbox to exclude the support directory, it excludes the entire $SUPPORTDIR folder, but it will retain the <em>$SUPPORTDIR\logs</em> folder and the <em>$SUPPORTDIR\CrateSupport\Logs</em> folder (as long as you don't select the checkbox to exclude the logs directory).</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Only the iTest Console and AutomationPanel log files from the past 30 days are included in the ZIP.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>Click the <strong>Create File</strong> button to create the problem report, so it can be included with your communication on the A&#38;D Technology Customer Portal. The problem report file will be located in the $SYSTEMDIR. After clicking, the following dialog will display:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Open Folder in Windows Explorer</strong></em></span><br /><img src="attachments/download/95851/42_ProblemReport-OpenFolder.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Redirecting-ProblemReport-ZIP-File"></a>
+<h2 >Redirecting ProblemReport ZIP File<a href="#Redirecting-ProblemReport-ZIP-File" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>ProblemReport can send a copy of the <em>.zip</em> file reports to a local folder, a network share, or LabCentral by using the <code>ProblemReportDest</code> <em>config.ini</em> setting. By default, this setting is not included in the <em>config.ini</em> and must be added in order to copy ProblemReport <em>.zip</em> files. If using a LabCentral sever, LabCentral will actively manage this setting by default starting when you first add the local PC as an iTest system on LabCentral.</p>
+
+
+	<p>In addition, <code>ProblemReportDest</code> controls where the automated problem report goes if a <em>.dmp</em> file is created. However, it can also be set to a hardcoded network path or can upload all of these files directly to LabCentral.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>
+ProblemReportDest= 
+</pre>
+
+	<p><strong>Examples</strong>:</p>
+
+
+	<p>Send to LabCentral:<br /><pre>ProblemReportDest=iCentral</pre></p>
+
+
+	<p>Send to local folder:<br /><pre>ProblemReportDest=C:\ADT\iTest4.2\folder\</pre></p>
+
+
+	<p>Send to network share: <br /><pre>ProblemReportDest=\\MyServer\Problemreports</pre></p>
+
+
+	<p>When the <code>ProblemReportDest</code> is set to LabCentral, the ProblemReport interface includes the option to send the ProblemReport <em>.zip</em> file to the specified location immediately or in the future. Click the <strong>Send Now</strong> or <strong>Send Later</strong> buttons to determine when the file is copied; after clicking either button, the <em>.zip</em> file will be created in the $SYSTEMDIR. It may take a few minutes to upload the file.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">If uploading to LabCentral, LabAgent must be running.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Send to LabCentral</strong></em></span><br /><img src="attachments/download/95854/42_ProblemReport-LabCentral.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>When the ProblemReport file is successfully sent, a dialog, similar to the one below, displays:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Problem Report Sent</strong></em></span><br /><img src="attachments/download/95855/41_ProblemReportSent.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>To exit either dialog, you must click the <strong>X</strong> button in the upper-right corner.</p>
+
+
+	<a name="Using-Command-Lines"></a>
+<h2 >Using Command Lines<a href="#Using-Command-Lines" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="AutoCrashProblemReport"></a>
+<h3 >/AutoCrashProblemReport<a href="#AutoCrashProblemReport" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This form is used to silently generate a <em>.zip</em> file and transfer it based on the <em>config.ini</em> setting <code>ProblemReportDest</code>.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>
+ProblemReport.exe /AutoCrashProblemReport
+</pre>
+
+	<a name="Traceability"></a>
+<h3 >/Traceability<a href="#Traceability" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This form is used to silently generate a <em>.zip</em> file that contains a backup of the test solution to a specified location. This is intended for preservation and reference.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">This command line option does not include any existing crash dump (<em>*.dmp</em>) files, the <em>$SUPPORTDIR\logs</em> folder, or the <em>$SUPPORTDIR\CrateSupport\logs</em> folder.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>
+ProblemReport.exe /Traceability /OutFile &lt;Full Path to output file&gt;
+</pre>
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>
+ProblemReport.exe /Traceability /OutFile C:\Temp\SolutionPackage.zip
+</pre>
+
+	<a name="Autogenerating-ProblemReport-ZIP-File"></a>
+<h2 >Autogenerating ProblemReport ZIP File<a href="#Autogenerating-ProblemReport-ZIP-File" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>ProblemReport can automatically generate a <em>.zip</em> file under most crash conditions. This is controlled by the <code>AutoCrashProblemReport</code> <em>config.ini</em> option.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>
+AutoCrashProblemReport=TRUE
+</pre>
+
+	<p>If this option is missing, then a <em>.zip</em> file will not be generated, but you will be prompted to generate a <em>.dmp</em> file under most crash conditions. If this option is set to TRUE, then a <em>.zip</em> file will be silently generated and sent to the location specified in the <code>ProblemReportDest</code> <em>config.ini</em> setting.</p>
+</body>
+</html>

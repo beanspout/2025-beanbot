@@ -1,0 +1,46 @@
+{
+  "app_name": "BeanBot",
+  "version": "1.0.0",
+  "description": "iTest Troubleshooting Assistant",
+  
+  "ollama": {
+    "base_url": "http://localhost:11434",
+    "model": "gemma3:1b",
+    "timeout_seconds": 30,
+    "stream": false
+  },
+  
+  "gui": {
+    "window_width": 1200,
+    "window_height": 800,
+    "theme": "default"
+  },
+  
+  "knowledge_base": {
+    "error_codes_file": "testData/itest_errors.json",
+    "text_files_directory": "testData/",
+    "max_pdf_size_mb": 50,
+    "max_image_size_mb": 10
+  },
+  
+  "file_processing": {
+    "supported_image_formats": [".png", ".jpg", ".jpeg", ".bmp"],
+    "supported_pdf_formats": [".pdf"],
+    "supported_diagram_formats": [".drawio"],
+    "temp_directory": "temp/",
+    "cleanup_on_exit": true
+  },
+  
+  "windows_api": {
+    "use_native_image_processing": true,
+    "enable_ocr": false,
+    "image_metadata_extraction": true
+  },
+  
+  "logging": {
+    "level": "info",
+    "log_file": "beanbot.log",
+    "max_log_size_mb": 10,
+    "max_log_files": 5
+  }
+}

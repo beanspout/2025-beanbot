@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Reading and Writing to Files</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Automating_iTest_with_Python.html">Automating iTest with Python</a></li>
+<li><a href="Reading_and_Writing_to_Files.html">Reading and Writing to Files</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Reading-and-Writing-to-Files"></a>
+<h1 >Reading and Writing to Files<a href="#Reading-and-Writing-to-Files" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Reading-and-Writing-to-Files">Reading and Writing to Files</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#XML-Files">XML Files</a><ul><li><a href="#Python-Functions">Python Functions</a></li></ul>
+</li><li><a href="#Excel-Files">Excel Files</a><ul><li><a href="#Python-Functions-2">Python Functions</a></li><li><a href="#Error-Messages">Error Messages</a></li></ul></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can read and write values to XML and Excel files by utilizing the <em>Xmlprocess.py</em> and <em>iTestExcel.py</em> Python scripts, respectively. These script files reside in the <em>$SYSTEMDIR\PythonScripts</em> folder.</p>
+
+
+	<a name="XML-Files"></a>
+<h2 >XML Files<a href="#XML-Files" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The <em>Xmlprocess.py</em> script enables you to view values for specified XML nodes, write the value to an iTest channel (virtual string or virtual output), return the value, and write a new value to a specified node. The <code>PYEXEC</code> VCL command is utilized to read and write values to a specified XML node.</p>
+
+
+	<p><ins><strong>Syntax: Read Command</strong></ins><br /><pre>
+PYEXEC "XmlProcess xml_read(&lt;XML File Path&gt;, &lt;Xpath&gt;, &lt;Channel Name&gt;)", &lt;Return Value Channel&gt;, &lt;Timeout Period, in seconds&gt;
+</pre></p>
+
+
+	<p><ins><strong>Syntax: Write Command</strong></ins><br /><pre>
+PYEXEC "XmlProcess xml_write(&lt;XML File Path&gt;, &lt;Xpath&gt;, &lt;Value&gt;)", &lt;Return Value Channel&gt;, &lt;Timeout Period, in seconds&gt;
+</pre></p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Parameter Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Parameter</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>&lt;XML File Path&gt;</td>
+			<td> The file path indicating the location of the XML file.</td>
+		</tr>
+		<tr>
+			<td>&lt;Xpath&gt;</td>
+			<td> The Xpath syntax is the element as specified in Python's ElementTree XML API. It is unique to other Xpaths within the file. The Xpath used must be relative to its root node in the XML file. </td>
+		</tr>
+		<tr>
+			<td>&lt;Channel Name&gt;</td>
+			<td> The iTest channel name to which the value is written.</td>
+		</tr>
+		<tr>
+			<td>&lt;Value&gt;</td>
+			<td> The new value to be written to the &lt;Xpath&gt;.</td>
+		</tr>
+		<tr>
+			<td>&lt;Return Channel Value&gt;</td>
+			<td> The channel used to store the script's return value.</td>
+		</tr>
+		<tr>
+			<td>&lt;Timeout Period, in seconds&gt;</td>
+			<td> The maximum period of elapsed time (in seconds) to wait for the script to complete.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>The following code represents an example XML file. Its file path is <em>D:\XML\Example.xml</em>.<br /><pre>
+&lt;root&gt;
+   &lt;tag1&gt;Value1&lt;/tag1&gt;
+   &lt;tag2&gt;Value2&lt;/tag2&gt;
+   &lt;tag3&gt;Value3&lt;/tag3&gt;
+   &lt;tag4&gt;Value4&lt;/tag4&gt;
+   &lt;tag5&gt;Value5&lt;/tag5&gt;
+&lt;/root&gt;
+</pre></p>
+
+
+	<p><ins><strong>Example 1: Read &lt;Tag2&gt;</strong></ins></p>
+
+
+	<p>In this example, the following command reads the value specified in the XML element (&lt;tag2&gt;):</p>
+
+
+<pre>PYEXEC "XmlProcess xml_read(D:\XML\Example.xml, tag2, vsChannel2)", voXmlReturn, 1</pre>
+
+	<p><strong>Value:</strong></p>
+
+
+<pre>Value2</pre>
+
+	<p>Only the value is written to the specified iTest channel.</p>
+
+
+	<p><ins><strong>Example 2: Write NewStringValue</strong></ins></p>
+
+
+	<p>In this example, the new value, <em>NewStringValue</em>, is written to the specified XML element (&lt;tag5&gt;):</p>
+
+
+<pre>PYEXEC "XmlProcess xml_write(D:\XML\Example.xml, tag5, NewStringValue)", voXmlReturn, 1</pre>
+
+	<p><strong>Value:</strong></p>
+
+
+<pre>&lt;root&gt;
+   &lt;tag1&gt;Value1&lt;/tag1&gt;
+   &lt;tag2&gt;Value2&lt;/tag2&gt;
+   &lt;tag3&gt;Value3&lt;/tag3&gt;
+   &lt;tag4&gt;Value4&lt;/tag4&gt;
+   &lt;tag5&gt;NewStringValue&lt;/tag5&gt;
+&lt;/root&gt;</pre>
+
+	<a name="Python-Functions"></a>
+<h3 >Python Functions<a href="#Python-Functions" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following Python functions are used to read and write values to a specified XML node:</p>
+
+
+	<p><ins><strong>Python Function: Read</strong></ins><br /><pre>
+def xml_read(xml_path, xpath, channel_name):
+</pre></p>
+
+
+	<p><ins><strong>Python Function: Write</strong></ins><br /><pre>
+def xml_write(xml_path, xpath, value):
+</pre></p>
+
+
+	<a name="Excel-Files"></a>
+<h2 >Excel Files<a href="#Excel-Files" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The <em>iTestExcel.py</em> script is used to execute the read and write functions for a single cell. For multiple cells, this script can be called multiple times or modified based on the user's requirements. If an Excel worksheet does not exist when writing values to a cell, then the worksheet is automatically created and populated with the new value.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Only <em>.XLSX</em> files are supported; <em>.XLS</em> files are not supported and will result in an error message if used.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>The <code>SPAWN</code> Python command is utilized to read and write values to a specified Excel cell.</p>
+
+
+	<p><ins><strong>Syntax: Read</strong></ins><br /><pre>
+SPAWN iTestExcel iTestExcelRead(&lt;Excel File Path&gt;, &lt;Sheet&gt;, &lt;Cell&gt;, &lt;Channel Name&gt;, &lt;Status Channel Name&gt;)
+</pre></p>
+
+
+	<p><ins><strong>Syntax: Write</strong></ins><br /><pre>
+SPAWN iTestExcel iTestExcelWrite(&lt;Excel File Path&gt;, &lt;Sheet&gt;, &lt;Cell&gt;, &lt;Channel Name&gt;, &lt;Status Channel Name&gt;)
+</pre></p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Parameter Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Parameter</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>&lt;Excel File Path&gt;</td>
+			<td> The file path to the Excel spreadsheet (e.g., <em>$SUPPORTDIR\Excel\TestExcelSheet.xlsx</em>).</td>
+		</tr>
+		<tr>
+			<td>&lt;Sheet&gt;</td>
+			<td> The Excel sheet to read or write the value to (e.g., "Sheet1").</td>
+		</tr>
+		<tr>
+			<td>&lt;Cell&gt;</td>
+			<td> The Excel cell to read or write the value to (e.g., "B2").</td>
+		</tr>
+		<tr>
+			<td>&lt;Channel Name&gt;</td>
+			<td> The iTest channel name to which the value is read from or written to.</td>
+		</tr>
+		<tr>
+			<td>&lt;Status Channel Name&gt;</td>
+			<td> The iTest virtual string channel that is updated with any errors from Python. For more information about error messages, refer to the <a class="wiki-page" href="#Error-Messages">Error Messages</a> section.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Python-Functions-2"></a>
+<h3 >Python Functions<a href="#Python-Functions-2" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following Python functions are used to read and write values to a specified Excel cell:</p>
+
+
+	<p><ins><strong>Python Function: Read</strong></ins><br /><pre>
+def iTestExcelRead(file, sheet, cell, channel_name, status_channel_name):
+</pre></p>
+
+
+	<p><ins><strong>Python Function: Write</strong></ins><br /><pre>
+def iTestExcelWrite(channel_name, file, sheet, cell, status_channel_name):
+</pre></p>
+
+
+	<a name="Error-Messages"></a>
+<h3 >Error Messages<a href="#Error-Messages" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following error messages may occur:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Error Messages</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Error</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>[Errno 2] No such file or directory</td>
+			<td> This error message may occur if the specified workbook does not exist while writing to the specified cell.</td>
+		</tr>
+		<tr>
+			<td>[Errno 13] Permission denied</td>
+			<td> This error message may occur if the workbook is currently open while writing to the specified cell.</td>
+		</tr>
+		<tr>
+			<td>Unable to cast Python instance of type &lt;class &#039;NoneType&#039;&gt; to C++ type '?' (#define PYBIND11_DETAILED_ERROR_MESSAGES or compile in de</td>
+			<td> This error message may occur if the specified cell is empty.</td>
+		</tr>
+		<tr>
+			<td>Worksheet &lt;Sheet&gt; does not exist.</td>
+			<td> This error message may occur if the specified worksheet does not exist when reading the specified cell.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+</body>
+</html>

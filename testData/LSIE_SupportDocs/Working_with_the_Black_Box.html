@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Working with the Black Box</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Working_with_the_Black_Box.html">Working with the Black Box</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Blackbox-Logging"></a>
+<h1 >Blackbox Logging<a href="#Blackbox-Logging" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Blackbox-Logging">Blackbox Logging</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Specifying-Blackbox-Logging-Properties">Specifying Blackbox Logging Properties</a></li><li><a href="#Automated-Blackbox-Logging">Automated Blackbox Logging</a><ul><li><a href="#Notes">Notes</a></li></ul>
+</li><li><a href="#Creating-a-Log-Order-List-for-a-Blackbox">Creating a Log Order List for a Blackbox</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Blackbox is a data recorder with a circular buffer used to record data at a user-defined rate and length of time. The Blackbox Viewer (bbviewer) displays Blackbox data in a spreadsheet format. For more information, refer to the <a class="wiki-page" href="BBViewer.html">BBViewer</a> documentation.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">You cannot run bbviewer while iTest is running unless the system channel, <code>CRS_CONTROL</code>, is set to 0.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>This document details how to configure Blackbox logging.</p>
+
+
+	<a name="Specifying-Blackbox-Logging-Properties"></a>
+<h2 >Specifying Blackbox Logging Properties<a href="#Specifying-Blackbox-Logging-Properties" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Blackbox settings are defined in the Black Box Settings dialog. This dialog can be opened in Test Manager by right-clicking the <em>Data Logging</em> tree node and selecting <strong>Properties</strong> or in SolutionBuilder's <a class="wiki-page" href="Data_Logging_in_SolutionBuilder.html#Blackbox-Settings">Blackbox Settings</a> editor.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Blackbox Settings</strong></em></span><br /><img src="attachments/download/95859/42_BlackBox_1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /></p>
+
+
+	<p>Use the descriptions provided in the table below to configure the settings.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">iTest must be restarted for changes to the Blackbox properties to take effect.</td>
+		</tr>
+	</table></p>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>Blackbox Settings</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Setting</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Log on limits enable, trigger on limit violation</td>
+			<td> When selected, automated Blackbox logging is enabled. In addition, the <strong>Pre-trigger</strong> and <strong>Post-trigger</strong> fields are enabled. When automated Blackbox logging is enabled, iTest will automatically create a Blackbox log file when a channel limit is exceeded. For more information, refer to the <a class="wiki-page" href="Working_with_the_Black_Box.html#Automated-Blackbox-Logging">Automated Blackbox Logging</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>Pre-trigger</td>
+			<td> The number of seconds to save before the limit violation. This field is enabled when the <strong>Log on limits enable, trigger on limit violation</strong> option is selected. The maximum time is 60 seconds if the rate is 1000 Hz; otherwise, the maximum is 3600 seconds. </td>
+		</tr>
+		<tr>
+			<td>Post-trigger</td>
+			<td> The number of seconds to save after the limit violation. This field is enabled when the <strong>Log on limits enable, trigger on limit violation</strong> option is selected. The maximum time is 60 seconds if the rate is 1000 Hz; otherwise, the maximum is 3600 seconds. </td>
+		</tr>
+		<tr>
+			<td>Log on CRS_CONTROL=1, trigger on CRS_CONTROL=0</td>
+			<td> When selected, Blackbox logging is active when <code>CRS_CONTROL=1</code>. In addition, the <strong>File Size</strong> field is enabled.</td>
+		</tr>
+		<tr>
+			<td> File Size </td>
+			<td> Specify the time in minutes over which the Blackbox collects data. Because the Blackbox is a circular file, it overwrites data at the beginning of the file once this value is exceeded. The default time is 5 minutes. The maximum time is 2 minutes if the rate is 1000 Hz; otherwise, the maximum is 60 minutes. This field is enabled when the <strong>Log on CRS_CONTROL=1, trigger on CRS_CONTROL=0</strong> option is selected.</td>
+		</tr>
+		<tr>
+			<td> Save black box on new project creation</td>
+			<td> When selected, the Blackbox data file is copied from the previous project when a new project is created. A new project is created by sending the <code>DataArchive New</code> mailslot message to create a new data folder (project). iTest then copies the old Blackbox file from the previous project. If limits are disabled and Blackbox was running due to limit violation, then a truncated Blackbox file is saved (rather than cancelation of the Blackbox). </td>
+		</tr>
+		<tr>
+			<td> Rate </td>
+			<td> Specify how often (in Hz) to take a Blackbox log. The higher the number, the more often data is taken. The default is 10 Hz. The list will only include the 1000 Hz option if <code>Support1kHz=TRUE</code> is set in the <em>powertek.ini</em> file.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+	<a name="Automated-Blackbox-Logging"></a>
+<h2 >Automated Blackbox Logging<a href="#Automated-Blackbox-Logging" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The iTest software can automatically create a Blackbox log file when a limit is exceeded. To access this feature, select the <strong>Log on limits enable, trigger on limit violation</strong> option in the Blackbox settings. The <strong>Log on limits enable, trigger on limit violation</strong> option causes a Blackbox file to be generated when the first limit is exceeded.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Log on limits, trigger on limit violation Enabled</strong></em></span><br /><img src="attachments/download/95860/42_BlackBox_2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Notes"></a>
+<h3 >Notes<a href="#Notes" class="wiki-anchor">&para;</a></h3>
+
+
+	<ul>
+	<li>This is a global option. It is not configured on a per-channel basis. </li>
+		<li>Having this option on causes the Blackbox to start immediately when limit checking is enabled, regardless of the value of <code>CRS_CONTROL</code>. </li>
+		<li>Log definitions include a definable time before and after the limit event.</li>
+		<li>The log is automatically stored in ASCII (<em>.dat</em> format) on the PC.</li>
+		<li>The log file is stored in the current project folder of the solution (e.g., <code>DRHoldForReviewDir</code>).</li>
+		<li>The log file name is generated as follows: <em>Blackbox###.dat</em>, where the ### is replaced by an index value. The index value increases up to 20 at which point it wraps back around again. <em>Blackbox.dat</em> is the current, <em>Blackbox01.dat</em> is the previous, etc.</li>
+		<li>A message will be written to the Softpanel to indicate that the Blackbox log is complete along with appropriate log file name.</li>
+		<li>After a log is triggered, it is disabled until re-enabled. This can be re-enabled by using the <a class="wiki-page" href="DataEngine_Mailslot_Messages_List.html#Limits-Deactivate">Limits Deactivate All</a> mailslot message followed by the <a class="wiki-page" href="DataEngine_Mailslot_Messages_List.html#Limits-Activate">Limits Activate All</a> mailslot message.</li>
+		<li>If the logging system is re-enabled before the last file has finished being generated, a new limit will not trigger a Blackbox file until the file is complete. Therefore, the limit that generates the next Blackbox file may not be the first out channel, but the first channel detected after the previous Blackbox file was generated.</li>
+		<li>The Data_Engine mailslot message, <code>GenericMsg StartBlackBox</code>, will manually start Blackbox logging.</li>
+		<li>The Data_Engine mailslot message, <code>GenericMsg SaveBlackBox</code>, will cause the Blackbox data to be saved.</li>
+		<li>The reason Blackbox was created will be noted in the header (e.g., channel X caused the limit violation or manually saved).</li>
+	</ul>
+
+
+	<a name="Creating-a-Log-Order-List-for-a-Blackbox"></a>
+<h2 >Creating a Log Order List for a Blackbox<a href="#Creating-a-Log-Order-List-for-a-Blackbox" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The log order list for the Blackbox is defined in Test Manager's <em>Log Order Lists</em> tree node or SolutionBuilder's Log Order Lists editor. You can create a log order list for a Blackbox by doing the following:</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">When the rate is 1 kHz, the maximum amount of channels allowed in the <em>Blackbox.lol</em> file is 400.</td>
+		</tr>
+	</table>
+
+
+
+
+	<ol>
+	<li>Expand the <em>Data Logging</em> folder in the Test Manager tree bar.</li>
+		<li>Click on the plus sign (+) to the left of the <em>Log Order Lists</em> folder in the tree bar.</li>
+		<li>Double-click on the <strong>blackbox</strong> entry under Log Order Lists to open the Blackbox log order list in the Test Manager Display Area.</li>
+		<li>Alternatively, navigate to the Log Order Lists editor in SolutionBuilder, and select <strong>BLACKBOX</strong> in the left pane. For more information, refer to the <a class="wiki-page" href="Data_Logging_in_SolutionBuilder.html#BlackBoxlol-File">BlackBox.lol File</a> documentation.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Blackbox Log Order List - Test Manager</strong></em></span><br /><img src="attachments/download/95861/42_bb1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Blackbox Log Order List - SolutionBuilder</strong></em></span><br /><img src="attachments/download/117069/SB43_LOLNewChannelRow_blackbox.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Modify database channels in this list by double-clicking the cell and selecting a new channel name.<br />&nbsp;
+<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">You cannot add virtual string or virtual string array channels to the Blackbox log order list.</td>
+		</tr>
+	</table><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Channel Selection</strong></em></span><br /><img src="attachments/download/95862/42_bb2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Right-click in the editor and select <strong>Add to End</strong> or <strong>Insert Before</strong>. <strong>Add to End</strong> inserts a new row after all of the other rows in the table, and <strong>Insert Before</strong> adds a new row above the selected row.</li>
+		<li>Click <strong>File > Save</strong> to save changes to <em>BLACKBOX.LOL</em>.</li>
+	</ol>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">iTest must be restarted for changes to the Blackbox Log Order List to take effect.</td>
+		</tr>
+	</table></p>
+</body>
+</html>

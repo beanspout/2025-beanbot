@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>High-Speed Circular Buffer</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="High-Speed_Circular_Buffer.html">High-Speed Circular Buffer</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="High-Speed-Circular-Buffer"></a>
+<h1 >High-Speed Circular Buffer<a href="#High-Speed-Circular-Buffer" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#High-Speed-Circular-Buffer">High-Speed Circular Buffer</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Adding-Channels-to-the-High-Speed-Circular-Buffer">Adding Channels to the High-Speed Circular Buffer</a></li><li><a href="#Memory-Usage">Memory Usage</a></li><li><a href="#Resetting-the-Circle-Buffer">Resetting the Circle Buffer</a><ul><li><a href="#ResetCircleBuffer">ResetCircleBuffer</a></li></ul>
+</li><li><a href="#Version-Compatibility">Version Compatibility</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest utilizes a high-speed circular buffer that enables the application to store historical data in memory and prevent susceptibility to data loss. The buffer can be configured and selected as the data source in a Chart panel, enabling high rate data to be viewed. This option is active by default via the <code>CIRCLEBUFFER=TRUE</code> <em>powertek.ini</em> setting.</p>
+
+
+	<p>When this feature is enabled, Data_Engine creates the "CircleBuffer" and writes updated values received from vxin_exec to CircleBuffer for all specified channels in <em>VXBuffer.cfg</em>. The extent of a buffer's capability is maximized at 1000 channels at 1000 Hz rate for 60 seconds.</p>
+
+
+	<a name="Adding-Channels-to-the-High-Speed-Circular-Buffer"></a>
+<h2 >Adding Channels to the High-Speed Circular Buffer<a href="#Adding-Channels-to-the-High-Speed-Circular-Buffer" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can add channels to the high-speed circular buffer by modifying the channel contents of the <em>VXBuffer.cfg</em> file used by iTest. This file is located in your $SUPPORTDIR and can be edited using the Plot Buffer editor in Test Manager or SolutionBuilder. Simply add the applicable channel names to the file and save the file prior to exiting. The first line of the file, related to the sample rate in Hz, is reserved for legacy usage.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Example VXBuffer.cfg</strong></em></span><br /><img src="attachments/download/117003/43_VXBufferCFG.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Memory-Usage"></a>
+<h2 >Memory Usage<a href="#Memory-Usage" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The amount of memory, in bytes, allocated for the circle buffer is dependent upon the number of channels to be buffered. The amount is calculated as follows:</p>
+
+
+<pre>((number of channels * 8) + 6) * 60,000</pre>
+
+	<p>Where:</p>
+
+
+	<p>8 bytes = size of a double precision value<br />6 bytes = size of time stamp</p>
+
+
+	<p>60,000 = 1,000 samples per second * 60 seconds</p>
+
+
+	<a name="Resetting-the-Circle-Buffer"></a>
+<h2 >Resetting the Circle Buffer<a href="#Resetting-the-Circle-Buffer" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To reset the data in the circle buffer, a mailslot message is sent to DataEngine.</p>
+
+
+	<a name="ResetCircleBuffer"></a>
+<h3 >ResetCircleBuffer<a href="#ResetCircleBuffer" class="wiki-anchor">&para;</a></h3>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+ResetCircleBuffer &lt;ChannelName&gt;
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>channelname</em>: virtual output channel used to store the result of the mailslot message.
+	<ul>
+	<li>-1 = Data_Engine did not create a circle buffer</li>
+		<li>0 = Invalid circle buffer instance</li>
+		<li>1 = success</li>
+	</ul></p>
+
+
+	<a name="Version-Compatibility"></a>
+<h2 >Version Compatibility<a href="#Version-Compatibility" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest Console plot objects are not capable of using the high-speed circular buffer. Prior to iTest version 3.5, the Test Manager Editor's plot buffer was used to record low-speed data for plotting channels. When a plot was initialized on an iTest Console display, it generated the display with historical data. Because this was not real-time data, it was susceptible to data loss depending upon the CPU load of the GUI PC. The plot buffer <em>VXBuffer.cfg</em> configuration file has been re-purposed in order to provide support for high-speed buffering in AutomationPanel; however, it can also be used to enable the plot buffer for iTest Console displays. By default, this legacy feature is off; to enable it, add the following INI setting to the <em>powertek.ini</em> file and set the value to TRUE.</p>
+
+
+<pre>EnableVXBuffer=TRUE</pre>
+</body>
+</html>

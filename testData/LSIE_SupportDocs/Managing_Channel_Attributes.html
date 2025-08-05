@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Managing Channel Attributes</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Managing_Channel_Attributes.html">Managing Channel Attributes</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Managing-Channel-Attributes"></a>
+<h1 >Managing Channel Attributes<a href="#Managing-Channel-Attributes" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Managing-Channel-Attributes">Managing Channel Attributes</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Channel-Attributes-Editor">Channel Attributes Editor</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Channel Attributes editor is used to mark channels as being available for use in set value tables, step tasks, and circuits. These channels could be used, for example, as a step parameter, a step operand, or both in a Step Condition (EOS). This editor is available in Test Manager and FlexEdit. This document details how to use the editor in Test Manager; refer to the <a class="wiki-page" href="FlexEdit_Editors.html#Channel-Attribute-Editor">FlexEdit Editors</a> documentation for how to use the editor in FlexEdit.</p>
+
+
+	<a name="Channel-Attributes-Editor"></a>
+<h2 >Channel Attributes Editor<a href="#Channel-Attributes-Editor" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>In order for channels to appear in the Channel Attributes editor, the channel's <strong>User Defined1</strong> RDB field must be greater than 1. For more information about this field, refer to its entry in the <a class="wiki-page" href="RDB_Field_Definitions.html">RDB Field Definitions</a> documentation.</p>
+
+
+	<p>In the Channel Attributes editor, you can list additional channels for use, remove channels, show the channel's alias or customer name, and mark the channel as a step parameter and/or step operand. Marking virtual output channels as step parameters and/or step operands allows them to be used in set value tables; refer to the <a class="wiki-page" href="Set_Value_Tables.html">Set Value Tables</a> documentation for more information.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Channel Attributes Editor</strong></em></span><br /><img src="attachments/download/123204/TM44_ChannelAttributeEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Column Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Column</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Channel Name</td>
+			<td> (Read-only) The name of the channel.</td>
+		</tr>
+		<tr>
+			<td>Alias/Customer Name</td>
+			<td> (Read-only) The alias used for the channel or the channel's customer name. If an alias has not been defined for the channel, then the customer or module name will be listed; the customer name takes precedence over the module name. If a customer or module name has not been assigned to the channel, then this field will be empty.</td>
+		</tr>
+		<tr>
+			<td>StepParam</td>
+			<td> When checked, the channel is marked for use as a step parameter.</td>
+		</tr>
+		<tr>
+			<td>StepOp</td>
+			<td> When checked, the channel is marked for use as a step operand.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>The following right-click options are available in the editor:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Insert Before</td>
+			<td> Adds a new row before the highlighted row. Double-click the cell in the <strong>Channel Name</strong> column to launch the Channel Selection dialog to select a channel for use.</td>
+		</tr>
+		<tr>
+			<td>Add to End</td>
+			<td> Adds a new row at the end of the list. Double-click the cell in the <strong>Channel Name</strong> column to launch the Channel Selection dialog to select a channel for use.</td>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td> Deletes the selected row.</td>
+		</tr>
+		<tr>
+			<td>Show Alias/Customer Name</td>
+			<td> Shows the <strong>Alias</strong> or <strong>Customer Name</strong> column.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="FlexEdit_Editors.html#Channel-Attribute-Editor">FlexEdit Editors</a></li>
+		<li><a class="wiki-page" href="Set_Value_Tables.html">Set Value Tables</a></li>
+	</ul>
+</body>
+</html>

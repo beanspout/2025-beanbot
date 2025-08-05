@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Picklists</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Picklists.html">Picklists</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Picklists"></a>
+<h1 >Picklists<a href="#Picklists" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Picklists">Picklists</a><ul><li><a href="#Overview">Overview</a></li></ul>
+</li><li><a href="#Creating-Picklists">Creating Picklists</a></li><li><a href="#Using-Picklists">Using Picklists</a><ul><li><a href="#ADTCombo-Display-Object">ADTCombo Display Object</a></li><li><a href="#Schedule-Columns-and-Headers">Schedule Columns and Headers</a></li><li><a href="#Log-Header-Form-UVL-File">Log Header Form (UVL File)</a></li><li><a href="#Picklist-VCL-Function">Picklist VCL Function</a></li><li><a href="#DataRedStringMap">DataRedStringMap</a></li><li><a href="#FlexEdit">FlexEdit</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Picklists are a simple, but very useful, component in iTest that makes it easier to manage lists of selections for the operator. These lists are used in multiple locations and this section describes how to create and use them.</p>
+
+
+	<p>A picklist is a file that contains a list of values or strings that can be used to populate drop-down fields such as within schedules, schedule headers, log header forms, FlexEdit, and combo box display objects. A picklist contains a list of values that can be paired with accompanying mailslot messages. When a user makes a selection from a picklist, the associated value then gets assigned appropriately. In some cases, a corresponding mailslot message is sent.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Picklist Example</strong></em></span><br /><img src="attachments/download/95863/42_Picklist.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Creating-Picklists"></a>
+<h1 >Creating Picklists<a href="#Creating-Picklists" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>Picklists are managed in Test Manager under the <strong>Presentation > Picklists</strong> tree node. From there, picklists can be added, duplicated, renamed and deleted in the usual way. The picklists editor appears below:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Picklist Editor</strong></em></span><br /><img src="attachments/download/95864/42_picklist1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The columns for the picklist editor are defined in this table:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Picklist Columns</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Column Name</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> Label </td>
+			<td> This is the text displayed for that picklist selection. This is what the operator will see. </td>
+		</tr>
+		<tr>
+			<td> Value </td>
+			<td> When a picklist item is selected, a value is often returned to some location. The location is usually an iTest channel. This column contains the value that is written to the channel when the operator selects the given label. (The value field is optional). </td>
+		</tr>
+		<tr>
+			<td> Message </td>
+			<td> In some cases, selecting a picklist label can also generate a mailslot message. This column defines the message that will automatically be sent when the operator selects this label. (The message field is optional). </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>Created picklists are stored, by default, in the <em>$SUPPORTDIR\Picklist</em> folder as (<em>*.pkl</em>) files.</p>
+
+
+	<a name="Using-Picklists"></a>
+<h1 >Using Picklists<a href="#Using-Picklists" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="ADTCombo-Display-Object"></a>
+<h2 >ADTCombo Display Object<a href="#ADTCombo-Display-Object" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The ADTCombo display object allows you to reference a picklist file as an option. This will present the list of labels on the picklist. When the operator selects an item, the ADTCombo object will do the following:</p>
+
+
+	<ol>
+	<li>Write the value field to the channel specified in the ADTCombo object. </li>
+		<li>Send the mailslot message (if applicable).</li>
+	</ol>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Available Picklists</strong></em></span><br /><img src="attachments/download/95863/42_Picklist.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Schedule-Columns-and-Headers"></a>
+<h2 >Schedule Columns and Headers<a href="#Schedule-Columns-and-Headers" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can use a picklist to provide the operator with a list of options to select from when editing a schedule column or header value. There are two different ways to use the picklist. The first method is to enforce that the operator can only select one of the picklist values, and the second method is to allow the operator to either select a picklist value or manually type in a new value. The two options are:</p>
+
+
+	<ul>
+	<li>User Picklist</li>
+		<li>Editable User Picklist</li>
+	</ul>
+
+
+	<p>When selecting either of these options, you must also enter the name of the picklist to use in that cell and specify how the ScheduleRunner should use the mailslot message column of the picklist. See below:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>User Picklist Option</strong></em></span><br /><img src="attachments/download/95865/42_picklist4.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The available options for sending any mailslot message defined in the picklist are as follows:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Select Picklist Message</strong></em></span><br /><img src="attachments/download/95866/42_picklist5.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Picklist Message Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> Send message when entering the step. </td>
+			<td> Sends the message when the schedule step is started.</td>
+		</tr>
+		<tr>
+			<td> Send message at step time in previous column. </td>
+			<td> Assumes column to the left of the picklist column is numeric; if the value in this column ever matches the accumulated step time for this step, the message is sent.</td>
+		</tr>
+		<tr>
+			<td> Send message at step time left in previous column. </td>
+			<td> Assumes column to the left of the picklist column is numeric; if the value in this column ever matches the step time remaining for this step, the message is sent.</td>
+		</tr>
+		<tr>
+			<td> Send message when there is 1 second left in step. </td>
+			<td> Sends the message when there is 1 second left in the schedule step.</td>
+		</tr>
+		<tr>
+			<td> Do not send message. </td>
+			<td> Does not send the message.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#ebd700;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3740/caution.gif" alt="" /></td>
+			<td style="vertical-align:top;"><b>CAUTION:</b></td>
+			<td style="vertical-align:top;">The mailslot message option is only recognized by schedules that are being run with the RunSchedule VCL command that was introduced in iTest 3.4. Any schedules run by another method will not use the mailslot option.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Log-Header-Form-UVL-File"></a>
+<h2 >Log Header Form (UVL File)<a href="#Log-Header-Form-UVL-File" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>When creating a log header form, you can create a form field that references a picklist file. If you present the form with the $NewForm command, then the form will send each mailslot message as the different labels of the picklist are selected. When the operator saves, the value field will be written to the RDB and the <em>master.ini</em> file. However, when presenting the form with the $FlexEdit command, the mailslot messages are ignored and only the channel and INI file are updated.</p>
+
+
+	<a name="Picklist-VCL-Function"></a>
+<h2 >Picklist VCL Function<a href="#Picklist-VCL-Function" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest has a VCL function available for reading values from picklist files. The function is appropriately called <strong>picklist</strong>.</p>
+
+
+	<p>The syntax is:</p>
+
+
+<pre>
+SET &lt;string chan&gt; picklist(&lt;picklist name&gt; &lt;index&gt;)
+</pre>
+
+	<p>This returns the row data associated with that index for that picklist in Label, Value, and Message form (index starts at 0). Do not include the <em>.pkl</em> extension in the name. Label, value, and message are returned with commas separating the field values. The function returns the string "Undefined" if the picklist file either cannot be found or if the index parameter exceeds the number of rows in the picklist.</p>
+
+
+	<p><strong>EXAMPLE</strong>  (to return the first row):</p>
+
+
+<pre>
+SET vsPick picklist("NewPicklist”,0)
+</pre>
+
+	<p><table>
+		<tr>
+			<td style="background:#ebd700;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3740/caution.gif" alt="" /></td>
+			<td style="vertical-align:top;"><b>CAUTION:</b></td>
+			<td style="vertical-align:top;">Picklists edited while iTestConsole is running are not re-read by the real-time system. Any calls to the picklist VCL function will return the values from when iTestConsole first started.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="DataRedStringMap"></a>
+<h2 >DataRedStringMap<a href="#DataRedStringMap" class="wiki-anchor">&para;</a></h2>
+
+
+	<p><code>DataRedStringMap</code> is an advanced INI option that is used to get string values logged to data files with real-time determinism. In iTest, string channel updates are not done in real-time, therefore they are not deterministic.</p>
+
+
+	<p>Any user that prefers to see a string value in their data logs in addition to the real-time numeric values would use the <code>DataRedStringMap</code> option. This option requires a comma-separated list of channel name/picklist name pairs. The channel name and picklist are separated by a comma and each pair is separated by a semicolon. The channel name is the name of a numeric channel logged to the data file.  The logged numeric value is replaced by the string value in the picklist file that corresponds to a label that matches the logged numeric value.</p>
+
+
+	<p>As an example, consider this INI entry:</p>
+
+
+	<p><code>DataRedStringMap=Chan1, Chan1Map.pkl;Chan2, Chan2.pkl</code></p>
+
+
+	<p>Where <strong>Chan1</strong> is the logged part of a data log, and <em>Chan1Map.pkl</em> has three rows and appears in the file as:</p>
+
+
+<pre>
+1, Option 1
+2, Option 2
+3, Option 3
+</pre>
+
+	<p>When the <strong>Chan1</strong> column of the data log is being written, any numeric value of 1 will be written as "Option 1" instead. Any numeric value of 2 will be written as "Option 2", etc. Numeric values that are outside the range of the picklist file (e.g., greater than 3, less than 1, etc.) will be written as numeric values in the log file.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;"><code>DataRedStringMap</code> does not use the mailslot column of picklists.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="FlexEdit"></a>
+<h2 >FlexEdit<a href="#FlexEdit" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>FlexEdit is used to create operator interfaces for test preparation, allowing you to create workflows for customized testing needs.</p>
+
+
+	<p>The FlexEdit Editor is a Test Manager tool used to perform modifications to the FlexEdit application without manually editing the FlexEdit <em>.XML</em> file. The <strong>FlexEdit Configuration</strong> is nested within the <strong>Presentations</strong> > <strong>Picklist</strong> tree node folders in Test Manager. Here, you are able to add, duplicate, delete, and modify tasks and categories. Further configuration items must be entered by editing the <em>.XML</em> file. For complete details on modifying the <em>.XML</em> file, see the <a class="wiki-page" href="FlexEdit.html">FlexEdit</a> documentation.</p>
+
+
+	<p>FlexEdit allows you to specify a picklist when creating screens for editing <em>.INI</em> files. The <em>.INI</em> editor does not use the mailslot field of the picklist. It shows the label to the operator, and then sets the channel to the value field when the operator saves the editor.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>FlexEdit Picklist</strong></em></span><br /><img src="attachments/download/95867/42_picklist3.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+</body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Python API for iTest</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Automating_iTest_with_Python.html">Automating iTest with Python</a></li>
+<li><a href="Python_API_for_iTest.html">Python API for iTest</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Python-API-for-iTest"></a>
+<h1 >Python API for iTest<a href="#Python-API-for-iTest" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Python-API-for-iTest">Python API for iTest</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Functions">Functions</a><ul><li><a href="#CheckMailslot">CheckMailslot</a></li><li><a href="#CloseMailslot">CloseMailslot</a></li><li><a href="#GetGlobalData">GetGlobalData</a></li><li><a href="#OpenMailslot">OpenMailslot</a></li><li><a href="#RDBGetChannelList">RDBGetChannelList</a></li><li><a href="#RDBGetChannelType">RDBGetChannelType</a></li><li><a href="#RDBGetField">RDBGetField</a></li><li><a href="#RDBGetNumChannels">RDBGetNumChannels</a></li><li><a href="#RDBGetValue">RDBGetValue</a></li><li><a href="#RDBSetValue">RDBSetValue</a></li><li><a href="#RDBSetField">RDBSetField</a></li><li><a href="#SendToMailslot">SendToMailslot</a></li><li><a href="#SetGlobalData">SetGlobalData</a></li><li><a href="#TranslateString">TranslateString</a></li></ul></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can use Python to connect to the memory mapped database (RDB). This document details the API functions used to access this feature. In the event a channel or field name is unknown, all GET functions return <code>Python None</code> and write a message to Softpanel. All SET messages ignore the value and write a message to Softpanel.</p>
+
+
+	<a name="Functions"></a>
+<h2 >Functions<a href="#Functions" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="CheckMailslot"></a>
+<h3 >CheckMailslot<a href="#CheckMailslot" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Returns 0 if no message is read; returns 1 if a message is read.</p>
+
+
+	<p><strong>Syntax</strong>: <pre>CheckMailslot(handle,dictionary)</pre></p>
+
+
+	<p><strong>Parameters</strong>:</p>
+
+
+	<ul>
+	<li><em>handle</em>: The handle of the mailslot to be checked. It is returned from the call to OpenMailslot.</li>
+		<li><em>dictionary</em>: The Python dictionary object ( { } ). The field "sender" is set to the name of the mailslot that sent the message. The message field contains the message to be sent.</li>
+	</ul>
+
+
+	<p><strong>Example:</strong></p>
+
+
+<pre>
+Handle = OpenMailslot(“\\\\.\\mailslot\\MyMailslot”)
+Success = CheckMailslot(Handle, Ret)
+If (1 = Success):
+                print (“Msg=”, Ret[“msg”])
+                print(“Sender=”, Ret[“sender”])
+</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="CloseMailslot"></a>
+<h3 >CloseMailslot<a href="#CloseMailslot" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Closes mailslot.</p>
+
+
+	<p><strong>Syntax</strong>: <pre>CloseMailslot(handle)</pre></p>
+
+
+	<p><strong>Parameters</strong>:</p>
+
+
+	<ul>
+	<li><em>handle</em>: The handle of the mailslot that is to be closed. It is returned from the call to OpenMailslot.</li>
+	</ul>
+
+
+	<p><strong>Example:</strong> <br /><pre>CloseMailslot(iView)</pre></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="GetGlobalData"></a>
+<h3 >GetGlobalData<a href="#GetGlobalData" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Returns a stored key from the current PythonDriver session.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>data GetGlobalData(key)</pre>
+
+	<p><strong>Parameters</strong>:</p>
+
+
+	<ul>
+	<li><em>key</em>: The name of the key to be returned.</li>
+	</ul>
+
+
+	<p><strong>Example:</strong></p>
+
+
+<pre>
+Value = GetGlobalData(“MyKey”)
+print(“MyKey value =”, Value)
+</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="OpenMailslot"></a>
+<h3 >OpenMailslot<a href="#OpenMailslot" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Returns a mailslot handle object that is used for CheckMailslot and CloseMailslot.</p>
+
+
+	<p><strong>Syntax</strong>: <pre>OpenMailslot(name,timeout)</pre></p>
+
+
+	<p><strong>Parameters</strong>:</p>
+
+
+	<ul>
+	<li><em>name</em>: The name of the mailslot.</li>
+		<li><em>timeout</em>: The timeout value (in milliseconds). -1 = wait; 0 = return immediately after checking for a message.</li>
+	</ul>
+
+
+	<p><strong>Example:</strong></p>
+
+
+<pre> OpenMailslot(Softpanel,1) </pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="RDBGetChannelList"></a>
+<h3 >RDBGetChannelList<a href="#RDBGetChannelList" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Gets all channel names in the RDB as a Python list.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>channelnames=RDBGetChannelList()</pre>
+
+	<p><strong>Example:</strong></p>
+
+
+<pre>
+ChanList = RDBGetChannelList()
+for Chan in ChanList:
+                print(Chan)
+</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="RDBGetChannelType"></a>
+<h3 >RDBGetChannelType<a href="#RDBGetChannelType" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Gets the channel type as a string. This function returns "unknown" for channels that are not located in the RDB.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>channeltype=RDBGetChannelType(channelname)</pre>
+
+	<p><strong>Parameters</strong>:</p>
+
+
+	<ul>
+	<li><em>channelname</em>: The name of the channel to be returned.</li>
+	</ul>
+
+
+	<p><strong>Example:</strong><br /><pre>stringValue= RDBGetChannelType('vsSysID')</pre></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="RDBGetField"></a>
+<h3 >RDBGetField<a href="#RDBGetField" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Gets a given field of a given channel in the RDB.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>Value=RDBGetField(channelname, fieldname)</pre>
+
+	<p><strong>Parameters:</strong></p>
+
+
+	<ul>
+	<li><em>channelname</em>: The name of the channel associated with the field. </li>
+		<li><em>fieldname</em>: The name of the field to be returned.</li>
+	</ul>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>stringValue= RDBGetField('vsSysID', 'String Value')</pre><br /><pre>Value= RDBGetField(Cntr2, 'DEU')</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="RDBGetNumChannels"></a>
+<h3 >RDBGetNumChannels<a href="#RDBGetNumChannels" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Gets the number of channels located in the RDB. Returns a number indicating the number of channels in the currently loaded RDB.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>nChannels=RDBGetNumChannels()</pre>
+
+	<p><strong>Example:</strong><br /><pre>
+print(“Number of channels = “, NumChannels)
+</pre></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="RDBGetValue"></a>
+<h3 >RDBGetValue<a href="#RDBGetValue" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Gets the value of a channel located in the RDB. It returns a string value for virtual strings, and for all other types, it returns DEU. With an iTest 3.8 patch, this function was extended to cover Virtual Output Arrays and Virtual String Arrays, where the channel is identified using the syntax channelname[Index].</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>Value=RDBGetValue(channelname)</pre>
+
+	<p><strong>Parameters:</strong></p>
+
+
+	<ul>
+	<li><em>channelname</em>: The name of the channel to return a value for.</li>
+	</ul>
+
+
+	<p><strong>Example:</strong></p>
+
+
+<pre>stringValue= RDBGetValue('vsSysID')</pre><br /><pre>Value=RDBGetValue(Cntr2)</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="RDBSetValue"></a>
+<h3 >RDBSetValue<a href="#RDBSetValue" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This function sets the value of a channel. In the case of a "Virtual String", values are written as string values. In the case of "Virtual Output",  values are written to "Pending DEU". Writing to other types is not permitted. The function does cover Virtual Output Arrays and Virtual String Arrays, where the channel is identified using the syntax channelname[Index].</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>RDBSetValue(channelname, value)</pre>
+
+	<p><strong>Parameters:</strong></p>
+
+
+	<ul>
+	<li><em>channelname</em>: The name of the channel to be set. </li>
+		<li><em>value</em>: The value to set the channel to.</li>
+	</ul>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>RDBSetValue('Cntr2', 22), RDBSetValue('vsSysID', 'MySystem')</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="RDBSetField"></a>
+<h3 >RDBSetField<a href="#RDBSetField" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sets a given field of a given channel in the RDB.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>RDBSetField(channelname, fieldname, value)</pre>
+
+	<p><strong>Parameters:</strong></p>
+
+
+	<ul>
+	<li><em>channelname</em>: The channel name associated with the field to be set.</li>
+		<li><em>fieldname</em>: The name of the field to be set.</li>
+		<li><em>value</em>: The value to set the field to.</li>
+	</ul>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>RDBSetField('vsSysID', 'String Value'. 'MySystem')</pre><br /><pre>RDBSetField(Cntr2, 'Pending DEU', 33)</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="SendToMailslot"></a>
+<h3 >SendToMailslot<a href="#SendToMailslot" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This function sends a message to a mailslot server.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>SendToMailslot(target,message)</pre>
+
+	<p><strong>Parameters:</strong></p>
+
+
+	<ul>
+	<li><em>target</em>: The target mailslot server. </li>
+		<li><em>message</em>: The message to be sent.</li>
+	</ul>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>SendToMailslot('\\\\.\\mailslot\\Softpanel', 'My Message')</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="SetGlobalData"></a>
+<h3 >SetGlobalData<a href="#SetGlobalData" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This function persistently stores any python type with a key in the current PythonDriver session.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>SetGlobalData(key, value)</pre>
+
+	<p><strong>Parameters:</strong></p>
+
+
+	<ul>
+	<li><em>key</em>: Must be an immutable type (i.e., string or number).</li>
+		<li><em>value</em>: Can be any Python predefined object (string, number, etc.) or a user-defined object.</li>
+	</ul>
+
+
+	<p><strong>Example:</strong><br /><pre>
+MyValue = 123
+SetGlobalData(“MyKey”, MyValue)
+</pre></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="TranslateString"></a>
+<h3 >TranslateString<a href="#TranslateString" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This function performs macro substitution using values defined in string tables in the <em>StringTables</em> folder of the support directory.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>TranslateString(text)</pre>
+
+	<p><strong>Parameters</strong>:</p>
+
+
+	<ul>
+	<li><em>text</em>: String containing the text on which to perform the macro substitution. Translation macros should be enclosed in curly braces.</li>
+	</ul>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>localized = TranslateString('{TRANSLATESTR1}')</pre>
+
+	<p>For more information on string table translation, refer to the <a class="wiki-page" href="ITest_Language_File.html">iTest Language File</a> documentation.</p>
+</body>
+</html>

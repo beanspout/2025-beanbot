@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>InstallRunner</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="InstallRunner.html">InstallRunner</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="InstallRunner"></a>
+<h1 >InstallRunner<a href="#InstallRunner" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#InstallRunner">InstallRunner</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Identifying-Outdated-Software">Identifying Outdated Software</a></li><li><a href="#Command-Line-Arguments">Command-Line Arguments</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The InstallRunner tool, available from LabAgent, acts as a standalone tool for running installer based patches when auto-patching is triggered on the test station. Once it is determined the running software is outdated on the test station, the InstallRunner tool will download and run any applicable installer files in order to update the running software. This process may take several minutes to complete.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>InstallRunner - In-Progress</strong></em></span><br /><img src="attachments/download/131541/LC39_InstallRunnerProgressWindow.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Identifying-Outdated-Software"></a>
+<h2 >Identifying Outdated Software<a href="#Identifying-Outdated-Software" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>InstallRunner will check for the values of the following <em>config.ini</em> options to determine if the running software is outdated: <code>TargetPatchVerDAC</code> and <code>TargetPatchVerLabAgent</code>. These settings contain the targeted iTest and LabAgent versions recommended for the test system to be running.</p>
+
+
+	<p>If the target version is greater than the local version, then the target installer file will be downloaded and ran by InstallRunner. The target installer files (e.g., <em>iTest44Setup.exe</em>, <em>LabAgentSetup.exe</em>) are downloaded from the specified folder in the <code>InstallerPatchPath</code> <em>config.ini</em> setting. Any downloaded installer files will be stored in the <em>$EXECUTEDIR\InstallerPatches</em> folder until installation is complete.</p>
+
+
+	<a name="Command-Line-Arguments"></a>
+<h2 >Command-Line Arguments<a href="#Command-Line-Arguments" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following command-line downloads any available installer patches from $InstallerPatchPath, then launches a child process to install them:</p>
+
+
+	<p><ins><strong>Syntax:</strong></ins><br /><pre>
+InstallRunner.exe
+</pre></p>
+
+
+	<p>The following command-line runs the downloaded installers in silent mode:</p>
+
+
+	<p><ins><strong>Syntax:</strong></ins><br /><pre>
+InstallRunner.exe /install &lt;filenames&gt;
+</pre></p>
+
+
+	<p><ins><strong>Parameters:</strong></ins></p>
+
+
+	<ul>
+	<li><em>&lt;filenames&gt;:</em> A comma-separated list of installer files to run in silent mode. This list is composed of the available installer files located in the <em>$EXECUTEDIR\InstallerPatches</em> folder.</li>
+	</ul>
+
+
+	<p>The following command-line can be used to quickly determine if installer patches are available:</p>
+
+
+	<p><ins><strong>Syntax:</strong></ins><br /><pre>
+InstallRunner.exe /checkforpatches
+</pre></p>
+
+
+	<p>This command-line will return either a value of 0 or 1. A value of 0 indicates that there are no available installer patches. A value of 1 indicates that there are available installer patches.</p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Auto-patching.html">Auto-Patching</a></li>
+		<li><a class="wiki-page" href="ConfigINI_Options.html">Config.ini Options</a></li>
+	</ul>
+</body>
+</html>

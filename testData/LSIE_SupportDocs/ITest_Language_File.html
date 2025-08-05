@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ITest Language File</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="ITest_Language_File.html">ITest Language File</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="iTest-Language-File"></a>
+<h1 >iTest Language File<a href="#iTest-Language-File" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#iTest-Language-File">iTest Language File</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Languages">Languages</a></li><li><a href="#String-Tables">String Tables</a></li><li><a href="#Using-String-Table-Macros">Using String Table Macros</a><ul><li><a href="#Special-Rules-and-Exceptions">Special Rules and Exceptions</a><ul><li><a href="#Linefeed-Character-Support">Linefeed Character Support</a></li></ul></li></ul></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The GUI language can be changed via a change in the <em>config.ini</em> file located in $SYSTEMDIR. Use the <code>LANGID</code> setting to change the current language used to display all iTest Windows programs.</p>
+
+
+	<p>To set the GUI to Japanese, use the following:</p>
+
+
+<pre>
+LANGID=1041
+</pre>
+
+	<p>English will be used if it is any other value or if it is missing. In the future, other translations may be added.</p>
+
+
+	<p>A list of all language IDs can be found at <a class="external" href="http://msdn.microsoft.com/en-us/library/ms912047">http://msdn.microsoft.com/en-us/library/ms912047</a>.</p>
+
+
+	<p>iTest displays have always had the ability to have local language for channel names on display objects, provided the user follows the steps below:</p>
+
+
+	<ol>
+	<li>Set the display label field for each relevant object to "Alias" in the following property page:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Label Field Set to Alias</strong></em></span><br /><img src="attachments/download/96332/42_displayprops.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Load a different external Alias file based on language.</li>
+	</ol>
+
+
+	<p>There are many other descriptive strings which show up on display objects which are not channel names and can also be localizable. These include the following display object attributes:</p>
+
+
+	<ul>
+	<li>ADTIndicator - String fields</li>
+		<li>ADTButton - On Text, Off Text and Tooltip text</li>
+		<li>ADTButton - Mailslot messages</li>
+		<li>ADTCombo - Picklist file selection</li>
+		<li>ADTStripchart - Title and Subtitle</li>
+		<li>ADTTitle - Title text</li>
+		<li>ADTChartPlus - Axes labels</li>
+	</ul>
+
+
+	<p>In order to make translation possible for displays and possibly other iTest elements in the future, iTest requires a couple of elements - String Tables and languages.</p>
+
+
+	<a name="Languages"></a>
+<h2 >Languages<a href="#Languages" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest can have any number of languages configured. Currently, the executables and OCX files are only supported in English and Japanese. Therefore, if a language is selected that is not one of those, the executables and OCX files will be in English. However, the iTest displays will be able to support the local language if the translation has been done for that language.</p>
+
+
+	<p>The language file is an XML file in the root folder of iTest - <em>Languages.xml</em>. iTest ships with two language options - English and Japanese.</p>
+
+
+	<p>Languages.XML</p>
+
+
+<pre><code class="xml syntaxhl" data-language="xml"><span class="nt">&lt;languages&gt;</span>
+  <span class="nt">&lt;language</span> <span class="nt">&gt;</span>
+    <span class="nt">&lt;localeid&gt;</span>1041<span class="nt">&lt;/localeid&gt;</span>
+    <span class="nt">&lt;label&gt;</span>Japanese<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;/language&gt;</span>
+  <span class="nt">&lt;language&gt;</span>
+    <span class="nt">&lt;localeid&gt;</span>1033<span class="nt">&lt;/localeid&gt;</span>
+    <span class="nt">&lt;label&gt;</span>English<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;/language&gt;</span>
+<span class="nt">&lt;/languages&gt;</span>
+</code><br /></pre>
+
+	<p>The primary purpose of this file is to provide a label to use when languages are presented or edited in other iTest GUIs (e.g., SystemConfig). The label can only be ASCII characters.</p>
+
+
+	<p>Possible locale IDs can be found at <a class="external" href="http://msdn.microsoft.com/en-us/library/ms912047">http://msdn.microsoft.com/en-us/library/ms912047</a>.</p>
+
+
+	<a name="String-Tables"></a>
+<h2 >String Tables<a href="#String-Tables" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>A set of string tables is supported for every solution and module. The files are located under the <em>StringTables</em> folder and will be named with a <em>.txt</em> extension. If a string table is included with a module, it is recommended that the filename includes the module ID. The file is stored as UTF-8 with the appropriate byte order mark. If the file is not stored as UTF-8 with BOM, it cannot be processed.</p>
+
+
+	<p>The syntax of the file is comma separated. Lines appear as follows:</p>
+
+
+<blockquote>
+
+	<p>macroname,status,langid1=string,langid2=string...langidn=string</p>
+
+
+</blockquote>
+
+	<p>Where, macroname is an ASCII string that represents the string that is to be substituted with the local language version. Note that this cannot be a localized string and should follow channel naming conventions.</p>
+
+
+	<p>Langid can be either the language string or the numeric ID. See the following example:<br /><pre>
+DisSlider,t,1033="Disable Slider",Japanese="スライダ無効" 
+SelChan,t,English="Select Channel",1041="チャンネル選択" 
+</pre></p>
+
+
+	<p>The <strong>Status</strong> field is meant to be a single character that assists in tracking the manual translation of the string table. Typically, a value of 'n' indicates not translated or new, 's' indicates don't translate, and a value of "t" indicates that it has been translated.</p>
+
+
+	<p>Test Manager does not have an editor for the string table file. However, Test Manager does create the <em>StringTables</em> folder, and a blank file with a header in it for all modules and the system if it detects that the files are not there.</p>
+
+
+	<a name="Using-String-Table-Macros"></a>
+<h2 >Using String Table Macros<a href="#Using-String-Table-Macros" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following display objects can all reference the string table macros to convert a string to a local language:</p>
+
+
+	<ul>
+	<li>ADTIndicator - String fields</li>
+		<li>ADTButton - On Text*, Off Text* and Tooltip text</li>
+		<li>ADTButton - Mailslot messages</li>
+		<li>ADTCombo - Picklist file selection</li>
+		<li>ADTStripchart - Title and Subtitle</li>
+		<li>ADTTitle - Title text*</li>
+		<li>ADTChartPlus - Axes labels<br /><span style="font-size:0.80em;">*: special rules apply</span></li>
+	</ul>
+
+
+	<p>The macro should be referenced by enclosing it in curly braces and is case-sensitive. So, a string table macro called "MyMacro" would be referenced as <em>{MyMacro}</em> in any of the text fields above. At runtime, the display system will replace the string table macros with the local version of the given macro when the display re-draws. It will follow these rules:</p>
+
+
+	<ul>
+	<li>If the macro is not found, it will not be translated and will be left in the original string as <em>{MyMacro}</em>. </li>
+		<li>If the macro does not have an ID that corresponds to the local language, the English (id=1033) string will be used if it exists. </li>
+		<li>In addition to displays, language macros can also be used in mailslot messages sent using the MESSAGE VCL command or a sequence's message or VCL block. Simply include the macro and enclosed in braces in your message; these will be substituted with the local language version of the string when testbuilder runs. </li>
+		<li>Macros may be used in Python script via the <a class="wiki-page" href="Python_API_for_iTest.html#TranslateString">TranslateString Function</a>.</li>
+		<li>Macros can be used for category names and task names in any FlexEdit XML file. The following is from a <em>FlexEdit.xml</em> file and shows string macros being used for both category and task name:</li>
+	</ul>
+
+
+<pre>
+    &lt;category&gt;
+    &lt;name&gt;{flex_gensettings}&lt;/name&gt;
+    &lt;icon&gt;$SYSTEMDIR\Art\FlexEditIcons\PreTestConfig.ico&lt;/icon&gt;
+    &lt;tasks&gt;
+      &lt;task&gt;
+        &lt;name&gt;{flex_testdef}&lt;/name&gt;
+        &lt;icon&gt;$SYSTEMDIR\Art\FlexEditIcons\TestDefinition.ico&lt;/icon&gt;
+        &lt;file&gt;$SUPPORTDIR\Master.ini&lt;/file&gt;
+        &lt;actions&gt;
+        &lt;/actions&gt;
+    &lt;/task&gt;
+</pre>
+
+	<a name="Special-Rules-and-Exceptions"></a>
+<h3 >Special Rules and Exceptions<a href="#Special-Rules-and-Exceptions" class="wiki-anchor">&para;</a></h3>
+
+
+	<a name="Linefeed-Character-Support"></a>
+<h4 >Linefeed Character Support<a href="#Linefeed-Character-Support" class="wiki-anchor">&para;</a></h4>
+
+
+	<ul>
+	<li>Linefeed characters "/r/n" are supported in the string table for use with some controls. These characters will be replaced with real carriage return/line feed.
+	<ul>
+	<li>ADTButton: On Text and Off Text fields.</li>
+		<li>ADTTitle: Title Text field. Note that an ADTTitle control can still only use multi-line text blocks with top-aligned titles.</li>
+	</ul></li>
+	</ul>
+</body>
+</html>

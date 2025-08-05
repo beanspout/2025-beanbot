@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>NPClientexe</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="NPClientexe.html">NPClientexe</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="NPClientexe"></a>
+<h1 >NPClientexe<a href="#NPClientexe" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>This is a network performance diagnostic tool to help isolate network issues.<br />Usage:<br />NPClient &lt;ipaddress&gt; &lt;send size&gt; &lt;receive size&gt; [FAST]</p>
+
+
+	<p>The FAST option does not run on a timer, but spins to maximize throughput (rate will have more jitter).<br />Do not run this program while running iTest.<br />Example:<br /> NPClient 10.102.226.152 32 32</p>
+
+
+	<p>If the update rate is not stable:</p>
+
+
+	<p>1. Try the wiggle test on each network connection to isolate poor connections<br />2. Try removing all other devices on the network except the real-time PC and the GUI PC<br />3. Try a direct connection without a switch</p>
+
+
+	<p>Example:<br />C:\ADT\iTest4.5\Execute>NPClient.exe 10.102.226.152 32 32<br />Connect Tx:32 bytes Rx:32<br />Server says:OK<br />Send:32.032 k/sec Receive:32.032 k/sec Rate:1001.0 Hz (1001.0 max,988.0 min) MaxLatency:0.016s Errors:0</p>
+</body>
+</html>

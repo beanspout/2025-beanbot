@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>DspDrv exe</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="DspDrv_exe.html">DspDrv exe</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="DspDrvexe"></a>
+<h1 >DspDrv.exe<a href="#DspDrvexe" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#DspDrvexe">DspDrv.exe</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Using-the-powertekini-Option">Using the powertek.ini Option</a></li><li><a href="#Using-Mailslot-Messages">Using Mailslot Messages</a><ul><li><a href="#CUSTOMDISPLAY">$CUSTOMDISPLAY</a></li><li><a href="#RIGHTDISPLAY">$RIGHTDISPLAY</a></li></ul>
+</li><li><a href="#Using-the-DspDrvexe-Mailslot">Using the DspDrv.exe Mailslot</a><ul><li><a href="#Messages">Messages</a><ul><li><a href="#MINIMIZE">MINIMIZE</a></li><li><a href="#MAXIMIZE">MAXIMIZE</a></li><li><a href="#RESTORE">RESTORE</a></li><li><a href="#DefaultLocation">DefaultLocation</a></li><li><a href="#ShowWindow">ShowWindow</a></li><li><a href="#CLOSE">CLOSE</a></li><li><a href="#PLOTSTART">$PLOTSTART</a></li><li><a href="#PLOTSTOP">$PLOTSTOP</a></li><li><a href="#PLOTCLEAR">$PLOTCLEAR</a></li><li><a href="#PRINT">$PRINT</a></li><li><a href="#REFRESH">$REFRESH</a></li><li><a href="#SETARRAYINDEX-ltindexgt">$SETARRAYINDEX &lt;index&gt;</a></li></ul>
+</li></ul>
+</li></ul>
+</li><li><a href="#Related-Topics">Related Topics</a></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p><em>DspDrv.exe</em> is an application that enables you to open iTest Console displays, which is useful for touch screen devices. <em>DspDrv.exe</em> can open dialog, standard, and right displays independently of iTest Console when you launch <em>iTest.exe</em> with the <code>GUI</code> <em>powertek.ini</em> setting. It can also be used to open custom and right displays with Softpanel mailslot messages.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">This application runs in the background; there is no interface.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Using-the-powertekini-Option"></a>
+<h2 >Using the <em><strong>powertek.ini</strong></em> Option<a href="#Using-the-powertekini-Option" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>When <em>iTest.exe</em> is launched, the <code>GUI</code> <em>powertek.ini</em> option opens a dialog, standard, or right display by invoking <em>DspDrv.exe</em>.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+	<p>In this example,  <em>DspDrv.exe</em> will launch the Hsdl1 custom display when <em>iTest.exe</em> is launched.</p>
+
+
+<pre>GUI=dspdrv.exe $SUPPORTDIR\EXECUTE\CUSTOM\Hsdl1.dsp</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="Using-Mailslot-Messages"></a>
+<h2 >Using Mailslot Messages<a href="#Using-Mailslot-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="CUSTOMDISPLAY"></a>
+<h3 >$CUSTOMDISPLAY<a href="#CUSTOMDISPLAY" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <code>$CUSTOMDISPLAY</code> Softpanel mailslot message opens a custom display by invoking <em>DspDrv.exe</em>.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+	<p>In this example, <em>DspDrv.exe</em> will open the EngineSettings custom display (<em>EngineSettings.dsp</em>).</p>
+
+
+<pre>$CUSTOMDISPLAY;EngineSettings</pre>
+
+	<a name="RIGHTDISPLAY"></a>
+<h3 >$RIGHTDISPLAY<a href="#RIGHTDISPLAY" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <code>$RIGHTDISPLAY</code> Softpanel mailslot message opens a right display by invoking <em>DspDrv.exe</em>.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+	<p>In this example, <em>DspDrv.exe</em> will open the RightSettings right display (<em>RightSettings.dsp</em>).</p>
+
+
+<pre>$RIGHTDISPLAY;RightSettings</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="Using-the-DspDrvexe-Mailslot"></a>
+<h2 >Using the <strong><em>DspDrv.exe</em></strong> Mailslot<a href="#Using-the-DspDrvexe-Mailslot" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>When you use <em>DspDrv.exe</em>, a mailslot is opened with the AutomationPanel layout or iTest Console display name. These mailslots can be used to send messages, such as <code>MINIMIZE</code>, <code>MAXIMIZE</code>, and <code>CLOSE</code>. Refer to the <a class="wiki-page" href="#Messages">Messages</a> section below for a complete list of supported mailslot messages.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+	<p>\\.\mailslot\&lt;DisplayName&gt;</p>
+
+
+	<p><strong>Where</strong>:</p>
+
+
+	<p>&lt;DisplayName&gt; refers to the name of the open iTest Console display.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>\\.\mailslot\DataLogViewerLayout</pre>
+
+	<a name="Messages"></a>
+<h3 >Messages<a href="#Messages" class="wiki-anchor">&para;</a></h3>
+
+
+	<a name="MINIMIZE"></a>
+<h4 >MINIMIZE<a href="#MINIMIZE" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Minimizes the display. This message is case sensitive.</p>
+
+
+	<a name="MAXIMIZE"></a>
+<h4 >MAXIMIZE<a href="#MAXIMIZE" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Maximizes the display to the size of the screen.</p>
+
+
+	<a name="RESTORE"></a>
+<h4 >RESTORE<a href="#RESTORE" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Restores the display to its previous size and location if it is currently minimized or maximized. This message is case sensitive.</p>
+
+
+	<a name="DefaultLocation"></a>
+<h4 >DefaultLocation<a href="#DefaultLocation" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Returns a display to the size and location that were saved in the display file when it was created. Also Unminimizes or unmaximizes it. This message is case sensitive.</p>
+
+
+	<a name="ShowWindow"></a>
+<h4 >ShowWindow<a href="#ShowWindow" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Moves the display above any other displays or windows that may be on top of it. This message is case sensitive.</p>
+
+
+	<a name="CLOSE"></a>
+<h4 >CLOSE<a href="#CLOSE" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Closes the display.</p>
+
+
+	<a name="PLOTSTART"></a>
+<h4 >$PLOTSTART<a href="#PLOTSTART" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Starts adding data to a plot. This affects all plots on a display.</p>
+
+
+	<a name="PLOTSTOP"></a>
+<h4 >$PLOTSTOP<a href="#PLOTSTOP" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Stops adding data to a plot. This affects all plots on a display</p>
+
+
+	<a name="PLOTCLEAR"></a>
+<h4 >$PLOTCLEAR<a href="#PLOTCLEAR" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Removes any existing data currently displayed in a plot (stopped or not stopped). This affects all plots on a display.</p>
+
+
+	<a name="PRINT"></a>
+<h4 >$PRINT<a href="#PRINT" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Displays the print dialog to print the display.</p>
+
+
+	<a name="REFRESH"></a>
+<h4 >$REFRESH<a href="#REFRESH" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Refreshes the display by rereading configurations from the real-time database. This should be used after reloading AKA files if a display is using customer names instead of channel names.</p>
+
+
+	<a name="SETARRAYINDEX-ltindexgt"></a>
+<h4 >$SETARRAYINDEX &lt;index&gt;<a href="#SETARRAYINDEX-ltindexgt" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Specifies what index to use to display array channels. This can be used if no index was specified with the array channel when the display was created. The value for &lt;index&gt; should be a number.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$SETARRAYINDEX 1
+$SETARRAYINDEX 4</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="Related-Topics"></a>
+<h1 >Related Topics<a href="#Related-Topics" class="wiki-anchor">&para;</a></h1>
+
+
+	<p><a class="wiki-page" href="ITest_exe.html">iTest.exe</a><br /><a class="wiki-page" href="Standard_Softpanel_Messages_List.html">Softpanel Mailslot Messages</a></p>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Managing the TopBar</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Managing_the_TopBar.html">Managing the TopBar</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Managing-the-TopBar"></a>
+<h1 >Managing the TopBar<a href="#Managing-the-TopBar" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Managing-the-TopBar">Managing the TopBar</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Using-the-TopBar-Editor">Using the TopBar Editor</a></li><li><a href="#Adding-New-TopBar-Items">Adding New TopBar Items</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>AutomationPanel contains a configurable toolbar at the top of the display, located below the main menu. This TopBar enables you to display items regardless of the arrangement of layouts, panels, or toolbars. These are useful because they can provide shortcuts to perform common tasks, launch often used tools, or provide small informational displays.</p>
+
+
+	<p>The TopBar can display three types of items:</p>
+
+
+	<ul>
+	<li><ins><strong>Indicators:</strong></ins> These are used to show the value of a selected iTest channel.</li>
+		<li><ins><strong>Messages:</strong></ins> These are used to send mailslot messages, and therefore can be used for a wide variety of actions. Each message contains the mailslot message, an icon, a label, and a tooltip.</li>
+		<li><ins><strong>Tickers:</strong></ins> These are used to display a repeating ticker message that can include channel values; the message is represented by scrolling text from right to left. The TopBar supports multiple tickers at one time.</li>
+	</ul>
+
+
+	<p><a name="Using-the-TopBar-Editor"></a>
+<h2 >Using the TopBar Editor<a href="#Using-the-TopBar-Editor" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The TopBar editor is divided into two sections: the list of TopBar items and the editing area. This editor can be accessed by selecting <strong>Displays > TopBar</strong> from SolutionBuilder's main menu.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>TopBar Editor</strong></em></span><br /><img src="attachments/download/117295/43_TopBarEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>The following right-click options are available:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Add</td>
+			<td> Adds a new message, indicator, or ticker item to the TopBar. For more information, refer to the <a class="wiki-page" href="Managing_the_TopBar.html#Adding-New-TopBar-Items">Adding New TopBar Items</a> section.</td>
+		</tr>
+		<tr>
+			<td>Remove</td>
+			<td> Removes the selected TopBar item.</td>
+		</tr>
+		<tr>
+			<td>Duplicate</td>
+			<td> Duplicates the selected TopBar item.</td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td> Removes the selected TopBar item and copies it to the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td> Pastes the copied TopBar item.</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td> Undoes the last action.</td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td> Redoes the last undone action.</td>
+		</tr>
+		<tr>
+			<td>Show/Hide Module ID</td>
+			<td> Shows/hides the module ID column.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Adding-New-TopBar-Items"></a>
+<h2 >Adding New TopBar Items<a href="#Adding-New-TopBar-Items" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To add new TopBar items, right-click in the list of TopBar items, and select <strong>Add</strong>. You can add a new message, indicator, or ticker item. These items and their properties are detailed in the tables below.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Message Item</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Image</td>
+			<td> The image to display for the message item.</td>
+		</tr>
+		<tr>
+			<td>Message</td>
+			<td> The mailslot message to send when this item is clicked in AutomationPanel. For more information about configuring mailslot messages, refer to the <a class="wiki-page" href="MessagesEditor.html">MessagesEditor</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>Text</td>
+			<td> The label for the message item.</td>
+		</tr>
+		<tr>
+			<td>ToolTip</td>
+			<td> The tooltip for the message item.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Indicator Item</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Name</td>
+			<td> The channel. This channel's name and value is displayed in the TopBar.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Ticker Item</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Name</td>
+			<td> The ticker message, which can include channel values. This message displays as scrolling text from right to left.<br />Listing just a channel name will result in a ticker message of the channel's value. To include additional text or use multiple channels, the channels must be surrounded by %&lt; &gt;%, e.g., Error = %&lt;voDmo1Error&gt;%.</td>
+		</tr>
+		<tr>
+			<td>Width</td>
+			<td> The width of the ticker item.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p>The image below is an example of a configured TopBar:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Configured TopBar</strong></em></span><br /><img src="attachments/download/117298/42_TopBarImage.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p></p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="AutomationPanel_Operators_Guide.html#Configuring-the-TopBar">Configuring the TopBar in AutomationPanel</a></li>
+	</ul>
+</body>
+</html>

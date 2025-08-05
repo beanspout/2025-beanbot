@@ -1,0 +1,1040 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ScheduleRunner</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="ScheduleRunner.html">ScheduleRunner</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="ScheduleRunner"></a>
+<h1 >ScheduleRunner<a href="#ScheduleRunner" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#ScheduleRunner">ScheduleRunner</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#VCL-Commands">VCL Commands</a><ul><li><a href="#PrepareSchedule">PrepareSchedule</a></li><li><a href="#RunSchedule">RunSchedule</a><ul><li><a href="#Step-Hooks">Step Hooks</a></li></ul>
+</li><li><a href="#Other-Schedule-Control-Commands">Other Schedule Control Commands</a></li></ul>
+</li><li><a href="#System-Channels-Set-By-ScheduleRunner">System Channels Set By ScheduleRunner</a></li><li><a href="#ScheduleRunner-sc2-Special-Column-Types-Parameters-and-Validation">ScheduleRunner .sc2 Special Column Types, Parameters, and Validation</a></li><li><a href="#List-Pages">List Pages</a><ul><li><a href="#Parameter-Types">Parameter Types</a></li><li><a href="#Parameters">Parameters</a></li><li><a href="#Grayed-Parameters">Grayed Parameters</a></li></ul>
+</li><li><a href="#Matrix-Pages">Matrix Pages</a><ul><li><a href="#Column-Types">Column Types</a></li><li><a href="#Step-Tasks">Step Tasks</a></li><li><a href="#Jump-Counters">Jump Counters</a></li></ul>
+</li></ul>
+</li><li><a href="#Messages">Messages</a></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>This document is to be used as reference material. For creating schedules using ScheduleRunner, refer to the <a class="wiki-page" href="Creating_Schedules.html">Creating Schedules in Test Manager</a> or <a class="wiki-page" href="Managing_Schedules.html">Managing Schedules in SolutionBuilder</a> documentation.</p>
+
+
+	<p>Previously, running a Schedule was exclusively executed by using custom VCL script. Now, a small set of standardized VCL procedures (relying on internalized functionality) manages the handling of numerous actions to support test development via the ScheduleRunner interface, including:</p>
+
+
+	<ul>
+	<li>Opening and closing the schedule file.</li>
+		<li>Schedule validation.</li>
+		<li>Running each step of the schedule.</li>
+		<li>Handling Stop/Restart of the schedule.</li>
+	</ul>
+
+
+	<p>iTest includes a set of VCL functions designed to take over these tasks from VCL and adds them to complied iTest code. Moving this code from script to compiled code increases performance and provides a lot more error checking. Relying on the system to execute the schedules can result in 100 Hz schedules and perhaps even faster schedules in future releases.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">This document specifically applies to schedules not prepared with BTS' <code>PrepareCircuitSchedule</code>.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="VCL-Commands"></a>
+<h2 >VCL Commands<a href="#VCL-Commands" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="PrepareSchedule"></a>
+<h3 >PrepareSchedule<a href="#PrepareSchedule" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <strong>PrepareSchedule</strong> command prepares a schedule to be run by loading it into memory and performing all validation checks to verify it can run properly. If successful, the schedule is ready for <strong>RunSchedule</strong> to start execution.</p>
+
+
+	<p><strong>Syntax:</strong></p>
+
+
+<pre>
+PrepareSchedule &lt;ID&gt;, &lt;Schedule.sc2&gt;, &lt;NumStatusChannel&gt;, &lt;StrStatusChannel&gt;
+PrepareScheduleEx &lt;ID&gt;, &lt;Schedule.sc2&gt;, &lt;Page&gt;, &lt;NumStatusChannel&gt;, &lt;StrStatusChannel&gt;
+</pre>
+
+	<p>Where:</p>
+
+
+	<ul>
+	<li><em>< ID ></em> must be 0.</li>
+		<li><em>< Schedule.sc2 ></em> is a literal string or a string channel containing the schedule name with the <em>.sc2</em> extension.</li>
+		<li><em>< NumStatusChannel ></em> will be set to -1 if the schedule fails to load, -2 if there is a validation error, or 1 if the schedule loads and is ready to run. If < NumStatusChannel > is negative, then < StrStatusChannel > will contain some description of the problem encountered in either loading or validating the schedule.</li>
+		<li><em>< Page ></em> must be <strong>Data</strong>, <strong>Startup</strong>, or <strong>Shutdown</strong>.</li>
+		<li><em>Valid to PrepareSchedule at any time except when ScheduleRunner is in a running state as recorded by the <code>vsSysSchState</code> system channel.</em></li>
+	</ul>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">PrepareSchedule will report additional error messages with a negative error code in Softpanel; you can find the meaning using the <a class="wiki-page" href="VCL_Schedule_Functions.html#Error-Codes">Error Codes</a> documentation. For example, the error code for -10 means <code>Table error, file not found.</code></td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="RunSchedule"></a>
+<h3 >RunSchedule<a href="#RunSchedule" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <strong>RunSchedule</strong> command starts executing a schedule previously loaded by <strong>PrepareSchedule</strong>.</p>
+
+
+	<p><strong>Syntax:</strong></p>
+
+
+<pre>
+RunSchedule &lt;ID&gt; &lt;Schedule.sc2&gt; &lt;ReadFromFile&gt; &lt;Options&gt; &lt;Start Step&gt; &lt;Start Step Hook&gt; &lt;End Step Hook&gt; &lt;Status Channel&gt;
+</pre>
+
+	<p>Where:</p>
+
+
+	<ul>
+	<li><em>< ID ></em> must be 1.  This is exclusively used only by BTS systems.</li>
+		<li><em>< Schedule.sc2 ></em> is a literal string or a string channel containing the schedule name with the <em>.sc2</em> extension.</li>
+		<li><em>< ReadFromFile ></em> dictates the restart file to use. For example, if 1, then read restart information from the <em>&lt;Schedule&gt;.1.restart</em> file).</li>
+		<li><em>< Options ></em> is a string of options. For example, "JTSI" has the following options:
+	<ul>
+	<li>J = Clears jump counters</li>
+		<li>T = Resets test time</li>
+		<li>S = Resets step time</li>
+		<li>I = Run immediately</li>
+	</ul>
+	</li>
+		<li><em>< StartStep ></em> is the step to start running on. If using a restart file, 0 will read the step from the file; otherwise, a positive integer will be the start step. When just starting a new test, this would be typically set to 1.</li>
+		<li><em>< Start Step Hook ></em> is the name of a VCL procedure to execute when entering step. If you do not want to run this optional procedure, use two double-quotes (e.g., "").</li>
+		<li><em>< End Start Hook ></em> is the name of a VCL procedure to call when leaving step. If you do not want to run this optional procedure, use two double-quotes (e.g., "").</li>
+		<li><em>< Status Channel ></em> must be a channel, not a local variable. 0 means the schedule is not running and a positive value is the step number currently being executed. A negative status value is an error condition, and the schedule is not running. These error codes can be expanded upon, but initially, the value will be <code>-2 = Schedule not Prepared</code>.</li>
+	</ul>
+
+
+	<p>Procedures called by <strong>Start Step Hook</strong>, <strong>End Step Hook</strong>, and <strong>MODE</strong> columns must execute to completion immediately. All lines must have +0.0 timestamps and no PAUSE statements. SPAWN another procedure if it is necessary to have a delay; otherwise, you will receive a warning message about how the procedure must run to completion and must not PAUSE or delay. While entering a step, a <strong>STOPSCHEDULE</strong> command in a Start Step Hook or a Mode procedure will stop the schedule before changing the setpoints but after the (internal and hidden) tablerowtodb call.</p>
+
+
+	<p><strong>Example:</strong><br /><pre>
+SET FromFile 1
+SET StartStep 5
++0.0 RUNSCHEDULE 1 "AAAScheduleTest.sc2" FromFile "JST" StartStep "StartStepHook" "EndStepHook" numSysSchStatus
+</pre></p>
+
+
+	<p>The <strong>I</strong> (uppercase letter i) option attempts to run the schedule immediately on the same scan. This is not possible when loading from a restart file, in which case the <strong>I</strong> option is ignored and a warning is generated.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#ebd700;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3740/caution.gif" alt="" /></td>
+			<td style="vertical-align:top;"><b>CAUTION:</b></td>
+			<td style="vertical-align:top;">The <strong>I</strong> option may cause scan time violations for large schedules (greater than 100 rows) and must be used with discretion.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Step-Hooks"></a>
+<h4 >Step Hooks<a href="#Step-Hooks" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The Start Step Hook is called when entering a step after the ScheduleRunner updates channels. The End Step Hook is called when a step is over, including at the end of a test.</p>
+
+
+	<p>Step Hooks may be defined with a numeric argument to get the ID, which is useful for BTS. Do not pass the argument in the <strong>RUNSCHEDULE</strong> command. Simply define the following argument in the hook procedure (i.e., <code>$ARGUMENT Index,Number,ByVal</code>):</p>
+
+
+	<ul>
+	<li>Name = Index</li>
+		<li>Type = Number</li>
+		<li>Pass As = Value</li>
+	</ul>
+
+
+	<p>To guarantee real-time execution, Step Hooks are executed, not spawned, for the current scan. Any statements following a pause, delay, or switch to non-real-time <ins>will not be executed</ins>. Use extreme caution when editing step hooks; this behavior will cause subtle bugs. For example, in this hook's VCL, B's final value will be 2:<br /><pre>
+* Valid Step Hook statements because all statements execute immediately
++0.0 SET A 1
++0.0 SET B 2
+
++0.1 SET B 3      * Not executed because of +0.1 delay
++0.0 SET B 4      * Not executed because of preceding delay
+VCLNUM Status  * Not valid, all statements must be proceeded with  +0.0
+</pre></p>
+
+
+	<a name="Other-Schedule-Control-Commands"></a>
+<h3 >Other Schedule Control Commands<a href="#Other-Schedule-Control-Commands" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Schedule control can be accomplished externally via the following VCL commands and functions. Refer to the table below for a list of status channel values.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Status Channel Values</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Status Channel Value</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td> 0 </td>
+			<td> Command not complete.</td>
+		</tr>
+		<tr>
+			<td> 1 </td>
+			<td> Successful.</td>
+		</tr>
+		<tr>
+			<td> 2 </td>
+			<td> Schedule not running.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><strong>Commands:</strong></p>
+
+
+	<ul>
+	<li>ABORTSCHEDULE 1, &lt;statuschannel&gt; – Abort running schedule and do not save state before stopping.  </li>
+		<li>PAUSESCHEDULE 1, &lt;statuschannel&gt;  - Timers don't increment, ramps stop.</li>
+		<li>RESUMESCHEDULE 1, &lt;statuschannel&gt; - Compliment to PAUSESCHEDULE.</li>
+		<li>NEXTSTEP 1, &lt;statuschannel&gt; - Progress to the next step.</li>
+		<li>STOPSCHEDULE 1, &lt;statuschannel&gt; – Stop and save schedule to <em>&lt;schedulefile&gt;.1.restart</em>. Here are the contents of an example restart file (e.g., <em>aaascheduletest.sc2.1.restart</em>):</li>
+	</ul>
+
+
+<pre>
+    Schedule=aaascheduletest.sc2
+    State=Stopped
+    NumRows=9
+    NumCols=24
+    Step=1
+    StepTimeElapsed=1.500
+    TestTime=21.500
+    JmpCntr7=1                       
+    Done=1
+</pre>
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;"><code>JmpCntr7=1</code> means that the jumps done counter on Step 7 had been done 1 time.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><strong>Functions:</strong></p>
+
+
+	<ul>
+	<li>GotoStep(1, &lt;step&gt;) - Go to step. Returns -1 if there is an error (e.g., step out of range).</li>
+		<li>SaveScheduleRestart(1, &lt;faultflag&gt;) - Save restart information to a restart file. If <code>faultflag</code> is 1, save to the <em>schedule.sc2.1.fault.restart</em> file. Returns 1 when complete.</li>
+		<li>IsScheduleRunning(1) – Returns 0 or 1 if schedule 1 is running.</li>
+		<li>GetNumberOfSteps(1) – Returns number of steps in the schedule.  </li>
+		<li>FreeSchedule(1, &lt;schedule&gt;) – Frees all memory associated with the schedule. 1 is ignored. Returns -1 of the schedule was running, 0 if schedule not prepared, 1 if a schedule was freed.</li>
+	</ul>
+
+
+	<a name="System-Channels-Set-By-ScheduleRunner"></a>
+<h2 >System Channels Set By ScheduleRunner<a href="#System-Channels-Set-By-ScheduleRunner" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;padding-top: 0.5em;margin-left: 3.8em;"><em><strong>System Channel Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 3em;">
+		<tr style="padding-top:0.5em;padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Channel</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td> numSysSchStep    </td>
+			<td> This is the step the schedule is on. <br />0 means nothing has run yet<br />-1 means finished </td>
+		</tr>
+		<tr>
+			<td> timSysTestOnStep </td>
+			<td> This is the amount of time this step has been executed. </td>
+		</tr>
+		<tr>
+			<td> timSysStepLeft </td>
+			<td> Step time left. To end a step prematurely, use the <strong>NextStep</strong> command. </td>
+		</tr>
+		<tr>
+			<td> vsSysSchState</td>
+			<td> Set by the system to indicate ScheduleRunner status:<br />&nbsp; &nbsp; &nbsp; &nbsp; Not Prepared<br />&nbsp; &nbsp; &nbsp; &nbsp; Prepared<br />&nbsp; &nbsp; &nbsp; &nbsp; Running<br />&nbsp; &nbsp; &nbsp; &nbsp; Paused<br />&nbsp; &nbsp; &nbsp; &nbsp; Aborted<br />&nbsp; &nbsp; &nbsp; &nbsp; Stopped<br />&nbsp; &nbsp; &nbsp; &nbsp; Finished </td>
+		</tr>
+		<tr>
+			<td> numSysSchState    </td>
+			<td> Corresponds to above state:<br />&nbsp; &nbsp; &nbsp; &nbsp; 0 - Not Prepared<br />&nbsp; &nbsp; &nbsp; &nbsp; 1 - Prepared<br />&nbsp; &nbsp; &nbsp; &nbsp; 2 - Running<br />&nbsp; &nbsp; &nbsp; &nbsp; 3 - Paused<br />&nbsp; &nbsp; &nbsp; &nbsp; 4 - Aborted<br />&nbsp; &nbsp; &nbsp; &nbsp; 5 - Stopped<br />&nbsp; &nbsp; &nbsp; &nbsp; 6 - Finished </td>
+		</tr>
+		<tr>
+			<td> timSysTest</td>
+			<td> Test time. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="ScheduleRunner-sc2-Special-Column-Types-Parameters-and-Validation"></a>
+<h2 >ScheduleRunner <em>.sc2</em> Special Column Types, Parameters, and Validation<a href="#ScheduleRunner-sc2-Special-Column-Types-Parameters-and-Validation" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>These are the column types that the internal schedule runner does something special with in addition to setting the channels (via an internal TableRowToDB).</p>
+
+
+	<p>Validation Rules:</p>
+
+
+	<ul>
+	<li>Transient Tests:
+	<ul>
+	<li>StepTime must be a header item.</li>
+		<li>Limits must be a header item.</li>
+		<li>Limits has a limits file that exists.</li>
+		<li>If a test is stopped, then any log that was running on that step must also be stopped.</li>
+	</ul>
+	</li>
+		<li>ScheduleStatusChannel header item must be <code>numSysSchBlueBar</code> (<code>ScheduleStatusChannel=numSysSchBlueBar</code>).</li>
+		<li>PrepareSchedule must have <code>ScheduleRunner=Internal</code>.</li>
+		<li>Special keyword in header (<code>ScheduleRunner=Internal</code>) means extra validation is enforced when saving schedules in Test Manager.</li>
+		<li>No two columns can set the same channel (except Step Tasks).</li>
+		<li>Check ramp by rate is always positive.</li>
+		<li>Check single instance of specific column types (designated below).</li>
+		<li>ModePair cannot be blank.</li>
+		<li>DataLog/LogDuration – both must be blank or both must be non-blank.</li>
+		<li>LogDuration cannot be 0.</li>
+	</ul>
+
+
+	<a name="List-Pages"></a>
+<h2 >List Pages<a href="#List-Pages" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The List page is commonly labeled as the Header page in the Schedules editor. This page is a set of parameters or keyword/value pairs that can be modified prior to running a test.</p>
+
+
+	<a name="Parameter-Types"></a>
+<h3 >Parameter Types<a href="#Parameter-Types" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following table describes the available parameter types found in the Define List Parameter (available in Test Manager) and Add/Insert/Edit List Keyword (available in SolutionBuilder) dialogs:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Dialogs</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Define List Parameter Dialog</strong></td>
+			<td style="text-align:left;"><strong>Add List Keyword Dialog</strong></td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/62350/DefineListParameters.png" alt="" /> </td>
+			<td> <img src="attachments/download/116619/43_AddListKeywordDialog.png" alt="" /> </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>Parameter Type Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Parameter Type</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Validation/Notes</strong></td>
+		</tr>
+		<tr>
+			<td> Numeric </td>
+			<td> A numeric type parameter. </td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> Integer </td>
+			<td> An integer type parameter. </td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> Time </td>
+			<td> A time type parameter. </td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> Text </td>
+			<td> A text type parameter. </td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> TimeText </td>
+			<td> A time entry with colons, as needed (e.g., 00:00:00). </td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> TimeTextFull </td>
+			<td> A time entry in the format of <code>000:00:00.00</code>. </td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> Limit File List </td>
+			<td> A pick list of limit file (<em>.lim</em>) selections.</td>
+			<td> Only available in SolutionBuilder for non-BTS solutions.</td>
+		</tr>
+		<tr>
+			<td> Data Log </td>
+			<td> A picklist of data log selections. </td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> User Defined List </td>
+			<td> A picklist of user defined entries. </td>
+			<td> The list entry is semi-colon delimited (e.g., TRUE;FALSE). </td>
+		</tr>
+		<tr>
+			<td> Generic File List </td>
+			<td> A picklist of file selections. </td>
+			<td> The list entry must be a fully qualified path. $ substitutions are allowed in the file specification.</td>
+		</tr>
+		<tr>
+			<td> Generic Function List </td>
+			<td> A picklist of VCL procedure selections. It is intended that the VCL procedure return a value or string. </td>
+			<td> The list entry must be a fully qualified path. $ substitutions are allowed in the file specification. Use of wildcards is supported. E.g., <code>$SUPPORTDIR\Test\SysFunctions\*.tsc</code>. </td>
+		</tr>
+		<tr>
+			<td> User Picklist </td>
+			<td> A picklist of items in a picklist file (<em>.pkl</em>). </td>
+			<td> Users can select an option from the list. The picklist file must reside in the active support directory. </td>
+		</tr>
+		<tr>
+			<td> Editable User Picklist </td>
+			<td> A generic input parameter. Also provides a pick list of items from a picklist file (<em>.pkl</em>) residing in the active support directory. </td>
+			<td> User can either manually type in an entry or select from the list. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+	<a name="Parameters"></a>
+<h3 >Parameters<a href="#Parameters" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The table below contains editable List Page parameters. The last column defines who is responsible for handling and validation. Many of these parameters are handled through the use of VCL scripts rather than being internalized into the ScheduleRunner code and, therefore, may or may not be used in your schedules. This has been noted in the table.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Parameter Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>List Parameter</strong> </td>
+			<td style="text-align:left;"><strong>Parameter Type</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+			<td style="text-align:left;"><strong>Example Value</strong></td>
+			<td style="text-align:left;"><strong>SR Handling <br />Type:<br />I = Ignored / No Validation<br />A = Application<br />S = System</strong> </td>
+		</tr>
+		<tr>
+			<td> Preload    </td>
+			<td> Text </td>
+			<td> Controls whether the schedule is prepared during test build. This cannot be used if the schedule is stored in a subfolder.    </td>
+			<td> True/False</td>
+			<td style="text-align:center;">S </td>
+		</tr>
+		<tr>
+			<td> ScheduleRunner    </td>
+			<td> Text </td>
+			<td> If <code>value=Internal</code>, then Test Manager does validity checking when user saves to disk.    </td>
+			<td> Internal/VCL    </td>
+			<td style="text-align:center;">S </td>
+		</tr>
+		<tr>
+			<td> TransientLogName </td>
+			<td> Data Log </td>
+			<td> Transient log file name used by the test.</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">S</td>
+		</tr>
+		<tr>
+			<td> TransientLogStartStep    </td>
+			<td> Integer </td>
+			<td> Log starts at the beginning of the step.</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">S<br /> Step must be in schedule. </td>
+		</tr>
+		<tr>
+			<td> TransientLogEndStep    </td>
+			<td> Integer </td>
+			<td> Log ends at the end of the step. If set to -1, the multi-step transient log will run through the last step regardless of how many steps have been added or deleted.</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">S <br />Must also be >= <code>TransientLogStartStep</code>. </td>
+		</tr>
+		<tr>
+			<td> Limits </td>
+			<td> Limit File List </td>
+			<td> (Transient only) Limits to be applied when running this schedule.</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">S </td>
+		</tr>
+		<tr>
+			<td> StepTime </td>
+			<td> Numeric </td>
+			<td> (Transient only) Step time for each step of this schedule. Step Time must be greater than scan time (e.g., 0.01 when <code>SystemScanRateHz= 100</code>). </td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">S </td>
+		</tr>
+		<tr>
+			<td> RestartStep</td>
+			<td> User Picklist </td>
+			<td> Step to be executed after a test is stopped and restarted (First, Current).</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">A </td>
+		</tr>
+		<tr>
+			<td> TestStartMode </td>
+			<td> User Picklist </td>
+			<td> What mode the test can be started in (Started, Stopped).</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">A </td>
+		</tr>
+		<tr>
+			<td> StartProcedure </td>
+			<td> Tests </td>
+			<td> A procedure that is launched at the start of a test.</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">A </td>
+		</tr>
+		<tr>
+			<td> StopProcedure </td>
+			<td> Tests </td>
+			<td> A procedure that is launched when a test is stopped.</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">A </td>
+		</tr>
+		<tr>
+			<td> EndProcedure </td>
+			<td> Tests </td>
+			<td> A procedure that is launched at the end of a test.</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">A </td>
+		</tr>
+		<tr>
+			<td> StartDisplay    </td>
+			<td> User Picklist </td>
+			<td> Whether the test dialog display should be launched (Yes, No). </td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">A </td>
+		</tr>
+		<tr>
+			<td> Status </td>
+			<td> User Defined List </td>
+			<td> Updated automatically by the test (Not Started, In Progress, Stopped, Completed).</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">A </td>
+		</tr>
+		<tr>
+			<td> CurrentStep    </td>
+			<td> Integer </td>
+			<td> The current step number updated automatically by the test.</td>
+			<td style="text-align:center;">- </td>
+			<td style="text-align:center;">I</td>
+		</tr>
+		<tr>
+			<td> PredictedTestTime </td>
+			<td> Numeric </td>
+			<td> Test duration calculated during pre-start test analysis.    </td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">I</td>
+		</tr>
+		<tr>
+			<td> ElapsedTestTime    </td>
+			<td> Numeric </td>
+			<td> The test elapsed time updated automatically by the test.</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">I</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Grayed-Parameters"></a>
+<h3 >Grayed Parameters<a href="#Grayed-Parameters" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <em>.sc2</em> file has an <strong>Allow Edit</strong> field which controls whether Test Manager allows the user to edit these fields. The table below contains a list of parameters that are grayed by default. The furthest right column defines who is responsible for handling and validation.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Grayed Parameter Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Setting</strong> </td>
+			<td style="text-align:left;"><strong>Parameter Type</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+			<td style="text-align:left;"><strong>SR Handling<br />Type:<br />I = Ignored / No Validation<br />A = Application<br />S = System</strong> </td>
+		</tr>
+		<tr>
+			<td> ScheduleStatusChannel </td>
+			<td> Channel List </td>
+			<td> iTest reads this setting to find out which channel controls the highlight bar row in ScheduleViewer.    </td>
+			<td style="text-align:center;">S <br />Updated by ScheduleRunner when running. </td>
+		</tr>
+		<tr>
+			<td> TestModuleID </td>
+			<td> Text </td>
+			<td> Test module identification (hard coded).</td>
+			<td style="text-align:center;">I</td>
+		</tr>
+		<tr>
+			<td> TestType </td>
+			<td> User Picklist </td>
+			<td> SteadyState or Transient. Determines how the test schedule is interpreted by the SysTest procedures. When TestType is SteadyState, <strong>StepTime</strong> must be a column. </td>
+			<td style="text-align:center;">I</td>
+		</tr>
+		<tr>
+			<td> LogType </td>
+			<td> Text </td>
+			<td> Avg or Trans. Together with TestType, it determines which report to use.</td>
+			<td style="text-align:center;">A</td>
+		</tr>
+		<tr>
+			<td> TestName </td>
+			<td> Text </td>
+			<td> The name given to the individual schedule. This name is also concatenated with the run number to create the data file name.</td>
+			<td style="text-align:center;">A</td>
+		</tr>
+		<tr>
+			<td> DynoRampMode    </td>
+			<td> User Defined List </td>
+			<td> Default mode for column labeled <code>DynoSetpoint</code>.</td>
+			<td style="text-align:center;">I </td>
+		</tr>
+		<tr>
+			<td> ThrotRampMode    </td>
+			<td> User Defined List </td>
+			<td> Default mode for column labeled <code>ThrottleSetpoint</code>.</td>
+			<td style="text-align:center;">I </td>
+		</tr>
+		<tr>
+			<td> ReportName </td>
+			<td> Text </td>
+			<td> Name of report this schedule will generate. </td>
+			<td style="text-align:center;">A</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Matrix-Pages"></a>
+<h2 >Matrix Pages<a href="#Matrix-Pages" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Matrix page is commonly labeled as the Data page in the Schedules editor. This page contains several column types that can be used to configure your tests. ScheduleRunner validates schedules by going from left to right for each column and checking rules based on the column type.</p>
+
+
+	<a name="Column-Types"></a>
+<h3 >Column Types<a href="#Column-Types" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following table describes the available column types found in the Add/Edit/Insert Column dialog for non-BTS solutions:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Dialogs</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Test Manager Add Column Dialog</strong></td>
+			<td style="text-align:left;"><strong>SolutionBuilder Add Column Dialog</strong></td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/116628/TM43_AddColumnDialog.png" alt="" /></td>
+			<td> <img src="attachments/download/116629/SB43_AddColumnDialog.png" alt="" /> </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>Column Type Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Column Type</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>iTest Channel Name Example</strong> </td>
+			<td style="text-align:left;"><strong>Validation/Notes</strong></td>
+		</tr>
+		<tr>
+			<td> Numeric </td>
+			<td> A numeric type parameter. </td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> Integer </td>
+			<td> An integer type parameter. </td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> Time </td>
+			<td> A time type parameter. </td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> Text </td>
+			<td> A text type parameter. </td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> TimeText </td>
+			<td> A time entry with colons, as needed (e.g., 000:00:00). </td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> TimeTextFull </td>
+			<td> A time entry in the format of 000:00:00.00. </td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> Jump To Step </td>
+			<td> Used for looping; the indicated step number or label would be next if there are remaining jumps to do. </td>
+			<td> numSRJumpToStep    </td>
+			<td> Only one <strong>Jump To Step</strong> type column is allowed. Step must be within range. If one of these are defined, all 3 jump related columns must be defined.<br />Must be 0. </td>
+		</tr>
+		<tr>
+			<td> Jumps To Do </td>
+			<td> Number of jumps/loops to be performed.</td>
+			<td> numSRJump    </td>
+			<td> Only one <strong>Jumps To Do</strong> type column is allowed. 0 <= x < 2^32 </td>
+		</tr>
+		<tr>
+			<td> Jumps Done    </td>
+			<td> Jumps/loops completed (this will automatically increment after each jump). </td>
+			<td> numSRJumps </td>
+			<td> Only one <strong>Jumps Done</strong> type column is allowed. BTS systems support the use of channels with this column type. For more information, see the <a class="wiki-page" href="ScheduleRunner.html#Jump-Counters">Jump Counters</a> section. </td>
+		</tr>
+		<tr>
+			<td> Step Task</td>
+			<td> Creates a <strong>Step Condition</strong> column and its underlying structure to setup step conditions as well as their actions.</td>
+			<td> vsSysSchStepCondition</td>
+			<td> Up to 5 <strong>EOSIgnoreTime</strong> columns are allowed. </td>
+		</tr>
+		<tr>
+			<td> EOSCondition </td>
+			<td> Creates a step condition parameter. </td>
+			<td style="text-align:center;">-</td>
+			<td> This column is automatically created when a <strong>Step Task</strong> column is created. This option is only available in Test Manager.<br />Must follow a <strong>Step Task</strong> column and be followed by an <strong>EOSAction</strong> column.</td>
+		</tr>
+		<tr>
+			<td> EOSAction </td>
+			<td> Creates a step condition action parameter. </td>
+			<td style="text-align:center;">-</td>
+			<td> This column is automatically created when a <strong>Step Task</strong> column is created. This option is only available in Test Manager.<br />Must follow an <strong>EOSCondition</strong> column and be followed by an <strong>EOSGo To</strong> column.</td>
+		</tr>
+		<tr>
+			<td> EOSGo To </td>
+			<td> Creates a step condition GoTo step parameter for the GoTo action. </td>
+			<td style="text-align:center;">-</td>
+			<td> This column is automatically created when a <strong>Step Task</strong> column is created. This option is only available in Test Manager.<br />Must follow an <strong>EOSAction</strong> column.</td>
+		</tr>
+		<tr>
+			<td> EOSIgnoreTime</td>
+			<td> Creates a step condition ignore time parameter. </td>
+			<td style="text-align:center;">-</td>
+			<td>This column is automatically created when a <strong>Step Task</strong> column is created. This option is only available in Test Manager. <br />Must follow an <strong>EOSGo To</strong> column.</td>
+		</tr>
+		<tr>
+			<td> Modes </td>
+			<td> Create a picklist of mode pair selections.</td>
+			<td> vsDt1SchMode</td>
+			<td> Only one <strong>Modes</strong> type column is allowed. ScheduleRunner automatically executes this procedure. </td>
+		</tr>
+		<tr>
+			<td> Tests</td>
+			<td> Create a pick list of VCL procedure (<em>.tsc</em>) selections. The procedure is spawned at the beginning of a test step/aborted at the end. </td>
+			<td>    vsSysSchTask </td>
+			<td> Up to 5 <strong>Tests</strong> columns are allowed.</td>
+		</tr>
+		<tr>
+			<td> Limit File List</td>
+			<td> A pick list of limit file (<em>.lim</em>) selections. Used to change limit groups for a particular step.</td>
+			<td> vsSysSchLimitsGroup    </td>
+			<td> Only one <strong>Limits</strong> type column is allowed. </td>
+		</tr>
+		<tr>
+			<td> Data Log</td>
+			<td> Name of the data log to run.</td>
+			<td> vsSysLogFile</td>
+			<td> Only one <strong>Data Log</strong> type column is allowed if LogDuration exists. </td>
+		</tr>
+		<tr>
+			<td> Log Start</td>
+			<td> If positive, the log starts at that time. <br />If negative, the log starts at step time - logstart. </td>
+			<td>timSysTestLog</td>
+			<td> Total value must not be greater than step time. Must follow a <strong>Data Log</strong> column.</td>
+		</tr>
+		<tr>
+			<td> User Defined List </td>
+			<td> A pick list of user defined entries. </td>
+			<td style="text-align:center;">-</td>
+			<td> The list entry is semi-colon delimited (e.g., TRUE;FALSE). </td>
+		</tr>
+		<tr>
+			<td> Generic File List </td>
+			<td> A a pick list of file selections. </td>
+			<td style="text-align:center;">-</td>
+			<td> The list entry must be a fully qualified path. $ substitutions are allowed in the file specification. </td>
+		</tr>
+		<tr>
+			<td> Generic Function List </td>
+			<td> A picklist of VCL procedure selections. It is intended that the VCL procedure return a value or string.  </td>
+			<td style="text-align:center;">-</td>
+			<td> The list entry must be a fully qualified path. $ substitutions are allowed in the file specification. Use of wildcards is supported. E.g., <code>$SUPPORTDIR\Test\SysFunctions\*.tsc</code>. </td>
+		</tr>
+		<tr>
+			<td> User Picklist </td>
+			<td> Create a pick list of items from a picklist file (<em>.pkl</em>). </td>
+			<td style="text-align:center;">-</td>
+			<td> Users can select an option from the list. The picklist file must reside in the active support directory. <br />Picklist message options:<br />&nbsp;&nbsp;&nbsp; - Send message when entering the step<br />&nbsp;&nbsp;&nbsp; - Send message at step time in previous column<br />&nbsp;&nbsp;&nbsp; - Send message at step time left in previous column<br />&nbsp;&nbsp;&nbsp; - Send message when there is 1 second left<br />&nbsp;&nbsp;&nbsp; - Do not send message </td>
+		</tr>
+		<tr>
+			<td> Editable User Picklist </td>
+			<td> Create a generic input parameter. Also provides a pick list of items from a picklist file (<em>.pkl</em>) residing in the active support directory. </td>
+			<td style="text-align:center;">-</td>
+			<td> User can either manually type or select from the list. </td>
+		</tr>
+		<tr>
+			<td> Step Time</td>
+			<td> The duration of the step (usually in seconds).</td>
+			<td> timSysStep</td>
+			<td> Only one <strong>Step Time</strong> type column is allowed. Required if not in the header. User may set this channel to end the step.<br /><ins><strong>Note:</strong></ins> 0 = infinite time. (TestTime keeps incrementing the time). </td>
+		</tr>
+		<tr>
+			<td> Setpoint</td>
+			<td> Ramps the setpoint channel to the new target value (the value of the cell) with options on ramping. The target value may be a constant, a channel, or a simple expression (e.g., <code>Cntr1 * 10</code>). A channel may be of any type except for virtual string and virtual string array. </td>
+			<td> valDt1DynoSetpoint </td>
+			<td> Multiple <strong>Setpoint</strong> type columns are allowed. Simple expressions are constantly re-evaluated over the course of the step. Picklists are optional. If utilized, only the value in a picklist is displayed and used.<br />&nbsp;<br />Ramping may be based on either a rate or time. This is determined by the setpoint column's <strong>Default Ramp Type</strong> and <strong>Default Ramp Value</strong> settings or by <strong>Ramp Type</strong> and <strong>Ramp Value</strong> type columns immediately to the right of the <strong>Setpoint type</strong> column. Setting <strong>Default Ramp Type</strong> to "StepTime" causes the setpoint to be ramped over the duration of the step.<br />&nbsp;<br />For rate-based ramps, the setpoint channel ramps at a constant rate (i.e., ramp value per system scan) toward the target value.<br />For time-based ramps, the setpoint channel ramps from the initial value to the target value over the specified time period. If the setpoint expression's value changes during a time-based ramp, then the current value will jump and continue ramping to the new value at the old rate. After the ramp time has elapsed, the setpoint is set directly to the expression's value.<br />&nbsp;<br />Blank setpoints will be left unchanged.</td>
+		</tr>
+		<tr>
+			<td> Ramp Type    </td>
+			<td> Selection of ramp mode. Options are <strong>Rate</strong> or <strong>Time</strong>. </td>
+			<td>RampMode/ valDt1DynoSchRampValue</td>
+			<td> Multiple <strong>Ramp Type</strong> type columns are allowed. Must follow a <strong>Setpoint</strong> column. </td>
+		</tr>
+		<tr>
+			<td> Ramp Value    </td>
+			<td>The ramp value is used differently between a rate-based and a time-based type ramp. The ramp value for rate-based ramps is the amount that the setpoint channel ramps by (e.g., 100 RPM) until it reaches the target value. The ramp value for time-based type ramps is the period of time (e.g., 5 seconds) that iTest will take to increase the setpoint channel value to the target value.<br />&nbsp;<br />You can enter a numeric value (e.g., 8.00) or a virtual output channel name (e.g., <code>valDt1DynoSchRampValue</code>) to be read at runtime. Alternatively, you can use the drop-down list to select a virtual output channel.  </td>
+			<td> valDt1DynoSchRampValue </td>
+			<td> Multiple <strong>Ramp Value</strong> type columns are allowed. Must follow a <strong>Ramp Type</strong> column. <br />&nbsp;<br />For both the rate and time-based ramp types, the setpoint channel value is updated at the system scan rate.<br />&nbsp;<br />The values in this column are read at runtime. </td>
+		</tr>
+		<tr>
+			<td> Operator Message</td>
+			<td> Optional text for an Operator Message.</td>
+			<td> vsSysOperatorMsg    </td>
+			<td> Only one <strong>Operator Message</strong> type column is allowed. </td>
+		</tr>
+		<tr>
+			<td> Channel List  </td>
+			<td> Not supported. Recommended to not use in a matrix page. </td>
+			<td style="text-align:center;">-</td>
+			<td>More than one <strong>Channel List</strong> column is allowed. </td>
+		</tr>
+		<tr>
+			<td>Step Label </td>
+			<td> Optional step label used instead of a step number in a <strong>Jump To Step</strong> type column or as the step number used by any step task performing a Go To Step action. </td>
+			<td> vsSysSchStepName </td>
+			<td> Only one <strong>Step Label</strong> type column is allowed and it must always be the first column. Only alphanumeric characters, underscores, @ signs, and periods are supported.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+	<a name="Step-Tasks"></a>
+<h3 >Step Tasks<a href="#Step-Tasks" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>iTest schedules contain three step task columns. When a new step is entered, it is continuously evaluated in order from left to right. The first time a step task's condition evaluates as true, Schedule Runner executes the action defined in the step task. At this point, the evaluation of the step task stops, and the schedule remains on that step unless an <strong>End Step</strong> or <strong>Go To Step</strong> action is triggered.</p>
+
+
+	<p>The following image displays the step task columns in an iTest schedule.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Step Tasks within Schedules - Test Manager</strong></em></span><br /><img src="attachments/download/116670/43_StepTasks.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Step Tasks within Schedules - SolutionBuilder</strong></em></span><br /><img src="attachments/download/116671/SB43_StepTasks.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Throughout iTest, step conditions may also be referred to as end of state (EOS) conditions.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>For more information about step tasks, refer to the <a class="wiki-page" href="Step_Tasks_in_Test_Manager.html">Step Tasks in Test Manager</a> and <a class="wiki-page" href="Step_Tasks.html">Step Tasks in SolutionBuilder</a> documentation.</p>
+
+
+	<a name="Jump-Counters"></a>
+<h3 >Jump Counters<a href="#Jump-Counters" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>In non-BTS systems, the number of jumps is tracked by the channel set for the Jumps Done column. In iTest.BTS systems, the number of jumps can be tracked with a separate Virtual Output or Virtual Output Array channel. By default, iTest.BTS includes the <code>Counter1,</code>, <code>Counter2</code>, <code>Counter3</code>, and <code>Counter4</code> virtual output channels to track the number of jumps; the channel used is specified in the Jump Setup dialog's <strong>Counter</strong> field. For more information, refer to the <ins><strong>Jumps, Jump To, and Jump Counter Columns</strong></ins> section in the iTest.BTS Basic Schedules documentation.</p>
+
+
+	<p>To modify the list of channels that appear in the Jump Setup dialog's <strong>Counter</strong> field, do the following:</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">These steps are only relevant to iTest.BTS systems. By default, the <strong>Counter</strong> field is disabled for iTest systems.</td>
+		</tr>
+	</table>
+
+
+
+
+	<ol>
+	<li>Define the virtual output channels. If <code>BatteryAppUsesArrays=TRUE</code> in the <em>powertek.ini</em> file, then these channels should be virtual output arrays. </li>
+		<li>Create or edit the <em>$SUPPORTDIR\Picklist\syscounters_h.pkl</em> file with the list of virtual output/virtual output array channels to choose from. <br /><pre>
+Counter1
+Counter2
+Counter3
+Counter4
+</pre></li>
+		<li>Open the Jump Setup dialog in a schedule. The list of channels you can use in the <strong>Counter</strong> field is updated based upon the <em>$SUPPORTDIR\Picklist\syscounters_h.pkl</em> file.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Counter Field Updated List Example</strong></em></span><br /><img src="attachments/download/114691/BTS43_JumpCounterUpdatedCounterList.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<a name="Messages"></a>
+<h1 >Messages<a href="#Messages" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>The frequency of messages to Softpanel is controlled by the <code>ScheduleRunnerMessages</code> <em>powertek.ini</em> setting. Values are added together to control the displayed messages. Leave blank for default of 0xFF.</p>
+
+
+	<p style="font-size: 11px;padding-top: 0.5em;margin-left: 3.8em;"><em><strong>Soft Panel Messages</strong></em></p>
+
+
+	<table style="margin-left: 3em;">
+		<tr style="padding-top:0.5em;padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Value</strong> </td>
+			<td style="text-align:left;"><strong>Meaning</strong> </td>
+		</tr>
+		<tr>
+			<td>0x0    </td>
+			<td>Critical errors </td>
+		</tr>
+		<tr>
+			<td>0x1    </td>
+			<td>Errors</td>
+		</tr>
+		<tr>
+			<td>0x2    </td>
+			<td>Schedule Prepare Errors</td>
+		</tr>
+		<tr>
+			<td>0x4    </td>
+			<td>Warnings</td>
+		</tr>
+		<tr>
+			<td>0x10 </td>
+			<td>Schedule progress messages (e.g., Starting Schedule, Entering Step, Schedule finished).</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,1564 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Standard Softpanel Messages List</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="Standard_Softpanel_Messages_List.html">Standard Softpanel Messages List</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Standard-Softpanel-Messages-List"></a>
+<h1 >Standard Softpanel Messages List<a href="#Standard-Softpanel-Messages-List" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Standard-Softpanel-Messages-List">Standard Softpanel Messages List</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Notes-About-this-Document">Notes About this Document</a></li><li><a href="#Prompter-Messages">Prompter Messages</a><ul><li><a href="#CHANNEL-OFF">$CHANNEL OFF</a></li><li><a href="#PROMPTERmessage">$PROMPTER;message</a></li><li><a href="#PROMPTERmessageLEVELmessagelevel">$PROMPTER;message;$LEVEL;messagelevel</a></li><li><a href="#PROMPTERmessageDBSTRINGchannelname">$PROMPTER;message;$DBSTRING;channelname</a></li><li><a href="#PROMPTERmessageCHANNELchannelnamebuttonname1buttonname2">$PROMPTER;message;$CHANNEL;channelname;buttonname1;buttonname2</a></li><li><a href="#PROMPTERmessageXltXgtYltYgt">$PROMPTER;message;$X;&lt;X&gt;;$Y;&lt;Y&gt;</a></li><li><a href="#PROMPTEROFF">$PROMPTEROFF</a></li><li><a href="#PROMPTERCLEAR">$PROMPTERCLEAR</a></li></ul>
+</li><li><a href="#PID-Messages">PID Messages</a><ul><li><a href="#ENABLEPIDSLIDERS">$ENABLEPIDSLIDERS</a></li><li><a href="#DISABLEPIDSLIDERS">$DISABLEPIDSLIDERS</a></li><li><a href="#AUTO">$AUTO</a></li><li><a href="#HIDEPIDCONTROL">$HIDEPIDCONTROL</a></li><li><a href="#MANUAL">$MANUAL</a></li><li><a href="#RAMP">$RAMP</a></li><li><a href="#RAMPOFF">$RAMPOFF</a></li><li><a href="#SHOWPIDCONTROL">$SHOWPIDCONTROL</a></li><li><a href="#MODIFYPID">MODIFYPID</a></li></ul>
+</li><li><a href="#Display-Messages">Display Messages</a><ul><li><a href="#CLOSEWEBPAGE">$CLOSEWEBPAGE</a></li><li><a href="#CUSTOMDISPLAY">$CUSTOMDISPLAY</a></li><li><a href="#DATAQUALITYFILE">$DATAQUALITYFILE</a></li><li><a href="#DATAQUALITY">$DATAQUALITY</a></li><li><a href="#DATAQUALITYCLOSE">$DATAQUALITYCLOSE</a></li><li><a href="#DISPLAY">$DISPLAY</a></li><li><a href="#FORM">$FORM</a></li><li><a href="#NEWFORM">$NEWFORM</a></li><li><a href="#LOGINREQUEST">$LOGINREQUEST</a></li><li><a href="#LOGOUTREQUEST">$LOGOUTREQUEST</a></li><li><a href="#OPMESSAGE">$OPMESSAGE</a></li><li><a href="#RIGHTDISPLAY">$RIGHTDISPLAY</a></li><li><a href="#SHOWOPRMSG">$SHOWOPRMSG</a></li><li><a href="#SHOWWEBPAGE">$SHOWWEBPAGE</a></li><li><a href="#SIGNALBAR">$SIGNALBAR</a></li><li><a href="#UPPERDISPLAY">$UPPERDISPLAY</a></li></ul>
+</li><li><a href="#Other-Messages">Other Messages</a><ul><li><a href="#ALARM">$ALARM</a></li><li><a href="#COMMENTS">$COMMENTS</a></li><li><a href="#DATALOGSTATUS">$DATALOGSTATUS</a></li><li><a href="#DYNAMICCALCREBUILD">$DYNAMICCALCREBUILD</a></li><li><a href="#EXECUTE">$EXECUTE</a></li><li><a href="#EXIT">$EXIT</a></li><li><a href="#LOADMODEFILE">LOADMODEFILE</a></li><li><a href="#LOADBATTERY">$LOADBATTERY</a></li><li><a href="#MODULECONFIG">$MODULECONFIG</a></li><li><a href="#NEWESTFILE">$NEWESTFILE</a></li><li><a href="#REBUILD">$REBUILD</a></li><li><a href="#SCHEDSIZE">$SCHEDSIZE</a></li><li><a href="#CHANGELIMITS">CHANGELIMITS</a></li></ul>
+</li><li><a href="#BTS-Messages">BTS Messages</a><ul><li><a href="#CircuitInformation">$CircuitInformation</a></li><li><a href="#ShowCirTempRequest">$ShowCirTempRequest</a></li><li><a href="#HideCirTempRequest">$HideCirTempRequest</a></li><li><a href="#ShowChamberAssignment">$ShowChamberAssignment</a></li><li><a href="#HideChamberAssignment">$HideChamberAssignment</a></li><li><a href="#ShowCircuitDetailsDlg">$ShowCircuitDetailsDlg</a></li><li><a href="#HideCircuitDetailsDlg">$HideCircuitDetailsDlg</a></li><li><a href="#CircuitDetailsDlgManualModeOn">$CircuitDetailsDlgManualModeOn</a></li><li><a href="#CircuitDetailsDlgManualModeOff">$CircuitDetailsDlgManualModeOff</a></li></ul>
+</li><li><a href="#AutomationPanel-Messages">AutomationPanel Messages</a><ul><li><a href="#CLOSEDISPLAY">$CLOSEDISPLAY</a></li><li><a href="#CLOSELAYOUT">$CLOSELAYOUT</a></li><li><a href="#FLEXEDIT">$FLEXEDIT</a></li><li><a href="#GetItemProperty">$GetItemProperty</a></li><li><a href="#MasterScheduleSelect">$MasterSchedule;Select</a></li><li><a href="#MasterScheduleStart">$MasterSchedule;Start</a></li><li><a href="#MasterScheduleReload">$MasterSchedule;Reload</a></li><li><a href="#MINIMIZE">$MINIMIZE</a></li><li><a href="#NOTIFY">$NOTIFY</a></li><li><a href="#OPENLAYOUT">$OPENLAYOUT</a><ul><li><a href="#Open-in-Application">Open in Application</a></li><li><a href="#Open-as-a-Standalone-Display">Open as a Standalone Display</a></li></ul>
+</li><li><a href="#ProgressBar">$ProgressBar</a></li><li><a href="#ProgressBarOff">$ProgressBarOff</a></li><li><a href="#PROMPTBYID">$PROMPTBYID</a></li><li><a href="#PROMPTCLOSEBYID">$PROMPTCLOSEBYID</a></li><li><a href="#PROMPTERmessageINPUTchannelname1channelname2buttontext1buttontext2">$PROMPTER;message;$INPUT;channelname1;channelname2;buttontext1;buttontext2</a></li><li><a href="#RESTORE">$RESTORE</a></li><li><a href="#SCHEDULEACTION">$SCHEDULEACTION</a></li><li><a href="#SetItemProperty">$SetItemProperty</a></li><li><a href="#SHOWGROUP">$SHOWGROUP</a></li><li><a href="#HIDEGROUP">$HIDEGROUP</a></li><li><a href="#SHOWTOOLBAR">$SHOWTOOLBAR</a></li><li><a href="#SAVELAYOUT">$SAVELAYOUT</a></li><li><a href="#SysLogExport">$SysLogExport</a></li></ul></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Softpanel messages are processed by the main application (iTest Console or AutomationPanel). They are primarily used to change aspects of the application's display area. There are 6 types of messages:</p>
+
+
+	<ol>
+	<li><ins><strong>Prompter Messages:</strong></ins> Messages used to control the usage and display of the system prompter</li>
+		<li><ins><strong>PID Messages:</strong></ins> Messages used to control the PID mode pair dialog</li>
+		<li><ins><strong>Display Messages:</strong></ins> Messages used to launch and close various displays in iTest Console</li>
+		<li><ins><strong>Other Messages</strong></ins> Miscellaneous messages</li>
+		<li><ins><strong>BTS Messages:</strong></ins> Messages used by BTS Applications</li>
+		<li><ins><strong>AutomationPanel Messages:</strong></ins> Commands specific to AutomationPanel</li>
+	</ol>
+
+
+	<p>The address for Softpanel is Softpanel. All messages should reference an address such as the following:</p>
+
+
+<pre>
+\\.\\mailslot\Softpanel&gt;&gt;Your Message
+</pre>
+
+	<p>&nbsp;</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="width:20px;text-align:center;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">You can use the tilde ( <img src="attachments/download/45868/tilde.png" alt="" /> ) to escape characters in mailslot messages.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Notes-About-this-Document"></a>
+<h2 >Notes About this Document<a href="#Notes-About-this-Document" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The version numbers reference the product version that the message was introduced.</p>
+
+
+	<a name="Prompter-Messages"></a>
+<h2 >Prompter Messages<a href="#Prompter-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Prompter dialog boxes are queued up for user input unless otherwise noted. The title bar of the visible dialog box will list how many are queued behind the visible one.</p>
+
+
+	<a name="CHANNEL-OFF"></a>
+<h3 >$CHANNEL OFF<a href="#CHANNEL-OFF" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Turns off a dialog box initiated by $PROMPTER; $CHANNEL.</p>
+
+
+	<p><strong>Version:</strong><br />2.1<br />&nbsp;</p>
+
+
+	<a name="PROMPTERmessage"></a>
+<h3 >$PROMPTER;message<a href="#PROMPTERmessage" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Displays a dialog box with the specified message (e.g., “Communication established”) and an <strong>OK</strong> button that must be acknowledged by the user. This dialog box will be replaced by the next opened $PROMPTER, instead of taking a spot in the queue for future user input.</p>
+
+
+	<p><strong>Version:</strong><br />2.1</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$PROMPTER;Communication established</pre><br />&nbsp;</p>
+
+
+	<a name="PROMPTERmessageLEVELmessagelevel"></a>
+<h3 >$PROMPTER;message;$LEVEL;messagelevel<a href="#PROMPTERmessageLEVELmessagelevel" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Displays a dialog box with the specified message and an alternative background color. This dialog box will be replaced by the next opened $PROMPTER, instead of taking a spot in the queue for future user input.</p>
+
+
+	<p>Message level colors:</p>
+
+
+	<p style="padding-left:2em;">1 = Green<br />2 = Yellow<br />3 = Red</p>
+
+
+	<p><strong>Version:</strong><br />2.1</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$PROMPTER; An Error has occurred;$LEVEL;3</pre><br />&nbsp;</p>
+
+
+	<a name="PROMPTERmessageDBSTRINGchannelname"></a>
+<h3 >$PROMPTER;message;$DBSTRING;channelname<a href="#PROMPTERmessageDBSTRINGchannelname" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Displays a dialog box with a text field that allows entry of a string that is then populated to a virtual string channel.</p>
+
+
+	<p><strong>Version:</strong><br />2.1<br />&nbsp;</p>
+
+
+	<a name="PROMPTERmessageCHANNELchannelnamebuttonname1buttonname2"></a>
+<h3 >$PROMPTER;message;$CHANNEL;channelname;buttonname1;buttonname2<a href="#PROMPTERmessageCHANNELchannelnamebuttonname1buttonname2" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Returns a zero or one to a channel. Selecting button name 1 sets the channel to 1; selecting button name 2 sets the channel to 0. Typically, this type of prompt is used from Autotests to let the user control sequencing of events.</p>
+
+
+	<p><strong>Version:</strong><br />2.1</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$PROMPTER;Please Respond;CHANNEL;PASS_FAIL;PASS;FAIL</pre></p>
+
+
+	<a name="PROMPTERmessageXltXgtYltYgt"></a>
+<h3 >$PROMPTER;message;$X;&lt;X&gt;;$Y;&lt;Y&gt;<a href="#PROMPTERmessageXltXgtYltYgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Optional parameters for the $PROMPTER mailslot in AutomationPanel:</p>
+
+
+	<ul>
+	<li>$X;&lt;X&gt; - the distance between the left edge of the prompter window and the left edge of the screen</li>
+		<li>$Y;&lt;Y&gt; - the distance between the top edge of the prompter window and the top edge of the screen</li>
+	</ul>
+
+
+	<p><strong>Version:</strong><br />2.1</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+$PROMPTER;message;$X;800;$Y;400
+</pre></p>
+
+
+	<a name="PROMPTEROFF"></a>
+<h3 >$PROMPTEROFF<a href="#PROMPTEROFF" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Hides the prompter dialog box.</p>
+
+
+	<p><strong>Version:</strong><br />2.1<br />&nbsp;</p>
+
+
+	<a name="PROMPTERCLEAR"></a>
+<h3 >$PROMPTERCLEAR<a href="#PROMPTERCLEAR" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Clears the queue of prompter messages and closes the prompter.</p>
+
+
+	<p><strong>Version:</strong><br />2.1<br />&nbsp;</p>
+
+
+	<a name="PID-Messages"></a>
+<h2 >PID Messages<a href="#PID-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="ENABLEPIDSLIDERS"></a>
+<h3 >$ENABLEPIDSLIDERS<a href="#ENABLEPIDSLIDERS" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Allows you to lock the sliders on the PID control box dynamically. It is useful when going into idle mode.</p>
+
+
+	<p><strong>Version:</strong><br />2.1<br />&nbsp;</p>
+
+
+	<a name="DISABLEPIDSLIDERS"></a>
+<h3 >$DISABLEPIDSLIDERS<a href="#DISABLEPIDSLIDERS" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Unlocks the sliders.</p>
+
+
+	<p><strong>Version:</strong><br />2.1<br />&nbsp;</p>
+
+
+	<a name="AUTO"></a>
+<h3 >$AUTO<a href="#AUTO" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Puts the PID window in auto mode.</p>
+
+
+	<p><strong>Version:</strong><br />2.1<br />&nbsp;</p>
+
+
+	<a name="HIDEPIDCONTROL"></a>
+<h3 >$HIDEPIDCONTROL<a href="#HIDEPIDCONTROL" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Hides the PID control window in the iTest Console.</p>
+
+
+	<p><strong>Version:</strong><br />2.1<br />&nbsp;</p>
+
+
+	<a name="MANUAL"></a>
+<h3 >$MANUAL<a href="#MANUAL" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Puts the PID Control window in manual mode.</p>
+
+
+	<p><strong>Version:</strong><br />2.1<br />&nbsp;</p>
+
+
+	<a name="RAMP"></a>
+<h3 >$RAMP<a href="#RAMP" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Opens a Ramp window from the PID Control window.</p>
+
+
+	<p><strong>Version:</strong><br />2.1<br />&nbsp;</p>
+
+
+	<a name="RAMPOFF"></a>
+<h3 >$RAMPOFF<a href="#RAMPOFF" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Disables an executing ramp on the PID Control window.</p>
+
+
+	<p><strong>Version:</strong><br />2.1<br />&nbsp;</p>
+
+
+	<a name="SHOWPIDCONTROL"></a>
+<h3 >$SHOWPIDCONTROL<a href="#SHOWPIDCONTROL" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Displays the PID control window in iTest Console.</p>
+
+
+	<p><strong>Version:</strong><br />2.1<br />&nbsp;</p>
+
+
+	<a name="MODIFYPID"></a>
+<h3 >MODIFYPID<a href="#MODIFYPID" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Updates the mode control pair programmatically. For more information, refer to the <a class="wiki-page" href="Mode_Switching.html">Mode Switching</a> documentation.</p>
+
+
+	<p><strong>Version:</strong><br />2.1</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>MODIFYPID;modepairfilename &lt;Mode Name&gt; voSysRestartParam</pre><br />&nbsp;</p>
+
+
+	<a name="Display-Messages"></a>
+<h2 >Display Messages<a href="#Display-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="CLOSEWEBPAGE"></a>
+<h3 >$CLOSEWEBPAGE<a href="#CLOSEWEBPAGE" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Closes the web page that was shown with the previous message.</p>
+
+
+	<p><strong>Version:</strong><br />2.3</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$CLOSEWEBPAGE;&lt;URL&gt;</pre><br />&nbsp;</p>
+
+
+	<a name="CUSTOMDISPLAY"></a>
+<h3 >$CUSTOMDISPLAY<a href="#CUSTOMDISPLAY" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Launches the specified dialog display. It is not necessary to include the <em>.dsp</em> file extension as part of the &lt;displayname&gt; argument.</p>
+
+
+	<p><strong>Version:</strong><br />2.1</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$CUSTOMDISPLAY;&lt;displayname&gt;</pre><br />&nbsp;</p>
+
+
+	<a name="DATAQUALITYFILE"></a>
+<h3 >$DATAQUALITYFILE<a href="#DATAQUALITYFILE" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Launches Data Quality viewer and the specified file.</p>
+
+
+	<p><strong>Version:</strong><br />2.3</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$DATAQUALITYFILE;&lt;Filename&gt;</pre><br />&nbsp;</p>
+
+
+	<a name="DATAQUALITY"></a>
+<h3 >$DATAQUALITY<a href="#DATAQUALITY" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Displays the Data Quality viewer with the live update option enabled.</p>
+
+
+	<p><strong>Version:</strong><br />2.3</p>
+
+
+	<a name="DATAQUALITYCLOSE"></a>
+<h3 >$DATAQUALITYCLOSE<a href="#DATAQUALITYCLOSE" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Closes the Data Quality viewer.</p>
+
+
+	<p><strong>Version:</strong><br />2.3<br />&nbsp;</p>
+
+
+	<a name="DISPLAY"></a>
+<h3 >$DISPLAY<a href="#DISPLAY" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Opens the specified console display. It is not necessary to include the <em>.dsp</em> file extension as part of the &lt;displayname&gt; argument.</p>
+
+
+	<p><strong>Version:</strong><br />2.1</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$DISPLAY;&lt;displayname&gt;</pre><br />&nbsp;</p>
+
+
+	<a name="FORM"></a>
+<h3 >$FORM<a href="#FORM" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Opens a form (user variable list) in the upper display with legacy style. This command only works in iTest Console. (For AutomationPanel, use <a class="wiki-page" href="#FLEXEDIT">$FLEXEDIT</a>.)</p>
+
+
+	<p><strong>Version:</strong><br />2.1</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$FORM;formname</pre><br />&nbsp;</p>
+
+
+	<a name="NEWFORM"></a>
+<h3 >$NEWFORM<a href="#NEWFORM" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Opens a log header form (user variable list) in the upper display with a newer style. Do not include a file path as part of the name of the form to open. iTest uses the <code>UserVariableListPath</code> <em>powertek.ini</em> setting to determine the file path. If the log header form can not be found at this location, then it defaults to searching the <em>$SUPPORTDIR\varlists</em> folder. Including the <em>.uvl</em> file extension as part of the filename is optional. This command only works in iTest Console. (For AutomationPanel, use <a class="wiki-page" href="#FLEXEDIT">$FLEXEDIT</a>.)</p>
+
+
+	<p><strong>Version:</strong><br />2.3</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$NEWFORM;formname1</pre><br />&nbsp;</p>
+
+
+	<a name="LOGINREQUEST"></a>
+<h3 >$LOGINREQUEST<a href="#LOGINREQUEST" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Opens the same iTest Security login dialog that launches if you select <strong>File > User Login</strong>. If you are already logged in as a user, you will be asked if you want to switch users. If <code>SingleUserLogin=TRUE</code>, then Test Manager and/or SolutionBuilder must be closed before you can log in or switch users via this mailslot.</p>
+
+
+	<p><strong>Version:</strong><br />3.9</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+$LOGINREQUEST
+</pre></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="LOGOUTREQUEST"></a>
+<h3 >$LOGOUTREQUEST<a href="#LOGOUTREQUEST" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Opens the same iTest Security logout dialog that launches if you select <strong>File > User Logout</strong>. If <code>SingleUserLogin=TRUE</code>, then Test Manager and/or SolutionBuilder must be closed before you can log out or switch users via this mailslot.</p>
+
+
+	<p><strong>Version:</strong><br />3.9</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+$LOGOUTREQUEST;Silent
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>[;Silent]:</em> Optional feature that logs out the currently logged in user without displaying the iTest Security logout dialog.</p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="OPMESSAGE"></a>
+<h3 >$OPMESSAGE<a href="#OPMESSAGE" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Adds an operator message to the operator message queue and the iTest Console_Map log file.</p>
+
+
+	<p><strong>Version:</strong><br />3.0</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$OPMESSAGE;&lt;text&gt;</pre><br />&nbsp;</p>
+
+
+	<a name="RIGHTDISPLAY"></a>
+<h3 >$RIGHTDISPLAY<a href="#RIGHTDISPLAY" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Opens the specified right display on a multi-monitor system. It is not necessary to include the <em>.dsp</em> file extension as part of the &lt;displayname&gt; argument.</p>
+
+
+	<p><strong>Version:</strong><br />2.1</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$RIGHTDISPLAY;&lt;displayname&gt;</pre><br />&nbsp;</p>
+
+
+	<a name="SHOWOPRMSG"></a>
+<h3 >$SHOWOPRMSG<a href="#SHOWOPRMSG" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Displays the Operator Messages queue in iTest Console.</p>
+
+
+	<p><strong>Version:</strong><br />3.0<br />&nbsp;</p>
+
+
+	<a name="SHOWWEBPAGE"></a>
+<h3 >$SHOWWEBPAGE<a href="#SHOWWEBPAGE" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Changes the main view in iTest Console to display the specified URL.</p>
+
+
+	<p><strong>Version:</strong><br />3.0</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$SHOWWEBPAGE;&lt;URL&gt;</pre><br />&nbsp;</p>
+
+
+	<a name="SIGNALBAR"></a>
+<h3 >$SIGNALBAR<a href="#SIGNALBAR" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Shows the signal bar with the specified arrangement.</p>
+
+
+	<p><strong>Version:</strong><br />3.1</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$SIGNALBAR;&lt;Tab name&gt;;&lt;RDB Field&gt;;&lt;Sort Field&gt;;&lt;Ascending or Descending&gt;;</pre><br />&nbsp;</p>
+
+
+	<a name="UPPERDISPLAY"></a>
+<h3 >$UPPERDISPLAY<a href="#UPPERDISPLAY" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Opens the specified console display. It is not necessary to include the <em>.dsp</em> file extension as part of the &lt;displayname&gt; argument.</p>
+
+
+	<p><strong>Version:</strong><br />2.1</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$UPPERDISPLAY;&lt;displayname&gt;</pre><br />&nbsp;</p>
+
+
+	<a name="Other-Messages"></a>
+<h2 >Other Messages<a href="#Other-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="ALARM"></a>
+<h3 >$ALARM<a href="#ALARM" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Resets the alarm status.</p>
+
+
+	<p><strong>Version:</strong><br />2.1<br />&nbsp;</p>
+
+
+	<a name="COMMENTS"></a>
+<h3 >$COMMENTS<a href="#COMMENTS" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Displays the Comments dialog box. Comments in this dialog box are added to the system log file.</p>
+
+
+	<p><strong>Version:</strong><br />2.1<br />&nbsp;</p>
+
+
+	<a name="DATALOGSTATUS"></a>
+<h3 >$DATALOGSTATUS<a href="#DATALOGSTATUS" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Opens the Data Log Status dialog in iTest Console or the Data Log dialog in AutomationPanel.</p>
+
+
+	<p><strong>Version:</strong><br />3.0<br />&nbsp;</p>
+
+
+	<a name="DYNAMICCALCREBUILD"></a>
+<h3 >$DYNAMICCALCREBUILD<a href="#DYNAMICCALCREBUILD" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Rebuilds the currently running dynamic calculations file.</p>
+
+
+	<p><strong>Version:</strong><br />3.2<br />&nbsp;</p>
+
+
+	<a name="EXECUTE"></a>
+<h3 >$EXECUTE<a href="#EXECUTE" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Executes any executable, process, or batch file in the system. The system directory name (Execute directory) is set as the working directory. Any other directory requires that the full path be defined.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">EXECUTE commands should now be sent to FileServices for more reliable handling of EXECUTE requests.</td>
+		</tr>
+	</table></p>
+
+
+	<p><strong>Version:</strong><br />2.1</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$EXECUTE; &lt;File;Silent&gt;</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>&lt;File&gt;:</em> The full path of the file. If there are spaces in the file name or accompanying space-delimited arguments, double quotes must surround the entire &lt;File;Silent&gt; argument.</p>
+
+
+	<p style="padding-left:1em;"><em>[;Silent]:</em> Optional feature that launches the executable in hidden mode. It follows the entire &lt;File&gt; string, including any arguments to be sent to the launched executable.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The ;Silent flag is supported by non-GUI applications but will vary with GUI applications depending on their internal startup processes.</td>
+		</tr>
+	</table></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="EXIT"></a>
+<h3 >$EXIT<a href="#EXIT" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Automatically shuts down iTest Console or AutomationPanel without prompting the user.</p>
+
+
+	<p><strong>Version:</strong><br />2.1</p>
+
+
+	<p><strong>Version:</strong><br />4.0</p>
+
+
+	<p>For <em>AutomationPanel.exe</em> only, support was added for two optional arguments:</p>
+
+
+	<p style="padding-left:1em;"><strong>PromptSave</strong>: Causes a save dialog (<strong>Yes/No/Cancel</strong>) to be displayed on exit if something was modified.</p>
+
+
+	<p style="padding-left:1em;"><strong>ReturnChannel=</strong>: Only used if PromptSave is specified. The specified channel will be set to 1 if Cancel was selected from the save dialog or 0 if Yes or No or no dialog was displayed.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$EXIT;PromptSave;ReturnChannel=voSysExitCancelled</pre><br />&nbsp;</p>
+
+
+	<a name="LOADMODEFILE"></a>
+<h3 >LOADMODEFILE<a href="#LOADMODEFILE" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Typically, the PID control dialog only loads its mode selections from a file called <em>mode.lst</em>, which is in the root of $SUPPORTDIR. This option allows you to load in unique mode files on the fly depending upon changing test conditions. The <strong>pid1mode</strong> and <strong>pid2mode</strong> options specify which mode should be visible initially when the new file is loaded in. Creating the additional mode files will need to be done using a text editor.</p>
+
+
+	<p><strong>Version:</strong><br />2.2</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>LOADMODEFILE; &lt;filename&gt; &lt;pid1mode&gt; &lt;pid2mode&gt;</pre><br />&nbsp;</p>
+
+
+	<a name="LOADBATTERY"></a>
+<h3 >$LOADBATTERY<a href="#LOADBATTERY" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Loads the specified battery file into the circuit (BTS product feature).</p>
+
+
+	<p><strong>Version:</strong><br />3.1</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$LOADBATTERY; &lt;BatteryName&gt; &lt;CircuitID&gt;</pre><br />&nbsp;</p>
+
+
+	<a name="MODULECONFIG"></a>
+<h3 >$MODULECONFIG<a href="#MODULECONFIG" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Displays the module configuration dialog.</p>
+
+
+	<p><strong>Version:</strong><br />2.2<br />&nbsp;</p>
+
+
+	<a name="NEWESTFILE"></a>
+<h3 >$NEWESTFILE<a href="#NEWESTFILE" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Returns the newest file that matches a specific pattern to the string specified in the mailslot message.</p>
+
+
+	<p><strong>Version:</strong><br />3.0</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$NEWESTFILE; &lt;file search string&gt; &lt;virtual string channel name&gt;</pre></p>
+
+
+	<p><strong>Example:</strong><br /><pre>SOFTPANEL&gt;&gt;$NEWESTFILE;$SUPPORTDIR\Schedules*.sc2 MyString</pre><br />This example will put the name of the <em>.sc2</em> file in the schedules directory in the string channel "MyString" <br />&nbsp;</p>
+
+
+	<a name="REBUILD"></a>
+<h3 >$REBUILD<a href="#REBUILD" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Stops all running procedures and launches TestBuilder.</p>
+
+
+	<p><strong>Version:</strong><br />2.1<br />&nbsp;</p>
+
+
+	<a name="SCHEDSIZE"></a>
+<h3 >$SCHEDSIZE<a href="#SCHEDSIZE" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Writes the size of the specified schedule to the specified database channel.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$SCHEDSIZE;schedulename;channelname</pre><br />&nbsp;</p>
+
+
+	<a name="CHANGELIMITS"></a>
+<h3 >CHANGELIMITS<a href="#CHANGELIMITS" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Updates the limits group control.</p>
+
+
+	<p><strong>Version:</strong><br />2.1</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>CHANGELIMITS;limitsfilename</pre><br />&nbsp;</p>
+
+
+	<a name="BTS-Messages"></a>
+<h2 >BTS Messages<a href="#BTS-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="CircuitInformation"></a>
+<h3 >$CircuitInformation<a href="#CircuitInformation" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Displays the Circuit Information dialog.</p>
+
+
+	<p><strong>Version:</strong><br />3.5<br />&nbsp;</p>
+
+
+	<a name="ShowCirTempRequest"></a>
+<h3 >$ShowCirTempRequest<a href="#ShowCirTempRequest" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Displays the Circuit Temperature Requests dialog.</p>
+
+
+	<p><strong>Version:</strong><br />3.5<br />&nbsp;</p>
+
+
+	<a name="HideCirTempRequest"></a>
+<h3 >$HideCirTempRequest<a href="#HideCirTempRequest" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Closes the Circuit Temperature Requests dialog.</p>
+
+
+	<p><strong>Version:</strong><br />3.5<br />&nbsp;</p>
+
+
+	<a name="ShowChamberAssignment"></a>
+<h3 >$ShowChamberAssignment<a href="#ShowChamberAssignment" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Displays the Chamber Assignment and Circuit Priority dialog.</p>
+
+
+	<p><strong>Version:</strong><br />3.5<br />&nbsp;</p>
+
+
+	<a name="HideChamberAssignment"></a>
+<h3 >$HideChamberAssignment<a href="#HideChamberAssignment" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Closes the Chamber Assignment and Circuit Priority dialog.</p>
+
+
+	<p><strong>Version:</strong><br />3.5<br />&nbsp;</p>
+
+
+	<a name="ShowCircuitDetailsDlg"></a>
+<h3 >$ShowCircuitDetailsDlg<a href="#ShowCircuitDetailsDlg" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Displays Circuit Details dialog for a circuit: $ShowCircuitDetailsDlg;&lt;CirID&gt;</p>
+
+
+	<p><em>AutomationPanel.exe</em> only.</p>
+
+
+	<p><strong>Version:</strong><br />4.1<br />&nbsp;</p>
+
+
+	<a name="HideCircuitDetailsDlg"></a>
+<h3 >$HideCircuitDetailsDlg<a href="#HideCircuitDetailsDlg" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Closes the Circuit Details dialog.</p>
+
+
+	<p><em>AutomationPanel.exe</em> only.</p>
+
+
+	<p><strong>Version:</strong><br />4.1<br />&nbsp;</p>
+
+
+	<a name="CircuitDetailsDlgManualModeOn"></a>
+<h3 >$CircuitDetailsDlgManualModeOn<a href="#CircuitDetailsDlgManualModeOn" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Displays the manual control portion on the Circuit Details dialog.</p>
+
+
+	<p><em>AutomationPanel.exe</em> only.</p>
+
+
+	<p><strong>Version:</strong><br />4.1<br />&nbsp;</p>
+
+
+	<a name="CircuitDetailsDlgManualModeOff"></a>
+<h3 >$CircuitDetailsDlgManualModeOff<a href="#CircuitDetailsDlgManualModeOff" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Closes the manual control portion on the Circuit Details dialog.</p>
+
+
+	<p><em>AutomationPanel.exe</em> only.</p>
+
+
+	<p><strong>Version:</strong><br />4.1<br />&nbsp;</p>
+
+
+	<a name="AutomationPanel-Messages"></a>
+<h2 >AutomationPanel Messages<a href="#AutomationPanel-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="CLOSEDISPLAY"></a>
+<h3 >$CLOSEDISPLAY<a href="#CLOSEDISPLAY" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sends <code>DIE</code> message to the specified display and wait for the display to close</p>
+
+
+	<p><strong>Version:</strong><br />3.5</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$CLOSEDISPLAY;&lt;displayname&gt;</pre><br />&nbsp;</p>
+
+
+	<a name="CLOSELAYOUT"></a>
+<h3 >$CLOSELAYOUT<a href="#CLOSELAYOUT" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Closes an open layout that matches the specified filename if it's already open. You will NOT get the normal prompt that you get when closing from the close button in the upper right.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$CLOSELAYOUT;layoutfilename [StatusChan=&lt;voChan&gt;]</pre></p>
+
+
+	<p>Where the file extension is not included in the layoutfilename argument.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+	<p>To close the layout opened from <em>LabWorX.layout</em> in <em>$SUPPORTDIR\Layouts</em>, send the following message:</p>
+
+
+<pre>$CLOSELAYOUT;LabWorX</pre>
+
+	<p>To close the layout opened from the <em>Main.layout</em> in <em>$SUPPORTDIR\Layouts</em> and use the optional argument to store the message status to the <code>voFlgClose</code> channel, send the following message:</p>
+
+
+<pre>$CLOSELAYOUT;Main StatusChan=voFlgClose</pre>
+
+	<p>Where the returned status values are as follows:</p>
+
+
+	<ul>
+	<li>1 - busy</li>
+		<li>0 - success</li>
+		<li>-1 - error</li>
+	</ul>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="FLEXEDIT"></a>
+<h3 >$FLEXEDIT<a href="#FLEXEDIT" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Opens FlexEdit, opens FlexEdit with the specified XML file, or opens FlexEdit displaying only the editor for the specified file and nothing else (<em>FlexEdit.xml</em> is not used).</p>
+
+
+	<p><strong>Version:</strong><br />3.5</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+$FLEXEDIT
+$FLEXEDIT;&lt;xml file path&gt;
+$FLEXEDIT;&lt;config file path&gt;
+$FLEXEDIT;&lt;ini filepath&gt;;Editable=&lt;true or false&gt;</pre></p>
+
+
+	<p>When used in this way, FlexEdit can replace the old $FORM message for displaying the contents of a <strong>.UVL</strong> file. For example, calling FlexEdit with the following option will show FlexEdit with an <em>.ini</em> style editor for editing the data file header values at the start of a test.</p>
+
+
+<pre>$FLEXEDIT;$SUPPORTDIR\varlists\MyVars.uvl</pre> 
+
+	<p>When used to edit an INI file, the optional Editable argument can be added to allow the user to add new channels to the file. By default, the user is unable to add new channels.<br />&nbsp;</p>
+
+
+	<a name="GetItemProperty"></a>
+<h3 >$GetItemProperty<a href="#GetItemProperty" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Gets the value of a property for a panel/display object and sets an iTest channel to this value. This message requires a Property ID, which is specified in Property Manager.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$GetItemProperty;&lt;PropertyID&gt;=&lt;ChannelName&gt;</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>&lt;PropertyID&gt;</em>: The name of the Automation ID and property name. This is visible at the bottom of the Property Manager dialog when you select a property that supports automation.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;ChannelName&gt;</em>: The name of the iTest channel set to the property value of a panel/display object.</p>
+
+
+	<p><strong>Property ID Syntax</strong>:<br /><pre>&lt;AutomationID&gt;.&lt;PropertyName&gt;</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>&lt;AutomationID&gt;</em>: The name assigned to the panel or object in Property Manager.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;PropertyName&gt;</em>: The internal name for the property. (This is not necessarily the name displayed in the left column of Property Manager.)</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">If an object doesn't have an Automation ID defined, then none of its properties can be modified, and Property Manager will not display a PropertyID.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+	<a name="MasterScheduleSelect"></a>
+<h3 >$MasterSchedule;Select<a href="#MasterScheduleSelect" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Loads the specified master schedule. If the master schedule file in the mailslot message does not exist, the <code>MasterScheduleStatus</code> channel is set to 8 (Failed).</p>
+
+
+	<p><strong>Version:</strong><br />3.7</p>
+
+
+	<p><strong>Syntax:</strong></p>
+
+
+<pre>$MasterSchedule;Select=&lt;MasterScheduleFileName&gt;;CheckRestart=&lt;True|False></pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>&lt;MasterScheduleFileName&gt;:</em> The master schedule file name. Do not include the file extension.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;CheckRestartFlag&gt;:</em> The flag used to determine whether to verify for the restart state. True — Perform restart check. False — Do not perform restart check.<br />&nbsp;</p>
+
+
+	<a name="MasterScheduleStart"></a>
+<h3 >$MasterSchedule;Start<a href="#MasterScheduleStart" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Starts the currently selected master schedule.</p>
+
+
+	<p><strong>Version:</strong><br />3.7</p>
+
+
+	<p><strong>Syntax:</strong></p>
+
+
+<pre>$MasterSchedule;Start</pre><br />&nbsp;
+
+	<a name="MasterScheduleReload"></a>
+<h3 >$MasterSchedule;Reload<a href="#MasterScheduleReload" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Used to reload a MasterSchedule file added after iTest startup. The optional status parameter monitors the progress of the MasterSchedule reload.</p>
+
+
+	<p><strong>Syntax:</strong></p>
+
+
+<pre>$MasterSchedule;Reload=&lt;MS Name&gt;</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>&lt;MS Name&gt;</em>: The name of the MasterSchedule for reload.</p>
+
+
+	<p><strong>StatusChan Syntax:</strong></p>
+
+
+<pre>$MasterSchedule;Reload=&lt;MS Name&gt;;StatusChan=&lt;ChanName&gt;</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>&lt;MS Name&gt;</em>: The name of the MasterSchedule for reload.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;ChanName&gt;</em>: The name of the status channel used to chart the reload progress.<br />&nbsp;</p>
+
+
+	<a name="MINIMIZE"></a>
+<h3 >$MINIMIZE<a href="#MINIMIZE" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Minimizes the AutomationPanel interface.</p>
+
+
+	<p><strong>Version:</strong><br />3.6</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$MINIMIZE</pre><br />&nbsp;</p>
+
+
+	<a name="NOTIFY"></a>
+<h3 >$NOTIFY<a href="#NOTIFY" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Allows both system and test code to popup a transient message to the operator. Once the message appears, the operator has 7 seconds to pin or close the message before it closes on its own. After the message is closed, then the only place the message will be visible is in the message queue. If another message comes in before the last one is closed, then it will be stacked just above the previous message.</p>
+
+
+	<p><strong>Version:</strong><br />3.5</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+$NOTIFY;CAPTION=&lt;caption text&gt;;TEXT=&lt;message text&gt;;LEVEL=&lt;level&gt;
+</pre></p>
+
+
+	<p>Where LEVEL maps to the following behaviors:</p>
+
+
+	<table style="margin-left: 2.5em;width:400px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td><strong>Level</strong></td>
+			<td><strong>Default Caption Text</strong></td>
+			<td><strong>Text Color</strong></td>
+		</tr>
+		<tr>
+			<td>0</td>
+			<td>Notice</td>
+			<td>Blue</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Notice</td>
+			<td>Green</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Warning</td>
+			<td>Yellow</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Error</td>
+			<td>Red</td>
+		</tr>
+		<tr>
+			<td>(other)</td>
+			<td>Notice</td>
+			<td>Black</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p>The CAPTION and TEXT settings can use the HTML formatting tags from the previous section.  The &lt;color&gt; tag will override the LEVEL setting if it encloses the caption or message text.</p>
+
+
+	<p>If CAPTION is not specified, then the LEVEL setting determines the caption text.</p>
+
+
+	<p>The $NOTIFY message also supports translation and channel substitution (with the use of macros) within the caption or message text.<br />&nbsp;</p>
+
+
+	<a name="OPENLAYOUT"></a>
+<h3 >$OPENLAYOUT<a href="#OPENLAYOUT" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Shows the layout name specified in the message. You can open layouts in AutomationPanel, or you can load them outside the application as a standalone display. If the layout is already open, it will be activated.</p>
+
+
+	<a name="Open-in-Application"></a>
+<h4 >Open in Application<a href="#Open-in-Application" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>To open the layout in the application, use the following syntax:</p>
+
+
+	<p><strong>Syntax:</strong></p>
+
+
+<pre>$OPENLAYOUT;&lt;layoutname&gt; [StatusChan=&lt;statuschan&gt;] [Modal=&lt;modal&gt;]</pre>
+
+	<p><strong>Arguments</strong>:</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;layoutname&gt;</em>: The name of the layout that you want to open.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;statuschan&gt;</em>: (Optional) The name of the virtual output channel used to display the status of the message. If the layout is busy, the channel is set to 1. If the layout loaded successfully, the channel is set to 0. If the layout didn't load successfully, the channel is set to -1.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;modal&gt;</em>: (Optional) TRUE/FALSE. If TRUE, the layout will open as a modal layout. The presence of a modal layout disables interaction with the main AutomationPanel window as well as any floating layouts. Users can only interact with the modal layout until it is closed. Other layouts cannot be opened while a modal layout is open.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Modal layouts do not suppress closing AutomationPanel via a $EXIT message.</td>
+		</tr>
+	</table></p>
+
+
+	<p><strong>Example:</strong></p>
+
+
+	<p>To open the layout file, <em>LabWorX.layout</em>, in <em>$SUPPORTDIR\Layouts</em>, send the following message:</p>
+
+
+<pre>$OPENLAYOUT;LabWorX</pre>
+
+	<p>To open the layout file, <em>Main.layout</em>, in <em>$SUPPORTDIR\Layouts</em> and use the optional argument to store the message status to the <code>voFlgOpen</code> channel, send the following message:</p>
+
+
+<pre>$OPENLAYOUT;Main StatusChan=voFlgOpen</pre>
+
+	<p>To open the layout file, <em>LabWorX.layout</em>, in <em>$SUPPORTDIR\Layouts</em> as modal, send the following message:</p>
+
+
+<pre>$OPENLAYOUT;LabWorX Modal=TRUE</pre>
+
+	<a name="Open-as-a-Standalone-Display"></a>
+<h4 >Open as a Standalone Display<a href="#Open-as-a-Standalone-Display" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>To open the layout as a standalone display, use the following syntax:</p>
+
+
+	<p><strong>Syntax:</strong></p>
+
+
+<pre>$OPENLAYOUT;&lt;layoutname&gt; [StatusChan=&lt;statuschan&gt;];&lt;x,y&gt;;&lt;w,h&gt;;&lt;true/false&gt;</pre>
+
+	<p><strong>Arguments</strong>:</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;layoutname&gt;</em>: The name of the layout that you want to open.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;x,y&gt;</em>: The location of the layout when it's opened, where <em>x</em> and <em>y</em> are coordinates starting from the upper-left corner of the screen indicating where the layout should be opened.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;w,h&gt;</em>: The size of the layout when it's opened, where <em>w</em> is width and <em>h</em> is height.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;true/false&gt;</em>: The argument that determines whether the layout is opened in a separate window using <em>DspDrv_AP.exe</em> or normally in AutomationPanel. To launch using <em>DspDrv_AP.exe</em>, set this value to <strong>true</strong>. By default, it is false.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;statuschan&gt;</em>: (Optional) The name of the virtual output channel used to display the status of the message. <em>DspDrv_AP.exe</em> sets the channel to 1 before the layout is loaded. If the layout loaded successfully, the channel is set to 0. If the layout didn't load successfully, the channel is set to -1.</p>
+
+
+	<p><strong>Example:</strong></p>
+
+
+<pre>$OPENLAYOUT;Main;10,10;200,200;true</pre></p>
+
+
+	<p>In the example above, <em>Main.layout</em> will open at location 10,10 and size 200x200 as a standalone layout.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Modal layouts are not supported by standalone syntax.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="ProgressBar"></a>
+<h3 >$ProgressBar<a href="#ProgressBar" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Displays a time-based progress bar dialog.</p>
+
+
+	<p><strong>Version:</strong><br />3.8</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+$ProgressBar;&lt;Title&gt;;&lt;Description&gt;;&lt;MaximumTimeInSeconds&gt;
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>&lt;Title&gt;:</em> Title of the progress bar dialog. Space characters are allowed. This argument is required.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;Description&gt;:</em>  Description of the progress bar dialog. Space characters are allowed. This argument is required.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;MaximumTimeInSeconds&gt;</em>: Time (in seconds) that it takes for the progress bar to reach 100%. The maximum value is 600 seconds (10 minutes).</p>
+
+
+	<p>&nbsp;</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The dialog does not close automatically after reaching 100%. You must send the <code>$ProgressBarOff</code> message to close the dialog.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="ProgressBarOff"></a>
+<h3 >$ProgressBarOff<a href="#ProgressBarOff" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Closes the progress bar dialog.</p>
+
+
+	<p><strong>Version:</strong><br />3.8</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+$ProgressBarOff
+</pre></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="PROMPTBYID"></a>
+<h3 >$PROMPTBYID<a href="#PROMPTBYID" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>AutomationPanel supports this message, <code>$PromptByID</code>, primarily for BTS. However, it could be used by other applications as well. It is used to put up a multi-button prompt with corresponding actions where each instance of the prompt can have a specific ID. Therefore, the system can support multiple prompts with different IDs simultaneously as is required in the multi-circuit BTS system.</p>
+
+
+	<p><strong>Version:</strong><br />3.5</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+$PromptByID ID=1|B1=OK,Data_Engine&gt;&gt;SET flgAns 1,Exit|B2=Cancel,,Exit|B3=Do Nothing|T=Circuit Fault|BC=#663399|TC=0,0,0|L1=text|L2=Some more text
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;">ID = ID of form to create<br />B1 = Button 1 label, Button 1 action, Exit on completion<br />B2 = Button 2 label, Button 2 action, Exit on completion<br />B2 = Button 3 label, Button 3 action, Exit on completion<br />T = Dialog Title<br />BC = Background Color<br />TC = Text Color<br />L1 = Label 1<br />L2 = Label 2</p>
+
+
+	<ul>
+	<li>The Background Color and Text Color can be a numeric (663399) value or RGB (0,0,0).</li>
+		<li>This message will not create a new form if the ID already exists.</li>
+		<li>You can define a one, two, or three button dialog.<br />&nbsp;</li>
+	</ul>
+
+
+	<a name="PROMPTCLOSEBYID"></a>
+<h3 >$PROMPTCLOSEBYID<a href="#PROMPTCLOSEBYID" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Closes the prompt from the <code>$PromptByID</code> command.</p>
+
+
+	<p><strong>Version:</strong><br />3.5</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+PromptCloseByID &lt;ID=#&gt;
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>&lt;ID=&gt;:</em> ID of form to close, such as <code>ID=1</code><br />&nbsp;</p>
+
+
+	<a name="PROMPTERmessageINPUTchannelname1channelname2buttontext1buttontext2"></a>
+<h3 >$PROMPTER;message;$INPUT;channelname1;channelname2;buttontext1;buttontext2<a href="#PROMPTERmessageINPUTchannelname1channelname2buttontext1buttontext2" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Displays an edit box with a right and left button. Clicking Button1 (left) sets the <code>channelname2</code> channel to 1 and writes the input text to the <code>channelname1</code> channel; clicking Button2 (right) sets the <code>channelname1</code> channel to 0, and it does not write the input text to the <code>channelname1</code> channel.</p>
+
+
+	<p>This mailslot message is only supported in AutomationPanel.</p>
+
+
+	<p><strong>Version:</strong><br />3.6</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$PROMPTER;&lt;message&gt;;$INPUT;&lt;virtualstringchannel&gt;;&lt;virtualoutputchannel&gt;;&lt;Button1Text&gt;;&lt;Button2Text&gt;</pre><br />&nbsp;</p>
+
+
+	<a name="RESTORE"></a>
+<h3 >$RESTORE<a href="#RESTORE" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Restores the AutomationPanel interface to its original size and location. See <a class="wiki-page" href="#MINIMIZE">$MINIMIZE</a>.</p>
+
+
+	<p><strong>Version:</strong><br />3.6</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$RESTORE</pre><br />&nbsp;</p>
+
+
+	<a name="SCHEDULEACTION"></a>
+<h3 >$SCHEDULEACTION<a href="#SCHEDULEACTION" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Controls the Schedule Viewer panel's toolbar buttons and combo box.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$ScheduleAction;&lt;ScheduleName&gt;,&lt;Action&gt;</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>&lt;ScheduleName&gt;:</em> Name of the schedule file with or without the <em>.sc2</em> extension.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;Action&gt;:</em> Options include: Start, Stop, Pause, Resume, NextStep, GotoStep, and Select.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">When action is set to "Select", it selects a schedule from the schedule combo box. If schedule name is "None" or "", it will unselect the current schedule (i.e., no schedule will be selected).</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="SetItemProperty"></a>
+<h3 >$SetItemProperty<a href="#SetItemProperty" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sets the value of a property for a panel/display object. This message requires a Property ID, which is specified in Property Manager.</p>
+
+
+	<p><strong>Syntax</strong>:<br /><pre>$SetItemProperty;&lt;PropertyID&gt;=&lt;Value&gt;</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>&lt;PropertyID&gt;</em>: The name of the Automation ID and property name. This is visible at the bottom of the Property Manager dialog when you select a property that supports automation.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;Value&gt;</em>: The value that the panel/display object property is set to.</p>
+
+
+	<p><strong>Property ID Syntax</strong>:<br /><pre>&lt;AutomationID&gt;.&lt;PropertyName&gt;</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>&lt;AutomationID&gt;</em>: The name assigned to the panel or object in Property Manager.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;PropertyName&gt;</em>: The internal name for the property. (This is not necessarily the name displayed in the left column of Property Manager.)</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">If an object doesn't have an Automation ID defined, then none of its properties can be modified, and Property Manager will not display a PropertyID.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+	<a name="SHOWGROUP"></a>
+<h3 >$SHOWGROUP<a href="#SHOWGROUP" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Shows panels with the specified Group ID.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">To show panels in layouts that were launched using <em>DspDrv_AP.exe</em>, the destination of the mailslot must be changed from "Softpanel" to the filename (without the file extension) of the layout. In other words, if the GroupID is shared across a combination of layouts, some launched using <em>DspDrv_AP.exe</em> and some open in AutomationPanel, you would have to send multiple <code>$SHOWGROUP</code> mailslots; one to Softpanel and one to each layout opened using <em>DspDrv_AP.exe</em>. The mailslot affects all panels with the specified Group ID in any layout that is currently open (e.g., docked layouts, tabs, floating tabs, layout toolbars).</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><strong>Version:</strong><br />4.1</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$SHOWGROUP;&lt;Group ID&gt;</pre><br />&nbsp;</p>
+
+
+	<a name="HIDEGROUP"></a>
+<h3 >$HIDEGROUP<a href="#HIDEGROUP" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Hides panels with the specified Group ID.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">To hide panels in layouts that were launched using <em>DspDrv_AP.exe</em>, the destination of the mailslot must be changed from "Softpanel" to the filename (without file extension) of the layout. So, if the GroupID is shared across a combination of layouts, some launched using <em>DspDrv_AP.exe</em> and some open in AutomationPanel, you would have to send multiple <code>$HIDEGROUP</code> mailslots; one to Softpanel and one to each layout opened using <em>DspDrv_AP.exe</em>. The mailslot affects all panels with the specified Group ID in any layout that is currently open (e.g., docked layouts, tabs, floating tabs, layout toolbars).</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><strong>Version:</strong><br />4.1</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$HIDEGROUP;&lt;Group ID&gt;</pre><br />&nbsp;</p>
+
+
+	<a name="SHOWTOOLBAR"></a>
+<h3 >$SHOWTOOLBAR<a href="#SHOWTOOLBAR" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Shows a toolbar hidden from the main AutomationPanel interface.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$SHOWTOOLBAR;&lt;Display&gt;</pre><br />&nbsp;</p>
+
+
+	<a name="SAVELAYOUT"></a>
+<h3 >$SAVELAYOUT<a href="#SAVELAYOUT" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Saves a layout in AutomationPanel.</p>
+
+
+	<p><strong>Version:</strong><br />4.1</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$SAVELAYOUT;&lt;LayoutName&gt;;[ForceSave];[StatusChan]</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>&lt;LayoutName&gt;:</em> The file name of the layout that you want to save. Do not include the file path or the file extension as part of this argument.</p>
+
+
+	<p style="padding-left:1em;"><em>[ForceSave]:</em> (Optional) Force saving changes to the layout without confirmation. Where: true - forced saving, false - show save confirmation dialog. If this argument is missing, the user will always be prompted to save changes.</p>
+
+
+	<p style="padding-left:1em;"><em>[StatusChan]:</em> (Optional) Name of the virtual output channel set to the returned value from the message. Where: 1 - busy, 0 - save successfully or cancel by confirmation dialog, -1 - error occurred.<br />&nbsp;</p>
+
+
+	<a name="SysLogExport"></a>
+<h3 >$SysLogExport<a href="#SysLogExport" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Exports the values from the System Log file to a specified file.</p>
+
+
+	<p><strong>Version:</strong><br />4.4</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+$SysLogExport;&lt;SysLogFile&gt;;&lt;Start Time&gt;;&lt;End Time&gt;;&lt;Output File&gt;;&lt;StatusChan&gt;;&lt;silent&gt;
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>&lt;SysLogFile&gt;:</em> The file path to the current active System Log file. Macros (e.g., $SYSTEMDIR) are supported for this argument.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;Start Time&gt;:</em> The timestamp (in YYYY/MM/DD HH:mm:ss.uuu format) to start collecting values at in the System Log file. If not specified, then values will be collected from the beginning of the System Log file.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;End Time&gt;:</em> The timestamp (in YYYY/MM/DD HH:mm:ss.uuu format) to stop collecting values at in the System Log file. If not specified, then values will stop being collected at the end of the System Log file.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;Output File&gt;:</em> The path to the outputted file where the collected values will be exported to. Macros (e.g., $SYSTEMDIR) are supported for this argument.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;StatusChan&gt;:</em> (Optional) The name of the virtual output channel used to display the status of the message, where:<br />1 = Busy<br />-1 = Invalid Time Range<br />-2 = Error reading the System Log File<br />-3 = Error opening Output File<br />0 = Operation was Successful</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;Silent&gt;:</em> (Optional) Hides messages for errors or successes for the operation. In order to receive feedback in case of any errors, include the &lt;StatusChan&gt; argument in the message.</p>
+
+
+	<p><strong>Example:</strong><br /><pre>
+$SysLogExport;$DATADIR\PR-001\SystemLog.slg;2024/09/23 17:50:03.450;2024/09/23 18:14:38.570;$DATADIR\PR-001\OutputFile.csv;Cntr1;silent
+</pre></p>
+
+
+	<p>&nbsp;</p>
+</body>
+</html>

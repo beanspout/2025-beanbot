@@ -1,0 +1,605 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ADT Bar</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="ADT_Bar.html">ADT Bar</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="ADT-Bar-Object"></a>
+<h1 >ADT Bar Object<a href="#ADT-Bar-Object" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#ADT-Bar-Object">ADT Bar Object</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Field-Definitions">Field Definitions</a><ul><li><a href="#General-Tab">General Tab</a></li><li><a href="#Scale-Tab">Scale Tab</a></li><li><a href="#Tics-Tab">Tics Tab</a></li><li><a href="#Slider-Options-Tab">Slider Options Tab</a></li><li><a href="#Indicators-Tab">Indicators Tab</a></li><li><a href="#Data-Quality-Tab">Data Quality Tab</a></li></ul>
+</li><li><a href="#ADT-Bar-Object-Properties">ADT Bar Object Properties</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The ADT Bar will display a channel name and its value using a digital value and a bar that changes length to indicate the channel’s magnitude. If configured, operators can change the value on the bar using sliders.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>ADT Bar</strong></em></span><br /><img src="attachments/download/6685/ADTBarOverview.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Field-Definitions"></a>
+<h2 >Field Definitions<a href="#Field-Definitions" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="General-Tab"></a>
+<h3 >General Tab<a href="#General-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>General Tab Properties</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Option</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td><strong>Value Channel</strong></td>
+			<td>Click the <strong>...</strong> button to open the Channel Selection dialog, which you can use to select the database channel whose data you want to display on the ADTBar. This is also the channel whose value is set if the <code>Bar Style = Slider</code>.</td>
+		</tr>
+		<tr>
+			<td><strong>Units</strong></td>
+			<td>Will display the unit that is defined for the value channel selected (if any).</td>
+		</tr>
+		<tr>
+			<td><strong>Display Units</strong></td>
+			<td>Gives you a choice between the defined unit for the selected value channel or <strong>Automatic</strong>, which is the unit defined in the <strong>System Options</strong> in iTest Console (<strong>Tools > Options >System Options</strong>). </td>
+		</tr>
+		<tr>
+			<td><strong>Display Decimal Points</strong></td>
+			<td>This setting supersedes the precision that is set for the channel. For example, if a channel is set to handle its values to six decimal places, the ADT Bar can override that with the precision set in this field. </td>
+		</tr>
+		<tr>
+			<td><strong>Target Channel</strong></td>
+			<td>Select the database channel that holds the target value for the control.</td>
+		</tr>
+		<tr>
+			<td><strong>Bar Style</strong></td>
+			<td>Select the type of bar: <strong>Solid Bar</strong>, <strong>Pointer</strong>, <strong>LED Segmented Bar</strong>, or <strong>Slider</strong>.</td>
+		</tr>
+		<tr>
+			<td><strong>Control ID</strong></td>
+			<td>Provides a unique name for the control. This name can be used in mailslot messages to change control properties during runtime on the iTest Console. </td>
+		</tr>
+		<tr>
+			<td><strong>Label Field</strong></td>
+			<td>Select a label for the control (<strong>Channel Name</strong>, <strong>Alias</strong>, <strong>Description</strong>, <strong>System Default</strong>, or <strong>Alias2</strong>) as defined for the database channel.</td>
+		</tr>
+		<tr>
+			<td><strong>Orientation</strong></td>
+			<td>Select the whether you want the bar to be <strong>Vertical</strong> or <strong>Horizontal</strong>. </td>
+		</tr>
+		<tr>
+			<td><strong>Permit Runtime Changes</strong></td>
+			<td>When selected, allows changes to be made programmatically.</td>
+		</tr>
+		<tr>
+			<td><strong>Show Border</strong></td>
+			<td>Visually shows the border around the control.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Scale-Tab"></a>
+<h3 >Scale Tab<a href="#Scale-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Scale Tab Properties</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Option</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td><strong>Min Value</strong></td>
+			<td>Specify the low end of the ADTBar’s range. </td>
+		</tr>
+		<tr>
+			<td><strong>Max Value</strong></td>
+			<td>Specify the high end of the ADTBar’s range.</td>
+		</tr>
+		<tr>
+			<td><strong>Num Major Tics</strong></td>
+			<td>Specify the number of major tics on the bar. Distance between major tics is calculated by (<strong>Max Value</strong> - <strong>Min Value</strong>) / <strong>Num Major Tics</strong>. For example, if you specify 5 major tics and the Min Value is 0 and the Max Value is 200, then (200-0) / 5 = 40 so major tics will display at 40, 80, 120, 160, and 200. </td>
+		</tr>
+		<tr>
+			<td><strong>Num Minor Tics</strong></td>
+			<td>Specify the number of minor tics between major tics.</td>
+		</tr>
+		<tr>
+			<td><strong>Label Every X Tics</strong></td>
+			<td>Indicate how many major tics will be labeled.</td>
+		</tr>
+		<tr>
+			<td><strong>Show Limits Bar</strong></td>
+			<td>Displays the limit bar with the tic marks. The limit bar displays the limit and warning colors associated with value ranges for the Value Channel selected under the <strong>General</strong> tab.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Tics-Tab"></a>
+<h3 >Tics Tab<a href="#Tics-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Tics Tab Properties</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Option</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td><strong>Style</strong></td>
+			<td>Select whether you want the major and minor tics to be a <strong>Line</strong> or a <strong>Bold Line</strong>. Tics will not display on the bar when you select &lt;NONE&gt;.</td>
+		</tr>
+		<tr>
+			<td><strong>Length</strong></td>
+			<td>Specify the length of the major and minor tics in pixels. This can extend over the bar.</td>
+		</tr>
+		<tr>
+			<td><strong>Color</strong></td>
+			<td>Displays the actual color selected. </td>
+		</tr>
+		<tr>
+			<td><strong>Select Color</strong></td>
+			<td>Specify the color of the major and minor tics. If you enabled the <strong>Limits</strong> option on the <strong>Scale</strong> tab, make sure that the tic colors are significantly different from the limit and warning colors. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Slider-Options-Tab"></a>
+<h3 >Slider Options Tab<a href="#Slider-Options-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Slider Options Tab Properties</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Option</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td><strong>Grab-Handle Style</strong></td>
+			<td>Select the type of handle you want to display on the bar. This is the slider control that can be dragged during operation.</td>
+		</tr>
+		<tr>
+			<td><strong>Slider Step Size</strong></td>
+			<td>Specify the number of slider steps that get executed when a user clicks in the bar area on either side of the grab handle.  </td>
+		</tr>
+		<tr>
+			<td><strong>Update Mode</strong></td>
+			<td>Indicate whether you want updates to ramp or take place immediately. This mode updates incrementally based on the Slider Step Size.</td>
+		</tr>
+		<tr>
+			<td><strong>Release Change Rate</strong></td>
+			<td>Specifies the change in value per second. This is only valid when the <strong>Update Mode</strong> is set to <strong>Ramped</strong>. </td>
+		</tr>
+		<tr>
+			<td><strong>Show Arrow Buttons</strong></td>
+			<td>When selected, arrow buttons display at the beginning and end of the bar.</td>
+		</tr>
+		<tr>
+			<td><strong>Disable Slider</strong></td>
+			<td>When selected, the slider cannot be manually moved during runtime on the iTest Console.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Indicators-Tab"></a>
+<h3 >Indicators Tab<a href="#Indicators-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Indicators Tab Properties</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Option</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td><strong>Target Value Indicator</strong></td>
+			<td>When <strong>Pointer</strong> is selected, an arrow above the bar indicates the value of the <strong>Target Channel</strong> specified on the <strong>General</strong> tab.</td>
+		</tr>
+		<tr>
+			<td><strong>High Value Indicator</strong></td>
+			<td>When <strong>Pointer</strong> is selected, an arrow above the bar indicates the highest channel value since the bar has been displayed.</td>
+		</tr>
+		<tr>
+			<td><strong>Low Value Indicator</strong></td>
+			<td>When <strong>Pointer</strong> is selected, an arrow above the bar indicates the lowest channel value since the bar has been displayed.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Data-Quality-Tab"></a>
+<h3 ><strong>Data Quality</strong> Tab<a href="#Data-Quality-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Data Quality Tab Properties</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Option</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td><strong>Show DQ Range</strong></td>
+			<td>Click in this box to view channel data quality (in the same way you would view limits) on the ADT Bar. Selecting this feature will allow you to view data quality in runtime for any channel displayed in the ADT Bar for which a data quality range has been defined. The three Data Quality Types that allow you to define a range are <strong>High/Low</strong>, <strong>Between Tolerance in %</strong>, and <strong>Between Tolerance</strong>. </td>
+		</tr>
+		<tr>
+			<td><strong>Data Quality Arc Color</strong></td>
+			<td>Select a color to represent the data quality in this field.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="ADT-Bar-Object-Properties"></a>
+<h2 >ADT Bar Object Properties<a href="#ADT-Bar-Object-Properties" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>These properties are useful when issuing the following mailslot message:</p>
+
+
+<pre>
+\\.\mailslot\DisplayName&gt;&gt;$SETITEMPROPERTY ControlID PropertyName PropertyValue
+</pre>
+
+	<p>The following are the names of the properties that can be changed by mailslot message to the display.  These property names may or may not be the same as the property names shown on the display object property setup dialogs.  Most of these property names are self-explanatory.  The first column is the data type of the property.</p>
+
+
+	<p>The int or OLE_COLOR for color is the color RGB values.  “BSTR” means the type of the property is string.  “int”, “float”, “long”, “short”, “double” means the type of the property is number.  “Boolean” means the property value should be 1 or 0.</p>
+
+
+	<p>Font property syntax is complicated.<br />&lt;font name&gt;,&lt;bold&gt;,,&lt;italic&gt;,&lt;font size&gt;,,&lt;strikeout&gt;,&lt;underline&gt;, <br />example: Arial,0,0,0,97500,0,0,0,400</p></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>ADT Bar Object Properties</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Type</strong></td>
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Notes</strong></td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>MinValue</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>MaxValue</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>TicInterval</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>TicsPerLabel</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>NumMajorIntervals</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>NumSubIntervals</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ShowLimitsBar</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ChannelName</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>MinorTicStyle</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>MajorTicStyle</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>MinorTicColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>MajorTicColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>MinorTicLength</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>MajorTicLength</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>GrabHandleStyle</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>ReleaseChangeRate</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>SliderStepSize</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ShowArrowButtons</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>DisableSlider</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>BarBackColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>font</td>
+			<td><strong>RangeFont</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>font</td>
+			<td><strong>BarFont</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>LimitColorsActive</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>BarStyle</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>Orientation</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>UpdateMode</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>LabelField</strong>*</td>
+			<td>values are case-sensitive</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>BackColor1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>BackColor2</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>ArrowColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>ArrowBackColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>BarColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>BarBackColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>PointerColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>SliderColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>TextColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>TargetStyle</strong></td>
+			<td>values: 600,601,602</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>HighStyle</strong></td>
+			<td>values: 600,601,602</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LowStyle</strong></td>
+			<td>values: 600,601,602</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>TargetColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>HighColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LowColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>ResetIndicators</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>TargetChannelName</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>Orientation</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ChangesOk</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ShowDQRange</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>DQArcColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ShowBorder</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ChanDisplayUnit</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>TargetDisplayUnit</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ValuePrecision</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;">values: Automatic, Channel Name, Customer Name, Module Name, Alias, Description</span>
+
+	<p>&nbsp;</p>
+</body>
+</html>

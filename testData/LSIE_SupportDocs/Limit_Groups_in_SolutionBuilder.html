@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Limit Groups in SolutionBuilder</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Limit_Groups_in_SolutionBuilder.html">Limit Groups in SolutionBuilder</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Managing-Limit-Groups-in-SolutionBuilder"></a>
+<h1 >Managing Limit Groups in SolutionBuilder<a href="#Managing-Limit-Groups-in-SolutionBuilder" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Managing-Limit-Groups-in-SolutionBuilder">Managing Limit Groups in SolutionBuilder</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Configuring-Limit-Groups">Configuring Limit Groups</a><ul><li><a href="#Editing-Digital-Channel-Limits">Editing Digital Channel Limits</a></li></ul>
+</li><li><a href="#Limit-Fonts">Limit Fonts</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Limit groups are used to change the high and low range for channels during different operating conditions for the test environment. For example, the default limits for a channel may be set in a wide range in order to catch abnormal operating conditions when the engine or speciment is not running. As a test proceeds, different limit groups may be applied to make that range smaller.</p>
+
+
+	<p>Limit groups can be managed in Test Manager or SolutionBuilder by using the Limit Groups editor. This document details how to manage limit groups in SolutionBuilder. You can access this editor by selecting <strong>Channels > Limit Groups</strong> from the main menu.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">This editor will be in read-only mode if using legacy limits (i.e., missing the <code>LimitsVer=3.2</code> <em>powertek.ini</em> setting). For more information about legacy limits, refer to the <a class="wiki-page" href="Limits_and_Warnings.html#Legacy-vs-32-Limits">Legacy vs 3.2 Limits</a> documentation.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Limit Groups Editor</strong></em></span><br /><img src="attachments/download/134375/45_LimitGroupsEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Configuring-Limit-Groups"></a>
+<h2 >Configuring Limit Groups<a href="#Configuring-Limit-Groups" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest includes a default limit group (i.e., DEFAULT.LIM) that lists all channels that have limits enabled. The DEFAULT.LIM limit group serves as the foundation for other limit groups and contains the default limit settings for each channel; the default limit settings are configured in the Channel Definitions editor. This limit group cannot be removed, renamed, or edited; however, you can set an individual channel's limits to be active or inactive in this group without disabling limits for the channel.</p>
+
+
+	<p>When adding a new limit group, the channels listed in DEFAULT.LIM will be added to the new limit group and will display in italics until modifications are made or saved. For more information about limit fonts, refer to the <a class="wiki-page" href="#Limit-Fonts">Limit Fonts</a> section below. The maximum amount of limit groups for a solution is 50; once this maximum is met, limit groups cannot be duplicated nor added.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>New Limit Group</strong></em></span><br /><img src="attachments/download/134376/45_NewLimitGroup.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The property sheet editor allows you to edit the limit settings for multiple channels simultaneously. Any changes made to the limit settings will apply to all selected channels.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Editing Multiple Channels in Property Sheet Editor</strong></em></span><br /><img src="attachments/download/134379/45_LimitGroupsPropertySheetEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Use the table below to configure channel limit settings in your limit groups.</p>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>Limit Groups Editor Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Column</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Channel</td>
+			<td> (Read-only) The name of the channel.</td>
+		</tr>
+		<tr>
+			<td>Alias/Customer Name</td>
+			<td> (Read-only) The alias or customer name if defined for the channel. Use the <strong>Show Alias/Show Customer Name</strong> right-click option to display either the <strong>Alias</strong> or <strong>Customer Name</strong> columns.</td>
+		</tr>
+		<tr>
+			<td>Module ID</td>
+			<td> (Read-only) The module ID for the channel if applicable.</td>
+		</tr>
+		<tr>
+			<td>Low Limit</td>
+			<td> The lowest value at which the test specimen should run for the given channel.</td>
+		</tr>
+		<tr>
+			<td>Low Warning</td>
+			<td> The value at which a warning is issued, indicating that the channel value is approaching its low limit.</td>
+		</tr>
+		<tr>
+			<td>High Warning</td>
+			<td> The value at which a warning is issued, indicating that the channel value is approaching its high limit.</td>
+		</tr>
+		<tr>
+			<td>High Limit</td>
+			<td> The highest value at which the test specimen should run for the given channel.</td>
+		</tr>
+		<tr>
+			<td>LL Ignore Time</td>
+			<td> The amount of time that iTest waits after the channel value goes below its Low Limit/Low Warning value before starting the specified limit action. This column is also referred to as the <strong>Low Limit Ignore Time</strong>.</td>
+		</tr>
+		<tr>
+			<td>LW Ignore Time*</td>
+			<td> The amount of time that iTest waits after the channel value goes below its Low Warning value before starting the specified limit action. A blank value indicates that the Low Limit Ignore Time will be used. The default value is 0.</td>
+		</tr>
+		<tr>
+			<td>HW Ignore Time*</td>
+			<td> The amount of time that iTest waits after the channel value goes below its High Warning value before starting the specified limit action. A blank value indicates that the High Limit Ignore Time will be used. The default value is 0.</td>
+		</tr>
+		<tr>
+			<td>HL Ignore Time</td>
+			<td> The amount of time that iTest waits after the channel value exceeds the High Limit/High Warning value before starting the specified limit action. The default value is 0.</td>
+		</tr>
+		<tr>
+			<td>Low Limit Action</td>
+			<td> The action iTest performs when the associated low warning limit is met.</td>
+		</tr>
+		<tr>
+			<td>Low Warning Action</td>
+			<td> The action iTest performs when the associated low warning limit is met.</td>
+		</tr>
+		<tr>
+			<td>High Warning Action</td>
+			<td> The action iTest performs when the associated high warning limit is met.</td>
+		</tr>
+		<tr>
+			<td>Active</td>
+			<td> The state for the channel in the limit group. Possible states are <strong>Active</strong> or <strong>Inactive</strong>. If <strong>Inactive</strong> is selected, then limits are not checked for that channel when the limit group is enabled.</td>
+		</tr>
+		<tr>
+			<td>Delay Time**</td>
+			<td> The time (in seconds) to wait before checking limits on that channel. For example, you can put a 10 second delay on checking oil pressure after applying the running limit group. The delay is honored each time a limit group is applied.</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;font-style: italic;">These columns only appear in SolutionBuilder's Limit Groups editor when <code>LimitsVer >= 3.2</code></span>.<br />** <span style="font-size:0.90em;font-style: italic;">This column is not available in the DEFAULT.LIM limit group editor.</span>
+
+	<p>&nbsp;</p></p>
+
+
+	<p>The following right-click options and keyboard shortcuts are available in the editor:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options and Shortcuts</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+			<td style="text-align:left;"><strong>Keyboard Shortcut</strong></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="3">Left Pane</th>
+		</tr>
+		<tr>
+			<td>Add</td>
+			<td> Adds a new limit group to the list of limit groups. The new limit group will use the DEFAULT.LIM limit group as the foundation for the limit settings.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Remove*</td>
+			<td> Removes the selected limit group.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Rename...*</td>
+			<td> Launches the Rename dialog, allowing you to rename the limit group. Each limit group must have a unique name.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Duplicate</td>
+			<td> Duplicates the selected limit group and renames it with an appended numeric. The duplicated limit group will contain the limit settings as specified in the limit group it was duplicated from.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td> Undoes the previous action.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td> Redoes the last undone action.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="3">Spreadsheet Editor</th>
+		</tr>
+		<tr>
+			<td>Edit</td>
+			<td> Launches the Edit Channel dialog for digital input/output channels. This option is only available for those channel types in non-default limit groups. For more information, refer to the <a class="wiki-page" href="#Editing-Digital-Channel-Limits">Editing Digital Channel Limits</a> section.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td> Copies the value(s) from the selected row/cell.</td>
+			<td> <strong>Ctrl + C</strong></td>
+		</tr>
+		<tr>
+			<td>Cut**</td>
+			<td> Removes the selected row/cell value(s) and copies it to the clipboard.</td>
+			<td> <strong>Ctrl + X</strong></td>
+		</tr>
+		<tr>
+			<td>Paste**</td>
+			<td> Pastes the copied value(s) to the selected row/cell. <ins><strong>Note:</strong></ins> You cannot paste value(s) into the DEFAULT.LIM limit group.</td>
+			<td> <strong>Ctrl + V</strong></td>
+		</tr>
+		<tr>
+			<td>Copy Limits To...</td>
+			<td> Launches the Copy to Limit Groups dialog, allowing you to paste the limit settings for selected channel rows into other limit groups. <ins><strong>Note:</strong></ins> You cannot paste limit settings into the DEFAULT.LIM limit group.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td> Undoes the previous action.</td>
+			<td> <strong>Ctrl + Z</strong></td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td> Redoes the last undone action.</td>
+			<td> <strong>Ctrl + Y</strong></td>
+		</tr>
+		<tr>
+			<td>Show Alias/Show Customer Name</td>
+			<td> Displays either the <strong>Alias</strong> or <strong>Customer Name</strong> column, allowing you to view the channel's alias or customer name if defined for the channel.</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;font-style: italic;">This option is not available for the DEFAULT.LIM limit group.</span>.<br />** <span style="font-size:0.90em;font-style: italic;">This option is only available when using the keyboard shortcut.</span>
+
+	<p>&nbsp;</p>
+
+
+	<a name="Editing-Digital-Channel-Limits"></a>
+<h3 >Editing Digital Channel Limits<a href="#Editing-Digital-Channel-Limits" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Digital input/output channel limits can be edited via the <strong>Edit</strong> right-click option in non-default limit groups. When you select <strong>Edit</strong>, the digital channel's Edit Channel dialog will display, allowing you to change the limit settings. After configuring the digital channel limit settings, the limit group is updated with the new limit settings. Alternatively, you can edit the digital channel's limit settings in the limit group editor; however, any fields not applicable to the digital channel will be read-only. For example, if a digital channel has high limits enabled, then only the <strong>High Limit Ignore Time</strong>, <strong>High Limit Action</strong>, <strong>Active</strong>, and <strong>Delay Time</strong> fields will be editable for the channel.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Edit Digital Channel Dialog</strong></em></span><br /><img src="attachments/download/102044/42_EditDigitalChannelDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Limit-Fonts"></a>
+<h2 >Limit Fonts<a href="#Limit-Fonts" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>During a running instance of SolutionBuilder, the following fonts will be used to display different states for the channel row(s) in a limit group:</p>
+
+
+	<ol>
+	<li><ins><strong>Regular Font:</strong></ins> This font indicates that the channel limit settings in a non-default limit group have been modified or have been saved to the limit group file.
+<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The DEFAULT.LIM limit group will always display in regular font as it matches the limit settings from the Channel Definitions editor with the exception of the active state.</td>
+		</tr>
+	</table></li>
+		<li><ins><strong>Italics:</strong></ins> This font indicates that a channel was added to a non-default limit group but has not been modified nor saved.</li>
+		<li><ins><strong>Strikeout:</strong></ins> This font indicates that a channel no longer has limits enabled or no longer exists and will be removed from the limit group upon saving changes. This row will be read-only.</li>
+	</ol>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Example: Limit Fonts</strong></em></span><br /><img src="attachments/download/134378/45_LimitFontsExample.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Limits_and_Warnings.html">Limits and Warnings</a></li>
+		<li><a class="wiki-page" href="Channel_Definitions_in_SolutionBuilder.html">Managing Channels in SolutionBuilder</a></li>
+	</ul>
+</body>
+</html>

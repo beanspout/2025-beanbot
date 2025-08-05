@@ -1,0 +1,748 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ITest Security Permissions</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Managing_Security.html">Managing Security</a></li>
+<li><a href="ITest_Security_Permissions.html">ITest Security Permissions</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="iTest-Security-Permissions"></a>
+<h1 >iTest Security Permissions<a href="#iTest-Security-Permissions" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#iTest-Security-Permissions">iTest Security Permissions</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Application-Permissions">Application Permissions</a></li><li><a href="#Other-Tasks">Other Tasks</a><ul><li><a href="#Miscellaneous-Task-Permissions">Miscellaneous Task Permissions</a></li><li><a href="#iTest-Console-Task-Permissions">iTest Console Task Permissions</a></li><li><a href="#iCentral-Task-Permissions">iCentral Task Permissions</a></li><li><a href="#Interacting-with-LabCentral-Permissions">Interacting with LabCentral Permissions</a></li><li><a href="#AutomationPanel-Task-Permissions">AutomationPanel Task Permissions</a></li><li><a href="#SolutionBuilder-Task-Permissions">SolutionBuilder Task Permissions</a></li><li><a href="#Channel-List-Panel-Task-Permissions">Channel List Panel Task Permissions</a></li><li><a href="#Message-Panel-Task-Permissions">Message Panel Task Permissions</a></li></ul>
+</li><li><a href="#Test-Manager-Security">Test Manager Security</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Security Editor is the primary interface to configure group security permissions in iTest. Several iTest permissions may be configured using LabCentral’s Group Security editor. For more information regarding LabCentral’s Group Security editor, refer to LabCentral's <em>Administering System Security</em> documentation.</p>
+
+
+	<p>iTest permissions are divided into three sections: <strong>Application Permissions</strong>, <strong>Other Tasks</strong>, and <strong>Test Manager Security</strong>.</p>
+
+
+	<a name="Application-Permissions"></a>
+<h2 >Application Permissions<a href="#Application-Permissions" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Application Permissions section is used to select which applications the users of the group have permission to use. By default, a group cannot launch any applications unless they are granted permission. When configuring application permissions, there is an option to add all applications (“All Applications” permission) or to select each application one at a time.</p>
+
+
+	<p>The following application permissions can be configured in LabCentral’s Group Security editor:</p>
+
+
+	<ul>
+	<li><em>AlarmStatus.exe</em></li>
+		<li><em>AtlasConsole.exe</em></li>
+		<li><em>bbviewer.exe</em></li>
+		<li><em>Calibrate.exe</em></li>
+		<li><em>Chart.exe</em></li>
+		<li><em>ConfigReport.exe</em></li>
+		<li><em>DataAnalysis.exe</em></li>
+		<li><em>Diagnostic.exe</em></li>
+		<li><em>DR_VXI.exe</em></li>
+		<li><em>DspDrv.exe</em></li>
+		<li><em>INIWrite.exe</em></li>
+		<li><em>MatlabEngine.exe</em></li>
+		<li><em>OLERDBServer.exe</em></li>
+		<li><em>PIDTune.exe</em></li>
+		<li><em>ProblemReport.exe</em></li>
+		<li><em>SendToMailslot.exe</em></li>
+		<li><em>Simulation_Engine.exe</em></li>
+		<li><em>TestMgr.exe</em></li>
+		<li><em>TestStatusDisplay.exe</em></li>
+		<li><em>UploadData.exe</em></li>
+		<li><em>ViewSysLog.exe</em></li>
+		<li><em>vxinftpcopy.exe</em></li>
+		<li><em>vxin_exec.exe</em></li>
+	</ul>
+
+
+	<a name="Other-Tasks"></a>
+<h2 >Other Tasks<a href="#Other-Tasks" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Other Tasks section is used to define which tasks users of the group can perform. By default, users of a group cannot perform any task unless granted permission. These permissions are detailed in the tables below. A majority of task permissions use the following naming convention: <code>Application: Task</code>.</p>
+
+
+	<a name="Miscellaneous-Task-Permissions"></a>
+<h3 >Miscellaneous Task Permissions<a href="#Miscellaneous-Task-Permissions" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following permissions appear at the top of the drop-down menu and may be shared between various applications.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Miscellaneous Task Permissions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 900px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Permission</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+			<td style="text-align:left;"><strong>Configurable in LabCentral</strong></td>
+		</tr>
+		<tr>
+			<td>All Tasks</td>
+			<td>Enables users in the group to use all available tasks found in the Security Editor.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>Clear Message Log</td>
+			<td>Enables users in the group to clear the message log.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>Exit System</td>
+			<td>Enables users in the group to exit the system using the <strong>File > Exit</strong> option, the <code>$EXIT</code> mailslot message, or the <strong>Close</strong> ( <img src="attachments/download/105252/CloseButton.png" alt="" /> ) button. This task is shared between iTest Console and AutomationPanel.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>Quick Exit System</td>
+			<td>Enables users in the group to use the <strong>Tools > Quick Exit</strong> option. If this task is not enabled, then the <strong>Tools > Quick Exit</strong> option is not available. This task is shared between iTest Console and AutomationPanel.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>Restricted Administrator</td>
+			<td>Allows for users in the group to access the Security Editor and edit users (excluding Administrators) as needed.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>Use Data Log Status Window</td>
+			<td>Enables users of the group to access the Data Log Status dialog by selecting <strong>Tools > Data Logs...</strong> from the main menu. This task is shared between iTest Console and AutomationPanel.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="iTest-Console-Task-Permissions"></a>
+<h3 >iTest Console Task Permissions<a href="#iTest-Console-Task-Permissions" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>iTest Console Task Permissions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 900px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Permission</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+			<td style="text-align:left;"><strong>Configurable in LabCentral</strong></td>
+		</tr>
+		<tr>
+			<td>Modify Tools</td>
+			<td>Enables users of the group to modify tools in iTest Console's Command Bar.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>Modify Actions</td>
+			<td>Enables users of the group to modify actions in iTest Console's Command Bar.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>Modify Schedule Rows</td>
+			<td>Enables users to use the <strong>Insert Step</strong>, <strong>Delete Step</strong>, <strong>Insert Many Steps...</strong>, <strong>Add Step</strong>, and <strong>Add Many Steps</strong> right-click options when viewing a schedule in iTest Console's main window.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>Modify Schedule Columns</td>
+			<td>Not used.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>Modify Signal List</td>
+			<td>Enables users to modify the signal list.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>Modify Displays</td>
+			<td>Enables users to modify displays in iTest Console's Command Bar.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>Modify Web Pages</td>
+			<td>Enables users to modify web pages in iTest Console's Command Bar.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>Use Signal Bar Diagnostics</td>
+			<td>Enables users of the group to double-click on a channel or use the <strong>Diagnostic</strong> right-click option to open the Channel Control dialog.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>Modify Window Layout</td>
+			<td>Enables users to modify the window layout.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="iCentral-Task-Permissions"></a>
+<h3 >iCentral Task Permissions<a href="#iCentral-Task-Permissions" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following permissions are available in the Security Editor tool; however, these permissions only apply to LabCentral. For more information, refer to the <em>LabCentral Group Security Permissions</em> documentation.</p>
+
+
+	<ul>
+	<li>iCentral: All Tasks</li>
+		<li>iCentral: Test Request Add</li>
+		<li>iCentral: Test Request Change All</li>
+		<li>iCentral: Test Data Browser</li>
+		<li>iCentral: Edit Test System Web Security</li>
+		<li>iCentral: Manage Group Dashboards</li>
+		<li>iCentral: Manage Public Dashboards</li>
+		<li>iCentral: Modify Configuration</li>
+		<li>iCentral: View Dashboard</li>
+		<li>iCentral: View iCentral Custom Reports</li>
+		<li>iCentral: View Test Cell Custom Views</li>
+		<li>iCentral: View Desktop Image</li>
+		<li>iCentral: View iTest Reports</li>
+		<li>iCentral: Delete iTest Reports</li>
+		<li>iCentral: Part Tracker – Modify Configuration</li>
+		<li>iCentral: Part Tracker – View Databases</li>
+		<li>iCentral: Calibration History</li>
+		<li>iCentral: Send Commands</li>
+		<li>iCentral: Manage Public Searches</li>
+		<li>iCentral: Edit Master Names List</li>
+		<li>iCentral: Edit Test Meta Data</li>
+		<li>iCentral: LabScheduler Approver</li>
+		<li>iCentral: LabScheduler Requester</li>
+		<li>iCentral: LabScheduler Viewer</li>
+		<li>iCentral: Manage Patch Files</li>
+	</ul>
+
+
+	<a name="Interacting-with-LabCentral-Permissions"></a>
+<h3 >Interacting with LabCentral Permissions<a href="#Interacting-with-LabCentral-Permissions" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>For more information about interacting with LabCentral, refer to the <a class="wiki-page" href="Interacting_with_LabCentral.html#Synchronizing-Files-with-LabCentral">Interacting with LabCentral</a> documentation. These permissions relate to the ability in Test Manager to synchronize files with a LabCentral server.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Interacting with LabCentral Task Permissions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 900px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Permission</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+			<td style="text-align:left;"><strong>Configurable in LabCentral</strong></td>
+		</tr>
+		<tr>
+			<td>iTest: Synchronize with iCentral</td>
+			<td>Enables users of the group to use the <strong>Synchronize with LabCentral...</strong> right-click option.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>iTest: Unsynchronize with iCentral</td>
+			<td>Enables users of the group to use the <strong>Unsynchronize with LabCentral...</strong> right-click option.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>iTest: Add files to iCentral</td>
+			<td>Enables users of the group to use the <strong>Add to LabCentral...</strong> right-click option.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>iTest: Commit changes to iCentral</td>
+			<td>Enables users of the group to use the <strong>Commit changes to LabCentral...</strong> right-click option.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="AutomationPanel-Task-Permissions"></a>
+<h3 >AutomationPanel Task Permissions<a href="#AutomationPanel-Task-Permissions" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>AutomationPanel Task Permissions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 900px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Permission</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+			<td style="text-align:left;"><strong>Configurable in LabCentral</strong></td>
+		</tr>
+		<tr>
+			<td>AP: All Tasks</td>
+			<td>Enables users to use all AutomationPanel permissions.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>AP: Manage Layouts</td>
+			<td>Enables users to modify layout properties and to open, close, and delete layouts.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>AP: Manage Panels</td>
+			<td>Enables users to manage panel objects, but not the panel properties. This includes actions such as adding, removing, and duplicating panels. This permission is primarily used in conjunction with "AP: Modify Panel Properties." Users with this permission can use the hamburger icon for a panel in a layout or toolbar.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>AP: Manage Toolbars</td>
+			<td>Enables users to modify toolbar properties and to open, close, and delete toolbars. Users with this permission can use the hamburger icon for a panel in a layout or toolbar.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>AP: Manage TopBar Items</td>
+			<td>Enables users to edit TopBar items.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>AP: Rename Layout</td>
+			<td>Enables users the ability to rename layouts. This permission is primarily used in conjunction with "AP: Manage Layouts."</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>AP: Modify Panel Properties</td>
+			<td>Enables users to modify panel properties. This permission is used in conjunction with "AP: Manage Panels." </td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="SolutionBuilder-Task-Permissions"></a>
+<h3 >SolutionBuilder Task Permissions<a href="#SolutionBuilder-Task-Permissions" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>SolutionBuilder Task Permissions enable users of a group access to specified features of SolutionBuilder. If a user is restricted from a feature (i.e., does not have the proper SolutionBuilder Task permission), then a dialog will display stating that the user lacks the necessary permissions.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Restricted Permissions Dialog</strong></em></span><br /><img src="attachments/download/105036/42_SBRestrictedAreaDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The table below refers to the default menu settings. If your SolutionBuilder interface has been customized, then refer to the <strong>Editor Value</strong> column to determine which editor is affected. For more information about customizing SolutionBuilder, refer to the <a class="wiki-page" href="Customizing_SolutionBuilder.html">Customizing SolutionBuilder</a> documentation.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>SolutionBuilder Tasks Permissions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 900px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Permission</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+			<td style="text-align:left;"><strong>Editor Value</strong></td>
+			<td style="text-align:left;"><strong>Configurable in LabCentral</strong></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: All Tasks</td>
+			<td>Enables users full access to all features of SolutionBuilder.</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Batteries – Types</td>
+			<td>Enables users access to the <strong>Battery > Types</strong> editor.</td>
+			<td>BatteryTypes</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Batteries – Specimen</td>
+			<td>Enables users access to the <strong>Battery > Specimen</strong> editor.</td>
+			<td>BatterySpecimens</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Device – Cyclers</td>
+			<td>Enables users access to the <strong>Devices > Cyclers</strong> editor.</td>
+			<td>Cyclers</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Device – Chambers</td>
+			<td>Enables users access to the <strong>Devices > Chambers</strong> editor.</td>
+			<td>Chambers</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Device – Chillers</td>
+			<td>Enables users access to the <strong>Devices > Chillers</strong> editor.</td>
+			<td>Chillers</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Device – Cameras</td>
+			<td>Enables users access to the <strong>Devices > Cameras</strong> editor.</td>
+			<td>Cameras</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Device – CANDevices</td>
+			<td>Enables users access to the <strong>Devices > CAN Devices</strong> editor.</td>
+			<td>CANDevices</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Device – Other</td>
+			<td>Enables users access to the <strong>Devices > Other</strong> editor.</td>
+			<td>Other</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Displays – Layouts</td>
+			<td>Enables users access to the <strong>Displays > Layouts</strong> editor.</td>
+			<td>Layouts</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Displays – Toolbars</td>
+			<td>Enables users access to the <strong>Displays > Toolbars</strong> editor.</td>
+			<td>Toolbars</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Displays – Reports</td>
+			<td>Enables users access to the <strong>Displays > Reports</strong> editor.</td>
+			<td>Reports</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Displays – Picklists</td>
+			<td>Enables users access to the <strong>Displays > Picklists</strong> editor.</td>
+			<td>Picklists</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Displays – Plot Buffer</td>
+			<td>Enables users access to the <strong>Displays > Plot Buffer</strong> editor.</td>
+			<td>PlotBuffer</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Displays – TopBar</td>
+			<td>Enables users access to the <strong>Displays > TopBar</strong> editor.</td>
+			<td>TopBar</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Parameters</td>
+			<td>Enables users access to the Parameters editor.</td>
+			<td>Parameters</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Circuits</td>
+			<td>Enables users access to the Circuits editor.</td>
+			<td>Circuits</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Tests – Schedules</td>
+			<td>Enables users access to the <strong>Tests > Schedules</strong> editor.</td>
+			<td>Schedules</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Tests – Master Schedules</td>
+			<td>Enables users access to the <strong>Tests > Master Schedules</strong> editor.</td>
+			<td>MasterSchedules</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Tests – Procedures</td>
+			<td>Enables users access to the <strong>Tests > Procedures</strong> editor.</td>
+			<td>Procedures</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Tests – Scripts</td>
+			<td>Enables users access to the <strong>Tests > Scripts</strong> editor.</td>
+			<td>Scripts</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Tests – Set Value Tables</td>
+			<td>Enables users access to the <strong>Tests > Set Value Tables</strong> editor.</td>
+			<td>SetValueTables</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Tests – Step Conditions</td>
+			<td>Enables users access to the <strong>Tests > Step Conditions</strong> editor.</td>
+			<td>StepConditions</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Tests – Map Tables</td>
+			<td>Enables users access to the <strong>Tests > Map Tables</strong> editor.</td>
+			<td>MapTables</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Tests – Calculations</td>
+			<td>Enables users access to the <strong>Tests > Calculations</strong> editor.</td>
+			<td>Calculations</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Tests – Circuit Calculations</td>
+			<td>Enables users access to the <strong>Tests > Circuit Calculations</strong> editor.</td>
+			<td>CircuitCalculations</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Tests – Dynamic Calculations</td>
+			<td>Enables users access to the <strong>Tests > Dynamic Calculations</strong> editor.</td>
+			<td>DynamicCalc</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Test Notes</td>
+			<td>Enables users access to the Test Notes editor.</td>
+			<td>TestNotes</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Run Solution</td>
+			<td>Enables users access to use the <strong>Run</strong> button on the bottom menu.</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Build Solution</td>
+			<td>Enables users access to use the <strong>Build</strong> button on the bottom menu.</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Data Logging – Log Order Lists</td>
+			<td>Enables users access to the <strong>Data Logging > Log Order Lists</strong> editor.</td>
+			<td>LogOrderLists</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Data Logging – Log Header Forms</td>
+			<td>Enables users access to the <strong>Data Logging > Log Header Forms</strong> editor.</td>
+			<td>LogHeaderForms</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Data Logging – Data Logs</td>
+			<td>Enables users access to the <strong>Data Logging > Data Logs</strong> editor.</td>
+			<td>DataLogs</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Data Logging – Blackbox Settings</td>
+			<td>Enables users access to the <strong>Data Logging > Blackbox Settings</strong> editor.</td>
+			<td>BlackBoxSettings</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Control Loops – Control Modes</td>
+			<td>Enables users access to the <strong>Control Loops > Control Modes</strong> editor.</td>
+			<td>ControlModes</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Control Loops – Control Groups</td>
+			<td>Enables users access to the <strong>Control Loops > Control Groups</strong> editor.</td>
+			<td>ControlGroups</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Control Loops – PID Settings</td>
+			<td>Enables users access to the <strong>Control Loops > PID Settings</strong> editor.</td>
+			<td>PIDSettings</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Channels – Definitions</td>
+			<td>Enables users access to the <strong>Channels > Definitions</strong> editor.</td>
+			<td>ChannelDefinitions.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Channels – Limit Groups</td>
+			<td>Enables users access to the <strong>Channels > Limit Groups</strong> editor.</td>
+			<td>LimitGroups</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Channels – Internal Variables</td>
+			<td>Enables users access to the <strong>Channels > Internal Variables</strong> editor.</td>
+			<td>InterVars</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Channels – Data Quality Groups</td>
+			<td>Enables users access to the <strong>Channels > Data Quality Groups</strong> editor.</td>
+			<td>DataQualityGroups</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Modules – Device</td>
+			<td>Enables users access to the <strong>Modules > Devices</strong> editor.</td>
+			<td>ModulesDevice</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Modules – Specimen</td>
+			<td>Enables users access to the <strong>Modules > Specimen</strong> editor.</td>
+			<td>ModulesSpecimen</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Modules – Test</td>
+			<td>Enables users access to the <strong>Modules > Test</strong> editor.</td>
+			<td>ModulesTest</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SolutionBuilder: Modules – Utility</td>
+			<td>Enables users access to the <strong>Modules > Utility</strong> editor.</td>
+			<td>ModulesUtility</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Channel-List-Panel-Task-Permissions"></a>
+<h3 >Channel List Panel Task Permissions<a href="#Channel-List-Panel-Task-Permissions" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Channel List Panel Task Permissions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 900px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Permission</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+			<td style="text-align:left;"><strong>Configurable in LabCentral</strong></td>
+		</tr>
+		<tr>
+			<td>ChannelListPanel: Manage Lists</td>
+			<td>Enables the <strong>Add Group</strong>, <strong>Add Empty List</strong>, and <strong>Add Active PIDs List</strong> right-click options in the Channel List Panel.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>ChannelListPanel: Manage Fields</td>
+			<td>Enables users to manage fields on the Channel List panel.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>ChannelListPanel: Modify List</td>
+			<td>Enables the <strong>Add Channels…</strong>, <strong>Remove Channels</strong>, <strong>Paste Channels</strong>, <strong>Cut Channels</strong>, <strong>Edit…</strong>, <strong>Move Up</strong>, <strong>Move Down</strong>, and <strong>Separator</strong> right-click options in the Channel List Panel.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>ChannelListPanel: Rename List</td>
+			<td>Enables users to rename a list.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>ChannelListPanel: Set Value</td>
+			<td>Enables setting the channel’s value using the <strong>In-place</strong> and <strong>Popup</strong> editor types or the <strong>Set Value...</strong> right-click menu option.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Message-Panel-Task-Permissions"></a>
+<h3 >Message Panel Task Permissions<a href="#Message-Panel-Task-Permissions" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Message Panel Task Permissions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 900px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Permission</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+			<td style="text-align:left;"><strong>Configurable in LabCentral</strong></td>
+		</tr>
+		<tr>
+			<td>MessagePanel: Remove Message</td>
+			<td>Enables users to remove messages from the Messages Panel.</td>
+			<td style="text-align:center;"><img src="attachments/download/104921/checkmark.png" alt="" /></td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Test-Manager-Security"></a>
+<h2 >Test Manager Security<a href="#Test-Manager-Security" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Test Manager Security section is used to specify which tree nodes in Test Manager users of a group are restricted from accessing. By default, all items in Test Manager are editable unless they are added to the list of restricted nodes.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Test Manager Security cannot be configured with LabCentral&#39;s Group Security editor.</td>
+		</tr>
+	</table></p>
+
+
+	<p>In the image below, the user belongs to a group where the Devices node is restricted. Any items under the Devices node (e.g., <strong>Devices > EtherCAT_1(2Hdw2)</strong>) are also disabled.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Restricted Tree Node</strong></em></span><br /><img src="attachments/download/105024/42-RestrictedTreeNode.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,621 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Data Log Browser</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="Data_Log_Browser.html">Data Log Browser</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Data-Log-Browser"></a>
+<h1 >Data Log Browser<a href="#Data-Log-Browser" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Data-Log-Browser">Data Log Browser</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Layout">Layout</a></li><li><a href="#Properties">Properties</a></li><li><a href="#Viewing-Data">Viewing Data</a><ul><li><a href="#Viewing-MDF-Multi-rate-Files">Viewing MDF Multi-rate Files</a></li></ul>
+</li><li><a href="#Exporting-Data-Files">Exporting Data Files</a></li><li><a href="#Generating-Blackbox-Files">Generating Blackbox Files</a><ul><li><a href="#Additional-Blackbox-Files">Additional Blackbox Files</a></li></ul>
+</li><li><a href="#Functionality">Functionality</a><ul><li><a href="#Chart-Keyboard-and-Mouse-Controls">Chart Keyboard and Mouse Controls</a></li><li><a href="#Chart-Actions">Chart Actions</a></li><li><a href="#Results-Section-Options">Results Section Options</a></li></ul>
+</li><li><a href="#Using-Video-Playback">Using Video Playback</a><ul><li><a href="#Modifying-the-Video-Start-Time">Modifying the Video Start Time</a><ul><li><a href="#Syntax">Syntax</a></li><li><a href="#Example">Example</a></li></ul>
+</li></ul>
+</li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Data Log Browser is an application that enables you to graph and analyze logged test data. The application can display data at up to 100 kHz resolution, and it is used primarily for <em>.dat</em> files and <em>.mf4</em> files. Data files and folders are organized in a tree view. When you select a data file from the list, the data file's header information and parameters are loaded into Data Log Browser. You can then select which parameters you want to display in the chart, view plotted data, evaluate various data points, and play back video. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Data Log Browser</strong></em></span><br /><img src="attachments/download/115013/43_DataLogBrowser.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>Data Log Browser can be accessed from the installation folder, AutomationPanel, or by searching in the Windows search bar.</p>
+
+
+	<p>To open Data Log Browser from AutomationPanel, use one of the following two options:</p>
+
+
+	<ol>
+	<li>Access it from the main menu. Select <strong>Tools > Data Log Browser</strong> from the AutomationPanel menu bar.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Main Menu</strong></em></span><br /><img src="attachments/download/45645/NavigateToDataLogBrowser.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Access it from Data Logs. From the main menu, select <strong>Tools > Data Logs</strong> and then click the <strong>Data Browser</strong> button. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Data Logs</strong></em></span><br /><img src="attachments/download/115012/43_DataLogs.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<a name="Layout"></a>
+<h2 >Layout<a href="#Layout" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>There are five different sections in Data Log Browser application, including <strong>Tree Node</strong>, <strong>Header Data</strong>, <strong>Parameters</strong>, <strong>Results</strong>, and <strong>Chart</strong>. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Interface Layout</strong></em></span><br /><img src="attachments/download/45639/38_DataLogBrowserInterface.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Section Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Section</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Tree node</td>
+			<td>A structured list of project folders. The project folders contain data files from tests run at the test station.</td>
+		</tr>
+		<tr>
+			<td>Header data</td>
+			<td>The header data for a selected data file, including channels and their values.</td>
+		</tr>
+		<tr>
+			<td>Parameters</td>
+			<td>A list of channels logged in the selected data file.</td>
+		</tr>
+		<tr>
+			<td>Chart</td>
+			<td>The interface for displaying channel data.</td>
+		</tr>
+		<tr>
+			<td>Results</td>
+			<td>The data points for the channels displayed in the chart. Only channels selected in the parameters section display in the results section.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Properties"></a>
+<h2 >Properties<a href="#Properties" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To modify properties, select <strong>Tools > Properties</strong> from the menu bar. This opens the Property Manager dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Property Manager</strong></em></span><br /><img src="attachments/download/134383/45_DataLogBrowserProperties.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Property Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Property</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Axis Color </td>
+			<td> Changes the color of the axis and its title. </td>
+		</tr>
+		<tr>
+			<td>Axis Labels Color </td>
+			<td> Changes the color of the axis ticks, labels, and grid lines. </td>
+		</tr>
+		<tr>
+			<td>Axis Mix Empty Units</td>
+			<td> When set to FALSE, only channels with the same units can be moved onto the same Y-axis in the Data Log Browser. When set to TRUE, channels with blank units can ignore this restriction and be moved onto any Y-axis in the Data Log Browser. When Data Log Browser closes, this value is saved to the <em>$EXECUTEDIR\DataLogBrowser.xml</em> file. In addition, this setting can be changed during runtime.<br />&nbsp;<br />If the legacy <code>DLBAxisMixEmptyUnits</code> <em>config.ini</em> setting exists, then Data Log Browser will refer to that setting's value before using the value from the <em>$EXECUTEDIR\DataLogBrowser.xml</em> file. The <code>DLBAxisMixEmptyUnits</code> setting will then be removed from the <em>config.ini</em> file.</td>
+		</tr>
+		<tr>
+			<td>Axis Title Font </td>
+			<td> Changes the font for axis titles. </td>
+		</tr>
+		<tr>
+			<td>Grid Visible </td>
+			<td> True shows the grid for the axis, False hides the grid. </td>
+		</tr>
+		<tr>
+			<td>Inner Color </td>
+			<td> Background color for all content inside the chart. </td>
+		</tr>
+		<tr>
+			<td>Inner Color Gradient </td>
+			<td> Creates a gradient for the background of all content inside the chart. </td>
+		</tr>
+		<tr>
+			<td>Line Thickness </td>
+			<td> Changes the thickness of the lines on the chart. </td>
+		</tr>
+		<tr>
+			<td>Outer Color </td>
+			<td> Background color for the area outside of the chart. </td>
+		</tr>
+		<tr>
+			<td>Outer Color Gradient </td>
+			<td> Creates a gradient for the background of the area outside the chart. </td>
+		</tr>
+		<tr>
+			<td>Point Size </td>
+			<td> Changes the size of the data points on the chart. </td>
+		</tr>
+		<tr>
+			<td>Title Color </td>
+			<td> Changes the color of the chart title. </td>
+		</tr>
+		<tr>
+			<td>Title Font </td>
+			<td> Changes the font of the chart title. </td>
+		</tr>
+		<tr>
+			<td>Y-Axes Layout </td>
+			<td> Method of arranging multiple Y-Axes (Layered or Stacked).</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Viewing-Data"></a>
+<h2 >Viewing Data<a href="#Viewing-Data" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To view logged data in Data Log Browser, do the following:</p>
+
+
+	<ol>
+	<li>Launch Data Log Browser.</li>
+		<li>Expand a project folder in the tree node.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Expand Project Folder</strong></em></span><br /><img src="attachments/download/45637/38_ExpandProjectFolder.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the name of a data file to view its contents. Right-click a data file or project folder to sort contents or locate a specific item. For more information, refer to the table below.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select Data File</strong></em></span><br /><img src="attachments/download/45635/38_SelectFile.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;
+
+	<table>
+		<tr style="background:#cccaca;">
+			<td style="text-align:left;"><strong>Right-Click Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Sort by Name</td>
+			<td> Sorts all project folders and data files by name in ascending order.</td>
+		</tr>
+		<tr>
+			<td>Sort by Date</td>
+			<td> Sorts all project folders by date in descending order. A project folder's date is determined by the date of its latest data file.</td>
+		</tr>
+		<tr>
+			<td>Find...</td>
+			<td> Opens the Find dialog which allows searching for projects and files by name. To use the Find dialog, enter the search term and click <strong>Find Next</strong>. The first file or folder that contains the search term will be displayed in DataLogBrowser. Clicking <strong>Find Next</strong> again will show the next result and so on. When reaching the end of the search results, a notification will display before searching starts over from the top of the list. Search results will be sorted based on the configuration given (Sort by Name or Sort by Date).</td>
+		</tr>
+	</table>
+
+
+</li>
+		<li>In the Parameters section, click the checkboxes next to the channels you want to view in the chart. This also causes the channel and their values to display in the results section beneath the chart.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select Channels</strong></em></span><br /><img src="attachments/download/45636/38_SelectParameters.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Use the mouse operations and chart options detailed in the <a class="wiki-page" href="#Functionality">Functionality</a> section below to zoom in/out or modify the chart view.</li>
+	</ol>
+
+
+	<a name="Viewing-MDF-Multi-rate-Files"></a>
+<h3 >Viewing MDF Multi-rate Files<a href="#Viewing-MDF-Multi-rate-Files" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Data Log Browser supports viewing MDF multi-rate files. Viewing is handled just as any other data log file with the Parameters section listing the channels from the MDF multi-rate file.</p>
+
+
+	<p>When the <em>.mf4</em> file is selected, a temporary file with the same name and ending with a <em>.tmp</em> file extension is created. This file is formatted as a DAT file and only exists while the MF4 file is selected for viewing. Its contents will reflect the logged data points, with repeated values listed to fill the gaps for the slower rates.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Example of Viewing a MDF Multi-rate File</strong></em></span><br /><img src="attachments/download/117922/43_MDFMultirateFileExample_2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Exporting-Data-Files"></a>
+<h2 >Exporting Data Files<a href="#Exporting-Data-Files" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>After selecting parameters for a data file, the data file can be exported with the specified parameters. To export a customized data file, select <strong>File</strong> > <strong>Export Data File</strong> from the main menu.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Export Data File</strong></em></span><br /><img src="attachments/download/101927/42_DLBExportFile.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The data file will be exported to the project folder and appears in the Data Log Browser with the specified parameters. In the example below, the customized data file had the following parameters selected: <code>Timestamp</code>, <code>timSysTest</code>, <code>MasterScheduleStatus</code>, and <code>voDmo1Err</code>.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>New Customized Data File</strong></em></span><br /><img src="attachments/download/101928/42_DLBNewDataFile.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Generating-Blackbox-Files"></a>
+<h2 >Generating Blackbox Files<a href="#Generating-Blackbox-Files" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Blackbox data files can be generated using the <strong>File > Generate Blackbox.dat</strong> option in the Data Log Browser. This option allows the user to generate a <em>Blackbox.dat</em> file based on the block1 file contents and overwrite the existing <em>Blackbox.dat</em> file. The block1 file consists of Blackbox binary data that is transferred into ASCII text via the <strong>Generate Blackbox.dat</strong> option; this file can be found in the $DATADIR.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Generate Blackbox.dat</strong></em></span><br /><img src="attachments/download/101933/42_DataLogBrowserGenerateBlackbox.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">To enable the <strong>Generate Blackbox.dat</strong> option, the <code>CRS_CONTROL</code> value must be 0 and the block1 file size must be greater than 0kb.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Blackbox.dat View</strong></em></span><br /><img src="attachments/download/101934/42_BlackBoxFileView.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Additional-Blackbox-Files"></a>
+<h3 >Additional Blackbox Files<a href="#Additional-Blackbox-Files" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Additional <em>Blackbox.dat</em> files may appear in the Data Log Browser if automatic Blackbox logging is enabled or the <code>GenericMsg SaveBlackBox</code> Data Engine mailslot is used. The additional <em>Blackbox.dat</em> files use the following naming convention: <code>blackbox&lt;number&gt;.dat</code>, where the &lt;number&gt; is the instance of the <em>Blackbox.dat</em> file (e.g., <em>Blackbox01.dat</em>). If Data Log Browser is used to generate a <em>Blackbox.dat</em> file when there are additional <em>Blackbox.dat</em> files present, only the <em>Blackbox.dat</em> file (if it exists) will be overwritten. The additional <em>Blackbox.dat&lt;number&gt;</em> files will remain untouched.</p>
+
+
+	<p>For more information about Blackbox logging, refer to the <a class="wiki-page" href="Working_with_the_Black_Box.html">Blackbox Logging</a> documentation.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Additional Blackbox.dat View</strong></em></span><br /><img src="attachments/download/101935/42_AdditionalBlackBoxFileView.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Functionality"></a>
+<h2 >Functionality<a href="#Functionality" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Chart-Keyboard-and-Mouse-Controls"></a>
+<h3 >Chart Keyboard and Mouse Controls<a href="#Chart-Keyboard-and-Mouse-Controls" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>You can use keyboard and mouse combinations to perform a variety of actions in the chart. The following tables describe the different functionality possible:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Mouse Controls</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Action</strong> </td>
+			<td style="width:125px;text-align:left;"><strong>Button</strong> </td>
+			<td style="text-align:left;"><strong>Result</strong> </td>
+		</tr>
+		<tr>
+			<td>Double-click</td>
+			<td>Left</td>
+			<td>Displays menu options for restoring, printing, and displaying X Cursors, etc.</td>
+		</tr>
+		<tr>
+			<td>Hold-Drag</td>
+			<td>Left</td>
+			<td>Zooms in on a specific area.</td>
+		</tr>
+		<tr>
+			<td>Scroll Up/Down</td>
+			<td>Middle</td>
+			<td>Scroll up zooms vertical and horizontal axes in. Scroll down zooms vertical and horizontal axes out.</td>
+		</tr>
+		<tr>
+			<td>Hold-Drag-Release</td>
+			<td>Right-click to hold <br />Left-click to release</td>
+			<td>Pans chart.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Vertical Axis Controls</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Action</strong> </td>
+			<td style="text-align:left;"><strong>Button</strong> </td>
+		</tr>
+		<tr>
+			<td>CTRL + Scroll</td>
+			<td>Controls the vertical axes. Scroll up zooms vertical axes in and scroll down zooms vertical axes out.</td>
+		</tr>
+		<tr>
+			<td>CTRL + Left-click</td>
+			<td>Zooms the vertical axis (axes) in incrementally.</td>
+		</tr>
+		<tr>
+			<td>CTRL + Right-click</td>
+			<td>Zooms the vertical axis (axes) out incrementally.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Horizontal Axis Controls</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Key Combination</strong> </td>
+			<td style="text-align:left;"><strong>Button</strong> </td>
+		</tr>
+		<tr>
+			<td>SHIFT + Scroll</td>
+			<td>Controls the horizontal axis. Scroll up zooms horizontal axis in and scroll down zooms horizontal axis out.</td>
+		</tr>
+		<tr>
+			<td>SHIFT + Left-click</td>
+			<td>Zooms the horizontal axis in incrementally.</td>
+		</tr>
+		<tr>
+			<td>SHIFT + Right-click</td>
+			<td>Zooms the horizontal axis out incrementally.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Horizontal and Vertical Axes Controls</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:165px;text-align:left;"><strong>Key Combination</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>CTRL + SHIFT + Scroll</td>
+			<td>Controls both horizontal and vertical axes simultaneously. Scroll up zooms axes in and scroll down zooms axes out.</td>
+		</tr>
+		<tr>
+			<td>CTRL + SHIFT + Left-click</td>
+			<td>Zooms both axes in incrementally.</td>
+		</tr>
+		<tr>
+			<td>CTRL + SHIFT + Right-click</td>
+			<td>Zooms both axes out incrementally.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p>In addition to the keyboard/mouse combinations above, you can scale the axes by using the resize markers at the beginning or top of each axis. By selecting the marker, you can then drag your mouse up or down to modify the scaling of the individual axis.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Resize Markers</strong></em></span><br /><img src="attachments/download/123713/ResizeGrabbers.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Chart-Actions"></a>
+<h3 >Chart Actions<a href="#Chart-Actions" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>If you double-click within the chart, the following options display and can be used to modify the chart view:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Chart Options</strong></em></span><br /><img src="attachments/download/45647/DBL_Graph.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Chart Actions and Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Action</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Restore</td>
+			<td> Returns the chart to its original size. </td>
+		</tr>
+		<tr>
+			<td>Show X Cursor </td>
+			<td> Shows a vertical line and digital readout of the value of each series crossing that value. This line can be moved around the chart to inspect the data at any chart position. Does not apply to X-Y charts (x-axis is a channel).</td>
+		</tr>
+		<tr>
+			<td>Show X Reference Cursor </td>
+			<td> Shows another X cursor line to use as a reference for calculating the difference with the X Cursor. This is denoted by delta in the call out that appears. </td>
+		</tr>
+		<tr>
+			<td>Print </td>
+			<td> Prints a paper copy of the plot. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Results-Section-Options"></a>
+<h3 >Results Section Options<a href="#Results-Section-Options" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>By right-clicking a column header in the table view, you can further customize your chart.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Right-Click Options</strong></em></span><br /><img src="attachments/download/98659/42_RightClickTableView.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Option Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Result</strong> </td>
+		</tr>
+		<tr>
+			<td>X-Axis </td>
+			<td> Assign the channel as the X-axis. </td>
+		</tr>
+		<tr>
+			<td>Y-Axis </td>
+			<td> Merge the channel onto another Y-axis. Use the <strong>New</strong> option to separate the channel onto its own axis. Option is disabled if the channel is assigned as the X-axis.<br />&nbsp;<br />By default, only channels with the same units can be on the same Y-axis. This can be overridden by editing the <code>DLBAxisMixEmptyUnits</code> <em>config.ini</em> setting. Refer to the <code>DLBAxisMixEmptyUnits</code> entry in the <a class="wiki-page" href="ConfigINI_Options.html">ConfigINI Options</a> documentation for more information. </td>
+		</tr>
+		<tr>
+			<td>Color </td>
+			<td> Changes the color of the lines on the chart. Option is disabled if the channel is assigned as the X-axis. </td>
+		</tr>
+		<tr>
+			<td>Points </td>
+			<td> When enabled, the chart displays the data points. If Lines are also enabled, then the data points will display on a solid line. Option is disabled if the channel is assigned as the X-axis. </td>
+		</tr>
+		<tr>
+			<td>Lines </td>
+			<td> When enabled, the chart displays a solid plot line. If Points are also enabled, then the data points will display on a solid line. Option is disabled if the channel is assigned as the X-axis.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Using-Video-Playback"></a>
+<h2 >Using Video Playback<a href="#Using-Video-Playback" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Data Log Browser supports video playback functionality. This feature works in conjunction with the VideoCapture driver, which records video and captures channel data simultaneously. The VideoCapture driver saves recorded video data as an <em>.mp4</em> file and channel data as a <em>.dat</em> file. You can then use the Data Log Browser to playback the video and compare the logged channel data to what was occurring in the test cell at the time of the recording.</p>
+
+
+	<p>There are two ways to display videos with a data file:</p>
+
+
+	<ol>
+	<li>The video file uses the same name as the data file but has an <em>.mp4</em> extension, and both files are located in the same project folder (e.g., <em>$DATADIR\PR-001\Ramp1_2Transient.dat</em> and <em>$DATADIR\PR-001\Ramp1_2Transient.mp4</em>).</li>
+		<li>The data file contains the <code>VideoFileName=</code> header item followed by the name of the video file (e.g., <code>VideoFileName=Ramp1_2Transient.mp4</code>).</li>
+	</ol>
+
+
+	<p>When you select a data file with an associated video file from the tree bar in Data Log Browser, the video file and the chart for data points open in the right side of the application. The section with the video contains buttons and a slider for managing the progression of the video. To synchronize the video and chart, select a point on the data table. The left-located parameters determine the data table columns. In the example below, a data file with video has been opened with parameters selected.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Video Playback</strong></em></span><br /><img src="attachments/download/48895/38_DLBandVideo.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />To expand the height and width of the video, hover over the space between the chart and the video player. Select and drag the marked section up or down to reduce or expand the video size. This will also modify the size of the Results section. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Change Video Size</strong></em></span><br /><img src="attachments/download/45628/38_ModifySize.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Video Playback Button Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Button</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/45634/PlayButton.png" alt="" /></td>
+			<td>Starts the video. When the video is started you cannot select a different file, but you can modify which channels are selected in the Parameters section.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/45633/BackButton.png" alt="" /></td>
+			<td>Reverts the video back one frame.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/45632/ForwardButton.png" alt="" /></td>
+			<td>Moves the video forward one frame.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/45631/SliderButton.png" alt="" /></td>
+			<td>Modifies the position of the video. Select the cursor and drag it forward and backward to the location in the video you want to view.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Modifying-the-Video-Start-Time"></a>
+<h3 >Modifying the Video Start Time<a href="#Modifying-the-Video-Start-Time" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>By default, video playback begins at the beginning of the data file, but you can specify a channel name to control the video start position. This channel enables you to sync the video's start time to a point in the data file. The video starts playing when the channel's value is greater than 0.5.</p>
+
+
+	<p>There are two methods for specifying the channel name to use: header entry in the data file or <em>powertek.ini</em> option. Both of these options use the <code>VideoTriggerChan</code> keyword.</p>
+
+
+	<a name="Syntax"></a>
+<h4 >Syntax<a href="#Syntax" class="wiki-anchor">&para;</a></h4>
+
+
+<pre>VideoTriggerChan=&lt;ChannelName&gt;</pre>
+
+	<a name="Example"></a>
+<h4 >Example<a href="#Example" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The following data file shows the <code>VideoTriggerChan</code> entry set to the <code>voVcap1Sine</code> channel. In this example, the video will begin playing on the data row where the value of <code>voVcap1Sine</code> is 0.56.</p>
+
+
+<pre>VideoFileName=Run_3.mp4
+VideoTriggerChan=voVcap1Sine
+1                                                              PARAMS              Date      Time      voVcap1Sine
+1                                                              UNITS   YYYY/MM/DD    HH:MM:SS.SSS  
+1              1522238075.630000         Vcap1Log            T              DATA     2018/03/28         07:54:35:.630                0.28
+1              1522238075.730000         Vcap1Log            T              DATA     2018/03/28         07:54:35:.730                0.56
+1              1522238075.830000         Vcap1Log            T              DATA     2018/03/28         07:54:35:.830                0.79
+1              1522238075.930000         Vcap1Log            T              DATA     2018/03/28         07:54:35:.930                0.94
+1              1522238076.030000         Vcap1Log            T              DATA     2018/03/28         07:54:36:.030                1.00
+1              1522238076.130000         Vcap1Log            T              DATA     2018/03/28         07:54:36:.130                0.96
+1              1522238076.230000         Vcap1Log            T              DATA     2018/03/28         07:54:36:.230                0.83
+1              1522238076.330000         Vcap1Log            T              DATA     2018/03/28         07:54:36:.330                0.61
+</pre>
+
+	<p>&nbsp;</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">You can override the <em>powertek.ini</em> option and start the video at the beginning of the video file by adding a blank <code>VideoTriggerChan</code> entry to the file header.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="ConfigINI_Options.html">ConfigINI Options</a></li>
+		<li><a class="wiki-page" href="ITest_INI_Options.html">iTest INI Options</a></li>
+	</ul>
+</body>
+</html>

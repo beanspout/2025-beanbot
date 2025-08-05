@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>How to Set Up and Use the Video Panel</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="How-To_Guides.html">How-To Guides</a></li>
+<li><a href="How_to_Set_Up_and_Use_the_Video_Panel.html">How to Set Up and Use the Video Panel</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="How-to-Set-Up-and-Use-the-Video-Panel"></a>
+<h1 >How to Set Up and Use the Video Panel<a href="#How-to-Set-Up-and-Use-the-Video-Panel" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#How-to-Set-Up-and-Use-the-Video-Panel">How to Set Up and Use the Video Panel</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Creating-Channels">Creating Channels</a></li><li><a href="#Adding-the-Video-Panel">Adding the Video Panel</a></li><li><a href="#Configuring-Video-Panel-Properties">Configuring Video Panel Properties</a></li><li><a href="#Setting-Up-Control-Buttons">Setting Up Control Buttons</a><ul><li><a href="#Adding-the-Buttons-and-Channel-Tiles">Adding the Buttons and Channel Tiles</a></li><li><a href="#Setting-Up-Mailslot-Messages">Setting Up Mailslot Messages</a></li></ul>
+</li><li><a href="#Playing-and-Controlling-the-Video">Playing and Controlling the Video</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Video panel enables you to view videos and control during runtime in AutomationPanel. Video playback is controlled by using start, stop, and other buttons that you add to the layout. The Video panel supports <em>.mp4</em> files, which can be displayed at the rate of 0.5, 1, or 2.</p>
+
+
+	<p>This document details how to set up your solution to use the Video panel.</p>
+
+
+	<a name="Creating-Channels"></a>
+<h2 >Creating Channels<a href="#Creating-Channels" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The first step is to create the channels used to display information, such as duration and position of the video.</p>
+
+
+	<p>For the example in this guide, the following channels will be created and used: <code>vidDuration</code> and <code>vidPosition</code>. To create these channels, do the following:</p>
+
+
+	<p>The first step is to create the channels used to display information, such as duration and position of the video. For the purposes of this guide, the <code>vidDuration</code> and <code>vidPosition</code> channels will be created and used.</p>
+
+
+	<p>To create these channels, do the following:</p>
+
+
+	<ol>
+	<li>Launch Test Manager or SolutionBuilder and navigate to the Channel Definitions editor.</li>
+		<li>Right-click in the editor and select the <strong>Add to end</strong> option. This opens the New Channel dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Channel Dialog</strong></em></span><br /><img src="attachments/download/49891/NewChannelDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>For both channels, use the Virtual Output channel type.</li>
+		<li>Enter <code>vidDuration</code>/<code>vidPosition</code> in the <strong>Channel Name</strong> field.</li>
+		<li>Save your changes and exit the application.</li>
+	</ol>
+
+
+	<a name="Adding-the-Video-Panel"></a>
+<h2 >Adding the Video Panel<a href="#Adding-the-Video-Panel" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The next step is to add the Video panel to your layout. You can use AutomationPanel or SolutionBuilder to add this panel.</p>
+
+
+	<p>To add the Video panel in AutomationPanel, do the following:</p>
+
+
+	<ol>
+	<li>In an existing or new layout, right-click the layout and select the <strong>New Panel...</strong> option. Alternatively, select <strong>File > New > Panel</strong> from the menu.</li>
+		<li>Select the Video panel in the Add New Panel dialog.</li>
+		<li>Click <strong>OK</strong>.</li>
+	</ol>
+
+
+	<p>To add the Video panel in SolutionBuilder, do the following:</p>
+
+
+	<ol>
+	<li>Navigate to the Layouts editor. </li>
+		<li>In an existing or new layout, right-click in the editor and select the <strong>New Panel...</strong> option.</li>
+		<li>Select the Video panel in the Add New Panel dialog.</li>
+		<li>Click <strong>OK</strong>.</li>
+	</ol>
+
+
+	<a name="Configuring-Video-Panel-Properties"></a>
+<h2 >Configuring Video Panel Properties<a href="#Configuring-Video-Panel-Properties" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Once you have added the Video panel to your layout, configure the following properties:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Video Panel Properties</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Configuration</strong></td>
+		</tr>
+		<tr>
+			<td>Automation ID</td>
+			<td> This value is used to modify panel properties, such as to start and stop the video at runtime, using channels or mailslot messages (e.g., <strong>Video</strong>).</td>
+		</tr>
+		<tr>
+			<td>File Path</td>
+			<td> Click the button to browse for a video file to play in the panel. Alternatively, enter the full filepath in this field. <ins><strong>Note:</strong></ins> Only <em>.mp4</em> files are supported.</td>
+		</tr>
+		<tr>
+			<td>Position Channel Name</td>
+			<td> This channel is updated with the current position of the video while it is playing.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>Click <strong>Save</strong> once finished.</p>
+
+
+	<a name="Setting-Up-Control-Buttons"></a>
+<h2 >Setting Up Control Buttons<a href="#Setting-Up-Control-Buttons" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>After configuring the Video panel, you can add a Tile panel with buttons that will enable you to control the progression of the video in your layout. In this example, eight buttons will be created to perform the following actions:</p>
+
+
+	<ul>
+	<li>Start Video</li>
+		<li>Stop Video</li>
+		<li>Set Position to Beginning</li>
+		<li>Set Rate to 0.5</li>
+		<li>Set Rate to 1</li>
+		<li>Set Rate to 5</li>
+		<li>Get Position</li>
+		<li>Get Duration</li>
+	</ul>
+
+
+	<a name="Adding-the-Buttons-and-Channel-Tiles"></a>
+<h3 >Adding the Buttons and Channel Tiles<a href="#Adding-the-Buttons-and-Channel-Tiles" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To set up your control buttons, do the following:</p>
+
+
+	<ol>
+	<li>In your layout, add the Tile panel. Right-click in the Tile panel and select <strong>Add > Button</strong>.<br />Image</li>
+		<li>Set the <strong>Button Type</strong> property to <strong>Push</strong>. Enter the label for the button in the <strong>Text Off</strong> setting.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Text Off Label</strong></em></span><br /><img src="attachments/download/108243/42_TextOffLabel.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Repeat for each button until you have eight.</li>
+		<li>Right-click in the Tile panel and select <strong>Add > Channel</strong>. </li>
+		<li>Set the <strong>Channel</strong> property to <code>vidPosition</code> and the <strong>Label</strong> property to <strong>Video Position</strong>.</li>
+		<li>Repeat on the second channel tile for <code>vidDuration</code> (<strong>Video Duration</strong>).</li>
+		<li>Arrange the buttons and channel tiles using the <strong>Move Previous</strong> and <strong>Move Next</strong> options.<br />After you've added your push buttons, add two channel tiles to the same panel to display the video duration and video position when you press <strong>Get Duration</strong> and <strong>Get Position</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Arrangement</strong></em></span><br /><img src="attachments/download/49900/Arrangement.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<a name="Setting-Up-Mailslot-Messages"></a>
+<h3 >Setting Up Mailslot Messages<a href="#Setting-Up-Mailslot-Messages" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Mailslot messages enable you to perform an action or send a message when you click a button. You must configure the buttons in the Tile panel to send message to start, stop, and control the video progression. The <code>$SetItemProperty</code> and <code>GetItemProperty</code> mailslot messages are used to control the Video panel.</p>
+
+
+	<p>To set up mailslot messages, do the following:</p>
+
+
+	<ol>
+	<li>Open the properties for each button.</li>
+		<li>Navigate to the <strong>Message Off</strong> property and click the button. This opens the MessagesEditor dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>MessagesEditor</strong></em></span><br /><img src="attachments/download/108248/42_MessagesEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the <strong>Destination</strong> drop-down and select <strong>\\.\mailslot\Softpanel</strong>. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Mailslot Destination</strong></em></span><br /><img src="attachments/download/108249/SoftpanelDestination.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Enter the following mailslot messages for each button:
+
+	<table>
+		<tr style="background:#cccaca;">
+			<td style="text-align:left;"><strong>Button</strong></td>
+			<td style="text-align:left;"><strong>Maislot Message</strong></td>
+		</tr>
+		<tr>
+			<td>Start Video</td>
+			<td> <code>\\mailslot\Softpanel>>$SetItemProperty;Video.Play=1</code></td>
+		</tr>
+		<tr>
+			<td>Stop Video</td>
+			<td> <code>\\mailslot\Softpanel>>$SetItemProperty;Video.Play=0</code></td>
+		</tr>
+		<tr>
+			<td>Set Position to Beginning</td>
+			<td> <code>\\mailslot\Softpanel>>$SetItemProperty;Video.Position=0</code></td>
+		</tr>
+		<tr>
+			<td>Set Rate to 0.5</td>
+			<td> <code>\\mailslot\Softpanel>>$SetItemProperty;Video.Rate=0.5</code></td>
+		</tr>
+		<tr>
+			<td>Set Rate to 1</td>
+			<td> <code>\\mailslot\Softpanel>>$SetItemProperty;Video.Rate=1</code></td>
+		</tr>
+		<tr>
+			<td>Set Rate to 5</td>
+			<td> <code>\\mailslot\Softpanel>>$SetItemProperty;Video.Rate=5</code></td>
+		</tr>
+		<tr>
+			<td>Get Position</td>
+			<td> <code>\\mailslot\Softpanel>>$SetItemProperty;Video.Position=vidPosition</code></td>
+		</tr>
+		<tr>
+			<td>Get Duration</td>
+			<td> <code>\\mailslot\Softpanel>>$SetItemProperty;Video.Duration=vidDuration</code></td>
+		</tr>
+	</table>
+
+
+</li>
+		<li>Click <strong>Save</strong> when finished.</li>
+	</ol>
+
+
+	<a name="Playing-and-Controlling-the-Video"></a>
+<h2 >Playing and Controlling the Video<a href="#Playing-and-Controlling-the-Video" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Once you have set up and established the mailslot messages to control the video, you can use the Video panel during runtime in AutomationPanel. The following graphic displays the use of the Video panel with buttons and channel tiles. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Play and Control the Video</strong></em></span><br /><img src="attachments/download/49898/Using_the_Video_panel.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Introduction_to_SolutionBuilder.html">SolutionBuilder</a></li>
+		<li><a class="wiki-page" href="Displays.html">SolutionBuilder Displays</a></li>
+		<li><a class="wiki-page" href="AutomationPanel_Operators_Guide.html#Tile-Panel">Tile Panel</a></li>
+		<li><a class="wiki-page" href="AutomationPanel_Operators_Guide.html#Video-Panel">Video Panel</a></li>
+		<li><a class="wiki-page" href="Standard_Softpanel_Messages_List.html#GetItemProperty">$GetItemProperty</a></li>
+		<li><a class="wiki-page" href="Standard_Softpanel_Messages_List.html#SetItemProperty">$SetItemProperty</a></li>
+	</ul>
+</body>
+</html>

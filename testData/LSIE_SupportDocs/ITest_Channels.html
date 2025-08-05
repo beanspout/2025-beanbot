@@ -1,0 +1,390 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ITest Channels</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="ITest_Channels.html">ITest Channels</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="iTest-Channels"></a>
+<h1 >iTest Channels<a href="#iTest-Channels" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#iTest-Channels">iTest Channels</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#What-is-a-Channel">What is a Channel?</a></li><li><a href="#iTest-RDB">iTest RDB</a></li></ul>
+</li><li><a href="#Channel-Types-and-Attributes">Channel Types and Attributes</a><ul><li><a href="#System-Channels">System Channels</a></li><li><a href="#Internal-Variables">Internal Variables</a></li><li><a href="#Channel-Statistics">Channel Statistics</a></li><li><a href="#Calibration-Coefficients">Calibration Coefficients</a></li></ul>
+</li><li><a href="#Channel-Limitations">Channel Limitations</a></li><li><a href="#Channel-Definition-Files">Channel Definition Files</a><ul><li><a href="#Default-Database-File">Default Database File</a></li></ul>
+</li><li><a href="#Channel-Names">Channel Names</a></li><li><a href="#Current-Display-Label">Current Display Label</a></li><li><a href="#See-Also">See Also</a></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest channels are the foundation for developing an iTest application. This document explains the importance of channels and provides detailed information such as channel names, channel types, the RDB, and the application of channels for building tests.</p>
+
+
+	<a name="What-is-a-Channel"></a>
+<h2 >What is a Channel?<a href="#What-is-a-Channel" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>A channel is a path along which data is transferred between units under test and the iTest software system. In iTest, channels are given a name and assigned a set of attributes. They are used to build displays, write tests, develop scripts, add limits, and perform many other tasks. Channel sources are derived from I/O modules, measurement devices, smart subsystems (e.g., emissions benches or battery cyclers), or even calculations performed inside iTest. Additionally, sources can include external servers such as LabCentral and operator data-entry screens.</p>
+
+
+	<p>iTest channel names are composed of any ASCII alphabetic or numeric character. The following special characters are also supported:</p>
+
+
+	<ul>
+	<li>Underscores "_" </li>
+		<li>Period "." </li>
+		<li>At Sign "@"</li>
+	</ul>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The first character of a channel name must be a letter. Channel names cannot begin with numerics or special characters. Channel names are case insensitive.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="iTest-RDB"></a>
+<h2 >iTest RDB<a href="#iTest-RDB" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Understanding the iTest RDB (real-time database) is useful for understanding how to design and develop iTest solutions. The RDB is a key architectural feature of iTest; it is the area of memory where channel definitions are stored while iTest is running. The RDB consists of a shared memory area and an API used to access this area of memory. In general, any references made in the iTest documentation to the RDB is a referral to the live data area where the current values and attributes for each channel is stored. When you look at an iTest channel such as <code>Speed</code>, <code>Torque</code>, or <code>DynoSetpoint</code> on a display object, that object is showing the current value from the RDB. In addition to having a field in the RDB that reflects current value, the RDB also reflects other dynamic attributes such as High Limit, Low Limit, Low EU, and High EU, as well as many other values that may change during the course of a test.</p>
+
+
+	<a name="Channel-Types-and-Attributes"></a>
+<h1 >Channel Types and Attributes<a href="#Channel-Types-and-Attributes" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>In iTest, channels are specified by type; these types contain attributes that are unique to the channel. For example, Analog Input type channels have selectable filters and Frequency type channels have a measurement window setting. These channel types are handled uniquely by iTest.</p>
+
+
+	<p>The default iTest channel types are described in the following table. Note that the read-only column denotes channel values that are set by the drivers that acquire them. The values from these types should not be set using VCL, mailslot messages, or tests. All other channel types can be written to or read from.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Channel Types and Attribute Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Type</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+			<td style="text-align:left;"><strong>Read Only</strong></td>
+		</tr>
+		<tr>
+			<td>Temperature</td>
+			<td>Temperature channel type sources are typically thermocouple or resistance temperature detectors (RTD). The source differs depending upon the actual I/O system.</td>
+			<td style="text-align:center;">Yes</td>
+		</tr>
+		<tr>
+			<td>Analog Input</td>
+			<td> Voltage or current values from A/D cards. These channel types are typically calibrated with the iTest Calibration program.</td>
+			<td style="text-align:center;">Yes</td>
+		</tr>
+		<tr>
+			<td>Analog Output</td>
+			<td> Sends output signals to A/D cards (e.g., Throttle Command). </td>
+			<td style="text-align:center;">No</td>
+		</tr>
+		<tr>
+			<td>Frequency</td>
+			<td> Reports frequency measurement from a frequency card or device.</td>
+			<td style="text-align:center;">Yes</td>
+		</tr>
+		<tr>
+			<td>Period</td>
+			<td> Measures the period of a frequency signal.</td>
+			<td style="text-align:center;">Yes</td>
+		</tr>
+		<tr>
+			<td>Digital Input</td>
+			<td> Monitors digital device modules for true or false (on or off) logic (e.g., monitoring a switch position).</td>
+			<td style="text-align:center;">Yes</td>
+		</tr>
+		<tr>
+			<td>Digital Output</td>
+			<td> Sets output based on true or false (on or off) logic.</td>
+			<td style="text-align:center;">No</td>
+		</tr>
+		<tr>
+			<td>Virtual Input</td>
+			<td> A virtual input is a calculated value. This channel type is associated with a formula and is calculated at the system scan rate.</td>
+			<td style="text-align:center;">Yes</td>
+		</tr>
+		<tr>
+			<td>Virtual Output</td>
+			<td> The most general purpose channel type that can be used in various situations. It is very flexible as its values can be set on the real-time system using VCL and calculations. Virtual Output channels can also be set from the operator GUI.</td>
+			<td style="text-align:center;">No</td>
+		</tr>
+		<tr>
+			<td>Virtual Timer</td>
+			<td> A software timer that counts up or down. You can use VCL commands to start, stop, or reset timers.</td>
+			<td style="text-align:center;">Yes</td>
+		</tr>
+		<tr>
+			<td>Virtual String</td>
+			<td> A general purpose channel type that uses text-based values only rather than numeric values.</td>
+			<td style="text-align:center;">No</td>
+		</tr>
+		<tr>
+			<td>Totalize</td>
+			<td> This function counts state transitions up to a maximum count of 16,777,215. When the maximum count is attained, the counter resets to zero and begins to count again.</td>
+			<td style="text-align:center;">Yes</td>
+		</tr>
+		<tr>
+			<td>PWM Input</td>
+			<td> Used to acquire the reading from a PWM input module.</td>
+			<td style="text-align:center;">Yes</td>
+		</tr>
+		<tr>
+			<td>PWM Output</td>
+			<td> Used to set the value of a PWM output module.</td>
+			<td style="text-align:center;">No</td>
+		</tr>
+		<tr>
+			<td>Virtual Output Array</td>
+			<td>Creates a collection of virtual output values (up to the maximum allowed number).<br />Using this channel type requires additional configuration. For further information regarding array channels, refer to the <a class="wiki-page" href="ITest_Array_Channels.html">iTest Array Channels</a> documentation.</td>
+			<td style="text-align:center;">No</td>
+		</tr>
+		<tr>
+			<td>Virtual String Array</td>
+			<td>Creates a collection of virtual string values (up to the maximum allowed number).<br />Using this channel type requires additional configuration. For further information regarding array channels, refer to the <a class="wiki-page" href="ITest_Array_Channels.html">iTest Array Channels</a> documentation.</td>
+			<td style="text-align:center;">No</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="System-Channels"></a>
+<h2 >System Channels<a href="#System-Channels" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>System channels are channels that are required by iTest in order to run properly. These are added automatically when iTest loads and can be identified by "System Channel" in their description field. To view a list of all the system channels in your solution, use the Channel Selection dialog and select the <strong>System Channels</strong> filter.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>System Channels</strong></em></span><br /><img src="attachments/download/33231/37_SystemChannels.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />To view a list of all system channels, refer to the <a class="wiki-page" href="ITest_System_Channels.html">iTest System Channels</a> document.</p>
+
+
+	<a name="Internal-Variables"></a>
+<h2 >Internal Variables<a href="#Internal-Variables" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Internal variables are special channels that have no attributes associated with them. These channels can be used and referenced in VCL, calculations, and some mailslot messages but cannot be used on displays or in data logs. Internal variables are stored in the <em>Intervar.dat</em> file located in the <em>$SUPPORTDIR</em>. The format of the file is one variable per line followed by an optional value where the value is used to provide the initial value for that variable. You can edit this file by double-clicking on the <strong>Channels > Internal Variables</strong> node in the Test Manager tree bar or navigating to the Internal Variables editor in SolutionBuilder. For more information on how to manage Internal Variables in SolutionBuilder, refer to the <a class="wiki-page" href="Internal_Variables.html">Internal Variables</a> documentation.</p>
+
+
+	<p>An example of an <em>intervar.dat</em> file is represented below:</p>
+
+
+<pre>
+valEcc1SetpointLast
+tEcc1Min    25
+tEcc1Max     120
+tEcc1Add
+tEcc1Sub
+tEcc1Change
+tEcc1New
+colEoc1Mode
+colEoc1RampMode
+colEoc1RampValue
+colEoc1SP
+numEoc1RampTics
+valEoc1SetpointLast
+tEoc1Min    25
+tEoc1Max     120
+</pre>
+
+	<p>The advantage of using internal variables is that they can improve performance. Using internal variables requires less overhead than normal iTest channels because they do not get transferred across the network. Their values are "internal" to the vxin_exec process only. Additionally, they do not add entries to the channel select dialog or other GUI elements where a channel list is displayed. Therefore, putting flags, intermediate calculations, and other values that the operator should not have to see within internal variables can help reduce the visible content and improve usability and performance of the solution.</p>
+
+
+	<p>Internal variables can only be accessed through a procedure or calculation. They are not available through any editor and cannot be displayed on a screen control.</p>
+
+
+	<a name="Channel-Statistics"></a>
+<h2 >Channel Statistics<a href="#Channel-Statistics" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following values are calculated by default when statistics are enabled for a database channel:</p>
+
+
+	<ul>
+	<li>Maximum Value</li>
+		<li>Minimum Value</li>
+		<li>Mean</li>
+		<li>Standard Deviation</li>
+		<li>Slope</li>
+	</ul>
+
+
+	<p>Five Internal Variables are created automatically for each channel that has statistics enabled, one for each of the values described above. The following table describes the naming conventions for these internal variables:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Internal Variables Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Name</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>&lt;ChannelName&gt;_Minimum</td>
+			<td>(FLOAT)</td>
+		</tr>
+		<tr>
+			<td>&lt;ChannelName&gt;_Maximum</td>
+			<td>(FLOAT)</td>
+		</tr>
+		<tr>
+			<td>&lt;ChannelName&gt;_Mean</td>
+			<td>(FLOAT)</td>
+		</tr>
+		<tr>
+			<td>&lt;ChannelName&gt;_StdDev</td>
+			<td>(FLOAT)</td>
+		</tr>
+		<tr>
+			<td>&lt;ChannelName&gt;_Slope</td>
+			<td>(FLOAT)</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>Two additional internal variables are also created to expose a database channel's stability state and, if the database channel is not stable, the reason for the instability. The following table describes the naming conventions for these two internal variables:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Additional Variables Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Name</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>&lt;ChannelName&gt;_Stability</td>
+			<td>(FLOAT)</td>
+		</tr>
+		<tr>
+			<td>&lt;ChannelName&gt;_Reason</td>
+			<td>(FLOAT)</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Calibration-Coefficients"></a>
+<h2 >Calibration Coefficients<a href="#Calibration-Coefficients" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest automatically calibrates Analog Inputs, Temperatures, and Virtual Inputs if the proper coefficients have been entered for these channels. For more information on how iTest uses coefficients in the RDB, refer to the <a class="wiki-page" href="Calibration_Coefficients.html">Calibration Coefficients</a> documentation.</p>
+
+
+	<a name="Channel-Limitations"></a>
+<h1 >Channel Limitations<a href="#Channel-Limitations" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul>
+	<li>iTest currently supports up to 12,000 user-defined channels.</li>
+		<li>All string fields in a channel's attributes have a maximum length of 128 bytes, including the <strong>String Value</strong> field of Virtual Strings.</li>
+		<li>Customer names and aliases are restricted to 64 bytes.</li>
+		<li>Channel names are restricted to 32 bytes with the exception of virtual array channels which are restricted to only 27 bytes.</li>
+	</ul>
+
+
+	<p>For complete information regarding iTest limitations, refer to the <a class="wiki-page" href="System_Maximums.html">System Maximums</a> documentation.</p>
+
+
+	<a name="Channel-Definition-Files"></a>
+<h1 >Channel Definition Files<a href="#Channel-Definition-Files" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>Channels are stored in channel definition files. These files are flat, tab delimited ASCII files that use the <em>.fil</em> extension. Each row represents a channel, and each column represents a unique attribute or field for that channel. Channel definition files can be managed in Test Manager or SolutionBuilder. After channel definition files are created, they are stored in the <em>$SUPPORTDIR\DB</em> folder.</p>
+
+
+	<p>For more information on how to manage channel definition files, refer to the following documents:</p>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Managing_Channels_in_Test_Manager.html#Channel-Definition-Files">Channel Definitions in Test Manager</a></li>
+		<li><a class="wiki-page" href="Channel_Definitions_in_SolutionBuilder.html">Channel Definitions in SolutionBuilder</a></li>
+	</ul>
+
+
+	<a name="Default-Database-File"></a>
+<h2 >Default Database File<a href="#Default-Database-File" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest supports designating a "default" channel definition file. This is a channel definition file that cannot be deactivated and will always be loaded into the RDB at startup. This information is stored in the <em>powertek.ini</em> file using the <code>DefaultDatabaseFile</code> setting.</p>
+
+
+	<p>Test Manager does not include a mechanism to set the <code>DefaultDatabaseFile</code> <em>powertek.ini</em> setting. To designate a default channel definition file, add the name of the channel definition file including the <em>.fil</em> file extension to the <code>DefaultDatabaseFile</code> setting in the <em>$SUPPORTDIR\powertek.ini</em> file.  If the channel definition file is not in the <em>$SUPPORTDIR\DB\</em> folder, then you must include the fully-qualified filepath as part of the setting (e.g., <code>DefaultDatabaseFile=C:\ADT\iTest4.1\SysDefaultChannels.fil</code>).</p>
+
+
+	<a name="Channel-Names"></a>
+<h1 >Channel Names<a href="#Channel-Names" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>Each channel in iTest can have up to three names and an optional label. The channel name is its primary name; the other names include Alias, Customer, and Module. The primary channel name is the name as defined in the channel definition file. The same channel can be referenced by its other names, depending upon the configuration of the solution you are running. Alias, Customer, and Module names can be managed using Test Manager. Refer to the <a class="wiki-page" href="Managing_Channels_in_Test_Manager.html">Managing Channels in Test Manager</a> documentation for more information.</p>
+
+
+	<a name="Current-Display-Label"></a>
+<h1 >Current Display Label<a href="#Current-Display-Label" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>While iTest is running, you can change the preferred label for all channels. Any display object that has the label field set to "Automatic" instead of a specific label will change to use the system wide selection.</p>
+
+
+	<p>For iTest Console, you can change the current selection by selecting <strong>Tools > Options</strong> from the main menu. This will display the Options dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Modify Labels</strong></em></span><br /><img src="attachments/download/33232/37_ToolOptionsDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>In AutomationPanel, click <strong>Tools > Labels</strong> from the main menu to change the currently displayed channel label. Select the channel name type to use. This causes all panels that are set up to display the name of RDB channels to use the preferred label from the system.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Modify Labels</strong></em></span><br /><img src="attachments/download/100743/42_APDisplayLabels.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="See-Also"></a>
+<h1 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Managing_Channels_in_Test_Manager.html">Managing Channels in Test Manager</a></li>
+		<li><a class="wiki-page" href="Channel_Definitions_in_SolutionBuilder.html">Channel Definitions in SolutionBuilder</a></li>
+		<li><a class="wiki-page" href="RDB_Field_Definitions.html">RDB Field Definitions</a></li>
+	</ul>
+</body>
+</html>

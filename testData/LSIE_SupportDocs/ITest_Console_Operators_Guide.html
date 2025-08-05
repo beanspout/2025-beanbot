@@ -1,0 +1,2243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ITest Console Operators Guide</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Console_Operators_Guide.html">ITest Console Operators Guide</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+ <span style="display: none;">
+
+
+	<p><img src="attachments/download/93003/ADT_LOGO_OUTLINE.png" style="width: 100px;" alt="" /></p>
+
+
+	 </span>
+
+
+	 <div class="CoverPage" class="body">
+
+
+	 <div class="Title">
+
+
+	<p style="text-align:center;"><br /><strong><span style="font-size:30pt;color: #005CAA;">iTest Console Operator&#39;s Guide</span></strong></p>
+
+
+	 </div>
+
+
+	<p style="text-align:center;"><br /><em><span style="font-size:12pt;font-style: italic;">Product Version 4.5</span></em></p>
+
+
+	<p style="text-align:center;"><br /><strong><span style="font-size:16pt;">Prepared By</span></strong><br />ADT Software Engineering</p>
+
+
+	<p style="text-align:center;"><br /><span style="font-size: 10pt;color:red;">A&#38;D Confidential Document Distributable only to A&#38;D Customers</span><br /><span style="font-size: 10pt;color:black;">Copyright A&#38;D Company, Limited<br />A&#38;D Technology Inc.</span></p>
+
+
+	 </div>
+
+
+	 <h1>Table of Contents</h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#iTest-Console">iTest Console</a><ul><li><a href="#Overview">Overview</a></li></ul>
+</li><li><a href="#Using-iTest-Console">Using iTest Console</a><ul><li><a href="#Toolbar">Toolbar</a><ul><li><a href="#Custom-Buttons">Custom Buttons</a></li></ul>
+</li><li><a href="#Test-Control-Toolbar">Test Control Toolbar</a><ul><li><a href="#Test-Control-Toolbar-Definitions">Test Control Toolbar Definitions</a></li><li><a href="#Option-to-Show-File-Name-in-the-Test-Control-Toolbar-Dropdown">Option to Show File Name in the Test Control Toolbar Dropdown</a></li></ul>
+</li><li><a href="#Signal-Bar">Signal Bar</a><ul><li><a href="#Right-click-Menu-Options">Right-click Menu Options</a><ul><li><a href="#Add">Add...</a></li><li><a href="#RDB-Fields">RDB Fields...</a></li><li><a href="#Filtering">Filtering</a></li><li><a href="#Diagnostic">Diagnostic...</a></li></ul>
+</li><li><a href="#Limits-Monitoring">Limits Monitoring</a></li><li><a href="#Mailslot-Support">Mailslot Support</a></li></ul>
+</li><li><a href="#Message-Bar">Message Bar</a></li><li><a href="#Command-Bar">Command Bar</a><ul><li><a href="#Adding-a-New-Tool">Adding a New Tool</a></li><li><a href="#Adding-a-New-Action">Adding a New Action</a></li><li><a href="#Adding-a-New-Website">Adding a New Website</a></li></ul>
+</li><li><a href="#Data-Log-Status">Data Log Status</a></li><li><a href="#Changing-Labels-and-Units">Changing Labels and Units</a></li><li><a href="#Logging-In-and-Out-of-iTest-Console">Logging In and Out of iTest Console</a></li></ul>
+</li><li><a href="#Designing-a-Test-with-Schedule-Editor">Designing a Test with Schedule Editor</a><ul><li><a href="#Test-Control-Toolbar-Definitions-2">Test Control Toolbar Definitions</a></li><li><a href="#Adding-a-New-Step-or-Steps-to-a-Schedule">Adding a New Step or Steps to a Schedule</a></li><li><a href="#Deleting-Steps-in-a-Schedule">Deleting Steps in a Schedule</a></li><li><a href="#StartingStopping-a-Schedule">Starting/Stopping a Schedule</a></li><li><a href="#Right-click-Options">Right-click Options</a></li><li><a href="#Using-Step-Tasks">Using Step Tasks</a><ul><li><a href="#Step-Tasks">Step Tasks</a></li><li><a href="#Building-a-Step-Condition">Building a Step Condition</a></li></ul>
+</li></ul>
+</li><li><a href="#Managing-Limits">Managing Limits</a><ul><li><a href="#Using-the-AlarmStatus-Tool-to-Monitor-and-Manage-Limits">Using the AlarmStatus Tool to Monitor and Manage Limits</a></li><li><a href="#Using-the-Signal-Bar-to-View-Limits">Using the Signal Bar to View Limits</a></li><li><a href="#Mailslot-Messages-Involving-Limits">Mailslot Messages Involving Limits</a></li></ul>
+</li><li><a href="#Managing-Control-Loops">Managing Control Loops</a><ul><li><a href="#Using-the-PID-Control-Dialog">Using the PID Control Dialog</a></li><li><a href="#Understanding-Control-Modes">Understanding Control Modes</a><ul><li><a href="#X-Mode-Control">X-Mode Control</a></li></ul>
+</li><li><a href="#Controlling-the-PID-Control-with-Mailslots">Controlling the PID Control with Mailslots</a></li><li><a href="#INI-Options-for-PID-Control">INI Options for PID Control</a></li></ul>
+</li><li><a href="#Data-Quality">Data Quality</a><ul><li><a href="#Data-Quality-Types">Data Quality Types</a></li><li><a href="#Data-Quality-Interface">Data Quality Interface</a><ul><li><a href="#Data-Quality-Status-Bar">Data Quality Status Bar</a></li><li><a href="#Data-Quality-Viewer">Data Quality Viewer</a></li></ul>
+</li><li><a href="#Data-Quality-Groups">Data Quality Groups</a></li><li><a href="#Defining-Status-Colors">Defining Status Colors</a></li><li><a href="#Data-Quality-Mailslot-Messages">Data Quality Mailslot Messages</a></li><li><a href="#Accepting-or-Rejecting-Data">Accepting or Rejecting Data</a></li></ul>
+</li><li><a href="#Using-Displays">Using Displays</a><ul><li><a href="#Introduction">Introduction</a></li><li><a href="#Menu-Bar">Menu Bar</a></li><li><a href="#Editing-Displays">Editing Displays</a></li><li><a href="#Right-Click-Options">Right-Click Options</a></li><li><a href="#Saving-Displays">Saving Displays</a></li><li><a href="#Using-Mailslot-Messages">Using Mailslot Messages</a><ul><li><a href="#Example">Example</a></li><li><a href="#Display-Driver-Mailslot-Messages">Display Driver Mailslot Messages</a></li></ul>
+</li></ul>
+</li><li><a href="#Managing-Modules">Managing Modules</a><ul><li><a href="#Module-Configuration-Display">Module Configuration Display</a></li></ul>
+</li><li><a href="#Troubleshooting-and-Debugging">Troubleshooting and Debugging</a><ul><li><a href="#Mailer">Mailer</a></li><li><a href="#Test-Status-Display">Test Status Display</a><ul><li><a href="#Viewing-Test-Procedures">Viewing Test Procedures</a></li><li><a href="#Stopping-a-Running-Test">Stopping a Running Test</a></li></ul>
+</li><li><a href="#Viewing-Blackbox-Data">Viewing Blackbox Data</a><ul><li><a href="#File-Menu">File Menu</a></li><li><a href="#Edit-Menu">Edit Menu</a></li><li><a href="#View-Menu">View Menu</a></li></ul>
+</li></ul>
+</li><li><a href="#Calibrating-Measurement-Channels-with-Calibrate">Calibrating Measurement Channels with Calibrate</a></li><li><a href="#Not-Running-Prompt-for-Utilization-Tracking">“Not Running” Prompt for Utilization Tracking</a></li><li><a href="#Your-Application">Your Application</a></li></ul></p>
+
+
+	<a name="iTest-Console"></a>
+<h1 >iTest Console<a href="#iTest-Console" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The iTest Console software supports operator screens used for controlling all major test cell functions and cell related activities. It is designed to be a highly flexible user interface, operating synchronously with the data acquisition system to display the status of test data and related equipment. Through use of the iTest Console, the operator maintains control over the test cell and is able to gather specific data for analysis. The system designers and operators can access screen definition tools during test-building environment as well as runtime. This guide discusses the use of iTest Console for performing tests, using solutions that have been previously defined by an iTest test designer. This manual does not discuss the use of advanced iTest tools or development utilities, but rather the basics of interacting with the various screens and windows, as well as use of related utilities launched during a routine session of iTest Console.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>iTest Console Overview</strong></em></span><br /><img src="attachments/download/95388/Console.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>When iTest Console is first launched, the Select Solution dialog displays. For more information about the Select Solution dialog, refer to the <a class="wiki-page" href="Select_Support.html">Select Support</a> documentation.</p>
+
+
+	<a name="Using-iTest-Console"></a>
+<h1 >Using iTest Console<a href="#Using-iTest-Console" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Toolbar"></a>
+<h2 >Toolbar<a href="#Toolbar" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest Console provides a simple, partially customizable toolbar by default. The toolbar is populated with several buttons that will launch many of the utilities present in iTest. To toggle this toolbar on or off, select <strong>View > Tool Bar</strong> from the iTest Console menu bar.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Toolbar</strong></em></span><br /><img src="attachments/download/95389/console_toolbar.screenshot.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Custom-Buttons"></a>
+<h3 >Custom Buttons<a href="#Custom-Buttons" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Custom buttons are user configurable buttons that can trigger VCL procedures. The leftmost button always has a red background while any additional custom buttons have green backgrounds.</p>
+
+
+	<p>To define one or more custom buttons, use the <code>CustomButtonText</code> and <code>CustomButtonProc</code> <em>powertek.ini</em> settings. Each setting uses a comma-separated list to define multiple buttons.<br /><pre>
+CustomButtonText=Stop,Init,Start
+CustomerButtonProc=SysStop,SysAutoReady,SysAutoStart
+</pre><br />After modifying or adding the <code>CustomButtonText</code> <em>powertek.ini</em> setting, the <em>$SUPPORTDIR\iTest.wsp</em> file will have to be deleted to update the toolbar's appearance.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Deletion of the <em>iTest.wsp</em> file results in a loss of all user made modifications to the shape and location of the iTest Console GUI windows.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Test-Control-Toolbar"></a>
+<h2 >Test Control Toolbar<a href="#Test-Control-Toolbar" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The runtime test control interface allows a user to control a particular test depending on the options selected.</p>
+
+
+	<p>Once a test is selected, you will be allowed to execute the test manually by clicking the <strong>Run</strong> button.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">iTest only permits one test to be run at a time.</td>
+		</tr>
+	</table></p>
+
+
+	<p>The test control interface in iTest Console will appear similar to the following, provided you have defined a schedule test:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Test Control Interface</strong></em></span><br /><img src="attachments/download/4871/TCTConsole.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Any time a new test is selected iTest will prompt you to close the existing one if one is already visible in the main display area. This helps ensure that there is never any more than one active test.</p>
+
+
+	<p>For all test types, the functionality of the <strong>Start</strong> and <strong>Stop</strong> buttons will be the same. However, the rest of the buttons will have different functionality and appearance depending upon the test type selected.</p>
+
+
+	<a name="Test-Control-Toolbar-Definitions"></a>
+<h3 >Test Control Toolbar Definitions<a href="#Test-Control-Toolbar-Definitions" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following table describes the standard buttons of the Test Control Toolbar.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Test Control Toolbar Icon Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Icon</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td><strong>Tests:</strong></td>
+			<td>Allows you to choose one of the schedule/procedure tests that have been configured for your solution. This dropdown will be grayed out if there is a test already running.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/7233/starttest.png" alt="" /></td>
+			<td>Start test. This button will be grayed out if there is a test already running. If this is a schedule test, then a defined start procedure will be spawned.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/7235/stoptest.png" alt="" /></td>
+			<td>Stop test. This button will stop a test that is currently running. If this is a schedule test, then a defined stop procedure will be spawned.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/7232/reloadtest.png" alt="" /></td>
+			<td>Reload schedule test. This button will save any changes made to file, update the runtime memory, and run a defined reload procedure. This option is only enabled if the schedule is unlocked.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/7231/locktest.png" alt="" /></td>
+			<td>Lock/Unlock. Clicking this toggle button will either Lock or Unlock the currently active schedule test for editing.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/7239/holdtest.png" alt="" /></td>
+			<td>Pause procedure test. This button will suspend the running procedure test.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/7234/resumetest.png" alt="" /></td>
+			<td>Resume procedure test. This button will resume where the procedure test left off. This option is only available if the procedure is currently suspended.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Option-to-Show-File-Name-in-the-Test-Control-Toolbar-Dropdown"></a>
+<h3 >Option to Show File Name in the Test Control Toolbar Dropdown<a href="#Option-to-Show-File-Name-in-the-Test-Control-Toolbar-Dropdown" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following <em>powertek.ini</em> setting enables the iTest software to display the BAR file name rather than the actual test name associated with the toolbar.</p>
+
+
+<pre>
+TCTBShowBarFileName=TRUE
+</pre>
+
+	<p>This setting may already be present in the <em>powertek.ini</em> depending on the solution you're using. If it is not, iTest will default to FALSE and will therefore display the actual test name in the dropdown of the Test Control Toolbar.</p>
+
+
+	<a name="Signal-Bar"></a>
+<h2 >Signal Bar<a href="#Signal-Bar" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Signal Bar is a quick reference tool available in iTest Console used to monitor the values and other attributes of iTest channels during runtime. The Signal Bar is accessed by selecting <strong>View > Signal Bar</strong> from the iTest Console main menu. By default, the Signal Bar will appear as a docked window to the right of the main window, but it can be undocked to appear as a floating window.</p>
+
+
+	<p>The first column displays the limit of a channel or signal. The second column displays the channel identifier (Channel Name, Alias, Module Name, or Customer Name) as set from <strong>Tools > Options</strong> on the menu bar. The third column displays the current EU or string value for the channel. The fourth column is configurable to display any RDB field value.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Signal Bar</strong></em></span><br /><img src="attachments/download/95390/top.signalbar.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Each list can be sorted in ascending or descending order by clicking on the column headers. In addition, you can sort the channels being monitored at any point by clicking through the built-in filters via the tabs at the bottom of the signal list. Additional filtering is available through the <strong>Filtering...</strong> right-click option.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Filter Tabs</strong></em></span><br /><img src="attachments/download/95391/FilterTabs.signalbar.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Tab Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Tab</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/4796/VO_icon.signalbar.png" alt="" /></td>
+			<td>Filters to display only <strong>Virtual Output</strong> channels.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/4789/AO_icon.signalbar.png" alt="" /></td>
+			<td>Filters to display only <strong>Analog Output</strong> channels.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/4787/AI_icon.signalbar.png" alt="" /></td>
+			<td>Filters to display only <strong>Analog Input</strong> channels.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/4795/Temp_icon.signalbar.png" alt="" /></td>
+			<td>Filters to display only <strong>Temperature</strong> channels.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/4793/Freq_icon.signalbar.png" alt="" /></td>
+			<td>Filters to display only <strong>Frequency</strong> channels.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/4791/DO_icon.signalbar.png" alt="" /></td>
+			<td>Filters to display only <strong>Digital Output</strong> channels.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/4790/DI_icon.signalbar.png" alt="" /></td>
+			<td>Filters to display only <strong>Digital Input</strong> channels.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/4798/Time_icon.signalbar.png" alt="" /></td>
+			<td>Filters to display only <strong>Timer</strong> channels.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/4797/VS_icon.signalbar.png" alt="" /></td>
+			<td>Filters to display only <strong>Virtual String</strong> channels.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/4794/SYS_icon.signalbar.png" alt="" /></td>
+			<td>Filters to display only <strong>System Channels</strong>.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/4792/Fav_icon.signalbar.png" alt="" /></td>
+			<td>Filters to display only channels in a user configured list (i.e., <strong>Favorites</strong>). The <strong>Add...</strong> right-click menu option is used to add and remove channels from this tab.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/4788/All_icon.signalbar.png" alt="" /></td>
+			<td>Displays <strong>All</strong> channels.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Right-click-Menu-Options"></a>
+<h3 >Right-click Menu Options<a href="#Right-click-Menu-Options" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Only the options described below are supported in the Signal Bar's right-click menu.</p>
+
+
+	<a name="Add"></a>
+<h4 >Add...<a href="#Add" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The <strong>Add...</strong> right-click option is only available in the <strong>Favorites</strong> tab. It opens the Select Channels dialog window. This window is used to add and remove channels from the listing in the <strong>Favorites</strong> tab.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Select Channels Dialog</strong></em></span><br /><img src="attachments/download/95392/SelectChan.signalbar.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="RDB-Fields"></a>
+<h4 >RDB Fields...<a href="#RDB-Fields" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The <strong>RDB Fields...</strong> right-click option is available in each tab. It opens a listing of all available RDB fields. This list is not filtered based on which tab is currently selected in the Signal Bar. Once a selection is made from this list, the fourth column's column header will be updated to reflect your selection and each channel's RDB field value will be displayed in this column.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>RDB Fields</strong></em></span><br /><img src="attachments/download/95393/RDBField.signalbar.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Filtering"></a>
+<h4 >Filtering<a href="#Filtering" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The <strong>Filtering</strong> right-click option is available in each tab and opens the Signal List Display Filter dialog window.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Filtering Right-Click Option</em></span><br /><img src="attachments/download/95397/Filtering.signalbar01.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /> <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em>*Signal List Display Filter</strong></em></span><br /><img src="attachments/download/95395/Filtering.signalbar02.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Filter Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Filter</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td><strong>No Filter</strong></td>
+			<td>Removes any filter applied through the Signal List Display Filter.</td>
+		</tr>
+		<tr>
+			<td><strong>File Name</strong></td>
+			<td>Filters to only display channels listed in the selected Channel Definition file.</td>
+		</tr>
+		<tr>
+			<td><strong>Module Name</strong></td>
+			<td>Filters to only display channels that are in the selected Module's Channel Definition file(s) and have not been assigned to a system channel.</td>
+		</tr>
+		<tr>
+			<td><strong>Device Name</strong></td>
+			<td>Filters to only display channels associated with the selected device.</td>
+		</tr>
+		<tr>
+			<td><strong>Sub String</strong></td>
+			<td>Filters to only display channels whose name contains the given sub string.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Diagnostic"></a>
+<h4 >Diagnostic...<a href="#Diagnostic" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The <strong>Diagnostic...</strong> right-click option is available in each tab and opens the Channel Control dialog window. This window displays information about the selected channel and, if the channel is an output, it can be used to change the channel's current value.</p>
+
+
+	<p>Double-clicking on a channel in the Signal Bar has the same effect as this right-click option.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Example of a Virtual Output Channel</strong></em></span><br /><img src="attachments/download/95396/ChanCtrl.signalbar.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Limits-Monitoring"></a>
+<h3 >Limits Monitoring<a href="#Limits-Monitoring" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To switch to viewing limits in the Signal bar, send the following mailslot message:<br /><pre> \\.\mailslot\Atlas&gt;&gt;MONITOR_LIMITS</pre></p>
+
+
+	<p>Once the mailslot is received, the first column's header will change to <strong>Limits</strong>.</p>
+
+
+	<p>The following icons will be visible in the first column of the Signal Bar for any iTest channel configured for limits monitoring.  Limits must be active for an icon to appear.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Icon Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Icon</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/4775/Lim1_icon.signalbar.png" alt="" /></td>
+			<td>Indicates that limits are active and the channel has exceeded the Low Warning threshold.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/4776/Lim2_icon.signalbar.png" alt="" /></td>
+			<td>Indicates that limits are active and the channel has exceeded the Low Limit threshold.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/4777/Lim3_icon.signalbar.png" alt="" /></td>
+			<td>Indicates that limits are active and the channel has exceeded the High Warning threshold.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/4778/Lim4_icon.signalbar.png" alt="" /></td>
+			<td>Indicates that limits are active and the channel has exceeded the High Limit threshold.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/4779/Lim5_icon.signalbar.png" alt="" /></td>
+			<td>Indicates that limits are active and the channel has not exceeded any Limit or Warning thresholds.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>Placing the cursor over the icon will display a tooltip that shows the limit thresholds for this channel.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Example Tooltip</strong></em></span><br /><img src="attachments/download/95452/rolloverLim.signalbar.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The condition of each channel can change based on the following:</p>
+
+
+	<ul>
+	<li>Limits Activate data_engine mailslot message</li>
+		<li>Limits Deactivate data_engine mailslot message</li>
+		<li>Limits Group Apply data_engine mailslot message</li>
+	</ul></p>
+
+
+	<a name="Mailslot-Support"></a>
+<h3 >Mailslot Support<a href="#Mailslot-Support" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Signal Bar also supports the $SignalBar mailslot message to Softpanel. This message can be used to programmatically modify the displayed tab, RDB field, and to sort the visible channels. More details are available in the Softpanel Mailslot Message Reference List.</p>
+
+
+	<a name="Message-Bar"></a>
+<h2 >Message Bar<a href="#Message-Bar" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Message Bar displays both system messages and softpanel messages. Drag the message bar pane to open a separate message bar window. You can either move this window around on your screen or you can dock it to either side of the GUI.</p>
+
+
+	<a name="Command-Bar"></a>
+<h2 >Command Bar<a href="#Command-Bar" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Command Bar in the Console contains several panels that allow you to configure and control the <strong>Tools</strong>, <strong>Displays</strong>, <strong>Actions</strong>, and <strong>Websites</strong> that you will use to help run your tests in iTest. Right-clicking in any of these panels will pull up a standard menu that offers basic editing options for all panels, as well as the ability to add a new tool, action or website where applicable.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Right-Click Menu Options</strong></em></span><br /><img src="attachments/download/95453/CommandBar1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The Command Bar is a dock-able window, which means you can either leave it in its fixed position on the left side of the Console, drag it to another location, or undock it and remove it from view.</p>
+
+
+	<p>To drag it to another location, simply click in the space directly above the Command Bar and drag it to another location on your screen. You can drag it back to the original fixed position or to a different one by repeating this step and dragging it to your location of choice. There are a few areas in the Console that allow the Command Bar to be docked.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Command Bar Location</strong></em></span><br /><img src="attachments/download/95454/CommandBar3.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>To remove the Command Bar from view, simply click on the <strong>X</strong> at the top right. You can bring it back by clicking <strong>View</strong> > <strong>Command Bar</strong> from the View Menu (or Ctrl+Alt+C) at the top of the Console.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Close Command Bar</strong></em></span><br /><img src="attachments/download/95455/CommandBar2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Adding-a-New-Tool"></a>
+<h3 >Adding a New Tool<a href="#Adding-a-New-Tool" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>For a good example of how to add a new tool to your Command Bar, see the procedure outlined in the <a class="wiki-page" href="#Mailer">Mailer</a> section further down in this document.</p>
+
+
+	<a name="Adding-a-New-Action"></a>
+<h3 >Adding a New Action<a href="#Adding-a-New-Action" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To add a new Action in the Command Bar, complete the following steps. For this example, we'll add an action to send a mailslot message.</p>
+
+
+	<ol>
+	<li>Click the <strong>Actions</strong> panel on the Command Bar.</li>
+		<li>Right-click anywhere in the <strong>Actions</strong> panel and select <strong>New Action</strong>.</li>
+		<li>Select the <strong>Send Mailslot Message</strong> option from the <strong>Action</strong> field.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Action Dialog</strong></em></span><br /><img src="attachments/download/95456/NewActionDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Enter a specific message name in the <strong>Action Name</strong> field. This message name will be displayed in the Command Bar when you’re finished.</li>
+		<li><strong>Browse</strong> your machine for a new icon if you’re not satisfied with the default.</li>
+		<li>Select a destination for the mailslot message. Keep in mind that the specific message you are able to select in the next step depends entirely on the destination you choose here.</li>
+		<li>If you wish to enter a different destination than the ones provided, you’ll need to follow the following syntax:<br /><pre>\\.\mailslot\&lt;mailslot name&gt;</pre></li>
+		<li>Select a message from those provided in the <strong>Message</strong> dropdown.</li>
+		<li>Click <strong>OK</strong>, and your new action will be saved and displayed in the Command Bar.</li>
+	</ol>
+
+
+	<a name="Adding-a-New-Website"></a>
+<h3 >Adding a New Website<a href="#Adding-a-New-Website" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To add a new Web Page in the Command Bar, complete the following steps.</p>
+
+
+	<ol>
+	<li>Click the <strong>Web Pages</strong> panel on the Command Bar.</li>
+		<li>Right-click anywhere in the <strong>Web Pages</strong> panel and select <strong>New Web Page</strong>. The New Web Page dialog will be displayed.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Web Page</strong></em></span><br /><img src="attachments/download/95457/NewWebPage.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Enter the <strong>Name</strong> of the website you’d like to add, followed by the <strong>Address</strong>.</li>
+		<li>To select a specific icon to be displayed in the toolbar, click the <strong>Browse</strong> button. A window will be displayed that will show you a list of icons (<em>.ICO</em>) in your <em>Icons</em> folder (<em>$SystemDir\Art\Icons</em>).</li>
+		<li>Click <strong>OK</strong> to add the new web page link to your Command Bar.</li>
+		<li>Click on the link to bring up the web page in the main window.</li>
+	</ol>
+
+
+	<p>The system will allow you to have up to five (5) different web links open at a time, and each of them will have its own tab at the bottom of the screen. To extend the maximum number allowed, you’ll need to add the <code>MaxWebPages</code> entry to the <em>powertek.ini</em> file (if it’s not already there) and assign a value.</p>
+
+
+	<a name="Data-Log-Status"></a>
+<h2 >Data Log Status<a href="#Data-Log-Status" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The data log status dialog is accessed by selecting <strong>Tools > Data Logs...</strong> from the iTest Console main menu. This dialog can be used to monitor the status of all active data logs in iTest including those started by automated tests or started manually. In addition, you can use it to start new logs, stop and cancel running logs, view a data file with DataMiner, and create a temporary (quick) log.</p>
+
+
+	<p>The data log status dialog is shown here:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Data Log Status Dialog</strong></em></span><br /><img src="attachments/download/107953/42_datalog3.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Data Log Status Dialog - Column Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Column</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> First cell text, row one </td>
+			<td> Second cell text, row one.</td>
+		</tr>
+		<tr>
+			<td> Name </td>
+			<td> Name of the data log.</td>
+		</tr>
+		<tr>
+			<td> Status </td>
+			<td> <strong>Idle</strong>, <strong>Logging</strong> or <strong>Waiting for channel</strong>.</td>
+		</tr>
+		<tr>
+			<td> Type </td>
+			<td> <strong>Average</strong>, <strong>Snapshot</strong> or <strong>Transient</strong>.</td>
+		</tr>
+		<tr>
+			<td> Duration </td>
+			<td> Duration of the log. The duration will count down once the log goes from <strong>Idle</strong> to <strong>Logging</strong>.</td>
+		</tr>
+		<tr>
+			<td> Wait Channel </td>
+			<td> This channel must be set to one (1) before the data log will start. The current value is in parenthesis.</td>
+		</tr>
+		<tr>
+			<td> File </td>
+			<td> File name the output data log will be written to. Subfolders are not supported.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Data Log Status Dialog - Interface Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Item</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Start</td>
+			<td> (Button) launches the selected log, if it is not already running.</td>
+		</tr>
+		<tr>
+			<td>Stop</td>
+			<td> (Button) stops a running average or transient log. This action also creates an output file with all accumulated data, up to the current point.</td>
+		</tr>
+		<tr>
+			<td>Abort</td>
+			<td> (Button) cancels the log and does not create an output file.</td>
+		</tr>
+		<tr>
+			<td>DataMiner</td>
+			<td> (Button) launches the DataMiner application and displays the output file on the DataMiner's primary interface. To access DataMiner, refer to the customer portal at <a href="https://support.aanddtech.com/home" class="external">support.aanddtech.com</a> then add the DataMiner file to the $EXECUTEDIR folder.</td>
+		</tr>
+		<tr>
+			<td>New Quick Log</td>
+			<td> (Button) Displays the <strong>Quick Data Log</strong> (dialog displayed and described below).</td>
+		</tr>
+		<tr>
+			<td>Data Log Events</td>
+			<td> Text field that displays messages received from the logging subsystem since the dialog was initialized. Each time the dialog is exited and restarted, the window is emptied.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Quick Data Log Dialog</strong></em></span><br /><img src="attachments/download/107954/42_datalog4.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>This screen is used to create a temporary data log. These logs will continue to appear in the Data Log Status window until iTest exits. When iTest is re-started, all quick logs created will be gone. The logs can be managed in the Data Log Status Window in the same way as permanent logs. They can be started, stopped, cancelled, and viewed. In the Data Log Status dialog, quick logs will appear in a blue font in the list and permanent logs will appear in a black font.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Quick Data Log Dialog - Interface Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Field</b> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> Log Name </td>
+			<td> Give the quick log a name for the Data Log Status Window.</td>
+		</tr>
+		<tr>
+			<td> Log Type </td>
+			<td> <strong>Average</strong>, <strong>Snapshot</strong> or <strong>Transient</strong>.</td>
+		</tr>
+		<tr>
+			<td> Rate </td>
+			<td> Rate (in Hz) to use for sampling average log data or logging transient data.</td>
+		</tr>
+		<tr>
+			<td> Duration </td>
+			<td> Duration of the <strong>Average</strong> or <strong>Transient</strong> log in seconds.</td>
+		</tr>
+		<tr>
+			<td> Log Order List </td>
+			<td> Name of the LOL file to use.</td>
+		</tr>
+		<tr>
+			<td> Output Filename </td>
+			<td> File name the output data log will be written to. Subfolders are not supported.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Changing-Labels-and-Units"></a>
+<h2 >Changing Labels and Units<a href="#Changing-Labels-and-Units" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can manually change the way the Console displays label fields and/or performs unit conversions in certain displays and display objects in iTest.</p>
+
+
+	<p>To change the default global option for the <strong>System Display Label Field</strong> to reflect either the <strong>Channel Name</strong>, <strong>Module Name</strong>, <strong>Customer Name</strong> or <strong>Alias</strong>, simply click <strong>Tools</strong> > <strong>Options</strong> from the File menu of the Console and select your label of choice from the left of the following dialog:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Options Dialog</strong></em></span><br /><img src="attachments/download/95462/LabelUnits.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Changing this setting in the Console will affect the way channels are displayed on the following displays and display objects:</p>
+
+
+	<ul>
+	<li>PIDTune</li>
+		<li>All display objects with the “System Default” label field type. </li>
+		<li>AlarmStatus</li>
+		<li>Signal Bar</li>
+		<li>BBViewer</li>
+		<li>Others...</li>
+	</ul>
+
+
+	<p>Changing the base unit in iTest is just as simple as changing the label field and even uses the same dialog, but you do need to know a little bit about how unit conversions are performed in iTest first.</p>
+
+
+	<p>All unit conversions are driven by the value contained in the <strong>Base (SI) Unit</strong> column, as shown below in the Test Manager units editor screen:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Base (SI) Unit</strong></em></span><br /><img src="attachments/download/95463/LabelUnits2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The default display unit is <strong>Original Units</strong>, which is the unit that is defined in the channel definition file. To change the display unit to reflect the Base (SI) Unit, select <strong>Tools > Options</strong> from the File Menu of the Console and check the <strong>SI Units</strong> radio button.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>SI Units Option</strong></em></span><br /><img src="attachments/download/95464/Options_ChannelName_SIUnits.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>In the case of Celsius (row 11 in the screenshot above) values will now convert to Kelvin, which is the conversion listed in the <strong>Base (SI) Unit</strong> column of the unit conversions spreadsheet.</p>
+
+
+	<p>To put this into perspective, let’s say you created a display to track the values of 3 virtual outputs: <code>voDemo1</code>, <code>voDemo2</code>, and <code>voDemo3</code> with starting units of Celsius, Fahrenheit, and Kelvin, respectively. You then set the conversion unit to <strong>SI Unit</strong> in the options menu. For degrees Celsius, the SI Unit is Kelvin, so the system will then add 273.15 to make the proper conversion.</p>
+
+
+	<p>Likewise, if you changed one of the Kelvin values in your display from 273K to 97K and then chose the Metric Units option in the <strong>Tools > Options</strong> menu, the system will change the value to -176 degrees Celsius in your display (actual channel value).</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Kelvin Values</strong></em></span><br /><img src="attachments/download/95465/LabelUnits4.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Since all conversions are based off the Base (SI) Unit, if I wanted to convert a Celsius value to English Units (Fahrenheit) the system would first need to convert the value to Kelvin, the Base (SI) Unit, by adding 273.15 degrees. The system would then convert the Kelvin value to Fahrenheit, which is the English unit.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">All conversions are done in the displays only. RDB values are left in original units.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Logging-In-and-Out-of-iTest-Console"></a>
+<h2 >Logging In and Out of iTest Console<a href="#Logging-In-and-Out-of-iTest-Console" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To log into iTest Console, click <strong>File > User Login</strong> from the File Menu at the top of the Console.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>iTestConsole User Login</strong></em></span><br /><img src="attachments/download/95468/iTestConsoleUserLogin.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Once you have logged in, you can log out at any time by selecting <strong>File > User Logout</strong>. However, when you log out your status changes to "No User", which means you will no longer have permissions to do anything substantial within iTest Console. You must be logged in before you can make any changes within the system.</p>
+
+
+	<p>When you attempt to launch an application that you do not have permissions for, a message like the following appears in the message queue indicating that you do not have adequate permissions:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>System Messages</strong></em></span><br /><img src="attachments/download/95466/iTestConsoleMessages.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Likewise, if you try to perform a task that you are restricted from, the following dialog box will appear:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>No Permission</strong></em></span><br /><img src="attachments/download/95467/NoPermission.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Designing-a-Test-with-Schedule-Editor"></a>
+<h1 >Designing a Test with Schedule Editor<a href="#Designing-a-Test-with-Schedule-Editor" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>Complete the following procedure to edit a test while it is running.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The test should remain on one particular step during this operation or else the new information will be lost.</td>
+		</tr>
+	</table></p>
+
+
+	<ol>
+	<li>Select a test from the <strong>Tests</strong> dropdown on the Test Control Toolbar. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select Test</strong></em></span><br /><img src="attachments/download/95469/selecttest.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the <strong>Lock/Unlock</strong> button to allow test schedule editing.</li>
+		<li>At this point, you can make any change to the <strong>Data</strong> or <strong>Header</strong> pages of the test by clicking on the corresponding tabs at the bottom.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Edit Schedule</strong></em></span><br /><img src="attachments/download/95470/schedchange.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the <strong>File > Save</strong> menu item to save the changes and update the runtime memory.</li>
+		<li>Click the <strong>Lock/Unlock</strong> button to lock the test schedule.</li>
+	</ol>
+
+
+	<a name="Test-Control-Toolbar-Definitions-2"></a>
+<h2 >Test Control Toolbar Definitions<a href="#Test-Control-Toolbar-Definitions-2" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>If you are using a standard solution from A&#38;D, the following buttons are available on the pre-defined Test Control Toolbars.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Test Control Toolbar Button Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Icon</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td><strong>Tests:</strong></td>
+			<td>Allows you to choose one of the tests/procedures that have been configured for your solution. This dropdown will be grayed out if there is a test already running.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/7233/starttest.png" alt="" /></td>
+			<td>Start test. This button will be grayed out if there is a test already running.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/7235/stoptest.png" alt="" /></td>
+			<td>Stop test. This button will stop a test that is currently running.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/7232/reloadtest.png" alt="" /></td>
+			<td>Reload test. This button will save any changes made and then update the runtime memory. This option is only enabled if the schedule is unlocked.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/7231/locktest.png" alt="" /></td>
+			<td>Lock/Unlock. Clicking this toggle button will either Lock or Unlock the currently active test for editing.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/7238/testdisplay.png" alt="" /></td>
+			<td>This custom button will test the active display for the selected test.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/7239/holdtest.png" alt="" /></td>
+			<td>Hold test. This custom button will pause the test at the current step.</td>
+		</tr>
+		<tr>
+			<td><img src="attachments/download/7234/resumetest.png" alt="" /></td>
+			<td>This custom button will resume where the test left off.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Adding-a-New-Step-or-Steps-to-a-Schedule"></a>
+<h2 >Adding a New Step or Steps to a Schedule<a href="#Adding-a-New-Step-or-Steps-to-a-Schedule" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To add a new step to a schedule, simply open the schedule in the Console, <strong>Unlock</strong> it, right-click anywhere in the schedule, and then click <strong>Add Step</strong>. A new step will be placed at the end of the schedule. To insert multiple steps, right-click, select <strong>Add Many Steps</strong>, and enter the number of steps in the dialog that displays. Click <strong>OK</strong> to add these steps to the end of the schedule.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Unlock Schedule and Add Step</strong></em></span><br /><img src="attachments/download/95473/unlockschedule.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>To insert a step at a specific row of the schedule, navigate to that row, right-click, and select <strong>Insert Step</strong>. A new step will be inserted right prior to the current step. To insert multiple steps at a specific row of the schedule, navigate to that row, right-click, and select <strong>Insert Many Steps</strong>.</p>
+
+
+	<p>Make sure to lock the schedule once you’ve finished adding and configuring your steps.</p>
+
+
+	<a name="Deleting-Steps-in-a-Schedule"></a>
+<h2 >Deleting Steps in a Schedule<a href="#Deleting-Steps-in-a-Schedule" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To delete a step or steps in a schedule, simply open the schedule in the Console, <strong>Unlock</strong> it, and highlight the row to be deleted by clicking on the row’s title (column 1). Right-click on the row and select <strong>Delete Step</strong>.</p>
+
+
+	<p>To delete multiple rows, select the first row you want deleted by clicking on the title. Next, drag downward until all of the rows you want deleted are highlighted. Right click in the highlighted area and select <strong>Delete Step</strong>.</p>
+
+
+	<p>Make sure to <strong>Lock</strong> the schedule once you’ve finished deleting your steps.</p>
+
+
+	<a name="StartingStopping-a-Schedule"></a>
+<h2 >Starting/Stopping a Schedule<a href="#StartingStopping-a-Schedule" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can <strong>Start</strong> or <strong>Stop</strong> a schedule at any time by clicking on the corresponding icons on the Test Control Toolbar.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Your solution may need to be in a &quot;Ready&quot; state before you can successfully start a schedule.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Right-click-Options"></a>
+<h2 >Right-click Options<a href="#Right-click-Options" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Following are the right-click options available when editing a test in the Console:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options and Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Freeze Columns</td>
+			<td>Locks the columns from the first row in the spreadsheet to the selected column. Frozen columns do not scroll when you scroll horizontally through the document.</td>
+		</tr>
+		<tr>
+			<td>Unfreeze Columns</td>
+			<td>Unlocks columns frozen by the <strong>Freeze Columns</strong> option.</td>
+		</tr>
+		<tr>
+			<td>Insert Step</td>
+			<td>Inserts a step at a specific row in a schedule.</td>
+		</tr>
+		<tr>
+			<td>Insert Many Steps</td>
+			<td>Inserts a user-defined number of steps at a specific row in a schedule. A dialog will be displayed where you can enter the number of steps you wish to insert.</td>
+		</tr>
+		<tr>
+			<td>Add Step</td>
+			<td>Adds a new step under the last step in the schedule.</td>
+		</tr>
+		<tr>
+			<td>Add Many Steps</td>
+			<td>Adds a user-defined number of steps under the last step in the schedule. A dialog will be displayed where you can enter the number of steps you wish to add.</td>
+		</tr>
+		<tr>
+			<td>Delete Step</td>
+			<td>Deletes the selected step. You will get a prompt asking you to confirm the deletion.</td>
+		</tr>
+		<tr>
+			<td>Import From CSV</td>
+			<td>Imports the contents of any comma-separated value file into an existing schedule. The following dialog will be displayed:<br /><img src="attachments/download/7253/csv.jpg" style="padding-top:1em;padding-bottom:1em;width:50%;" alt="" /> </td>
+		</tr>
+		<tr>
+			<td>View Schedule</td>
+			<td>Opens the selected schedule in the Schedule View dialog. Set Plot Properties before viewing a schedule.</td>
+		</tr>
+		<tr>
+			<td>Plot Properties</td>
+			<td>Opens the Plot Configuration dialog box in which you can plot the values on the schedule.</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td>Copies the selected cell or row.</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td>Places the cell or row that is saved to the clipboard in the selected location.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Using-Step-Tasks"></a>
+<h2 >Using Step Tasks<a href="#Using-Step-Tasks" class="wiki-anchor">&para;</a></h2>
+
+
+	<p><strong>Step Tasks</strong> and <strong>Step Conditions</strong> allow iTest schedules to develop full tests without using VCL. This is done by utilizing three specific columns in the standard solution.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The iTest application provides the framework for this feature. Legacy applications must be updated to take advantage of it.</td>
+		</tr>
+	</table></p>
+
+
+	<p>The three columns in the standard step schedule are called <strong>StepTask1</strong>, <strong>StepTask2</strong>, and <strong>StepTask3</strong>. Each of these columns allows you to define a complex logical expression that gets evaluated when that particular step is reached, and then associate some action that occurs when the expression evaluates to TRUE. The expression to be evaluated is called a step condition, and the condition, together with the action, is referred to as a step task.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Step Tasks</strong></em></span><br /><img src="attachments/download/95474/steptask1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The tasks identified in the three columns of any particular schedule step are joined by OR operands, indicating that the step task condition achieved first takes priority. It will then prompt the system to take the associated, defined action for moving forward in the test schedule.</p>
+
+
+	<p>Each schedule step can contain multiple step conditions associated with these step tasks. Conditions are evaluated continuously while the schedule is executing that step. The schedule can advance to the next step based either on step time or if a step condition evaluates to TRUE. Each step condition has a logical expression and an associated action to perform if the conditional evaluates to TRUE.</p>
+
+
+	<p>Each individual step task is defined by the following items:</p>
+
+
+	<ul>
+	<li><ins><strong>Description:</strong></ins> Created in the setup, then displayed in the test schedule view. </li>
+		<li><ins><strong>Condition:</strong></ins> Either predefined (from a drop down menu) or from new. 
+	<ul>
+	<li>Predefined step conditions are available from a drop down menu. They can be added to a schedule in the Console. </li>
+		<li>New conditions can be created in the Console (if necessary while a test is running). However, they are not added to the predefined step tasks and are not available for selection via a drop down menu. </li>
+	</ul>
+	</li>
+		<li><ins><strong>Action (Execute):</strong></ins> If the defined condition is met, one of the following actions is triggered: <strong>End Step</strong>, <strong>Go To Step</strong>, <strong>Pause</strong> (wait for operator to resume), <strong>Stop Test</strong>, <strong>Advance To Log</strong>, <strong>Start VCL Procedure</strong>, <strong>Start Set Value Table</strong>, <strong>Set Value</strong>, or <strong>Increment Value</strong>. </li>
+		<li><ins><strong>Action Argument:</strong></ins> Some actions require an additional argument (e.g., <strong>Go To Step</strong> and <strong>Start Procedure</strong>). <strong>Start Procedure</strong>, for example, displays a picklist of VCL procedures.</li>
+	</ul>
+
+
+	<a name="Step-Tasks"></a>
+<h3 >Step Tasks<a href="#Step-Tasks" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To set the step task action, locate the columns labeled <strong>StepTask1</strong>, <strong>StepTask2</strong>, and <strong>StepTask3</strong>. Double-click in any of these columns to open the Step Task Check Setup dialog. Select the drop-down next to the <strong>Execute</strong> field to select what action occurs.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Step Task Columns</strong></em></span><br /><img src="attachments/download/95475/StepTaskColumns_Console.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Set Step Task</strong></em></span><br /><img src="attachments/download/95476/StepTaskExecute.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The available step task actions and their arguments are described in the table below:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Step Task Actions - Descriptions and Arguments</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Argument</strong>  </td>
+		</tr>
+		<tr>
+			<td>Change Log Time</td>
+			<td>Supports high-speed logging during the transient part of a step; it then changes to snapshot logs for the remainder of the step. </td>
+			<td>New Log Time (in seconds)</td>
+		</tr>
+		<tr>
+			<td>End Step</td>
+			<td>Stops the step immediately and proceeds to the next scheduled step.</td>
+			<td>None</td>
+		</tr>
+		<tr>
+			<td>Go To Step</td>
+			<td>Ends the current step and goes to the specified step number indicated in the dialog.</td>
+			<td>Valid Step Number or Label</td>
+		</tr>
+		<tr>
+			<td>Increment Value</td>
+			<td>Adds a constant value to the current value of a channel; subtracts if a negative value is used. Syntax similar to "set value": channel +1, where 1 can be any numeric value. To decrement: channel +-1 </td>
+			<td>Channel + Value </td>
+		</tr>
+		<tr>
+			<td>Jump To Step</td>
+			<td>Jumps ahead to specified step indicated in the dialog. </td>
+			<td>Valid Step Number or Label</td>
+		</tr>
+		<tr>
+			<td>Pause</td>
+			<td>Holds the test until a ResumeSchedule command is received.</td>
+			<td>None</td>
+		</tr>
+		<tr>
+			<td>Pause GoToStep</td>
+			<td>Resumes from Pause and the test goes to the user-entered step number rather than the next step.</td>
+			<td>Valid Step Number</td>
+		</tr>
+		<tr>
+			<td>Save Value</td>
+			<td>Writes the channel name and value to the circuit's INI file so the value can be restored when iTest is restarted.</td>
+			<td>Alias Name</td>
+		</tr>
+		<tr>
+			<td>Set Value</td>
+			<td>Sets a channel or parameter to a value with the syntax <code>channel=value</code>. To set multiple values simultaneously, separate the <code>channel=value</code> inputs by semicolons. <code>value</code> can also be a simple expression with operators +, -, * or /. For example,<br /><code>Cntr1=Cntr2+Cntr3;Cntr4=Cntr1;Counter4=Counter2*6</code>.<br />&nbsp;<br /><strong><ins>Note</ins></strong>: String channels are not supported.</td>
+			<td>Channel = Value</td>
+		</tr>
+		<tr>
+			<td>Start New File</td>
+			<td>Supports breaking a potentially extremely large data file into smaller sections. It appends three digits to the current data file name starting at "001". Each time this action is executed the extender is incremented by 1. If this action is executed after the extender reaches "999",  it results in an error message, and the extender is not incremented.</td>
+			<td>None</td>
+		</tr>
+		<tr>
+			<td>Start Procedure</td>
+			<td>Launches the procedure asynchronously (spawn). The procedure name can be entered directly or selected from a picklist. The Start Procedure picklist is defined in the picklist file set by the <code>EOSActionPickList=</code> <em>powertek.ini</em> setting (e.g., <code>EOSActionPickList=SysActions</code>).<br />&nbsp;<br />Any necessary procedure arguments should be included in parentheses; for BTS, a special circuit index argument is typically required (i.e., <code>&lt;procedure name&gt;($index$)</code>).</td>
+			<td>Procedure Name</td>
+		</tr>
+		<tr>
+			<td>Stop Test</td>
+			<td>Stops the Schedule Runner from running the schedule.</td>
+			<td>None</td>
+		</tr>
+		<tr>
+			<td>Start Log</td>
+			<td>Starts the specified data log</td>
+			<td>name of data log or name of Virtual String containing the name of the data log</td>
+		</tr>
+		<tr>
+			<td>Stop Log</td>
+			<td>Stops the specified data log</td>
+			<td>name of data log or name of Virtual String containing the name of the data log</td>
+		</tr>
+		<tr>
+			<td>Module Action*</td>
+			<td>Sends a module action to the selected module(s). For more information, refer to the <a class="wiki-page" href="SystemAction_Vcl_Function.html#ModuleAction">ModuleAction</a> documentation.</td>
+			<td>Module(s) and Action. Both are selected from predefined fixed lists.</td>
+		</tr>
+		<tr>
+			<td>System Action*</td>
+			<td>Sends a system action to the selected module(s). For more information, refer to the <a class="wiki-page" href="SystemAction_VCL_Function.html#SystemAction-VCL-Function">SystemAction</a> documentation.</td>
+			<td>Module(s) and Action. Both are selected from predefined fixed lists.</td>
+		</tr>
+		<tr>
+			<td>Stop Master Schedule**</td>
+			<td>Prematurely stops the master schedule at its current step.</td>
+			<td>None</td>
+		</tr>
+		<tr>
+			<td>End Loop**</td>
+			<td>Ends the loop on its current step.</td>
+			<td>None</td>
+		</tr>
+		<tr>
+			<td>Top of Loop**</td>
+			<td>Ends the current step and proceeds to the first step of the loop.</td>
+			<td>None</td>
+		</tr>
+		<tr>
+			<td>Pause Master Schedule**</td>
+			<td>Holds the test in its current position until a ResumeSchedule command is received.</td>
+			<td>None</td>
+		</tr>
+		<tr>
+			<td>Spawn Python Script**</td>
+			<td>The specified script is started when the condition is met the first time. Choosing this option enables you to specify a script in the <strong>Script String</strong> field.</td>
+			<td>Python Script Name</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;font-style: italic;">Only applicable to non-BTS systems.</span><br />** <span style="font-size:0.90em;font-style: italic;">Only applicable to master schedules.</span></p>
+
+
+	<a name="Building-a-Step-Condition"></a>
+<h3 >Building a Step Condition<a href="#Building-a-Step-Condition" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>In one of the step task columns of the schedule, you can create a new step task and then create the step condition for that task directly in the schedule, as shown below:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Step Condition</strong></em></span><br /><img src="attachments/download/47370/StepTaskNewCondition.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Each step condition supports the following:</p>
+
+
+	<ul>
+	<li><ins><strong>Step Condition Label:</strong></ins> Used as the default step task description.</li>
+		<li><ins><strong>Step Parameter:</strong></ins> An iTest channel selected from a predefined user picklist.</li>
+		<li><ins><strong>Operator:</strong></ins> =, >, >=, <, <= or !=</li>
+		<li><ins><strong>Operand:</strong></ins> Value or iTest channel selected from a predefined user picklist. Operands support simple expressions with only one operator; you can perform addition, subtraction, multiplication, and division.</li>
+		<li><ins><strong>Logic:</strong></ins> AND or OR. This allows additional lines to be added to the definition.</li>
+	</ul>
+
+
+	<a name="Managing-Limits"></a>
+<h1 >Managing Limits<a href="#Managing-Limits" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>Limits are iTest's method of providing both safety checking and some event-based processing of actions based on a channel reaching a user-defined value or set of values. Each scalar numeric channel in iTest can have up to four limit ranges configured, and each range can have a defined action that occurs when the channel's value crosses into that range. These ranges can be changed dynamically from a test or manually from certain screens in the Console.</p>
+
+
+	<p>As a channel's value crosses into a new limit range, messages are sent to the iTest message queue. Messages have a fixed format and are an additional visual. The image below shows a typical message queue of limit messages:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Message Queue</strong></em></span><br /><img src="attachments/download/95507/MessageQueue.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The messages always have this format:</p>
+
+
+<pre>Limits &lt;status&gt; on &lt;channel name&gt; [value= &lt;channel value&gt; ]</pre>
+
+	<p>where,</p>
+
+
+	<p>&lt;status&gt; is one of <strong>OK</strong>, <strong>Low Warning</strong>, <strong>Low Limit</strong>, <strong>High Warning</strong>, or <strong>High Limit</strong>.</p>
+
+
+	<p>&lt;channel name&gt; is the label for the channel that violated the limit. This could be a channel name, module name, or customer name depending on your display label.</p>
+
+
+	<p>&lt;channel value&gt; is the value that caused the limit to trigger.</p>
+
+
+	<p>In addition to messages, limits will cause a channel's displayed value to change to a specific color depending on its current status. If limits checking is enabled, almost all locations in iTest will display the value with the following pre-defined colors:</p>
+
+
+	<ul>
+	<li>High Limit = <span style="color:red;">Red</span></li>
+		<li>High Warning = <span style="color:yellow;">Yellow</span></li>
+		<li>Normal = <span style="color:green;">Green</span></li>
+		<li>Low Warning = <span style="color:yellow;">Yellow</span></li>
+		<li>Low Limit = <span style="color:red;">Red</span></li>
+	</ul>
+
+
+	<p><span style="color:red;">Red</span> = A limit threshhold has been violated. <br /><span style="color:yellow;">Yellow</span> = A warning threshhold has been violated<br /><span style="color:green;">Green</span> = Everything is fine.</p>
+
+
+	<p>These colors will be visible on iTest display objects such as the <strong>ADTDigital</strong>, <strong>ADTGauge</strong>, and <strong>ADTBar</strong> objects, iTest Console <strong>Signal Bar</strong>, and <strong>AlarmStatus</strong>.</p>
+
+
+	<a name="Using-the-AlarmStatus-Tool-to-Monitor-and-Manage-Limits"></a>
+<h2 >Using the AlarmStatus Tool to Monitor and Manage Limits<a href="#Using-the-AlarmStatus-Tool-to-Monitor-and-Manage-Limits" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>AlarmStatus is an important program for the operator to use at runtime to monitor and manage the list of channels with limits while iTest is running. Depending upon the options set in your solution, the operator can have a different level of control using AlarmStatus. Some locations allow an operator to add and delete channels with limits, temporarily disable some channels, and edit limit ranges and actions, all while iTest is running.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>AlarmStatus Limits Inactive</strong></em></span><br /><img src="attachments/download/95508/AlarmStatus.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>For more information regarding the use of AlarmStatus, see the <a class="wiki-page" href="AlarmStatus.html">AlarmStatus</a> documentation.</p>
+
+
+	<a name="Using-the-Signal-Bar-to-View-Limits"></a>
+<h2 >Using the Signal Bar to View Limits<a href="#Using-the-Signal-Bar-to-View-Limits" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Signal Bar is a quick reference tool that can also be used to display the current limits of a channel. For more information on how to use the Signal Bar to display limits, see the <a class="wiki-page" href="#Limits-Monitoring">Limits Monitoring</a> section of this document.</p>
+
+
+	<a name="Mailslot-Messages-Involving-Limits"></a>
+<h2 >Mailslot Messages Involving Limits<a href="#Mailslot-Messages-Involving-Limits" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>All limit mailslot messages are handled by Data_Engine. They are as follows:</p>
+
+
+	<ul>
+	<li><ins><strong>Limits Activate:</strong></ins> This message either turns on the global limits flag or, if one or more channel names is given, sets the given channel's <strong>Limits Active</strong> RDB field value to "1".</li>
+		<li><ins><strong>Limits Deactivate:</strong></ins> This message either turns off the global limits flag or, if one or more channel names is given, sets the given channel's <strong>Limits Active</strong> RDB field value to "0".</li>
+		<li><ins><strong>Limits Group Apply:</strong></ins> Applies a Limit Group. If <code>LimitsVer=3.2</code> in the <em>powertek.ini</em> file, then the applied limit group replaces the current limits settings. Otherwise, the limit group is applied with a layered approach.</li>
+	</ul>
+
+
+	<p>For more information regarding mailslot messages, see the <a class="wiki-page" href="DataEngine_Mailslot_Messages_List.html">DataEngine Mailslot Messages List</a> documentation.</p>
+
+
+	<a name="Managing-Control-Loops"></a>
+<h1 >Managing Control Loops<a href="#Managing-Control-Loops" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>Control loops are Proportional Integral Derivative (PID) controls that regulate high-speed dynamometer, throttle control and other test system control processes. PID controls stabilize a process or device at a commanded setpoint. These controls are also used to track a setpoint. PID coefficients are set according to the response characteristics of a control system.</p>
+
+
+	<p>A control can be defined as a process regulator, which regulates engine speed and load with a dynamometer or throttle actuator. For more information, see the <a class="wiki-page" href="Control_Theory.html">Control Theory</a> documentation.</p>
+
+
+	<p>The following table describes some general terms used when defining PID controls:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>General Terms and Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Term</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Setpoint</td>
+			<td> The desired value of what is being controlled (e.g., speed, load, temperature, or pressure).</td>
+		</tr>
+		<tr>
+			<td>Feedback</td>
+			<td> The measured value of the controlled variable.</td>
+		</tr>
+		<tr>
+			<td>Error</td>
+			<td> The signal derived from the difference between the setpoint and feedback.</td>
+		</tr>
+		<tr>
+			<td>Control</td>
+			<td> The output derived from error. Control minimizes the difference between setpoint and feedback.</td>
+		</tr>
+		<tr>
+			<td>Closed loop control</td>
+			<td> In this mode, the control system continually calculates error and adjusts the control channel to reduce error to zero. Tuning settings affect the adjustment amount applied to the control channel. Tuning takes into account the magnitude of external disturbances to the process, as well as the sensitivity of the process to the control element (e.g., the effect of valve position on pressure).</td>
+		</tr>
+		<tr>
+			<td>Open loop control</td>
+			<td>In this mode, the control system no longer adjusts the control channel to correct for error. This allows for manual control, which is recommended only for slow processes. When the system is not running, this mode lets you modulate a valve or actuator to check its performance. In certain cases, a PID loop is switched from closed to open loop control to lock a valve or actuator in place for the remainder of a test.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Using-the-PID-Control-Dialog"></a>
+<h2 >Using the PID Control Dialog<a href="#Using-the-PID-Control-Dialog" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The primary operator interface for switching control modes and manually changing setpoints is called the PID Control dialog. It is an "on-top" dialog box that floats on top of the Console's main window. The main purpose of the PID Control dialog is to allow you to control the current value of the Dyno and Throttle PIDs. It also allows you to change the current PID mode pair that the Dyno and Throttle are currently operating under.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>PID Control Dialog Overview</strong></em></span><br /><img src="attachments/download/95513/PIDimage.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>To access the PID Control dialog (if it's not already visible), select <strong>Tools > PID Control</strong> from the File menu.</p>
+
+
+	<p>The <a class="wiki-page" href="PID_Control_Box.html">PID Control Box</a> document describes the use of the mode control dialog.</p>
+
+
+	<p>PIDs can also be fine-tuned in the PID Tune Utility in order to help manage the control more efficiently. For more information, see the <a class="wiki-page" href="PIDTune.html">PIDTune</a> documentation.</p>
+
+
+	<a name="Understanding-Control-Modes"></a>
+<h2 >Understanding Control Modes<a href="#Understanding-Control-Modes" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Control modes, also referred to as mode pairs, are logically combined pairs of PID control loops used to effectively control a test system such as an engine dynamometer system. Common control pairs include:</p>
+
+
+	<ul>
+	<li>Speed/Position</li>
+		<li>Speed/Torque</li>
+		<li>Torque/Position </li>
+		<li>Torque/Speed</li>
+	</ul>
+
+
+	<p>In an engine dynamometer system, for example, the first loop typically represents the dynamometer control loop and the second represents the engine throttle control loop.</p>
+
+
+	<p>Control modes are always configured as a 2-loop pair, with HS1/HS2 being the most common. So if you want to change your HS1, you still have to signify what your HS2 is going to be.</p>
+
+
+	<p>Typical control mode group names are HS1, HS2, LS1, LS2, … LS20 (where, HS=High Speed, LS=Low Speed), but these are user configurable and can be named something more appropriate (e.g., Dyno and Throttle). There can be any number of loops defined under each group, but only one can run at a time. The relationship between the individual PIDs in a PID group is that only one loop in each group can be run at a time.</p>
+
+
+	<a name="X-Mode-Control"></a>
+<h3 >X-Mode Control<a href="#X-Mode-Control" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>As mentioned above, the standard modes for dyno/throttle modules are:</p>
+
+
+<pre>Spd/Pos Spd/Trq Trq/Pos Trq/Spd</pre>
+
+	<p>There is also a Runtime Configurable mode in which the user can select the feedback channel for the throttle PID. When this is utilized, the mode set will change to the following:</p>
+
+
+<pre>Spd/Pos Spd/Trq Spd/X Trq/Pos Trq/Spd Trq/X</pre>
+
+	<p>The X loop is added to the throttle loop group, and the mode list is extended to provide 2 new mode pairs.</p>
+
+
+	<p>For more information, see the <a class="wiki-page" href="Mode_Control_Dialog.html#Using-X-Mode">Using X Mode</a> documentation.</p>
+
+
+	<a name="Controlling-the-PID-Control-with-Mailslots"></a>
+<h2 >Controlling the PID Control with Mailslots<a href="#Controlling-the-PID-Control-with-Mailslots" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following mailslots can be used to determine how the PID Control looks and functions:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Mailslots</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Mailslot Message</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>$SHOWPIDCONTROL</td>
+			<td>Shows the PID Control dialog.</td>
+		</tr>
+		<tr>
+			<td>$HIDEPIDCONTROL</td>
+			<td>Hides the PID Control (can be restored via the menu).</td>
+		</tr>
+		<tr>
+			<td>$RAMP</td>
+			<td>Brings up the manual ramp interface on the PID control box.</td>
+		</tr>
+		<tr>
+			<td>$RAMPOFF</td>
+			<td>Turns off the manual ramp interface.</td>
+		</tr>
+		<tr>
+			<td>$AUTO</td>
+			<td>Disables the PID Control dialog box. The PID Control will be grayed out and in read-only mode.</td>
+		</tr>
+		<tr>
+			<td>$MANUAL</td>
+			<td>Re-enables the PID Control dialog box. </td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="INI-Options-for-PID-Control"></a>
+<h2 >INI Options for PID Control<a href="#INI-Options-for-PID-Control" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>There are several <em>powertek.ini</em> settings that control the behavior of PIDs in the system. These can be found in the <a class="wiki-page" href="Managing_Proportional_Integral_Derivative_Controls.html#Powertekini-Settings">Powertek.ini Settings</a> documentation.</p>
+
+
+	<a name="Data-Quality"></a>
+<h1 >Data Quality<a href="#Data-Quality" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>The Data Quality feature is a runtime verification tool that enables you to define data quality limits for channels in your system. The channels are continuously monitored and if they exceed the defined limit, the violation is communicated via the interface. Data quality limits are different than safety limits, and are used in the following ways:</p>
+
+
+	<ul>
+	<li>To verify that signals are reading reasonable values before continuing a test (e.g., if there is a transducer or thermocouple failure).</li>
+		<li>To verify signals are within a range of tolerance or are in tolerance of other signals (e.g., if there is a transducer failure or bad transducer placement).</li>
+		<li>To verify calculated values are within a range of anticipated values. This may not be reason to terminate a test, although it may be useful for following a model or known profile.</li>
+		<li>To verify that values are reading within a set range of other values (e.g., to check whether all engine cylinder temperatures are within a few degrees of each other).</li>
+	</ul>
+
+
+	<p>iTest continually monitors channels to determine whether their current values match a pre-defined rule. If the channel value violates the rule, the following actions are performed:</p>
+
+
+	<ul>
+	<li>A procedure is called (the default procedure is <code>DQHandlerDefault</code>, although this can be replaced by another procedure).</li>
+		<li>A violation is reported in the data quality viewer/panel.</li>
+		<li>The global count for channels out of quality is incremented.</li>
+		<li>The data quality status is updated in the status bar.</li>
+	</ul>
+
+
+	<p>For complete information regarding data quality, refer to the <a class="wiki-page" href="ITest_Data_Quality.html">iTest Data Quality</a> documentation.</p>
+
+
+	<a name="Data-Quality-Types"></a>
+<h2 >Data Quality Types<a href="#Data-Quality-Types" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following evaluations used to determine the quality of the data:</p>
+
+
+	<ul>
+	<li><ins><strong>High/Low:</strong></ins> The high and low limit values. This indicates a range of acceptable channel values.</li>
+		<li><ins><strong>Above:</strong></ins> The data quality high limit. The channel is in violation if it exceeds this value.</li>
+		<li><ins><strong>Below:</strong></ins> The data quality low limit. The channel is in violation if it exceeds this value.</li>
+		<li><ins><strong>Between Tolerance (%):</strong></ins> The percentage value that the channel should remain in, in relation to another channel.</li>
+		<li><ins><strong>Between Tolerance:</strong></ins> The engineering unit value that the channel should remain in, in relation to another channel.</li>
+		<li><ins><strong>Formula Evaluate to TRUE:</strong></ins> If the formula is equal to 0, the channel value is good. If the formula is equal to a non-zero value, the channel value is bad.</li>
+	</ul>
+
+
+	<a name="Data-Quality-Interface"></a>
+<h2 >Data Quality Interface<a href="#Data-Quality-Interface" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The runtime interface for Data Quality consists of two items: the status bar and the data quality viewer.</p>
+
+
+	<a name="Data-Quality-Status-Bar"></a>
+<h3 >Data Quality Status Bar<a href="#Data-Quality-Status-Bar" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The iTest Console status bar, located at the bottom of the application, visually communicates the data quality status of your channels with data quality enabled. If channels are in data quality violation, the number of channels violating data quality will be indicated and the status color will also be reflected. A good status is reflected on the bar in gray. This field is controlled by the channel, <code>voSysDQStatus</code>, which you can use to prevent operators from starting a test if the value is anything other than 0. The status bar remains visible regardless of which layout is open. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Good Data Quality Status</strong></em></span><br /><img src="attachments/download/37843/38_DQStatusGood.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Data Quality in Violation</strong></em></span><br /><img src="attachments/download/37844/38_DQInViolation.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Data-Quality-Viewer"></a>
+<h3 >Data Quality Viewer<a href="#Data-Quality-Viewer" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>You view a more detailed account of the data quality channels, their values, and their status using the Data Quality Viewer. To access this, click <strong>Tools > Data Quality</strong> from the iTest Console main menu.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Navigate to Data Viewer</strong></em></span><br /><img src="attachments/download/37845/38_AccessDataViewer.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />The following view displays in iTest Console, containing the channel information and configured settings.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Data Quality Viewer</strong></em></span><br /><img src="attachments/download/37846/38_DataQualityView.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />By selecting the <strong>Check Logged File</strong> checkbox, a drop-down displays, enabling you to view the data quality for logged data. Use the drop-down to choose a file and view its data.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Select a Log File</strong></em></span><br /><img src="attachments/download/37849/38_CheckLoggedFile.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>View Logged File Data</strong></em></span><br /><img src="attachments/download/37848/38_FileSelected.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Data-Quality-Groups"></a>
+<h2 >Data Quality Groups<a href="#Data-Quality-Groups" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can change the range for data quality values at different points during a test. Data Quality groups are enabled with the <code>DQGroupApply</code> Data_Engine mailslot message.</p>
+
+
+	<p>To enable groups of upper and lower values to be swapped out at runtime, use the following Data_Engine mailslot message:</p>
+
+
+	<p><code>\\.\\mailslot\Data_Engine>>DQGroup Apply &lt;groupname&gt;</code></p>
+
+
+	<a name="Defining-Status-Colors"></a>
+<h2 >Defining Status Colors<a href="#Defining-Status-Colors" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>By default, iTest displays data quality values that are within range in green and values that are out of range in yellow. Alternatively, yellow can be used as a warning range and red can be used to indicate that values are out of range. To use this option, modify the <code>DQStatusThreeColor</code> <em>powertek.ini</em> file, located in your <em>$SUPPORTDIR</em> folder. Without this option, the range is automatically calculated by 50% green and 50% yellow. The new color setting only affects the display in the iTest Console Data Quality Viewer.</p>
+
+
+	<p><strong>INI Option</strong>:</p>
+
+
+	<p><code>DQStatusThreeColor=TRUE</code></p>
+
+
+	<p>&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Without INI Option</strong></em></span><br /><img src="attachments/download/37850/Color1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>With INI Option</strong></em></span><br /><img src="attachments/download/37851/Color2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Data-Quality-Mailslot-Messages"></a>
+<h2 >Data Quality Mailslot Messages<a href="#Data-Quality-Mailslot-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>There are three Softpanel mailslot messages for managing the Data Quality Viewer:</p>
+
+
+	<ol>
+	<li><code>DATAQUALITY</code> – Displays the Data Quality Viewer.</li>
+		<li><code>DATAQUALITYCLOSE</code> – Closes the Data Quality Viewer.</li>
+		<li><code>DATAQUALITYFILE;datfilename</code> – Displays the viewer with the specific logged data file that is specified in the mailslot message.</li>
+	</ol>
+
+
+	<a name="Accepting-or-Rejecting-Data"></a>
+<h2 >Accepting or Rejecting Data<a href="#Accepting-or-Rejecting-Data" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To utilize the accept and reject data feature, the following <em>.INI</em> option must be defined in the <em>powertek.ini</em> file located in your installation's <em>$SUPPORTDIR</em>:</p>
+
+
+	<p><code>DQStatusChannels=statschan,commentchan</code></p>
+
+
+	<p><strong>Where</strong>:</p>
+
+
+	<p><em>statschan</em> and <em>commentchan</em> are the channels that hold the channel value and the comment when you accept or reject data. These channels must be added to the <em>.LOL</em> file designed for your tests.</p>
+
+
+	<p>The processes for accepting/rejecting data differs slightly between iTest Console and AutomationPanel. Use the following sections as necessary, depending on the console type you are using.</p>
+
+
+	<p>To accept or reject data points in iTest Console, do the following:</p>
+
+
+	<ol>
+	<li>After you have added the <em>.INI</em> option, load the Data Quality Viewer and select the <strong>Check Logged File</strong> checkbox. Two new features display: the <strong>Update Points Status</strong> button and the <strong>View Previous DQ Data</strong> scroll buttons.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Fields</strong></em></span><br /><img src="attachments/download/37856/38_NewOptionsDisplay.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Use the drop-down field to select a log file.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select Log File</strong></em></span><br /><img src="attachments/download/37855/38_SelectLogFile.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>The data quality channel information for the selected file displays. Use the left and right arrow buttons to scroll through data quality points.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Scroll Through DQ Data Points</strong></em></span><br /><img src="attachments/download/37854/38_ScrollThroughPoints.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>To accept or reject data points, click the <strong>Update Points Status</strong> button. The Data Quality Status displays. Use the <strong>Status</strong> drop-down field to <strong>Accept</strong> or <strong>Reject</strong> that point.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Data Quality Status and Comments</strong></em></span><br /><img src="attachments/download/37853/38_AcceptOrRejectData.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Next, enter any comments you want to add and then click <strong>OK</strong>. This action updates the two channels specified in the <em>powertek.ini</em> setting, in both the RDB and the data log on the line that is currently being edited. You can view the status and comments by opening the test's <em>DAT</em> file.</li>
+	</ol>
+
+
+	<a name="Using-Displays"></a>
+<h1 >Using Displays<a href="#Using-Displays" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Introduction"></a>
+<h2 >Introduction<a href="#Introduction" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest lets you create and edit on-screen displays in which you can add display objects to view and manipulate channel data. There are four types of displays in iTest: <strong>Standard</strong>, <strong>Right</strong>, <strong>Softpanel</strong>, and <strong>Dialog</strong>.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Display Types</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Control</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td>Standard</td>
+			<td>These displays are visible in the display area of the Console. They are accessible from the Command Bar or by selecting <strong>Displays > Standard</strong> from the toolbar.</td>
+		</tr>
+		<tr>
+			<td>Right</td>
+			<td>These displays appear on the iTest Console if the Global Setting for number of monitors is greater than 1. Typically, you should define the starting position and size using the Display Properties dialog.</td>
+		</tr>
+		<tr>
+			<td>Softpanel</td>
+			<td>The Softpanel display is the message bar, which is normally at the bottom of the window, but is movable and dockable.</td>
+		</tr>
+		<tr>
+			<td>Dialog</td>
+			<td>These are custom-sized displays that are only accessible using a mailslot message to Softpanel. Dialog displays are floating windows with definite size and starting positions, and are typically used to notify an operator of some exceptional event, or to retrieve information from an operator. They are also used to provide task-specific controls.<br />&nbsp;<br />Use the following VCL to display a dialog:<br />&nbsp;<br /><code>"\\.\mailslot\Softpanel>>$CUSTOMDISPLAY;MyDialog.dsp"</code><br />&nbsp; <br />Where <em>MyDialog.dsp</em> is the name of the Dialog display. In addition to initializing dialogs using VCL, action buttons can be created on the toolbar to initialize them. To programmatically close a dialog (for example, from a button on the dialog itself), send the DIE message to the display. <br />&nbsp;<br /><code>"\\.\mailslot\MyDisplay>>DIE"</code><br />&nbsp;<br />This technique also works to close standard and right displays. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>The following screenshot shows the location of both the Standard and Right display sections in the Console:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Standard and Right Display Sections</strong></em></span><br /><img src="attachments/download/95514/displaysruntime.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The Softpanel display appears docked at the bottom of the Console by default, but it can be undocked and docked elsewhere or else left as free floating.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Softpanel Display</strong></em></span><br /><img src="attachments/download/95515/softpanel.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Menu-Bar"></a>
+<h2 >Menu Bar<a href="#Menu-Bar" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The menu bar consists of the following display objects that can be added to a display and configured:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Menu Bar</strong></em></span><br /><img src="attachments/download/117499/43_MenuBar.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Menu Bar Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Control</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td style="width:200px;">Gauges and meters (ADT Gauge)</td>
+			<td>Display channel data, target values, data quality, limit state and high/low values. For complete details on this object, see <a class="wiki-page" href="ADT_Gauge.html">ADT Gauge</a>.</td>
+		</tr>
+		<tr>
+			<td>Buttons (ADT Button)</td>
+			<td>Send mailslot messages when turned on and off. Buttons can also adjust channel values and operate as checkboxes and radio buttons. For complete details on this object, see <a class="wiki-page" href="ADT_Button.html">ADT Button</a>.</td>
+		</tr>
+		<tr>
+			<td>Drop-down lists (ADT Combo)</td>
+			<td>Display a picklist of values from which users can choose during runtime on the iTest Console, or to send a mailslot message. For complete details on this object, see <a class="wiki-page" href="ADT_Combo_Box.html">ADT Combo Box</a>.</td>
+		</tr>
+		<tr>
+			<td>Data Entry fields (ADT Data Entry)</td>
+			<td>The ADT Data Entry control allows you to configure a data entry field that accepts user-entered data during runtime on the iTest Console. The data that is entered can then be used to assign a value into a channel. You can also use the ADT Data Entry control to ask users a question that allows them to input test data that is not measured by the data acquisition system. For complete details on this object, see <a class="wiki-page" href="ADT_Data_Entry.html">ADT Data Entry</a>.</td>
+		</tr>
+		<tr>
+			<td>Digital Indicators (ADT Digital)</td>
+			<td>Display one or more channel values using different colors. These are based on any configured limits and/or warnings. For complete details on this object, see <a class="wiki-page" href="ADT_Digital.html">ADT Digital</a>.</td>
+		</tr>
+		<tr>
+			<td>Indicators (ADT Indicator)</td>
+			<td>Display message strings and/or color bars that change depending upon the value of an associated database channel. For complete details on this object, see <a class="wiki-page" href="ADT_Indicator.html">ADT Indicator</a>.</td>
+		</tr>
+		<tr>
+			<td>Bars (ADT Bar)</td>
+			<td>Display a channel name and its value using a digital value and a bar that changes length to indicate the channel’s magnitude. If configured, operators can change the value on the bar using sliders. For complete details on this object, see <a class="wiki-page" href="ADT_Bar.html">ADT Bar</a>.</td>
+		</tr>
+		<tr>
+			<td>Static images (ADT Image)</td>
+			<td>Display <em>.JPEG</em>, <em>.BMP</em>, <em>.ICO</em>, or <em>.DIB</em> images. For complete details on this object, including field definitions and properties, see <a class="wiki-page" href="ADT_Image.html">ADT Image</a>.</td>
+		</tr>
+		<tr>
+			<td>Text (ADT Title)</td>
+			<td>Display static text boxes. For complete details on this object, see <a class="wiki-page" href="ADT_Title.html">ADT Title</a>.</td>
+		</tr>
+		<tr>
+			<td>Separator lines (ADT Separator)</td>
+			<td>Adds structure to the display. In addition, you can change the control’s foreground and background colors to create depth on a display. For complete details on this object, see <a class="wiki-page" href="ADT_Separator.html">ADT Separator</a>.</td>
+		</tr>
+		<tr>
+			<td>Stripcharts (ADT Strip Chart)</td>
+			<td>Graphically plot the status of selected database channels over time. Channel values display as a series of scrolling lines in the strip chart. For complete details on this object, see <a class="wiki-page" href="ADT_Stripchart.html">ADT Stripchart</a>.</td>
+		</tr>
+		<tr>
+			<td>ADT Chart Plus</td>
+			<td>This control combines features of both a XY Plot and a Strip Chart with some additional enhancements. The ADT Chart Plus control has two modes, XY Plot mode and Strip Chart mode. In XY Plot mode the control graphically plots the values of selected database channels over the specified X-axis channel. In Strip Chart mode, the control graphically plots the values of selected database channels over the specified time range. For complete details on this object, see <a class="wiki-page" href="ADT_Chart_Plus.html">ADT Chart Plus</a>.</td>
+		</tr>
+		<tr>
+			<td>ADT Array Chart</td>
+			<td>The ADT Array Chart display object allows you to insert a chart object that will display all of the values of an array channel. For complete details on this object, see <a class="wiki-page" href="ADT_Array_Chart.html">ADT Array Chart</a>.</td>
+		</tr>
+		<tr>
+			<td>ActiveX dropdown</td>
+			<td>This dropdown allows you to choose and <strong>Insert</strong> an ActiveX control onto your display. This legacy feature is not actively supported and and may or may not appear on your installation. </td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Editing-Displays"></a>
+<h2 >Editing Displays<a href="#Editing-Displays" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can edit a running display by right-clicking in a blank space of the display in the main display area and clicking the <strong>Edit Display</strong> option, or you can choose the <strong>Edit Display</strong> button from the toolbar.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Edit Display Right-Click Option</strong></em></span><br /><img src="attachments/download/6959/displayedit1.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Edit Display Icon</strong></em></span><br /><img src="attachments/download/6960/displayedit2.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>In either of these cases, a display must already be opened and visible in the main display area.</p>
+
+
+	<p>Once in <strong>Edit</strong> mode, you may edit any of the display objects on your display as well as add new objects from the menu bar.</p>
+
+
+	<a name="Right-Click-Options"></a>
+<h2 >Right-Click Options<a href="#Right-Click-Options" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>When in Edit mode, the following right-click options are available to you:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Edit Mode Right-Click Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>System Type</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Display Properties</td>
+			<td>Opens the Display Properties dialog box in which you can assign attributes to the entire display.</td>
+		</tr>
+		<tr>
+			<td>Insert New Object</td>
+			<td>Opens the Insert Control dialog box in which you can select any available control to insert on the display.</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td>Pastes the display object from the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Save</td>
+			<td>Automatically saves the changes based on the previously saved name/location (this feature is not always available).</td>
+		</tr>
+		<tr>
+			<td>Save As</td>
+			<td>Brings up a Save As dialog that allows you to change the display name to something else. </td>
+		</tr>
+		<tr>
+			<td>Draw Line</td>
+			<td>Allows you to draw free-form lines on a display. When you select this option and release, the hand icon will appear. Move the mouse to where you want to begin the line and then hold the left mouse button to draw the line. To interact with a line that has already been drawn, hover the mouse over either end point of the line. Left click and drag to move the end point, or right click to delete, edit the properties, or add/remove arrows to the endpoints.</td>
+		</tr>
+		<tr>
+			<td>Undo/Redo</td>
+			<td>iTest allows you to undo and redo your actions in the Display Editor. Any change to a display can be undone, and the default depth for undo is 40 actions. To undo or redo an action, simply right-click in the grid area of the Display Editor and choose the appropriate option. The Ctrl-Z shortcut key is supported for the undo option.</td>
+		</tr>
+		<tr>
+			<td>Run Display</td>
+			<td>This allows you to revert back to runtime mode (toggles with Edit Display). </td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Saving-Displays"></a>
+<h2 >Saving Displays<a href="#Saving-Displays" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can save a display by choosing either of the following two options:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Save Display Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>System Type</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Save</td>
+			<td>Automatically saves the changes based on the previously saved name/location.</td>
+		</tr>
+		<tr>
+			<td>Save As</td>
+			<td>Brings up a <strong>Save As</strong> dialog that allows you to change the display name to something else.<br /><img src="attachments/download/6964/saveas.jpg" style="padding-top:1em;padding-bottom:1em;height:50%;" alt="" /> </td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Using-Mailslot-Messages"></a>
+<h2 >Using Mailslot Messages<a href="#Using-Mailslot-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>When a standard or custom screen displays in the iTest Console, the screen has a mailslot that takes the name of the screen. As a result, you can issue mailslot messages to individual screens. These mailslot messages take the following form:</p>
+
+
+<pre>\\.\MailSlot\DisplayName&gt;&gt;&lt;message&gt;</pre>
+
+	<p>Display mailslot messages are used primarily for programmatically changing a display at runtime. These messages give you control over all visual aspects of the display objects and can enable you to construct some very powerful displays.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The <strong>Permit Runtime Changes</strong> option must be enabled in a display object's properties in order to allow any changes.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Example"></a>
+<h3 >Example<a href="#Example" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following procedure displays a good example of how mailslot messages are used in the Power Map test module:</p>
+
+
+<pre>$PROCEDURE Test2ChartOil level=0
+
+$RETURN None
+
+* Begin test message
+
+*0.0 MESSAGE "\\.\mailslot\Softpanel&gt;&gt;Begin procedure Test2ChartOil" 
+
+* Updates the main display X-Y plot object
+
+* Stop the plot
+
+* Plot is automatically cleared when axes are changed
+
+MESSAGE "\\.\mailslot\Test2&gt;&gt;$PLOTSTOP" 
+
+* Set Y axis for Coolant
+
+MESSAGE "\\.\mailslot\Test2&gt;&gt;$SETITEMPROPERTY Test2Plot ChannelName tSysSpec1Coolant" 
+
+MESSAGE "\\.\mailslot\Test2&gt;&gt;$SETITEMPROPERTY Test2Plot YTitle Coolant" 
+
+MESSAGE "\\.\mailslot\Test2&gt;&gt;$SETITEMPROPERTY Test2Plot YAxisMin 20" 
+
+MESSAGE "\\.\mailslot\Test2&gt;&gt;$SETITEMPROPERTY Test2Plot YAxisMax 120" 
+
+MESSAGE "\\.\mailslot\Test2&gt;&gt;$SETITEMPROPERTY Test2Plot YMajorTick 20" 
+
+MESSAGE "\\.\mailslot\Test2&gt;&gt;$SETITEMPROPERTY Test2Plot YMinorTick 5" 
+
+* Set Y2 axis for Oil
+
+MESSAGE "\\.\mailslot\Test2&gt;&gt;$SETITEMPROPERTY Test2Plot ChannelName2 tSysSpec1Oil" 
+
+MESSAGE "\\.\mailslot\Test2&gt;&gt;$SETITEMPROPERTY Test2Plot Y2Title Oil" 
+
+MESSAGE "\\.\mailslot\Test2&gt;&gt;$SETITEMPROPERTY Test2Plot Y2AxisMin 20" 
+
+MESSAGE "\\.\mailslot\Test2&gt;&gt;$SETITEMPROPERTY Test2Plot Y2AxisMax 120" 
+
+MESSAGE "\\.\mailslot\Test2&gt;&gt;$SETITEMPROPERTY Test2Plot Y2MajorTick 20" 
+
+MESSAGE "\\.\mailslot\Test2&gt;&gt;$SETITEMPROPERTY Test2Plot Y2MinorTick 5" 
+
+* Set X axis for Time (note that Channel Name and Title are null)
+
+MESSAGE "\\.\mailslot\Test2&gt;&gt;$SETITEMPROPERTY Test2Plot XChannelName " 
+
+MESSAGE "\\.\mailslot\Test2&gt;&gt;$SETITEMPROPERTY Test2Plot XTitle " 
+
+MESSAGE "\\.\mailslot\Test2&gt;&gt;$SETITEMPROPERTY Test2Plot XAxisMin 0" 
+
+MESSAGE "\\.\mailslot\Test2&gt;&gt;$SETITEMPROPERTY Test2Plot XAxisMax 1200" 
+
+MESSAGE "\\.\mailslot\Test2&gt;&gt;$SETITEMPROPERTY Test2Plot XMajorTick 200" 
+
+MESSAGE "\\.\mailslot\Test2&gt;&gt;$SETITEMPROPERTY Test2Plot XMinorTick 50" 
+
+* Start the plot
+
+MESSAGE "\\.\mailslot\Test2&gt;&gt;$PLOTSTART" 
+
+* End test message
+
+*+0.01 MESSAGE "\\.\mailslot\Softpanel&gt;&gt;End procedure Test2ChartOil" 
+
+$END-PROCEDURE</pre>
+
+	<a name="Display-Driver-Mailslot-Messages"></a>
+<h3 >Display Driver Mailslot Messages<a href="#Display-Driver-Mailslot-Messages" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Mailslot Messages</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Mailslot Message</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>$INVOKEC</td>
+			<td> SYNTAX: <code>$INVOKEC name method</code><br />&nbsp; <br />Invokes the OLE control method on the control name. If a name is not specified, DisplayDriver tries to invoke the method for all controls. The method should have the following format:<br />&nbsp;<br /><code>methodname (param 1, param 2, ..., param n)</code><br />&nbsp;<br />Typically, this command is for custom displays that use the prompt control for user input. After a prompt control’s value has been changed, the prompt’s value is written back to the database if the following method is invoked using the message:<br />&nbsp;<br /><code>\\.\MailSlot\CustomDisplayName>>$INVOKEC SaveText()</code></td>
+		</tr>
+		<tr>
+			<td>$PRINT</td>
+			<td> Causes a Print dialog box to display so users can print a hard copy of a Display screen.<br />&nbsp;<br />SYNTAX: <code>\\.\MailSlot\DisplayName>> >$PRINT</code></td>
+		</tr>
+		<tr>
+			<td>DIE</td>
+			<td>Causes the display screen to exit. Typically, this command is used when a customer display is shown with an <strong>OK</strong> or <strong>Cancel</strong> button. Typically, the custom display’s button would have a mailslot message in the following form:<br />&nbsp;<br /><code>\\.\MailSlot\DisplayName>> >Die</code></td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Managing-Modules"></a>
+<h1 >Managing Modules<a href="#Managing-Modules" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Module-Configuration-Display"></a>
+<h2 >Module Configuration Display<a href="#Module-Configuration-Display" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Module Configuration Display appears from various locations in iTest. In iTest Console, select the <strong>Tools > Module Configuration</strong> menu item. A variation of the following dialog will appear:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Module Configuration Dialog</strong></em></span><br /><img src="attachments/download/107981/42_ModuleConfigurationDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>In most cases, all modules in the solution will appear in the dialog. However, if you selected option two above and selected only a specific module, then only that module will appear.</p>
+
+
+	<p>The Module Configuration dialog allows you to set the <strong>Status</strong> of each module. Once you choose the <strong>Status</strong>, iTest will set a channel in the <em>&lt;MID&gt;.ini</em> file to either -1, 0, or 1 (see table below). A module's procedures and calculations are then limited to what they can do based on this channel setting.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Status Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Status</strong> </td>
+			<td style="text-align:left;"><strong>Setting</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Required</td>
+			<td>-1</td>
+			<td> Module is Required. You cannot enable or disable a module at runtime.</td>
+		</tr>
+		<tr>
+			<td>Enabled</td>
+			<td>0</td>
+			<td>Module is Enabled. Module configuration can still be modified during runtime.</td>
+		</tr>
+		<tr>
+			<td>Disabled</td>
+			<td>1</td>
+			<td>Module is Disabled. Module configuration can still be modified during runtime.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>In addition to enabling and disabling modules, you can change how the module will react to fault responses that occur while the module is communicating with its device. Each fault response can be set to <strong>Action</strong>, <strong>Notify</strong>, or <strong>None</strong>. <strong>Action</strong> indicates to let the default action embedded in the module occur if there is a fault. <strong>Notify</strong> indicates to send a message to the message queue and show the module as faulted, but do not take the action. <strong>None</strong> indicates that the fault should be ignored.</p>
+
+
+	<p>The fault responses are also categorized. The operator can distinguish between faults that occur during startup, manual mode, and automated test. A different response can be selected for each module in each state of operation.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Item</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Select Starter Module</td>
+			<td> Selects the module responsible for starting the engine. Typically, this is the dyno/throttle or engine module.</td>
+		</tr>
+		<tr>
+			<td>Startup</td>
+			<td>Selectable fault response for system start-up phases (e.g., Ready, Reset, Starting).<br /><ins><strong>Action</strong></ins> – Fault response will result in defined action.<br /><ins><strong>Notify</strong></ins> – Fault will notify user with operator prompt.<br /><ins><strong>None</strong></ins> – Module will not fault.</td>
+		</tr>
+		<tr>
+			<td>Running</td>
+			<td>Selectable fault response for system running (e.g., Started but not running test).</td>
+		</tr>
+		<tr>
+			<td>Test</td>
+			<td>Selectable fault response when running a test (e.g., Started and running a schedule test).</td>
+		</tr>
+		<tr>
+			<td>Fault</td>
+			<td>Indicates fault condition of module.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+	<a name="Troubleshooting-and-Debugging"></a>
+<h1 >Troubleshooting and Debugging<a href="#Troubleshooting-and-Debugging" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Mailer"></a>
+<h2 >Mailer<a href="#Mailer" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest offers an enhanced, standalone <strong>Mailer</strong> program which allows you to open your own receive mailbox for testing. This is done by adding the Mailer program to your User-Defined tools. To add the Mailer tool to your Command Bar, complete the following steps:</p>
+
+
+	<ol>
+	<li>Click the <strong>Tools</strong> panel on the Command Bar.</li>
+		<li>Right-click anywhere in the <strong>Tools</strong> panel and select <strong>New Tool</strong>.</li>
+		<li>Enter the word “Mailer” in the <strong>Name</strong> field. This is the name that will be displayed in the Command Bar when you’re finished.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Tool Dialog</strong></em></span><br /><img src="attachments/download/4931/NewTool1.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li><strong>Browse</strong> for the mailer program. iTest will browse to the executable directory by default – this is where you’ll find the mailer.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Locate Mailer.exe</strong></em></span><br /><img src="attachments/download/4932/NewTool2.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>Open</strong> from the Load Screen dialog, followed by <strong>OK</strong> to add the Mailer tool to your Command Bar.</li>
+		<li>You may now click on the Mailer tool to open its configuration dialog.</li>
+	</ol>
+
+
+	<a name="Test-Status-Display"></a>
+<h2 >Test Status Display<a href="#Test-Status-Display" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The TestStatusDisplay interface displays a list of procedures that are currently running. This is a user-defined tool that can be accessed by clicking <strong>Tools > User Defined Tools > TestStatusDisplay</strong>.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>TestStatusDisplay Interface</strong></em></span><br /><img src="attachments/download/127444/44_TestStatusDisplayInterface.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>For more information, refer to the <a class="wiki-page" href="TestStatusDisplay.html">TestStatusDisplay</a> documentation.</p>
+
+
+	<a name="Viewing-Test-Procedures"></a>
+<h3 >Viewing Test Procedures<a href="#Viewing-Test-Procedures" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>One way of launching the TestStatusDisplay application is to first add it to your tools on the Command Bar.</p>
+
+
+	<ol>
+	<li>Click the <strong>Tools</strong> button on the Command Bar.</li>
+		<li>Right-click anywhere in the <strong>Tools</strong> section and select <strong>New Tool</strong>.</li>
+		<li>Enter the name “Test Status Display” in the <strong>Name</strong> field of the <strong>New Tool</strong> window.</li>
+		<li>Select the <em>TestStatusDisplay.exe</em> executable from the <strong>Filename</strong> dropdown.</li>
+		<li>Click <strong>OK</strong>.</li>
+		<li>Click the icon from the <strong>Tools</strong> Command Bar to open the TestStatusDisplay interface.</li>
+		<li>Right-click on a procedure name to display the Procedure Viewer window for the procedure.</li>
+		<li>The line of code currently being executed is highlighted as the procedure runs.</li>
+	</ol>
+
+
+	<a name="Stopping-a-Running-Test"></a>
+<h3 >Stopping a Running Test<a href="#Stopping-a-Running-Test" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To stop a running test, right-click on a procedure name, and then select <strong>Abort Procedure</strong> to display the VCLScope dialog box. If the test is an executed procedure, it cannot be aborted. You will be prompted to abort the test from the outermost procedure.</p>
+
+
+	<a name="Viewing-Blackbox-Data"></a>
+<h2 >Viewing Blackbox Data<a href="#Viewing-Blackbox-Data" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Blackbox is a data recorder with a circular buffer used to record data at a user-defined rate and length of time. The Blackbox Viewer window (bbviewer) displays Blackbox data in a spreadsheet format.</p>
+
+
+	<p>Select <strong>Tools > User Defined Tools > Black Box</strong> to open the bbviewer window in the console. The bbviewer window has four menus: <strong>File</strong>, <strong>Edit</strong>, <strong>View</strong>, and <strong>Help</strong>.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">You cannot run bbviewer while iTest is running unless the iTest channel <code>crs_control=0</code>.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Blackbox Viewer</strong></em></span><br /><img src="attachments/download/107982/42_BBViewing.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="File-Menu"></a>
+<h3 >File Menu<a href="#File-Menu" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>File Menu Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Command</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td> Generate <em>blackbox.dat</em> </td>
+			<td> Converts Blackbox binary data into ASCII text to be displayed in a spreadsheet or text editor.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Edit-Menu"></a>
+<h3 >Edit Menu<a href="#Edit-Menu" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Edit Menu Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Command</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td> Find </td>
+			<td> Displays a <strong>Find</strong> dialog box in which you can search the Blackbox window for specified text.</td>
+		</tr>
+		<tr>
+			<td> Font </td>
+			<td> Displays a <strong>Font</strong> dialog box in which you can specify text attributes for text in the Blackbox window.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="View-Menu"></a>
+<h3 >View Menu<a href="#View-Menu" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>View Menu Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Command</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td> Refresh </td>
+			<td> Updates the spreadsheet with the most current data.</td>
+		</tr>
+		<tr>
+			<td> All </td>
+			<td> Overrides all settings specified in the <strong>Filter</strong> dialog box.</td>
+		</tr>
+		<tr>
+			<td> Filter </td>
+			<td> Opens the <strong>Filter</strong> dialog box in which you can select the information that you want to display in the bbviewer window.</td>
+		</tr>
+		<tr>
+			<td> Freeze Rows </td>
+			<td> Locks the rows from the first row in the spreadsheet to the selected row. Frozen rows do not scroll when you scroll through the document.</td>
+		</tr>
+		<tr>
+			<td> Unfreeze Rows </td>
+			<td> Unlocks rows frozen by the <strong>Freeze Rows</strong> option.</td>
+		</tr>
+		<tr>
+			<td> Transpose </td>
+			<td> Reverses the row and column layout of the file in the bbviewer window.</td>
+		</tr>
+		<tr>
+			<td> Toolbar </td>
+			<td> When selected, displays the bbviewer toolbar.</td>
+		</tr>
+		<tr>
+			<td> Status Bar </td>
+			<td> When selected, displays a status bar in the lower portion of the bbviewer window.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Calibrating-Measurement-Channels-with-Calibrate"></a>
+<h1 >Calibrating Measurement Channels with Calibrate<a href="#Calibrating-Measurement-Channels-with-Calibrate" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>The Calibration utility lets you calibrate one or more channels assuming that all selected channels require the same stimulus to calibrate. The Calibrate dialog box lets you perform a full, multiple-point calibration, or zero/span compensation.</p>
+
+
+	<p>To open the Calibrate utility in the Console, click the <img src="attachments/download/3781/calibrateIcon.jpg" alt="" /> button from the toolbar or choose <strong>Tools > Calibrate</strong> from the file menu. The Select Channel(s) for Calibration dialog box will be displayed:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Calibrate Utility</strong></em></span><br /><img src="attachments/download/95518/Calibrate.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>For more information, see the <a class="wiki-page" href="Calibrate.html">Calibrate</a> documentation.</p>
+
+
+	<a name="Not-Running-Prompt-for-Utilization-Tracking"></a>
+<h1 >“Not Running” Prompt for Utilization Tracking<a href="#Not-Running-Prompt-for-Utilization-Tracking" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>If your iTest system is being monitored by LabCentral for test cell utilization reports, a prompt will appear each time the engine changes state, or stops running. You configure the time in which this prompt appears in LabCentral by setting a UUT Active Channel flag along with the channel name that represents whether the engine is running. When this prompt appears in iTest it will ask you to select a reason from the dropdown (also configured in LabCentral) that explains why the engine changed state.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">For the Select a Status Change Reason dialog to appear, your iTest system must have been added to LabCentral and utilization must be enabled for your iTest system.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Status Change Reason Dialog</strong></em></span><br /><img src="attachments/download/95519/utilization.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Your-Application"></a>
+<h1 >Your Application<a href="#Your-Application" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>iTest can support many different solutions or applications. It ships with a demonstration application called Solution.Demo. It is possible that the application you are running has been designed to match your unique environment and testing needs. If this is the case, it is probable that no standard documentation exists. However, if you have a standard solution (such as BTS), a document describing your solution may be available from A&#38;D as a separate document.</p>
+</body>
+</html>

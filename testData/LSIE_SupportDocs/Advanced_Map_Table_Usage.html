@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Advanced Map Table Usage</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Advanced_Map_Table_Usage.html">Advanced Map Table Usage</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Advanced-Map-Table-Usage"></a>
+<h1 >Advanced Map Table Usage<a href="#Advanced-Map-Table-Usage" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Advanced-Map-Table-Usage">Advanced Map Table Usage</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Map-Table-VCL-Functionality">Map Table VCL Functionality</a><ul><li><a href="#TableValueGetInterpolated">TableValueGetInterpolated</a><ul><li><a href="#Syntax">Syntax</a></li><li><a href="#Parameters">Parameters</a></li><li><a href="#Return-Values">Return Values</a></li></ul>
+</li><li><a href="#Examples">Examples</a></li><li><a href="#Additional-Information">Additional Information</a></li></ul></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>This document discusses advanced functionality for manually managing map tables.</p>
+
+
+	<a name="Map-Table-VCL-Functionality"></a>
+<h2 >Map Table VCL Functionality<a href="#Map-Table-VCL-Functionality" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Map tables can be managed using the following VCL function:</p>
+
+
+	<a name="TableValueGetInterpolated"></a>
+<h3 >TableValueGetInterpolated<a href="#TableValueGetInterpolated" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sets a channel to an interpolated value based on an X and Y coordinate within a map table.  This function uses the <code>TableFilePath=</code> setting in the <em>powertek.ini</em> file as the default location to find the referenced <em>.2dt</em> table. Upon completion, either a zero (success) or a negative number (error) is returned.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">If the map table has not been enabled in Properties, it must be loaded into memory using the TableLoad() VCL function prior to any other Map Table or Schedule VCL function being sent.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Syntax"></a>
+<h4 >Syntax<a href="#Syntax" class="wiki-anchor">&para;</a></h4>
+
+
+<pre>
+tablevaluegetinterpolated(&lt;TableName&gt;,&lt;X&gt;,&lt;Y&gt;,&lt;ResultChannel&gt;)
+</pre>
+
+	<a name="Parameters"></a>
+<h4 >Parameters<a href="#Parameters" class="wiki-anchor">&para;</a></h4>
+
+
+	<ul>
+	<li><em>&lt;TableName&gt;</em>: The filename must include the <em>.2dt</em> file extension. If a fully-qualified file path is not given, then <em>$SUPPORTDIR\Maps</em> folder will be searched, followed by the location stored under the <code>TableFilePath=</code> setting in the <em>powertek.ini</em> file. (Defaults to <em>$SUPPORTDIR\SchedulesAndTables</em> if setting not present.)</li>
+		<li><em>&lt;X&gt;</em>: The lookup value for the X-Axis.</li>
+		<li><em>&lt;Y&gt;</em>: The lookup value for the Y-Axis.</li>
+		<li><em>&lt;ResultChannel&gt;</em>: numeric channel to store the interpolated value from the Map Table. The use of local variables for this parameter are not supported.</li>
+	</ul>
+
+
+	<a name="Return-Values"></a>
+<h4 >Return Values<a href="#Return-Values" class="wiki-anchor">&para;</a></h4>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>Return Values and Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:100px;text-align:left;"><strong>Return Value</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">0</td>
+			<td>Table operation successful.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-1</td>
+			<td>Table operation failed.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-2</td>
+			<td>Table error, not loaded.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-3</td>
+			<td>Table error, function not supported.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-4</td>
+			<td>Page error, page not found.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-5</td>
+			<td>Page error, bad index value.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-6</td>
+			<td>Page error, invalid operation.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-7</td>
+			<td>Page error, keyword not found.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-8</td>
+			<td>Page error, data not cellwise.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-9</td>
+			<td>Function error, bad parameter value.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-10</td>
+			<td>Table error, file not found.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-11</td>
+			<td>Function error, bad parameter type.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-12</td>
+			<td>Table warning, exists in memory.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-13</td>
+			<td>Table error, insufficient memory.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Examples"></a>
+<h3 >Examples<a href="#Examples" class="wiki-anchor">&para;</a></h3>
+
+
+<pre>
+* example VCL uses the example from the Map Table Format section
+
+set voFuncStatus TableLoad("TestMap.2dt")    !! load the table into memory
+
+set voFuncStatus tablevaluegetinterpolated("TestMap.2dt", 70, 4.5, vo2DTableVal)
+* results in voFuncStatus being set to 0 (success) and vo2DTableVal being set to 45
+
+set voFuncStatus tablevaluegetinterpolated("TestMap.2dt", 5, 4, vo2DTableVal)
+* result in voFuncStatus being set to 0 (success) and vo2DTableVal being set to 5
+</pre>
+
+	<a name="Additional-Information"></a>
+<h3 >Additional Information<a href="#Additional-Information" class="wiki-anchor">&para;</a></h3>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The interpolate function extrapolates once out of bounds of the map.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Map Boundary Example</strong></em></span><br /><img src="attachments/download/45822/MapBoundary.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,497 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Writing Procedures</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="VCL.html">VCL</a></li>
+<li><a href="Writing_Procedures.html">Writing Procedures</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Writing-Procedures"></a>
+<h1 >Writing Procedures<a href="#Writing-Procedures" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Writing-Procedures">Writing Procedures</a><ul><li><a href="#Using-Sample-Test-Files">Using Sample Test Files</a></li><li><a href="#Creating-a-Procedures-Folder">Creating a Procedures Folder</a></li><li><a href="#Including-or-Excluding-a-Procedure-Folder">Including or Excluding a Procedure Folder</a></li><li><a href="#Creating-a-Procedure">Creating a Procedure</a><ul><li><a href="#Procedure-File-Types">Procedure File Types</a></li><li><a href="#Specifying-Procedure-Properties">Specifying Procedure Properties</a></li><li><a href="#Running-Multiple-Instances-of-the-Same-Procedure">Running Multiple Instances of the Same Procedure</a></li><li><a href="#Editing-a-Procedure">Editing a Procedure</a></li><li><a href="#Using-IntelliSense">Using IntelliSense</a></li><li><a href="#Drag-and-Drop">Drag and Drop</a></li><li><a href="#Using-the-Function-Prototype-Guide">Using the Function Prototype Guide</a></li><li><a href="#Procedure-Help">Procedure Help</a><ul><li><a href="#Adding-Default-Procedure-Help">Adding Default Procedure Help</a></li></ul>
+</li><li><a href="#Displaying-Procedure-Help">Displaying Procedure Help</a></li><li><a href="#Locating-a-Procedure">Locating a Procedure</a></li><li><a href="#Viewing-the-Hierarchy-of-a-Procedure">Viewing the Hierarchy of a Procedure</a></li></ul></li></ul></li></ul>
+
+
+	<a name="Using-Sample-Test-Files"></a>
+<h2 >Using Sample Test Files<a href="#Using-Sample-Test-Files" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest ships with a solution that includes sample files. You can use these files to become familiar with VCL, or you can edit them to use in your tests.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#ebd700;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3740/caution.gif" alt="" /></td>
+			<td style="vertical-align:top;"><b>CAUTION:</b></td>
+			<td style="vertical-align:top;">iTest uses some procedures to execute core programs and features. Before editing a procedure shipped with iTest, duplicate and rename the procedure file.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Creating-a-Procedures-Folder"></a>
+<h2 >Creating a Procedures Folder<a href="#Creating-a-Procedures-Folder" class="wiki-anchor">&para;</a></h2>
+
+
+	<ol>
+	<li>Expand the <strong>Test Development</strong> folder in the Test Manager Tree Bar and then expand the <strong>Procedures</strong> node. Right-click on <strong>Procedures</strong> and click <strong>New Procedure Folder</strong> to open the New Procedure Folder dialog box.</li>
+		<li>Type a name for the new folder, and then click <strong>OK</strong>. The new folder is added underneath the <strong>Procedures</strong> node in the Tree Bar.</li>
+	</ol>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">A new folder is created in <strong>Included</strong> mode by default. If a folder is in <strong>Excluded</strong> mode, it cannot be “included” until it contains at least one procedure. Refer to the <a class="wiki-page" href="#Including-or-Excluding-a-Procedure-Folder">Including or Excluding a Procedure Folder</a> section below for more information.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Including-or-Excluding-a-Procedure-Folder"></a>
+<h2 >Including or Excluding a Procedure Folder<a href="#Including-or-Excluding-a-Procedure-Folder" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can specify which procedures are to be built in the Console by including or excluding procedure folders.</p>
+
+
+	<p>When a folder is included, all procedures within the folder are included in the test build and the Console checks the files for errors during the build.</p>
+
+
+	<p>When a folder is excluded, all procedures within the folder are excluded from the test build and the Console does not check the files for errors during the build. Also, if a procedure folder is excluded, none of the procedures inside will be available for use (excluding a procedure does not remove it from the solution).</p>
+
+
+	<p>Right-click on the selected folder, then click either <strong>Include this Folder</strong> or <strong>Exclude this Folder</strong>.</p>
+
+
+	<p>Folders to be included in the Console test build are identified by a yellow folder icon. Folders to be excluded from the Console test build are identified by a gray slanted folder icon.</p>
+
+
+	<a name="Creating-a-Procedure"></a>
+<h2 >Creating a Procedure<a href="#Creating-a-Procedure" class="wiki-anchor">&para;</a></h2>
+
+
+	<ol>
+	<li>Expand the <strong>Test Development</strong> node in the Test Manager Tree Bar and expand the <strong>Procedures</strong> node.</li>
+		<li>To place the new procedure within a procedure folder, right-click the desired folder, and then select <strong>New Procedure</strong>. A new procedure named <code>NewProcedure1</code> displays in the Tree Bar.</li>
+		<li>Right-click the procedure, select <strong>Rename</strong>, type a new name, and then press <strong>Enter</strong>. By default, the mailslot messages that send notifications to the Softpanel are included in the procedure file, along with comments describing the action of these messages.</li>
+		<li>Type the code in the procedure window using the VCL scripting language or drag and drop code from the Tree Bar and Helper Bar. For more information, refer to the <a class="wiki-page" href="VCL_Scripting_Language.html">VCL Scripting Language</a> documentation.</li>
+		<li>After the procedure has been created, select <strong>File</strong> > <strong>Save</strong> to save the changes.</li>
+	</ol>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The prompt to save always occurs when changes have been made.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Procedure-File-Types"></a>
+<h3 >Procedure File Types<a href="#Procedure-File-Types" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>File types can be specified for procedures. This identifies when they are to be executed by the iTest Console. To specify a file type for a procedure, right-click the selected file and then select one of the following file types from the shortcut menu. When a file type is selected for a procedure, the associated icon displays to the left of the procedure name in the Tree Bar.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">There is no warning if another procedure has been set to one of these file types previously.</td>
+		</tr>
+	</table></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Procedure Type Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Setting</strong> </td>
+			<td style="text-align:left;"><strong>Icon</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> Startup Procedure </td>
+			<td style="text-align:center;"><img src="attachments/download/3633/startupIcon.jpg" alt="" /> </td>
+			<td> Indicates the procedure that runs when the Console starts. Only one <strong>Startup</strong> procedure can be selected. </td>
+		</tr>
+		<tr>
+			<td>Soft Stop Procedure </td>
+			<td style="text-align:center;"><img src="attachments/download/3634/stopIcon.jpg" alt="" /> </td>
+			<td> Indicates the procedure that runs when you stop a test on the Console. Only one <strong>Soft Stop</strong> procedure can be selected. </td>
+		</tr>
+		<tr>
+			<td>Exit Procedure </td>
+			<td style="text-align:center;"><img src="attachments/download/3635/exitIcon.jpg" alt="" /> </td>
+			<td> Indicates the procedure that runs when the user exits the Console. Only one <strong>Exit</strong> procedure can be selected. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p>These settings can be viewed and modified by right-clicking the <strong>Procedures</strong> node in the Tree Bar and selecting <strong>Properties</strong>. This opens the Procedure Settings dialog.</p>
+
+
+	<a name="Specifying-Procedure-Properties"></a>
+<h3 >Specifying Procedure Properties<a href="#Specifying-Procedure-Properties" class="wiki-anchor">&para;</a></h3>
+
+
+	<ol>
+	<li>Expand the <strong>Test Development</strong> node in the Test Manager Tree, followed by the <strong>Procedures</strong> node.</li>
+		<li>Double-click the procedure to open it in the Test Manager Display Area.</li>
+		<li>In the Tree Bar, right-click the name of the procedure and select <strong>Properties</strong> to open the Procedure Properties dialog box:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Procedure Properties</strong></em></span><br /><img src="attachments/download/99416/VCLprops.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select a priority level from 0-9 for the procedure. This priority level is used when a procedure on the Console issues either a <code>PREEMPT</code> or <code>SUSPEND</code> command to stop/pause all running procedures at or below a certain level. By default, 0 is assigned to a procedure when it is created.</li>
+		<li>Select the type of value, if any, the procedure <strong>Returns</strong>. If the procedure returns a value, it is identified as a function and can be configured using the Function Prototype Guide.</li>
+		<li>Select the number of arguments for the procedure, if any, in the <strong>Num of Args</strong> field. Up to ten arguments can be specified.</li>
+		<li>Specify the following options for each argument:</li>
+	</ol>
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Argument Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1200px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> Name </td>
+			<td> Specify a name for the argument.</td>
+		</tr>
+		<tr>
+			<td> Type </td>
+			<td> Select the type of argument: <strong>Number</strong> or <strong>String</strong>. </td>
+		</tr>
+		<tr>
+			<td> Pass By </td>
+			<td> Select how the argument is passed to the calling function:<br /><strong>Value</strong> arguments pass local variables whose values can be changed, but the changes are not reflected in the calling function. Only the current value of the argument is passed. No references to the channel or local variable are available.<br /><strong>Reference</strong> arguments pass local variables. The current value of the local variable along with underlying local variable information is available inside the scope of a called function. Changes to a Reference argument are reflected in the calling function. This is equivalent to passing a pointer to a local variable.<br /><strong>ChanName</strong> arguments pass global database channels. The current value of the global database channel along with underlying channel information is available inside the scope of a called function. Changes to a ChanName argument are reflected in the calling function. This is equivalent to passing a pointer to a global database channel. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Running-Multiple-Instances-of-the-Same-Procedure"></a>
+<h3 >Running Multiple Instances of the Same Procedure<a href="#Running-Multiple-Instances-of-the-Same-Procedure" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>iTest allows multiple instances of the same procedure to be run with the <code>EXECUTE</code> command, the <code>SPAWN</code> command, or the <code>SEQUENCE START</code> data_engine mailslot message. This is especially useful when running a procedure simultaneously using different sets of variables.</p>
+
+
+	<p>For more information, refer to the <code>EXECUTE</code> command in the <a class="wiki-page" href="VCL_Command_List.html">VCL Command List</a> reference list.<br />For more information, refer to the <code>SPAWN</code> command in the <a class="wiki-page" href="VCL_Command_List.html">VCL Command List</a> reference list.<br />For more information, refer to the <code>SEQUENCE START</code> mailslot message in the <a class="wiki-page" href="DataEngine_Mailslot_Messages_List.html">DataEngine Mailslot Messages List</a> reference list.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;width:20px;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Use the <code>AllowMultipleProcInstances</code> <em>powertek.ini</em> setting to restrict the <code>SPAWN</code> command and the <code>SEQUENCE START</code> data_engine mailslot message to only being able to start a single instance of a procedure. Exceptions to this <em>powertek.ini</em> setting are listed in the <a class="wiki-page" href="ITest_Advanced_INI_Options.html">iTest Advanced INI Options</a> reference list.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Editing-a-Procedure"></a>
+<h3 >Editing a Procedure<a href="#Editing-a-Procedure" class="wiki-anchor">&para;</a></h3>
+
+
+	<ol>
+	<li>In the Tree Bar, double-click the procedure to open it in the Test Manager Display Area (procedures are listed either under the <strong>Procedures</strong> node or a defined sub-directory within the Procedures node).<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Expanding Procedures</strong></em></span><br /><img src="attachments/download/99417/VCLedit.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Edit the procedure as necessary.</li>
+		<li>After completing the procedure, select <strong>File > Save</strong> to save the changes.</li>
+	</ol>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">It is useful to have the Helper Bar displayed when editing procedures; items can be dragged/dropped from the Helper Bar and the Tree Bar into the Test Editor window.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Using-IntelliSense"></a>
+<h3 >Using IntelliSense<a href="#Using-IntelliSense" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>IntelliSense is a modern text editing tool that performs code completion. When you begin to type, IntelliSense displays an autocomplete popup list of commands, procedures, channels, and/or functions depending upon the context of what is being written. This feature reduces the time used to write procedures and calculations; it also prevents possible typing errors and mistakes that will prevent your procedures and calculations from executing successfully. You can enable or disable IntelliSense based on your personal preference. To do so, right-click within the editor and select the <strong>Preferences</strong> option. Select or deselect the <strong>Enable IntelliSense</strong> option as necessary.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Editor Options</strong></em></span><br /><img src="attachments/download/35879/EditorProperties.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />The following set of rules outline the IntelliSense behaviors:</p>
+
+
+	<ol>
+	<li><code>EXECUTE</code> and <code>SPAWN</code> display procedures.</li>
+		<li><code>MESSAGE</code> does not support IntelliSense.</li>
+		<li>Channel lists are not filtered by string, numeric, or array. Local variables are included in the channel list suggestions.</li>
+		<li>IntelliSense within functions can only display channels (other functions will not display, as nesting is prohibited).</li>
+	</ol>
+
+
+	<a name="Drag-and-Drop"></a>
+<h3 >Drag and Drop<a href="#Drag-and-Drop" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>When writing procedures, items can be dragged/dropped from the Tree Bar and Helper Bar into the Test Editor Display Area. From the Tree Bar, you can drag/drop procedures, data logs, limit groups, and control loops.</p>
+
+
+	<p>When items are dragged/dropped from the Tree Bar and Helper Bar into the Display Area, iTest inserts a template of the VCL code needed to execute the command.</p>
+
+
+	<p>Text inside angle brackets, referred to as placeholders, indicate text that should be replaced by an argument. An argument can be typed in or channels dragged/dropped from the Helper Bar to replace the placeholder.</p>
+
+
+	<p>For example, when the mailslot message PID Start is dragged/dropped to the Display Area, the following code is added to the procedure:</p>
+
+
+	<p><code>+0 MESSAGE "\\.\mailslot\Data_Engine>>PID Start &lt;PID File (e.g., Speed.HS1)&gt;"</code></p>
+
+
+	<p>Replace &lt;PID File (e.g., Speed.HS1)&gt; with the name of the PID file to start.</p>
+
+
+	<a name="Using-the-Function-Prototype-Guide"></a>
+<h3 >Using the Function Prototype Guide<a href="#Using-the-Function-Prototype-Guide" class="wiki-anchor">&para;</a></h3>
+
+
+A function is a procedure that accepts arguments or returns a value. Arguments and returned values are defined using the Procedure Properties dialog box.
+	<ol>
+	<li>Expand the <strong>Test Development</strong> node in the Test Manager Tree and then expand the <strong>Procedures</strong> node.</li>
+		<li>Select <strong>Tools > Function Prototype Guide</strong>.</li>
+		<li>Double-click the procedure to edit.</li>
+		<li>Drag the function to be added from the tree to the Test Manager Display Area. This opens the Function Prototype Guide dialog box.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Function Prototype Guide</strong></em></span><br /><img src="attachments/download/3639/FPG.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Specify a return value and values for all arguments, if any, in the <strong>Value</strong> field and then click <strong>OK</strong> once the function has been edited. All other fields are read-only, as defined in the following table:</li>
+	</ol>
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Field Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> Function Prototype </td>
+			<td> Read-only. Displays the syntax required to call the function, its return type, and the number of input arguments, their type, and the method by which the arguments are passed.<br />&nbsp;  <br /><strong>Example:</strong><br /><code>SET &lt;Number&gt; Function1(StringByVal ChanName)</code></td>
+		</tr>
+		<tr>
+			<td> Function Description </td>
+			<td> Read-only. Displays the procedure help text, if any, for the function. Procedure help is the first contiguous block of comment lines after the <code>Begin procedure</code> mailslot message.</td>
+		</tr>
+		<tr>
+			<td> Type </td>
+			<td> Read-only. Indicates if the value is a return value or an argument (parameter) value.</td>
+		</tr>
+		<tr>
+			<td> Description </td>
+			<td> Read-only. Displays the type of value the function returns, and, if arguments were configured, the argument name, its type (<strong>String</strong> or <strong>Number</strong>), and the method by which the argument is passed.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Procedure-Help"></a>
+<h3 >Procedure Help<a href="#Procedure-Help" class="wiki-anchor">&para;</a></h3>
+
+
+	<p><strong>Procedure Help</strong> is a Test Manager feature that communicates procedure information as a commented text block within the <em>.tsc</em> file. It behaves as help text and appears in the <strong>VCL Help</strong> output tab when the feature <strong>Help on procedure &lt;procedure name&gt;</strong> is clicked. The following section describes the proper formatting for the procedure help syntax and instructions for displaying the text.</p>
+
+
+	<p>When you add a new procedure, the file automatically generates two lines of code and two comments.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>New Procedure Content</strong></em></span><br /><img src="attachments/download/26649/NewProcedure.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>Procedure information is formatted as comments within the <em>.tsc</em> file. iTest considers blocks of commented text before or after the following mailslot message as the procedure's help text.</p>
+
+
+<pre>0.0 MESSAGE "\\.\mailslot\Softpanel&gt;&gt;Begin procedure (Procedure Name)"</pre> 
+
+	<p>You can use the commented blocks of text to document the procedure’s purpose, required inputs, any return values that may result, etc.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">An empty row (no asterisk) between blocks of commented text will cause the content following the empty row to be excluded from the outputed help.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>An example of a <em>.tsc</em> file's mailslot message and procedure help is displayed below:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Help Procedure Content Example</strong></em></span><br /><img src="attachments/download/26653/ExampleHelpProcedure.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>The code, as written above, produces the following output in the <strong>VCL Help</strong> tab.</p>
+
+
+	<p>&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Procedure Help Output</strong></em></span><br /><img src="attachments/download/26654/OutputText.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Adding-Default-Procedure-Help"></a>
+<h4 >Adding Default Procedure Help<a href="#Adding-Default-Procedure-Help" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>You can enable a <em>powertek.ini</em> setting to use a default block of text. This feature places the pre-existing text in the appropriate location when you add a new procedure in Test Manager.</p>
+
+
+	<a name="INI-Setting"></a>
+<h5 >INI Setting<a href="#INI-Setting" class="wiki-anchor">&para;</a></h5>
+
+
+	<p><strong>Setting</strong>:</p>
+
+
+<pre>ProcHeaderFile</pre>
+
+	<p>This is the path and file name for a predefined procedure header. Use of this <em>powertek.ini</em> setting is only supported by Test Manager.</p>
+
+
+	<p><strong>Syntax Example</strong>:</p>
+
+
+<pre>ProcHeaderFile=$SYSTEMDIR\MyHeader.txt</pre>
+
+	<p>The content in the header file is assumed to be VCL compliant and will be included in the new procedure when created.</p>
+
+
+	<a name="Example-Default-File"></a>
+<h5 >Example Default File<a href="#Example-Default-File" class="wiki-anchor">&para;</a></h5>
+
+
+	<p>&nbsp;</p>
+
+
+<pre>
+*
+*    Description:    &lt;What the procedure is supposed to do&gt;
+*
+*    Pre Conditions:    &lt;What the procedure expects/assumes&gt;
+*        Arguments:
+*            &lt;Argument 1 Name&gt;:    &lt;Description of argument 1&gt;
+*            &lt;Argument 2 Name&gt;:    &lt;Description of argument 2&gt;
+*
+*    Post Conditions: &lt;What changes the procedure makes&gt;
+*        Return:
+*            &lt;Return value 1&gt; = &lt;Return value 1 meaning&gt;
+*            &lt;Return value 2&gt; = &lt;Return value 2 meaning&gt;
+*
+*
+</pre>
+
+	<a name="Displaying-Procedure-Help"></a>
+<h3 >Displaying Procedure Help<a href="#Displaying-Procedure-Help" class="wiki-anchor">&para;</a></h3>
+
+
+	<ol>
+	<li>Expand the <strong>Test Development</strong> node in Test Manager's navigation.</li>
+		<li>Expand the <strong>Procedures</strong> node.</li>
+		<li>Right-click the procedure and select <strong>Help on procedure</strong> “procedurename.tsc”, where <em>procedurename.tsc</em> is the name of the selected procedure. <br />&nbsp;<br /><span style="font-size: 11px;"> <em><strong>Displaying Procedure Help</strong></em></span><br /><img src="attachments/download/26834/HelpOnProcedure.png" style="padding-top:0.5em;padding-bottom:1em;" alt="" /><br />&nbsp;</li>
+		<li>If there is help text, it displays in the <strong>VCL Help</strong> tab in the output bar. <br />If the procedure is a function, then additional information is listed above the help text, including the return type, the number of input arguments, the input argument type(s), and the method by which each input argument is passed.<br />&nbsp;<br /><span style="font-size: 11px;"> <em><strong>Procedure Help</strong></em></span><br /><img src="attachments/download/26835/VCLHelpField.png" style="padding-top:0.5em;padding-bottom:1em;" alt="" /><br />&nbsp;</li>
+		<li>Within the body of a procedure, right-click a line of code that calls another procedure using the <code>EXECUTE</code> or <code>SPAWN</code> commands, and then select <strong>Help on procedure</strong> "procedurename.tsc”, where <em>procedurename.tsc</em> is the name of the procedure called by the code. The help text, if any, for the called procedure displays in the <strong>VCL Help</strong> tab in the output bar.</li>
+	</ol>
+
+
+	<a name="Locating-a-Procedure"></a>
+<h3 >Locating a Procedure<a href="#Locating-a-Procedure" class="wiki-anchor">&para;</a></h3>
+
+
+	<ol>
+	<li>Expand the <strong>Test Development</strong> node in the Test Manager Tree, right-click the <strong>Procedures</strong> icon, and click <strong>Find Procedure</strong> to open the Find Procedure dialog box.</li>
+		<li>Select the procedure to be located from the list, and then click <strong>OK</strong>. If found, the folder that the procedure is located in will be expanded in the Tree Bar.</li>
+		<li>Double-click the procedure to open it in the Test Editor Display Area.</li>
+	</ol>
+
+
+	<a name="Viewing-the-Hierarchy-of-a-Procedure"></a>
+<h3 >Viewing the Hierarchy of a Procedure<a href="#Viewing-the-Hierarchy-of-a-Procedure" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>A procedure hierarchy depicts a tree diagram that indicates the procedures called from within the procedure and their execution order.</p>
+
+
+	<ol>
+	<li>Right-click the procedure and click <strong>View Hierarchy</strong> to open the View Hierarchy dialog box.</li>
+		<li>This dialog box displays the procedures that are executed or spawned from within the selected procedure and the order in which they are called.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>View Hierarchy</strong></em></span><br /><img src="attachments/download/99418/VCLhierarchy.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Double-click any procedure file within the dialog box to open it in the Test Editor Display Area.</li>
+	</ol>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Executed and spawned procedures are listed separately, so a spawned procedure may start before, after, or between any executed procedure.</td>
+		</tr>
+	</table>
+</body>
+</html>

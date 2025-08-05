@@ -1,0 +1,830 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>VCL Scripting Language</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="VCL.html">VCL</a></li>
+<li><a href="VCL_Scripting_Language.html">VCL Scripting Language</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="VCL-Scripting-Language"></a>
+<h1 >VCL Scripting Language<a href="#VCL-Scripting-Language" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#VCL-Scripting-Language">VCL Scripting Language</a><ul><li><a href="#Procedure-File-Location">Procedure File Location</a></li><li><a href="#Priority-Level">Priority Level</a></li><li><a href="#Arguments">Arguments</a></li><li><a href="#Return-Values">Return Values</a></li><li><a href="#Local-Variables">Local Variables</a></li><li><a href="#Time-Stamps">Time Stamps</a><ul><li><a href="#Limitations-on-real-time-statements">Limitations on real-time statements</a></li></ul>
+</li><li><a href="#Comments">Comments</a></li><li><a href="#Conditionals-and-Loops">Conditionals and Loops</a><ul><li><a href="#Nesting">Nesting</a></li></ul>
+</li><li><a href="#Compiler-Directives">Compiler Directives</a></li><li><a href="#Expression-Syntax">Expression Syntax</a></li><li><a href="#Functions-as-Arguments-to-Other-Functions">Functions as Arguments to Other Functions</a></li><li><a href="#File-Arrays">File Arrays</a></li><li><a href="#Native-VCL-Arrays">Native VCL Arrays</a><ul><li><a href="#Array-Elements">Array Elements</a></li><li><a href="#Array-Elements-in-VCL">Array Elements in VCL</a></li><li><a href="#Additional-Notes-on-Arrays">Additional Notes on Arrays</a></li></ul>
+</li><li><a href="#Schedule-Functions">Schedule Functions</a><ul><li><a href="#Schedule-Function-Arguments">Schedule Function Arguments</a></li></ul>
+</li><li><a href="#Timer-Channels-in-VCL">Timer Channels in VCL</a></li><li><a href="#Error-Checking-and-Reporting">Error Checking and Reporting</a><ul><li><a href="#Test-Build-Error-and-Warning-Messages">Test Build Error and Warning Messages</a></li><li><a href="#Runtime-Error-Checking">Runtime Error Checking</a></li></ul></li></ul></li></ul>
+
+
+	<p>Knowing the VCL scripting language is helpful in refining and troubleshooting tests or writing complete tests. Each test may rely on one or more procedures, and each procedure consists of one or more VCL commands, function calls, or mailslot messages. In this section, we will discuss some of the key concepts relating to the VCL scripting language with a focus on its use in iTest procedures.</p>
+
+
+	<a name="Procedure-File-Location"></a>
+<h2 >Procedure File Location<a href="#Procedure-File-Location" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>All procedures are located in the <em>$SUPPORTDIR\Tests</em> folder. Procedure files are always named the same as the procedure name. These files have a <em>.tsc</em> extension.</p>
+
+
+	<a name="Priority-Level"></a>
+<h2 >Priority Level<a href="#Priority-Level" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Each iTest procedure file begins with the following line:</p>
+
+
+	<p><code>$PROCEDURE procedurename level=levelnumber</code></p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">In most provided procedure editors (e.g., Solution Builder or Test Manager), this line will not be visible. In this case, the procedure's priority level can be edited using a provided Procedure Properties dialog. Refer to the specific editor's documentation for more information.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Example Procedure Priority Line</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Syntax</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> procedurename </td>
+			<td> The name of the procedure. The name can contain up to 32 alphanumeric and underscore characters. iTest uses this name to reference the procedure.</td>
+		</tr>
+		<tr>
+			<td> levelnumber </td>
+			<td> An integer from 0 to 9 that defines the procedure’s priority level. Zero is the lowest priority; nine is the highest.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Arguments"></a>
+<h2 >Arguments<a href="#Arguments" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Procedures can take up to ten arguments.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">In most provided procedure editors (e.g., Solution Builder or Test Manager), arguments are declared using a provided Procedure Properties dialog. Refer to the specific editor's documentation for more information.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>The syntax for an argument, as it appears in the procedure file, is:</p>
+
+
+	<p><code>$ARGUMENT name, type, passby type</code></p>
+
+
+	<p>For example:<br /><pre> 
+$ARGUMENT speed, Number, ByVal
+
+$ARGUMENT operator, String, ByRef
+
+</pre><br />Argument declarations appear at the top of the Procedure Editor below the <code>$RETURN</code> declaration if <code>$RETURN</code> is defined. When iTest calls a procedure with arguments, the sequence in which arguments are passed in must match the sequence of the <code>$ARGUMENT</code> lines in the procedure.</p>
+
+
+	<p>Internally, iTest creates a local variable for each procedure argument. This local variable has the same name as the argument and can be referenced in the procedure in the same manner as other local variables. The way in which the argument value is handled depends on the pass-by type specified. For more information on pass-by types, refer to the <a class="wiki-page" href="Argument_Pass-By_Types.html">Argument Pass-By Type</a> document.</p>
+
+
+	<a name="Return-Values"></a>
+<h2 >Return Values<a href="#Return-Values" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The <code>$RETURN</code> instruction notifies iTest that the procedure will return either a numeric or string value upon its exit. This instruction must be paired with the <code>RETURN VCL</code> command. When viewing an iTest procedure file using a tool such as <em>Notepad.exe</em>, the <code>$RETURN</code> will always appear on the line above any declared <code>$ARGUMENT</code> lines and is normally the second line of the file.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">In most provided procedure editors (e.g., Solution Builder or Test Manager), the Return and its returned value type is declared using a provided Procedure Properties dialog. Refer to the specific editor's documentation for more information.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>EXAMPLE:<br /><pre>
+$RETURN Number
+
+*Begin test message
+
++0.0 message “\\.\mailslot\Softpanel&gt;&gt; Begin Procedure
+
+NewProcedure1”
+
++0.1 RETURN 100
+
+</pre></p>
+
+
+	<a name="Local-Variables"></a>
+<h2 >Local Variables<a href="#Local-Variables" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Local variable are variables that are created when the procedure in which they are declared is executed and their scope is defined only during the execution of the procedure. The scope is limited to the executing procedure.</p>
+
+
+	<p>Local variables differ from iTest channels in that iTest channels are created on system startup and are globally accessible from any procedure.</p>
+
+
+	<p>Local variables can be declared as one of two types:</p>
+
+
+	<p><code>VCLSTR</code> defines a local string variable</p>
+
+
+	<p><code>VCLNUM</code> defines a local float variable</p>
+
+
+	<p>Following are some local variable examples:<br /><pre>     
+      +0.0 VCLSTR myStr
+
+      +0.0 VCLNUM num1
+
+      +0.0 VCLNUM num2
+
+      +0.1 SET myStr “This is a local string”
+
+      +0.1 SET num1 100
+
+      +0.1 SET num2 num1+600
+</pre><br />If you declare a local variable with the same name as an iTest channel, the local variable takes precedence over the channel during execution of the procedure in which the local variable is declared.</p>
+
+
+	<a name="Time-Stamps"></a>
+<h2 >Time Stamps<a href="#Time-Stamps" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest uses time stamps to determine the timing for when VCL code is executed. VCL commands that follow a time stamp (a + followed by a time value) are real-time (RT) VCL code. iTest processes RT VCL code before it processes non real-time (NRT) VCL code.</p>
+
+
+	<p>The following examples are RT VCL:<br /><pre>
++0.1 SET Chan1 100
+
++0.5 SET Chan2 200
+
++0.0 SET Chan3 300
+</pre><br />In the previous example, iTest will wait 0.1 seconds before executing the first line of code and 0.5 seconds before executing the second line. It will immediately execute the third line of code.</p>
+
+
+	<p>VCL commands that do not have time stamps are NRT VCL. The following examples are NRT VCL:<br /><pre>
+SET Chan1 100
+
+SET Chan2 200
+
+SET Chan3 300
+</pre></p>
+
+
+	<p>iTest executes VCL code until it reaches 50 percent of the allocated system scan time (1/SystemScanRateHZ defined in the Global Settings editor). If it takes more than 50 percent of the scan time to execute NRT VCL code, iTest defers execution of any remaining NRT VCL code until the next scan.</p>
+
+
+	<p>If your VCL code is time critical, always use time stamps. If your VCL code is not time critical, we recommend using NRT VCL code. This allows iTest to use the processor’s full capacity to more efficiently execute VCL code.</p>
+
+
+	<p>The resolution of the timestamp depends on the system scan rate. So, for a 100 Hz scan rate, 0.01 is the minimum delay resolution. For a 20 Hz scan rate, 0.05 is the minimum delay resolution.</p>
+
+
+	<p><code>#while</code>, <code>#endwhile</code>, <code>#if</code>, <code>#else</code>, and <code>#endif</code> control statements cannot have time stamps. iTest Console determines the real-time or non real-time status of control statements based on the preceding line of code.</p>
+
+
+	<p>For example, iTest would treat the control statements in the following code as NRT VCL code since the code on the preceding lines does not have time stamps:<br /><pre>
+VCLNUM idx
+
+SET idx 2000
+
+#while(idx&gt;1)
+
+   SET idx idx – 1
+
+   #if (idx &gt; 1000)
+
+      MESSAGE “\\.\mailslot\Softpanel&gt;&gt;greater than 1000 idx=%&lt;idx&gt;%
+
+   #else
+
+      MESSAGE “\\.\mailslot\Softpanel&gt;&gt;less than 1000 idx=%&lt;idx&gt;%
+
+   #endif
+
+#endwhile
+</pre></p>
+
+
+	<a name="Limitations-on-real-time-statements"></a>
+<h3 >Limitations on real-time statements<a href="#Limitations-on-real-time-statements" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>iTest enforces some limitations on the volume of real-time statements that it will allow to occur without a delay in a given procedure. The limitation may depend on your version of iTest and the actual limit value can be checked by viewing the iTest Maximums section of <a class="wiki-page" href="ConfigReport.html">ConfigReport</a>.</p>
+
+
+	<a name="Comments"></a>
+<h2 >Comments<a href="#Comments" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>There are two ways in which you can add comments to code. You can put them on a line separate from the code, starting with an asterisk (*), as shown in the following example:</p>
+
+
+	<p><code>** This is a comment line</code></p>
+
+
+	<p>Comments display in green, by default, depending on the settings for the editor being used.</p>
+
+
+	<p>Comments can also be placed on the same line as code, beginning with an exclamation point (!), as shown in the following example:</p>
+
+
+	<p><code>WATER_TEMP_F temp_c2f(WATER_TEMP) ! Comment</code></p>
+
+
+	<a name="Conditionals-and-Loops"></a>
+<h2 >Conditionals and Loops<a href="#Conditionals-and-Loops" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Statement Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Statement</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>#else</td>
+			<td> Used within an #if loop; this allows alternative conditions and actions to be applied if the preceding ones are not met.</td>
+		</tr>
+		<tr>
+			<td>#elseif</td>
+			<td>Executes commands conditionally. The commands contained in the #elseif statement execute only if a logical expression evaluates to TRUE. </td>
+		</tr>
+		<tr>
+			<td>#endif</td>
+			<td> Closing statement for an #if loop. Without this command, a build error and/or unexpected behavior will occur.</td>
+		</tr>
+		<tr>
+			<td>#if</td>
+			<td> Initiates a conditional loop based on a logical expression (e.g., if an event or condition occurs, then perform the following action).<br />The following example will display a message to iTest that will display "Running in simulation Mode" or "Not running in simulation Mode" depending on the value of <code>flgSysSim</code>:<br /><pre>
+#if (flgSysSim =1)
+   MESSAGE "\\.\Mailslot\Softpanel&gt;&gt;Running in simulation Mode" 
+#else
+   MESSAGE "\\.\Mailslot\Softpanel&gt;&gt;Not running in simulation Mode" 
+#endif
+</pre><br />The #else part may be left out. Example:<br /><pre>
+#if (flgSysSim =1)
+  MESSAGE "\\.\Mailslot\Softpanel&gt;&gt;Running in simulation Mode" 
+#endif</pre></td>
+		</tr>
+		<tr>
+			<td>#while</td>
+			<td>Executes commands in a loop until a logical expression evaluates to FALSE.</td>
+		</tr>
+		<tr>
+			<td>#endwhile</td>
+			<td>Closing statement for a #while. Without this command, a build error and/or unexpected behavior will occur.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Nesting"></a>
+<h3 >Nesting<a href="#Nesting" class="wiki-anchor">&para;</a></h3>
+
+
+	<p><code>#while</code> statements and if-else statements can be nested.</p>
+
+
+	<p>For example:<br /><pre>
+#while &lt;condition&gt;
+
+    &lt;command&gt;
+
+       #if &lt;condition&gt;
+
+         &lt;command&gt;
+
+       #endif
+
+       #if &lt;condition&gt;
+
+         &lt;command&gt;
+
+       #endif
+
+#endwhile
+</pre></p>
+
+
+	<a name="Compiler-Directives"></a>
+<h2 >Compiler Directives<a href="#Compiler-Directives" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest VCL supports these conditional compilation commands:</p>
+
+
+<pre>
+#ifdef &lt;channel&gt;
+#ifdef &lt;channel&gt; [ | &lt;channel 2&gt; | ... | &lt;channel n&gt; ]
+#ifdef &lt;channel&gt; [ &#38; &lt;channel 2&gt; &#38; ... &#38; &lt;channel n&gt; ]
+#ifndef &lt;channel&gt;
+#ifndef &lt;channel&gt; [ | &lt;channel 2&gt; | ... | &lt;channel n&gt; ]
+#ifndef &lt;channel&gt; [ &#38; &lt;channel 2&gt; &#38; ... &#38; &lt;channel n&gt; ]
+#elsedef
+#enddef
+</pre>
+
+	<p>These directives direct Test Builder to include or exclude compilation of VCL based on the existence or absence of one or more channels. This allows VCL to adapt to the inclusion or exclusion of modules. Nested #ifdefs are not allowed. No syntax checking is performed on excluded VCL statements, including validation of the proper use of #else versus #elsedef within a #ifdef/#ifndef statement.  <br />Example Procedure:<br /><pre>
+#ifdef CanNeoWatchdog
+   +0.0 MESSAGE "\\.\mailslot\Softpanel&gt;&gt;Channel CanNeoWatchdog exists" 
+#elsedef
+   +0.0 MESSAGE "\\.\mailslot\Softpanel&gt;&gt;CanNeoWatchdog does not exist" 
+#enddef
++0.0 RETURN 0
+</pre></p>
+
+
+	<p>They also work in Calculations:</p>
+
+
+<pre>
+* addcalcs
+#ifdef CanNeoWatchdog
+   #if CanNeoWatchdog &gt; MaxWatchdog
+      MaxWatchdog CanNeoWatchdog
+   #endif
+#enddef
+</pre>
+
+	<p>The #ifdef <em>expression</em> and #ifndef <em>expression</em> statements can both check for multiple channels with either an AND (&#38;) or an OR (|) operator. The expression is evaluated from left to right first, channels that exist evaluating to true and channels that don't exist evaluating to false. If the entire expression evaluates to true, then VCL code following #ifdef will be included.  If the expression is false, then code following #ifndef will be included.</p>
+
+
+<pre> Example:
+* given vsSysTestType channel exists and flgSysManual channel does not exist
+
+* Example 1: use of AND operator
+#ifdef vsSysTestType &#38; flgSysManual
+    ! ... resolves as FALSE because flgSysManual does not exist, so code is not included
+
+#ifndef vsSysTestType &#38; flgSysManual
+    ! ... resolves as TRUE because the expression "vsSysTestType AND flgSysManual" resolves as FALSE, so code is included
+
+* Example 2: use of OR operator
+#ifdef vsSysTestType | flgSysManual
+    ! ... resolves as TRUE because vsSysTestType exists, so code is included
+
+#ifndef vsSysTestType | flgSysManual
+    ! ... resolves as FALSE because the expression "vsSysTestType OR flgSysManual" resolves as TRUE, so code is not included
+</pre>
+
+	<a name="Expression-Syntax"></a>
+<h2 >Expression Syntax<a href="#Expression-Syntax" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Expressions are constructed from operators and operands. Valid operands are iTest channel names, internal variable names, functions, and constant values.</p>
+
+
+	<p>Operator precedence describes the order in which expressions are processed. For example, the expression, <code>a=4+7*2</code>, contains two operations: an addition and a multiplication. iTest evaluates an expression by the operator precedence which is described in the chart below. Operators higher in the chart have a higher precedence meaning that iTest evaluates them first, and operators on the same line in the chart have the same precedence. Therefore, based on the chart below, iTest would evaluate <code>a=4+7*2</code> as 7*2 first then add 4 to the result instead of 4+7 then multiplying the result by 2.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Operator Precedence Chart</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Operator</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Precedence</strong> </td>
+		</tr>
+		<tr>
+			<td>(</td>
+			<td> Left parenthesis</td>
+			<td> Highest</td>
+		</tr>
+		<tr>
+			<td>)</td>
+			<td> Right parenthesis</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>^</td>
+			<td> Power (e.g., 2^3=8)</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>~</td>
+			<td> Logical NOT</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>*</td>
+			<td> Multiplication</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>/</td>
+			<td> Division</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>+</td>
+			<td> Addition</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>-</td>
+			<td> Subtraction</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>>=</td>
+			<td> Greater than or equal to</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>=</td>
+			<td> Comparison</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><=</td>
+			<td> Less than or equal to</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>></td>
+			<td> Greater than</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><</td>
+			<td> Less than</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>&#38;,|</td>
+			<td> Logical AND/Logical OR (these operands share the same precedence, therefore they are resolved from left to right)</td>
+			<td> Lowest</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Functions-as-Arguments-to-Other-Functions"></a>
+<h2 >Functions as Arguments to Other Functions<a href="#Functions-as-Arguments-to-Other-Functions" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>VCL functions may not be used as arguments to other functions. For example, if you want the absolute value of a table lookup, the following syntax would not be valid:</p>
+
+
+	<p><code>MyAbsVal abs(lookup(MyTable))</code></p>
+
+
+	<p>Instead, you must use an intermediate calculation:</p>
+
+
+	<p><code>MyLookup lookup(MyTable)</code></p>
+
+
+	<p><code>MyAbsVal abs(MyLookup)</code></p>
+
+
+	<p>Some string functions and the bitset, setbits, and bitclear functions may not be combined with other functions to form an expression. These functions must appear by themselves in an expression. None of these functions return a numeric value, so they cannot be used to construct a complex expression.</p>
+
+
+	<a name="File-Arrays"></a>
+<h2 >File Arrays<a href="#File-Arrays" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>File based Arrays refer to a type of array that was prevalent prior to iTest 3.2. These arrays are persisted in files that are stored under the <em>$SUPPORTDIR\VXI</em> folder and have an <em>.ary</em> file extension. An array file is a text file that stores the value of each element of an array. There are a number of VCL commands and functions that are designed to operate on array files. These are described in the <a class="wiki-page" href="VCL_Command_List.html">VCL Command List</a>.</p>
+
+
+	<p>For example, an array file with five elements might display as follows:</p>
+
+
+<pre>
+2
+4
+1
+7
+3
+</pre>
+
+	<a name="Native-VCL-Arrays"></a>
+<h2 >Native VCL Arrays<a href="#Native-VCL-Arrays" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Native array types allow you to hold collections of values in VCL. There are two entries in the standard <em>DATA.DEF</em> file for a <strong>Virtual Output Array</strong> and a <strong>Virtual String Array</strong> type.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Virtual Output Array channels and Virtual String Array channels are limited to 26-character channel names.</td>
+		</tr>
+	</table></p>
+
+
+	<ul>
+	<li>Create an array in the same way you would any channel type using the Channel Editor.</li>
+		<li>Only the value fields are indexed. String Value and EU.</li>
+		<li>The maximum size for an array is currently 256 elements.</li>
+		<li>Array indices start at 0.</li>
+	</ul>
+
+
+	<a name="Array-Elements"></a>
+<h3 >Array Elements<a href="#Array-Elements" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To reference the individual element of an array channel, use the standard C/C++/C# method. This means that array indices start at 0 and go up to N-1 for an array of size N. To reference a specific element of the array, you would use the following format:</p>
+
+
+	<p><code>Channel-name ‘[‘ index ‘]’</code></p>
+
+
+	<p>For example, if you defined an array channel called <code>arrayval</code> and wanted to access the tenth element, the channel name syntax would be:</p>
+
+
+<pre>
+Arrayval[9]
+</pre>
+
+	<p>The array index value must be a whole number greater than or equal to 0 and less than the size of the array except when used in VCL where you could use a numeric channel. If you reference an array channel without using an index, it is assumed that you are referring to the first element of the array.</p>
+
+
+	<p>All properties for array channels are shared such as units, decimal point, etc. Only the value fields (string or numeric) are unique per array element.</p>
+
+
+	<a name="Array-Elements-in-VCL"></a>
+<h3 >Array Elements in VCL<a href="#Array-Elements-in-VCL" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The VCL scripting language supports using array channels. Indexed array channels can be used anywhere in VCL where you can use an arithmetic expression (e.g., <code>#if</code> statements, <code>#while</code> statements, functions, etc.).</p>
+
+
+	<p>When specifying the index for an array channel, you can only use either a numeric constant (1, 2, 3, etc.) or another channel name. You cannot use an expression or a function call as the index. If you need to do that, you will need to assign that value to another channel and then use that channel as the index. The following are valid VCL statements using array channels:<br /><pre>
+ SET HS1_SETPOINT arrayval[2] + arrayval[1]
+ SET arrayval[2] HS1_SETPOINT + arrayval[2]
+ RAMP HS1_SETPOINT arrayval[1] arrayval[2]
+</pre><br />Also, you can pass indexed array channels as arguments to functions that accept arguments.</p>
+
+
+	<a name="Additional-Notes-on-Arrays"></a>
+<h3 >Additional Notes on Arrays<a href="#Additional-Notes-on-Arrays" class="wiki-anchor">&para;</a></h3>
+
+
+	<ul>
+	<li>Array sizes cannot be changed once the system has been started. Changing the <strong>Maximum Elements</strong> field at runtime will have no effect on the size of the array.</li>
+		<li>Native arrays are not meant to hold large arrays of values. You can use the file-based legacy arrays for this. Therefore, arrays will be limited due to packet size limitations and the need to keep the RDB size reasonable.</li>
+		<li>The first element of all arrays will be the element located at index 0.</li>
+		<li>Data Sourcing with arrays is not currently supported.</li>
+		<li>The old <strong>Diagnostic</strong> and <strong>Signal List</strong> will not support arrays.</li>
+		<li>Data quality and statistics are not supported for array channels.</li>
+	</ul>
+
+
+	<p>Array channels cannot be used in control loops, 2D or 1D tables, or schedule headers, or any other location not specifically mentioned above.</p>
+
+
+	<a name="Schedule-Functions"></a>
+<h2 >Schedule Functions<a href="#Schedule-Functions" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Schedule functions have two basic forms:</p>
+
+
+	<p><code>StatusValue = tablefunction(InParam1, … ,InParamN,OutParam)</code></p>
+
+
+	<p><code>StatusString = tablefunction(InParam1, … ,InParamN,OutParam1)</code></p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Use commas to separate arguments in schedule functions.</td>
+		</tr>
+	</table></p>
+
+
+	<p>These functions return the status of the current function call. The status return value can be a number or a string.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">This status has to be captured or you will receive errors. Use a SET command to precede each function call.</td>
+		</tr>
+	</table></p>
+
+
+	<p>Numeric return values are zero on success and a negative number on failure. An empty string is returned on success. The following list describes possible return strings on failure:<br /><pre>
+"Table Error: Table operation failed. No additional information" 
+
+"Table Error: Table not loaded" 
+
+"Table Error: Table function not supported" 
+
+"Page Error: Page not found" 
+
+"Page Error: Bad index value" 
+
+"Page Error: Invalid operation" 
+
+"Page Error: Keyword not found" 
+
+"Page Error: page data not cellwise" 
+
+"Function Error: Bad parameter value" 
+
+"Table Error: File not found" 
+
+"Table Error: Bad parameter type" 
+
+"Table Warning: Table already loaded" 
+
+"Table Error: Insufficient memory" 
+</pre><br />For example, the following function calls will fail if you try to access a 4x4 schedule:<br /><pre>
++0.01 SET voTRes1 tablevalueget("TableTest.sc2","Data",5,5,voTVal1)
++0.01 SET vsTRes1 tablevalueget(“TableTest.sc2”,”Data”,5,5,voTVal1)
+</pre><br />In this case, the function fails because you’ve requested row 5, column 5 for a 4X4 schedule.</p>
+
+
+	<p>After the function calls fail, the output parameters will contain the following values:<br /><pre>
+voTRes1 = -5 
+
+vsTRes1 = "Page Error: Bad index value"  
+</pre></p>
+
+
+	<a name="Schedule-Function-Arguments"></a>
+<h3 >Schedule Function Arguments<a href="#Schedule-Function-Arguments" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Schedule function calls require a number of input parameters and an output parameter:</p>
+
+
+	<p><code>Status = tablefunction(InParam1, … ,InParamN,OutParam)</code></p>
+
+
+	<p>Inparam1 is always the schedule name. It is important to include the file extension when specifying a schedule name.</p>
+
+
+	<p>In the following example, the tableload functions will fail if the extension is not included as part of the table or schedule name.<br /><pre>
++0.01 SET voTRes1 tableload("TableTest.sc2")
+
++0.01 SET voTRes1 tableload(vsMyTable)
+</pre><br />Input and output parameters can be one of three types as described in the following table.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Input/Output Types</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Type</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> Literal Value </td>
+			<td> A hard coded value or string as an input parameter. For example:<br />&nbsp;<br /><code>+0.01 SET voTRes1 tableload("TableTest.sc2")</code></td>
+		</tr>
+		<tr>
+			<td> Global Database Channel </td>
+			<td> A channel available globally throughout the system. For example:<br />&nbsp;<br /><code>+0.01 SET vsMyTable “TableTest.sc2”</code><br /><code>+0.01 SET voTRes1 tableload(vsMyTable)</code></td>
+		</tr>
+		<tr>
+			<td> Local Variable </td>
+			<td> A variable declared within a VCL procedure and defined only within the scope of that procedure. For example:<br />&nbsp;<br /><code>+0.01 VCLSTR myLocalStr</code><br /><code>+0.01 SET myLocalStr “TableTest.sc2”</code><br /><code>+0.01 SET voTRes1 tableload(myLocalStr)</code></td>
+		</tr>
+	</table>
+
+
+
+
+	<p>An output parameter returns values other than status values. It is also possible to specify the output channel name within a string used as the output parameter. For example:<br /><pre>
++0.01 SET vsMyChannel “voTval1” 
+
++0.01 SET voTRes1 tablevalueget(”MyTable.sc2”,1,1,vsMyChannel)   
+</pre><br />In this case, the value stored at cell [1,1] will be written to the global database channel, <code>voTval1</code>. It is also possible to use local variables in the same way as shown in the following example:<br /><pre>
++0.01 VCLSTR myLocalStr
+
++0.01 SET myLocalStr “voTval1” 
+
++0.01 SET voTRes1 tablevalueget(”MyTable.sc2”,1,1, myLocalStr)   
+</pre><br />The ability to substitute a string containing a channel name for the channel is limited to one level. The following example will generate an error and may cause unpredictable results:<br /><pre>
++0.01 VCLSTR myLocalStr
+
++0.01 SET myLocalStr “vsMyChannel”
+
++0.01 SET vsMyChannel “voTval1” 
+
++0.01 SET voTRes1 tablevalueget(”MyTable.sc2”,1,1, myLocalStr)
+</pre></p>
+
+
+	<a name="Timer-Channels-in-VCL"></a>
+<h2 >Timer Channels in VCL<a href="#Timer-Channels-in-VCL" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>A timer is an iTest channel defined with the virtual timer channel type. A timer can be configured to count either up or down, and its value can be interpreted using a pre-defined formula.  The update rate of a timer channel is the system rate.</p>
+
+
+	<p>There is a specific set of VCL commands exclusively used with the timer channel type. These commands can be used to start, stop, and reset a timer. You can also use commands to set the initial starting value of a timer and then start it from that point. For a complete description of these commands, see the <a class="wiki-page" href="VCL_Command_List.html">VCL Command List</a> page and scroll down to the Timer Commands section.</p>
+
+
+	<p>A timer has a default starting value that is set in the channel definition file. A virtual timer channel is always set back to its default starting value when the Console starts. During operation, a timer channel will continuously store its current channel, so that if the timer channel is stopped, it can be restarted at the same point it left off at regardless of any changes that may have been made to its current value while it was stopped.</p>
+
+
+	<a name="Error-Checking-and-Reporting"></a>
+<h2 >Error Checking and Reporting<a href="#Error-Checking-and-Reporting" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Test-Build-Error-and-Warning-Messages"></a>
+<h3 >Test Build Error and Warning Messages<a href="#Test-Build-Error-and-Warning-Messages" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Error and warning messages are generated during a test build if any problems or parsing errors are discovered. If a build is initiated by Test Manager, the errors and warnings will display on the <strong>TestBuild Status</strong> tab of the Output bar in the Test Manager. If a build is initiated by SolutionBuilder, the errors and warnings will display on the System Overview and System Messages in AutomationPanel as well as display the TestBuilder Messages dialog. If a build is initiated by Visual Studio Code, then the error messages will display in the Debug Console area.</p>
+
+
+	<p>If a procedure has errors, the procedure will not be available for execution at runtime. If a procedure has warnings, but no error messages, the procedure will run in iTest Console.</p>
+
+
+	<p>Warning messages are saved to the <em>warnings.log</em> file in the <em>$SUPPORTDIR\LOGS</em> directory specified in the <em>config.ini file</em>. Error messages are saved to the <em>autotest.log</em> file in the <em>$SUPPORTDIR\LOGS</em> directory.</p>
+
+
+	<a name="Runtime-Error-Checking"></a>
+<h3 >Runtime Error Checking<a href="#Runtime-Error-Checking" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following conditions are checked during runtime and are handled by placing the value of 1.0E+10 in the destination channel name. These error conditions are noted by multiple asterisks (<b>**</b>) on displays.</p>
+
+
+	<ul>
+	<li>Divide by zero.</li>
+		<li>Raising zero to a negative power.</li>
+		<li>Taking the exponential of a value greater than 1000.0.</li>
+		<li>Taking log base 10 of a value <= 0.</li>
+		<li>Taking natural log of a value <= 0.</li>
+		<li>Operating on any value >= 1.0E+10 or smaller than -1.0E+10.</li>
+	</ul>
+</body>
+</html>

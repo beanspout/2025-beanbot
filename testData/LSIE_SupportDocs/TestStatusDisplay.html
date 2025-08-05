@@ -1,0 +1,398 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>TestStatusDisplay</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="TestStatusDisplay.html">TestStatusDisplay</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="TestStatusDisplay"></a>
+<h1 >TestStatusDisplay<a href="#TestStatusDisplay" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#TestStatusDisplay">TestStatusDisplay</a><ul><li><a href="#Overview">Overview</a><ul><li><a href="#TestStatusDisplay-Bottom-Menu-Buttons">TestStatusDisplay Bottom Menu Buttons</a></li></ul>
+</li><li><a href="#Viewing-Test-Procedures">Viewing Test Procedures</a><ul><li><a href="#Procedures-Snapshot">Procedures Snapshot</a></li><li><a href="#Performance-Details">Performance Details</a></li></ul>
+</li><li><a href="#Debugging-and-Editing-Procedures">Debugging and Editing Procedures</a><ul><li><a href="#Debugging-Procedures">Debugging Procedures</a></li><li><a href="#Editing-Procedures">Editing Procedures</a></li></ul>
+</li><li><a href="#Status-Bar">Status Bar</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The TestStatusDisplay (i.e., VCL Scope) tool displays a list of running procedures, allowing you to view, debug, and edit the procedures, as applicable.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#ebd700;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3740/caution.gif" alt="" /></td>
+			<td style="vertical-align:top;"><b>CAUTION:</b></td>
+			<td style="vertical-align:top;">SolutionBuilder must be closed in order to use the TestStatusDisplay tool.</td>
+		</tr>
+	</table></p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>TestStatusDisplay Interface</strong></em></span><br /><img src="attachments/download/127423/44_TestStatusDisplayInterface.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="TestStatusDisplay-Bottom-Menu-Buttons"></a>
+<h3 >TestStatusDisplay Bottom Menu Buttons<a href="#TestStatusDisplay-Bottom-Menu-Buttons" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following buttons are available at the bottom menu of the TestStatusDisplay:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Bottom Menu Buttons</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Icon</strong></td>
+			<td style="text-align:left;"><strong>Button</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/127425/44_DetailsIcon.png" alt="" /></td>
+			<td> Details</td>
+			<td> Launches the Performance Details dialog. For more information, refer to the <a class="wiki-page" href="#Performance-Details">Performance Details</a> section.</td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/127426/44_SnapshotIcon.png" alt="" /></td>
+			<td> Snapshot</td>
+			<td> Launches the Procedures Snapshot dialog. For more information, refer to the <a class="wiki-page" href="#Procedures-Snapshot">Procedures Snapshot</a> section.</td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/127427/44_BuildIcon.png" alt="" /></td>
+			<td> Build</td>
+			<td> Rebuilds VCL after modifications are made to the procedure and prompts you to restart iTest. For more information, refer to the <a class="wiki-page" href="VCL.html#Building-VCL">Building VCL</a> documentation.</td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/127428/44_OpenIcon.png" alt="" /></td>
+			<td> Open</td>
+			<td> Opens a procedure for debugging and/or editing. This procedure does not have to be running.</td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/127429/44_RunIcon.png" alt="" /></td>
+			<td> Run</td>
+			<td> Runs the currently opened procedure.</td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/127430/44_StopIcon.png" alt="" /></td>
+			<td> Stop</td>
+			<td> Stops the currently opened procedure.</td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/127431/44_StepOutIcon.png" alt="" /></td>
+			<td> Step Out</td>
+			<td> Exits the current procedure and returns to the calling procedure. If there is no calling procedure, the current procedure executes until it is complete. iTest ignores any breakpoints that are past the current point of execution. When stepping out of a called procedure, the calling procedure is brought to the top of all opened procedures. This button is enabled when a procedure is being debugged. <ins><strong>Note:</strong></ins> This only occurs upon reaching a breakpoint.</td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/127432/44_StepOverIcon.png" alt="" /></td>
+			<td> Step Over</td>
+			<td> Advances to the next valid line of code. This button is enabled when a procedure is being debugged.</td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/127434/44_StepIntoIcon.png" alt="" /></td>
+			<td> Step Into</td>
+			<td> Steps into a called procedure. If the called procedure is already opened, click the <strong>Step Into</strong> button to bring it to the top of all opened procedures. This button is enabled when a procedure is open and being debugged, and the current line of code starts another VCL function or procedure using the <code>EXECUTE</code> VCL command. <ins><strong>Note:</strong></ins> This only occurs if a breakpoint has been toggled on this line or if using the <strong>Step Over</strong> button to step through the procedure from a previous breakpoint.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Viewing-Test-Procedures"></a>
+<h2 >Viewing Test Procedures<a href="#Viewing-Test-Procedures" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>TestStatusDisplay will show up to 50 of the active procedures. If there are more than 50 procedures running, then you can use the <a class="wiki-page" href="#Procedures-Snapshot">Procedures Snapshot</a> dialog to view the complete list. The active procedures will display in the Debugging window under the Active Tests tab. The list of system channels being used as performance counters can be viewed via the <a class="wiki-page" href="#Performance-Details">Performance Details</a> dialog.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Active Tests</strong></em></span><br /><img src="attachments/download/127435/44_ActiveTestsTab.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The following right-click options are available in the Active Tests tab:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Format Time</td>
+			<td> Changes the format of the running time displayed in the TestStatusDisplay interface (seconds to HH:MM:SS:SS).</td>
+		</tr>
+		<tr>
+			<td>Abort Procedure</td>
+			<td> Allows you to stop the selected procedure. <ins><strong>Note:</strong></ins> A child procedure cannot be stopped directly. The parent procedure is the one that must be stopped, which will then stop any child procedures.</td>
+		</tr>
+		<tr>
+			<td>View Procedure</td>
+			<td> Displays the selected procedure on top of all opened procedures. The current line of code will have a yellow arrow next to it.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Procedures-Snapshot"></a>
+<h3 >Procedures Snapshot<a href="#Procedures-Snapshot" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Procedures Snapshot dialog shows a snapshot of the entire list of running procedures and can be launched by clicking the <strong>Snapshot</strong> button. The <strong>Refresh</strong> button* allows you to refresh the list of running procedures. The <strong>Save</strong> button allows you to save the list of running procedures as a TXT file (<em>*.txt</em>).</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Procedures Snapshot Dialog</strong></em></span><br /><img src="attachments/download/127436/44_ProceduresSnapshot.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Performance-Details"></a>
+<h3 >Performance Details<a href="#Performance-Details" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Performance Details dialog shows a list of system channels used as performance counters and can be launched via the <strong>Details</strong> button. This dialog is primarily used to do a real-time analysis of the system.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Performance Details Dialog</strong></em></span><br /><img src="attachments/download/127437/44_PerformanceDetailsDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Debugging-and-Editing-Procedures"></a>
+<h2 >Debugging and Editing Procedures<a href="#Debugging-and-Editing-Procedures" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The toggle at the top of the TestStatusDisplay window allows you to switch between debugging and editing procedures.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Toggle Mode</strong></em></span><br /><img src="attachments/download/127438/44_ToggleTestStatusDisplayMode.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Debugging-Procedures"></a>
+<h3 >Debugging Procedures<a href="#Debugging-Procedures" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>When debugging procedures, you can add/remove breakpoints, as needed, in the Procedures window. Each line with a breakpoint will be listed in the Debugging window under the Breakpoints tab.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Breakpoints</strong></em></span><br /><img src="attachments/download/127439/44_Breakpoints.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The following right-click options are available in the Breakpoints tab:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Enable/Enable All</td>
+			<td> Enables an individual breakpoint or all breakpoints in the procedure(s).</td>
+		</tr>
+		<tr>
+			<td>Disable/Disable All</td>
+			<td> Disables an individual breakpoint or all breakpoints in the procedure(s).</td>
+		</tr>
+		<tr>
+			<td>Delete/Delete All</td>
+			<td> Deletes an individual breakpoint or all breakpoints in the procedure(s).</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>In addition, you can use the <strong>Modify Value</strong> right-click option in the Watch tab to modify a channel or internal variable's value. This tab contains a list of channels used within the opened procedure(s). A local variable's value can be modified only if the procedure within which it is declared is running and the variable has already been declared. If you write a string to a numeric channel, the value of the numeric channel changes to 0. If you write a numeric value to a string channel, the value of the string channel will contain the string representation of the numeric value.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Watch Tab</strong></em></span><br /><img src="attachments/download/127440/44_WatchTab.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Editing-Procedures"></a>
+<h3 >Editing Procedures<a href="#Editing-Procedures" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>When editing procedures, you can modify the procedure and add/remove bookmarks, as needed, in the Procedures window. After modifying the procedure, click the <strong>Build</strong> button to save changes and restart iTest. You can use the <strong>Procedure</strong> drop-down list to view all currently opened procedures; selecting a procedure name in this list will display the procedure on top of all other opened procedures.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Procedures Window</strong></em></span><br /><img src="attachments/download/127441/44_ProceduresWindow.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The following right-click options are available in the Procedures window:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td> Removes the selected text and copies it to the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td> Copies the selected text.</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td> Pastes the copied values from the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Find...</td>
+			<td> Launches the Find and Replace dialog with the Find tab opened.</td>
+		</tr>
+		<tr>
+			<td>Replace...</td>
+			<td> Launches the Find and Replace dialog with the Replace tab opened.</td>
+		</tr>
+		<tr>
+			<td>Toggle Whitespace</td>
+			<td> Turns whitespace markings on/off.</td>
+		</tr>
+		<tr>
+			<td>Make Uppercase</td>
+			<td> Makes the selected text uppercase.</td>
+		</tr>
+		<tr>
+			<td>Make Lowercase</td>
+			<td> Makes the selected text lowercase.</td>
+		</tr>
+		<tr>
+			<td>Comment</td>
+			<td> Comments out a line of text in the procedure. The text does not need to be selected or highlighted to comment it out.</td>
+		</tr>
+		<tr>
+			<td>Uncomment</td>
+			<td> Uncomments a line of text in the procedure.</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td> Undoes the last action.</td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td> Redoes the last undone action.</td>
+		</tr>
+		<tr>
+			<td>Open Procedure</td>
+			<td> Opens the procedure based on the text that was clicked on.</td>
+		</tr>
+		<tr>
+			<td>Next Bookmark</td>
+			<td> Navigates to the next bookmark in the procedure.</td>
+		</tr>
+		<tr>
+			<td>Previous Bookmark</td>
+			<td> Navigates to the previous bookmark in the procedure.</td>
+		</tr>
+		<tr>
+			<td>Preferences...</td>
+			<td> Launches the Editor Properties dialog, which enables you to modify the appearance of the editor. You can customize the font style and size, display line numbers, and enable outlines for blocks of code.</td>
+		</tr>
+		<tr>
+			<td>Set Breakpoint</td>
+			<td> Sets a breakpoint for the line.</td>
+		</tr>
+		<tr>
+			<td>Clear All Breakpoints</td>
+			<td> Clears all breakpoints in the procedure.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Status-Bar"></a>
+<h2 >Status Bar<a href="#Status-Bar" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Status bar displays at the bottom of the TestStatusDisplay and contains various types of information, such as the number of active limits and the number of running procedures.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Status Bar</strong></em></span><br /><img src="attachments/download/127442/44_StatusBar.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Status Bar Items</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Item</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Rate</td>
+			<td> Specifies the update rate of the TestStatusDisplay interface. Options include <strong>1 Hz</strong>, <strong>2 Hz</strong>, and <strong>5 Hz</strong>.</td>
+		</tr>
+		<tr>
+			<td>BBox: # Chans, Status=ON/OFF</td>
+			<td>Reports the number of channels listed in the <em>Blackbox.lol</em> file. <br />Status is the value of the <code>CRS_CONTROL</code> channel; 0 = OFF, 1 = ON</td>
+		</tr>
+		<tr>
+			<td>SystemTime</td>
+			<td>Time since iTest started running.</td>
+		</tr>
+		<tr>
+			<td># Active Limits</td>
+			<td>Number of channels with active limits.</td>
+		</tr>
+		<tr>
+			<td>Procedures</td>
+			<td>The number of running procedures. Stored in the <code>voSysNumProcs</code> system channel.</td>
+		</tr>
+		<tr>
+			<td>Exceptions</td>
+			<td>The number of software exceptions that have occurred. Stored in the <code>voSysNumExceptions</code> system channel.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+</body>
+</html>

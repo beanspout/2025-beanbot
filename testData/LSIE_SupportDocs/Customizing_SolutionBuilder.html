@@ -1,0 +1,646 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Customizing SolutionBuilder</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Customizing_SolutionBuilder.html">Customizing SolutionBuilder</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+ <span style="display: none;">
+
+
+	<p><img src="attachments/download/93003/ADT_LOGO_OUTLINE.png" style="width: 100px;" alt="" /></p>
+
+
+	 </span>
+
+
+	 <div class="CoverPage" class="body">
+
+
+	 <div class="Title">
+
+
+	<p style="text-align:center;"><br /><strong><span style="font-size:30pt;color: #005CAA;">Customizing SolutionBuilder</span></strong></p>
+
+
+	 </div>
+
+
+	<p style="text-align:center;"><br /><em><span style="font-size:12pt;font-style: italic;">Product Version 4.5</span></em></p>
+
+
+	<p style="text-align:center;"><br /><strong><span style="font-size:16pt;">Prepared By</span></strong><br />ADT Software Engineering</p>
+
+
+	<p style="text-align:center;"><br /><span style="font-size: 10pt;color:red;">A&#38;D Confidential Document Distributable only to A&#38;D Customers</span><br /><span style="font-size: 10pt;color:black;">Copyright A&#38;D Company, Limited<br />A&#38;D Technology Inc.</span></p>
+
+
+	 </div>
+
+
+	 <h1>Table of Contents</h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Overview">Overview</a><ul><li><a href="#Launching-SolutionBuilder">Launching SolutionBuilder</a></li></ul>
+</li><li><a href="#Building-the-XML-File">Building the XML File</a></li><li><a href="#Title-Customization">Title Customization</a></li><li><a href="#Main-Menu-Customization">Main Menu Customization</a></li><li><a href="#Bottom-Menu-Customization">Bottom Menu Customization</a></li><li><a href="#Editor-Customization">Editor Customization</a><ul><li><a href="#Procedure-Folders">Procedure Folders</a></li><li><a href="#Property-Page-Customization">Property Page Customization</a></li></ul>
+</li><li><a href="#Plugin-Support">Plugin Support</a></li><li><a href="#Homepage-Customization">Homepage Customization</a><ul><li><a href="#Adding-and-Editing-Links">Adding and Editing Links</a></li><li><a href="#Executable-Feature">Executable Feature</a></li></ul>
+</li><li><a href="#Actions-on-Save">Actions on Save</a></li></ul></p>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>SolutionBuilder supports customization through XML files. These files replace the default menu settings, allowing you to build your own top level menu and customize other portions of the interface. By default, the <em>SolutionBuilder.xml</em> file is used as the framework for SolutionBuilder; this file may not be included in your solution and can be manually added to the $SUPPORTDIR.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Customized SolutionBuilder Interface</strong></em></span><br /><img src="attachments/download/99996/42_CustomizedSolutionBuilder.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Launching-SolutionBuilder"></a>
+<h3 >Launching SolutionBuilder<a href="#Launching-SolutionBuilder" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>When launching SolutionBuilder, you can specify which XML file to open via the following command-line argument:</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">- If an XML fie is not specified, then the default <em>SolutionBuilder.xml</em> file will be used.<br />- The <strong>Open</strong> button is hidden from SolutionBuilder's bottom menu when using the <code>/xml</code> switch.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+SolutionBuilder.exe /xml &lt;XML Filename&gt;
+</pre></p>
+
+
+	<p><strong>Where:</strong></p>
+
+
+	<ul>
+	<li><em>&lt;XML Filename&gt;:</em> The filename of the XML file. This must be a file under the $SUPPORTDIR. Alternatively, you can specify a fully-qualified file path to the XML file; the XML file must be under the $SYSTEMDIR in this case.</li>
+	</ul>
+
+
+	<p><strong>Example:</strong><br /><pre>
+SolutionBuilder.exe /xml SolutionBuilder.xml
+
+SolutionBuilder.exe /xml C:\ADT\iTest4.4\Solution.Demo\SolutionBuilder.xml
+</pre></p>
+
+
+	<a name="Building-the-XML-File"></a>
+<h2 >Building the XML File<a href="#Building-the-XML-File" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The <em>SolutionBuilder.xml</em> contains seven different sections (<a class="wiki-page" href="#Title-Customization">title</a>, <a class="wiki-page" href="#Property-Page-Customization">property page</a>, <a class="wiki-page" href="#Main-Menu-Customization">main menu</a>, <a class="wiki-page" href="#Editor-Customization">editor</a>, <a class="wiki-page" href="#Bottom-Menu-Customization">bottom menu</a>, <a class="wiki-page" href="#Plugin-Support">plugin support</a>, and <a class="wiki-page" href="#Actions-on-Save">actions</a>) that can be used for customization. When the <em>SolutionBuilder.xml</em> file is read, SolutionBuilder will look for these sections' customization values/XMLs. If there are any errors in the <em>SolutionBuilder.xml</em> file, then SolutionBuilder will revert to the default settings.</p>
+
+
+	<p>The following syntax is an example on how to structure the <em>SolutionBuilder.xml</em> file:</p>
+
+
+<pre>
+&lt;SolutionBuilder&gt;
+&lt;Title&gt;New Title&lt;/Title&gt;
+&lt;PropertyPage&gt;
+      &lt;ReadOnlyBackColor&gt;Red&lt;/ReadOnlyBackColor&gt;
+      &lt;ReadOnlyForeColor&gt;Blue&lt;/ReadOnlyForeColor&gt;
+&lt;/PropertyPage&gt;
+ &lt;ProcedureFolders&gt;
+        &lt;Folder&gt;\SampleFolder\&lt;/Folder&gt;
+  &lt;/ProcedureFolders&gt;
+ &lt;Plugins&gt;
+      &lt;Plugin&gt;
+         &lt;FilePath&gt;SamplePlugin.dll&lt;/FilePath&gt;
+         &lt;ClassName&gt;Sample.Plugin&lt;/ClassName&gt;
+      &lt;/Plugin&gt;
+   &lt;/Plugins&gt;
+&lt;Menus&gt;
+    &lt;Menu&gt;
+        &lt;ID&gt;smMenuOption1&lt;/ID&gt;
+        &lt;Item&gt;
+            &lt;Name&gt;Sub-Menu Option 1&lt;/Name&gt;
+            &lt;Editor&gt;SubMenuOption1&lt;/Editor&gt;
+        &lt;/Item&gt;
+    &lt;/Menu&gt;
+    &lt;Menu&gt;
+        &lt;ID&gt;smMenuOption2&lt;/ID&gt;
+        &lt;Item&gt;
+            &lt;Name&gt;Sub-Menu Option 2&lt;/Name&gt;
+            &lt;Editor&gt;SubMenuOption2&lt;/Editor&gt;
+        &lt;/Item&gt;
+        &lt;Item&gt;
+            &lt;Name&gt;Sub-Menu Option 3&lt;/Name&gt;
+            &lt;Editor&gt;SubMenuOption3&lt;/Editor&gt;
+        &lt;/Item&gt;
+    &lt;/Menu&gt;
+    &lt;Menu&gt;
+        &lt;Item&gt;
+            &lt;Name&gt;Menu Option 1&lt;/Name&gt;
+            &lt;SubMenu&gt;smMenuOption1&lt;/SubMenu&gt;
+            &lt;Image&gt;MenuOption1&lt;/Image&gt;
+        &lt;/Item&gt;
+        &lt;Item&gt;
+            &lt;Name&gt;Menu Option 2&lt;/Name&gt;
+            &lt;SubMenu&gt;smMenuOption2&lt;/SubMenu&gt;
+            &lt;Image&gt;Menu Option 2&lt;/Image&gt;
+        &lt;/Item&gt;
+    &lt;/Menu&gt;
+&lt;/Menus&gt;
+&lt;HiddenButtons&gt;
+      &lt;Button&gt;Report&lt;/Button&gt;
+      &lt;Button&gt;Export&lt;/Button&gt;
+      &lt;Button&gt;Open&lt;/Button&gt;
+&lt;/HiddenButtons&gt;
+&lt;/SolutionBuilder&gt;
+</pre>
+
+	<a name="Title-Customization"></a>
+<h2 >Title Customization<a href="#Title-Customization" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To customize the title dialog for SolutionBuilder, open or create a  <em>SolutionBuilder.xml</em> file and use the following syntax:<br /><pre>
+&lt;SolutionBuilder&gt;
+&lt;Title&gt;New Title&lt;/Title&gt;
+&lt;/SolutionBuilder&gt; </pre></p>
+
+
+	<p>&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Customized Title</strong></em></span><br /><img src="attachments/download/99998/42_CustomizedTitleDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Main-Menu-Customization"></a>
+<h2 >Main Menu Customization<a href="#Main-Menu-Customization" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The main (top) menu in the SolutionBuilder interface can be customized to expand, limit, or reorder the listed menu items using the following syntax as an example:</p>
+
+
+<pre>
+&lt;SolutionBuilder&gt;
+&lt;Title&gt;New Title&lt;/Title&gt;
+&lt;Menus&gt;
+      &lt;Menu&gt;
+                &lt;ID&gt;smBatteries&lt;/ID&gt;
+                &lt;Item&gt;
+                        &lt;Name&gt;Types&lt;/Name&gt;
+                        &lt;Editor&gt;BatteryTypes&lt;/Editor&gt;
+                &lt;/Item&gt;
+                &lt;Item&gt;
+                        &lt;Name&gt;Specimens&lt;/Name&gt;
+                        &lt;Editor&gt;BatterySpecimens&lt;/Editor&gt;
+                &lt;/Item&gt;
+        &lt;/Menu&gt;
+        &lt;Menu&gt;
+                &lt;ID&gt;smDevices&lt;/ID&gt;
+                &lt;Item&gt;
+                        &lt;Name&gt;Cyclers&lt;/Name&gt;
+                        &lt;Editor&gt;Cyclers&lt;/Editor&gt;
+                &lt;/Item&gt;
+                &lt;Item&gt;
+                        &lt;Name&gt;Chambers&lt;/Name&gt;
+                        &lt;Editor&gt;Chambers&lt;/Editor&gt;
+                &lt;/Item&gt;
+                &lt;Item&gt;
+                        &lt;Name&gt;Chillers&lt;/Name&gt;
+                        &lt;Editor&gt;Chillers&lt;/Editor&gt;
+                &lt;/Item&gt;
+                &lt;Item&gt;
+                        &lt;Name&gt;Cameras&lt;/Name&gt;
+                        &lt;Editor&gt;Cameras&lt;/Editor&gt;
+                &lt;/Item&gt;
+                &lt;Item&gt;
+                        &lt;Name&gt;CAN Devices&lt;/Name&gt;
+                        &lt;Editor&gt;CANDevices&lt;/Editor&gt;
+                &lt;/Item&gt;
+                &lt;Item&gt;
+                        &lt;Name&gt;Other&lt;/Name&gt;
+                        &lt;Editor&gt;Other&lt;/Editor&gt;
+                &lt;/Item&gt;
+        &lt;/Menu&gt;
+        &lt;Menu&gt;
+                &lt;ID&gt;smDisplays&lt;/ID&gt;
+                &lt;Item&gt;
+                        &lt;Name&gt;Layouts&lt;/Name&gt;
+                        &lt;Editor&gt;Layouts&lt;/Editor&gt;
+                &lt;/Item&gt;
+                &lt;Item&gt;
+                        &lt;Name&gt;Toolbars&lt;/Name&gt;
+                        &lt;Editor&gt;Toolbars&lt;/Editor&gt;
+                &lt;/Item&gt;
+                &lt;Item&gt;
+                        &lt;Name&gt;Picklists&lt;/Name&gt;
+                        &lt;Editor&gt;Picklists&lt;/Editor&gt;
+                &lt;/Item&gt;
+        &lt;/Menu&gt;
+        &lt;Menu&gt;
+                &lt;ID&gt;smTests&lt;/ID&gt;
+                &lt;Item&gt;
+                        &lt;Name&gt;Schedules&lt;/Name&gt;
+                        &lt;Editor&gt;Schedules&lt;/Editor&gt;
+                &lt;/Item&gt;
+                &lt;Item&gt;
+                        &lt;Name&gt;Master Schedules&lt;/Name&gt;
+                        &lt;Editor&gt;MasterSchedules&lt;/Editor&gt;
+                &lt;/Item&gt;
+                &lt;Item&gt;
+                        &lt;Name&gt;Procedures&lt;/Name&gt;
+                        &lt;Editor&gt;Procedures&lt;/Editor&gt;
+                &lt;/Item&gt;
+                &lt;Item&gt;
+                        &lt;Name&gt;Scripts&lt;/Name&gt;
+                        &lt;Editor&gt;Scripts&lt;/Editor&gt;
+                &lt;/Item&gt;
+                &lt;Item&gt;
+                        &lt;Name&gt;Step Conditions&lt;/Name&gt;
+                        &lt;Editor&gt;StepConditions&lt;/Editor&gt;
+                &lt;/Item&gt;
+                &lt;Item&gt;
+                        &lt;Name&gt;Circuit Calculations&lt;/Name&gt;
+                        &lt;Editor&gt;CircuitCalculations&lt;/Editor&gt;
+                &lt;/Item&gt;
+        &lt;/Menu&gt;
+        &lt;Menu&gt;
+                &lt;Item&gt;
+                        &lt;Name&gt;Batteries&lt;/Name&gt;
+                        &lt;SubMenu&gt;smBatteries&lt;/SubMenu&gt;
+                        &lt;Image&gt;Batteries&lt;/Image&gt;
+                &lt;/Item&gt;
+                &lt;Item&gt;
+                        &lt;Name&gt;Devices&lt;/Name&gt;
+                        &lt;SubMenu&gt;smDevices&lt;/SubMenu&gt;
+                        &lt;Image&gt;Devices&lt;/Image&gt;
+                &lt;/Item&gt;
+                &lt;Item&gt;
+                        &lt;Name&gt;Displays&lt;/Name&gt;
+                        &lt;SubMenu&gt;smDisplays&lt;/SubMenu&gt;
+                        &lt;Image&gt;Displays&lt;/Image&gt;
+                &lt;/Item&gt;
+                &lt;Item&gt;
+                        &lt;Name&gt;Parameters&lt;/Name&gt;
+                        &lt;Editor&gt;Parameters&lt;/Editor&gt;
+                        &lt;Image&gt;Parameters&lt;/Image&gt;
+                &lt;/Item&gt;
+                &lt;Item&gt;
+                        &lt;Name&gt;Circuits&lt;/Name&gt;
+                        &lt;Editor&gt;Circuits&lt;/Editor&gt;
+                        &lt;Image&gt;Circuits&lt;/Image&gt;
+                &lt;/Item&gt;
+                &lt;Item&gt;
+                        &lt;Name&gt;Tests&lt;/Name&gt;
+                        &lt;SubMenu&gt;smTests&lt;/SubMenu&gt;
+                        &lt;Image&gt;Tests&lt;/Image&gt;
+                &lt;/Item&gt;
+                &lt;Item&gt;
+                        &lt;Name&gt;TestNotes&lt;/Name&gt;
+                        &lt;Editor&gt;TestNotes&lt;/Editor&gt;
+                &lt;/Item&gt;
+        &lt;/Menu&gt;
+&lt;/Menus&gt;
+&lt;/SolutionBuilder&gt;
+</pre>
+
+	<p>&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Customized Main Menu</strong></em></span><br /><img src="attachments/download/100000/42_SBMenu.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Customization Values</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:150px;text-align:left;"><strong>Tag</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> &lt;Menu&gt; </td>
+			<td> Defines a menu.</td>
+		</tr>
+		<tr>
+			<td> &lt;ID&gt; </td>
+			<td>String used to identify a sub-menu for use in the &lt;SubMenu&gt; field of &lt;Item&gt;. For the top level menu, do not set an &lt;ID&gt;.</td>
+		</tr>
+		<tr>
+			<td> &lt;Item&gt; </td>
+			<td> Defines a button in the menu. This tag can support both an &lt;Editor&gt; and &lt;SubMenu&gt; at the same time. The editor can be selected from the main button and the submenu can be accessed from the drop-down. If an &lt;Item&gt; does not have an &lt;Editor&gt; or a &lt;SubMenu&gt;, it will not appear in the SolutionBuilder Menu.  </td>
+		</tr>
+		<tr>
+			<td> &lt;Name&gt; </td>
+			<td> The text displayed on the button. Supports localization using standard translation macro files in StringTables folder. For example, the following string channel:<br /><pre>
+MyMacro,t,1033="Schedules",Japanese="スケジュール" </pre><br />Can be called by:<br /><pre> {MyMacro}</pre></td>
+		</tr>
+		<tr>
+			<td> &lt;SubMenu&gt; </td>
+			<td> String matching the &lt;ID&gt; field of a previously defined &lt;Menu&gt;. Pressing this button will display the referenced sub-menu.</td>
+		</tr>
+		<tr>
+			<td> &lt;Editor&gt; </td>
+			<td> String indicating the editor/view to be launched when the button is pressed. <br />Must be one of the editor values listed below:<br />- AllDevices<br />- BatterySpecimens<br />- BatteryTypes<br />- BlackBoxSettings<br />- Calculations<br />- Cameras<br />- CANDevices<br />- Chambers<br />- ChannelDefinitions<br />- Chillers<br />- CircuitCalculations<br />- Circuits<br />- ControlGroups<br />- ControlModes<br />- Cyclers<br />- DataLogs<br />- DataQualityGroups<br />- DynamicCalc<br />- InterVars<br />- Layouts<br />- LimitGroups<br />- LogHeaderForms<br />- LogOrderLists<br />- MapTables<br />- MasterSchedules<br />- ModuleProperties<br />- ModulesDevice<br />- ModulesSpecimen<br />- ModulesTest<br />- ModulesUtility<br />- Other<br />- Parameters<br />- Picklists<br />- PIDSettings<br />- PlotBuffer<br />- Procedures<br />- Reports<br />- SetValueTables<br />- Schedules<br />- Scripts<br />- StepConditions<br />- TestNotes<br />- Toolbars<br />- TopBar</td>
+		</tr>
+		<tr>
+			<td> &lt;Image&gt; </td>
+			<td> String used to define the embedded image in a menu button. The string can either be a fully-qualified path to an image file  or an &lt;Editor&gt; value.<br />* When using a separate image file, the following image types are supported: BMP, GIF, JPG, PNG, and TIFF. iTest allows use of a standard macro as part of the filepath, such as $SUPPORTDIR. When using a separate image file, the aspect ratio of the image is not automatically adjusted, so modification to the image file may be necessary to prevent the image from being overlapped by the menu option's text.<br />* To use a built-in image, use the value from an &lt;Editor&gt; tag. It is recommended to use built-in images from menu options (editors) on the same level as the one being customized, otherwise there are transparency issues and the image will not be visible in most cases. For example, if customizing the top level Devices menu option and the &lt;Image&gt; item used is one of the lower level menu options (e.g., Cyclers), the Devices menu option's displayed image will be effectively invisible unless you were to rest your cursor on the menu option's button. </td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Bottom-Menu-Customization"></a>
+<h2 >Bottom Menu Customization<a href="#Bottom-Menu-Customization" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Action buttons in SolutionBuilder's bottom menu can be hidden by adding the <strong>&lt;HiddenButtons&gt;</strong> and <strong>&lt;Button&gt;</strong> tags to the <em>SolutionBuilder.xml</em> file. The following values are supported by the <strong>&lt;Button&gt;</strong> tag:</p>
+
+
+	<ul>
+	<li>Build</li>
+		<li>ChannelHelper</li>
+		<li>Exit</li>
+		<li>Export</li>
+		<li>Find</li>
+		<li>Help</li>
+		<li>Home</li>
+		<li>Open</li>
+		<li>Report</li>
+		<li>Run</li>
+		<li>Save</li>
+		<li>SaveAs</li>
+	</ul>
+
+
+	<p><ins><strong>Example Syntax:</strong></ins><br /><pre>
+&lt;HiddenButtons&gt;
+    &lt;Button&gt;ChannelHelper&lt;/Button&gt;
+    &lt;Button&gt;Report&lt;/Button&gt;
+    &lt;Button&gt;Export&lt;/Button&gt;
+    &lt;Button&gt;Open&lt;/Button&gt;
+&lt;/HiddenButtons&gt;
+</pre></p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Customized Bottom Menu</strong></em></span><br /><img src="attachments/download/125843/44_CustomizedBottomMenu.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Editor-Customization"></a>
+<h2 >Editor Customization<a href="#Editor-Customization" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Procedure-Folders"></a>
+<h3 >Procedure Folders<a href="#Procedure-Folders" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To customize the listed procedure folders, SolutionBuilder will look for the following XML:</p>
+
+
+<pre>
+  &lt;ProcedureFolders&gt;
+        &lt;Folder&gt;\MSchProc\&lt;/Folder&gt;
+  &lt;/ProcedureFolders&gt;
+</pre>
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The folder name must include the preceding and trailing backslashes.</td>
+		</tr>
+	</table></p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">For BTS systems, the pool of available procedure folders is limited to only the <em>User</em>, <em>UserCellBalance</em>, and <em>UserChargeTaper</em> folders. No other procedure folders will be listed regardless of the applied customization or lack thereof. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>If SolutionBuilder finds this XML, then it will list the specified procedure folders. In the example below, the left pane will only list the <em>Dmo1</em> and <em>SysCoreFunctions</em> folders:</p>
+
+
+<pre>
+&lt;SolutionBuilder&gt;
+    &lt;ProcedureFolders&gt;
+        &lt;Folder&gt;\Dmo1\&lt;/Folder&gt;
+        &lt;Folder&gt;\SysCoreFunctions\&lt;/Folder&gt;
+    &lt;/ProcedureFolders&gt;
+&lt;/SolutionBuilder&gt;
+</pre>
+
+	<p>If SolutionBuilder does not find this XML, then it will list all of the available active procedure folders.<br />&nbsp;</p>
+
+
+	<a name="Property-Page-Customization"></a>
+<h3 >Property Page Customization<a href="#Property-Page-Customization" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To customize the colors for read-only text and combo fields in Device property pages, use the following syntax:</p>
+
+
+<pre>
+&lt;SolutionBuilder&gt;
+    &lt;PropertyPage&gt;
+        &lt;ReadOnlyBackColor&gt;Red&lt;/ReadOnlyBackColor&gt;
+        &lt;ReadOnlyForeColor&gt;Blue&lt;/ReadOnlyForeColor&gt;
+    &lt;/PropertyPage&gt;
+&lt;/SolutionBuilder&gt;</pre>
+
+	<p>&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Customized Colors</strong></em></span><br /><img src="attachments/download/99999/42_PropertyPageCustomization.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Plugin-Support"></a>
+<h2 >Plugin Support<a href="#Plugin-Support" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Additional editors can be added to SolutionBuilder by building a plugin dll in C# and adding some entries for it in <em>SolutionBuilder.xml</em>.</p>
+
+
+<pre>
+&lt;SolutionBuilder&gt;
+   &lt;Plugins&gt;
+      &lt;Plugin&gt;
+         &lt;FilePath&gt;SamplePlugin.dll&lt;/FilePath&gt;
+         &lt;ClassName&gt;Sample.Plugin&lt;/ClassName&gt;
+      &lt;/Plugin&gt;
+   &lt;/Plugins&gt;
+&lt;/SolutionBuilder&gt;
+</pre>
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Plugin Support Values</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:150px;text-align:left;"><strong>Value</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>FilePath</td>
+			<td>File path of the plugin dll to load. Can just be the filename if it is located in the iTest <em>Execute</em> folder.</td>
+		</tr>
+		<tr>
+			<td>ClassName</td>
+			<td>Name of the class implementing the plugin interface. Must include the full namespace.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Homepage-Customization"></a>
+<h2 >Homepage Customization<a href="#Homepage-Customization" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The existing SolutionBuilder homepage has been written for a BTS solution. You can modify the homepage for alternative solutions by editing the HTML file located in the iTest installation: <em>$SystemDir\Execute\WWW\Home\home.html</em>. Alternatively, a different HTML file from the <em>$SystemDir\Execute\WWW\Home</em> folder can be used in place of <em>home.html</em> by editing the <code>HomePage=</code> setting in <em>powertek.ini</em>.</p>
+
+
+	<a name="Adding-and-Editing-Links"></a>
+<h3 >Adding and Editing Links<a href="#Adding-and-Editing-Links" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Quick links featured on the SolutionBuilder homepage can be added and edited using the <em>home.html</em> file. Any of SolutionBuilder's editors can be linked directly from the homepage using the following syntax:</p>
+
+
+<pre>&lt;a href="*OpenEditor-XXX" class="vis-itest" style="display: none;"&gt;&lt;img src=""alt="XXX Editor"&gt;&lt;/a&gt;</pre>
+
+	<p>An example is as follows:<br /><pre>
+&lt;div id="OpenEditor_container"&gt;
+                    &lt;h2&gt;Open an editor&lt;/h2&gt;
+                    &lt;a href="*OpenEditor-Picklists" class="vis-itest" style="display: none;"&gt;&lt;img src="YourImage1.png"alt="Picklist Editor"&gt;&lt;/a&gt;
+                    &lt;a href="*OpenEditor-Scripts" class="vis-itest" style="display: none;"&gt;&lt;img src="YourImage2.png"alt="Scripts Editor"&gt;&lt;/a&gt;
+                    &lt;a href="*OpenEditor-Parameters" class="vis-itest" style="display: none;"&gt;&lt;img src="YourImage3.png"alt="Parameters Editor"&gt;&lt;/a&gt;
+                    &lt;a href="*OpenEditor-Circuits" class="vis-itest" style="display: none;"&gt;&lt;img src="YourImage4.png"alt="Circuits Editor"&gt;&lt;/a&gt;
+                &lt;/div&gt;    
+</pre></p>
+
+
+	<p>Images can be used as buttons by adding a valid image file to the <em>$SystemDir\Execute\WWW\Home</em> folder.</p>
+
+
+	<p>After saving the file, the updated links will appear next to or in place of the previously featured links. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Customized Links</strong></em></span><br /><img src="attachments/download/110140/43_SolutionBuilderInterface.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Executable-Feature"></a>
+<h3 >Executable Feature<a href="#Executable-Feature" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Executables can be launched from SolutionBuilder by editing the actionGet and actionDone javascript functions at the bottom of <em>home.html</em>. The actions which are defined in actionGet will run every time the SolutionBuilder homepage initializes. This happens when SolutionBuilder starts. Only one instance of the launched executable is supported during the same instance of SolutionBuilder.</p>
+
+
+	<p>The following syntax is used to determine the launched executable:</p>
+
+
+<pre>ret += '&lt;action&gt;&lt;cmd&gt;Executable.exe $SUPPORTDIR\\itworks.txt&lt;/cmd&gt;&lt;result&gt;$SUPPORTDIR\\itworks.txt&lt;/result&gt;&lt;/action&gt;';
+return ret;</pre>
+
+	<p>The following example is found at the bottom of the <em>home.html</em> file:<br /><pre>
+}
+
+//Can return xml defining actions for SolutionBuilder to run
+//&lt;cmd&gt; is the command-line to run
+//&lt;result&gt; is optional, it is a text file which will be read when the action finishes and then passed
+//        to actionDone() in result param.
+//multiple &lt;action&gt; elements can be returned to run multiple actions.
+function actionGet() {
+    var ret = '';
+    ret += '&lt;action&gt;&lt;cmd&gt;Notepad.exe $SUPPORTDIR\\itworks.txt&lt;/cmd&gt;&lt;result&gt;$SUPPORTDIR\\itworks.txt&lt;/result&gt;&lt;/action&gt;';
+    return ret;
+}
+
+//Called by SolutionBuilder when actions from actionGet() complete
+//    cmd is the command line that finished
+//  exitCode is the numeric exit code returned by the command
+//  result contains the contents of the file specified in &lt;result&gt;, or empty string if it wasn't specified.
+function  actionDone(cmd, exitCode, result) {
+    //add javascript here to check cmd/exitCode/result and update page as necessary
+    alert('Cmd: ' + cmd + '\nExitCode:' + exitCode + '\nResult:' + result);
+}
+</pre></p>
+
+
+	<p>To invoke a different executable, alter the <em>.exe</em>.</p>
+
+
+	<a name="Actions-on-Save"></a>
+<h2 >Actions on Save<a href="#Actions-on-Save" class="wiki-anchor">&para;</a></h2>
+
+
+	<p><em>SolutionBuilder.xml</em> can include command line instructions that are run by SolutionBuilder when the current solution is saved. This can be due to clicking <strong>Save</strong>, <strong>Save As</strong>, or on close. The last only occurs if pending changes are saved during the Close event. If more than one &lt;Action&gt; element is present, the Actions will be run sequentially.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">SolutionBuilder only waits for the called program to be run. It does not wait for a nested series of programs to run. For example, if the run program spawns another program, SolutionBuilder does not automatically wait for the second program to complete. It only waits for the first program to complete before moving on.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><ins><strong>Example:</strong></ins><br /><pre>
+&lt;SolutionBuilder&gt;
+    &lt;Actions&gt;
+        &lt;Action&gt;
+            &lt;Event&gt;AFTERSAVE&lt;/Event&gt;
+            &lt;Command&gt;EXE&lt;/Command&gt;
+            &lt;CommandArgs&gt;c:\windows\system32\notepad.exe $SUPPORTDIR&lt;/CommandArgs&gt;
+        &lt;/Action&gt;
+    &lt;/Actions&gt;
+&lt;/SolutionBuilder&gt;</pre></p>
+
+
+	<p>The &lt;CommandArgs&gt; field contains the command line to run. The macros ($SUPPORTDIR, $EXECUTEDIR, and $SYSTEMDIR) will get replaced with the appropriate values before the command is run.</p>
+
+
+	<p>Event timing when a Save causes an Action to be triggered while iTest is running:</p>
+
+
+	<ul>
+	<li>iTest is instructed to shut down.</li>
+		<li>SolutionBuilder waits until iTest is no longer running.</li>
+		<li>Defined Action(s) are triggered.</li>
+		<li>SolutionBuilder waits until all Action(s) are completed.</li>
+		<li>iTest is started again.</li>
+	</ul>
+</body>
+</html>

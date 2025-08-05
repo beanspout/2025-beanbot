@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ADT Title</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="ADT_Title.html">ADT Title</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="ADT-Title-Object"></a>
+<h1 >ADT Title Object<a href="#ADT-Title-Object" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#ADT-Title-Object">ADT Title Object</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Field-Definitions">Field Definitions</a><ul><li><a href="#General-Tab">General Tab</a></li><li><a href="#Effects-Tab">Effects Tab</a></li></ul>
+</li><li><a href="#ADT-Title-Object-Properties">ADT Title Object Properties</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The ADT Title display object will display a static text box.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>ADT Title</strong></em></span><br /><img src="attachments/download/6696/adttitle.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Field-Definitions"></a>
+<h2 >Field Definitions<a href="#Field-Definitions" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="General-Tab"></a>
+<h3 >General Tab<a href="#General-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>General Tab</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Option</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td><strong>Text Area</strong></td>
+			<td>This is the space where you type the text that you want to display in the control.</td>
+		</tr>
+		<tr>
+			<td><strong>Control ID</strong></td>
+			<td>Enter a Control ID. If you have multiple title controls and will be programmatically changing them in any way (e.g., sending a mailslot to update the display), you will need a different Control ID for each. If this is the only Title control on the display or you have multiple that you won’t be changing programmatically, use the ADT Title default.</td>
+		</tr>
+		<tr>
+			<td><strong>Permit Runtime Changes</strong></td>
+			<td>Allows changes to be made programmatically.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Effects-Tab"></a>
+<h3 >Effects Tab<a href="#Effects-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Effects Tab</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Option</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td><strong>Alignment</strong></td>
+			<td>Select a radio button that reflects the position in which you want text to display on the ADTTitle control. For example, if you select the middle radio button, text will display in the horizontal and vertical middle of the control. Multi-line titles will only display properly with one of the three top alignments.</td>
+		</tr>
+		<tr>
+			<td><strong>Border</strong></td>
+			<td>Select the type of border, if any, to display around the ADTTitle control.</td>
+		</tr>
+		<tr>
+			<td><strong>Text Orientation</strong></td>
+			<td>Select whether you want the text to be displayed <strong>Horizontally</strong> or <strong>Vertically</strong> (Bottom to Top or Top to Bottom).</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="ADT-Title-Object-Properties"></a>
+<h2 >ADT Title Object Properties<a href="#ADT-Title-Object-Properties" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>These properties are useful when issuing the following mailslot message:</p>
+
+
+<pre>
+\\.\mailslot\DisplayName&gt;&gt;$SETITEMPROPERTY ControlID PropertyName PropertyValue
+</pre>
+
+	<p>The following are the names of the properties that can be changed by mailslot message to the display.  These property names may or may not be the same as the property names shown on the display object property setup dialogs.  Most of these property names are self-explanatory.  The first column is the data type of the property.</p>
+
+
+	<p>The int or OLE_COLOR for color is the color RGB values.  “BSTR” means the type of the property is string.  “int”, “float”, “long”, “short”, “double” means the type of the property is number.  “Boolean” means the property value should be 1 or 0.</p>
+
+
+	<p>Font property syntax is complicated.<br />&lt;font name&gt;,&lt;bold&gt;,,&lt;italic&gt;,&lt;font size&gt;,,&lt;strikeout&gt;,&lt;underline&gt;, <br />example: Arial,0,0,0,97500,0,0,0,400</p></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>ADT Title Object Properties</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Type</strong></td>
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Notes</strong></td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>BackColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ForeColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bstr</td>
+			<td><strong>Text</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>short</td>
+			<td><strong>BorderType</strong></td>
+			<td>values: 0 - none, 1 - etched, 2 - raised, 3 - sunken</td>
+		</tr>
+		<tr>
+			<td>short</td>
+			<td><strong>Alignment</strong>*</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>short</td>
+			<td><strong>Orientation</strong></td>
+			<td>values: 0 - horizontal, 1 - bottom-to-top, 2 - top-to-bottom</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ChangesOK</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;">values: 0 - Top Left, 1 - Middle Left, 2 - Bottom Left, 3 - Top Middle, 4 - Middle Middle, 5 - Bottom Middle, 6 - Top Right, 7 - Middle Right, 8 - Bottom Right</span>
+
+	<p>&nbsp;</p>
+</body>
+</html>

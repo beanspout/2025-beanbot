@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Empty Module</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Demo_Applications.html">ITest Demo Applications</a></li>
+<li><a href="Empty_Module.html">Empty Module</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Empty-Module"></a>
+<h1 >Empty Module<a href="#Empty-Module" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Introduction"></a>
+<h2 >Introduction<a href="#Introduction" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The module <b>Ety1.EmptyModule</b> installed with <b>Solution.Demo</b> in iTest 3.5 and later.</p>
+
+
+	<p>It is basic starting point for new iTest device modules that are compatible with Solution.Demo.</p>
+
+
+	<a name="File-Structure-as-viewed-from-Test-Manager"></a>
+<h2 >File Structure (as viewed from Test Manager)<a href="#File-Structure-as-viewed-from-Test-Manager" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Only the existing files are shown here, a completed module may have many other files.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Channels</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Channel</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Channel Definitions \ Ety1</td>
+			<td>Module channels (excluding external input/output channels)</td>
+		</tr>
+		<tr>
+			<td>Channel Definitions \ ioEty1</td>
+			<td>External input/output channels (analog in, analog out, etc.)</td>
+		</tr>
+		<tr>
+			<td>Ety.ini</td>
+			<td>File for persisting channel values</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Calculations</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Calculation</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>System Rate \ Ety    </td>
+			<td>System rate calculations</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Test Development</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Procedure</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Procedures \ Ety1Action</td>
+			<td>Module actions (for ready, start, stop etc.)</td>
+		</tr>
+		<tr>
+			<td>Procedures \ Ety1Display</td>
+			<td>Procedure that opens module display</td>
+		</tr>
+		<tr>
+			<td>Procedures \ EtyInit</td>
+			<td>Module initialization procedure (called from &lt;MID&gt;Action)</td>
+		</tr>
+		<tr>
+			<td>Procedures \ EtyUpdateStatus</td>
+			<td>Started by the Module Configuration tool when status is changed</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Data Logging</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Log Order List</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Log Order List \ Blackbox</td>
+			<td>Empty channel log list</td>
+		</tr>
+		<tr>
+			<td>Log Order List \ main</td>
+			<td>Empty channel log list</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Presentation</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Display</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Displays \ Standard \ Ety1_EmptyModule  </td>
+			<td>Main module display</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Channel-Descriptions-Etyfil"></a>
+<h2 >Channel Descriptions (Ety.fil)<a href="#Channel-Descriptions-Etyfil" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Channel Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Channel Name</strong></td>
+			<td style="text-align:left;"><strong>Type</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>flgEty1Busy</td>
+			<td>VO</td>
+			<td>1 = Module is performing a global action</td>
+		</tr>
+		<tr>
+			<td>flgEty1Disabled</td>
+			<td>VO</td>
+			<td>1 = Module does not take part in global actions</td>
+		</tr>
+		<tr>
+			<td>flgEty1Fault</td>
+			<td>VO</td>
+			<td>1 = Module fault detected</td>
+		</tr>
+		<tr>
+			<td>flgEty1IniRead</td>
+			<td>VO</td>
+			<td>1 = INI file has been read</td>
+		</tr>
+		<tr>
+			<td>flgEty1OnLine</td>
+			<td>VO</td>
+			<td>1 = Device on line</td>
+		</tr>
+		<tr>
+			<td>flgEty1RunFaultResponse</td>
+			<td>VO</td>
+			<td>Module configuration, 0 = None, 1 = Notify, 2 = Action</td>
+		</tr>
+		<tr>
+			<td>flgEty1StartFaultResponse</td>
+			<td>VO</td>
+			<td>Module configuration, 0 = None, 1 = Notify, 2 = Action</td>
+		</tr>
+		<tr>
+			<td>flgEty1TestFaultResponse</td>
+			<td>VO</td>
+			<td>Module configuration, 0 = None, 1 = Notify, 2 = Action</td>
+		</tr>
+		<tr>
+			<td>tmrEty1Run</td>
+			<td>Timer</td>
+			<td>Running time</td>
+		</tr>
+		<tr>
+			<td>vsEty1ModuleID</td>
+			<td>VO</td>
+			<td>Module identification string</td>
+		</tr>
+		<tr>
+			<td>vsEty1Desc</td>
+			<td>VS</td>
+			<td>Module description</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Module-Display"></a>
+<h2 >Module Display<a href="#Module-Display" class="wiki-anchor">&para;</a></h2>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Module Display</strong></em></span><br /><img src="attachments/download/99460/EmptyModule.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+</body>
+</html>

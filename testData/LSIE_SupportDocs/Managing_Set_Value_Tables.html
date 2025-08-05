@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Managing Set Value Tables</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Managing_Set_Value_Tables.html">Managing Set Value Tables</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Managing-Set-Value-Tables"></a>
+<h1 >Managing Set Value Tables<a href="#Managing-Set-Value-Tables" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Managing-Set-Value-Tables">Managing Set Value Tables</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Using-the-Set-Value-Tables-Editor">Using the Set Value Tables Editor</a></li><li><a href="#Creating-New-Set-Value-Tables">Creating New Set Value Tables</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Set value tables allow you to create a named sequence of values that change according to specified delay times. Programming experience is not necessary to create these table because a comprehensive editor is used to define the delay time, channel name, and set value. You can use analog, digital, and virtual outputs in set value tables.</p>
+
+
+	<a name="Using-the-Set-Value-Tables-Editor"></a>
+<h2 >Using the Set Value Tables Editor<a href="#Using-the-Set-Value-Tables-Editor" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To manage set value tables in SolutionBuilder, select <strong>Tests > Set Value Tables</strong> from SolutionBuilder's main menu to open the Set Value Tables editor. The Set Value Tables editor contains two sections: the list of set value tables and the editing area.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Set Value Tables Editor</strong></em></span><br /><img src="attachments/download/126171/44_SetValueTablesEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>The following right-click options are available:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+			<td style="text-align:left;"><strong>Keyboard<br />Shortcut</strong></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="3">List of Set Value Tables</th>
+		</tr>
+		<tr>
+			<td>Add</td>
+			<td> Adds a new set value table. For more information, refer to the <a class="wiki-page" href="#Creating-New-Set-Value-Tables">Creating New Set Value Tables</a> section.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Remove</td>
+			<td> Removes the selected set value table.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Rename...</td>
+			<td> Launches the Rename dialog, which allows you to rename the set value table.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Duplicate</td>
+			<td> Duplicates the selected set value table.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td> Removes the selected set value table and copies it to the clipboard.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td> Copies the selected set value table to the clipboard.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td> Pastes the copied set value table.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td> Undoes the last action.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td> Redoes the last undone action.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="3">Editing Area</th>
+		</tr>
+		<tr>
+			<td>Insert Before</td>
+			<td> Inserts a new row before the highlighted row.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Add to End</td>
+			<td> Adds a new row to the end of the set value table.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td> Deletes the selected row.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td> Removes the cell's value and copies it to the clipboard.</td>
+			<td><strong>Ctrl - X</strong></td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td> Copies the cell's value to the clipboard.</td>
+			<td><strong>Ctrl - C</strong></td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td> Pastes the copied value.</td>
+			<td><strong>Ctrl - V</strong></td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td> Undoes the last action.</td>
+			<td><strong>Ctrl - Z</strong></td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td> Redoes the last undone action.</td>
+			<td><strong>Ctrl - Y</strong></td>
+		</tr>
+		<tr>
+			<td>Show Customer Name</td>
+			<td> Toggles between displaying the channel's alias or customer name if defined for the channel.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Creating-New-Set-Value-Tables"></a>
+<h2 >Creating New Set Value Tables<a href="#Creating-New-Set-Value-Tables" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To create a new set value table, do the following:</p>
+
+
+	<ol>
+	<li>Right-click on a folder name in the list of set value tables and select <strong>Add</strong>. A blank editing area displays. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Set Value Table</strong></em></span><br /><img src="attachments/download/126173/44_NewSetValueTable.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>In the editing area, right-click and select either <strong>Insert Before</strong> or <strong>Add to End</strong>. A new row is added to the set value table.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add New Row</strong></em></span><br /><img src="attachments/download/126174/44_AddNewRowSetValueTable.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Use the descriptions provided in the table below to configure each column's value.</li>
+	</ol>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Set Value Table Column Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Column</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Delay</td>
+			<td> The delay time in seconds.</td>
+		</tr>
+		<tr>
+			<td>Channel Name</td>
+			<td> The channel to use. This channel is restricted to virtual output channels configured as step parameters or step operands, analog output channels, and digital output channels.</td>
+		</tr>
+		<tr>
+			<td>Alias/Customer Name</td>
+			<td> (Read-only) The alias or customer name defined for the channel; this field is automatically populated if the channel has a defined alias or customer name. You can switch between which column is displayed via the <strong>Show Customer Name</strong> right-click option.</td>
+		</tr>
+		<tr>
+			<td>Set Value</td>
+			<td> The value to set the channel to.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+</body>
+</html>

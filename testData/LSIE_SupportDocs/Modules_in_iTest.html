@@ -1,0 +1,681 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Modules in iTest</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Modules_in_iTest.html">Modules in iTest</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Modules-in-iTest"></a>
+<h1 >Modules in iTest<a href="#Modules-in-iTest" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Modules-in-iTest">Modules in iTest</a><ul><li><a href="#Overview">Overview</a><ul><li><a href="#Provided-Modules">Provided Modules</a></li></ul>
+</li><li><a href="#Module-File-Structure-and-Types">Module File Structure and Types</a></li><li><a href="#Module-Naming">Module Naming</a><ul><li><a href="#Renaming-Module-IDs">Renaming Module IDs</a></li></ul>
+</li><li><a href="#Locating-Modules-in-Your-Environment">Locating Modules in Your Environment</a></li><li><a href="#Importing-Modules">Importing Modules</a><ul><li><a href="#Importing-a-Specific-Module-Revision">Importing a Specific Module Revision</a></li></ul>
+</li><li><a href="#Exporting-Modules">Exporting Modules</a><ul><li><a href="#Module-Sub-Folder-Specifications">Module Sub-Folder Specifications</a></li></ul>
+</li><li><a href="#Module-Configuration-Dialog">Module Configuration Dialog</a></li><li><a href="#Channel-Assignment">Channel Assignment</a><ul><li><a href="#Using-the-Channel-Assignment-Command-Line">Using the Channel Assignment Command Line</a><ul><li><a href="#ChanAssignDlg-Command-Line">ChanAssignDlg Command Line</a></li><li><a href="#SysChanAssignDlg">SysChanAssignDlg</a></li></ul>
+</li></ul>
+</li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Modules in iTest are a collection of iTest files that are designed to be added and removed from your solution as a named unit and provide additional functionality (e.g., running a specific test or providing a ready to run interface to a device). To support the use of modules, set the <code>MODULARITY</code> <em>powertek.ini</em> setting to TRUE. Modules can be managed using Test Manager or SolutionBuilder.</p>
+
+
+	<a name="Provided-Modules"></a>
+<h3 >Provided Modules<a href="#Provided-Modules" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Some modules are installed with iTest, and others can be obtained from A&#38;D Technology. Example modules from A&#38;D Technology include:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Available Example Modules</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Name</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Proc.PowerMap</td>
+			<td> A universal Powermap module for Engine Test.</td>
+		</tr>
+		<tr>
+			<td>Cas.AD</td>
+			<td> An A&#38;D Cas Combustion module.</td>
+		</tr>
+		<tr>
+			<td>Acs.Orion</td>
+			<td> An interface that provides the hooks for your application to be controlled by Orion.</td>
+		</tr>
+		<tr>
+			<td>Eb.BestSokki8500</td>
+			<td> An interface to a Best Sokki 8500 emissions bench.</td>
+		</tr>
+		<tr>
+			<td>Eb.MEXA.7k.HORIBA.AK</td>
+			<td> An AK interface to a Horiba Mexa 7000 bench.</td>
+		</tr>
+		<tr>
+			<td>Pndt.Pendant</td>
+			<td> An A&#38;D operator pendant.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Module-File-Structure-and-Types"></a>
+<h2 >Module File Structure and Types<a href="#Module-File-Structure-and-Types" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>A module has the same file structure as a solution. It may contain displays, procedure files, channel definition files, limit files, log order list files, and more. However, all files and channel names in a module should have a module ID located somewhere in the filename or channel name. This allows a module’s files and channels to be unique as well as assist in renaming and copying the module.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Test Manager and SolutionBuilder do not currently enforce this rule. However, it should be adhered to in order to have a well-behaved module.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>Modules are categorized into the following types:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Module Types</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Type</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Device</td>
+			<td> Defines the operation of external measuring devices or control systems (e.g., ECU system, CAS system, or Engine Coolant Conditioner).</td>
+		</tr>
+		<tr>
+			<td>Specimen</td>
+			<td> Defines the unit under test (e.g., an engine or a transmission).</td>
+		</tr>
+		<tr>
+			<td>Test</td>
+			<td> Defines a test cycle (e.g., a steady state schedule, a transient test, etc.).</td>
+		</tr>
+		<tr>
+			<td>Utility</td>
+			<td> Defines any miscellaneous modules and is typically used for special calculations, report packages, etc.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Module-Naming"></a>
+<h2 >Module Naming<a href="#Module-Naming" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Modules typically use the following naming convention: <code>&lt;Module ID&gt;.&lt;Name&gt;</code> (e.g., <code>Dmo1.Module</code>). The module name can consist of alphanumeric characters, periods, and underscores. Changing the <code>&lt;Module ID&gt;</code> component of a module name does not automatically modify the Module ID for the module. Modules can be renamed in SolutionBuilder and Test Manager by using the <strong>Rename</strong> right-click option in the editor.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">iTest does not enforce this naming convention. However, it should be adhered to in order to have a well-behaved module.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>Module IDs follow a specific naming convention (as follows):</p>
+
+
+	<ul>
+	<li>Module IDs must be unique; you cannot have any duplicated module IDs in the same solution.</li>
+		<li>Module IDs cannot be a substring of another module ID.</li>
+		<li>Module IDs cannot include another module ID as part of it.</li>
+		<li>Module IDs cannot include a device name.</li>
+		<li>Module IDs cannot be a substring of a device name.</li>
+		<li>Module IDs must contain a number.</li>
+		<li>Module IDs must start with a letter.</li>
+		<li>Module IDs can only use alphanumeric characters, underscores, and periods.</li>
+	</ul>
+
+
+	<a name="Renaming-Module-IDs"></a>
+<h3 >Renaming Module IDs<a href="#Renaming-Module-IDs" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Module IDs can be renamed in SolutionBuilder and Test Manager by editing the <strong>Module ID</strong> field. Alternatively, use DoModuleMerge from the command-line to rename the module ID:</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">iTest must not be running when using DoModuleMerge to rename the module.</td>
+		</tr>
+	</table></p>
+
+
+<pre>
+DoModuleMerge.exe Rename ModuleFolder OldModuleID NewModuleID SolutionFolder
+</pre>
+
+	<p><ins><strong>Example:</strong></ins><br /><pre>
+DoModuleMerge.exe Rename C:\ADT\iTest4.3\Modules\Test\Dmo1.BasicDemo Dmo1 Dmo2 C:\ADT\iTest4.3\Solution.Demo
+</pre></p>
+
+
+	<a name="Locating-Modules-in-Your-Environment"></a>
+<h2 >Locating Modules in Your Environment<a href="#Locating-Modules-in-Your-Environment" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Modules can be stored on your local drive, a LabCentral shared folder, or another shared folder on your network. When adding/importing modules, a dialog will display with a list of available modules in your environment:</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Only modules with a matching <strong>GLevel</strong> as the solution will appear in this list.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Add Module Dialog</strong></em></span><br /><img src="attachments/download/119744/42_module2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Folders under the $SYSTEMDIR that contain a <em>module.xml</em> file will display under the <em>Local Modules</em> section in the Add/Import Module dialog. These folders are conformed to the standard module format.</p>
+
+
+	<p>The <code>ICENTRAL=</code> <em>config.ini</em> setting specifies the folder designated by LabCentral for holding the common module library. If you are connected to LabCentral, the <code>ICENTRAL=</code> <em>config.ini</em> setting is automatically written. Normally, this is a network folder name that is shared by the LabCentral server. Any modules listed in this folder will display under the <em>LabCentral Modules</em> section in the Add/Import Module dialog. For more information, refer to the <a class="wiki-page" href="Interacting_with_LabCentral.html">Interacting with LabCentral</a> documentation.</p>
+
+
+	<p><ins><strong>Example:</strong></ins><br /><pre>
+ICENTRAL=\\QAVMW2K22-LC12\CONFIG
+</pre></p>
+
+
+	<a name="Importing-Modules"></a>
+<h2 >Importing Modules<a href="#Importing-Modules" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can import modules from LabCentral using Test Manager or SolutionBuilder. When using module revision control (i.e., <code>ModuleRevisionControl=TRUE</code>), you can import modules that are still under development.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">When importing modules, certain file types must be in a subfolder, not in the root module folder, to be included as part of the imported module. This includes, but is not limited to, TXT, CSV, and CFG files.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>There are two methods to import modules in Test Manager:</p>
+
+
+	<ol>
+	<li>Right-click the name of the solution in the Test Manager tree and select the <strong>Add Module</strong> option.</li>
+		<li>Click <strong>File</strong> from the Test Manager main menu and select the <strong>Add Module to Solution</strong> option.</li>
+	</ol>
+
+
+	<p>There is a single method to import modules in SolutionBuilder:</p>
+
+
+	<ol>
+	<li>Right-click on the module list in the Modules editor and select the <strong>Add</strong> option.</li>
+	</ol>
+
+
+	<p>The Add/Import Module dialog displays; this dialog differs very slightly in appearance between Test Manager and SolutionBuilder:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Add Module Dialog (example from SolutionBuilder)</strong></em></span><br /><img src="attachments/download/123093/43_AddModuleDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Select a module from the list and enter an ID for it in the <strong>Module ID</strong> field. Refer to the <a class="wiki-page" href="#Module-Naming">Module Naming</a> section for the proper module ID naming convention. Click <strong>Add</strong> to import the module.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Modules under the <em>LabCentral Development Modules</em> folder are only available when iTest is connected to LabCentral and <code>ModuleRevisionControl=TRUE</code>.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Importing-a-Specific-Module-Revision"></a>
+<h3 >Importing a Specific Module Revision<a href="#Importing-a-Specific-Module-Revision" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Storing modules in revision control allows you to choose from previous versions during import. This is done by clicking the <strong>Add Revision…</strong> button. This button is only available when importing a module from the <em>LabCentral Modules</em> or <em>LabCentral Development Modules</em> folders.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Add Revision</strong></em></span><br /><img src="attachments/download/123091/IT41-TM_SelectedModule_ModuleRevisionControl_AddRevision.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>This displays the Select Version dialog where you can select from any version of the module that has historically been uploaded to LabCentral. Select the desired version, and then click <strong>OK</strong> to import it.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Select Version</strong></em></span><br /><img src="attachments/download/123092/IT41-TM_SelectVersion_ModuleRevisionControl.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>For more information about revision control, refer to the <a class="wiki-page" href="Interacting_with_LabCentral.html">Interacting with LabCentral</a> documentation.</p>
+
+
+	<a name="Exporting-Modules"></a>
+<h2 >Exporting Modules<a href="#Exporting-Modules" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>From Test Manager or SolutionBuilder, you can export modules within your solution to LabCentral or to your local drive. This allows modules from one test system to be shared with other test systems. When using module revision control (i.e., <code>ModuleRevisionControl=TRUE</code>), you can export modules under development to an alternative LabCentral folder.</p>
+
+
+	<p>There are two methods to export modules from Test Manager:</p>
+
+
+	<ol>
+	<li>Select <strong>File > Export to LabCentral > Module…</strong> from the main menu. A dialog displays, prompting you to select the module to export.</li>
+		<li>Right-click the specific module name in the Test Manager tree and select the <strong>Export</strong> option.</li>
+	</ol>
+
+
+	<p>There is a single method to export modules from SolutionBuilder:</p>
+
+
+	<ol>
+	<li>Right-click the specific module name in the Modules editor and select the <strong>Export</strong> option.</li>
+	</ol>
+
+
+	<p>The Export Module to LabCentral dialog displays; this dialog differs very slightly in appearance between Test Manager and SolutionBuilder. From this dialog, you can provide an alternative name for the destination module; refer to the <a class="wiki-page" href="#Module-Naming">Module Naming</a> section for the proper naming convention. You can export the module to your local drive or the LabCentral Modules folder. Enter any applicable comments, and then click <strong>OK</strong> to export the module.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Export Module to LabCentral (example from Test Manager)</strong></em></span><br /><img src="attachments/download/123094/43_ExportModuleToLabCentral.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p><ins><strong>Notes:</strong></ins></p>
+
+
+	<ul>
+	<li>The module ID cannot be changed when you export a module. The module ID will be exactly as it is in the solution.</li>
+		<li>If the module name already exists on the export folder, you will be prompted that it already exists and will be given the option to replace it.  Refer to the <a class="wiki-page" href="#Module-Naming">Module Naming</a> section for the correct naming convention.</li>
+		<li>The <strong>LabCentral Development</strong> option is only available when iTest is connected to LabCentral and <code>ModuleRevisionControl=TRUE</code>; this option allows you to export modules still under development to the LabCentral <em>Modules_Development</em> folder as well as enter any applicable comments. For more information about revision control, refer to the <a class="wiki-page" href="Interacting_with_LabCentral.html">Interacting with LabCentral</a> documentation.</li>
+		<li>If you use the <strong>File > Export to LabCentral > Module…</strong> option to perform the export, you can delete the local module after the export is completed by checking the <strong>Delete local copy</strong> checkbox. 
+	<ul>
+	<li>This checkbox is not available from the <strong>Export</strong> right-click option available in both Test Manager and SolutionBuilder.</li>
+	</ul>
+	</li>
+		<li>When <code>ModuleRevisionControl=FALSE</code>, or if exporting to a local folder, comments are disabled.</li>
+		<li>When you export the module, the module’s <em>filelist.xml</em> file is used as a blueprint to determine what will be included in the module export.</li>
+	</ul>
+
+
+	<table>
+		<tr>
+			<td style="background:#cc061c;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3741/Warning3.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>WARNING:</b></td>
+			<td style="vertical-align:top;">If a layout contains a module ID in its file name, then it will be included in the export; however, the <em>filelist.xml</em> file may not be updated. This also applies when a module ID is used as a case-insensitive substring. For example, a module with the “Test1” MID will include a layout with the “ManualTest1” filename in the export.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Module-Sub-Folder-Specifications"></a>
+<h3 >Module Sub-Folder Specifications<a href="#Module-Sub-Folder-Specifications" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>If you have created module sub-folders in the solution that did not exist prior to importing the solution, additional steps must be taken to ensure that files added to the sub-folder are exported successfully. This is accomplished by editing the <em>filelist.xml</em> file located in your $SUPPORTDIR. Currently, there is no GUI support for this feature; to edit the file, open it in a text editor. A typical <em>FileList.xml</em> file is displayed below:</p>
+
+
+	<p><ins><strong>Example:</strong></ins><br /><pre>
+&lt;files&gt;
+    &lt;copy&gt;
+        &lt;f&gt;Ecc2.Config.drv&lt;/f&gt;
+        &lt;f&gt;Ecc2.ini&lt;/f&gt;
+        &lt;f&gt;Calculations\10Hz\Ecc2.dat&lt;/f&gt;
+        &lt;f&gt;Calculations\10Hz\Order.Ecc2.txt&lt;/f&gt;
+        &lt;f&gt;Calculations\1Hz\Ecc2.dat&lt;/f&gt;
+        &lt;f&gt;Calculations\1Hz\Order.Ecc2.txt&lt;/f&gt;
+        &lt;f&gt;Calculations\SystemRate\Ecc2.dat&lt;/f&gt;
+        &lt;f&gt;Calculations\SystemRate\Order.Ecc2.txt&lt;/f&gt;
+    &lt;/copy&gt;
+
+    &lt;merge&gt;
+        &lt;f&gt;Config.drv&lt;/f&gt;
+        &lt;f&gt;InterVar.dat&lt;/f&gt;
+        &lt;f&gt;settings.ini&lt;/f&gt;
+        &lt;f&gt;Data\MAIN.LOL&lt;/f&gt;
+    &lt;/merge&gt;
+&lt;/files&gt;
+</pre></p>
+
+
+	<p>This feature enables you to export all files within the specified folder whether they existed before the module was imported or not. To add a sub-folder, add a new node called <strong>&lt;copyfolder&gt;</strong> beneath the <strong>&lt;files&gt;</strong> node:</p>
+
+
+	<p><ins><strong>Example:</strong></ins></p>
+
+
+<pre>
+&lt;copyfolder&gt;
+&lt;f&gt;FolderName&lt;/f&gt;
+&lt;/copyfolder&gt;
+</pre>
+
+	<p>Where:</p>
+
+
+	<ul>
+	<li><strong>&lt;copyfolder&gt;</strong> is the node indicating a new folder.</li>
+		<li><strong>FolderName</strong> is the name of the folder. Note that a folder can only belong to one module.</li>
+	</ul>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Module-Configuration-Dialog"></a>
+<h2 >Module Configuration Dialog<a href="#Module-Configuration-Dialog" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Module Configuration dialog allows you to determine module settings from a single interface. From this dialog, you can enable and disable modules as well as change their alarm responses. This dialog can be accessed from the following locations:</p>
+
+
+	<ul>
+	<li>In Test Manager, select the <em>Modules</em> tree node, and then right-click and select the <strong>Module Configuration</strong> option.</li>
+		<li>In Test Manager, select any specific module, and then right-click and select the <strong>Module Configuration</strong> option.</li>
+		<li>In AutomationPanel, select the <strong>Tools > Module Configuration</strong> menu item.</li>
+		<li>In SolutionBuilder, select any specific module, and then right-click and select the <strong>Module Configuration</strong> option.</li>
+	</ul>
+
+
+	<p>All available modules in your solution will appear in the dialog unless it is launched from a specific module in Test Manager or SolutionBuilder. In this case, only the selected module will appear in the dialog.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Module Configuration from Test Manager</strong></em></span><br /><img src="attachments/download/123105/TM42_ModuleConfiguration.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Module Configuration from AutomationPanel</strong></em></span><br /><img src="attachments/download/123106/ModuleConfiguration.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Module Configuration from SolutionBuilder</strong></em></span><br /><img src="attachments/download/123104/SB42_ModuleConfiguration.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>You can set the status of each module using the drop-down menu. Once you have selected the status, iTest will set a channel (e.g., <code>flg&lt;MID&gt;Disabled</code>) in the <em>&lt;MID&gt;.ini</em> file to either -1, 0, or 1; refer to the table below for descriptions of each channel value. Each module's procedures and calculations are then limited to what they can do based on this channel value.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Status Settings</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Status</strong></td>
+			<td style="text-align:left;"><strong>Channel Value</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Required</td>
+			<td style="text-align:center;">-1</td>
+			<td> Module is required. You cannot enable or disable a module at runtime.</td>
+		</tr>
+		<tr>
+			<td>Enabled</td>
+			<td style="text-align:center;">0</td>
+			<td> Module is enabled. Module configuration can still be modified during runtime.</td>
+		</tr>
+		<tr>
+			<td>Disabled</td>
+			<td style="text-align:center;">1</td>
+			<td> Module is disabled. Module configuration can still be modified during runtime.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>In addition to enabling and disabling modules, you can change how the module will react to fault responses that occur while the module is communicating with its device. Each fault response can be set to <strong>Action</strong>, <strong>Notify</strong>, or <strong>None</strong>. <strong>Action</strong> indicates letting the default action in the module occur if there is a fault. <strong>Notify</strong> indicates sending a message to the message queue and showing the module has faulted but without taking action. <strong>None</strong> indicates that the fault should be ignored. All of these fault responses are changeable at runtime in the Module Configuration dialog and while creating the module.</p>
+
+
+	<p>Fault responses are categorized; the operator can distinguish between faults that occur during startup, manual mode, and automated testing. A different response can be selected for each module in each state of operation.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Fault Responses</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Fault Response</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Select Starter Module</td>
+			<td> Selects the module responsible for starting the engine. Typically, this is the dyno/throttle or engine module. This setting is not available when launching the Module Configuration dialog from AutomationPanel.</td>
+		</tr>
+		<tr>
+			<td>Startup</td>
+			<td> Selectable fault response for system startup phases (e.g., Ready, Reset, Starting). Options include:<br />&nbsp;<br />- <ins><strong>Action:</strong></ins> Fault response will result in a defined action.<br />- <ins><strong>Notify:</strong></ins> Fault will notify the user with an operator prompt.<br />- <ins><strong>None:</strong></ins> Module fault should be ignored.</td>
+		</tr>
+		<tr>
+			<td>Manual</td>
+			<td> Selectable fault response for the system running (e.g., started but not running a test).</td>
+		</tr>
+		<tr>
+			<td>Auto</td>
+			<td> Selectable fault when running a test (e.g., started and running a schedule test).</td>
+		</tr>
+		<tr>
+			<td>Fault</td>
+			<td> Indicates the fault condition of the module.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Channel-Assignment"></a>
+<h2 >Channel Assignment<a href="#Channel-Assignment" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Channel Assignment dialog allows you to assign module channels to system I/O channels where appropriate. If the module contains a file that uses the <em>io&lt;MID&gt;.fil</em> format, then the Channel Assignment dialog will appear automatically after the module is added. Any channel in the module's I/O file appears in the grid, and you can assign it to any channel that has not already been assigned in the solution. The channels from the solution are located in the <em>ioSys.fil</em> channel definition file. The <code>ExtraSysIO</code> and <code>ExtraModuleIOFiles</code> <em>powertek.ini</em> settings can be used to include channels from other channel definition files.</p>
+
+
+	<p>After importing a module and assigning channels, you can go back to the Channel Assignment dialog by right-clicking on the module and selecting the <strong>Channel Assignment</strong> option. This displays the assignment list for that module.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Channel Assignment Dialog</strong></em></span><br /><img src="attachments/download/123108/42_ModuleChannelAssignment.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Test Manager and SolutionBuilder offer an alternative Channel Assignment dialog that allows you to view empty channels prior to selecting an assignment. In Test Manager, this dialog can be opened by right-clicking the <em>Channel Definitions</em> tree node and selecting the <strong>Channel Assignment</strong> option. In SolutionBuilder, this dialog can be opened by right-clicking the <em>Sys</em> tree node in the Channel Definitions editor.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Alternative Channel Assignment Dialog</strong></em></span><br /><img src="attachments/download/123119/42_TestMChannelAssignment.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Channel Assignment Column and Action Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Column/Action</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2">Columns</th>
+		</tr>
+		<tr>
+			<td>Prefix</td>
+			<td> The module ID.</td>
+		</tr>
+		<tr>
+			<td>Type</td>
+			<td> Input or output.</td>
+		</tr>
+		<tr>
+			<td>Status</td>
+			<td> Status values include <strong>Assigned</strong>, <strong>Previous</strong>, and <strong>Blank</strong>.</td>
+		</tr>
+		<tr>
+			<td>Module Channels</td>
+			<td> The name of the channel in the module.</td>
+		</tr>
+		<tr>
+			<td>System IO Channels</td>
+			<td> The name of the channel in the solution.</td>
+		</tr>
+		<tr>
+			<td>Customer Name</td>
+			<td> The customer name of the channel in the solution if it exists.</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2">Actions</th>
+		</tr>
+		<tr>
+			<td>Close</td>
+			<td> Exits the Channel Assignment dialog.</td>
+		</tr>
+		<tr>
+			<td>Assign All</td>
+			<td> Assigns multiple channels simultaneously. First, select the system channels to assign to the various modules, and then click the <strong>Assign All</strong> button.</td>
+		</tr>
+		<tr>
+			<td>Unassign All</td>
+			<td> Unassigns all module channels. When this option is selected, the channel status changes from <strong>Assigned</strong> to <strong>Previous</strong>, where <strong>Previous</strong> indicates that the channel was assigned previously but is currently unassigned. From this state, you can click the <strong>Assign All</strong> button to revert to the original state.</td>
+		</tr>
+		<tr>
+			<td>Clear All</td>
+			<td> Clears the assignments in the <strong>System IO Channels</strong> and <strong>Status</strong> columns so that the module channels can be assigned to different system channels.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Using-the-Channel-Assignment-Command-Line"></a>
+<h3 >Using the Channel Assignment Command Line<a href="#Using-the-Channel-Assignment-Command-Line" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Channel Assignment dialog can be opened using the following command line arguments. If the channel assignments are changed, and iTest Console or AutomationPanel is running, then you will be prompted to restart iTest so the new assignments can be activated. These arguments are case-sensitive and are only supported when launching Test Manager.</p>
+
+
+	<a name="ChanAssignDlg-Command-Line"></a>
+<h4 >ChanAssignDlg Command Line<a href="#ChanAssignDlg-Command-Line" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>You can launch the Channel Assignment dialog for a specific module by using the ChanAssignDlg argument and specifying the module ID. If the module ID is unspecified, then the Channel Assignment dialog displays all the eligible channels from any modules (i.e., channels found in all <em>io&lt;MID&gt;.fil</em> files and any files listed in the <code>ExtraModuleIOFiles</code> <em>powertek.ini</em> setting).</p>
+
+
+	<p><ins><strong>Syntax:</strong></ins><br /><pre>
+TestMgr.exe ChanAssignDlg [MID]
+</pre></p>
+
+
+	<p><ins><strong>Parameters:</strong></ins></p>
+
+
+	<ul>
+	<li><em>[MID]:</em> The module ID. This is optional.</li>
+	</ul>
+
+
+	<p><ins><strong>Example:</strong></ins><br /><pre>
+TestMgr.exe ChanAssignDlg Acs.Orion.Asap3
+</pre></p>
+
+
+	<a name="SysChanAssignDlg"></a>
+<h4 >SysChanAssignDlg<a href="#SysChanAssignDlg" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>This argument launches the alternative Channel Assignment dialog. If a channel definition file name is unspecified, then the Channel Assignment dialog shows all the channels from any eligible system-level channel definition files (i.e., <em>ioSys.fil</em> and those listed in the <code>ExtraSysIOFiles</code> <em>powertek.ini</em> setting).</p>
+
+
+	<p><ins><strong>Syntax:</strong></ins><br /><pre>
+TestMgr.exe SysChanAssignDlg [DBFileName]
+</pre></p>
+
+
+	<p><ins><strong>Parameters:</strong></ins></p>
+
+
+	<ul>
+	<li><em>[DBFileName]:</em> The name of a system-channel definition file. This is optional.</li>
+	</ul>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Interacting_with_LabCentral.html">Interacting with LabCentral</a></li>
+		<li><a class="wiki-page" href="Managing_Modules_in_SolutionBuilder.html">Managing Modules in SolutionBuilder</a></li>
+		<li><a class="wiki-page" href="Modules.html">Managing Modules in Test Manager</a></li>
+	</ul>
+</body>
+</html>

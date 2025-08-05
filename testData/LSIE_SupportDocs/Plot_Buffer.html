@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Plot Buffer</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Plot_Buffer.html">Plot Buffer</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Plot-Buffer"></a>
+<h1 >Plot Buffer<a href="#Plot-Buffer" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Plot-Buffer">Plot Buffer</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Plot-Buffer-Interface">Plot Buffer Interface</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Plot Buffer editor is used to manage channels for the high-speed circular buffer. The buffer can be configured and selected as a data source in a Chart panel, enabling high rate data to be viewed. For more information, refer to the <a class="wiki-page" href="High-Speed_Circular_Buffer.html">High-Speed Circular Buffer</a> documentation.</p>
+
+
+	<p>To access the Plot Buffer editor in SolutionBuilder, select <strong>Displays > Plot Buffer</strong>.</p>
+
+
+	<a name="Plot-Buffer-Interface"></a>
+<h2 >Plot Buffer Interface<a href="#Plot-Buffer-Interface" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Plot Buffer editor lists the channel contents of the <em>VXBuffer.cfg</em> file, which is located in the $SUPPORTDIR. You can modify the channel contents of this file via the available right-click options. The maximum amount of channels the <em>VXBuffer.cfg</em> file can have is 1000.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">An error message will display upon save if there are duplicated channels.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Plot Buffer Editor</strong></em></span><br /><img src="attachments/download/127074/44_PlotBufferEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Insert Before</td>
+			<td> Launches the Channel Selection dialog, which allows you to select a channel to add. The channel is inserted before the selected channel. Only numeric channels can be selected.</td>
+		</tr>
+		<tr>
+			<td>Add to End</td>
+			<td> Launches the Channel Selection dialog, which allows you to select a channel to add. The channel is added to the end of the list. Only numeric channels can be selected.</td>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td> Removes the selected channel from the list.</td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td> Removes the selected channel from the list and copies it to the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td> Copies the selected channel.</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td> Pastes the copied channel.</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td> Undoes the last action.</td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td> Redoes the last undone action.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="AutomationPanel_Operators_Guide.html#Chart-Panel">Chart Panel</a></li>
+		<li><a class="wiki-page" href="High-Speed_Circular_Buffer.html">High-Speed Circular Buffer</a></li>
+	</ul>
+</body>
+</html>

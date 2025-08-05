@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Unit Conversions</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Unit_Conversions.html">Unit Conversions</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Unit-Conversions"></a>
+<h1 >Unit Conversions<a href="#Unit-Conversions" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Unit-Conversions">Unit Conversions</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Configuring-Displays-with-Unit-Conversions">Configuring Displays with Unit Conversions</a></li><li><a href="#LabCentral">LabCentral</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Unit Conversions is used to display channel values in different units than originally set in the channel definition file. This allows an end user to view channel values in other units of measurement without having to edit the channel definition file, perform multiple calculations, or define multiple instances of the same channel. This feature also allows the end user to convert all displayed channel values to the same system of measurements with ease.</p>
+
+
+	<p>The primary interface is the Units Definition screen in Test Manager. This screen allows you to define units for all measurement types, along with the multiplier and offset to convert from one unit type to another.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Units Definition Screen</strong></em></span><br /><img src="attachments/download/95877/42_units1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>This display allows the creation of all usable units within iTest. A unit definition consists of the following:</p>
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Unit Definition Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Column Name</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>User Unit</td>
+			<td> The actual string that represents the unit. </td>
+		</tr>
+		<tr>
+			<td>Multiplier</td>
+			<td> The multiplier to go from this unit to SI units for that unit type.</td>
+		</tr>
+		<tr>
+			<td>Offset</td>
+			<td> The offset to go from this unit to SI units for that unit type.</td>
+		</tr>
+		<tr>
+			<td>Base (SI) Unit <br />(this auto-populates when the Unit Type is selected) </td>
+			<td> This is defined by iTest and is not configurable. For each unit type, a base (SI) <br />unit is defined by the system. Any conversions you specify must be for converting to SI units. <br />Units Conversion uses this defined base (SI) unit as the basis for all conversions.</td>
+		</tr>
+		<tr>
+			<td>Unit Type</td>
+			<td> The unit type that this unit represents. These unit types are defined by iTest and are not configurable.</td>
+		</tr>
+		<tr>
+			<td>Metric Unit</td>
+			<td> The metric equivalent of this unit.</td>
+		</tr>
+		<tr>
+			<td>English Unit</td>
+			<td> The English equivalent of this unit.</td>
+		</tr>
+		<tr>
+			<td>Comments</td>
+			<td> Comment field.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p>Once the units are defined they can be used in channel definitions. When defining a channel, units are defined for that channel in the channel editor:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Edit Channels Dialog</strong></em></span><br /><img src="attachments/download/31745/iTest37_EditChannelsUnitDefinition.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>When the channel unit is known by iTest, iTest can then handle converting the units when the operator selects a different unit display at runtime. If a unit's string is not recognized by iTest, then conversions will not be able to be performed at runtime on this channel value.</p>
+
+
+	<a name="Configuring-Displays-with-Unit-Conversions"></a>
+<h2 >Configuring Displays with Unit Conversions<a href="#Configuring-Displays-with-Unit-Conversions" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>When setting up display objects, the objects for ADTGauge, ADTBar, ADTDigitalIndicator and ADTChartPlus all contain a field called Display Units. This field contains a list of valid units to convert to depending on the selected channel’s Unit Type (i.e., temperature, pressure, etc.). There is also an Automatic selection that forces the display object to display the channel’s values in whatever the current preferred units are at runtime. This Automatic selection is the default for new objects.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Display Units</strong></em></span><br /><img src="attachments/download/95878/42_units3.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>To change the displayed units for different display objects at runtime, use the <strong>Tools/Options</strong> menu item from iTest Console and change the units to the desired setting. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Updated Units</strong></em></span><br /><img src="attachments/download/95879/42_units4.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>This will cause all display objects with Display Units set to "Automatic" to convert their values to the selected system of units.</p>
+
+
+	<a name="LabCentral"></a>
+<h2 >LabCentral<a href="#LabCentral" class="wiki-anchor">&para;</a></h2>
+
+
+	<table>
+		<tr>
+			<td style="background:#ebd700;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3740/caution.gif" alt="" /></td>
+			<td style="vertical-align:top;"><b>CAUTION:</b></td>
+			<td style="vertical-align:top;">If iTest is connected to LabCentral, then the unit definitions will be downloaded from LabCentral automatically when a change is made to the Units Table in LabCentral. This feature cannot be turned off and can cause any work you do locally on the units editor to be lost.</td>
+		</tr>
+	</table>
+</body>
+</html>

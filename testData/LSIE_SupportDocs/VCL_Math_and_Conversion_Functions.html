@@ -1,0 +1,385 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>VCL Math and Conversion Functions</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="VCL_Math_and_Conversion_Functions.html">VCL Math and Conversion Functions</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="VCL-Math-and-Conversion-Functions"></a>
+<h1 >VCL Math and Conversion Functions<a href="#VCL-Math-and-Conversion-Functions" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#VCL-Math-and-Conversion-Functions">VCL Math and Conversion Functions</a><ul><li><a href="#Mathematical-Functions-Table">Mathematical Functions Table</a><ul><li><a href="#Mathematic">Mathematic</a></li><li><a href="#Logarithmic">Logarithmic</a></li><li><a href="#Trigonometric">Trigonometric</a></li></ul>
+</li><li><a href="#Thermocouple-Conversion-Functions-Table">Thermocouple Conversion Functions Table</a></li><li><a href="#Unit-Conversion-Functions-Table">Unit Conversion Functions Table</a></li></ul></li></ul>
+
+
+	<a name="Mathematical-Functions-Table"></a>
+<h2 >Mathematical Functions Table<a href="#Mathematical-Functions-Table" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Mathematic"></a>
+<h3 >Mathematic<a href="#Mathematic" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Mathematic Functions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Function</b> </td>
+			<td style="width:550px;"><b>Summary</b> </td>
+			<td style="text-align:left;"><b>Syntax</b> </td>
+		</tr>
+		<tr>
+			<td>ABS</td>
+			<td>Returns absolute value of a channel or value.</td>
+			<td><pre>ABS(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>inrange</td>
+			<td>Returns True (1) if checkvalue is greater than or equal to lowvalue and less than or equal to highvalue, False (0) if it is not. This function supports the use of comma and space delimiters.</td>
+			<td><pre>inrange(lowvalue,checkvalue,highvalue)</pre><br /><pre>inrange(lowvalue checkvalue highvalue)</pre></td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td>Returns truncated integer of a channel or value (i.e., drops decimal portion of the value).</td>
+			<td><pre>int(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>inv</td>
+			<td>Returns inverse of a channel or value (i.e., reverses the value's sign).</td>
+			<td><pre>inv(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>max</td>
+			<td>Returns the higher of two channels or values.</td>
+			<td><pre>max(channel1,channel2)</pre></td>
+		</tr>
+		<tr>
+			<td>min</td>
+			<td>Returns the lower of two channels or values.</td>
+			<td><pre>min(channel1,channel2)</pre></td>
+		</tr>
+		<tr>
+			<td>mod</td>
+			<td>Returns integer remainder of a division operation.</td>
+			<td><pre>mod(channel,divisor)</pre></td>
+		</tr>
+		<tr>
+			<td>pct2value</td>
+			<td>Returns a percentage of a value. <br />Formula: (percentage / 100) * source_value</td>
+			<td><pre>pct2value(percentage,source_value)</pre></td>
+		</tr>
+		<tr>
+			<td>ROUND</td>
+			<td>Returns rounded integer of a channel or value.</td>
+			<td><pre>ROUND(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>sepdec</td>
+			<td>Returns fractional portion of a channel or value (i.e., returns everything to the right of the decimal point).</td>
+			<td><pre>sepdec(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>sepint</td>
+			<td>Returns integer portion of a channel or value (i.e., returns everything to the left of the decimal point).</td>
+			<td><pre>sepint(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>stddev</td>
+			<td>Returns standard deviation of a channel over a period of time (in seconds).</td>
+			<td><pre>stddev(channel,seconds)</pre></td>
+		</tr>
+		<tr>
+			<td>TRUNC</td>
+			<td>Returns the integer of a channel or value that is less than or equal to the original value.<br />Example: TRUNC (3.2) returns 3, TRUNC (-3.2) returns -4</td>
+			<td><pre>TRUNC(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>value2pct</td>
+			<td>Returns what percentage channel1 is of channel2. <br />Formula: (channel1 / channel2) * 100</td>
+			<td><pre>value2pct(channel1,channel2)</pre></td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Logarithmic"></a>
+<h3 >Logarithmic<a href="#Logarithmic" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Logarithmic Functions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Function</b> </td>
+			<td style="width:550px;"><b>Summary</b> </td>
+			<td style="text-align:left;"><b>Syntax</b> </td>
+		</tr>
+		<tr>
+			<td>exp</td>
+			<td>Returns exponential (inverse log) of a channel or value.</td>
+			<td><pre>exp(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>log</td>
+			<td>Returns natural log of a channel or value.</td>
+			<td><pre>log(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>log10</td>
+			<td>Returns log base 10 of a channel or value.</td>
+			<td><pre>log10(channel)</pre></td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Trigonometric"></a>
+<h3 >Trigonometric<a href="#Trigonometric" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Trigonometric Functions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Function</b> </td>
+			<td style="width:550px;"><b>Summary</b> </td>
+			<td style="text-align:left;"><b>Syntax</b> </td>
+		</tr>
+		<tr>
+			<td>atan</td>
+			<td>Returns arctangent of a channel or value, where the channel value is in radians.</td>
+			<td><pre>atan(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>cos</td>
+			<td>Returns cosine of a channel or value, where the channel value is in radians.</td>
+			<td><pre>cos(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>sin </td>
+			<td>Returns sine of a channel or value, where the channel value is in radians.</td>
+			<td><pre>sin(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>tan</td>
+			<td>Returns tangent of a channel or value, where the channel value is in radians.</td>
+			<td><pre>tan(channel)</pre></td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Thermocouple-Conversion-Functions-Table"></a>
+<h2 >Thermocouple Conversion Functions Table<a href="#Thermocouple-Conversion-Functions-Table" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Thermocouple Conversion Functions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Function</b> </td>
+			<td style="width:550px;"><b>Summary</b> </td>
+			<td style="text-align:left;"><b>Syntax</b> </td>
+		</tr>
+		<tr>
+			<td>tc_j</td>
+			<td>This function (and the 3 following it) allows a user to use an analog input voltage and cold junction compensation temperature to compute thermocouple temperature in degrees Celsius. </td>
+			<td><pre>tc_j(Ai1,CJC)</pre>Ai1 is the voltage of the thermocouple in Volts, CJC is the temperature of the cold junction compensation in degrees C</td>
+		</tr>
+		<tr>
+			<td>tc_k</td>
+			<td>K-type thermocouple. See description for the tc_j function.</td>
+			<td><pre>tc_k(Ai1,CJC)</pre></td>
+		</tr>
+		<tr>
+			<td>tc_s</td>
+			<td>S-type thermocouple. See description for the tc_j function.</td>
+			<td><pre>tc_s(Ai1,CJC)</pre></td>
+		</tr>
+		<tr>
+			<td>tc_t</td>
+			<td>T-type thermocouple. See description for the tc_j function.</td>
+			<td><pre>tc_t(Ai1,CJC)</pre></td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Unit-Conversion-Functions-Table"></a>
+<h2 >Unit Conversion Functions Table<a href="#Unit-Conversion-Functions-Table" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Unit Conversion Functions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Function</b> </td>
+			<td style="width:550px;"><b>Summary</b> </td>
+			<td style="text-align:left;"><b>Syntax</b> </td>
+		</tr>
+		<tr>
+			<td>deg2rad</td>
+			<td> Converts degrees to radians.</td>
+			<td><pre>deg2rad(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>gals2liters</td>
+			<td> Converts gallons to liters.</td>
+			<td><pre>gals2liters(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>gals2pints</td>
+			<td> Converts gallons to pints.</td>
+			<td><pre>gals2pints(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>gals2qts</td>
+			<td> Converts gallons to quarts.</td>
+			<td><pre>gals2qts(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>inhg2psi</td>
+			<td> Converts inches of mercury to pounds per square inch.</td>
+			<td><pre>inhg2psi(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>liters2gals</td>
+			<td> Converts liters to gallons.</td>
+			<td><pre>liters2gals(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>liters2pints</td>
+			<td> Converts liters to pints.</td>
+			<td><pre>liters2pints(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>liters2qts</td>
+			<td> Converts liters to quarts.</td>
+			<td><pre>liters2qts(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>pints2gals</td>
+			<td> Converts pints to gallons.</td>
+			<td><pre>pints2gals(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>pints2liters</td>
+			<td> Converts pints to liters.</td>
+			<td><pre>pints2liters(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>pints2qts</td>
+			<td> Converts pints to quarts.</td>
+			<td><pre>pints2qts(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>psi2inhg</td>
+			<td> Converts pounds per square inch to inches of mercury.</td>
+			<td><pre>psi2inhg(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>psi2mbar </td>
+			<td>Converts pounds per square inch to millibars.</td>
+			<td><pre>psi2mbar(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>qts2gals</td>
+			<td> Converts quarts to gallons.</td>
+			<td><pre>qts2gals(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>qts2liters</td>
+			<td> Converts quarts to liters.</td>
+			<td><pre>qts2liters(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>qts2pints</td>
+			<td> Converts quarts to pints.</td>
+			<td><pre>qts2pints(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>rad2deg</td>
+			<td> Converts radians to degrees.</td>
+			<td><pre>rad2deg(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>temp_c2f</td>
+			<td> Converts Celsius to Fahrenheit.</td>
+			<td><pre>temp_c2f(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>temp_c2k</td>
+			<td> Converts Celsius to Kelvin.</td>
+			<td><pre>temp_c2k(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>temp_f2c</td>
+			<td> Converts Fahrenheit to Celsius.</td>
+			<td><pre>temp_f2c(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>temp_f2r</td>
+			<td> Converts Fahrenheit to Rankin.</td>
+			<td><pre>temp_f2r(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>temp_k2c</td>
+			<td> Converts Kelvin to Celsius.</td>
+			<td><pre>temp_k2c(channel)</pre></td>
+		</tr>
+		<tr>
+			<td>temp_r2f</td>
+			<td> Converts Rankin to Fahrenheit.</td>
+			<td><pre>temp_r2f(channel)</pre></td>
+		</tr>
+	</table>
+</body>
+</html>

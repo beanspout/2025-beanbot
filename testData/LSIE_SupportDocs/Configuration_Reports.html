@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Configuration Reports</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Configuration_Reports.html">Configuration Reports</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Configuration-Reports"></a>
+<h1 >Configuration Reports<a href="#Configuration-Reports" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Configuration-Reports">Configuration Reports</a><ul><li><a href="#Report-Overview">Report Overview</a></li><li><a href="#Generating-Configuration-Reports">Generating Configuration Reports</a></li><li><a href="#Setting-Layout-Preview-Size">Setting Layout Preview Size</a></li></ul></li></ul>
+
+
+	<p>SolutionBuilder's configuration reports contain configuration information for your solution. Each of SolutionBuilder's editors will have a corresponding section in the report, which will contain any items in their sub-editors as well as details for each item. When you create a configuration report in SolutionBuilder, a <em>ConfigReport.pdf</em> is saved to the $SUPPORTDIR and will open in your default PDF viewing tool.</p>
+
+
+	<p>SolutionBuilder configuration reports contain information for the following editors:</p>
+
+
+	<ul>
+	<li>Displays
+	<ul>
+	<li>Layouts</li>
+		<li>Picklists </li>
+	</ul>
+	</li>
+		<li>Tests
+	<ul>
+	<li>Schedules</li>
+		<li>Step Conditions</li>
+		<li>Circuit Calculations (BTS only)</li>
+	</ul>
+	</li>
+		<li>Batteries (BTS only)
+	<ul>
+	<li>Specimens </li>
+	</ul>
+	</li>
+		<li>Devices
+	<ul>
+	<li>Cyclers (BTS only)</li>
+		<li>Chambers (BTS only)</li>
+		<li>Chillers (BTS only)</li>
+		<li>Cameras</li>
+		<li>CAN</li>
+	</ul>
+	</li>
+		<li>Parameters (BTS only)</li>
+	</ul>
+
+
+	<a name="Report-Overview"></a>
+<h2 >Report Overview<a href="#Report-Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Each report includes an overview page that lists solution details, including the system type and number of specimens and cyclers, as shown in the example below. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Report Overview</strong></em></span><br /><img src="attachments/download/115798/43_ReportsOverview.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Generating-Configuration-Reports"></a>
+<h2 >Generating Configuration Reports<a href="#Generating-Configuration-Reports" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To generate a configuration report, click the <strong>Report</strong> button in SolutionBuilder's bottom bar. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Report Button</strong></em></span><br /><img src="attachments/download/127040/44_SBReportButton.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />Your solution's configuration report will open as a PDF in a new window.  <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Configuration Report</strong></em></span><br /><img src="attachments/download/115799/43_ConfigurationReport.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Setting-Layout-Preview-Size"></a>
+<h2 >Setting Layout Preview Size<a href="#Setting-Layout-Preview-Size" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>When layouts are saved in SolutionBuilder, a layout preview and large layout preview PNG file are saved to <em>$SYSTEMDIR\Layouts</em> to be used for configuration reports. The <code>LayoutPreviewLargeSize=Width,Height</code> <em>powertek.ini</em> setting allows you to set the width and height for your large layout preview PNG file. When unspecified, the default value will be set to 800,600. To autosize the PNG to the size of the layout, set Width or Height to 0.</p>
+
+
+	<p><strong>Example:</strong></p>
+
+
+<pre>LayoutPreviewLargeSize=1024,768</pre>
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">When set to empty (<code>LayoutPreviewLargeSize=</code>), the large preview PNG file will not be created on save.</td>
+		</tr>
+	</table>
+</body>
+</html>

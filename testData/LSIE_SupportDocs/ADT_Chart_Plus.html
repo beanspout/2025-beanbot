@@ -1,0 +1,615 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ADT Chart Plus</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="ADT_Chart_Plus.html">ADT Chart Plus</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="ADT-Chart-Plus-Object"></a>
+<h1 >ADT Chart Plus Object<a href="#ADT-Chart-Plus-Object" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#ADT-Chart-Plus-Object">ADT Chart Plus Object</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Field-Definitions">Field Definitions</a><ul><li><a href="#General-Tab">General Tab</a></li><li><a href="#X-Axis-Tab">X Axis Tab</a></li><li><a href="#Y-Axes-Tab">Y Axes Tab</a></li></ul>
+</li><li><a href="#ADT-Chart-Plus-Object-Properties">ADT Chart Plus Object Properties</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The ADT Chart Plus display object combines features from both the ADT XY Plot control and the ADT Strip Chart control with some additional enhancements. The ADT Chart Plus control has two modes, XY Plot mode and Strip Chart mode. In XY Plot mode the control graphically plots the values of selected database channels over the specified X-axis channel. In Strip Chart mode, the control graphically plots the values of selected database channels over the specified time range.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>ADT Chart Plus</strong></em></span><br /><img src="attachments/download/6699/adtchartplus.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Field-Definitions"></a>
+<h2 >Field Definitions<a href="#Field-Definitions" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="General-Tab"></a>
+<h3 >General Tab<a href="#General-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>General Tab</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Option</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td><strong>Label Field</strong></td>
+			<td>Label to use on chart. Note that the <strong>Automatic</strong> settings can be specified for both channel names and units by clicking <strong>Tools > Options</strong> in the iTest Console file menu.</td>
+		</tr>
+		<tr>
+			<td><strong>Grid</strong></td>
+			<td>Grid Lines to show (Integer: 0 – "Horz. And Vert. grid", 1 – "Horz.grid", 2 – "Vert.grid", 3 – "No grid").</td>
+		</tr>
+		<tr>
+			<td><strong>Control ID</strong></td>
+			<td>Control ID for the given control (String).</td>
+		</tr>
+		<tr>
+			<td><strong>Permit Runtime Changes</strong></td>
+			<td>When selected, allows changes to be made programmatically.</td>
+		</tr>
+		<tr>
+			<td><strong>Show Top Bar</strong></td>
+			<td>Show top bar (Boolean).</td>
+		</tr>
+		<tr>
+			<td><strong>Show Legend</strong></td>
+			<td>Displays the chart legend on the object.</td>
+		</tr>
+		<tr>
+			<td><strong>Show Units in Legend</strong></td>
+			<td>Reports the units of measurement for that channel as long as the <strong>Show Legend</strong> field is selected.</td>
+		</tr>
+		<tr>
+			<td><strong>Legend Location</strong></td>
+			<td>Places the legend either at the top or bottom of the object.</td>
+		</tr>
+		<tr>
+			<td><strong>Graph Border Style</strong></td>
+			<td>Border style around the chart (String: "None", "Thick", "Thin").</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="X-Axis-Tab"></a>
+<h3 >X Axis Tab<a href="#X-Axis-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>X Axis Tab</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Option</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td><strong>Chart Type</strong></td>
+			<td>Type of chart (String: "Strip Chart", "XY Plot").</td>
+		</tr>
+		<tr>
+			<td><strong>Channel</strong></td>
+			<td>Channel to use for the X-axis (XY Plot only) (String). Click the <strong>Channel...</strong> button to open the Channel Selection dialog.</td>
+		</tr>
+		<tr>
+			<td><strong>Display Units</strong></td>
+			<td>Display units (XY Plot only) (String).</td>
+		</tr>
+		<tr>
+			<td><strong>X Axis Size (seconds)</strong></td>
+			<td>X-axis size in seconds (Strip chart only) (Integer).</td>
+		</tr>
+		<tr>
+			<td><strong>Sample Rate (Hz)</strong></td>
+			<td>Sample Rate in Hz (Real).</td>
+		</tr>
+		<tr>
+			<td><strong>Time Format</strong></td>
+			<td>Displays the time format in either seconds, minutes and seconds, or hours, minutes and seconds. </td>
+		</tr>
+		<tr>
+			<td><strong>Axis Min</strong></td>
+			<td>Axis min (XY Plot only) (Real).</td>
+		</tr>
+		<tr>
+			<td><strong>Axis Max</strong></td>
+			<td>Axis max (XY Plot only) (Real).</td>
+		</tr>
+		<tr>
+			<td><strong>Axis Label</strong></td>
+			<td>Axis label (String).</td>
+		</tr>
+		<tr>
+			<td><strong>Number of Grid Lines</strong></td>
+			<td>Number of X-axis grid lines (Integer).</td>
+		</tr>
+		<tr>
+			<td><strong>Label Interval</strong></td>
+			<td>Interval for labeling X-axis grid lines (Integer).</td>
+		</tr>
+		<tr>
+			<td><strong>Max Number Points</strong></td>
+			<td>Maximum number of points to plot on the chart (Integer).</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Y-Axes-Tab"></a>
+<h3 >Y Axes Tab<a href="#Y-Axes-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Y Axes Tab</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Option</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td><strong>Axis</strong></td>
+			<td>Depicts which Y-axis is going to be affected by the channel list in the other settings. </td>
+		</tr>
+		<tr>
+			<td><strong>Channels</strong></td>
+			<td>Displays a channel list by opening the Channel Selection dialog box.</td>
+		</tr>
+		<tr>
+			<td><strong>Axis Min</strong></td>
+			<td>Defines the range on the Y-axis, and is relevant to all channels in the list.</td>
+		</tr>
+		<tr>
+			<td><strong>Axis Max</strong></td>
+			<td>Defines the range on the Y-axis, and is relevant to all channels in the list.</td>
+		</tr>
+		<tr>
+			<td><strong>Axis Label</strong></td>
+			<td>The vertical label that will appear on the side of each axis.</td>
+		</tr>
+		<tr>
+			<td><strong>Number of Grid Lines</strong></td>
+			<td>The number of rows in the chart.</td>
+		</tr>
+		<tr>
+			<td><strong>Label Interval</strong></td>
+			<td>The number of rows between labels on the X axis. When the <strong>Label Interval</strong> is 5, there will be 5 rows between labels.</td>
+		</tr>
+		<tr>
+			<td><strong>Line Type</strong></td>
+			<td>Select the type of line to display on the chart. This is on a per channel, per axis basis.</td>
+		</tr>
+		<tr>
+			<td><strong>Line Width</strong></td>
+			<td>Select the width of the line as it's drawn.</td>
+		</tr>
+		<tr>
+			<td><strong>Point Type</strong></td>
+			<td>The <strong>Point Type</strong> is the particular symbol you will use on the chart. This is only available if you are in <strong>XY Plot</strong> mode (<strong>Chart Type</strong> field on <strong>X Axis</strong> tab) because you need to be charting data points. </td>
+		</tr>
+		<tr>
+			<td><strong>Point Size</strong></td>
+			<td>Determines the size of the point as it's drawn.</td>
+		</tr>
+		<tr>
+			<td><strong>Line Color</strong></td>
+			<td>Allows you to choose the color of the line.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>When running the ADTChartPlus control in iTest Console, you can right-click on the control to bring up the following menu:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Right-Click Options</strong></em></span><br /><img src="attachments/download/6700/chartplus.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>You can perform several standard actions in this menu. One of the more unique features is the <strong>Load File</strong> action, which allows you to overlay data from an existing DAT file onto the graph. In this case, iTest will continue to plot data onto the graph as scheduled, but you can now compare the data with the chart line from the DAT file you just loaded.</p>
+
+
+	<a name="ADT-Chart-Plus-Object-Properties"></a>
+<h2 >ADT Chart Plus Object Properties<a href="#ADT-Chart-Plus-Object-Properties" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>These properties are useful when issuing the following mailslot message:</p>
+
+
+<pre>
+\\.\mailslot\DisplayName&gt;&gt;$SETITEMPROPERTY ControlID PropertyName PropertyValue
+</pre>
+
+	<p>The following are the names of the properties that can be changed by mailslot message to the display.  These property names may or may not be the same as the property names shown on the display object property setup dialogs.  Most of these property names are self-explanatory.  The first column is the data type of the property.</p>
+
+
+	<p>The int or OLE_COLOR for color is the color RGB values.  “BSTR” means the type of the property is string.  “int”, “float”, “long”, “short”, “double” means the type of the property is number.  “Boolean” means the property value should be 1 or 0.</p>
+
+
+	<p>Font property syntax is complicated.<br />&lt;font name&gt;,&lt;bold&gt;,,&lt;italic&gt;,&lt;font size&gt;,,&lt;strikeout&gt;,&lt;underline&gt;, <br />example: Arial,0,0,0,97500,0,0,0,400</p></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>ADT Chart Plus Object Properties</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Type</strong></td>
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Notes</strong></td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ChannelName</strong>*</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>LabelField</strong>**</td>
+			<td>values are case-sensitive</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ChartType</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>Rate</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ChangesOK</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>Points</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>GridLineControl</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>NumBufPages</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>ChartWidthSeconds</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ManualMinX1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ManualMaxX1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ManualMinY1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ManualMaxY1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ManualMinY2</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ManualMaxY2</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ManualMinY3</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ManualMaxY3</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ManualMinY4</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ManualMaxY4</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>NumberGridLinesX1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>NumberGridLinesY1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>NumberGridLinesY2</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>NumberGridLinesY3</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>NumberGridLinesY4</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LabelIntervalX1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LabelIntervalY1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LabelIntervalY2</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LabelIntervalY3</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LabelIntervalY4</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AxisChannel1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AxisChannel2</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AxisChannel3</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AxisChannel4</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AxisChannel5</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AxisChannel6</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AxisChannel7</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AxisChannel8</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AxisChannel9</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AxisChannel10</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AxisChannel11</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AxisChannel12</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ShowDigitalValues</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>GraphBackColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>GraphForeColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>DeskColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>ShadowColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>TextColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>XAxisColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>YAxisColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>font</td>
+			<td><strong>LegendFont</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>font</td>
+			<td><strong>LabelFont</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>LabelX1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>LabelY1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>LabelY2</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>LabelY3</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>LabelY4</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ShowTopBar</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>MaximumNumPoints</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>XChannelName</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>BorderType</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ShowLegend</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ShowLegendUnits</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LegendLocation</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>TimeFormat</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;">syntax: &lt;channel name&gt;|&lt;axis&gt; Axis|&lt;line thickness&gt;|&lt;line color (RGB decimal)&gt;|&lt;line type&gt;|&lt;point type&gt;|&lt;units&gt;| &lt;loaded file (shadow) line color (RGB decimal)&gt;|&lt;pointsize&gt;<br />Multiple channels are defined as a comma separated list.</span><br />** <span style="font-size:0.90em;">values: Automatic, Channel Name, Customer Name, Module Name, Alias, Description</span>
+
+	<p>&nbsp;</p>
+</body>
+</html>

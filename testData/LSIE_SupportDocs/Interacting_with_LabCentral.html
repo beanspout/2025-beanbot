@@ -1,0 +1,880 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Interacting with LabCentral</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Interacting_with_LabCentral.html">Interacting with LabCentral</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Interacting-with-LabCentral"></a>
+<h1 >Interacting with LabCentral<a href="#Interacting-with-LabCentral" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Interacting-with-LabCentral">Interacting with LabCentral</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#LabAgent">LabAgent</a><ul><li><a href="#LabAgent-Default-Channel-Mappings">LabAgent Default Channel Mappings</a></li></ul>
+</li><li><a href="#Security">Security</a></li><li><a href="#Synchronizing-Files-with-LabCentral">Synchronizing Files with LabCentral</a><ul><li><a href="#Synchronizing-and-Unsynchronizing-Folders">Synchronizing and Unsynchronizing Folders</a></li></ul>
+</li><li><a href="#Importing-and-Exporting-Files">Importing and Exporting Files</a><ul><li><a href="#ModuleUploadFolder">ModuleUploadFolder</a></li><li><a href="#Importing-Solutions">Importing Solutions</a></li><li><a href="#Exporting-Solutions">Exporting Solutions</a></li></ul>
+</li><li><a href="#LabCentral-Subversion">LabCentral Subversion</a><ul><li><a href="#Locked-Modules">Locked Modules</a></li><li><a href="#Updating-Modules">Updating Modules</a></li></ul>
+</li><li><a href="#FlexEdit">FlexEdit</a><ul><li><a href="#File-Transfer-for-a-lttaskgt">File Transfer for a &lt;task&gt;</a></li><li><a href="#Saving-and-Restoring-Configurations">Saving and Restoring Configurations</a></li></ul>
+</li><li><a href="#Part-Tracker">Part Tracker</a><ul><li><a href="#iCentralRead">iCentralRead</a><ul><li><a href="#Command-Line-Syntax">Command-Line Syntax</a></li></ul>
+</li><li><a href="#iCentralWrite">iCentralWrite</a><ul><li><a href="#Command-Line-Syntax-2">Command-Line Syntax</a></li></ul>
+</li><li><a href="#Part-Tracker-Input-File">Part Tracker Input File</a></li><li><a href="#Command-Line-Switch-Descriptions">Command-Line Switch Descriptions</a></li><li><a href="#iCentralWrite-Status-Codes">iCentralWrite Status Codes</a></li><li><a href="#Create-Part-Tracker-Database-Remotely">Create Part Tracker Database Remotely</a></li><li><a href="#Specify-Part-Tracker-Definition-File-Remotely">Specify Part Tracker Definition File Remotely</a></li></ul>
+</li><li><a href="#Automatic-Headers">Automatic Headers</a></li><li><a href="#Headless-Mode">Headless Mode</a><ul><li><a href="#Windows-System-Tray-Icon">Windows System Tray Icon</a></li></ul></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Integrating your test systems into the LabCentral environment provides additional functionality that enables you to better reuse software. LabCentral is a server-based lab management tool that centralizes test cell management activity and data. From its different web-pages, you can manage test systems, monitor data, and create reports to obtain and view results for an entire test field rather than single systems all from a centralized location.</p>
+
+
+	<p>This document describes the ways in which LabCentral and iTest features overlap and the configurations necessary to successfully integrate the two environments.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/2160/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">iTest can be used to store solutions in a LabCentral folder on your local machine. This is advantageous when (for example) you are working remotely yet still want to package your solutions in a way that it can be easily moved into LabCentral once you have access to a web connection. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="LabAgent"></a>
+<h2 >LabAgent<a href="#LabAgent" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>LabCentral interacts with iTest by using LabAgent. LabAgent enables users to monitor system activity via a dashboard in LabCentral. During the iTest installation, LabAgent is automatically installed, and the SystemConfig dialog can be used to enable/disable LabAgent and modify the LabAgent port number. By default, LabAgent is enabled and uses port 80; the port number can be modified if port 80 is blocked or is in use by another process. When LabAgent is not connected, communication with LabCentral is lost. For more information, refer to iTest's <a class="wiki-page" href="SystemConfig.html">SystemConfig</a> and LabAgent's <em>Installing and Configuring LabAgent</em> documentation.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>SystemConfig - LabAgent Settings</strong></em></span><br /><img src="attachments/download/117558/43_SystemConfigLabAgentSettings.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>In addition to enabling the communication between iTest and LabCentral, LabAgent is used to maintain utilization prompt information received from the operator. LabCentral relies on this information to record and classify test system utilization states. The flag used to indicate the running state of your test system is constantly monitored. When it transitions from TRUE to FALSE (or vice versa), LabAgent waits for a defined number of minutes (this is specified in LabCentral) before displaying the Select a Status Change dialog. This dialog asks the operator to select the running or not-running reason for the state change. This feature enables LabCentral to properly classify the ways in which test systems are used during active testing and ways they are not used during an inactive state. For more information, refer to the <em>LabCentral User Guide</em> and <em>LabAgent User Guide</em> documentation.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Select Status Change Reason Dialog</strong></em></span><br /><img src="attachments/download/40310/StatusChangeReason.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="LabAgent-Default-Channel-Mappings"></a>
+<h3 >LabAgent Default Channel Mappings<a href="#LabAgent-Default-Channel-Mappings" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>LabAgent is set up to search for default channels. LabAgent constantly searches for specific channels in iTest to communicate values to LabCentral or to manage the utilization prompt. You can modify the names of these channels by connecting to the LabAgent home page and selecting the <strong>Map Default Channels</strong> option in the navigation tree. The Default Channel Name Map page displays, allowing you to map the channel names to something more applicable to your solution. You can also change these channel names from LabCentral using the Master Names List feature.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>LabAgent Web Server</strong></em></span><br /><img src="attachments/download/117559/LA36_DefaultChannelNameMapPage.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>By default, these channels are:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Required Channels</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Internal Name</strong> </td>
+			<td style="text-align:left;"><strong>Channel Name</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="3">Required Channels</th>
+		</tr>
+		<tr>
+			<td>rmUUTActive</td>
+			<td> flgSysInUse</td>
+			<td>Flag that indicates if the system is active. UUT stands for Unit Under Test. 1 indicates a test is active; 0 indicates the system is inactive. This channel causes the utilization prompt to display.</td>
+		</tr>
+		<tr>
+			<td>vsSysStopReason</td>
+			<td>vsSysStopReason</td>
+			<td>This virtual string contains the value the operator entered when the utilization prompt appeared. </td>
+		</tr>
+		<tr>
+			<td>iViewLogLevel</td>
+			<td>iViewLogLevel</td>
+			<td>A value from 0-5. This determines the level of detail stored in <em>iViewLog.txt</em>. The higher the number, the wider the variety of events LabAgent will log.</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="3">LabCentral Default Dashboard Monitor Channels</th>
+		</tr>
+		<tr>
+			<td>UserName </td>
+			<td> UserName </td>
+			<td> Name of the logged in user.</td>
+		</tr>
+		<tr>
+			<td>rmSerialNum </td>
+			<td>vsSysSpec1ID</td>
+			<td> A virtual string which should contain the serial number for the UUT.  </td>
+		</tr>
+		<tr>
+			<td>rmModelNum </td>
+			<td>vsSysSpec1Desc</td>
+			<td>Another string to identify the UUT - model number. </td>
+		</tr>
+		<tr>
+			<td>rmSpecimenRunTime</td>
+			<td>tmrSysSpec1Run</td>
+			<td>UUT running time. </td>
+		</tr>
+		<tr>
+			<td>vsSysTestName </td>
+			<td>vsSysTestName </td>
+			<td>The name of the active test. </td>
+		</tr>
+		<tr>
+			<td>rmTestTime </td>
+			<td>timSysTest </td>
+			<td>How long has the specimen been undergoing test. </td>
+		</tr>
+		<tr>
+			<td>rmTestTimeLeft </td>
+			<td>tmrSysTest </td>
+			<td>Elapsed Test Time for the current test. </td>
+		</tr>
+		<tr>
+			<td>rmStepTimeLeft </td>
+			<td>timSysStepLeft </td>
+			<td>How much time is left in the current step of the test. </td>
+		</tr>
+		<tr>
+			<td>rmSpeed </td>
+			<td>spdSys </td>
+			<td>Current Speed Value (Relevant only for engine test cells). </td>
+		</tr>
+		<tr>
+			<td>rmTorque </td>
+			<td>tqSys </td>
+			<td>Current Torque Value (Relevant only for engine test cells). </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Security"></a>
+<h2 >Security<a href="#Security" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>LabCentral can be used to set up security settings for each connected iTest system. This generally includes the following information:</p>
+
+
+	<ul>
+	<li>Usernames and passwords</li>
+		<li>User groups and permissions</li>
+	</ul>
+
+
+	<p>For more information about configuring security in LabCentral, refer to the LabCentral's <em>Administering System Security</em> documentation. The security settings can be overwritten locally and managed via the Security Editor; refer to the <a class="wiki-page" href="Managing_Security.html">Managing Security</a> documentation for more information. If you are connected to LabCentral, your local changes will be lost the next time an update is pushed down from LabCentral.</p>
+
+
+	<a name="Synchronizing-Files-with-LabCentral"></a>
+<h2 >Synchronizing Files with LabCentral<a href="#Synchronizing-Files-with-LabCentral" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Test Manager allows you to share files with LabCentral and distribute them globally to all iTest systems. When LabAgent is connected to LabCentral, you can synchronize, unsynchronized, and add new files to LabCentral. The following files/folders can be synced:</p>
+
+
+	<ul>
+	<li>Battery Setup: Batteries</li>
+		<li>Calculations: 1Hz, 10Hz, 100Hz, System Rate</li>
+		<li>Test Development: Schedules</li>
+		<li>Data Logging: Log Header Forms</li>
+		<li>Presentation/Reports: Report Pages, Report Parameters</li>
+		<li>Picklists</li>
+	</ul>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">To use this feature, the <code>IncludeLabScheduler</code> <em>config.ini</em> setting must be set to FALSE.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>When you synchronize files, an icon displays next to the file name. This icon is a visual indicator that communicates whether files have been synced. Green circles with a checkmark indicate that the file/folder is synced, red circles with an exclamation mark indicate that a synced file/folder has been modified and needs to be re-synced, and blue circles with a question mark indicate that the file does not exist on the server and needs to be added to LabCentral.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Icon Types</strong></em></span><br /><img src="attachments/download/45687/Icons.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Synchronizing-and-Unsynchronizing-Folders"></a>
+<h3 >Synchronizing and Unsynchronizing Folders<a href="#Synchronizing-and-Unsynchronizing-Folders" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following process synchronizes an iTest folder to the LabCentral file repository. All changes made locally are overwritten the next time you start iTest unless you commit the changes back to LabCentral before exiting Test Manager. To synchronize/unsynchronize folders, do the following:</p>
+
+
+	<ol>
+	<li>Right-click the folder and select the <strong>Synchronize with LabCentral...</strong> option. The Synchronize with LabCentral dialog displays, prompting you to select a folder on the LabCentral server.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Synchronize with LabCentral Dialog</strong></em></span><br /><img src="attachments/download/40339/SelectFolderDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Specify the remote folder and files to synchronize using the drop-down lists. You can select the option to sync all files, which ensures that all files from the specified LabCentral location are copied to the local test system when iTest is initialized. You can also choose to only sync files that already exist locally. This option does not copy new files down; it only replaces files that are already exist on the local iTest system. When a folder is synchronized with LabCentral, a green checkmark icon is added to the folder and the files that are synced.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Synchronization Type</strong></em></span><br /><img src="attachments/download/40342/FilesToSynchronize.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>If you create a new file in Test Manager, or have existing local files, you will need to add the file(s) to LabCentral to enable synchronization. Once added to LabCentral, the file(s) will be available for other users. To add a file, right-click on the file and select the <strong>Add to LabCentral...</strong> option. The Add to LabCentral... dialog displays. Enter any applicable comments and click <strong>OK</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add to LabCentral... Dialog</strong></em></span><br /><img src="attachments/download/32121/AddComments.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>If you have made changes to a synchronized file, the green checkmark on the folder and file will change to a red exclamation mark. Before exiting Test Manager, you must commit these changes or they will be overwritten upon re-initialization. To commit changes, right-click the file with the red exclamation mark and select the <strong>Commit Changes to LabCentral...</strong> option. The Commit to LabCentral... dialog displays. Enter any applicable comments and click <strong>OK</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Commit to LabCentral... Dialog</strong></em></span><br /><img src="attachments/download/40350/CommitToLabCentral.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>To unsynchronize a folder, right-click the folder name and select the <strong>Unsynchronize</strong> option.</li>
+	</ol>
+
+
+	<a name="Importing-and-Exporting-Files"></a>
+<h2 >Importing and Exporting Files<a href="#Importing-and-Exporting-Files" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>One of the primary functions of LabCentral is to behave as a solution and module repository, enabling you to transfer files between LabCentral and iTest via uploads and downloads, where:</p>
+
+
+	<ul>
+	<li><strong>Solutions</strong> are combinations of module types, including devices, specimens, tests, etc. A solution is structured as a standard support folder with additional structures to enable the import and export of modules. </li>
+		<li><strong>Modules</strong> are partial support folders that contain only the structures necessary for the model and the structures to connect a module to a solution.</li>
+	</ul>
+
+
+	<p>There are several locations in Test Manager and SolutionBuilder that enable you to interact with LabCentral. If iTest is connected to LabCentral, these features will be available. The main purpose of these features is to allow files to be transferred from LabCentral down to iTest and vice-versa. This allows you to set up a centralized file management system in your lab.</p>
+
+
+	<p>There is an option to utilize the LabCentral Subversion Repository for controlling the import and export of modules. This feature automatically manages changes through revision history and user added comments. To use this feature, you must have the <code>ModuleRevisionControl</code> <em>Config.ini</em> setting set to TRUE.</p>
+
+
+	<p>For more information about importing and exporting modules, refer to the <a class="wiki-page" href="Modules_in_iTest.html">Modules in iTest</a> documentation.</p>
+
+
+	<a name="ModuleUploadFolder"></a>
+<h3 >ModuleUploadFolder<a href="#ModuleUploadFolder" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <code>ModuleUploadFolder</code> <em>config.ini</em> setting prevents developers from inadvertently deleting solutions that are intended to be more closely managed on LabCentral. With this setting, you can designate an incoming folder for all exported solutions and modules, allowing you to segregate the upload folder from the download folder. All modules and solutions uploaded to LabCentral from Test Manager or SolutionBuilder are saved to the folder specified in the <code>ModuleUploadFolder</code> setting. This should be a single name and is assumed to be a subfolder of the <code>iCentralConfigFolder</code> setting.</p>
+
+
+	<p><ins><strong>Example:</strong></ins><br /><pre>
+iCentralConfigFolder=\\LabCentral\Config\
+ModuleUploadFolder=Incoming
+</pre></p>
+
+
+	<p>This would cause all modules and solutions to be placed into the <em>\\LabCentral\Config\Incoming</em> folder.</p>
+
+
+	<a name="Importing-Solutions"></a>
+<h3 >Importing Solutions<a href="#Importing-Solutions" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>You can copy a solution that is stored on LabCentral to your local system using Test Manager or SolutionBuilder. In Test Manager, select <strong>File > New > Solution</strong> or right-click on the solution name in the tree bar and select <strong>New</strong>. In SolutionBuilder, click the <strong>Create new solution...</strong> link on the homepage. The New Solution dialog displays.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>New Solution Dialog</strong></em></span><br /><img src="attachments/download/117464/43_NewSolution.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Select an existing solution to use as the base for the new solution. Enter the name of the new solution in the text field, and then click <strong>Create</strong>. The existing solution can be from LabCentral or your local iTest folder.</p>
+
+
+	<a name="Exporting-Solutions"></a>
+<h3 >Exporting Solutions<a href="#Exporting-Solutions" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>From Test Manager or SolutionBuilder, you can export solutions to LabCentral or to your local drive. This allows your developers to share their solutions. Without a connection to LabCentral, exports are sent to the <em>$SUPPORTDIR\Solutions</em> folder when attempting to export to LabCentral.</p>
+
+
+	<p>There are two ways to export the entire solution while in Test Manager.</p>
+
+
+	<ol>
+	<li>Select <strong>File</strong> > <strong>Export to LabCentral</strong> > <strong>Solution</strong> from the main menu.</li>
+		<li>Right-click the solution name in the navigation menu and click the <strong>Export</strong> option.</li>
+	</ol>
+
+
+	<p>To export a solution using SolutionBuilder, click the <strong>Export</strong> icon from the bottom menu.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Export Icon</strong></em></span><br /><img src="attachments/download/117185/43_ExportIcon.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The Export Solution to LabCentral dialog displays. You can then export your solution to the folder specified in the <em>config.ini</em> file as <code>iCentralConfigFolder=</code>. This can be a LabCentral server or any network share.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Export Solution to LabCentral Dialog (example from Test Manager)</strong></em></span><br /><img src="attachments/download/117462/43_ExportSolutionToLabCentral.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>From this dialog, you can provide an alternative name for the destination solution as well as export the solution to your local drive or the LabCentral solution folder. If the solution name already exists on LabCentral and you are not using revision control, you will be prompted whether to overwrite the pre-existing solution. In addition, you can delete the local solution after the export is complete by checking the <strong>Delete local copy</strong> checkbox; this option is only available when exporting solutions from Test Manager while iTest is not running.</p>
+
+
+	<a name="LabCentral-Subversion"></a>
+<h2 >LabCentral Subversion<a href="#LabCentral-Subversion" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The LabCentral Subversion Repository enables you to import and export modules between Test Manager and Subversion. Revision control is automatically managed, so you can keep track of changes through revision history and user-added comments. To use this feature, the <code>ModuleRevisionControl</code> <em>config.ini</em> setting must be set to TRUE.</p>
+
+
+	<p>This setting determines where modules are uploaded and downloaded on LabCentral. If this setting is set to FALSE, then the normal LabCentral file share is used; the module is stored in the <em>Modules\Device</em> folder on LabCentral's Solutions And Modules page. If this setting is set to TRUE, then the LabCentral Subversion Repository is used; the modules are stored in the <em>Modules</em> folder on LabCentral's Manage Lab Files page.</p>
+
+
+	<a name="Locked-Modules"></a>
+<h3 >Locked Modules<a href="#Locked-Modules" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>LabCentral supports locking modules from LabCentral's web interface. Locking modules allows engineers to limit module check-ins and prevent others from making modifications. Locked modules display a lock icon in Test Manager, SolutionBuilder, and LabCentral.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Test Manager - Lock Icon</strong></em></span><br /><img src="attachments/download/123111/IT43-TM_LockedModule.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>SolutionBuilder - Lock Icon</strong></em></span><br /><img src="attachments/download/123112/SB43_LockedModule.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>LabCentral - Lock Icon</strong></em></span><br /><img src="attachments/download/123116/LC36-LF_LockedModule.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /></p>
+
+
+	<p>Test Manager and SolutionBuilder cannot overwrite locked modules. Attempting to do so will display an error message like the one below:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Locked Module Error - Test Manager</strong></em></span><br /><img src="attachments/download/123113/IT43-TM_LockedModuleError.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Locked Module Error - SolutionBuilder</strong></em></span><br /><img src="attachments/download/123114/SB43_LockedModuleError.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Updating-Modules"></a>
+<h3 >Updating Modules<a href="#Updating-Modules" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>If LabCentral has a more recent version of a module, then Test Manager and SolutionBuilder will display an exclamation mark, indicating that the module is out-of-date.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Exclamation Icon - Test Manager</strong></em></span><br /><img src="attachments/download/123118/RedExclamation.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Exclamation Icon - SolutionBuilder</strong></em></span><br /><img src="attachments/download/123115/SB43_Out-of-Date-Module.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>You can update the module by right-clicking and selecting <strong>Update.</strong> This will download the latest version of the module from LabCentral.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Update Module - Test Manager</strong></em></span><br /><img src="attachments/download/123117/UpdateModule.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Update Module - SolutionBuilder</strong></em></span><br /><img src="attachments/download/128706/SB44_UpdateModule.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="FlexEdit"></a>
+<h2 >FlexEdit<a href="#FlexEdit" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>There are some areas of the FlexEdit interface that can utilize LabCentral services. If your system includes a FlexEdit interface for the operator to prepare tests with or perform other routine editing tasks, refer to the following sections. For more information about FlexEdit, refer to the <a class="wiki-page" href="FlexEdit.html">FlexEdit</a> documentation.</p>
+
+
+	<a name="File-Transfer-for-a-lttaskgt"></a>
+<h3 >File Transfer for a &lt;task&gt;<a href="#File-Transfer-for-a-lttaskgt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>If your FlexEdit configuration file has the <strong>&lt;icentral&gt;</strong> tag within a <strong>&lt;task&gt;</strong> element, and it points to a valid folder in the LabCentral Lab Files repository, it will add the <strong>Server Download</strong> and <strong>Server Upload</strong> buttons to the toolbar. The <strong>Server Download</strong> button allows the file to be downloaded from the specified LabCentral folder; the <strong>Server Upload</strong> button allows the file to be saved back to LabCentral with an operator specified name. For example, if a filename is in the tree called <em>EngineInfo.ini</em> and the <strong>&lt;icentral&gt;EngineData&lt;/icentral&gt;</strong> tag appears in the XML file, then FlexEdit will look for a valid connection to LabCentral. If the EngineData folder contained two files called <em>Model1234.ini</em> and <em>Model5678.ini</em>, then the operator could select one of these files and overwrite the local file – <em>EngineInfo.ini</em>. If the operator changes the filename to <em>Model8901.ini</em>, they can then save it back to LabCentral using that filename.</p>
+
+
+	<a name="Saving-and-Restoring-Configurations"></a>
+<h3 >Saving and Restoring Configurations<a href="#Saving-and-Restoring-Configurations" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>FlexEdit includes the <strong>Save Configuration...</strong> and <strong>Restore Configuration...</strong> menu options for uploading and downloading full configurations to/from LabCentral. The <strong>File > Save Configuration...</strong> option creates a ZIP file of the entire FlexEdit configuration and all relevant files and uploads it to LabCentral or a server share. The <strong>File > Restore Configuration</strong> option downloads the uploaded ZIP files and extracts them to the local system. The ZIP file is named by the operator and enables a test configuration to be transferred from one location in the lab to another. For more information, refer to the <a class="wiki-page" href="FlexEdit_Design.html#Saving-and-Restoring-Configurations">FlexEdit Design</a> documentation.</p>
+
+
+	<a name="Part-Tracker"></a>
+<h2 >Part Tracker<a href="#Part-Tracker" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Part Tracker is a LabCentral tool that enables you to track usage information for different parts under test, such as engines, transmissions, treatment systems, or batteries. Tracked data is stored in a Part Tracker database which then can be viewed in LabCentral as a report or exported to different systems. For more information, refer to LabCentral's <em>Using Part Tracker</em> documentation.</p>
+
+
+	<p>The following sections detail how to use VCL to add new values or accumulators to a Part Tracker database. iTest utilizes the iCentralRead and iCentralWrite command line tools to send and retrieve parameters from the Part Tracker database.</p>
+
+
+	<a name="iCentralRead"></a>
+<h3 >iCentralRead<a href="#iCentralRead" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>iCentralRead is used to read information from LabCentral to iTest.</p>
+
+
+	<a name="Command-Line-Syntax"></a>
+<h4 >Command-Line Syntax<a href="#Command-Line-Syntax" class="wiki-anchor">&para;</a></h4>
+
+
+	<p><strong><em>Read Part Tracker information back from LabCentral to iTest:</em></strong></p>
+
+
+<pre>iCentralRead /db &lt;database&gt; /prt &lt;part id&gt; /param &lt;param-id&gt; /statuschannel &lt;statuschannel&gt; /valtype &lt;valtype&gt;</pre>
+
+	<p><strong><em>Read every channel stored in the database for the part ID:</em></strong></p>
+
+
+<pre>iCentralRead /db &lt; database&gt; /prt &lt;part-id&gt; /statuschannel &lt;status-channel&gt;/valtype &lt;valtype&gt;</pre>
+
+	<p><strong><em>Read a part tracker parameter to a specific iTest channel:</em></strong></p>
+
+
+<pre>iCentralRead /db &lt;database&gt; /prt &lt;part-id&gt; [/param &lt;param-id&gt; /channel &lt;channelname&gt;] /valtype &lt;valtype&gt; /statuschannel &lt;status-channel</pre>
+
+	<p><strong><em>Specify parameter names to map to channel names:</em></strong></p>
+
+
+<pre>iCentralRead /db &lt;database&gt; /prt &lt;part-id&gt; /f &lt;filename&gt; /valtype &lt;valtype&gt; /statuschannel &lt;status-channel&gt;</pre>
+
+	<p>For more information, including command-line switch definitions and status codes for iCentralRead, please refer to LabCentral's <em>Interfaces to Part Tracker</em> document.</p>
+
+
+	<p>The following table describes the switch definitions used above:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Read Part Tracker Data to iTest - Switch Definitions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Switch</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>[/aryidx &lt;index&gt;]</td>
+			<td> An optional numeric array index to be appended to array type RDB channels read from the file specified by the /f switch.</td>
+		</tr>
+		<tr>
+			<td>/channel &lt;channelname&gt;</td>
+			<td> The RDB channel that the read value is written to. This switch can only be used when /param is defined.</td>
+		</tr>
+		<tr>
+			<td>/db &lt;database&gt;</td>
+			<td> The name of the part tracker database in LabCentral.</td>
+		</tr>
+		<tr>
+			<td>/f &lt;filename&gt;</td>
+			<td>The name of the file to which all values are written. The file format is parameter=value where “parameter” represents the parameter name. Alternatively, you can use a standalone iTest channel to obtain a value from the RDB in iTest. <ins><strong>Note:</strong></ins> This can only be used when both /param and /channel are <ins>not</ins> used.</td>
+		</tr>
+		<tr>
+			<td>/param &lt;param-id&gt;</td>
+			<td> The parameter name (also the default channel name) being read from the database.</td>
+		</tr>
+		<tr>
+			<td>/prt &lt;part-id&gt;</td>
+			<td> The serial number or ID of the part (e.g., engine, battery, transmission).</td>
+		</tr>
+		<tr>
+			<td>/statuschannel &lt;statuschannel&gt;</td>
+			<td>The iTest channel that <em>iCentralRead.exe</em> uses to store its error status when performing an operation. Negative numbers indicate error and positive numbers indicate success. The log <br /><em>iCentralReadLog.txt</em> will contain error messages. (For more information, see the <em>Interfaces to Part Tracker</em> document's iCentralRead Status Codes section.) </td>
+		</tr>
+		<tr>
+			<td>/valtype &lt;valtype&gt;</td>
+			<td> Value type to store. Allowed values include <strong>total</strong> and <strong>lastvalue</strong>.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="iCentralWrite"></a>
+<h3 >iCentralWrite<a href="#iCentralWrite" class="wiki-anchor">&para;</a></h3>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">When writing part tracker data to LabCentral, the system used for development must have LabAgent installed and connected as a test cell to LabCentral.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>Use iCentralWrite to specify information to write to the LabCentral server (e.g., database name, part ID, parameter name, and parameter value). The tool performs the following:</p>
+
+
+	<ul>
+	<li>Reads the $SYSTEMDIR setting in <em>config.ini</em>.</li>
+		<li>Creates a folder in $SYSTEMDIR called <em>Transaction</em>.</li>
+		<li>Creates an XML "transaction" file that contains the iCentralWrite request and a <em>trigger.txt</em> file.</li>
+		<li>Returns the iCentralWrite status.</li>
+	</ul>
+
+
+	<p>Before using this feature, ensure you have all necessary components to begin. iCentralWrite requires the following:</p>
+
+
+	<ul>
+	<li><em>iView.exe</em> must be installed and running from the same folder as the <em>iCentralAPI.dll</em> and the C# application.</li>
+		<li>The <em>ini.dll</em> file must be in the same folder as the <em>iCentralAPI.dll</em> and the C# application. This file is installed with the iTest and LabAgent installs.</li>
+		<li><em>Config.ini</em> must be located in the parent directory ($SYSTEMDIR) of the folder containing <em>iCentralAPI.dll</em> and the C# application (e.g., <em>C:\ADT\iTest3.8</em>).</li>
+	</ul>
+
+
+	<a name="Command-Line-Syntax-2"></a>
+<h4 >Command-Line Syntax<a href="#Command-Line-Syntax-2" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>iCentralWrite supports a single parameter syntax and a multi-parameter syntax.</p>
+
+
+	<p><strong><em>Write a single parameter value:</strong></em><br /><pre>iCentralWrite /db &lt;database&gt; /prt &lt;part-id&gt; /param &lt;param-id&gt; /val &lt;value&gt; /cmd &lt;cmd&gt; /statuschannel &lt;statuschannel&gt; [/createdb] [/dbdeffile &lt;dbdeffile&gt;] [/prtdeffile &lt;prtdeffile&gt;] [/deftype &lt;deftype&gt;] [/post [/trigger]]</pre></p>
+
+
+	<p><strong><em>Write multiple parameter values using data from a file:</strong></em><br /><pre>iCentralWrite /db &lt;database&gt; /prt &lt;part-id&gt; /f &lt;filename&gt; /cmd &lt;cmd&gt; /statuschannel &lt;statuschannel&gt; [/createdb] [/channelnames] [/aryidx &lt;index&gt;] [/dbdeffile &lt;dbdeffile&gt;] [/prtdeffile &lt;prtdeffile&gt;] [/deftype &lt;deftype&gt;] [/post [/trigger]]</pre></p>
+
+
+	<a name="Part-Tracker-Input-File"></a>
+<h3 >Part Tracker Input File<a href="#Part-Tracker-Input-File" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The /f command-line switch references an input text file. This input file maps Part Tracker parameters to channels and values, so you can set multiple parameters with one command.</p>
+
+
+	<p>The rows of an input file support 3 different formats which are specified below. The same file may utilize multiple row formats.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Input File Row Specification</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Row Format</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> <em>&lt;Parameter&gt;</em></td>
+			<td> The channel name matching the Part Tracker parameter will have its value written to the parameter.</td>
+		</tr>
+		<tr>
+			<td> <em>&lt;Parameter&gt;=&lt;Value&gt;</em></td>
+			<td> The specified value will be written to the Part Tracker parameter.</td>
+		</tr>
+		<tr>
+			<td> <em>&lt;Parameter&gt;=&lt;Channel&gt;</em></td>
+			<td> The specified channel's value will be written to the Part Tracker parameter.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><em><strong>Example File Contents:</em></strong><br /><pre>Voltage=5
+SerialNumber=vsSerialNumber
+UserID=vsUserId
+voShift</pre></p>
+
+
+	<a name="Command-Line-Switch-Descriptions"></a>
+<h3 >Command-Line Switch Descriptions<a href="#Command-Line-Switch-Descriptions" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following table describes the switch definitions used above:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Write Part Tracker Data to LabCentral - Switch Definitions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Switch</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> [/aryidx &lt;index&gt;]</td>
+			<td> An optional numeric array index to be appended to un-indexed array type channels in files specified by the /f switch.</td>
+		</tr>
+		<tr>
+			<td> /channelnames </td>
+			<td> Used only with the /f switch. The switch that verifies if the "value" reference in a "parameter=value" pair is an existing channel and sets/increments the parameter's value by that channel's value from the RDB in iTest. This is an optional argument. </td>
+		</tr>
+		<tr>
+			<td> /cmd [SET | INCREMENT] </td>
+			<td> The command used to determine how values are added to existing values in the database. The SET command sets the current value to the one you specify. The INCREMENT command adds the value you specify to the previous value in the database.<br /><strong>Example</strong>:<br /><code>iCentralWrite.exe /db engine1 /prt 471AE7202 /param standid /val 2009 /cmd SET</code><br /><em>OR</em><br /><code>iCentralWrite.exe /db engine1 /prt 471AE7202 /param standid /val 2009 /cmd INCREMENT</code></td>
+		</tr>
+		<tr>
+			<td> /createdb</td>
+			<td> The switch used to create the part tracker database in LabCentral if it does not already exist.</td>
+		</tr>
+		<tr>
+			<td> /db &lt;database&gt;</td>
+			<td> The name of the part tracker database used to store tracked part data.<br />If the database does not exist and /createdb was not used, an Inbox notification will be sent to members of the Administrator group describing the error.</td>
+		</tr>
+		<tr>
+			<td> /dbdeffile &lt;dbdeffile&gt;</td>
+			<td>A lab file path to the database’s default definition file relative to the database’s part template folder (see /deftype). This path uses forward slashes (e.g., <em>qaBatteries/Batter1A.sc2</em>).</td>
+		</tr>
+		<tr>
+			<td> /deftype [SC2 | INI | MSS]</td>
+			<td> The type of definition files used by the database and its parts. This switch also determines the location of the database’s part template folder.<br />&nbsp;<br />- <ins><strong>SC2:</strong></ins> (Default) <em>.sc2</em> files from the <em>PartTemplates</em> folder will be used.<br />- <ins><strong>INI:</strong></ins> <em>.ini</em> files from the <em>PartTemplatesINI</em> folder will be used.<br />- <ins><strong>MSS:</strong></ins> <em>.mss</em> files from the <em>PartTemplatesMSS</em> folder will be used.<br />&nbsp;<br />If the database already exists, its previous /deftype will remain.</td>
+		</tr>
+		<tr>
+			<td> /f &lt;filename&gt;</td>
+			<td> The name of the file from which all values are written. The file format is <code>parameter=value</code>, where “parameter” represents the parameter name. Alternatively, you can use a standalone iTest channel to obtain a value from the RDB in iTest. This is used instead of /param &lt;param-id&gt;. </td>
+		</tr>
+		<tr>
+			<td> /param &lt;param-id&gt;</td>
+			<td> The name for the part ID's parameter value being written to Part Tracker.</td>
+		</tr>
+		<tr>
+			<td> /post</td>
+			<td> Sends the transaction XML file directly to LabCentral, skipping over LabAgent's local transaction queue.</td>
+		</tr>
+		<tr>
+			<td> /prt &lt;part-id&gt;</td>
+			<td> The serial number or ID of the part (e.g., engine, battery, transmission). Part IDs are truncated at 64 characters.</td>
+		</tr>
+		<tr>
+			<td> /prtdeffile &lt;prtdeffile&gt;</td>
+			<td>A lab file path to the part’s definition file relative to the database’s part template folder (see /deftype).</td>
+		</tr>
+		<tr>
+			<td>/statuschannel &lt;statuschannel&gt;</td>
+			<td> The iTest channel that <em>iCentralWrite.exe</em> uses to store its error status when performing an operation. For more information, see the <strong>iCentralWriteStatus Codes</strong> section below.</td>
+		</tr>
+		<tr>
+			<td> /trigger</td>
+			<td> Forces LabCentral to process all queued Part Tracker transactions upon receiving the command. This switch is only usable in tandem with the /post switch.<br />&nbsp;<br />This switch requires LabCentral 3.5 or higher.</td>
+		</tr>
+		<tr>
+			<td> /val &lt;value&gt;</td>
+			<td> The value to either set or increment the parameter.</td>
+		</tr>
+	</table>
+
+
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="width:20px;text-align:center;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The following character types are allowed in the <code>/db</code>, <code>/prt</code>, and <code>/param</code> switches: alphanumeric, dash, period, @, and underscore. Any other characters will automatically be removed.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="iCentralWrite-Status-Codes"></a>
+<h3 >iCentralWrite Status Codes<a href="#iCentralWrite-Status-Codes" class="wiki-anchor">&para;</a></h3>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">iCentralWrite status codes are only written for test systems using iTest.</td>
+		</tr>
+	</table></p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>iCentralWrite Status Code Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Success</td>
+		</tr>
+		<tr>
+			<td>-1</td>
+			<td> Cannot open part tracker database.</td>
+		</tr>
+		<tr>
+			<td>-2</td>
+			<td> Error attempting to INCREMENT a value that is not a number.</td>
+		</tr>
+		<tr>
+			<td>-6</td>
+			<td> LabCentral failed to delete the transaction file and/or transaction trigger file.</td>
+		</tr>
+		<tr>
+			<td>-7</td>
+			<td> The part tracker database does not exist and/or could not be created.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Create-Part-Tracker-Database-Remotely"></a>
+<h3 >Create Part Tracker Database Remotely<a href="#Create-Part-Tracker-Database-Remotely" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Part tracker databases can be created remotely from iTest using command lines. The command-line syntax is represented by the following use cases:</p>
+
+
+	<p>To create a part tracker database for a file name with a single parameter:</p>
+
+
+<pre>iCentralWrite /db &lt;database&gt; /prt &lt;part-id&gt; /param &lt;param-id&gt; /val &lt;value&gt; /cmd &lt;cmd&gt; /statuschannel &lt;statuschannel&gt; /createdb</pre>
+
+	<p>To create a part tracker database for a file name with many parameters:</p>
+
+
+<pre>iCentralWrite /db &lt;database&gt; /prt &lt;part-id&gt; /f &lt;filename&gt; /cmd &lt;cmd&gt; /statuschannel &lt;statuschannel&gt; /createdb</pre>
+
+	<a name="Specify-Part-Tracker-Definition-File-Remotely"></a>
+<h3 >Specify Part Tracker Definition File Remotely<a href="#Specify-Part-Tracker-Definition-File-Remotely" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Part tracker definition files can be specified remotely from iTest for databases and part IDs. This process utilizes two different command lines; the syntax is represented below:</p>
+
+
+	<p>To specify a part tracker definition file for a database:</p>
+
+
+<pre>iCentralWrite /db &lt;database&gt; /prt &lt;part-id&gt; /param &lt;param-id&gt; /val &lt;value&gt; /cmd &lt;cmd&gt; 
+/ statuschannel &lt;statuschannel&gt; /createdb /dbdeffile &lt;database-definition-file&gt; /deftype &lt;SC2 | INI | MSS&gt; </pre>
+
+	<p>To specify a part tracker definition file for a part ID:</p>
+
+
+<pre>iCentralWrite /db &lt;database&gt; /prt &lt;part-id&gt; /param &lt;param-id&gt; /val &lt;value&gt; /cmd &lt;cmd&gt; 
+/statuschannel &lt;statuschannel&gt;  /createdb /prtdeffile &lt;part-definition-file&gt;</pre>
+
+	<p>Paths are relative to either the <em>PartTemplates</em>, <em>PartTemplatesINI</em>, or <em>PartTemplatesMSS</em> folder depending on the /deftype switch; if a subfolder is not specified, then the file paths will point to the root of the specified template folder.</p></p>
+
+
+	<a name="Automatic-Headers"></a>
+<h2 >Automatic Headers<a href="#Automatic-Headers" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>In LabCentral, you can configure a list of channel names that are used when you search for data files in your lab. These channel names are automatically added to each iTest data file that is created on the iTest system. iTest creates the header of the DAT files using the names of channels listed in the designated UVL file, and then adds the list of channels that were configured on LabCentral. These headers can be defined using the LabCentral Master Names List page.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Master Names List Interface</strong></em></span><br /><img src="attachments/download/94283/LC36_MasterNamesList.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>LabCentral uses the information defined on this screen to create the  <em>iCentralParams.xml</em> file which is downloaded to each iTest system and stored in the <em>Execute</em> folder. This file contains a section that is used by datareduction to add lab-wide searchable channel names to every data file header created. On your system, the data file header will be a super set of the channels in this file and the UVL file specified for your data log.</p>
+
+
+	<p>For example, if the <em>iCentralParams.xml</em> file on your system had a section that looked like this file: <br /><pre>
+&lt;SearchableHeaders&gt;
+
+&lt;Header&gt;&lt;Name&gt;vsSysSpec1EngType&lt;/Name&gt;
+    &lt;Label&gt;Engine Type&lt;/Label&gt;
+    &lt;Show&gt;TRUE&lt;/Show&gt;
+    &lt;Type&gt;None&lt;/Type&gt;
+&lt;/Header&gt;
+&lt;Header&gt;&lt;Name&gt;TestRequest&lt;/Name&gt;
+    &lt;Label&gt;TestRequest&lt;/Label&gt;
+    &lt;Show&gt;TRUE&lt;/Show&gt;
+    &lt;Type&gt;FilteredCheckList&lt;/Type&gt;
+&lt;/Header&gt;
+&lt;/SearchableHeaders&gt;
+</pre></p>
+
+
+	<p>The headers of your logged data files would contain the two channels listed above:<br /><pre>
+vsSysSpec1EngType=
+TestRequest=
+</pre></p>
+
+
+	<p>For more information regarding this feature, refer to LabCentral's <em>Master Names List</em> documentation.</p>
+
+
+	<a name="Headless-Mode"></a>
+<h2 >Headless Mode<a href="#Headless-Mode" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest can run in "headless" mode, where a GUI application (e.g., AutomationPanel) is not launched on startup. This allows for operators to perform testing on stations within a lab via LabCentral's <strong>Free-form Dashboards</strong> feature. For more information about Free-form Dashboards, refer to LabCentral's <em>Managing Dashboards</em> documentation.</p>
+
+
+	<p>To launch iTest in headless mode, use the following command-line argument:<br /><pre>
+iTest.exe /nogui
+</pre></p>
+
+
+	<p><ins><strong>Notes:</strong></ins></p>
+
+
+	<ul>
+	<li>iTest will run the solution specified in the <code>SupportDir</code> <em>config.ini</em> setting. This solution must exist in order to use the above argument. </li>
+		<li>LabAgent must be running on the same PC as iTest, if controlling the test station from LabCentral.</li>
+	</ul>
+
+
+	<p>In the example below, iTest is running in headless mode, and the operator can use the objects available in the Free-form dashboard to perform testing and view live data:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Example: Running iTest in Headless Mode</strong></em></span><br /><img src="attachments/download/132194/LC39_FFDExample.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Windows-System-Tray-Icon"></a>
+<h3 >Windows System Tray Icon<a href="#Windows-System-Tray-Icon" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>While iTest is running in headless mode, an iTest icon will display in the Windows system tray. The following right-click options are supported from this icon:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>iTest Icon</strong></em></span><br /><img src="attachments/download/134380/45_iTestIconSystemTray.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Launch UI</td>
+			<td> Launches the GUI iTest initializes based on the <code>GUI</code> <em>powertek.ini</em> setting.</td>
+		</tr>
+		<tr>
+			<td>Help</td>
+			<td> Opens the Online Help documentation. For more information, refer to the <a class="wiki-page" href="Getting_Started.html#User-Documentation">Getting Started</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>Problem Report</td>
+			<td> Launches <em>ProblemReport.exe</em>. For more information, refer to the <a class="wiki-page" href="ProblemReport.html">ProblemReport</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>Exit</td>
+			<td> Sends the $EXIT Softpanel message, allowing the user to close iTest. This is an uncontrolled shutdown. It does not trigger the ExitPhase procedure. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+</body>
+</html>

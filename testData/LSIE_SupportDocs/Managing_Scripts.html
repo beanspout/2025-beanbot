@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Managing Scripts</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Managing_Scripts.html">Managing Scripts</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Managing-Scripts"></a>
+<h1 >Managing Scripts<a href="#Managing-Scripts" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Managing-Scripts">Managing Scripts</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Using-the-Scripts-Editor">Using the Scripts Editor</a><ul><li><a href="#Right-Click-Scripts-Options">Right-Click Scripts Options</a></li></ul>
+</li><li><a href="#Creating-New-Scripts">Creating New Scripts</a></li><li><a href="#Editor-Options">Editor Options</a><ul><li><a href="#Editor-Properties">Editor Properties</a></li></ul>
+</li><li><a href="#Using-Find-and-Replace">Using Find and Replace</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can create custom Python scripts using SolutionBuilder's Scripts editor. These scripts can be stored in either the system support directory ($SUPPORTDIR) or module folders. For more information on using Python in iTest, reference the <a class="wiki-page" href="Automating_iTest_With_Python.html">Automating iTest With Python</a> documentation.</p>
+
+
+	<a name="Using-the-Scripts-Editor"></a>
+<h2 >Using the Scripts Editor<a href="#Using-the-Scripts-Editor" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Scripts editor can be accessed in SolutionBuilder by selecting <strong>Tests > Scripts</strong> from the main menu. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Scripts Editor</strong></em></span><br /><img src="attachments/download/127071/44_Scripts.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p><a name="Right-Click-Scripts-Options"></a>
+<h3 >Right-Click Scripts Options<a href="#Right-Click-Scripts-Options" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following options are available when you right-click a script in the left pane:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Scripts Right-Click Menu</strong></em></span><br /><img src="attachments/download/119215/43_ScriptsRightClickMenu.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Scripts Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Add</td>
+			<td>Adds a new script.</td>
+		</tr>
+		<tr>
+			<td>Remove</td>
+			<td>Removes a selected script.</td>
+		</tr>
+		<tr>
+			<td>Rename...</td>
+			<td>Launches the Rename dialog to change the name of the script.</td>
+		</tr>
+		<tr>
+			<td>Duplicate</td>
+			<td>Duplicates a selected script and appends a numeric value to the name of the script (e.g., <code>UserFileName3</code>).</td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td>Removes a script and copies it to the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td>Copies a script.</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td>Pastes a copied/cut script.</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td>Undoes the last action.</td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td>Redoes the last undone action.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Creating-New-Scripts"></a>
+<h2 >Creating New Scripts<a href="#Creating-New-Scripts" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To create a new script, do the following:</p>
+
+
+	<p>Right-click in the left located menu and select <strong>Add</strong>. A new script will appear with a default name. To rename the new script, right-click and select <strong>Rename</strong>. This will launch the Rename dialog. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Rename Dialog</strong></em></span><br /><img src="attachments/download/98267/RenameDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />Enter a new name for your script and click <strong>OK</strong>.</p>
+
+
+	<a name="Editor-Options"></a>
+<h2 >Editor Options<a href="#Editor-Options" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following options are available when you right-click in the scripts editor:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Right-Click Editor Options</strong></em></span><br /><img src="attachments/download/113060/43_ScriptsMenu.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Editor Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Toggle Whitespace</td>
+			<td>When selected, white space is identified in the editor. </td>
+		</tr>
+		<tr>
+			<td>Make Uppercase</td>
+			<td>Changes the selected text to uppercase letters.</td>
+		</tr>
+		<tr>
+			<td>Make Lowercase</td>
+			<td>Changes the selected text to lowercase letters.</td>
+		</tr>
+		<tr>
+			<td>Comment</td>
+			<td>Comments the selected line. </td>
+		</tr>
+		<tr>
+			<td>Uncomment</td>
+			<td>Uncomments the selected line. </td>
+		</tr>
+		<tr>
+			<td>Next Bookmark</td>
+			<td>Navigates to the next bookmarked line set by clicking the line in the left-side margin.</td>
+		</tr>
+		<tr>
+			<td>Previous Bookmark</td>
+			<td>Navigates to the previous bookmarked line set by clicking the line in the left-side margin. </td>
+		</tr>
+		<tr>
+			<td>Preferences</td>
+			<td>Launches the Editor Properties Dialog. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Editor-Properties"></a>
+<h3 >Editor Properties<a href="#Editor-Properties" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Use the following table to set your preferences for the scripts editor:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Editor Properties Dialog</strong></em></span><br /><img src="attachments/download/99599/42_ScriptsPreferences.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Editor Properties Dialog Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Font</td>
+			<td>Sets the font type used in the scripts editor. </td>
+		</tr>
+		<tr>
+			<td>Font Size</td>
+			<td>Sets the font size used in the scripts editor. </td>
+		</tr>
+		<tr>
+			<td>Display Line Numbers</td>
+			<td>When selected, line numbers will appear in the left-side margin. </td>
+		</tr>
+		<tr>
+			<td>Enable Block Outlining</td>
+			<td>When selected, a tree node will appear in the scripts editor. </td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Using-Find-and-Replace"></a>
+<h2 >Using Find and Replace<a href="#Using-Find-and-Replace" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can use the Find and Replace dialog to search for text in your scripts, or you can search and replace text as necessary. To open this dialog, use the keyboard shortcut combination <strong>CTRL + F</strong> or <strong>CTRL + H</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Find and Replace Dialog</strong></em></span><br /><img src="attachments/download/98266/FindandReplace.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p></p>
+</body>
+</html>

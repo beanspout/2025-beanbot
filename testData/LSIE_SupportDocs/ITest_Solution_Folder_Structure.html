@@ -1,0 +1,325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ITest Solution Folder Structure</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="ITest_Solution_Folder_Structure.html">ITest Solution Folder Structure</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="iTest-Solution-Folder-Structure"></a>
+<h1 >iTest Solution Folder Structure<a href="#iTest-Solution-Folder-Structure" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#iTest-Solution-Folder-Structure">iTest Solution Folder Structure</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Terminology">Terminology</a></li><li><a href="#SYSTEMDIR-Structure">$SYSTEMDIR Structure</a></li><li><a href="#SUPPORTDIR-Structure">$SUPPORTDIR Structure</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>This document describes the iTest installation folder and its sub-components. When you install iTest, it is suggested that the top folder be called ADT. The iTest documentation refers to the installation folder as <em>C:\ADT\iTestX.X</em> where X.X is the version number of the iTest application. The following sections focus on the primary folder structures $SYSTEMDIR and $SUPPORTDIR.</p>
+
+
+	<a name="Terminology"></a>
+<h2 >Terminology<a href="#Terminology" class="wiki-anchor">&para;</a></h2>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>iTest Macro Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:100px;text-align:left;"><strong>Term</strong> </td>
+			<td style="text-align:left;"><strong>Definition</strong> </td>
+		</tr>
+		<tr>
+			<td>$SYSTEMDIR</td>
+			<td>This is the folder where iTest is installed on the PC.<br />&nbsp;<br />Example: <em>C:\ADT\iTest4.1\</em></td>
+		</tr>
+		<tr>
+			<td>$SUPPORTDIR</td>
+			<td>This is the solution folder.<br />&nbsp;<br />Example: <em>C:\ADT\iTest4.1\Solution.Demo\</em> </td>
+		</tr>
+		<tr>
+			<td>$DATADIR</td>
+			<td>This is the folder that contains all logged data.<br />&nbsp;<br />Example: <em>C:\ADT\iTest4.1\Data\</em></td>
+		</tr>
+		<tr>
+			<td>$EXECUTEDIR</td>
+			<td>This is the folder that contains iTest executable files and other binary files.<br />&nbsp;  <br />Example: <em>C:\ADT\iTest4.1\Execute\</em></td>
+		</tr>
+		<tr>
+			<td>$PYTHONDIR</td>
+			<td>This is the folder that contains Python support files including the supported libraries.<br />&nbsp;  <br />Example: <em>C:\ADT\iTest4.1\Execute\Python37\</em></td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+	<a name="SYSTEMDIR-Structure"></a>
+<h2 >$SYSTEMDIR Structure<a href="#SYSTEMDIR-Structure" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>$SYSTEMDIR or the system folder is the location on the Windows PC where iTest was installed. Typically, this is a folder like <em>C:\ADT\iTestX.X</em> where X.X is the version of iTest. You can install multiple versions of iTest on the same machine, so it is not uncommon to see the <em>C:\ADT</em> directory have multiple sub-folders such as <em>\iTest3.6</em>, <em>\iTest3.7</em>, etc.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The iTest $SYSTEMDIR and $SUPPORTDIR paths may not contain spaces.</td>
+		</tr>
+	</table></p>
+
+
+	<p>The following folders are located under $SYSTEMDIR:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>$SYSTEMDIR Folder Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Folder Name</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> Art</td>
+			<td> This folder contains icons, bitmaps, and other image files that are used by some iTest programs and can be useful when designing applications.</td>
+		</tr>
+		<tr>
+			<td> Data</td>
+			<td> This is the default location for project data files ($DATADIR). Alternatively, you can use the $SUPPORTDIR\Data folder. </td>
+		</tr>
+		<tr>
+			<td> DriverLibrary</td>
+			<td> The DriverLibrary folder contains all of the standard drivers and driver support files that are available with iTest. By default, all drivers are automatically installed during iTest installation, but you must have the proper dongle to use a specific driver.</td>
+		</tr>
+		<tr>
+			<td> Execute</td>
+			<td> This folder is also referred to as $EXECUTEDIR. It contains all the binary files required for iTest such as - <em>.exe</em> files, <em>.ocx</em>, <em>.dll</em> and more. The folder also contains the LabAgent web pages. </td>
+		</tr>
+		<tr>
+			<td> Help</td>
+			<td> This folder contains the driver help files in PDF format. </td>
+		</tr>
+		<tr>
+			<td> Installation</td>
+			<td> This folder contains support files and sub-folders used by all solutions in iTest.</td>
+		</tr>
+		<tr>
+			<td> Solutions</td>
+			<td> This is the $SUPPORTDIR folder. For example, Solution.Demo, Solution.Battery, or any other name used to identify your solution. You can have multiple solutions in the $SYSTEMDIR.</td>
+		</tr>
+		<tr>
+			<td> Transaction</td>
+			<td> The transaction files used for Part Tracker are stored locally here before they are uploaded to LabCentral.</td>
+		</tr>
+		<tr>
+			<td> TestSystemDiag</td>
+			<td>The Test System Diagnostic files are stored locally here before they are uploaded to LabCentral. </td>
+		</tr>
+		<tr>
+			<td> Utilization</td>
+			<td>The Utilization data files are stored locally here before they are uploaded to LabCentral. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="SUPPORTDIR-Structure"></a>
+<h2 >$SUPPORTDIR Structure<a href="#SUPPORTDIR-Structure" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>$SUPPORTDIR or the solution folder is the location on the Windows PC where your specific application is contained. Typically, this is a folder like <em>C:\ADT\iTestX.X\Solution.YYY</em> where X.X is the version of iTest and YYY is the name of the solution you are developing. Solution names may also indicate the specimen type for which you are creating an application. Multiple solution folders are permitted in $SYSTEMDIR.</p>
+
+
+	<p>The following folders are located under the $SUPPORTDIR:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>$SUPPORTDIR Folder Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Folder Name</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> Art</td>
+			<td> Icons, bitmaps, and other image files that are used by this solution.</td>
+		</tr>
+		<tr>
+			<td> Calculations</td>
+			<td> Contains sub-folders for each calculation rate (1Hz, 10Hz, 100Hz, SystemRate), which in turn contains the individual calculation (<em>.dat</em>) files. </td>
+		</tr>
+		<tr>
+			<td> DATA</td>
+			<td> This folder contains logsetup.dat and the (<em>.lol</em>) files. If this is the location of $DATADIR, it will also contain the project subfolders for datalogs. </td>
+		</tr>
+		<tr>
+			<td> DataQuality</td>
+			<td>  Contains the files for all data quality groups (<em>.dqg</em>). </td>
+		</tr>
+		<tr>
+			<td> DB</td>
+			<td> Contains the channel definition files (<em>.fil</em>) </td>
+		</tr>
+		<tr>
+			<td> DigitalOutConds</td>
+			<td> Contains the files for Set Value Tables (<em>.dco</em>) </td>
+		</tr>
+		<tr>
+			<td> Documentation</td>
+			<td> Any existing documentation for the solution.</td>
+		</tr>
+		<tr>
+			<td> eGateCfg</td>
+			<td> Contains dynamically created temporary files for use when you have an egate or QPac controller. </td>
+		</tr>
+		<tr>
+			<td> EOSConditions</td>
+			<td>  Contains files for Step Conditions. (<em>.eos</em>)</td>
+		</tr>
+		<tr>
+			<td> EXECUTE</td>
+			<td>  Contains the sub-folders for the 3 display types available in iTestConsole - Display=Main, Custom=Dialog, Right=Auxiliary Monitor</td>
+		</tr>
+		<tr>
+			<td> FlexEdit</td>
+			<td> Contains the solution's <em>FlexEdit.xml</em> files.</td>
+		</tr>
+		<tr>
+			<td> Layouts</td>
+			<td> Contains the solution's default and saved layouts for AutomationPanel.</td>
+		</tr>
+		<tr>
+			<td> Limits</td>
+			<td> Contains files for Limit Groups (<em>.lim</em>) </td>
+		</tr>
+		<tr>
+			<td> Logs</td>
+			<td> Contains the program log files for the various iTest executables. These files are mostly used for forensics when a problem occurs.  </td>
+		</tr>
+		<tr>
+			<td> Maps</td>
+			<td>  Contains the map's (2D Table) files (<em>.2dt</em>)</td>
+		</tr>
+		<tr>
+			<td> MasterSchedules</td>
+			<td> Contains the solution's master schedule (<em>.msf</em>) files. </td>
+		</tr>
+		<tr>
+			<td> Modules</td>
+			<td> Contains some housekeeping files for each module that has been added to the solution. </td>
+		</tr>
+		<tr>
+			<td> Picklist</td>
+			<td>  Contains picklist files (<em>.pkl</em>)</td>
+		</tr>
+		<tr>
+			<td> pid</td>
+			<td> Contains folders for each individual PID. </td>
+		</tr>
+		<tr>
+			<td> PlotTemplates</td>
+			<td> Contains saved plot layouts created from DataMiner. To access DataMiner, refer to the customer portal at  <a href="https://support.aanddtech.com/home" class="external">support.aanddtech.com</a> then add the DataMiner file to the $EXECUTEDIR folder.</td>
+		</tr>
+		<tr>
+			<td> PythonScripts</td>
+			<td> Contains the solution's python script (<em>.py</em>) files.</td>
+		</tr>
+		<tr>
+			<td> RCS</td>
+			<td> Contains previous versions of all saved files from Test Manager if file RCS is enabled. </td>
+		</tr>
+		<tr>
+			<td> Reports</td>
+			<td> Contains <em>.rpp</em> and <em>.rpt</em> files for iTest Reports.</td>
+		</tr>
+		<tr>
+			<td> Schedules</td>
+			<td> Contains all schedule files (<em>.sc2</em>) </td>
+		</tr>
+		<tr>
+			<td> Sequences</td>
+			<td> Contains sequence (<em>.seq</em>) files.</td>
+		</tr>
+		<tr>
+			<td> SetValues</td>
+			<td> INI files for system values that can be set. E.g. limit values.</td>
+		</tr>
+		<tr>
+			<td> Solution</td>
+			<td> Contains some temporary files used for editing the logsetup.dat file and the internal variables file when you have modules in the system. </td>
+		</tr>
+		<tr>
+			<td> Specimen</td>
+			<td> Contains the INI files for the units under test.</td>
+		</tr>
+		<tr>
+			<td> StringTables</td>
+			<td> Contains translation files for your application. </td>
+		</tr>
+		<tr>
+			<td> Test</td>
+			<td> Contains all if the procedure (<em>.tsc</em>) files in various sub-folders. </td>
+		</tr>
+		<tr>
+			<td>TestFormula</td>
+			<td> Contains the formula (<em>.fml</em>) files for the solution.</td>
+		</tr>
+		<tr>
+			<td> Toolbar</td>
+			<td> Contains test control toolbar files (<em>.tctb</em>) </td>
+		</tr>
+		<tr>
+			<td> Varlists</td>
+			<td> Contains the User Variable list files (<em>.uvl</em>)  </td>
+		</tr>
+		<tr>
+			<td> VXI</td>
+			<td>  This is a legacy folder that is used for many of the dynamically created files when iTest starts up. These are typically transferred down to the RTOS. In addition, it contains files for the file based arrays. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+</body>
+</html>

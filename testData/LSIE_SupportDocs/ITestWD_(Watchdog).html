@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ITestWD (Watchdog)</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="ITestWD_(Watchdog).html">ITestWD (Watchdog)</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="iTestWD"></a>
+<h1 >iTestWD<a href="#iTestWD" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The iTest watchdog program's purpose is to add an extra level of safety and security to the system in the event that <em>vxin_exec</em> crashes or locks up. In the case of a distributed system, it can protect in case the network link is lost. In normal operation, shutdowns and software safety are managed by limits and procedures. In the case that <em>vxin_exec</em> is somehow not able to respond, the application developer has a last line of notifications and software level response in addition to the hardware shutdowns that may be available. This is accomplished by the <em>iTestWD.exe</em> program.</p>
+
+
+	<a name="Setup"></a>
+<h2 >Setup<a href="#Setup" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>By default, iTestWD is not launched automatically at startup. To launch it automatically, add <em>iTestWD.exe</em> to the <code>PreLoad</code> list in the <em>powertek.ini</em> file. Otherwise, you will need to manually launch <em>iTestWD.exe</em>, which can be done in several ways (e.g., through the use of a mailslot message or VCL). Once iTestWD is launched, the watchdog program is enabled.</p>
+
+
+	<a name="Operation"></a>
+<h2 >Operation<a href="#Operation" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>When iTestWD detects an error, then any ChannelWrite and SendToMailslot commands issued by the <em>iTestWD.bat</em> file will only be processed by drivers that are running on the PC. Any drivers which were running on the real-time system will be unable to receive the command since either the network connection is lost or <em>vxin_exec</em> is down. A hardware safety will be the only way to issue commands to real-time drivers in this case.</p>
+
+
+	<p>If iTestWD detects if the <em>vxin_exec</em> or DataEngine have stopped responding for more than 5 seconds (based on the CLOCK_TIME), then it will launch a batch file called <em>iTestWD.bat</em> (located in the $SYSTEMDIR). This batch file can contain commands to bring the drivers to a safe state via mailslot commands to the drivers with the <em>SendToMailslot</em> utility or RDB set commands using the <em>ChannelWrite</em> utility. These utilities operate independently of <em>vxin_exec</em> and can be used regardless of the state of <em>vxin_exec</em>. For more information about both of these utilities, refer to the links under <a class="wiki-page" href="#See-Also">See Also</a>.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">iTestWD utilizes the <code>iTestWDTimeSecs</code> <em>powertek.ini</em> setting to specify the timeout (in seconds) period to check for changes to CLOCK_TIME. By default, this is set to 5 seconds.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>While processing the <em>iTestWD.bat</em> file, iTestWD will prompt the user to continue checking the watchdog.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>iTestWD Prompt</strong></em></span><br /><img src="attachments/download/116919/43_iTestWDPromptUser.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>When the user instructs iTestWD to stop checking for the watchdog, iTestWD will close, and the <em>iTestWD.log</em> file will populate. iTestWD will continue to launch the <em>iTestWD.bat</em> file each time the timeout period is reached until it is instructed to stop checking the watchdog.</p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="ChannelWrite.html">ChannelWrite</a></li>
+		<li><a class="wiki-page" href="SendToMailslot.html">SendToMailslot</a></li>
+	</ul>
+</body>
+</html>

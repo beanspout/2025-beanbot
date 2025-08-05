@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Auto-patching</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Maintenance.html">ITest Maintenance</a></li>
+<li><a href="Auto-patching.html">Auto-patching</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Auto-Patching"></a>
+<h1 >Auto-Patching<a href="#Auto-Patching" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Auto-Patching">Auto-Patching</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Triggering-Auto-Patching">Triggering Auto-Patching</a><ul><li><a href="#Auto-Patch-Modes">Auto-Patch Modes</a></li><li><a href="#Backup-Folder">Backup Folder</a></li></ul>
+</li><li><a href="#Installer-Patching">Installer Patching</a></li><li><a href="#System-Patching">System Patching</a></li><li><a href="#Solution-Patching">Solution Patching</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The auto-patching feature allows you to distribute system and solution patch files to multiple test systems as well as update the installed iTest and/or LabAgent software. These patch files are configured from a centralized location like LabCentral and are pushed down to the applicable test systems.</p>
+
+
+	<p>The following patch file types are available for auto-patching:</p>
+
+
+	<ul>
+	<li><ins><strong>Installer Patches:</strong></ins> Installer patches are used to update out-of-date iTest and/or LabAgent software on the test station. These patches are applied before any system patches.</li>
+		<li><ins><strong>System Patches:</strong></ins> System patch files are used for distributing patches to the $EXECUTEDIR. These patches are applied after any installer patches and may override files from the installer patch. </li>
+		<li><ins><strong>Solution Patches:</strong></ins> Solution patches (also known as application patches) are files stored in a subfolder on LabCentral's Lab Files repository that are downloaded by test stations. These patches can be applied while applying an installer patch or system patches.</li>
+	</ul>
+
+
+	<a name="Triggering-Auto-Patching"></a>
+<h2 >Triggering Auto-Patching<a href="#Triggering-Auto-Patching" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>In order to trigger auto-patching on the test system, the following requirements must be met prior to launching an iTest program:</p>
+
+
+	<ul>
+	<li>The <code>selectsupport</code> <em>config.ini</em> setting is set to TRUE.</li>
+		<li>The <code>AUTOPATCHMODE</code> <em>config.ini</em> setting is set to <strong>AUTO</strong>, <strong>MANUAL</strong>, or <strong>PROMPT</strong>.</li>
+	</ul>
+
+
+	<p>Auto-patching is triggered from <em>SelectSupport.exe</em>. Installer, system, and solution patching is available only if there are no other iTest programs running when the Select Solution dialog appears. If there is already an iTest program running (e.g., AutomationPanel or SolutionBuilder), and a different solution other than the currently running solution is opened, then only solution file patching will be available. If the same solution is selected, then auto-patching will not be available.</p>
+
+
+	<a name="Auto-Patch-Modes"></a>
+<h3 >Auto-Patch Modes<a href="#Auto-Patch-Modes" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <code>AUTOPATCHMODE</code> <em>config.ini</em> setting is used to determine how automatic patches are applied. The following modes are available for automatically patching the system:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Patch Modes</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Mode</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td> NONE</td>
+			<td> The automated patch system is not used (i.e., disabled). This is the default setting.</td>
+		</tr>
+		<tr>
+			<td> PROMPT</td>
+			<td> The system checks for new patches upon startup. If new patches are available, then the user can select which patches to apply via the Select Patches dialog.<br />&nbsp;<br />Depending on the system's configuration, application of the patches can only be ignored a certain number of times. For more information, refer to the <a class="wiki-page" href="ConfigINI_Options.html#iTest-INI-Options">AUTOPATCHIGNOREMAX</a> description.</td>
+		</tr>
+		<tr>
+			<td> AUTO</td>
+			<td> The system is automatically patched using the available patch files found in the <code>AUTOPATCHFOLDER</code> location.<br />&nbsp;<br />There may be a period of time where the Select Solution dialog is open and does not seem to be responding. This is due to the <em>HaspUpdate.bat</em> file running and is expected to occur during auto-patching if Hasp-related files are being patched.</td>
+		</tr>
+		<tr>
+			<td> MANUAL</td>
+			<td> The <strong>Auto Patch</strong> button is added to the Select Solution dialog. Clicking this button checks the patch folder for any new patches. If there are new patches, you can select which files to apply via the Select Patches dialog.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Backup-Folder"></a>
+<h3 >Backup Folder<a href="#Backup-Folder" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The first time you apply patches, the <em>$SYSTEMDIR\Patches</em> folder is created. When new system or solution patches are applied to your system, any files that were replaced are backed up to this folder. The <em>Patches</em> folder contains the <em>Patches.log</em> file which displays all patch activity, including subfolders that contain any files that were overwritten on each day. Note that you can clean up or delete the contents of this folder, as necessary.</p>
+
+
+	<a name="Installer-Patching"></a>
+<h2 >Installer Patching<a href="#Installer-Patching" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Installer patches are used to update out-of-date iTest and/or LabAgent software on the test station. These patches are applied before any system patches and are configured from LabCentral. Once applied, the <em>InstallRunner.exe</em> tool will run the setups for iTest and/or LabAgent.</p>
+
+
+	<p>When using PROMPT or MANUAL mode, the Select Patches dialog will display with the installer patch level. Check the patch level to apply, and then click <strong>Apply Patches</strong> to apply the installer patch.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Select Installer Patch Level</strong></em></span><br /><img src="attachments/download/131233/44_SelectInstallerPatchLevel.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="System-Patching"></a>
+<h2 >System Patching<a href="#System-Patching" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>System patching is used to distribute patches to the $EXECUTEDIR. These patches are applied after any installer patches and may override files from the installer patch. The patch process may require automatically updating the Hasp software via <em>HaspUpdate.bat</em>. This requires elevated (i.e., administrator) permissions when patching. If these permissions are not available and a patch for the Hasp software is present, an error message will display (unless patching silently), indicating that <em>HaspUpdate.bat</em> must be manually run as an administrator, and the <em>$SYSTEMDIR\Patches\Patches.log</em> file is updated with the error message.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The patching system uses the <em>INI.DLL</em> file, so this file cannot be automatically patched. If it is included in your patch folder, then it must be downloaded and replaced manually.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>When using PROMPT or MANUAL mode, the Select Patches dialog will display with the list of system patches. The list of system patches is composed of files located in the <code>AUTOPATCHFOLDER</code>; this folder may be a local or a network folder. Select which patches to apply under the System tab, and then click the <strong>Apply Patches</strong> button to apply the patches.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Select System Patches</strong></em></span><br /><img src="attachments/download/59972/Patching.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Solution-Patching"></a>
+<h2 >Solution Patching<a href="#Solution-Patching" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Solution patching utilizes file syncing with LabCentral, where you can use iTest to share files with LabCentral and distribute these files globally to applicable systems. Setup for solution patching is handled through the LabCentral interface and utilizes the LabCentral configured settings from the test system's <em>$SYSTEMDIR\moduledefinition.xml</em> and <em>$SYSTEMDIR\config.ini</em> files. For more information, refer LabCentral's <em>Managing Test Solution Patches</em> documentation.</p>
+
+
+	<p>If the <em>moduledefinition.xml</em> file exists in the test system's $SUPPORTDIR, then the settings configured in LabCentral will be overridden; refer to the <a class="wiki-page" href="Centralizing_Files.html">Centralizing Files with Moduledefinition.xml</a> documentation for more details.</p>
+
+
+	<p>For more information about file syncing, refer to the <a class="wiki-page" href="Interacting_with_LabCentral.html#Synchronizing-Files-with-LabCentral">Synchronizing Files with LabCentral</a>.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">LabAgent must be running in order to apply solution patches.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>Files from the network folder are downloaded to test systems in the following scenarios:</p>
+
+
+	<ul>
+	<li>SolutionBuilder is launched.</li>
+		<li>Auto-patching is triggered.</li>
+	</ul>
+
+
+	<p>When using PROMPT or MANUAL mode, the Select Patches dialog will display with the list of solution patches. Select the patches to apply, and the click <strong>Apply Patches</strong> to apply the solution patches.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Select Solution Patches</strong></em></span><br /><img src="attachments/download/131234/44_SelectSolutionPatches.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Interacting_with_LabCentral.html">Interacting with LabCentral</a></li>
+		<li><a class="wiki-page" href="Patching_iTest.html">Patching iTest</a></li>
+	</ul>
+</body>
+</html>

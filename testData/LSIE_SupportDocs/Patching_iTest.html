@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Patching iTest</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Maintenance.html">ITest Maintenance</a></li>
+<li><a href="Patching_iTest.html">Patching iTest</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Patching-iTest"></a>
+<h1 >Patching iTest<a href="#Patching-iTest" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Patching-iTest">Patching iTest</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Patching-Process">Patching Process</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>A&#38;D Technology relies on a series of patches to add new features and address issues between version releases. Official patches are available on a quarterly basis for supported versions of iTest. These patches can be accessed on the A&#38;D Technology customer service portal. The customer portal is available to all warranty and Safety Belt customers and can be accessed via <a class="external" href="https://support.aanddtech.com">https://support.aanddtech.com</a>.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The patch process may require automatically updating the Hasp software using <em>HaspUpdate.bat</em>. This requires elevated (i.e., administrator) permissions when patching. If these permissions are not available and a patch for the Hasp software is present, an error message will display (unless running silently), indicating that <em>HaspUpdate.bat</em> must be manually ran as an administrator. The <em>$SYSTEMDIR\Patches\Patches.log</em> file is updated with the error message.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Patching-Process"></a>
+<h2 >Patching Process<a href="#Patching-Process" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To patch iTest, do the following:</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#cc061c;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3741/Warning3.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>WARNING:</b></td>
+			<td style="vertical-align:top;">Reverting to a previous iTest build is not supported by this process. Contact A&#38;D Technology for assistance.</td>
+		</tr>
+	</table>
+
+
+
+
+	<ol>
+	<li>Run <em>iTestXXSetup.exe</em> for the version you would like to patch, where XX is the product version (e.g., <em>iTest44Setup.exe</em>).<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Setup</strong></em></span><br /><img src="attachments/download/130031/44_iTestSetup.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>Next</strong> through the automatically populated settings. For more information, refer to the <a class="wiki-page" href="Standard_iTest_Installation_Guide.html">Standard iTest Installation Guide</a>.
+	<ul>
+	<li>Install iTest to the same folder as your previous version.</li>
+	</ul>
+	</li>
+		<li>Click <strong>Finish</strong> to run the new version of iTest.</li>
+	</ol>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Auto-patching.html">Auto-patching</a></li>
+		<li><a class="wiki-page" href="Standard_iTest_Installation_Guide.html">Standard iTest Installation Guide</a></li>
+	</ul>
+</body>
+</html>

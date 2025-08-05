@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>PythonEngine Mailslot Messages</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Automating_iTest_with_Python.html">Automating iTest with Python</a></li>
+<li><a href="PythonEngine_Mailslot_Messages.html">PythonEngine Mailslot Messages</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="PythonEngine-Mailslot-Messages"></a>
+<h1 >PythonEngine Mailslot Messages<a href="#PythonEngine-Mailslot-Messages" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#PythonEngine-Mailslot-Messages">PythonEngine Mailslot Messages</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Python-Module-Specification">Python Module Specification</a></li><li><a href="#Mailslot-Messages">Mailslot Messages</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The PythonEngine mailslot messages call scripts that are stored in the <em>PythonScripts</em> folder. The folder is supported in two locations: the support directory ($SUPPORTDIR) and the iTest installation folder ($SYSTEMDIR). When a mailslot message is sent, the support directory location is scanned first while looking for a script to execute. If the indicated script was not found, then the folder in the iTest installation folder is checked. PythonEngine currently supports the use of the mailslot messages detailed in the section below.</p>
+
+
+	<p>To add PythonEngine to your system, perform the following steps:</p>
+
+
+	<ol>
+	<li>Navigate to your $SUPPORTDIR.</li>
+		<li>Open the <em>powertek.ini</em> file in a text editor.</li>
+		<li>Add the following syntax to the <code>Preload</code> <em>.ini</em> setting:<br />&nbsp;<br /><pre>\\PythonEngine.exe&gt;&gt;</pre></li>
+		<li>Save and exit the file.</li>
+	</ol>
+
+
+	<a name="Python-Module-Specification"></a>
+<h2 >Python Module Specification<a href="#Python-Module-Specification" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>When calling a Python script, you must specify the Python module that contains the function to be executed. If your script file is <em>Script1.py</em>, then the module name for this is <em>Script1</em>; the file extension cannot be included in the module name.</p>
+
+
+	<p>Script files can be located in sub-directories within the <em>PythonScripts</em> folder. When specifying a module that is contained in a sub-directory, the sub-directories must be separated using the period (.) character, not a slash as is typical in Windows. For example, if your <em>PythonScripts</em> folder contains a sub-directory called <em>Dir1</em>, which contains a script file called <em>Script1.py</em>, then the module specification for this file would be <em>Dir1.Script1</em>.</p>
+
+
+	<a name="Mailslot-Messages"></a>
+<h2 >Mailslot Messages<a href="#Mailslot-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="width:20px;text-align:center;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">You can use the tilde ( <img src="attachments/download/45871/tilde.png" alt="" /> ) to escape characters in mailslot messages.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Mailslot Messages</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Mailslot Message</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+			<td style="text-align:left;"><strong>Syntax</strong></td>
+		</tr>
+		<tr>
+			<td>DEBUG</td>
+			<td>The <code>DEBUG</code> mailslot message is used to remotely debug a script running in PythonEngine. The Eclipse/PyDev debug server must also be running. This message executes a Python function in a module, where the message supports zero to ten arguments (either string or numbers). Any error messages that occur when loading the module or executing the function are written to Softpanel.</td>
+			<td><pre>DEBUG pythonModule pythonFunction(par1, par2, ... ,par10)</pre></td>
+		</tr>
+		<tr>
+			<td>DIE</td>
+			<td>Closes PythonEngine.</td>
+			<td><pre>DIE</pre></td>
+		</tr>
+		<tr>
+			<td>SPAWN</td>
+			<td>The SPAWN mailslot message executes a Python function in a module. Zero to ten arguments are supported; arguments can be strings or numbers. Any error messages that occur when loading the module or executing the function are written to Softpanel.</td>
+			<td><pre>SPAWN pythonModule pythonFunction(par1, par2, ... , par10)</pre></td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+</body>
+</html>

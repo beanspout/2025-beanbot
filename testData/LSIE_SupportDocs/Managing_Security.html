@@ -1,0 +1,554 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Managing Security</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Managing_Security.html">Managing Security</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Managing-Security"></a>
+<h1 >Managing Security<a href="#Managing-Security" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Managing-Security">Managing Security</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Using-the-Security-System">Using the Security System</a></li><li><a href="#Enabling-Security">Enabling Security</a><ul><li><a href="#Configure-INI-Settings">Configure INI Settings</a></li><li><a href="#Configure-Channels">Configure Channels</a></li></ul>
+</li><li><a href="#Configuring-Security">Configuring Security</a><ul><li><a href="#Default-Groups-and-Users">Default Groups and Users</a></li><li><a href="#Add-a-Group">Add a Group</a></li><li><a href="#Add-a-User">Add a User</a></li></ul>
+</li><li><a href="#Security-in-iTest-Console-and-AutomationPanel">Security in iTest Console and AutomationPanel</a></li><li><a href="#Security-in-Test-Manager">Security in Test Manager</a></li><li><a href="#Security-in-SolutionBuilder">Security in SolutionBuilder</a></li><li><a href="#Advanced-Topics">Advanced Topics</a><ul><li><a href="#Auditing-Security-Events-in-SystemLog">Auditing Security Events in SystemLog</a></li><li><a href="#Changing-User-Passwords">Changing User Passwords</a></li><li><a href="#Encrypting-Test-Files">Encrypting Test Files</a><ul><li><a href="#Encrypting-the-System-Log">Encrypting the System Log</a></li></ul>
+</li><li><a href="#Hiding-Group-Configurations">Hiding Group Configurations</a></li><li><a href="#Integrating-iTest-with-Windows-Domain-Security">Integrating iTest with Windows Domain Security</a></li><li><a href="#usersdat-File">users.dat File</a></li></ul>
+</li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest contains a security subsystem that allows the test cell manager to restrict access to various components and functionality within iTest. For large-scale systems, most security settings should be managed centrally from LabCentral. However, all security settings can be managed locally at each iTest machine.</p>
+
+
+	<p>iTest security is based on groups and users. Permissions and restrictions are applied to groups, and then users are added to those groups. Users can be restricted in iTest in three different ways: by application, by task, and by items in Test Manager. You can configure these restrictions locally by using the Security Editor (<em>SecurityEditor.exe</em>) tool. This tool can be launched from the $EXECUTEDIR.</p>
+
+
+	<p>This document details how to manage security in iTest as well as other advanced topics. For information regarding how to manage security in LabCentral, refer to the <em>Administering System Security</em> document in the LabCentral Administration Guide.</p>
+
+
+	<a name="Using-the-Security-System"></a>
+<h2 >Using the Security System<a href="#Using-the-Security-System" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can limit access to tasks and applications in iTest to specific user groups. The security system consists of the following components.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Security Component Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Component</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Security Editor</td>
+			<td>The Security Editor allows you to create groups, assign permissions to groups, and then add users to the groups. These permissions limit access to applications and iTest tasks.</td>
+		</tr>
+		<tr>
+			<td>Database</td>
+			<td>The security database includes virtual string channels that contain the name of the current user and its group. For the security system to work, it assumes that the Windows or iTest processes are accessed using the main iTest tools (e.g., AutomationPanel, Test Manager, etc.). It also assumes that the channel that holds the name of the logged-in user is <code>UserName</code> and the channel that holds the name of the group is <code>GroupName</code>. If iTest is not running, or if the <code>UserName</code>/<code>GroupName</code> channels do not exist in the database, the security system will not operate properly.</td>
+		</tr>
+		<tr>
+			<td>User Security Information</td>
+			<td>User security information is contained in the <em>users.dat</em> file. This is an encrypted file located in the path defined by the <code>USERDATABASEPATH</code> <em>powertek.ini</em> setting. If iTest detects a <code>UserName</code> channel on startup, but the <em>users.dat</em> file does not exist, a restricted default user file is created. This prevents bypassing security by deleting the database file.<br />&nbsp;<br />For more information about the <em>user.dat</em> file, refer to the <a class="wiki-page" href="#usersdat-File">users.dat File</a> section below.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p>If you do not want to use the security system, do not include the <code>UserName</code> channel in the database. To prevent an unauthorized user from deleting the <code>UserName</code> field from the channel definitions, restrict access to the Channel Definitions database as well as access to any text editors.</p>
+
+
+	<p>iTest checks the current <code>UserName</code> against the security table when a task or application is selected. If the current user is not a member of a group that has permission to access an application or task, the user receives a security violation message and is unable to launch the task or application. If the <code>UserName</code> channel is configured when the system starts, the <code>UserName</code> channel is set to Operator by default. Operator permissions can then be set by the site administrator in the Security Editor.</p>
+
+
+	<a name="Enabling-Security"></a>
+<h2 >Enabling Security<a href="#Enabling-Security" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>There are certain requirements for enabling iTest security without LabCentral or for legacy VX-In customers. To enable iTest security, you must make the following manual file edits.</p>
+
+
+	<a name="Configure-INI-Settings"></a>
+<h3 >Configure INI Settings<a href="#Configure-INI-Settings" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following <em>.ini</em> settings are used to configure iTest security:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Security INI Settings</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Setting</strong></td>
+			<td style="text-align:left;"><strong>Location</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>DefaultUser</td>
+			<td> <em>Powertek.ini</em></td>
+			<td>This setting allows you to change the name of the default user that is logged in when iTest starts. If this setting is an empty string (i.e., <code>DefaultUser=</code>), then a login prompt will be presented at startup if <code>iTestLogin=TRUE</code>. By default, this setting is set to Operator. If this setting is defined with any user (such as Administrator) or is missing, then the login prompt will be bypassed.<br />&nbsp;<br />This setting should be added/configured to each solution that user restrictions are required.<br />&nbsp;<br />This setting is also configurable in the Global Settings editor in Test Manager.</td>
+		</tr>
+		<tr>
+			<td>iTestLogin</td>
+			<td> <em>Config.ini</em></td>
+			<td>This setting will enable login security for iTest. If <code>iTestLogin=TRUE</code>, then the user is prompted to enter a username and password. If a default user is set and <code>iTestLogin=TRUE</code>, then the login prompt at start-up will not appear. <br />&nbsp;<br />Test Manager uses the security credentials of the logged in user from AutomationPanel or iTest Console, instead of requiring an additional login, if either of these programs are already running when Test Manager is started.</td>
+		</tr>
+		<tr>
+			<td>iTestLoginComboBox</td>
+			<td> <em>Config.ini</em></td>
+			<td>This setting enables a combo box containing a list of usernames from the <em>users.dat</em> file for the AutomationPanel and SolutionBuilder login dialog. By default, this setting is set to FALSE.</td>
+		</tr>
+		<tr>
+			<td>PasswordFailedLoginDisable</td>
+			<td> <em>Config.ini</em> </td>
+			<td> The number of login failures before the user is disabled. Entering the correct user credentials prior to the user being disabled will reset the number of login failures back to 0.<br />&nbsp;<br />To disable this setting, enter a value <= 0. By default, this value is set to -1.</td>
+		</tr>
+		<tr>
+			<td>PasswordMinimumLength</td>
+			<td> <em>Config.ini</em> </td>
+			<td> When set, setting a user password in the Security Editor will require the password to contain at least this many characters. To disable this setting, enter -1.</td>
+		</tr>
+		<tr>
+			<td>PasswordSpecialCharacterRequired</td>
+			<td> <em>Config.ini</em></td>
+			<td> When set to TRUE, setting a user password in the Security Editor will require the password to contain at least one special character. Special characters include:<br /><pre>
+!#$%&#38;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~
+</pre></td>
+		</tr>
+		<tr>
+			<td>SecurityLogExtraLogging</td>
+			<td> <em>Config.ini</em> </td>
+			<td> When set to TRUE, changes made to Users or Groups using the Security Editor are logged to the <em>SecurityShell.log</em> file.</td>
+		</tr>
+		<tr>
+			<td>SingleUserLogin</td>
+			<td> <em>Config.ini</em></td>
+			<td>Allows iTest Console, AutomationPanel, and SolutionBuilder to share the same user login with Test Manager, reducing the number of login prompts. When set to TRUE, Test Manager and/or SolutionBuilder must be closed before the user is able to log in/out or switch users using the <strong>File > User Login…/User Logout</strong> options or the <code>$LOGINREQUEST/$LOGOUTREQUEST</code> Softpanel mailslot messages.</td>
+		</tr>
+		<tr>
+			<td>UserExpirationDays</td>
+			<td> <em>Config.ini</em></td>
+			<td> The number of days until a newly created user's password expires. Editing an existing user will reset the timer until the password expires. For example, if this setting is set to 30, and a modification is made to the user prior to 30 days passing, then the password will expire 30 days after the modification was saved. Once the password has expired, the user will be prompted to change their password on their next login attempt.<br />&nbsp;<br />To disable this setting, enter a value <= 0. By default, this value is set to -1.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Configure-Channels"></a>
+<h3 >Configure Channels<a href="#Configure-Channels" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To successfully use iTest security, you must add the following iTest channels (if not already provided) to a channel definitions database. Verify that the value in the Initial String column is blank unless you want a default username to appear in the login prompt.</p>
+
+
+	<ol>
+	<li><code>UserName</code>: A virtual string channel that contains the name of the logged-in user. </li>
+		<li><code>GroupName</code>: A virtual string channel that contains the name of the group(s) the user belongs to. If the user belongs to multiple groups due to the use of LabCentral security, this information will be stored as a comma-delimited list in this channel.</li>
+	</ol>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Channels - Test Manager</strong></em></span><br /><img src="attachments/download/50086/AddChannels.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Channels - SolutionBuilder</strong></em></span><br /><img src="attachments/download/105654/SB42_AddSecurityChannels.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Configuring-Security"></a>
+<h2 >Configuring Security<a href="#Configuring-Security" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>After iTest security is enabled, you can use the Security Editor to modify users and groups. When you launch this editor, users are located at the top of the editor and groups are located at the bottom section. Restrictions are associated with groups. Because a user is part of a group, the user will only have access to the permissions granted to the group.</p>
+
+
+	<p>To access the Security Editor, launch <em>SecurityEditor.exe</em> from the $EXECUTEDIR. You will be required to enter a password to launch the application.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>System Security Editor</strong></em></span><br /><img src="attachments/download/50088/SystemSecurity.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Default-Groups-and-Users"></a>
+<h3 >Default Groups and Users<a href="#Default-Groups-and-Users" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>By default, iTest includes the following groups: <strong>Administrator</strong>, <strong>Engineers</strong>, and <strong>Operators</strong>. Users that belong to the <strong>Administrator</strong> group are able to edit users and groups in the Security Editor as detailed in the sections above. Administrators can create a "Restricted Administrator" group by adding the <strong>Restricted Administrator</strong> permission in the Group editor. This permission allows for users in this group to access the Security Editor and edit users (excluding Administrators) as needed. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Restricted Administrator</strong></em></span><br /><img src="attachments/download/101697/42_RestrictedAdministrator.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Add-a-Group"></a>
+<h3 >Add a Group<a href="#Add-a-Group" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To add a new group, do the following:</p>
+
+
+	<ol>
+	<li>Select <strong>Edit > New Group</strong> from the main menu. This opens the Edit Group dialog. See the table below for descriptions of each section in the editor.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add New Group</strong></em></span><br /><img src="attachments/download/50089/NewGroup.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Edit Group Dialog</strong></em></span><br /><img src="attachments/download/50090/EditGroupDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;
+
+	<table>
+		<tr style="background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Section</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> Group Name </td>
+			<td> The name for the new Group. </td>
+		</tr>
+		<tr>
+			<td> Description </td>
+			<td> A description for the Group. </td>
+		</tr>
+		<tr>
+			<td>Application Permissions</td>
+			<td>This section is used to define which applications the users of the group can launch. By default, a group cannot launch any applications unless they are granted permission in this section. There is an option to add all applications to the list.</td>
+		</tr>
+		<tr>
+			<td>Other Tasks</td>
+			<td>This section is used to define which tasks users of the group can perform. By default, users of a group cannot perform any task unless they are granted permission in this section. There is an option to add all tasks to the list.</td>
+		</tr>
+		<tr>
+			<td>Test Manager Security</td>
+			<td>This section is used to specify which tree nodes in Test Manager the user is <strong><ins>restricted</ins></strong> from accessing. By default, all items in Test Manager are editable unless they are added to the list.</td>
+		</tr>
+	</table>
+
+
+</li>
+		<li>Enter a name for the group in the <strong>Group Name</strong> field.</li>
+		<li>Enter a description for the group in the <strong>Description</strong> field.</li>
+		<li>For the Applications and Other Tasks sections, use the drop-down menu in each section to select the permissions the users of the group have. After selecting a permission, use the <strong>Add (Application/Task) -></strong> button to add the selected permission.
+	<ul>
+	<li>When configuring permissions, you can use the <strong>All Applications</strong> and <strong>All Tasks</strong> option to grant users of the group all available permissions in the section. </li>
+	</ul>
+	</li>
+		<li>For the Test Manager Security section, use the drop-down menu to select which areas in the Test Manager tree node the users of the group <strong><ins>do not</strong></ins> have permission to edit.</li>
+		<li>Alternatively, select an item in any of the sections and select the <strong><- Delete</strong> button to remove items that you added.</li>
+		<li>Click <strong>OK</strong> when you're finished. The new group is added to the end of the list in the Groups section.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Group</strong></em></span><br /><img src="attachments/download/50093/NewGroupAdded.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br />For more information on security permissions, refer to the <a class="wiki-page" href="ITest_Security_Permissions.html">iTest Security Permissions</a> documentation.<br />&nbsp;</li>
+	</ol>
+
+
+	<a name="Add-a-User"></a>
+<h3 >Add a User<a href="#Add-a-User" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Once a group has been configured, you can create and add users to the group. The following steps describe the process of adding new users and assigning them to groups. When you assign a user to a group, they are limited by the permissions established in the group settings.</p>
+
+
+	<ol>
+	<li>Select <strong>Edit > New User</strong> from the main menu. This opens the Edit User dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add New User</strong></em></span><br /><img src="attachments/download/50095/AddNewUser.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Edit User</strong></em></span><br /><img src="attachments/download/50094/EditUser.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Configure the user using the descriptions provided in the table below.</li>
+		<li>Click <strong>OK</strong>. The new user is added to the end of the list in the Users section.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New User</strong></em></span><br /><img src="attachments/download/50096/NewUser.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>User Configuration Settings</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Setting</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>User Name</td>
+			<td>The name for the new user. Space characters are not permitted.</td>
+		</tr>
+		<tr>
+			<td>Group</td>
+			<td>Select the group the user belongs to.</td>
+		</tr>
+		<tr>
+			<td>User Description</td>
+			<td>The description of the user.</td>
+		</tr>
+		<tr>
+			<td>Password/Confirm Password</td>
+			<td>The password for the user. Confirm the password by re-entering it in the <strong>Confirm Password</strong> field.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Security-in-iTest-Console-and-AutomationPanel"></a>
+<h2 >Security in iTest Console and AutomationPanel<a href="#Security-in-iTest-Console-and-AutomationPanel" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>When you launch iTest Console or AutomationPanel, the logged-in user is typically <strong>Operator</strong> unless this setting has been overridden. You can force the login prompt to display when iTest starts by setting the <code>DefaultUser</code> <em>powertek.ini</em> setting to an empty string. Otherwise, no login prompt will display and the user will initialize to the default user account (either <strong>Operator</strong> or the defined <code>DefaultUser</code>).</p>
+
+
+	<p>When iTest loads, you can switch to another user and increase or decrease your permissions by using the <strong>User Login</strong> option located in the <strong>File</strong> menu option.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>AutomationPanel User Login</strong></em></span><br /><img src="attachments/download/50079/AutomationPanelUserLogin.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>iTestConsole User Login</strong></em></span><br /><img src="attachments/download/50080/iTestConsoleUserLogin.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>Once you have logged in, you can log out at any time by selecting <strong>File > User Logout</strong> from the main menu. This changes the logged-in user to <strong>NoUser</strong>. This user has limited permissions in iTest, and you must log in again before making changes to the system.</p>
+
+
+	<p>When an operator attempts to launch an application that they do not have permissions for, a message appears in the message queue indicating that they do not have adequate permissions. These interfaces will vary in appearance depending on whether you are running iTest Console or AutomationPanel.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>System Messages</strong></em></span><br /><img src="attachments/download/50081/iTestConsoleMessages.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />If a user tries to perform a task they are restricted from, a warning dialog displays indicating that they do not have permission to perform the action:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>No Permission</strong></em></span><br /><img src="attachments/download/50082/NoPermission.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Security-in-Test-Manager"></a>
+<h2 >Security in Test Manager<a href="#Security-in-Test-Manager" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>If you start Test Manager while iTest is running, the user currently logged into iTest remains the same. If you start Test Manager when iTest is not running, you will be prompted to enter a user name and password. The current user's permissions determine which items in the Test Manager tree are enabled or disabled. If the user is restricted from an area in Test Manager, it will be grayed out in the tree. For example, the following image displays that the user is restricted from the <em>Channels</em>, <em>Calculations</em>, and <em>Test Development</em> areas:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Restricted Folders</strong></em></span><br /><img src="attachments/download/50085/RestrictedFolders.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Security-in-SolutionBuilder"></a>
+<h2 >Security in SolutionBuilder<a href="#Security-in-SolutionBuilder" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>When launching SolutionBuilder, the user may be prompted to log in. The login prompt is displayed depending on the following <em>.ini</em> settings:</p>
+
+
+	<ul>
+	<li><code>iTestLogin=</code></li>
+		<li><code>SingleUserLogin=</code></li>
+		<li><code>DefaultUser=</code></li>
+	</ul>
+
+
+	<p>For more information on the listed settings, refer to the <a class="wiki-page" href="#Configure-INI-Settings">Configure INI Settings</a> section above.</p>
+
+
+	<p>If a user is restricted from a feature in SolutionBuilder, then a dialog will display, stating that the user lacks the necessary permissions. The image below demonstrates a user who is restricted from the Layouts editor in SolutionBuilder.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Restricted Permissions Dialog</strong></em></span><br /><img src="attachments/download/95451/42_SBRestrictedAreaDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>When security is enabled (i.e., <code>iTestLogin=TRUE</code>), SolutionBuilder will display the logged in user in its title bar as well as provide a <strong>Lock</strong> icon. Clicking the <strong>Lock</strong> icon will prevent any further edits from being made in SolutionBuilder, and the SolutionBuilder Locked dialog will display. The specified user must re-enter their password in order to unlock SolutionBuilder and continue making any necessary edits.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Security Enabled - SolutionBuilder</strong></em></span><br /><img src="attachments/download/127089/SB44_SecurityEnabled.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>SolutionBuilder Locked Dialog</strong></em></span><br /><img src="attachments/download/123443/SB44_SolutionBuilderLockedDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Advanced-Topics"></a>
+<h2 >Advanced Topics<a href="#Advanced-Topics" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Auditing-Security-Events-in-SystemLog"></a>
+<h3 >Auditing Security Events in SystemLog<a href="#Auditing-Security-Events-in-SystemLog" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The System Log contains all security events that have occurred since iTest first started. For example, user login successes and failures are recorded in the system log. You can view this file by launching <em>ViewSysLog.exe</em> from the $EXECUTEDIR. This file can be used to audit and track logins/logouts to iTest.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>View System Log</strong></em></span><br /><img src="attachments/download/50097/ViewSysLog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Changing-User-Passwords"></a>
+<h3 >Changing User Passwords<a href="#Changing-User-Passwords" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>AutomationPanel and SolutionBuilder allow the user to change their password via the Change Password dialog. This dialog can be accessed through the login prompt's <strong>Change Password</strong> button when launching AutomationPanel or SolutionBuilder as well as AutomationPanel's <strong>File > User Login...</strong> menu option.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#cc061c;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3741/Warning3.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>WARNING:</b></td>
+			<td style="vertical-align:top;">If the iTest system is connected to a LabCentral server, then user settings will be pushed down from LabCentral. This will override any changes made to a user's password via the Change Password dialog.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>If a user's password has expired due to the duration specified in the <code>UserExpirationDays</code> setting passing, then the Change Password dialog will automatically display when the expired user attempts to log into AutomationPanel or SolutionBuilder.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The <strong>Change Password</strong> button is only visible in the login prompt when <code>UseWindowsSecurity=FALSE</code>.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Change Password Button: Example from AutomationPanel</strong></em></span><br /><img src="attachments/download/132229/44_ChangePasswordButton.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>After clicking the <strong>Change Password</strong> button, the Change Password dialog displays. Use the descriptions provided in the table below to configure the new password. Once finished, click <strong>OK</strong> to change the password; the user can then use the new password when logging in. Click <strong>Cancel</strong> to abandon changes.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Change Password Dialog: Example from AutomationPanel</strong></em></span><br /><img src="attachments/download/132230/44_ChangePasswordDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Field Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Field</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Username</td>
+			<td> (Read-only) The name of an existing user whose password is being changed. This field is automatically populated from the <strong>Username</strong> field in the login prompt.</td>
+		</tr>
+		<tr>
+			<td>Old Password</td>
+			<td> The user's old password.</td>
+		</tr>
+		<tr>
+			<td>New Password</td>
+			<td> The new password for the user. The new password must adhere to any requirements specified in the <em>config.ini</em> file. For example, if the <code>PasswordMinimumLength=5</code> is set in the <em>config.ini</em> file, then the new password must contain at least five characters.</td>
+		</tr>
+		<tr>
+			<td>Confirm Password</td>
+			<td> Confirmation of the new password. This field must match the value entered in the <strong>New Password</strong> field.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Encrypting-Test-Files"></a>
+<h3 >Encrypting Test Files<a href="#Encrypting-Test-Files" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>A solution's test and calculation files can be encrypted/decrypted using the command-line arguments listed below. The last solution opened in iTest, or as specified by the <code>$SupportDir=</code> <em>config.ini</em> setting, will determine which solution's files are affected.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">iTest must be closed before you can encrypt/decrypt files.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><strong>Encrypting Files:</strong><br /><pre>
+TestMgr.exe EncryptTestFiles
+</pre></p>
+
+
+	<p><strong>Decrypting Files:</strong><br /><pre>
+TestMgr.exe DecryptTestFiles
+</pre></p>
+
+
+	<a name="Encrypting-the-System-Log"></a>
+<h4 >Encrypting the System Log<a href="#Encrypting-the-System-Log" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The System Log can be encrypted using the <code>SysLogEncrypted=TRUE</code> setting in the <em>powertek.ini</em> file. Encrypted system log messages are still viewable using the available iTest tools, e.g., Message Panel or <em>ViewSysLog.exe</em>.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">There is no way to encrypt or unencrypt an existing file. If portions of a <em>SystemLog.slg</em> file are not encrypted then those portions will not be viewable when encryption is turned on and vice versa.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Hiding-Group-Configurations"></a>
+<h3 >Hiding Group Configurations<a href="#Hiding-Group-Configurations" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Security group configurations can be hidden in the Security Editor via the following command-line argument:<br /><pre>
+SecurityEditor.exe /h
+</pre></p>
+
+
+	<p>Running this command-line argument will cause the Groups section to be hidden in the Security Editor as well as the menu options for managing security groups.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Hiding Group Configurations</strong></em></span><br /><img src="attachments/download/130345/44_HidingGroupSecurityConfigurations.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Integrating-iTest-with-Windows-Domain-Security"></a>
+<h3 >Integrating iTest with Windows Domain Security<a href="#Integrating-iTest-with-Windows-Domain-Security" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>When defining security with LabCentral, you can choose to apply user authentication through your Windows domain servers instead of using the local iTest user database. This can also be enabled without LabCentral by editing the <em>Config.ini</em> file and adding two entries. The first is to enable Windows domain security and should be set as:</p>
+
+
+<pre>UseWindowsSecurity=TRUE</pre>
+
+	<p>The second defines the domain which will be used to authenticate users and is specified as:</p>
+
+
+<pre>Domain=&lt;DomainName&gt;</pre>
+
+	<p>Where &lt;DomainName&gt; is the name of the domain to use.</p>
+
+
+	<p>Using domain security changes how iTest authenticates users. When a user logs into iTest or Test Manager, the user is checked to see if the name and password entered are a valid domain username and password. If these are valid, then the groups that that user belongs to are checked against the groups in the iTest security database (<em>users.dat</em>). The permissions granted to that user are a union of the permissions of all domain groups that they belong to.</p>
+
+
+	<a name="usersdat-File"></a>
+<h3 >users.dat File<a href="#usersdat-File" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <em>users.dat</em> file contains the security database that includes the list of users and groups. This is an encrypted file that is not usable except through one of the A&#38;D editors—either Security Editor or LabCentral. If your iTest system is connected to LabCentral, this file is automatically pushed down to the iTest system when it is changed from LabCentral. The default location for this file is in the <em>$SYSTEMDIR/Installation</em> folder.</p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="How_to_Auto-Logout_a_User_After_a_Period_of_Inactivity.html">How to Auto-Logout a User After a Period of Inactivity</a></li>
+		<li><a class="wiki-page" href="ITest_Security_Permissions.html">iTest Security Permissions</a></li>
+	</ul>
+</body>
+</html>

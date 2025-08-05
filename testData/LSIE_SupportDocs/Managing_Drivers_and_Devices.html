@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Managing Drivers and Devices</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Managing_Drivers_and_Devices.html">Managing Drivers and Devices</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Managing-Drivers-and-Devices"></a>
+<h1 >Managing Drivers and Devices<a href="#Managing-Drivers-and-Devices" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Managing-Drivers-and-Devices">Managing Drivers and Devices</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Driver-Activation">Driver Activation</a></li><li><a href="#Driver-Configuration-with-Test-Manager">Driver Configuration with Test Manager</a></li><li><a href="#Driver-Channels">Driver Channels</a></li><li><a href="#Driver-Licensing">Driver Licensing</a></li></ul>
+</li><li><a href="#See-Also">See Also</a></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>A&#38;D Technology offers a variety of drivers that support different protocols and device types. These drivers allow A&#38;D-specific or third-party devices and systems to be integrated into iTest. iTest uses a common method for labeling data from devices so that data can be utilized consistently across many different devices. Each device connected to iTest is managed by a driver and device data is stored in the RDB as a channel name. This document describes how to activate, configure, and add channels to a driver. For more information on your specific drivers, navigate to the <em>$SYSTEMDIR\Help\Drivers</em> folder to access individual driver documents.</p>
+
+
+	<p>If your driver was included in an iTest module, it's possible some of the details described here are not necessary. The module developer will have already taken care of configuring the driver and adding channels in the supplied module.</p>
+
+
+	<a name="Driver-Activation"></a>
+<h2 >Driver Activation<a href="#Driver-Activation" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>All A&#38;D Technology iTest drivers are automatically installed during installation. However, in order to use a specific driver, you must have the proper USB hardware dongle.</p>
+
+
+	<a name="Driver-Configuration-with-Test-Manager"></a>
+<h2 >Driver Configuration with Test Manager<a href="#Driver-Configuration-with-Test-Manager" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can add drivers to your solution in Test Manager. To add a new driver, locate the <em>Devices</em> folder in the tree bar and right-click to select <strong>New Remote Driver</strong>. The following dialog displays, which enables you to select a driver to add to your solution.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>New Remote Drivers</strong></em></span><br /><img src="attachments/download/48765/AddRemoteDriver.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Drivers List</strong></em></span><br /><img src="attachments/download/48767/RemoteDrivers.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />Select the driver you want to add. By default, the driver belongs to the solution, but if you intend for the driver to belong to a module, select a driver to display the module drop-down list and then select a module. If you select a module, the driver belongs to that module. This means if the module is deleted, the driver will be deleted, and if the module is exported, the driver information will be exported with it.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Module Option</strong></em></span><br /><img src="attachments/download/48769/ModuleOption.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />After adding the driver, the configuration screen loads in Test Manager. The driver configuration screens are similar for all drivers, but each driver contains fields that are specific to the driver. For example, baud rate, IP address, port numbers, scan rates, and channel mapping information are all common configuration items for many drivers. For information on the specific fields for your driver, consult your driver document. The image below shoes the CasPC driver configuration screen. This driver allows you to communicate with an A&#38;D Phoenix Combustion Analysis system. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Test Manager Driver Configuration Screen (tdaddin)</strong></em></span><br /><img src="attachments/download/48768/tdaddin.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>Each driver configuration screen contains some common information. This table lists common fields for all drivers.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Common Driver Settings</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Name</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Device ID </td>
+			<td> A unique integer number greater than zero. All drivers must have a unique device id in an iTest Solution. Device ID 0 is not used.</td>
+		</tr>
+		<tr>
+			<td>Enabled </td>
+			<td>This setting determines how the driver is started:<br /> &nbsp;<br /><ins><strong>Enabled</strong></ins>: The driver does not start automatically, but it can be launched later using mailslot messages, VCL, or <em>powertek.ini</em> entry<br /><ins><strong>Autolaunch</strong></ins>: The driver starts automatically when iTest is launched.<br /><ins><strong>Disabled</ins></strong>: The driver is not used.</td>
+		</tr>
+		<tr>
+			<td>Load File</td>
+			<td>The name of the executable for this driver.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Driver-Channels"></a>
+<h2 >Driver Channels<a href="#Driver-Channels" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>After adding a driver to your solution, you will need to add some channels to iTest that will allow you to read and write data from the driver into iTest. This step varies from driver to driver. Many of the driver configuration screens in Test Manager (also called tdaddins), have a button for creating channels for that driver. For example, the CANNeo driver has a Signals <strong>Edit</strong> button. When you click this button, a dialog displays that will let you define the raw CAN signals to read from the Bus and store in an iTest Channel. These signals can be defined manually or by reading in a <em>.dbc</em> file. This dialog is show below: <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>CAN Dialog</strong></em></span><br /><img src="attachments/download/48770/CANDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />This dialog will create iTest channels, which have the same name as the channels in the <em>.dbc</em> file by default. It will automatically add them to a specified channel definition file.</p>
+
+
+	<p>Other drivers do not have mapping dialogs available on the module configuration screen. For these drivers, the channels are assigned to the driver directly. To do this, you would create a channel in the channel definition editor, then edit the channel to assign the channel to the driver. This is shown on the dialog below as an analog input channel is assigned to the Modbus driver with device ID 101. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>New Channel Dialog</strong></em></span><br /><img src="attachments/download/48771/NewChannelDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />Once you have assigned a channel to a driver using this direct method, you will need to provide some information about the channel that will enable the driver to decide how to read or write that channel to the device. To do this, double-click the channel name to open the Edit Channel dialog and click the <strong>Device Options</strong> button. The following dialog, which is specific to Modbus type channels, displays. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Modbus Channels Dialog</strong></em></span><br /><img src="attachments/download/48772/ModbusChannels.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />The purpose of the dialog is to add information to an RDB field called <strong>Device Options</strong>. This is the field in the RDB that is most often used by drivers to define how to address data on the devices they are designed to interface to. The <strong>Device Options</strong> field is a 128 byte text field. Its format varies widely between drivers. Many drivers write to this field automatically when you use the mapping editors that they provide in the driver configuration editors.</p>
+
+
+	<a name="Driver-Licensing"></a>
+<h2 >Driver Licensing<a href="#Driver-Licensing" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Many iTest drivers require a USB dongle or a license server to run. A&#38;D provides a utility called <em>DongleUtil.exe</em> that can be used to examine the licenses available on your machine. See the <a class="wiki-page" href="DongleUtil.html">DongleUtil</a> document for more information.</p>
+
+
+	<a name="See-Also"></a>
+<h1 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul>
+	<li><a class="wiki-page" href="DongleUtil.html">DongleUtil</a></li>
+	</ul>
+</body>
+</html>

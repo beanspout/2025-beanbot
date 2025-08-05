@@ -1,0 +1,1114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>FlexEdit Editors</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="FlexEdit.html">FlexEdit</a></li>
+<li><a href="FlexEdit_Editors.html">FlexEdit Editors</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="FlexEdit-Editors"></a>
+<h1 >FlexEdit Editors<a href="#FlexEdit-Editors" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#FlexEdit-Editors">FlexEdit Editors</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#AIMAOM-Editors">AIM/AOM Editors</a><ul><li><a href="#AIM-Analog-Input-Management">AIM - Analog Input Management</a></li><li><a href="#AOM-Analog-Output-Management">AOM - Analog Output Management</a></li><li><a href="#Customizing-the-AIMAOM-Editors">Customizing the AIM/AOM Editors</a><ul><li><a href="#Limit-Shown-Channels">Limit Shown Channels</a></li><li><a href="#Modify-Voltage-Range">Modify Voltage Range</a></li></ul>
+</li></ul>
+</li><li><a href="#AKA-Editor">AKA Editor</a><ul><li><a href="#Using-Wildcards">Using Wildcards</a></li></ul>
+</li><li><a href="#Channel-Attribute-Editor">Channel Attribute Editor</a><ul><li><a href="#Creating-the-Log-Header-Form">Creating the Log Header Form</a></li></ul>
+</li><li><a href="#DLL-Mapping-Editor">DLL Mapping Editor</a><ul><li><a href="#Pre-Built-DLL-Plugin-Specific-Options">Pre-Built DLL Plugin Specific Options</a><ul><li><a href="#FlexEdit-Asap">FlexEdit Asap</a></li><li><a href="#FlexEdit-CAN">FlexEdit CAN</a></li><li><a href="#FlexEdit-CAS">FlexEdit CAS</a></li><li><a href="#FlexEdit-Indiset">FlexEdit Indiset</a></li></ul>
+</li></ul>
+</li><li><a href="#Document-View">Document View</a></li><li><a href="#Dynamic-Calculation-Editor">Dynamic Calculation Editor</a><ul><li><a href="#Editor-Columns">Editor Columns</a><ul><li><a href="#Edit-Formula-Dialog">Edit Formula Dialog</a></li></ul>
+</li><li><a href="#Dynamic-Calculation-Formulas">Dynamic Calculation Formulas</a></li></ul>
+</li><li><a href="#Generic-Text-Editor">Generic Text Editor</a></li><li><a href="#INI-Editor">INI Editor</a><ul><li><a href="#Actions">Actions</a></li></ul>
+</li><li><a href="#iTest-Displays">iTest Displays</a></li><li><a href="#Limits-Editor">Limits Editor</a><ul><li><a href="#Fixed-Column">Fixed Column</a></li></ul>
+</li><li><a href="#Log-Order-List-Editor">Log Order List Editor</a></li><li><a href="#Schedule-Editor">Schedule Editor</a></li><li><a href="#Channel-Property-Change-Dialog">Channel Property Change Dialog</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Editor displays are used to complete and perform tasks, they enable you to modify channel values to perform various calibrations or setting configurations.</p>
+
+
+	<a name="AIMAOM-Editors"></a>
+<h2 >AIM/AOM Editors<a href="#AIMAOM-Editors" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The FlexEdit AIM and AOM editors are used to modify and calibrate analog input and output channels within a solution. These editors enable you to modify the values of the channels for customized calibrations. When the modified calibration configuration is saved, the calibration equation updates the previously defined channel values to the channel values defined in the editor. The changes are immediately reflected in iTest whether the system is running or not.</p>
+
+
+	<p>Existing analog channels defined in your solution will display in their respective editor when you launch FlexEdit. The listed analog channels will only include uncalibrated channels, channels that have been calibrated using first order polynomial equations, or have their c2 - c6 coefficient values set to zero. Additional filtering is also available.</p>
+
+
+	<a name="AIM-Analog-Input-Management"></a>
+<h3 >AIM - Analog Input Management<a href="#AIM-Analog-Input-Management" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Analog Input Management editor is used to calibrate analog input channels using an order 1 equation. You can modify the channel values for low voltage, high voltage, low EU, and high EU. Additionally, you can modify the customer name for each channel, its alias, as well as reported units and the decimal precision.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Analog Input Management Editor</strong></em></span><br /><img src="attachments/download/116530/43_AIMEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>The following table details the descriptions of each column within the AIM Editor.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Column Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Column</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Channel Name</td>
+			<td>The unique iTest channel name. Typically iTest channel names are preceded with the two letters indicating the channel type. For example, analog input channels names are preceded by ai.</td>
+		</tr>
+		<tr>
+			<td>Customer Name</td>
+			<td>The customer name is a unique name to which the channel is assigned. </td>
+		</tr>
+		<tr>
+			<td>Alias</td>
+			<td>The alias is an optional label for the channel. Aliases provide a descriptive alternative to the channel name. </td>
+		</tr>
+		<tr>
+			<td>Units</td>
+			<td>Double-clicking this field displays the Channel Property Change dialog. This column communicates the specified units label for the channel value and its points of precision. For more information, refer to the <a class="wiki-page" href="#Channel-Property-Change-Dialog">Channel Property Change Dialog</a> section below. </td>
+		</tr>
+		<tr>
+			<td>Low Voltage</td>
+			<td>The minimum voltage value of the channel.</td>
+		</tr>
+		<tr>
+			<td>High Voltage</td>
+			<td>The maximum voltage value of the channel.</td>
+		</tr>
+		<tr>
+			<td>Low EU</td>
+			<td>The minimum value of the channel's range.</td>
+		</tr>
+		<tr>
+			<td>High EU</td>
+			<td>The maximum value of the channel's range.</td>
+		</tr>
+		<tr>
+			<td>Voltage</td>
+			<td>Only available while iTest is running. The current voltage value of the channel.</td>
+		</tr>
+		<tr>
+			<td>EU</td>
+			<td>Only available while iTest is running. The current EU value of the channel.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="AOM-Analog-Output-Management"></a>
+<h3 >AOM - Analog Output Management<a href="#AOM-Analog-Output-Management" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Analog Output Management Editor is used to calibrate analog output channels using an order 1 equation. You can modify the channel values for low voltage, high voltage, low EU, and high EU to perform customized calibrations. Additionally, you can modify the customer name for each channel, its alias, as well as reported units and the decimal precision. The AOM editor contains all the columns described in the AIM editor, however, with the addition of the Source column which is used to link an analog output channel to another channel in the solution, modifying the originating signal value of the channel.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Analog Output Management Editor</strong></em></span><br /><img src="attachments/download/116531/43_AOMEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>The following table details the descriptions of each column within the AOM Editor.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Column Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Column</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Channel Name</td>
+			<td>The unique iTest channel name. Typically iTest channel names are preceded with the two letters indicating the channel type. For example, analog output channels names are preceded by ao. </td>
+		</tr>
+		<tr>
+			<td>Customer Name</td>
+			<td>The customer name is a unique name to which the channel is assigned.</td>
+		</tr>
+		<tr>
+			<td>Alias</td>
+			<td>The alias is an optional label for the channel. Aliases provide a descriptive alternative to the channel name.</td>
+		</tr>
+		<tr>
+			<td>Source</td>
+			<td>The source is a link to the originating signal value of a channel. It enables you to keep the name of the value that is changing independent of the channel associated to the hardware. Double-clicking a cell within this column displays the Channel Selection dialog which can be used to select an existing channel as the source of data.</td>
+		</tr>
+		<tr>
+			<td>Units</td>
+			<td>Double-clicking this field displays the Channel Property Change dialog. This column communicates the specified units label for the channel value and its points of precision. For more information, refer to the <a class="wiki-page" href="#Channel-Property-Change-Dialog">Channel Property Change Dialog</a> section below.</td>
+		</tr>
+		<tr>
+			<td>Low Voltage</td>
+			<td>The minimum voltage value of the channel.</td>
+		</tr>
+		<tr>
+			<td>High Voltage</td>
+			<td>The maximum voltage value of the channel.</td>
+		</tr>
+		<tr>
+			<td>Low EU</td>
+			<td>The minimum value of the channel's range.</td>
+		</tr>
+		<tr>
+			<td>High EU</td>
+			<td>The maximum value of the channel's range.</td>
+		</tr>
+		<tr>
+			<td>Voltage</td>
+			<td>Only available while iTest is running. The current voltage value of the channel.</td>
+		</tr>
+		<tr>
+			<td>EU</td>
+			<td>Only available while iTest is running. The current EU value of the channel.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Customizing-the-AIMAOM-Editors"></a>
+<h3 >Customizing the AIM/AOM Editors<a href="#Customizing-the-AIMAOM-Editors" class="wiki-anchor">&para;</a></h3>
+
+
+	<a name="Limit-Shown-Channels"></a>
+<h4 >Limit Shown Channels<a href="#Limit-Shown-Channels" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The AIM/AOM editors can be configured to limit which analog input and analog output channels are shown through use of the <a class="wiki-page" href="FlexEdit_Tags.html#ltcheckuserdefined1gt">&lt;checkuserdefined1&gt;</a> tag. When the tag value is TRUE, only analog input and analog output channels with a non-zero value in their <strong>User Defined 1</strong> RDB field will be displayed; this RDB field can be edited in the Channel Definitions editor in Test Manager or SolutionBuilder.</p>
+
+
+	<p><strong>Example:</strong><br /><pre>
+&lt;editor&gt;
+    &lt;type&gt;AIM&lt;/type&gt;
+    &lt;checkuserdefined1&gt;TRUE&lt;/checkuserdefined1&gt;
+&lt;/editor&gt;
+</pre></p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>SolutionBuilder Channel Definition Editor: User Defined 1 Column</strong></em></span><br /><img src="attachments/download/116533/43_UserDefined1Column.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Configured AIM Editor Example</strong></em></span><br /><img src="attachments/download/116534/43_ConfiguredAIMEditorExample.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Modify-Voltage-Range"></a>
+<h4 >Modify Voltage Range<a href="#Modify-Voltage-Range" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The AIM/AOM editors default to a min/max voltage range of -1200V - 1200V. The <a class="wiki-page" href="FlexEdit_Tags.html#ltminvoltagegt">&lt;minvoltage&gt;</a> and <a class="wiki-page" href="FlexEdit_Tags.html#ltmaxvoltagegt">&lt;maxvoltage&gt;</a> tags can be used to modify this range.</p>
+
+
+	<p><strong>Example:</strong><br /><pre>
+&lt;editor&gt;
+    &lt;type&gt;AIM&lt;/type&gt;
+    &lt;maxvoltage&gt;10&lt;/maxvoltage&gt;
+    &lt;minvoltage&gt;0&lt;/minvoltage&gt;
+&lt;/editor&gt;
+</pre><br />&nbsp;</p>
+
+
+	<a name="AKA-Editor"></a>
+<h2 >AKA Editor<a href="#AKA-Editor" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The AKA editor, also referred to as the Customer Name editor, is used to assign a channel to a customer name. Changes to the alias and display units for the channel can also be made. This editor supports the use of wildcard characters (* or ?) within the <strong>&lt;file&gt;</strong> tag of the <em>FlexEdit.xml</em> file. For more information, refer to the <a class="wiki-page" href="#Using-Wildcards">Using Wildcards</a> section below.</p>
+
+
+	<p>Customer names are used as placeholders for channel names to provide greater readability and to eliminate the need to reconfigure portions of the iTest solution as hardware is migrated in and out. You can assign the channel to different customer names regardless if iTest is running; however, if iTest is running, the customer name cannot be referenced in any of the VCL script. If any customer names are referenced when saved, FlexEdit will not allow any of the new customer channel names to be applied.</p>
+
+
+	<p>You can right-click within the editor to insert, add, edit, or delete channels. Once you have added a channel, you can change its customer name, alias, or display units using the editor columns.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Customer Name Editor</strong></em></span><br /><img src="attachments/download/34363/FE37_AKAEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Using-Wildcards"></a>
+<h3 >Using Wildcards<a href="#Using-Wildcards" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Wildcard characters (* or ?) can be added to the <strong>&lt;file&gt;</strong> tag of the <em>FlexEdit.xml</em> file. This is used to automatically create a new AKA editor workflow task for each matching file found within the system. This eliminates the need to define separate tasks for each customer name file in the XML. The following restrictions apply to the use of wildcard characters:</p>
+
+
+	<ol>
+	<li>Files must be associated with the AKA editor.</li>
+		<li>The wildcard character cannot be in the folder path to the file in the <strong>&lt;file&gt;</strong> tag; it can only be included in the filename. For example, <em>C:\ADT\*\CustomerName.aka</em> is not supported, but <em>C:\ADT\iTest4.3\Cust*.aka</em> is. </li>
+		<li>The filename specified in the <strong>&lt;file&gt;</strong> tag cannot start with a wildcard character. </li>
+		<li>The <strong>&lt;duplicate&gt;</strong> tag is not supported. This tag is used by the <strong>Duplicate</strong> and <strong>Delete</strong> right-click options. These options are disabled for tasks generated from a wildcard character even if the <strong>&lt;duplicate&gt;</strong> tag is specified for the task in the XML file.</li>
+	</ol>
+
+
+	<p>When using a wildcard character to generate a task, you can use the <code>$FILENAME$</code> macro in the following tags: <strong>&lt;name&gt;</strong>, <strong>&lt;tooltip&gt;</strong>, <strong>&lt;help&gt;</strong>, and <strong>&lt;commandargs&gt;</strong>. The <code>$FILENAME$</code> macro is replaced with the filename of the file for the task.</p>
+
+
+	<p>The example below demonstrates how to use a wildcard character and the <code>$FILENAME$</code> macro within the <em>FlexEdit.xml</em> file:</p>
+
+
+	<p><ins><strong>Example:</strong></ins><br /><pre>
+&lt;task&gt;
+    &lt;name&gt;Wildcard $FILENAME$&lt;/name&gt;
+    &lt;file&gt;$SUPPORTDIR\DB\Customer\CustMax*.aka&lt;/file&gt;
+    &lt;editor&gt;
+        &lt;type&gt;AKA&lt;/type&gt;
+    &lt;/editor&gt;
+&lt;/task&gt;
+</pre></p>
+
+
+	<a name="Channel-Attribute-Editor"></a>
+<h2 >Channel Attribute Editor<a href="#Channel-Attribute-Editor" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Channel Attribute (CAV) editor is used to mark channels as being available for use in set value tables, step tasks, and circuits. These channels could be used, for example, as a step parameter, a step operand, or both in a Step Condition (EOS). In order for channels to appear in the CAV editor, the channel's <strong>User Defined1</strong> RDB field must be greater than 1; for more information about this field, refer to its entry in the <a class="wiki-page" href="RDB_Field_Definitions.html">RDB Field Definitions</a> documentation. The CAV editor can also be used to influence the listed channels in FlexEdit's AIM/AOM editors when they are using the <strong>&lt;checkuserdefined1&gt;</strong> tag; refer to the <a class="wiki-page" href="#Customizing-the-AIMAOM-Editors">Customizing the AIM/AOM Editors</a> section above for more information.</p>
+
+
+	<p>In the CAV editor, you can list additional channels for use, remove channels, update the channel's alias and description, and specify the channel's unit type and decimal precision. In addition, you can mark the channel as a step parameter and/or step operand as well as list it in a log header form.</p>
+
+
+	<p>To list additional channels, right-click on a row within the CAV editor and select the <strong>Add...</strong> option. The Channel Selection dialog displays, allowing you to select a channel. To remove a channel from the list, right-click on a row within the editor and select the <strong>Delete</strong> option.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">To open the right-click menu, the CAV editor must already list at least one channel.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>CAV Editor</strong></em></span><br /><img src="attachments/download/119963/43_CAVEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>CAV Editor Column Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Column</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Channel Name</td>
+			<td> (Read-only) The name of the channel. This field does not support the <strong>Add...</strong> right-click option.</td>
+		</tr>
+		<tr>
+			<td>Customer Name</td>
+			<td> (Read-only) The channel's customer name. This field does not support the <strong>Add...</strong> right-click option.</td>
+		</tr>
+		<tr>
+			<td>Alias</td>
+			<td> The alias used for the channel. If an alias has not been defined for the channel, then the customer or module name will be listed; the customer name takes precedence over the module name. If a customer or module name has not been assigned to the channel, then the channel name is listed. Upon saving changes, the channel's definition in its FIL file is updated.</td>
+		</tr>
+		<tr>
+			<td>Description</td>
+			<td>The description of the channel. This field supports a maximum of 256 bytes. Upon saving changes, the channel's definition in its FIL file is updated.</td>
+		</tr>
+		<tr>
+			<td>Units</td>
+			<td> The unit type used for the channel. You can use the drop-down menu to specify the channel's unit type. Upon saving changes, the channel's definition in its FIL file is updated.</td>
+		</tr>
+		<tr>
+			<td>Decimal</td>
+			<td> The number of decimal points of precision. Enter a numeric value to specify the decimal precision. Upon saving changes, the channel's definition in its FIL file is updated.</td>
+		</tr>
+		<tr>
+			<td>StepParam</td>
+			<td> When checked, the channel is marked for use as a step parameter.</td>
+		</tr>
+		<tr>
+			<td>StepOp</td>
+			<td> When checked, the channel is marked for use as a step operand.</td>
+		</tr>
+		<tr>
+			<td>Log Header</td>
+			<td> When checked, the channel is added to a log header form. Unchecking this box will remove the channel from a log header form. For more information, refer to the <a class="wiki-page" href="#Creating-the-Log-Header-Form">Creating the Log Header Form</a> section below.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Creating-the-Log-Header-Form"></a>
+<h3 >Creating the Log Header Form<a href="#Creating-the-Log-Header-Form" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>In the CAV editor, you can add/remove channel entries to a log header form via the <strong>Log Header</strong> column. The added entry is a read-only entry formatted as a string field that will appear in the left column of the form. It is labelled using the channel's alias.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Example Log Header Form Entry</strong></em></span><br /><img src="attachments/download/120446/43_UVLExample.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The log header form written to is specified by the <code>UserVariableListPath</code> and <code>LastUserVariableList</code> <em>powertek.ini</em> settings (i.e., <code>UserVariableListPath + \\ + LastUserVariableList</code>). If the log header form does not already exist, then a new one is created.</p>
+
+
+	<p>For more information about log header forms, refer to the <a class="wiki-page" href="Data_Logging_.html#Log-Header-Form-Overview">Data Logging</a> documentation.</p>
+
+
+	<a name="DLL-Mapping-Editor"></a>
+<h2 >DLL Mapping Editor<a href="#DLL-Mapping-Editor" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The mapping editor contains two separate lists. On the left are the remote channel names from the import file (e.g., A2L file). This listing can be trimmed down by using a wildcard search in the <strong>Name Filter</strong> field similar to the filtering available in the Channel Selection dialog display found in many other iTest editors. On the right is a list of iTest channel names and the current mapping for each channel.</p>
+
+
+	<p>To map a device name to an iTest channel name, select one or more device channel names either by using normal list selection or by checking the checkbox. Next, select an iTest channel name. The first selected device name will be mapped to the first iTest channel name. If more than one device name is selected, then subsequent device names will be mapped to the next iTest channel.</p>
+
+
+	<p>There are several buttons on the display:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Buttons</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Button</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Clear All</td>
+			<td>Removes all mappings.</td>
+		</tr>
+		<tr>
+			<td>Map</td>
+			<td>Maps the device name to the iTest channel name.</td>
+		</tr>
+		<tr>
+			<td>Map + Log</td>
+			<td>Does the mapping plus it flags the iTest channel for logging.</td>
+		</tr>
+		<tr>
+			<td>Unmap</td>
+			<td>Removes the device names from the right list. Select one or more iTest channels and press <strong>Unmap</strong>.</td>
+		</tr>
+		<tr>
+			<td>Check/Uncheck All</td>
+			<td>Selects/deselects all of the device names. The label changes as the button is toggled.</td>
+		</tr>
+		<tr>
+			<td>>>Clipboard</td>
+			<td>Copies the selected device names to the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Clipboard>></td>
+			<td>Maps the device name(s) from the clipboard to the list on the right starting with the selected iTest channel.<br />&nbsp;<br /><strong><ins>Note:</ins></strong> Blank rows in the pasted list will result in the iTest channel being unmapped, if it was already mapped.<br /><strong><ins>Note:</ins></strong> If using a manually created list, e.g., copied from a spreadsheet, then the list's first row must be <code>Remote Channel Name</code>. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>There are several edit controls:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Edit Controls</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Edit Control</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Name Filter</td>
+			<td>Filters the list of iTest channels to just those channels that contain the filter string. This field supports additional filtering for the beginning and end of channel names.<br />- To filter for the beginning of a channel name, use <strong>&#94;</strong> as a prefix before the name.<br />- To filter for the end of a channel name, use <strong>&#36;</strong> as a suffix after the name.</td>
+		</tr>
+		<tr>
+			<td>Customer Name Prefix</td>
+			<td>This prefix is added to a customer name when the iTest channel is mapped.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Channel Mapping Editor</strong></em></span><br /><img src="attachments/download/117489/43_FlexEditCan.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The appearance of the display varies among the DLLs. For instance, the ASAP DLL allows the entry of ACF, A2L, and HEX file names.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Pre-Built-DLL-Plugin-Specific-Options"></a>
+<h3 >Pre-Built DLL Plugin Specific Options<a href="#Pre-Built-DLL-Plugin-Specific-Options" class="wiki-anchor">&para;</a></h3>
+
+
+	<a name="FlexEdit-Asap"></a>
+<h4 >FlexEdit Asap<a href="#FlexEdit-Asap" class="wiki-anchor">&para;</a></h4>
+
+
+	<ul>
+	<li>The FlexEditAsap editor contains a second <strong>Browse</strong> button that allows for the selection of the ACF file to be used. This may modify what is displayed in the left listing, as the A2L file name information is updated based on the selected ACF file.</li>
+		<li>The FlexEditAsap editor allows you to type in the fully-qualified path and filename for a Hex file that is to be used in conjunction with the selected A2L file. This field is updated whenever an ACF file is selected.</li>
+		<li>When an iTest channel is mapped to an ASAP channel, this editor reads the unit label from the A2L file and replaces the iTest channel's unit with the new unit. Unmapping a channel will cause the channel's unit to be cleared.</li>
+		<li>You can filter the input and output channels via the &lt;inputchannelfilter&gt; and &lt;outputchannelfilter&gt; tags. These tags allow you to auto-filter the list of iTest channels available for mapping based on the selected interface. For more information, refer to the <a class="wiki-page" href="FlexEdit_Tags.html#ltinputchannelfiltergt">&lt;inputchannelfilter&gt;</a> and <a class="wiki-page" href="FlexEdit_Tags.html#ltoutputchannelfiltergt">&lt;outputchannelfilter&gt;</a> documentation. These filter results can be further pared down using the <strong>Filter</strong> field.</li>
+	</ul>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>FlexEdit Sample</strong></em></span><br /><img src="attachments/download/117490/43_flexedit_asap3.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="FlexEdit-CAN"></a>
+<h4 >FlexEdit CAN<a href="#FlexEdit-CAN" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>This editor allows you to update the scaling and other details of the CAN bus signals.  It does not import the messages themselves.</p>
+
+
+	<ul>
+	<li>When an iTest channel is mapped to a CAN signal, this editor reads the unit label from the DBC file and replaces the iTest channel's unit with the new unit. Unmapping a channel will cause the channel's unit to be cleared.</li>
+		<li>You can filter the input and output channels via the &lt;inputchannelfilter&gt; and &lt;outputchannelfilter&gt; tags. These tags allow you to auto-filter the list of iTest channels available for mapping based on the selected bus interface. For more information, refer to the <a class="wiki-page" href="FlexEdit_Tags.html#ltinputchannelfiltergt">&lt;inputchannelfilter&gt;</a> and <a class="wiki-page" href="FlexEdit_Tags.html#ltoutputchannelfiltergt">&lt;outputchannelfilter&gt;</a> documentation. These filter results can be further pared down using the <strong>Filter</strong> field.</li>
+	</ul>
+
+
+	<p><strong>Left List</strong></p>
+
+
+	<p>The import file contains the CAN signals available for use by the CanNeo bus interface. Separate <em>.dbc</em> files can be used for the input  versus the output signals. The paths for each import file is stored in the FlexEdit <em>.ini</em> file for that device and bus (e.g., <em>FlexEditCanNeo0_HS1.ini</em>).</p>
+
+
+	<p><strong>Example:</strong><br /><pre>
+[Driver]
+customerNameFile=CanNeo0_HS1.AKA
+ChannelFile=$SUPPORTDIR\DB\Bcc1.FIL
+lolFile=MAIN.LOL
+lastInterface=2
+
+[Interface1]
+ImportFileName1=$SUPPORTDIR\CanNeoTestCases.dbc
+ImportFileName2=$SUPPORTDIR\CanNeoTestCases2.dbc
+</pre></p>
+
+
+	<p>lastInterface=1 selects the first bus interface (e.g., CanNeo0_HS1 - Input) on open.<br />lastInterface=2 selects the second bus interface (e.g., CanNeo0_HS1 - Output) on open.</p>
+
+
+	<p><strong>Right List when SystemType=BTS</strong></p>
+
+
+	<p>The right list is populated from channels in a "Channel File" rather than all channels tied to this device.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>CAN Mapping</strong></em></span><br /><img src="attachments/download/117493/43_FlexEditCanBts.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="FlexEdit-CAS"></a>
+<h4 >FlexEdit CAS<a href="#FlexEdit-CAS" class="wiki-anchor">&para;</a></h4>
+
+
+	<ul>
+	<li>The FlexEditCas editor allows the name of an XML configuration file to be entered.  This file is used with the LOADCONFIG command.</li>
+	</ul>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>FlexEditCas Editor</strong></em></span><br /><img src="attachments/download/117491/43_flexeditcas.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="FlexEdit-Indiset"></a>
+<h4 >FlexEdit Indiset<a href="#FlexEdit-Indiset" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>This plugin uses two files: the import file and the mapping file. The import file lists the remote parameter names that can be accessed within Indiset. Two import file formats are supported: CSV and remote output definition. The mapping file links an iTest channel to a remote parameter name (i.e., a mapping).</p>
+
+
+	<ul>
+	<li>When an iTest channel is mapped to an Indiset parameter, this editor reads the unit label from the import file and replaces the iTest channel's unit with the new unit. Unmapping a channel will cause the channel's unit to be cleared.</li>
+	</ul>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#ebd700;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3740/caution.gif" alt="" /></td>
+			<td style="vertical-align:top;"><b>CAUTION:</b></td>
+			<td style="vertical-align:top;">CSV files do not contain units. Using this style of import file will clear units from the iTest channel as part of both the map and unmap events.</td>
+		</tr>
+	</table></p>
+
+
+	<p>The path to the import file is stored in <em>FlexEditIndiset.ini</em>.</p>
+
+
+<pre>
+[Driver]
+customerNameFile=Indiset.AKA
+lolFile=Indiset.LOL
+lastInterface=1
+
+[Interface1]
+ImportFileName1=$SUPPORTDIR\ANDTest.txt
+ImportFileName2=$SUPPORTDIR\ANDTest.txt
+</pre>
+
+	<p>The path to the MAP file is stored in FlexEdit.xml using the &lt;mapfile&gt; tag. Use of a fully qualified file path is not permitted in the &lt;mapfile&gt; tag as FlexEdit automatically adds <em><strong>$SupportDir\\RemoteMaps\\</strong></em> to the file name.</p>
+
+
+<pre>
+&lt;task&gt;
+    &lt;name&gt;Indiset Mapping&lt;/name&gt;
+    &lt;file&gt;$SUPPORTDIR\config.drv&lt;/file&gt;
+    &lt;editor&gt;
+        &lt;type&gt;Indiset&lt;/type&gt;
+        &lt;dll&gt;FlexEditIndiset.dll&lt;/dll&gt;
+        &lt;mapfile&gt;asap.map&lt;/mapfile&gt;
+    &lt;/editor&gt;
+&lt;/task&gt;
+</pre>
+
+	<a name="CSV-Import-files"></a>
+<h5 >CSV Import files<a href="#CSV-Import-files" class="wiki-anchor">&para;</a></h5>
+
+
+	<p>CSV import files contain a list of the During, After, and Second parameters; each type of parameter is separated by a blank line:</p>
+
+
+<pre>
+Indiset-During101
+Indiset-During102
+Indiset-During103
+Indiset-During104
+Indiset-During105
+Indiset-During106
+Indiset-During107
+Indiset-During108
+Indiset-During109
+Indiset-During110
+
+Indiset-After101
+Indiset-After102
+Indiset-After103
+Indiset-After104
+Indiset-After105
+Indiset-After106
+Indiset-After107
+Indiset-After108
+Indiset-After109
+Indiset-After110
+
+Indiset-Second101
+Indiset-Second102
+Indiset-Second103
+Indiset-Second104
+Indiset-Second105
+Indiset-Second106
+Indiset-Second107
+Indiset-Second108
+Indiset-Second109
+Indiset-Second110
+</pre>
+
+	<a name="Remote-Output-Definition-Files"></a>
+<h5 >Remote Output Definition Files<a href="#Remote-Output-Definition-Files" class="wiki-anchor">&para;</a></h5>
+
+
+	<p>The remote output definition file is a tab delimited file.</p>
+
+
+<pre>
+IndiCom remote output definition 2.0
+// DataSet Name    Channel Name    Output Unit    During Meas    After Meas    After Meas 2    
+IFILE1:TM'PCYL1    PCYL*    kPa    Avg    Avg    none            
+IFILE1:TM'ANY1    ANY1    V    Avg    Avg    none            
+IFILE1:TM'dTa    dTa    us/deg    Avg    Avg    none            
+IFILE1:TM'INJ1    INJ1    A    Avg    Avg    none            
+IFILE1:TM'SPRK1    SPRK1    V    Avg    Avg    none
+</pre>
+
+	<p>When using this type of file, you must specify the number of cylinders in the editor.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Remote Output Definition Files</strong></em></span><br /><img src="attachments/download/117492/43_flexeditindiset.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Mapping-file"></a>
+<h5 >Mapping file<a href="#Mapping-file" class="wiki-anchor">&para;</a></h5>
+
+
+	<p>When mapping an Indicom parameter to an iTest channel, the FlexEditIndiset editor sets the map type to "get" for During parameters, "mean" for After parameters, and "second" for Second parameters. The rate is set to 500 milliseconds in the defined map file.</p>
+
+
+<pre>
+[MapType]
+Type=ASAP
+
+[Data]
+header=local,remote,type,rate
+count=12
+entry_1=voIndiset_During101,,get,500
+entry_2=voIndiset_During102,,get,500
+entry_3=voIndiset_During103,,get,500
+entry_4=voIndiset_During104,,get,500
+entry_5=voIndiset_After101,,mean,500
+entry_6=voIndiset_After102,,mean,500
+entry_7=voIndiset_After103,,mean,500
+entry_8=voIndiset_After104,,mean,500
+entry_9=voIndiset_Second101,,second,500
+entry_10=voIndiset_Second102,,second,500
+entry_11=voIndiset_Second103,,second,500
+entry_12=voIndiset_Second104,,second,500
+</pre>
+
+	<a name="Document-View"></a>
+<h2 >Document View<a href="#Document-View" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The document view communicates reference information that may be important during a test. When a document view node is selected, it will open the proper display for the document. Document view supports file types such as <em>.html</em> and <em>.pdf</em>.</p>
+
+
+	<p>An example of a PDF document in FlexEdit is displayed below: <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Document View</strong></em></span><br /><img src="attachments/download/34359/FE37_PDF.JPG" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Dynamic-Calculation-Editor"></a>
+<h2 >Dynamic Calculation Editor<a href="#Dynamic-Calculation-Editor" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Dynamic Calculation Editor enables you to edit the active running dynamic calculations file. When changes to this editor are made and saved, the CalcEngine process stops and restarts using the new changes made to the file. The calculations run independently and asynchronously to the real-time system because they are processed by separate executables. This allows for modifications while the file is actively running, without affecting the system or causing a full rebuild. Supported channel types include: virtual output, analog output, digital output, and PWM channels. An example of the dynamic calculation editor is displayed in the image below:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Dynamic Calculations Editor</strong></em></span><br /><img src="attachments/download/34352/FE37_DynamicCalc.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />The dynamic calculation editor <strong>Channel Name</strong>, <strong>Customer Name</strong>, <strong>Alias</strong>, and <strong>Units</strong> fields can all be edited as well as the actual formula running on the channel. For descriptions of the editor fields, refer to the table below. When you select a channel name, it is important to select a virtual output channel that has been pre-designated to be a container for the dynamic calculation values. This naming convention should come from the person that designed your solution.</p>
+
+
+	<p>When you save the dynamic calculations, the formulas and other fields are parsed for correctness prior to actually saving the file. Any errors cause a message to be generated in the error message tab of the message pane or in a separate dialog that describes any errors within the formulas. Any syntactical errors prohibit you from saving the dynamic calculations.</p>
+
+
+	<p>Additionally, you can quickly reorganize calculations in your editor by highlighting multiple rows and using the shortcut keys, <strong>CTRL+SHIFT+UP/DOWN</strong>, to move the rows in the proper direction.</p>
+
+
+	<a name="Editor-Columns"></a>
+<h3 >Editor Columns<a href="#Editor-Columns" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Dynamic Calc Editor Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:100px;text-align:left;"><strong>Column</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Channel Name</td>
+			<td>The primary name of the channel.</td>
+		</tr>
+		<tr>
+			<td>Customer Name</td>
+			<td>The customer name is a second name to which a channel is assigned. This enables use of names that may be more easily recognizable or understandable. </td>
+		</tr>
+		<tr>
+			<td>Alias</td>
+			<td>The alias is an optional label for the channel. Aliases provide a descriptive alternative to the channel name.</td>
+		</tr>
+		<tr>
+			<td>Units</td>
+			<td>Double-clicking this field displays the Channel Property Change dialog. This column communicates the specified units label for the channel value and its points of precision. For more information, refer to the <a class="wiki-page" href="#Channel-Property-Change-Dialog">Channel Property Change Dialog</a> section below.</td>
+		</tr>
+		<tr>
+			<td>Formula</td>
+			<td>The calculation formula assigned to the channel.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Edit-Formula-Dialog"></a>
+<h4 >Edit Formula Dialog<a href="#Edit-Formula-Dialog" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The Edit Formula dialog is a feature that allows you to conveniently input formulas into dynamic calculations. To access this dialog, right-click the Formula column in the row you want to edit, then select <strong>Edit Formula</strong>. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Edit Formula Dialog</strong></em></span><br /><img src="attachments/download/108085/42_EditFormula.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>The Edit Formula dialog will display:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Edit Formula Dialog</strong></em></span><br /><img src="attachments/download/108086/42_EditFormulaDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Edit Formula Dialog Buttons</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:100px;text-align:left;"><strong>Button</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Insert Function</td>
+			<td>Inserts a function selected from the drop-down menu. Upon selecting a function, a description of that function will display below the menu. <br />&nbsp;<br /><img src="attachments/download/108087/42_functions.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>Insert Channel</td>
+			<td>Launches the Channel Select dialog.</td>
+		</tr>
+		<tr>
+			<td>Check Syntax</td>
+			<td>Verifies the formula's syntax. If selected, a pop-up will appear to indicate an error or confirm the syntax has passed.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>To load changes from the dialog to the table, click <strong>OK</strong>. To exit out of the dialog without saving changes, click <strong>Cancel</strong>.</p></p>
+
+
+	<a name="Dynamic-Calculation-Formulas"></a>
+<h3 >Dynamic Calculation Formulas<a href="#Dynamic-Calculation-Formulas" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Dynamic calculations support <code>#if</code> logic embedded into the formula string for an individual calculation. The syntax is as follows:</p>
+
+
+<pre>#if (condition) \ntrue_result\n#endif
+</pre>
+
+	<p>or</p>
+
+
+<pre>#if (condition) \ntrue_result\n#else\nfalse_result\n#endif
+</pre>
+
+	<p><strong>Where</strong>: "\n" delimits the statements</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#ebd700;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3740/caution.gif" alt="" /></td>
+			<td style="vertical-align:top;"><b>CAUTION:</b></td>
+			<td style="vertical-align:top;"><code>#elseif</code> statements and nested <code>#if/#else</code> statements are <ins><strong>not</ins></strong> supported.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Generic-Text-Editor"></a>
+<h2 >Generic Text Editor<a href="#Generic-Text-Editor" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The generic text editor type is a free form text editor tool that allows you to edit files that are generally unknown to iTest. For example, <em>.txt</em>, <em>.cfg</em>, <em>.log</em>, etc. With this editor type there is no syntax verification. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Test Notes Editor Example</strong></em></span><br /><img src="attachments/download/34364/FE37_GenericEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="INI-Editor"></a>
+<h2 >INI Editor<a href="#INI-Editor" class="wiki-anchor">&para;</a></h2>
+
+
+INI editors are often utilized to prompt operators for configuration information to prepare for tests. The editor contains two columns, the primary column indicates the property (or channel name) and the second contains the value assigned to the channel. The values entered in this editor can be saved to an iTest <em>.ini</em> file as well as the RDB, dependent upon the FlexEdit design. INI editors are often divided into collapsible sections to better organize information.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>INI Editor Example</strong></em></span><br /><img src="attachments/download/45523/INIEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />The values in the Value column of the INI editor can be designed to accept different forms of acceptable input, such as:
+	<ul>
+	<li><em>Numeric</em>: Entry field type that may have restrictions on length and precision.</li>
+		<li><em>Text</em>: Entry field type that may have restrictions on length and character sets.</li>
+		<li><em>Picklist</em>: A list of pre-defined options that can be selected.</li>
+		<li><em>Combobox</em>: Field that enables you to select from a list of pre-defined options or enter a value. </li>
+		<li><em>Checkbox</em>: Boolean function that writes a value of 0 or 1. </li>
+		<li><em>Channel</em>: Displays the Channel Selection dialog.</li>
+		<li><em>File</em>: Displays a Windows File Explorer dialog to select a file from a defined location.</li>
+		<li><em>Folder</em>: Displays a Windows File Explorer dialog to select a folder from a defined location.</li>
+	</ul>
+
+
+	<a name="Actions"></a>
+<h3 >Actions<a href="#Actions" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Depending on the configurations of your INI editors, you can perform different actions from the right-click menu. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>INI Editor</strong></em></span><br /><img src="attachments/download/45522/INIEditorActions.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Menu Actions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Action</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Add Channel</td>
+			<td>Allows you to select a new channel and add it to the editor using the Channel Select dialog.</td>
+		</tr>
+		<tr>
+			<td>Clear</td>
+			<td>Clears the contents of a cell in the column on the right.</td>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td>Deletes the selected row.</td>
+		</tr>
+		<tr>
+			<td>Edit Channel</td>
+			<td>Allows you to modify the currently selected channel using the Channel Select dialog.</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td>Pastes the copied text into a new row.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="iTest-Displays"></a>
+<h2 >iTest Displays<a href="#iTest-Displays" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>FlexEdit can present iTest displays or DSP files. The display is rendered within FlexEdit and can maintain the same functionality as if it were running iTest Console or a standalone dialog display.</p>
+
+
+	<a name="Limits-Editor"></a>
+<h2 >Limits Editor<a href="#Limits-Editor" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can use the Limits editor to enable, disable, or modify the limit ranges and other attributes for limit groups. There are two primary versions of the Limits editor; an example of each is displayed below:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Limits Editor</strong></em></span><br /><img src="attachments/download/123660/44_FlexEditLimitsEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Vertical Limits Editor</strong></em></span><br /><img src="attachments/download/123661/44_VerticalLimitsEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>If using legacy limits, FlexEdit will launch the AlarmStatus tool for editing limits during runtime. Otherwise, FlexEdit utilizes the standard editor from Test Manager.</p>
+
+
+	<p>The editor settings can be configured using the <a class="wiki-page" href="FlexEdit_Design_Guide.html">FlexEdit Design Guide</a>. By default, read-only fields are displayed in gray font unless the <a class="wiki-page" href="FlexEdit_Tags.html#ltreadonlytextcolorgt">&lt;readonlytextcolor&gt;</a> tag is defined in the <em>FlexEdit.xml</em> file.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Limits Editor Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:150px;"><strong>Value</strong> </td>
+			<td style="text-align:left;"><strong>Value</strong> </td>
+		</tr>
+		<tr>
+			<td>Channel Name</td>
+			<td>The unique name of the channel. Not editable in FlexEdit.</td>
+		</tr>
+		<tr>
+			<td>Customer Name</td>
+			<td>The customer name is a second name to which a channel is assigned. This enables use of names that may be more easily recognizable or understandable. Not editable in FlexEdit. If the channel is not assigned to a customer name, then the channel name will be listed. </td>
+		</tr>
+		<tr>
+			<td>Alias</td>
+			<td> The alias is an optional label for the channel. Aliases provide a descriptive alternative to the channel name. If an Alias is not defined for this iTest channel, then the customer name will be listed if this channel is assigned to one. Else, the channel name will be listed. </td>
+		</tr>
+		<tr>
+			<td>Low Limit</td>
+			<td>The lowest value at which the test specimen should run for the given channel.</td>
+		</tr>
+		<tr>
+			<td>Low Warning</td>
+			<td>The value at which a warning is issued indicating that the channel value is approaching its low limit.</td>
+		</tr>
+		<tr>
+			<td>High Warning</td>
+			<td>The value at which a warning is issued indicating that the channel value is approaching its high limit.</td>
+		</tr>
+		<tr>
+			<td>High Limit</td>
+			<td>The highest value at which the test specimen should run for the given channel.</td>
+		</tr>
+		<tr>
+			<td>Low Limit Ignore Time</td>
+			<td>The amount of time that iTest waits after the channel value goes below its Low Limit value before starting the specified limit action. The default value is 0.</td>
+		</tr>
+		<tr>
+			<td>Low Warning Ignore Time</td>
+			<td> The amount of time iTest waits after the channel value goes below its Low Warning value before initiating a warning. The default value is 0.<br /><ins><strong>Note:</strong></ins> This is only available using a vertical limits editor.</td>
+		</tr>
+		<tr>
+			<td>High Limit Ignore Time</td>
+			<td>The amount of time that iTest waits after the channel value exceeds the High Limit value before starting the specified limit action. The default value is 0.</td>
+		</tr>
+		<tr>
+			<td>High Warning Ignore Time</td>
+			<td> The amount of time iTest waits after the channel value exceeds its High Warning value before initiating a warning. The default value is 0.<br />Note: only available using a vertical limits editor.</td>
+		</tr>
+		<tr>
+			<td>Low Limit Action</td>
+			<td>The action iTest performs when the associated low limit is met.</td>
+		</tr>
+		<tr>
+			<td>Low Warning Action</td>
+			<td>The action iTest performs when the associated low warning limit is met. </td>
+		</tr>
+		<tr>
+			<td>High Warning Action</td>
+			<td>The action iTest performs when the associated high warning limit is met.</td>
+		</tr>
+		<tr>
+			<td>High Limit Action</td>
+			<td>The action iTest performs when the associated high limit is met.</td>
+		</tr>
+		<tr>
+			<td>Delay Time</td>
+			<td> Indicates the time delay (in seconds) immediately after a limit group is activated to wait before limit checking is performed on the channel.</td>
+		</tr>
+		<tr>
+			<td>Limits Active</td>
+			<td>The state of the limits and warning values for the channel. Possible states are active or inactive. This field is not editable in FlexEdit.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTES:</b></td>
+			<td style="vertical-align:top;">•    High Limit, High Warning, Low Warning, and Low Limit cells with channels assigned to them cannot be edited at runtime. Therefore, while iTest is running, these fields are read-only.<br />•    If the Limit Action field is blank, then the field is read-only.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p>The <strong>Insert Before</strong>, <strong>Insert After</strong>, <strong>Edit</strong>, and <strong>Delete</strong> right-click options are available to add, edit, and delete channels from the limit group. When adding or editing channels, the Add/Edit Channel dialog allows you to define the limit ranges, ignore and delay times, limit actions, and whether the channels have limits enabled when the group is applied. The <strong>Delay Time</strong> field indicates the time delay (in seconds) immediately after a limit group is activated to wait before limit checking is performed on the channel. The <strong>Ignore Time</strong> fields specify the amount of time that iTest waits after it reaches or goes below the <strong>Low Limit/Low Warning/High Limit/High Warning</strong> value before starting the specified limit action. This must be a numeric value; the default value is 0.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Edit Channel Dialog</strong></em></span><br /><img src="attachments/download/134548/45_EditChannelDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>When adding or editing digital input/output channels, the Add/Edit Channel dialog is limited to changing the limit ranges, selecting the limit action, and setting the ignore and delay time.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Add Channel Dialog - Digital Channels</strong></em></span><br /><img src="attachments/download/134549/FE45_AddDigitalChannelDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>After configuring the digital channel limits, the limit group is updated with the new limits. The channel definition (FIL) file is not updated unless changes were made to the DEFAULT limit group.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#ebd700;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3740/caution.gif" alt="" /></td>
+			<td style="vertical-align:top;"><b>CAUTION:</b></td>
+			<td style="vertical-align:top;">If your solution has the <code>LimitsVer=3.2</code> setting in the <em>powertek.ini</em> file, adding or deleting channels to any group adds and deletes channels from <strong><ins>all</ins></strong> groups. The warning prompt when deleting a channel will list any limit group that has that channel with limits active except for <em>DEFAULT.lim</em>. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Fixed-Column"></a>
+<h3 >Fixed Column<a href="#Fixed-Column" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Limits editor supports the ability to define a fixed column. When this feature is set, you can scroll through the editor horizontally, while maintaining the view of the fixed column. For more information, refer to the <a class="wiki-page" href="FlexEdit_Design_Guide.html#Global-Editor-Settings">Global Editor Settings</a> documentation.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Fixed Column</strong></em></span><br /><img src="attachments/download/37226/37_FixedColumn.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Log-Order-List-Editor"></a>
+<h2 >Log Order List Editor<a href="#Log-Order-List-Editor" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The LOL editor enables you to select and add channels to a specific Log Order List file. You can use the editor to modify the name of the channel that is logged, activate channel statistics for average logs, or log data quality settings for channels with data quality enabled. The right-click menu options for managing channels are also available in this editor enabling you to add, delete, or re-arrange channels in the list.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Changes to <em>Blackbox.lol</em> requires an iTest restart. FlexEdit will not update these during runtime.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>LOL Editor</strong></em></span><br /><img src="attachments/download/89996/FE41_LOLEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>Additionally, in this editor, you can:</p>
+
+
+	<ul>
+	<li>Click the column header label to sort/reverse sort the list alphabetically.</li>
+		<li>Double-click the channel name value to display the Channel Selection dialog.</li>
+		<li>Drag and drop channels from the Helper Bar into the LOL editor. The channel's Customer/Module Name and Alias fields are automatically populated if applicable.</li>
+		<li>Highlight multiple rows and use the shortcut keys, <strong>CTRL+SHIFT+UP/DOWN</strong>, to move the rows in the proper direction.</li>
+		<li>View available Customer/Module Names and Alias for channels. These fields are read-only.</li>
+		<li>Copy/Paste text using the shortcut keys <strong>CTRL + C</strong> and <strong>CTRL + V</strong>.</li>
+	</ul>
+
+
+	<a name="Schedule-Editor"></a>
+<h2 >Schedule Editor<a href="#Schedule-Editor" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>FlexEdit has the ability to display and edit test schedules using an SC2 schedule editor. You can add new rows or test steps to the schedules as well as update the values, however, you cannot modify the structure of the columns or change the descriptions for the columns, these are pre-configured by the solution designer.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Schedule Editor</strong></em></span><br /><img src="attachments/download/34356/FE37_ScheduleEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Channel-Property-Change-Dialog"></a>
+<h2 >Channel Property Change Dialog<a href="#Channel-Property-Change-Dialog" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Channel Property Change dialog allows you to specify the appropriate units and the decimal point precision for a channel in the AIM, AOM, and Dynamic Calculations editors.</p>
+
+
+	<p>To launch the Channel Property Change dialog, double-click the <strong>Units</strong> column for a channel, or right-click a column and select <strong>Edit Property</strong>*. The <strong>Units Label</strong> and <strong>Decimal Points</strong> are the only editable fields in this dialog. You can type the appropriate units label in this field or select a unit type from the drop-down. Define the decimal point precision using the drop-down's available options. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Channel Property Change Dialog</strong></em></span><br /><img src="attachments/download/34353/FE37_ChannPropChange.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+* <span style="font-size:0.90em;font-style: italic;">This option is only available in the Dynamic Calculations editor.</span>
+</body>
+</html>

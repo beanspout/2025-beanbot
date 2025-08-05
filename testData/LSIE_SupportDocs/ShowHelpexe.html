@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ShowHelpexe</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="ShowHelpexe.html">ShowHelpexe</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="ShowHelpexe"></a>
+<h1 >ShowHelp.exe<a href="#ShowHelpexe" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The ShowHelp application opens the user documentation and can be accessed in the $EXECUTEDIR. When launched, a window (similar to the one shown below) will display:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>ShowHelp (User Documentation)</strong></em></span><br /><img src="attachments/download/96851/42_ShowHelpOverview.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>In addition, the ShowHelp application can be used to display a specific help topic by using either a command line or a mailslot message.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+ShowHelp.exe /url UserGuide\Help_Topic_Page.html
+</pre></p>
+
+
+	<p><strong>Example:</strong></p>
+
+
+	<ul>
+	<li><ins><strong>Command Line:</strong></ins> <code>ShowHelp.exe /url UserGuide\ADT_Bar.html</code></li>
+		<li><ins><strong>Mailslot Message:</strong></ins> <code>\\.\mailslot\Softpanel>>$EXECUTE;ShowHelp.exe /url UserGuide\ADT_Bar.html</code></li>
+	</ul>
+
+
+	<p>If the help topic page contains any spaces, then the syntax is as follows:</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+ShowHelp.exe /url "UserGuide\Help Topic Page.html" 
+</pre></p>
+
+
+	<p><strong>Example:</strong></p>
+
+
+	<ul>
+	<li><ins><strong>Command Line:</strong></ins> <code>ShowHelp.exe /url "UserGuide\ADT Bar.html"</code></li>
+		<li><ins><strong>Mailslot Message:</strong></ins> <code>\\.\mailslot\Softpanel>>$EXECUTE;ShowHelp.exe /url "UserGuide\ADT Bar.html"</code></li>
+	</ul>
+</body>
+</html>

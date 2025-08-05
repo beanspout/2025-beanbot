@@ -1,0 +1,518 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Data Logging in Test Manager</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Data_Logging_in_Test_Manager.html">Data Logging in Test Manager</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Data-Logging-in-Test-Manager"></a>
+<h1 >Data Logging in Test Manager<a href="#Data-Logging-in-Test-Manager" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Data-Logging-in-Test-Manager">Data Logging in Test Manager</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Log-Header-Forms">Log Header Forms</a><ul><li><a href="#Creating-the-UVL-File">Creating the UVL File</a></li><li><a href="#Using-Array-Channels">Using Array Channels</a></li><li><a href="#Displaying-the-Operator-Screen">Displaying the Operator Screen</a></li><li><a href="#Masterini-File">Master.ini File</a></li><li><a href="#Datared-Task-Sequence">Datared Task Sequence</a></li></ul>
+</li><li><a href="#Log-Order-Lists">Log Order Lists</a><ul><li><a href="#Creating-the-LOL-File">Creating the LOL File</a></li></ul>
+</li><li><a href="#Data-Log-Editor">Data Log Editor</a><ul><li><a href="#Defining-Log-Actions">Defining Log Actions</a></li><li><a href="#Right-Click-Options">Right-Click Options</a></li></ul>
+</li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The iTest data logging feature enables you to create, save, and use data files for reporting and analysis. Data logs are composed of three different parts: information from the data log editor, log order lists, and log header forms. Combined, these elements allow you to create logs customized for your testing needs. The first step to creating a data log is to define the log header form. You can then create a log order list file and use the data log editor to combine the different parts that create the data log. The following sections describe this process.</p>
+
+
+	<a name="Log-Header-Forms"></a>
+<h2 >Log Header Forms<a href="#Log-Header-Forms" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Log header forms are used to define the list of channels that appear at the top of the data file, known as the header. They can also be used to present a dialog to the operator before starting a test, prompting them to enter data. The log header form is created using the Log Header Forms editor in Test Manager. The log header form files are referred to as user variable list files (UVL) and use the <em>.uvl</em> extension.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Log header form files are stored, by default, in the <em>$SUPPORTDIR/Varlists</em> folder. This can be modified using the <code>UserVariableListPath</code> <em>powertek.ini</em> setting.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Creating-the-UVL-File"></a>
+<h3 >Creating the UVL File<a href="#Creating-the-UVL-File" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following steps outline the process for creating and editing a log header form file. For complete descriptions of the editor's fields, refer to the table below.</p>
+
+
+	<ol>
+	<li>To access this editor, expand the <em>Data Logging</em> folder in the Test Manager tree.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Log Header Forms Folder Location</strong></em></span><br /><img src="attachments/download/39030/TMTreeNode.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Right-click the <em>Log Header Forms</em> folder and select <strong>New Form</strong>. A blank editor displays.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add a New Form</strong></em></span><br /><img src="attachments/download/37881/AddNewForm.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Right-click within the editor and select <strong>Add to End</strong>. A new row displays in the editor.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add Row to End</strong></em></span><br /><img src="attachments/download/37884/AddtoEnd.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the drop-down in the <strong>User Entry</strong> column. A list of channels displays. Select the channel to write to the header. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select User Entry Channel</strong></em></span><br /><img src="attachments/download/39031/UserEntryChannelList.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the drop-down in the <strong>Type</strong> column. Options include <strong>Header</strong>, <strong>Hidden</strong>, <strong>Read-Only</strong>, and <strong>Control</strong>. This feature defines how the channel is used, displayed, and saved. The options are described in the table below.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Define Type</strong></em></span><br /><img src="attachments/download/39032/TypeOptions.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Specify the format of the data that is collected. Options include <strong>String</strong>, <strong>Number</strong>, <strong>Memo</strong>, <strong>Label</strong>, and <strong>Empty</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Define Data Format</strong></em></span><br /><img src="attachments/download/39033/FormatOfData.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Define the <strong>Len</strong>. This is the maximum number of characters that can be entered in the field.</li>
+		<li>Set the <strong>Dec</strong>. This is the decimal precision for numeric format entry fields.</li>
+		<li>Set a predefined picklist from which the user can select an item from a drop-down list. </li>
+		<li>Enter a column number if you are using the <code>$NEWFORM</code> mailslot command.</li>
+		<li>Ignore the <strong>Form Record</strong> column. Do not use this field.</li>
+		<li>Define the prompt. This is a channel that provides an alternative string prompt for the operator.<br />&nbsp;</li>
+	</ol>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Log Header Form (UVL) Editor Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Value</strong> </td>
+			<td style="text-align:left;"><strong>Value</strong> </td>
+		</tr>
+		<tr>
+			<td>User Entry</td>
+			<td>Displays a drop-down list of channels. The channel selected in this field is written to the data file's header.</td>
+		</tr>
+		<tr>
+			<td>Type</td>
+			<td>Indicates how the channel is used and where it is saved. Values include:<br />&nbsp;<br /><ins><strong>Header:</strong></ins> The <strong>Header</strong> selection saves the channel to the <em>master.ini</em> file and the RDB. It is visible and editable in the dialog that appears before the operator.<br /><ins><strong>Hidden:</strong></ins> When this option is selected, the channel is saved and visible in the data file header. It is not visible in the dialog that appears before the operator.<br /><ins><strong>Read-Only:</strong></ins> When the <strong>Read-Only</strong> option is selected, the channel is visible in the data file header. It is also visible in the dialog that appears before the operator, although it is not editable.<br /><ins><strong>Control:</strong></ins> This selection causes the channel to appear in the dialog that appears before the operator but does not display in the data file header.</td>
+		</tr>
+		<tr>
+			<td>Format</td>
+			<td>Specifies the format of the collected data. Format types include:<br />&nbsp;<br /><ins><strong>String:</strong></ins> Sequence of text characters. <br /><ins><strong>Number:</strong></ins> Numeric values.<br /><ins><strong>Memo:</strong></ins> Functions similarly to string. This is a legacy field and is generally no longer used.<br /><ins><strong>Label:</strong></ins> Provides a header row, enabling you to section off parts of the form. A <strong>Label</strong> format does not add an entry to the data file header, regardless of what is defined in the <strong>Type</strong> column. <ins><strong>Note:</strong></ins> This is only relevant when using the <code>$NEWFORM</code> mailslot message.<br /><ins><strong>Empty:</strong></ins> Creates an empty, full-width space for formatting. An <strong>Empty</strong> format will not add an entry to the data file header, regardless of what is defined in the <strong>Type</strong> column. </td>
+		</tr>
+		<tr>
+			<td>Len</td>
+			<td>The maximum number of characters that can be entered in the field. For numeric entries, the decimal point counts against this total. </td>
+		</tr>
+		<tr>
+			<td>Dec</td>
+			<td>The decimal precision for numeric entry fields.</td>
+		</tr>
+		<tr>
+			<td>Picklist</td>
+			<td>Enables you to select a picklist from which the user can select an option from a drop-down list.</td>
+		</tr>
+		<tr>
+			<td>Column Number</td>
+			<td>Indicates the column you are putting the header prompt in (label/prompt and entry field, if applicable). 1 = left column, 2 = right column, 3 = spans both columns. This field is only relevant when using the <code>$NEWFORM</code> mailslot message.</td>
+		</tr>
+		<tr>
+			<td>Form Record</td>
+			<td>An obsolete feature. Do not use.</td>
+		</tr>
+		<tr>
+			<td>Prompt</td>
+			<td>Provides an alternative string prompt for the operator.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Using-Array-Channels"></a>
+<h3 >Using Array Channels<a href="#Using-Array-Channels" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>You can use array channels in UVL files with a static index or no index. If a static index is used, the name will be used as it is in the header of any data logs using the UVL file. If the array channel in the UVL file has no index specified, then it will use the index passed to the STARTLOG command. The unindexed channel name appears in the header of the data log; however, the value comes from the indexed element specified by STARTLOG.</p>
+
+
+	<a name="Displaying-the-Operator-Screen"></a>
+<h3 >Displaying the Operator Screen<a href="#Displaying-the-Operator-Screen" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>UVL files can be used to create a screen for the operator to enter test specific values at the start of a test. There are two methods for displaying this screen:</p>
+
+
+	<ol>
+	<li>Send the Softpanel mailslot message: <code>$NEWFORM;filename.uvl</code></li>
+		<li>Use FlexEdit to present the form to the operator using the Softpanel mailslot message, <code>$FlexEdit;filename.uvl</code>.</li>
+	</ol>
+
+
+	<p>The <code>$NEWFORM</code> message works only with iTest Console, whereas the <code>$FlexEdit</code> message works only with AutomationPanel and requires use of the full file path.</p>
+
+
+	<p>The following examples represent these screens:</p>
+
+
+	<p><strong>Message</strong>:</p>
+
+
+<pre>$NEWFORM;SysSchHeader.uvl</pre>
+
+	<p>&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Operator Screen Using $NEWFORM</strong></em></span><br /><img src="attachments/download/37891/NEWFORMUVLScreen.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p><strong>Message</strong>:</p>
+
+
+<pre>$FlexEdit;$SUPPORTDIR/varlists/SysSchHeader.uvl</pre>
+
+	<p>&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Operator Screen Using $FlexEdit</strong></em></span><br /><img src="attachments/download/38478/LaunchFlexEdit.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Masterini-File"></a>
+<h3 ><strong><em>Master.ini</em></strong> File<a href="#Masterini-File" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <em>master.ini</em> file supplies values to <em>datared.exe</em> when writing header values to data logs. Normally, the values for each channel of a UVL are written to the <em>master.ini</em> file via the tools launched by either the <code>$NEWFORM</code> or <code>$FlexEdit</code> mailslot messages to Softpanel. When the user saves from either of these screens, the data is written to the RDB and the <em>master.ini</em> file. If a channel does not have an entry in the <em>master.ini</em> file, then the current value of that channel will be read from the RDB instead.</p>
+
+
+	<a name="Datared-Task-Sequence"></a>
+<h3 >Datared Task Sequence<a href="#Datared-Task-Sequence" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>When datared receives a binary file to convert to ASCII, the following sequence of tasks occurs:</p>
+
+
+	<ol>
+	<li>Datared verifies whether the output filename exists. If the file exists, go to the last step of this process.</li>
+		<li>Locates the UVL filename specified for the header of the data log.</li>
+		<li>If the UVL filename is set to &lt;default&gt;, it reads the UVL filename from the <code>LastUserVariableList</code> <em>powertek.ini</em> entry.</li>
+		<li>For all non-control type channels listed in the UVL file, it reads the channels' values from the <em>master.ini</em> file and writes them to the header of the outputted data file. If a channel from the UVL file does not appear in the <em>master.ini</em> file or is a control type channel, the value is read from the RDB.</li>
+		<li>It then converts the binary data file to ASCII format and merges the results into the outputted data file.</li>
+	</ol>
+
+
+	<a name="Log-Order-Lists"></a>
+<h2 >Log Order Lists<a href="#Log-Order-Lists" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>A log order list is a list of channels that are logged to the data file. Each row in the file defines a channel logged to the outputted data file. The following steps define the process for developing the log order list (LOL) file.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Log Order List files use the  <em>.lol</em> extension and are stored in the <em>$SUPPORTDIR/Data</em> folder.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Creating-the-LOL-File"></a>
+<h3 >Creating the LOL File<a href="#Creating-the-LOL-File" class="wiki-anchor">&para;</a></h3>
+
+
+	<ol>
+	<li>To access the LOL editor, expand the <em>Data Logging</em> and <em>Log Order Lists</em> folders in the Test Manager tree.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Access the Log Order Lists Folder</strong></em></span><br /><img src="attachments/download/37934/LogOrderListFolder.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Right-click the <em>Log Order Lists</em> folder and select <strong>New LOL</strong>. A blank editor displays in Test Manager.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Create New LOL File</strong></em></span><br /><img src="attachments/download/37935/NewLOL.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Right-click within the editor and select <strong>Add to End</strong>. A new row displays in the editor.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add a Row to the Editor</strong></em></span><br /><img src="attachments/download/37936/AddtoEnd_LOL.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the drop-down in the <strong>Channel</strong> column and select a channel or begin typing to filter the list. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add Channel</strong></em></span><br /><img src="attachments/download/37937/ChannelDropDown_LOL.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br />If the channel you selected has a customer name or alias defined, this will cause the value to automatically populate in the next column. <ins><strong>Note:</strong></ins> To switch between the <strong>Alias</strong> and <strong>Customer Name</strong> column types, right-click anywhere within the editor and select the option to <strong>Show Alias</strong> or <strong>Show Customer Name</strong>, as applicable.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>View Customer Name/Alias</strong></em></span><br /><img src="attachments/download/37938/CustomerName_LOL.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br />If the channel you selected is part of a module ID, the name of the module ID will automatically populate in the column.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>View Module ID</strong></em></span><br /><img src="attachments/download/37939/ModuleID_LOL.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Define the statistical values you want logged to the data file (i.e., StdDev, Min, Max, Delta, CV, and RMS). For complete descriptions of these options, refer to the table below.</li>
+		<li>To set up data quality logging, click the checkbox in the <strong>Data Quality</strong> column. This field will be disabled if data quality has not been enabled for the iTest channel. For more information about Data Quality, refer to the <a class="wiki-page" href="ITest_Data_Quality.html">iTest Data Quality</a> documentation.</li>
+		<li>Repeat the previous steps for each channel you want logged to the outputted data file.<br />&nbsp;</li>
+	</ol>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>LOL Editor Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Column</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Channel</td>
+			<td>Displays a list of channels to select from. This channel will be added to the outputted data file. <ins><strong>Note</strong></ins>: The value entered in this field reflects what is displayed. If the customer name is entered it will display the customer name. This column is sortable. </td>
+		</tr>
+		<tr>
+			<td>Alias/Customer Name</td>
+			<td>Indicates the selected channel's alias or customer name. You can change the column type by right-clicking anywhere within the editor and selecting the option <strong>Show Customer Name</strong>/ <strong>Show Alias</strong>, as applicable. This column is read-only and cannot be edited. Information will be automatically populated in this column, depending on the channel name selected.</td>
+		</tr>
+		<tr>
+			<td>Module ID</td>
+			<td>Indicates the module ID to which the channel belongs. This column is read-only and cannot be edited.</td>
+		</tr>
+		<tr>
+			<td>StdDev</td>
+			<td>Computes the standard deviation over the average period. In the data file, the StdDev column is labeled as <em>&lt;channelname&gt;_STDDev</em>.</td>
+		</tr>
+		<tr>
+			<td>Min</td>
+			<td>Computes the minimum value detected during the average period. In the data file, the Min column is labeled as <em>&lt;channelname&gt;_Min</em>.</td>
+		</tr>
+		<tr>
+			<td>Max</td>
+			<td>Computes the maximum value detected during the average period. In the data file, the Max column is labeled as <em>&lt;channelname&gt;_Max</em>.</td>
+		</tr>
+		<tr>
+			<td>Delta</td>
+			<td>Displays the difference between the channel value at the start of the log and the channel value at the end of the log. In the data file, the Delta column is labeled as <em>&lt;channelname&gt;_Delta</em>.</td>
+		</tr>
+		<tr>
+			<td>CV</td>
+			<td>The coefficient of variance. In the data file, the CV column is labeled as <em>&lt;channelname&gt;_CV</em>.</td>
+		</tr>
+		<tr>
+			<td>RMS</td>
+			<td>The root mean squared. The CV column is labeled as <em>&lt;channelname&gt;_RMS</em>. The formula is:<br /><img src="attachments/download/86472/RMSFormula.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>Data Quality</td>
+			<td>Enables the logging of high and low data quality values. This adds two new columns to the outputted data file labeled: <em>&lt;channelname&gt;_DQHigh</em> and <em>&lt;channelname&gt;_DQLow</em>. To use this feature, high and low data quality must be enabled for the specified channel via the Edit Channel dialog. If this has not been set up, the checkbox in this column will be disabled. For more information, refer to the <a class="wiki-page" href="ITest_Data_Quality.html">iTest Data Quality</a> documentation.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The statistical values are meaningful only for average logs. Snapshot and transient logs ignore the statistics columns.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Data-Log-Editor"></a>
+<h2 >Data Log Editor<a href="#Data-Log-Editor" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The data log editor is an editor in Test Manager that utilizes log order list and log header form files to define the details of the outputted data file. You can use the editor to set the log type, data filename, and pre/post logging actions, among other settings.</p>
+
+
+	<p>To access and use the data log editor, do the following:</p>
+
+
+	<ol>
+	<li>In Test Manager, expand the <em>Data Logging</em> and <em>Data Logs</em> folders.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Access the Data Logs Folder</strong></em></span><br /><img src="attachments/download/37946/ExpandFolders_DataLogs.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Right-click the <em>Data Logs</em> folder and select <strong>New Log</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Create New Log File</strong></em></span><br /><img src="attachments/download/37947/NewLog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br />A new editor displays.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Log Editor</strong></em></span><br /><img src="attachments/download/37949/NewLogEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the <strong>Log Type</strong> drop-down and select the type of log you want to create. Options include <strong>Snapshot</strong>, <strong>Average</strong>, and <strong>Transient</strong>. Some of the fields in the editor will change depending on your selection.</li>
+		<li>Enter the name of the data file in the <strong>Output Filename</strong> field. You can use a constant or variable name. For more information about the naming convention, refer to the <strong>Output Filename</strong> entry in the table below.</li>
+		<li>Select a UVL file for the header of the data file.</li>
+		<li>Define the output file type. Snapshot and average logs only support the DAT format, whereas transient logs support MDF, MDF Multi-rate, BIN, and DAT. For more information about these file types, refer to the <a class="wiki-page" href="Data_Logging_.html#Data-File-Formats">Data File Formats</a> section.</li>
+		<li>Select a log order list file to specify which channels are logged to the outputted DAT file. You can also select the option to log all channels. </li>
+		<li>Once you have defined the settings above, set up any pre or post logging actions to be performed. You can define up to three for each. For complete descriptions of this feature, refer to the table below.</li>
+	</ol>
+
+
+	<p>&nbsp;</p>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>Data Log Editor Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Value</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Duration</td>
+			<td>The duration is only applicable for transient and average logs. The value defines the duration of the transient log or the amount of time to average for an average log. The value in this field can be set to a channel or number. If the duration is set to a channel name, the channel's value is read when the log starts; after it is started, the value no longer affects the data log.<br />&nbsp;<br />When using a parameterized duration, if the channel value is <= 0 when the log begins, the duration value will default to 1 second.</td>
+		</tr>
+		<tr>
+			<td>Log Order List</td>
+			<td>The Log Order List (LOL) file contains the list of channels logged to the file. Use this field to select a specific LOL file or to log all channels.</td>
+		</tr>
+		<tr>
+			<td>Log Type</td>
+			<td>The log type defines how data is obtained over the course of a running test. There are three options than can be selected for use, including:<br />&nbsp;<br /><ins><strong>Average:</strong></ins> Records the average values for selected channels over a defined period of time and rate, as well as other optional statistics.<br /><ins><strong>Snapshot:</strong></ins> Records a single instance of the selected channels.<br /><ins><strong>Transient:</strong></ins> Continuously records selected channels for a defined period of time and rate.</td>
+		</tr>
+		<tr>
+			<td>Name</td>
+			<td>The name of the data log. For SolutionBuilder, the name is configured using the <strong>Name</strong> column. For Test Manager, the name is configured using the <strong>Rename...</strong> right-click option.</td>
+		</tr>
+		<tr>
+			<td>Output Filename</td>
+			<td>This is the name of the outputted file that data is written to. The name can be a constant name or it can vary based on the value of another iTest channel through the use of substitution. Note that including a subfolder structure as part of the output file name is not supported. This file will always be located in the current project folder. For example, a constant data filename would take the name entered in this field followed by the <em>.dat</em> file type (e.g., <em>myfilename.dat</em>). <br />&nbsp;<br />To create a variable outputted filename, embed an iTest filename in this field using the < and > characters as follows: <code>%ExampleDataFileName>%_Avg.dat</code>. When the log is created, iTest replaces the string <code>%&lt;ExampleDataFileName&gt;%</code> with the value of the channel when the data log is initiated. If the value of <code>ExampleDataFileName</code> is <code>MyLog</code>, the outputted filename would be <em>MyLog_Avg.dat</em>. </td>
+		</tr>
+		<tr>
+			<td>Output Type</td>
+			<td>Defines the data file type. Snapshot and average logs are outputted as DAT files. Transient logs can be outputted as DAT, BIN, MDF, or MDF Multi-rate file types.</td>
+		</tr>
+		<tr>
+			<td>Pre-Log Actions*</td>
+			<td>Pre-log actions are mailslot messages sent prior to starting the data log. You can define up to three pre-log actions.</td>
+		</tr>
+		<tr>
+			<td>Post-Log Actions*</td>
+			<td>Post-log actions are mailslot messages sent after the output file has been created. You can define up to three post-log actions.</td>
+		</tr>
+		<tr>
+			<td>Rate</td>
+			<td>The rate is only applicable for transient and average logs. The value defines the rate (in Hz) that data is sampled at. This field can be set to a channel or a number. If the rate is set to a channel name, the channel's value is read when the log starts. After the log starts, this value will no longer affect the data log. The value can also be set to a number less than 1. For example, if the value is set to 0.5, data will be logged once every two seconds.<br />&nbsp;<br />When using a parameterized rate, if the channel value is <= 0 when the log begins, the rate value will default to 0.1 Hz.</td>
+		</tr>
+		<tr>
+			<td>Time Align Channels</td>
+			<td>This option enables you to time align channels with transport delay for transient logs. This feature causes all channels that are configured with a transport delay time to be delayed by the number of seconds in the <strong>Transport Delay</strong> column of the channel definition editor. This is designed to time-shift slow data such as emissions and allow it to align with instantaneous data such as speed and torque. The resolution of time is dependent on system scan rate for your system. For 100 Hz systems, you can enter a minimum value of .01.</td>
+		</tr>
+		<tr>
+			<td>UVL File</td>
+			<td>The UVL or log header form file that is used to create the header of the data log. The header is a set of name=value pairs located at the top of the data file. The header is only created the first time a data log file is created and it is never updated after the initial creation.</td>
+		</tr>
+		<tr>
+			<td>Wait Channel</td>
+			<td>This feature enables you to synchronize mailslot actions with the start of the log.<br />&nbsp; <br /><strong>Example</strong>: If the mailslot actions command the emissions bench device or other subsystems to prepare for logging, then this channel can be set to a non-zero value when those tasks are complete. The log will then wait for the value to become non-zero before starting the data log.<br />&nbsp;<br />For SolutionBuilder, the Wait Channel is configured in the <strong>Wait Channel</strong> column. For Test Manager, the Wait Channel is configured in the <strong>Channel to wait for before logging starts</strong> field under the Pre-Log Actions.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+* <span style="font-size:0.90em;font-style: italic;">For more information, refer to the <a class="wiki-page" href="#Defining-Log-Actions">Defining Log Actions</a> section below.</span>
+
+	<p>&nbsp;</p>
+
+
+	<a name="Defining-Log-Actions"></a>
+<h3 >Defining Log Actions<a href="#Defining-Log-Actions" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>You can define up to three pre-log actions and up to three post-log actions. These actions are mailslot messages that are sent either prior to starting the data log or after the data log has completed. This dialog is similar to the <a class="wiki-page" href="MessagesEditor.html">MessagesEditor</a>; however, it allows you to define up to three mailslot messages at once. In addition, on the Pre-Log Actions tab you can specify a channel that determines when the log will be started. After an instruction is received to start the log, it will wait for this channel to have a non-zero value before it actually starts.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Define Log Actions</strong></em></span><br /><img src="attachments/download/118906/43_DefineLogActions.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Right-Click-Options"></a>
+<h3 >Right-Click Options<a href="#Right-Click-Options" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following right-click options are available:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 815px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2">Tree Node Right-Click Options</th>
+		</tr>
+		<tr>
+			<td>New Log</td>
+			<td>When right-clicking on the <strong>Data Logs</strong> node, the <strong>New Log</strong> option adds a new data log with the following naming convention: <code>NewLog&lt;number&gt;</code>, where &lt;number&gt; is the next available instance of the data log (e.g., <code>NewLog1</code>, <code>NewLog2</code>, etc...).</td>
+		</tr>
+		<tr>
+			<td>Properties</td>
+			<td>This right-click option is not applicable to the Data Log Editor.</td>
+		</tr>
+		<tr>
+			<td>Save</td>
+			<td>When right-clicking on a data log, the <strong>Save</strong> option saves the current state of the data log.</td>
+		</tr>
+		<tr>
+			<td>Duplicate...</td>
+			<td>When right-clicking on a data log, the <strong>Duplicate...</strong> option duplicates the selected data log.</td>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td>When right-clicking on a data log, the <strong>Delete</strong> option deletes the selected data log.</td>
+		</tr>
+		<tr>
+			<td>Rename...</td>
+			<td>When right-clicking on a data log, the <strong>Rename...</strong> option enables you to configure the data log name.</td>
+		</tr>
+		<tr>
+			<td>Print...</td>
+			<td>When right-clicking on a data log, the <strong>Print...</strong> option enables you to print the data log.</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2">Log Editor Right-Click Options</th>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td>Undoes the previous action.</td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td>Removes the selected text from the cell and copies it to the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td>Copies the selected text from the cell.</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td>Pastes the copied text from the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td>Deletes the selected text from the cell.</td>
+		</tr>
+		<tr>
+			<td>Select All</td>
+			<td>Selects all text in the cell.</td>
+		</tr>
+		<tr>
+			<td>Right to left Reading Order</td>
+			<td>Shifts the text justification in the cell from left to right justification and vice versa.</td>
+		</tr>
+		<tr>
+			<td>Show Unicode control characters</td>
+			<td>Displays Unicode control characters.</td>
+		</tr>
+		<tr>
+			<td>Insert Unicode control character</td>
+			<td>Opens a drop-down menu of available Unicode control characters. Select one of the available Unicode control characters to insert it into the cell.</td>
+		</tr>
+		<tr>
+			<td>Open/Close IME</td>
+			<td>Opens/closes IME (i.e., Input Method Editor).</td>
+		</tr>
+		<tr>
+			<td>Reconversion</td>
+			<td>This right-click option is not applicable to the Data Log Editor.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<p><a class="wiki-page" href="Data_Logging_.html">Data Logging in iTest</a></p>
+</body>
+</html>

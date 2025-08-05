@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Recovering incomplete data files</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Maintenance.html">ITest Maintenance</a></li>
+<li><a href="Recovering_incomplete_data_files.html">Recovering incomplete data files</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Recovering-Incomplete-Data-Files"></a>
+<h1 >Recovering Incomplete Data Files<a href="#Recovering-Incomplete-Data-Files" class="wiki-anchor">&para;</a></h1>
+
+
+	<p><em>Vxin_exec</em> constantly writes the binary file while a transient log is active. It writes the binary file in the data folder to a file named <em>logname.######</em>, where ###### is a number from 000000 to 100000. For example, the first time you start a transient log named "trans10hz", you will see a file called <em>trans10hz.000000</em>. The number is incremented each time the log is started and wraps around to 000000 after it reaches 100000. It does NOT check to see if there is already a file there of that name.</p>
+
+
+	<p>When the log is stopped/completed, a message is sent to datared to convert that binary data file to the ASCII data file.</p>
+
+
+	<p>In the case of a power loss or disconnect, it is possible to recover the data by starting iTest and sending a mailslot message to DataReduction to do the conversion. This MUST be done before starting the log again or you can lose the previous data. If the system is a 2 PC configuration (i.e., VXI or RTX_DIST), you must manually copy the <em>logname.######</em> file from the RTP to the GUI PC first. This MUST be done before starting iTest because it clears out the support folder on the RTP. Then you must copy the <em>logname.######</em> file back to the RTP.</p>
+
+
+	<p>Here is an example for a transient log called "trans10hz". Note the command and the {9} which translates to a tab:</p>
+
+
+<pre>
+$LOGCOMPLETE trans10Hz.000027{9}trans10Hz 
+</pre> 
+
+	<p>The steps to recover a data file are:</p>
+
+
+	<ol>
+	<li>If RTP: Establish an FTP connection to the RTP, and copy the <em>logname.######</em> file from the support data folder to the PC.</li>
+		<li>Start iTest (or VX-In). Do not start any data logs.</li>
+		<li>If the data log definition relies on channel substitutions, make sure those channels are set correctly in iTest. </li>
+		<li>If RTP: Copy the <em>logname.######</em> file back to the RTP in the support data folder.</li>
+		<li>Open mailer and send the mailslot message as shown above to DataReduction.</li>
+	</ol>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">DataReduction copies the <em>logname.######</em> file to logname (without the extension) before converting to the final <em>.dat</em> file. After the conversion, it deletes the <em>logname.######</em> file. If you want to re-do a conversion, you must rename the <em>logname</em> back to <em>logname.######</em> (###### can be any number and is 000027 in the example above). Then send the $LOGCOMPLETE mailslot message.</td>
+		</tr>
+	</table>
+</body>
+</html>

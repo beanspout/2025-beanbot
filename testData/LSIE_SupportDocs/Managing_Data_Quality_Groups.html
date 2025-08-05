@@ -1,0 +1,343 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Managing Data Quality Groups</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Managing_Data_Quality_Groups.html">Managing Data Quality Groups</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Managing-Data-Quality-Groups"></a>
+<h1 >Managing Data Quality Groups<a href="#Managing-Data-Quality-Groups" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Managing-Data-Quality-Groups">Managing Data Quality Groups</a><ul><li><a href="#Overview">Overview</a><ul><li><a href="#Data-Quality-Types">Data Quality Types</a></li></ul>
+</li><li><a href="#Configuring-Data-Quality">Configuring Data Quality</a></li><li><a href="#Creating-Data-Quality-Groups">Creating Data Quality Groups</a><ul><li><a href="#Adding-a-New-Data-Quality-Group">Adding a New Data Quality Group</a></li></ul>
+</li><li><a href="#Right-Click-Options">Right-Click Options</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<p><a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Data Quality feature is a runtime verification tool that enables you to define data quality limits for channels in your system. The channels are continuously monitored and if they exceed the defined limit, the violation is communicated via the interface. Data quality limits are different than safety limits, and are used in the following ways:</p>
+
+
+	<ul>
+	<li>To verify that signals are reading reasonable values before continuing a test (e.g., if there is a transducer or thermocouple failure).</li>
+		<li>To verify signals are within a range of tolerance or are in tolerance of other signals (e.g., if there is a transducer failure or bad transducer placement).</li>
+		<li>To verify calculated values are within a range of anticipated values. This may not be reason to terminate a test, although it may be useful for following a model or known profile.</li>
+		<li>To verify that values are reading within a set range of other values (e.g., to check whether all engine cylinder temperatures are within a few degrees of each other).</li>
+	</ul>
+
+
+	<p>iTest continually monitors channels to determine whether their current values match a pre-defined rule. If the channel value violates the rule, the following actions are performed:</p>
+
+
+	<ul>
+	<li>A procedure is called (the default procedure is <code>DQHandlerDefault</code>, although this can be replaced by another procedure)</li>
+		<li>A violation is reported in the data quality viewer/panel</li>
+		<li>The global count for channels out of quality is incremented</li>
+		<li>The data quality status is updated in the status bar</li>
+	</ul>
+
+
+	<a name="Data-Quality-Types"></a>
+<h3 >Data Quality Types<a href="#Data-Quality-Types" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following evaluations used to determine the quality of the data:</p>
+
+
+	<ul>
+	<li><ins><strong>High/Low:</strong></ins> The high and low limit values. This indicates a range of acceptable channel values.</li>
+		<li><ins><strong>Above:</strong></ins> The data quality high limit. The channel is in violation if it exceeds this value.</li>
+		<li><ins><strong>Below:</strong></ins> The data quality low limit. The channel is in violation if it exceeds this value.</li>
+		<li><ins><strong>Between Tolerance (%):</strong></ins> The percentage value that the channel should remain in, in relation to another channel.</li>
+		<li><ins><strong>Between Tolerance:</strong></ins> The engineering unit value that the channel should remain in, in relation to another channel.</li>
+		<li><ins><strong>Formula Evaluate to TRUE:</strong></ins> If the formula is equal to 0, the channel value is good. If the formula is equal to a non-zero value, the channel value is bad.</li>
+	</ul></p>
+
+
+	<a name="Configuring-Data-Quality"></a>
+<h2 >Configuring Data Quality<a href="#Configuring-Data-Quality" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To configure and use the Data Quality feature in SolutionBuilder, do the following:</p>
+
+
+	<ol>
+	<li>Navigate to the Channel Definitions editor.</li>
+		<li>For existing channels, open the Edit Channel dialog by double-clicking the channel name or select the <strong>Edit</strong> right-click option. For new channels, open the New Channel dialog by selecting the <strong>Insert Before</strong> or <strong>Add to End</strong> right-click option.</li>
+		<li>Check the <strong>Data Quality Active</strong> checkbox to enable data quality. This adds the Data Quality tab, which is used to configure data quality for the channel. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Enable Data Quality</strong></em></span><br /><img src="attachments/download/117257/43_EnableDataQuality.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Use the descriptions provided in the table below to configure data quality.</li>
+	</ol>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>Data Quality Fields Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Value</strong> </td>
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td rowspan="6">Data Quality Type</td>
+			<td>High/Low</td>
+			<td>This type uses a high and low value to verify that the channel/value is within a certain range.</td>
+		</tr>
+		<tr>
+			<td>Above</td>
+			<td>The value that the channel or value should not go above.</td>
+		</tr>
+		<tr>
+			<td>Below</td>
+			<td>The value that the channel or value should not go below.</td>
+		</tr>
+		<tr>
+			<td>Between Tolerance in %</td>
+			<td>The percent value that the channel is within of another channel/value.</td>
+		</tr>
+		<tr>
+			<td>Between Tolerance</td>
+			<td>The engineering unit value that the channel is within of another channel/value.</td>
+		</tr>
+		<tr>
+			<td>Formula Evaluate to TRUE</td>
+			<td>When this data quality type is selected and the formula=zero, the channel value is good; if the formula=non-zero the channel value is bad.</td>
+		</tr>
+		<tr>
+			<td>Data Quality Low</td>
+			<td>Channel/Numeric Value</td>
+			<td>This value is used to represent the low value for the <strong>Below</strong> and <strong>High/Low</strong> data quality types; it can be either a numeric value, a channel, or a formula. If this value is surpassed, the data quality monitor will inform you that your data quality is out of range.</td>
+		</tr>
+		<tr>
+			<td>Data Quality High</td>
+			<td>Channel/Numeric Value</td>
+			<td>This value is used to represent the high value for the <strong>Above</strong> and <strong>High/Low</strong> data quality types; it can be either a numeric value, a channel, or a formula. If this value is surpassed, the data quality monitor will inform you that your data quality is out of range.</td>
+		</tr>
+		<tr>
+			<td>Data Quality Setpoint</td>
+			<td>Channel/Numeric Value</td>
+			<td>For the Between Tolerance data quality type, this value represents the setpoint or the number the channel value is being compared to.</td>
+		</tr>
+		<tr>
+			<td>Data Quality Tolerance</td>
+			<td>Range</td>
+			<td>For the Between Tolerance data quality type, this value represents the range around the setpoint considered to be within tolerance. Depending on the option selected, this value represents the range of tolerance in either percentage or engineering units.<br />&nbsp;<br /><strong>Example</strong>:<br />Assume you are configuring a quality check on CylTemp1 and you want to verify it is reading within 5% of CylTemp2. The Data Quality Setpoint value would be <strong>CylTemp2</strong> and the Data Quality Tolerance (%) value would be <strong>5</strong>. You could also verify CylTemp1 was reading within 5 degrees of CylTemp2 by selecting the Between Tolerance data quality type instead of Between Tolerance in %.</td>
+		</tr>
+		<tr>
+			<td>Data Quality Formula</td>
+			<td>Formula</td>
+			<td>If the formula evaluates to true (1), the data is in violation. If the formula evaluates to false (0), the data is valid. <br />&nbsp;<br /><strong>Example</strong>:<br />If the formula <code>speed > 100</code> is entered in the Data Quality Formula field and the actual speed of 100 is met or exceeded, a violation for this check will be triggered.</td>
+		</tr>
+		<tr>
+			<td>Data Quality Handler</td>
+			<td>Procedure Name</td>
+			<td>The name of the procedure that is called when the channel violates a data quality condition. This drop-down menu is populated by the <code>DataQualityProcedureFilePath</code> <em>powertek.ini</em> setting if this setting is present. If this setting is not present, then only the default procedure (<code>DQHandlerDefault</code>) is available in the drop-down menu; this procedure reports the name of the channel that has violated the data quality condition and when it was violated to Softpanel.<br />&nbsp;<br />For more information about the <code>DataQualityProcedureFilePath</code> <em>powertek.ini</em> setting, refer to its description in the <a class="wiki-page" href="ITest_INI_Options.html#Data-Quality">Data Quality</a> table.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+	<a name="Creating-Data-Quality-Groups"></a>
+<h2 >Creating Data Quality Groups<a href="#Creating-Data-Quality-Groups" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Data quality groups are used to define high and low data quality values during various stages of a test. For example, if your test included a warm-up and cool-down phase, your acceptable range of channel values would vary depending on the current phase. This feature uses a pass/fail mechanism, where the pass and fail ranges change at different operating points of the test. You can also use this feature to deactivate channel data quality. Data Quality groups are enabled with the <code>DQGroupApply</code> Data_Engine mailslot message.</p>
+
+
+	<p><ins><strong>Mailslot Message Syntax:</strong></ins><br /><pre>
+\\.\\mailslot\Data_Engine&gt;&gt;DQGroup Apply &lt;GroupName&gt;
+</pre></p>
+
+
+	<p><ins><strong>Requirements</strong></ins></p>
+
+
+	<ul>
+	<li>Data Quality groups can only use High/Low configured data quality channels.</li>
+		<li>Only the group ranges can be modified.</li>
+	</ul>
+
+
+	<a name="Adding-a-New-Data-Quality-Group"></a>
+<h3 >Adding a New Data Quality Group<a href="#Adding-a-New-Data-Quality-Group" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Data quality groups can be managed in SolutionBuilder by selecting <strong>Channels > Data Quality Groups</strong> from the menu. Right-click on a folder in the left pane, and select the <strong>Add</strong> option. This opens a blank version of the Data Quality Groups editor.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Data Quality Groups Editor</strong></em></span><br /><img src="attachments/download/127061/44_DataQualityGroupsEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>To add channels to the editor, right-click and select the <strong>Add...</strong> option. This opens the Channel Selection dialog, which allows you to select a channel to add. After the channel is added, use the descriptions provided in the table below to configure each column's value.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Adding New Channels</strong></em></span><br /><img src="attachments/download/127062/44_AddChannelsDQGroups.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>Data Quality Group Editor Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Column</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Channel Name</td>
+			<td>The name of the channel in the data quality group. To be displayed in the drop-down of selectable channels, the channel must have data quality already enabled and the high/low setting type defined.</td>
+		</tr>
+		<tr>
+			<td>Status</td>
+			<td>The current status of the channel. Statuses include <strong>Active</strong> or <strong>Inactive</strong>. </td>
+		</tr>
+		<tr>
+			<td>Low</td>
+			<td>The channel's low value. When this value is exceeded, the data quality violation is triggered. Supported values include a numeric value, a channel/customer/module name, or a simple expression.</td>
+		</tr>
+		<tr>
+			<td>High</td>
+			<td>The channel's high value. When this value is exceeded, the data quality violation is triggered. Supported values include a numeric value, a channel/customer/module name, or a simple expression.</td>
+		</tr>
+		<tr>
+			<td>Sigma Value</td>
+			<td>The standard deviation value. This is a reference value used to calculate the low and high values set by external tools. This field cannot be blank; if this value is unnecessary for your tests, enter 0.000.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+	<a name="Right-Click-Options"></a>
+<h2 >Right-Click Options<a href="#Right-Click-Options" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following right-click options are available in the Data Quality Groups editor:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2">Left Pane</th>
+		</tr>
+		<tr>
+			<td>Add</td>
+			<td> Adds a new data quality group. For more information, refer to the <a class="wiki-page" href="#Adding-a-New-Data-Quality-Group">Adding a New Data Quality Group</a> section.</td>
+		</tr>
+		<tr>
+			<td>Remove</td>
+			<td> Removes the selected data quality group.</td>
+		</tr>
+		<tr>
+			<td>Rename...</td>
+			<td> Launches the Rename dialog, which allows you to change the name of the data quality group.</td>
+		</tr>
+		<tr>
+			<td>Duplicate</td>
+			<td> Duplicates the selected data quality group.</td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td> Removes the selected data quality group and copies it to the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td> Copies the selected data quality group to the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td> Pastes the copied data quality group.</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td> Undoes the last action.</td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td> Redoes the last undone action.</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2">Editor</th>
+		</tr>
+		<tr>
+			<td>Add...</td>
+			<td> Adds a new channel to the data quality group.</td>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td> Removes the selected channel from the data quality group.</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td> Copies the selected cell value to the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td> Pastes the copied cell value.</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td> Undoes the last action.</td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td> Redoes the last undone action.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="ITest_Data_Quality.html">iTest Data Quality</a></li>
+	</ul>
+</body>
+</html>

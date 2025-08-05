@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Step Conditions</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Step_Conditions.html">Step Conditions</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Step-Conditions"></a>
+<h1 >Step Conditions<a href="#Step-Conditions" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Step-Conditions">Step Conditions</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Step-Task-Check-Setup-Dialog">Step Task Check Setup Dialog</a><ul><li><a href="#Creating-a-New-Step-Condition">Creating a New Step Condition</a></li><li><a href="#Using-a-Global-Condition">Using a Global Condition</a></li></ul>
+</li><li><a href="#Ignore-Time">Ignore Time</a></li><li><a href="#Creating-New-Conditions-for-Master-Schedules">Creating New Conditions for Master Schedules</a></li><li><a href="#Creating-Global-Step-Conditions">Creating Global Step Conditions</a></li><li><a href="#Naming-Step-Conditions">Naming Step Conditions</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Step Conditions are sequences of one or more expressions joined by a logical operator, which can be either <strong>AND</strong> or <strong>OR</strong>. Each expression consists of a parameter, an operator, and an operand. Parameters and operands support simple expressions with only one operator; you can perform addition, subtraction, multiplication, and division. In addition, parameters and operands support the use of channels of all types except for virtual strings and virtual string arrays.</p>
+
+
+	<p>Step Conditions are utilized in the <strong>Step Task Check Setup</strong> dialog when configuring Step Tasks. For more information about Step Tasks, refer to the <a class="wiki-page" href="Step_Tasks.html">Step Tasks</a> documentation.</p>
+
+
+	<p><a name="Step-Task-Check-Setup-Dialog"></a>
+<h2 >Step Task Check Setup Dialog<a href="#Step-Task-Check-Setup-Dialog" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>There are two methods for using step conditions in the Step Task Check Setup dialog:</p>
+
+
+	<ol>
+	<li>Creating a new condition.</li>
+		<li>Using a global step condition.</li>
+	</ol>
+
+
+	<p>If you create a new condition in the Step Task Check Setup dialog, the step condition is not reusable. It's only available for the current step task instance, and to reuse the expression it has to be re-entered. This means that if the logic in the environment changes, the expression must also be changed in every instance of its use.</p>
+
+
+	<p>Unlike new conditions, global step conditions are reusable, and the step condition can be referenced from multiple locations. If the logic needs to be changed, it is modified in one location, and the change is applied to all instances of the condition in your solution.</p>
+
+
+	<p>Global step conditions are set up in SolutionBuilder's Step Conditions Editor, which can be accessed by selecting <strong>Tests > Step Conditions</strong> from the main menu. Steps for setting up global conditions are described in the <a class="wiki-page" href="Step_Conditions.html#Creating-Global-Step-Conditions">Creating Global Step Conditions</a> section below.</p>
+
+
+	<a name="Creating-a-New-Step-Condition"></a>
+<h3 >Creating a New Step Condition<a href="#Creating-a-New-Step-Condition" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To create a new step condition, select the <strong>New Condition</strong> checkbox on the Step Task Check Setup dialog. Selecting this option displays the editor used to define the parameter, operator, operand, and logic of the new step condition. An example of a new step condition is shown below:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>New Condition - Schedules</strong></em></span><br /><img src="attachments/download/99288/42_NewStepCondition.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Using-a-Global-Condition"></a>
+<h3 >Using a Global Condition<a href="#Using-a-Global-Condition" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Alternatively, a named and previously written step condition can be selected by using the combo box to the left of the <strong>New Condition</strong> option. When you select this option, a list of existing step conditions displays. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Global Step Conditions</strong></em></span><br /><img src="attachments/download/99075/42_PreDefinedStepConditions.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Ignore-Time"></a>
+<h2 >Ignore Time<a href="#Ignore-Time" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Step conditions can have an ignore time associated with them. This setting will determine the amount of time (measured in seconds) iTest waits before monitoring the step condition.</p>
+
+
+	<p>To enable or disable the ignore time setting for step conditions, use the following <em>powertek.ini</em> option:</p>
+
+
+<pre>SupportStepConditionIgnoreTime=TRUE/FALSE</pre>
+
+	<a name="Creating-New-Conditions-for-Master-Schedules"></a>
+<h2 >Creating New Conditions for Master Schedules<a href="#Creating-New-Conditions-for-Master-Schedules" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To create a new step condition for a master schedule, select <strong>&lt;Custom&gt;</strong> from the drop-down menu in the Edit Step Task dialog. Selecting this option displays the editor used to define the parameter, operator, operand, and logic of the new step condition.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>New Condition - Master Schedules</strong></em></span><br /><img src="attachments/download/99137/42_NewCondition-MasterSchedule.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Creating-Global-Step-Conditions"></a>
+<h2 >Creating Global Step Conditions<a href="#Creating-Global-Step-Conditions" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Global step conditions are reusable across all your schedules and master schedules. When you modify a global step condition, the change is applied to each instance of the step condition in your solution.</p>
+
+
+	<p>To add a new global step condition, do the following:</p>
+
+
+	<ol>
+	<li>Navigate to <strong>Tests > Step Conditions</strong> from the SolutionBuilder main menu.</li>
+		<li>Right-click in the Step Conditions list and select <strong>Add</strong> to create a new step condition. This adds a new step condition to the end of the list and opens it in the editor.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add New</strong></em></span><br /><img src="attachments/download/115807/43_AddNewStepCondition.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Step Condition Editor</strong></em></span><br /><img src="attachments/download/115808/43_NewStepConditionEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Right-click in the editor and select <strong>Add to End</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add to End</strong></em></span><br /><img src="attachments/download/115809/43_AddToEnd.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Use the drop-down in the <strong>Parameter</strong> column to select a parameter or enter a simple expression. Alternatively, select <strong>&lt;New&gt;</strong> to add a new step condition parameter. This opens the Add Step Condition Parameter dialog. Select a channel to be used as the step condition parameter then click <strong>OK</strong>. For BTS systems, step condition parameters can also be added using SolutionBuilder's Parameters editor. A simple expression can only use one operator; you can perform addition, subtraction, multiplication, and division. A channel used as a parameter may be of any type except for virtual string and virtual string array.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select Parameter</strong></em></span><br /><img src="attachments/download/99070/SelectParameter.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Step Condition Parameter</strong></em></span><br /><img src="attachments/download/99361/42_AddStepConditionParameterDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Use the drop-down in the <strong>Operator</strong> column to select the step condition operator. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select Operator</strong></em></span><br /><img src="attachments/download/99069/OperatorColumn.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Use the drop-down in the <strong>Operand</strong> column to select a channel as the operand or enter a simple expression. Operands support simple expressions with only one operator; you can perform addition, subtraction, multiplication, and division. A channel used as the operand may be of any type except for virtual string and virtual string array.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select Operand</strong></em></span><br /><img src="attachments/download/99293/42_OperandStepCondition.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Use the drop-down in the <strong>Logic</strong> column to specify the logic type. Options include <strong>blank</strong>, <strong>AND</strong>, and <strong>OR</strong>. This is only necessary if you have a step condition with more than one row.</li>
+		<li>Click <strong>Save</strong> at the bottom of SolutionBuilder when finished.</li>
+	</ol>
+
+
+	<p>After you save the solution, the step condition label is automatically generated by combining the values in the <strong>Parameter</strong>, <strong>Operator</strong>, and <strong>Operand</strong> columns. The new step condition will be listed as an option in the Step Task Check Setup and Edit Step Task dialog using the label. If there is an error, a dialog will display indicating the action needed to be taken to correct the error.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Step Conditions Error Dialog</strong></em></span><br /><img src="attachments/download/99023/42_ErrorDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Naming-Step-Conditions"></a>
+<h2 >Naming Step Conditions<a href="#Naming-Step-Conditions" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Step Conditions utilize the <code>AutoNameConditions</code> <em>powertek.ini</em> setting to determine whether or not to automatically generate a name/label for the step condition.</p>
+
+
+	<p>To enable or disable automatically generating the name/label, use the following <em>powertek.ini</em> setting:<br /><pre>AutoNameConditions=TRUE/FALSE</pre></p></p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="ITest_INI_Options.html">iTest INI Options</a></li>
+	</ul>
+</body>
+</html>

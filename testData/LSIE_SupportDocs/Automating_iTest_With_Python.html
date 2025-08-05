@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Automating iTest with Python</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Automating_iTest_with_Python.html">Automating iTest with Python</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+ <span style="display: none;">
+
+
+	<p><img src="attachments/download/93003/ADT_LOGO_OUTLINE.png" style="width: 100px;" alt="" /></p>
+
+
+	 </span>
+
+
+	 <div class="CoverPage" class="body">
+
+
+	 <div class="Title">
+
+
+	<p style="text-align:center;"><br /><strong><span style="font-size:30pt;color: #005CAA;">Automating iTest with Python</span></strong></p>
+
+
+	 </div>
+
+
+	<p style="text-align:center;"><br /><em><span style="font-size:12pt;font-style: italic;">Product Version 4.5</span></em></p>
+
+
+	<p style="text-align:center;"><br /><strong><span style="font-size:16pt;">Prepared By</span></strong><br />ADT Software Engineering</p>
+
+
+	<p style="text-align:center;"><br /><span style="font-size: 10pt;color:red;">A&#38;D Confidential Document Distributable only to A&#38;D Customers</span><br /><span style="font-size: 10pt;color:black;">Copyright A&#38;D Company, Limited<br />A&#38;D Technology Inc.</span></p>
+
+
+	 </div>
+
+
+	 <h1>Table of Contents</h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Overview">Overview</a><ul><li><a href="#Python-Restrictions">Python Restrictions</a></li></ul>
+</li><li><a href="#Guides">Guides</a><ul><li><a href="#Alternative-Debug-Tools">Alternative Debug Tools</a></li><li><a href="#Using-Python-in-iTest">Using Python in iTest</a></li><li><a href="#VCL-Reference-Guide">VCL Reference Guide</a></li></ul></li></ul></p>
+
+
+	<a name="Overview"></a>
+<h1 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>iTest is integrated with the Python programming language to provide the system with an additional layer of automation. This feature supplements existing VCL code, enabling users to automate their own systems with a common and contemporary coding language. You can use SolutionBuilder or Test Manager to quickly and efficiently add and debug Python scripts as well as create procedures that can be used during runtime. Python scripts ( <em>.py</em> files) written and saved in SolutionBuilder/Test Manager are encoded in UTF-8.</p>
+
+
+	<a name="Python-Restrictions"></a>
+<h2 >Python Restrictions<a href="#Python-Restrictions" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Python scripts written and used within the iTest environment do not support <code>sys.argy</code>. In iTest, scripts are executed from VCL and mailslot messages.</p>
+
+
+	<a name="Guides"></a>
+<h1 >Guides<a href="#Guides" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>The following guides describe the different tools associated with the iTest and Python integration and reference lists for features such as mailslot messages and functions.</p>
+
+
+	<a name="Alternative-Debug-Tools"></a>
+<h2 >Alternative Debug Tools<a href="#Alternative-Debug-Tools" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest includes the <strong>PythonWin IDE</strong> to help with debugging Python scripts. However, this tool may not be adequate for all developers. In these cases, the following tools are available to enhance your debugging system.</p>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Eclipse_and_PyDev_Setup.html">Eclipse and PyDev Setup</a></li>
+		<li><a class="wiki-page" href="Visual_Studio_Code_Setup.html">Visual Studio Code Setup</a></li>
+		<li><a class="wiki-page" href="Visual_Studio_Code_Debugger_Python_Scripts.html">Visual Studio Code Debugger: Python Scripts</a></li>
+	</ul>
+
+
+	<a name="Using-Python-in-iTest"></a>
+<h2 >Using Python in iTest<a href="#Using-Python-in-iTest" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following guides describe how to use Python in iTest.</p>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Managing_Scripts.html">Managing Python Scripts in SolutionBuilder</a></li>
+		<li><a class="wiki-page" href="Integrating_and_Using_Python_with_Test_Manager.html">Integrating and Using Python with Test Manager</a></li>
+		<li><a class="wiki-page" href="Python_API_for_iTest.html">Python API for iTest</a></li>
+		<li><a class="wiki-page" href="PythonEngine_Mailslot_Messages.html">PythonEngine Mailslot Messages</a></li>
+		<li><a class="wiki-page" href="Python_Packages_Support.html">Python Packages Support</a></li>
+		<li><a class="wiki-page" href="Reading_and_Writing_to_Files.html">Reading and Writing to Files</a></li>
+		<li><a class="wiki-page" href="Using_Python_in_AutomationPanel.html">Using Python in AutomationPanel</a></li>
+	</ul>
+
+
+	<a name="VCL-Reference-Guide"></a>
+<h2 >VCL Reference Guide<a href="#VCL-Reference-Guide" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>For information regarding VCL commands, refer to the following guide:</p>
+
+
+	<ul>
+	<li><a class="wiki-page" href="VCL_Command_List.html">VCL Command List</a></li>
+	</ul>
+
+
+	<p>The relevant commands are PYEXEC and PYSPAWN.</p>
+</body>
+</html>

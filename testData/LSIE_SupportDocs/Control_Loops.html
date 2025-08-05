@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Control Loops</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Control_Loops.html">Control Loops</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Control-Loops-in-Test-Manager"></a>
+<h1 >Control Loops in Test Manager<a href="#Control-Loops-in-Test-Manager" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Control-Loops-in-Test-Manager">Control Loops in Test Manager</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Configuring-PIDs-with-Test-Manager">Configuring PIDs with Test Manager</a><ul><li><a href="#Control-Loops-Right-Click-Options">Control Loops Right-Click Options</a></li><li><a href="#PID-Settings">PID Settings</a></li></ul>
+</li><li><a href="#Control-Groups">Control Groups</a></li><li><a href="#Control-Modes">Control Modes</a></li><li><a href="#Tuning-PIDs-with-PIDTune">Tuning PIDs with PIDTune</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Control loops are Proportional Integral Derivative (PID) controls for high-speed dynamometer, throttle control, and other test system control processes. PID controls stabilize a process or device at a commanded setpoint. These controls are also used to track a setpoint. PID coefficients are set according to the response characteristics of a control system.</p>
+
+
+	<a name="Configuring-PIDs-with-Test-Manager"></a>
+<h2 >Configuring PIDs with Test Manager<a href="#Configuring-PIDs-with-Test-Manager" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To configure PIDs using Test Manager, do the following:</p>
+
+
+	<ol>
+	<li>Right-click on the <strong>Control Loops</strong> node and select <strong>New ControlGroup</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Create New Control Group</strong></em></span><br /><img src="attachments/download/97167/42_ControlLoopsNode.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 1em;" alt="" /><br />&nbsp;</li>
+		<li>Right-click on the new control group folder and select <strong>New &lt;ControlLoop&gt;</strong>. This opens the PID editor for the new control loop.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Control Loop</strong></em></span><br /><img src="attachments/download/97168/42_NewControlLoop.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>PID Editor</strong></em></span><br /><img src="attachments/download/98505/42_pid1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 1em;" alt="" /><br />&nbsp;</li>
+		<li>Use the descriptions provided in the table below to configure the new PID.</li>
+	</ol>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>PID Configuration Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>PID Name</td>
+			<td>(Read-only) Indicates the control group name of the control loop. This name can only be changed by renaming the control group name via the <strong>Rename</strong> right-click option.</td>
+		</tr>
+		<tr>
+			<td>Mode Name</td>
+			<td>(Read-only) Indicates the name assigned to the new control loop. This name can only be changed by renaming the control loop name via the <strong>Rename</strong> right-click option.</td>
+		</tr>
+		<tr>
+			<td>PID Type</td>
+			<td> Type of control:<br />&nbsp;<br /><strong>Closed Loop</strong> is for closed loop controls. iTest modulates the control channel, attempting to make feedback match setpoint.<br />&nbsp;<br /><strong>Open Loop ( % )</strong> is for open loop controls. iTest sets the control output according to a setpoint value expressed as a percentage from 0 to 100. A setpoint of 0 sets the control output to the low rail value assigned to the database channel. A setpoint of 100 sets the control output to the high rail value assigned to the database channel.<br />&nbsp;<br /><strong>Open Loop (EU)</strong> is for open loop controls. iTest sets the control output according to a setpoint value expressed in engineering units (EU). The allowable range of setpoint values is limited by the low and high EU values assigned to the database channel. In general, the output EU equals the input EU. However, there is a scaling conversion for output channels from High/Low EU to High/Low Rail which are settings defined for the channel. For example, an input EU value of 25 will scale the output EU value to 2.5 if the output channel has High EU = 100, Low EU = 0, High Rail = 10, and Low Rail = 0.<br />&nbsp;<br /><strong>ADAPT PID</strong> involves a closed loop control and has an output range of 0 to +100%.<br />&nbsp;<br /><strong>ADAPT Motoring</strong> is a closed loop typically used to control AC or DC dynamometers, and it has an output of -100% to +100%. Since some dynos can both absorb and motor, the control output needs to be able to range both positively (typically absorbing) and negatively (typically motoring). Note that it is strongly recommended that the Motoring control be used only where the negative range is needed.<br />&nbsp;<br /><strong>Windup Clamping</strong> is a type of closed loop used to troubleshoot excess overshooting caused by a large setpoint change. </td>
+		</tr>
+		<tr>
+			<td>Frequency</td>
+			<td>Specify the loop frequency starting from 1 to the system scan rate.</td>
+		</tr>
+		<tr>
+			<td>Reverse Acting</td>
+			<td>Select this option to ensure that the control output is adjusted in the correct direction when an increase in the control output causes a decrease in the feedback value.For example, opening a chiller flow control valve decreases the temperature of the chilled fluid. This setting is not available when using the Windup Clamping PID type. </td>
+		</tr>
+		<tr>
+			<td>Setpoint</td>
+			<td>Indicates the default setpoint database channel for the control loop. </td>
+		</tr>
+		<tr>
+			<td>Min</td>
+			<td>Specify the control loop’s minimum setpoint.</td>
+		</tr>
+		<tr>
+			<td>Max</td>
+			<td> Specify the control loop’s maximum setpoint.</td>
+		</tr>
+		<tr>
+			<td>Feedback</td>
+			<td>Select the feedback channel associated with the control loop. The fields to the right of this option reflect the Low and High EU values for the selected database channel.</td>
+		</tr>
+		<tr>
+			<td>Output</td>
+			<td>Select the output channel associated with the control loop. The fields to the right of this option reflect the Low and High EU values for the selected database channel.</td>
+		</tr>
+		<tr>
+			<td>Feedforward</td>
+			<td>Select the database channel whose value is added algebraically to the control output calculated by iTest before the final output value is sent to the hardware. The value is expressed as a percentage (-100 to 100); this value is an offset value (in percentage) that gets added to the final PID calculation. At that point, the output of the PID algorithm is also expressed as a percentage (0 to 100 percent of the difference between the Low and High Rail values assigned to the control channel). This modifies the behavior of the control loop when external disturbances to the process are detectable and their effect predictable.</td>
+		</tr>
+		<tr>
+			<td>Tuning Parameters</td>
+			<td>When the PID Type is set to Auto, enter the proportional band for the PID in the <strong>P</strong> field, the integral gain for the PID in the <strong>I</strong> field, and the derivative time for the PID in the <strong>D</strong> field. Your loop can also now use a channel to store the coefficient values. To take advantage of this feature, select the channel that will be used to store the value of the coefficient by clicking on the drop-down next to the corresponding tuning value. You will then be able to programmatically restore or control this value outside of the iTest PID algorithm or tuning screen. When using PID tune, these values will be persisted in <em>Master.ini</em> so that they will always load up with their last value when iTest reinitializes. </td>
+		</tr>
+		<tr>
+			<td>Enable PID *</td>
+			<td>Specify a channel to be used. When the channel's value is 1, then the PID action is enabled. When the channel's value is 0, then the PID output will be the Follow Signal.</td>
+		</tr>
+		<tr>
+			<td>Follow *</td>
+			<td>Specify a channel to be used as the Follow Signal. This is the value of the PID output when in follow mode.</td>
+		</tr>
+		<tr>
+			<td>Foldback *</td>
+			<td>Specify a channel to be used. This is the value representing a percentage reduction for the Kp, Kd, and Ki constant values when foldback is active. For example, if the Foldback % = 25 and Ki = 50, then Ki will be 37.5 when foldback is active. This value is always positive.</td>
+		</tr>
+		<tr>
+			<td>Foldback Thres *</td>
+			<td>Specify a channel to be used as the Foldback Threshold. This is the +/- percent of the setpoint range where the Kp, Kd, and Ki constants are reduced by the Foldback percentage. For example, if the Foldback Threshold = 3, Setpoint Maximum = 120, Setpoint =80, and SP = 100, then the foldback action will occur if the PV is between 98.8 and 101.2.<br />&nbsp;<br />SP is the desired real value that the process is being controlled to. PV is the real value of the process variable that is being controlled.</td>
+		</tr>
+		<tr>
+			<td>Foldback Status *</td>
+			<td>Specify a channel to be used. This is the value of the foldback status. If active, this status is set to 1; otherwise, this status is set to 0.</td>
+		</tr>
+		<tr>
+			<td>PID Error *</td>
+			<td>Specify a channel to be used. This value is the error value used by the PID to determine how to manipulate the output to bring the process value to the setpoint.</td>
+		</tr>
+		<tr>
+			<td>Kp Total *</td>
+			<td>Specify a channel to be used. This is the proportional term contribution to the PID output.</td>
+		</tr>
+		<tr>
+			<td>Ki Total *</td>
+			<td>Specify a channel to be used. This is the integral term contribution to the PID output.</td>
+		</tr>
+		<tr>
+			<td>Kd Total *</td>
+			<td>Specify a channel to be used. This is the derivative term contribution to the PID output.</td>
+		</tr>
+		<tr>
+			<td>Kpid Total *</td>
+			<td>Specify a channel to be used. This is the total error.</td>
+		</tr>
+		<tr>
+			<td>Min Output % *</td>
+			<td>Specify a channel to be used. This is the minimum value of the output as a percentage. This is a read parameter which is used to clamp the output. For example, you may want 20-80% instead of 0-100%.</td>
+		</tr>
+		<tr>
+			<td>Max Output % *</td>
+			<td>Specify a channel to be used. This is the maximum value of the output as a percentage. This is a read parameter which is used to clamp the output. For example, you may want 20-80% instead of 0-100%</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;font-style: italic;">These fields are only enabled if the PID Type is Windup Clamping.</span></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Control-Loops-Right-Click-Options"></a>
+<h3 >Control Loops Right-Click Options<a href="#Control-Loops-Right-Click-Options" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following right-click options are available to configure control loops:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>New ControlGroup</td>
+			<td>Adds a new control group folder.</td>
+		</tr>
+		<tr>
+			<td>Properties</td>
+			<td>Opens the PID Settings dialog. Refer to the <a class="wiki-page" href="#PID-Settings">PID Settings</a> section below for more information.</td>
+		</tr>
+		<tr>
+			<td>New ControlGroup#</td>
+			<td>Opens the PID editor for the new control loop.</td>
+		</tr>
+		<tr>
+			<td>Rename...</td>
+			<td>Rename the control group name/control loop. Refer to the <a class="wiki-page" href="#Control-Groups">Control Groups</a> section below for more information.</td>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td>Deletes the selected control group folder/control loop.</td>
+		</tr>
+		<tr>
+			<td>Show in State Editor</td>
+			<td>Enables/disables the ability to display in the State Editor.</td>
+		</tr>
+		<tr>
+			<td>Save</td>
+			<td>Saves the control loop.</td>
+		</tr>
+		<tr>
+			<td>Duplicate...</td>
+			<td>Duplicates the selected control loop.</td>
+		</tr>
+		<tr>
+			<td>Print...</td>
+			<td>Prints the control loop.</td>
+		</tr>
+		<tr>
+			<td>Startup Mode</td>
+			<td>Enables/disables startup mode.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="PID-Settings"></a>
+<h3 >PID Settings<a href="#PID-Settings" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The PID Settings dialog is used to configure the following settings:</p>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>PID Settings</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:175px;text-align:left;"><strong>Setting</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Show PID Control</td>
+			<td>Enable/disable PID control.</td>
+		</tr>
+		<tr>
+			<td>Disable PID Control Sliders</td>
+			<td>Enable/disable the ability to disable PID control sliders.</td>
+		</tr>
+		<tr>
+			<td>Use Internal PIDs</td>
+			<td>Enable/disable the use of internal PIDs.</td>
+		</tr>
+		<tr>
+			<td>HS1 Label</td>
+			<td>Label for the left PID mode control in the Mode Control and PID Control dialogs.</td>
+		</tr>
+		<tr>
+			<td>HS2 Label</td>
+			<td>Label for the right PID mode control in the Mode Control and PID Control dialogs.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Control-Groups"></a>
+<h2 >Control Groups<a href="#Control-Groups" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Originally, iTest had hardcoded group names. These group names were HS1, HS2, LS1, LS2, ... LS20 (where, HS=High Speed, LS=Low Speed). You could have as many loops as you wanted defined under each group, but only one could run at a time. That same rule is still in effect, but the group names are user-configurable. iTest still starts with 2 pre-defined group names - <strong>HS1</strong> and <strong>HS2</strong>, but these do not have to be used. Instead, you can add new groups to the tree which have a name that is meaningful such as Dyno and Throttle. The relationship between the individual PIDs in a PID group is that only one loop in each group can be run at a time.</p>
+
+
+	<a name="Control-Modes"></a>
+<h2 >Control Modes<a href="#Control-Modes" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Control modes are logically combined pairs of PID control loops used to effectively control a test system such as an engine dynamometer system.  Example control pairs include: <code>Speed/Position</code>, <code>Speed/Torque</code>, <code>Torque/Position</code>, etc. In the engine dynamometer example, the first loop typically represents the dynamometer control loop and the second represents the engine throttle control loop. Expand the <strong>Control Loops</strong> folder in the Test Manager tree bar and use the <strong>Control Modes</strong> item to configure new control mode pairs based on the loops you have defined.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Control Modes</strong></em></span><br /><img src="attachments/download/95691/pidnew6.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />Select a valid option for Dyno and Throttle loops and provide an optional procedure that can be used to perform the mode switch when the operator selects this mode combination at runtime.</p>
+
+
+	<p>These mode pairs are used in two places in iTest:</p>
+
+
+	<ol>
+	<li>When creating the selection list for the mode control dialog in iTest Console, this dialog allows the operator to select a new control mode when running the engine manually.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select Control Mode</strong></em></span><br /><img src="attachments/download/95692/pidnew3.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>As a column in a test schedule for selecting the control mode for each step of a test. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>ModePair Column</strong></em></span><br /><img src="attachments/download/95693/pidnew7.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<a name="Tuning-PIDs-with-PIDTune"></a>
+<h2 >Tuning PIDs with PIDTune<a href="#Tuning-PIDs-with-PIDTune" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>There is a standalone utility which is designed to facilitate the tuning process for a PID. For more information regarding this utility, see the <a class="wiki-page" href="PIDTune.html">PIDTune</a> document.</p>
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>High Speed Data Logger</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="High_Speed_Data_Logger.html">High Speed Data Logger</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="High-Speed-Data-Logger"></a>
+<h1 >High-Speed Data Logger<a href="#High-Speed-Data-Logger" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#High-Speed-Data-Logger">High-Speed Data Logger</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Restrictions">Restrictions</a></li><li><a href="#Understanding-Log-Duration-Sample-Rate-and-Channel-Count">Understanding Log Duration, Sample Rate, and Channel Count</a><ul><li><a href="#Calculation">Calculation</a><ul><li><a href="#Example">Example</a></li></ul>
+</li><li><a href="#Channel-Counts-and-Sample-Rates">Channel Counts and Sample Rates</a></li><li><a href="#Module-IO-Types-and-Sample-Rates">Module I/O Types and Sample Rates</a></li></ul>
+</li><li><a href="#Channel-calibrations">Channel calibrations</a></li><li><a href="#Setting-the-Sample-Rate">Setting the Sample Rate</a></li><li><a href="#Configuring-the-High-Speed-Data-Logger-in-iTest">Configuring the High-Speed Data Logger in iTest</a></li><li><a href="#Running-the-High-Speed-Data-Logger">Running the High-Speed Data Logger</a><ul><li><a href="#Manual-Control">Manual Control</a><ul><li><a href="#Using-the-Interface">Using the Interface</a></li></ul>
+</li><li><a href="#Automated-Control">Automated Control</a><ul><li><a href="#Using-Mailslot-Messages">Using Mailslot Messages</a></li></ul>
+</li></ul>
+</li><li><a href="#Monitoring-the-Status-of-the-High-Speed-Data-Logger">Monitoring the Status of the High-Speed Data Logger</a></li><li><a href="#Synchronizing-High-Speed-Data-with-iTest-Data">Synchronizing High-Speed Data with iTest Data</a></li><li><a href="#Finding-Logged-Information">Finding Logged Information</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The High-Speed Data Logger is a software executable designed to retrieve and format data that is buffered on A&#38;D Technology's iConnect Q.pac and Q.station controllers. This tool performs high-speed data logging with current speeds of 20 kHz for Q.station controllers and 10 kHz for Q.pac controllers.</p>
+
+
+	<a name="Restrictions"></a>
+<h2 >Restrictions<a href="#Restrictions" class="wiki-anchor">&para;</a></h2>
+
+
+	<ol>
+	<li>The High-Speed Data Logger can only connect to and collect data from one controller at a time.</li>
+		<li>The Q.pac buffer contains values for all channels configured as inputs; output channels are not in the buffer.</li>
+		<li>The High-Speed Data Logger can connect to and collect data from a controller that is also connected by the iTest eGate driver provided the driver is using the etherCAT interface. In this configuration, the High-Speed Data Logger must be started after the driver is acquiring data.</li>
+	</ol>
+
+
+	<a name="Understanding-Log-Duration-Sample-Rate-and-Channel-Count"></a>
+<h2 >Understanding Log Duration, Sample Rate, and Channel Count<a href="#Understanding-Log-Duration-Sample-Rate-and-Channel-Count" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Log duration, sample rate, and channel count are dependent on the controller and I/O module type.</p>
+
+
+	<a name="Calculation"></a>
+<h3 >Calculation<a href="#Calculation" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The maximum log duration (in seconds) is determined by the following equation:<br /><pre>
+Maximum Log Duration (sec)  = 5*10 ^8^ /(Sample Rate* ((Total Channel Count + 8)*4))
+</pre><br /><strong>Where</strong>:</p>
+
+
+	<ul>
+	<li><em>5*10 <sup>8</sup></em>: is the maximum bytes transferred from the controller per log request</li>
+		<li><em>Total Channel Count</em>: is the number of module channels configured</li>
+	</ul>
+
+
+	<a name="Example"></a>
+<h4 >Example<a href="#Example" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>In this example, the sample rate is 20 kHz and there are 16 configured channels.</p>
+
+
+	<p>5*10 <sup>8</sup> /(20,000 * ((16 + 8)*4) ≈ 260 seconds</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The maximum log duration will produce multiple log files.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Channel-Counts-and-Sample-Rates"></a>
+<h3 >Channel Counts and Sample Rates<a href="#Channel-Counts-and-Sample-Rates" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Channel Maximum</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 550px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td></td>
+			<td style="text-align:center;" colspan="2"><strong>Q.pac</strong></td>
+			<td style="text-align:center;" colspan="2"><strong>Q.station</strong></td>
+		</tr>
+		<tr>
+			<td style="text-align:center;"><strong>Sample Rate (kHz)</strong></td>
+			<td style="text-align:center;"><strong>Max Channels*</strong></td>
+			<td style="text-align:center;"><strong>Max Chan/Bus</strong></td>
+			<td style="text-align:center;"><strong>Max Channels</strong></td>
+			<td style="text-align:center;"><strong>Max Chan/Bus</strong></td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">5kHz</td>
+			<td style="text-align:center;">38</td>
+			<td style="text-align:center;">38</td>
+			<td style="text-align:center;">254</td>
+			<td style="text-align:center;">81</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">10kHz</td>
+			<td style="text-align:center;">18</td>
+			<td style="text-align:center;">18</td>
+			<td style="text-align:center;">157</td>
+			<td style="text-align:center;">40</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">20kHz</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">64</td>
+			<td style="text-align:center;">18</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;font-style: italic;">Limited by Q.pac Ethernet throughput rate (800 kB/s)</span>
+
+	<p>&nbsp;</p>
+
+
+	<a name="Module-IO-Types-and-Sample-Rates"></a>
+<h3 >Module I/O Types and Sample Rates<a href="#Module-IO-Types-and-Sample-Rates" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Module I/O Type Sample Rates*</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 550px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:center;"><strong>Sample Rate (kHz)</strong></td>
+			<td style="text-align:center;"><strong>A101</strong></td>
+			<td style="text-align:center;"><strong>A107</strong></td>
+			<td style="text-align:center;"><strong>A108</strong></td>
+			<td style="text-align:center;"><strong>A123</strong></td>
+			<td style="text-align:center;"><strong>A124</strong></td>
+			<td style="text-align:center;"><strong>D101</strong></td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">5kHz</td>
+			<td style="text-align:center;"><img src="attachments/download/45311/Checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/45311/Checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/45311/Checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/45311/Checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/45311/Checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/45311/Checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">10kHz</td>
+			<td style="text-align:center;"><img src="attachments/download/45311/Checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/45311/Checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/45311/Checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/45311/Checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/45311/Checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/45311/Checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">20kHz</td>
+			<td style="text-align:center;"><img src="attachments/download/45311/Checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/45310/X.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/45310/X.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/45311/Checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/45311/Checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/45311/Checkmark.png" alt="" /></td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;font-style: italic;">These sample rates are based on information received from Gantner and are subject to change. Refer to your Gantner specification guide for more information.</span>
+
+	<p>&nbsp;</p>
+
+
+	<a name="Channel-calibrations"></a>
+<h2 >Channel calibrations<a href="#Channel-calibrations" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Channel values will have iTest calibration coefficients applied if applicable.</p>
+
+
+	<a name="Setting-the-Sample-Rate"></a>
+<h2 >Setting the Sample Rate<a href="#Setting-the-Sample-Rate" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Typically, the Gantner TestCommander tool is used to configure the hardware for use with the High Speed Data Logger. However, if the iTest eGate driver will be acquiring data from the same controller simultaneously, the driver will perform the hardware configuration. Setting the desired sample rate for the High-Speed Data Logger is performed in Test Manager with the eGate driver configuration editor. To set the sample rate, open Test Manager and the eGate driver's <em>.tdaddin</em>. Click the <strong>Advanced</strong> button to open the Advanced Driver Configuration dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Advanced Button</strong></em></span><br /><img src="attachments/download/48595/eGatetdaddin.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Advanced Configuration Dialog</strong></em></span><br /><img src="attachments/download/96407/AdvancedConfiguration.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>In the Advanced Driver Configuration dialog, enter the keyword value pair for the system rate (i.e., <code>SAMPLERATE=10000</code>; <code>samplerate = 10KHz</code>).</p>
+
+
+	<p>See the eGate Driver documentation for more information (<em>$SYSTEMDIR\Help\Drivers\EGate</em>).</p>
+
+
+	<a name="Configuring-the-High-Speed-Data-Logger-in-iTest"></a>
+<h2 >Configuring the High-Speed Data Logger in iTest<a href="#Configuring-the-High-Speed-Data-Logger-in-iTest" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The High-Speed Data Logger is configured in iTest similar to a remote driver. Two remote driver selections have been added named <code>GDL_Logger1</code> and <code>GDL_Logger2</code>. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Driver Configuration</strong></em></span><br /><img src="attachments/download/96408/hsloggerconfig.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Driver Settings</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Setting</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>IP address</td>
+			<td> IP address of the controller to gather high-speed data from.</td>
+		</tr>
+		<tr>
+			<td>Buffer Length (Seconds)</td>
+			<td> Specifies the size of the buffer to hold past data.</td>
+		</tr>
+		<tr>
+			<td>Watchdog Channel</td>
+			<td>The watchdog is set to zero while retrieving data from the controller.</td>
+		</tr>
+		<tr>
+			<td>Driver Status</td>
+			<td> A channel that is initially set to zero. It is set to 1 when idle, 2 when logging.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Running-the-High-Speed-Data-Logger"></a>
+<h2 >Running the High-Speed Data Logger<a href="#Running-the-High-Speed-Data-Logger" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The High-Speed Data Logger is a standalone executable. You can launch the application in many ways, including:</p>
+
+
+	<ul>
+	<li><em>eGateDataLogger.exe</em> file (located in $EXECUTEDIR)</li>
+		<li>VCL Code</li>
+		<li>iTest push button (this must be set up in iTest Console Displays or in AutomationPanel)</li>
+		<li>Launch upon console startup (<strong>Test Manager > Global Settings > Misc > PreLoad</strong>)</li>
+	</ul>
+
+
+	<p>Depending on how you launch or configure the application, you can manually or automatically control the High-Speed Data Logger. HSDL channels are calibrated using the normal iTest calibration procedure.</p>
+
+
+	<a name="Manual-Control"></a>
+<h3 >Manual Control<a href="#Manual-Control" class="wiki-anchor">&para;</a></h3>
+
+
+	<a name="Using-the-Interface"></a>
+<h4 >Using the Interface<a href="#Using-the-Interface" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>When you launch the High-Speed Data Logger, you can use the interface to manually control data logging. When using this method, time stamps in the outputted file are taken from the controller. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>High-Speed Data Logger Interface</strong></em></span><br /><img src="attachments/download/45314/38_HighSpeedDataLogger.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />To use the interface, enter the IP address of the controller that the buffer will read data from and the name of the data file to log the data to. By default, these fields are auto-populated with configurations from the active support folder. To start capturing data, click <strong>Start</strong>. Click <strong>Stop</strong> to stop capturing data and start writing the data to the log. The text field in the dialog will update to display the status of the High-Speed Data Logger.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Data Writing to File</strong></em></span><br /><img src="attachments/download/45315/38_WritingToFile.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />You can control the location of the outputted file using the <code>DRHoldForReviewDir</code> <em>powertek.ini</em> setting.</p>
+
+
+	<a name="Automated-Control"></a>
+<h3 >Automated Control<a href="#Automated-Control" class="wiki-anchor">&para;</a></h3>
+
+
+	<a name="Using-Mailslot-Messages"></a>
+<h4 >Using Mailslot Messages<a href="#Using-Mailslot-Messages" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>You can use mailslot messages in VCL code to control the High-Speed Data Logger from iTest. When using this method, the driver updates the controller to use the clock time on iTest before it starts capturing data.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>\\.\mailslot\GDL_Logger1|2</pre>
+
+	<p>The following commands are supported:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>High-Speed Data Logger Mailslot Commands</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="background:#cccaca;">
+			<td style="text-align:left;"><strong>Command</strong> </td>
+			<td style="text-align:left;"><strong>Purpose</strong> </td>
+			<td style="text-align:left;"><strong>Example</strong> </td>
+		</tr>
+		<tr>
+			<td> <code>STARTLOG Logfilename LogOrderList %&lt;CLOCK_TIME_EPOCH&gt;%</code> </td>
+			<td> Starts data capture to the specified file. The channels logged are specified by the LogOrderList. If LogOrderList is omitted, all channels are logged. See the <a class="wiki-page" href="#Using-the-Interface">Using the Interface</a> section for how the destination folder is determined. </td>
+			<td><code>STARTLOG HSData.dat HSData.lol  %&lt;CLOCK_TIME_EPOCH&gt;%</code> </td>
+		</tr>
+		<tr>
+			<td> <code>STOPLOG %&lt;CLOCK_TIME_EPOCH&gt;%</code>  </td>
+			<td> Stops capturing data </td>
+			<td> <code>STOPLOG %&lt;CLOCK_TIME_EPOCH&gt;%</code> </td>
+		</tr>
+		<tr>
+			<td> <code>DIE</code> </td>
+			<td> Closes the High-Speed Data Logger </td>
+			<td> <code>DIE</code> </td>
+		</tr>
+		<tr>
+			<td> <code>SYNCCLOCK</code> </td>
+			<td> Sets the real-time clock on the iConnect controller to the iTest clock time. </td>
+			<td> <code>SYNCCLOCK</code> </td>
+		</tr>
+		<tr>
+			<td> <code>RESTART</code> </td>
+			<td> Empties the current buffers and restarts collecting data.   </td>
+			<td> <code>RESTART</code> </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Monitoring-the-Status-of-the-High-Speed-Data-Logger"></a>
+<h2 >Monitoring the Status of the High-Speed Data Logger<a href="#Monitoring-the-Status-of-the-High-Speed-Data-Logger" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The system channel voSyseGateLoggerStatus is used to monitor the status of the data logger. The data logger sets the channel value to 1 (or IDLE) when running but <strong>not</strong> logging data, and 2 (BUSY) when running <strong>and</strong> logging data.</p>
+
+
+	<a name="Synchronizing-High-Speed-Data-with-iTest-Data"></a>
+<h2 >Synchronizing High-Speed Data with iTest Data<a href="#Synchronizing-High-Speed-Data-with-iTest-Data" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>High-speed data is captured directly from the controller, which means that time stamps do not necessarily lineup to the data logged by iTest. An independent event, like a channel, must be used to align the data.</p>
+
+
+	<p>The following VCL code demonstrates how to run a high-speed data log and iTest data log simultaneously:</p>
+
+
+	<ol>
+	<li>Send message to the data logger to start capturing data (this method logs all available channels):<br /><pre>+0.0 MESSAGE "\\.\mailslot\GDL_Logger1&gt;&gt;STARTLOG HSLOGGEDDATA.dat %&lt;CLOCK_TIME_EPOCH&gt;%"</pre></li>
+		<li>Start a log using a log order list:<br /><pre>+0.0 MESSAGE "\\.\mailslot\GDL_Logger1&gt;&gt;STARTLOG HSLOGGEDDATA.dat hsdl.lol %&lt;CLOCK_TIME_EPOCH&gt;%"</pre></li>
+		<li>Start the iTest log to be synchronized:<br /><pre>+0.0 STARTLOG iTestLog
++0.0 PAUSE 10    ! Collecting data during this time</pre></li>
+		<li>Stop the iTest log:<br /><pre>+0.0 STOPLOG iTestLog</pre></li>
+		<li>Send message to the High-Speed Data Logger to stop capturing data and to write to the file:<br /><pre>+0.0 MESSAGE "\\.\mailslot\GDL_Logger1&gt;&gt;STOPLOG %&lt;CLOCK_TIME_EPOCH&gt;%"</pre></li>
+		<li>Wait for logger to finish:<br /><pre>#while (voSyseGateLoggerStatus = 2)  !Test for busy
+      PAUSE 1.0
+#endwhile</pre></li>
+	</ol>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Finding-Logged-Information"></a>
+<h2 >Finding Logged Information<a href="#Finding-Logged-Information" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>General information and errors are logged to <em>egatedatalogger.log</em>. This file can be found in the active solution's log folder (i.e., <em>$SUPPORTDIR\Logs</em>).</p>
+</body>
+</html>

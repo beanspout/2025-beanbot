@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ITest Xenomai Management Tool</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="ITest_Xenomai_Management_Tool.html">ITest Xenomai Management Tool</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="iTest-Xenomai-Management-Tool"></a>
+<h1 >iTest Xenomai Management Tool<a href="#iTest-Xenomai-Management-Tool" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#iTest-Xenomai-Management-Tool">iTest Xenomai Management Tool</a><ul><li><a href="#Overview">Overview</a><ul><li><a href="#Using-the-iTest-Xenomai-Management-Tool">Using the iTest Xenomai Management Tool</a></li><li><a href="#ADXPRTS-Solution-Settings">ADXPRTS Solution Settings</a></li></ul></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The iConnect RTC box from A&#38;D uses the open source real-time OS  - Xenomai. After setting up the Xenomai system using the <a class="wiki-page" href="AD-XPRTS_Target_Environment_Installation.html">AD-XPRTS Target Environment Installation</a> guide, a special installation process is required to put on the initial iTest binaries or to patch the existing ones. The iTest Xenomai Management Tool is used to transfer files from your Windows PC to the iConnect RTC. This tool uses FTP and Telnet to transfer and write the binaries to the iConnect RTC write-protected disk. Use the following instructions for an initial machine installation or a system patch.</p>
+
+
+	<a name="Using-the-iTest-Xenomai-Management-Tool"></a>
+<h3 >Using the iTest Xenomai Management Tool<a href="#Using-the-iTest-Xenomai-Management-Tool" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To access the iTest Xenomai Management Tool, open <em>iTestRTManagementTool.exe</em>, located in your $EXECUTEDIR. The tool will appear in a new window to transfer the <em>$EXECUTEDIR\ADXPRTSDevEnv\target\aandd_adxprts_itestrt_setup.tar.bz2</em> file on your PC over to the iConnect RTC.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>iTest Xenomai Management Tool</strong></em></span><br /><img src="attachments/download/59801/XenomaiTool.JPG" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>To register your target machine, click <strong>Target Registration</strong>. A new dialog will appear, prompting you to enter the name of the target PC and its  IP address. After defining these fields, click <strong>OK</strong>.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Target Registration</strong></em></span><br /><img src="attachments/download/59802/XenomaiTargetRegistration.JPG" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>After registering your machine, you may click <strong>Connect</strong> to connect the iTest Xenomai Management Tool to your iConnect RTC.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Connect</strong></em></span><br /><img src="attachments/download/59803/Connect.JPG" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Click <strong>Update</strong> to update the iTest target files needed to run on the iConnect RTC.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Target Update</strong></em></span><br /><img src="attachments/download/61853/XenomaiUpdate.PNG" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Once the target has been updated, you will be prompted to manually reboot the target machine.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Update Finished</strong></em></span><br /><img src="attachments/download/59805/UpdateFinished.JPG" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="ADXPRTS-Solution-Settings"></a>
+<h3 >ADXPRTS Solution Settings<a href="#ADXPRTS-Solution-Settings" class="wiki-anchor">&para;</a></h3>
+
+
+	<ul>
+	<li><code>VXISystemName=10.203.0.101</code></li>
+		<li><code>SystemType=ADXPRTS_DIST</code></li>
+		<li><code>UseXenomaiKernel=FALSE</code></li>
+	</ul>
+</body>
+</html>

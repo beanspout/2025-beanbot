@@ -1,0 +1,546 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>RDB Field Definitions</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="RDB_Field_Definitions.html">RDB Field Definitions</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="RDB-Field-Definitions"></a>
+<h1 >RDB Field Definitions<a href="#RDB-Field-Definitions" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>The following is a list of configurable RDB fields:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Configurable RDB Fields</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1200px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:10em;"><strong>Options</strong> </td>
+			<td style="width:10em;"><strong>Channel Type(s)</strong> </td>
+			<td style="text-align:left;"><strong>Available in GUI</strong></td>
+			<td style="text-align:left;"><strong>Available in Spreadsheet Editor</strong></td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Active Input</td>
+			<td>Digital Input<br />PWM Input</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">-</td>
+			<td>For a digital input, the <strong>Active Input</strong> setting is used to indicate whether an energized digital input will return a logic "1" or "0" to the iTest channel. If the <strong>Active Input</strong> checkbox is checked, then a logic "1" will be returned. If the setting is not checked, then a logic "0" will be returned. The channel shows the percentage of time it takes to energize the input. For more information, refer to the <a class="wiki-page" href="PWM_IO_Support.html">PWM I/O Support</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>Active Output</td>
+			<td>Digital Output<br />PWM Output</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">-</td>
+			<td> For a digital output, the <strong>Active Output</strong> setting is used to indicate whether a logic "1" or "0" from iTest will energize the digital output. If the <strong>Active Output</strong> checkbox is checked, then a logic "1" will energize it. If the setting is not checked, then a logic "0" will energize it. The channel shows the percentage of time it takes to energize the output. For more information, refer to the <a class="wiki-page" href="PWM_IO_Support.html">PWM I/O Support</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>Alias</td>
+			<td>All </td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> (Optional) Specify an alternate name for a channel. For example, a channel named <code>tOil</code> might have an "Oil Temp" alias. This alias can be used in controls that offer the choice of Channel Name, Alias, or Description as the title associated with the value.</td>
+		</tr>
+		<tr>
+			<td>Alias2</td>
+			<td> All</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td> Alternate field of descriptive information for a channel which can be logged to the <em>.dat</em> file header. </td>
+		</tr>
+		<tr>
+			<td>Channel Name</td>
+			<td>All</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> Unique name of the iTest channel.</td>
+		</tr>
+		<tr>
+			<td>Channel Type</td>
+			<td>All</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> Select the type of iTest channel to create. The default is <strong>Virtual Output</strong>. <br />&nbsp;<br /><ins><strong>NOTE:</strong></ins> If you change the <strong>Channel Type</strong> for an existing or duplicate channel, you are warned that all settings for the iTest channel will be lost and will have to be re-entered. Closing the channel definition without saving changes will not restore lost data.</td>
+		</tr>
+		<tr>
+			<td>Data Quality Active</td>
+			<td>Temperature<br />Analog Input<br />Analog Output<br />Frequency<br />Period<br />Virtual Input<br />Virtual Output<br />Virtual Timer<br />Totalize</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> Select this option to specify a data quality limit for the iTest channel. The system will then continuously monitor that channel’s value and alert you if it goes outside the limit ranges you have set. For complete information, refer to the <a class="wiki-page" href="ITest_Data_Quality.html">iTest Data Quality</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>Data Source </td>
+			<td>Virtual Output<br />Virtual String </td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td> The <strong>DataSource</strong> field is used to support channel updates from remote workstation PCs. The entry for <strong>DataSource</strong> is a hard-coded remote PC name or the name of a string channel that contains the remote PC name. For a channel defined this way, iTest on the local PC retrieves the channel value from the remote PC and updates the channel value on the local PC.<br />Example:<br /><span style="padding-left: 1em;">1. The <code>flgShutdown</code> channel is set to 1 by a master PC when all networked workstation PCs need to stop their tests.</span> <br /><span style="padding-left: 1em;">2. The <code>flgShutdown</code> channel is defined on the master PC (with no <strong>DataSource</strong>) and on workstation PCs (with a <strong>DataSource</strong> of <code>vsMasterPCName</code>).</span><br /><span style="padding-left: 1em;">3. When the master PC sets <code>flgShutdown</code> to 1, all the network PCs see the change as well.</span></td>
+		</tr>
+		<tr>
+			<td>Debounce</td>
+			<td>Digital Input</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">-</td>
+			<td> The value screens for erratic data that can sometimes be collected from the digital input device. It is an integer value with units in seconds. If the change in state occurs for a period that is longer than the debounce time, the state change will be registered. This function can effect system performance if set too high.</td>
+		</tr>
+		<tr>
+			<td>Decimal Point</td>
+			<td>Temperature<br />Analog Input<br />Analog Output<br />Frequency<br />Period<br />Digital Input<br />Digital Output<br />Virtual Input<br />Virtual Output<br />Virtual Timer<br />Totalize<br />Virtual Output Array<br />PWM Input<br />PWM Output</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> Select a value from 0 to 9 as the number of digits to display to the right of the decimal point.</td>
+		</tr>
+		<tr>
+			<td>Description</td>
+			<td>All<br />(except Arrays)</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> An optional user-defined description for an iTest channel. It can be up to 256 characters and can contain spaces. For example, by convention, the channel that senses oil pressure is named <code>pOil</code>. A description might be "Oil pressure at the gallery." The <strong>Description</strong> can be selected in various controls and can be displayed in place of the channel name. </td>
+		</tr>
+		<tr>
+			<td>Device ID</td>
+			<td>Temperature<br />Analog Input<br />Analog Output<br />Frequency<br />Period<br />Digital Input<br />Digital Output<br />Totalize<br />PWM Input<br />PWM Output</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">-</td>
+			<td> Select the ID of the attached device or <strong>No Device</strong>.</td>
+		</tr>
+		<tr>
+			<td>Device Options</td>
+			<td> Temperature<br />Analog Input<br />Analog Output<br />Frequency<br />Period<br />Digital Input<br />Digital Output<br />Virtual Output<br />Virtual String<br />Totalize<br />Virtual String Array<br />PWM Input<br />PWM Output</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td> A string that stores device driver specific options for the channel. For more information of the field's format and function, refer to the documentation of the device that the channel is assigned to.</td>
+		</tr>
+		<tr>
+			<td>Direction</td>
+			<td>Virtual Timer </td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">-</td>
+			<td> Indicate if the virtual timer’s value increases (<strong>Up</strong>) or decreases (<strong>Down</strong>).</td>
+		</tr>
+		<tr>
+			<td>Filter Type</td>
+			<td>Analog Input<br />Temperature </td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">-</td>
+			<td> Digital filtering used to smooth the signal. The numeric values correspond to the weighting of the current and last filtered values according to the table. If the value is Average or Sliding, the <strong>Number of Filter Samples Field</strong> is activated. The Average and Sliding options are only available with certain I/O drivers; the Average option represents a box car average and the Sliding filter calculates the average value over the last X number of measured values. For more information, refer to the <a class="wiki-page" href="Analog_Input_Filters.html">Analog Input Filters</a> documentation. </td>
+		</tr>
+		<tr>
+			<td>Filter Time Constant </td>
+			<td> Temperature<br />Analog Input </td>
+			<td> Frequency -3dB(Hz)</td>
+			<td style="text-align:center;">X</td>
+			<td> The filter time constant (τ) determines the cutoff frequency (f-3dB) for channels on devices that support lowpass filtering per the following formula:<br /><span style="padding-left:2em;">f-3dB=  1/(2πτ)</span><br />A GUI editor (e.g., Edit Channel dialog) will display this RDB field value as the calculated cutoff frequency. A spreadsheet editor displays the  RDB field value, which is the filter time constant. For more information, refer to the <a class="wiki-page" href="Analog_Input_Filters.html">Analog Input Filters</a> documentation. </td>
+		</tr>
+		<tr>
+			<td>Flags</td>
+			<td> Virtual Output</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td> Indicates if the channel value is stored as a double-precision float, 64 bit unsigned integer, or a 64 bit signed integer. This field's default value is <code>0</code>. The following values are supported:<br /><span style="padding-left: 1em;">0: This channel is a double-precision float.</span><br /><span style="padding-left: 1em;">1: This channel is  64 bit unsigned integer.</span><br /><span style="padding-left: 1em;">2: This channel is 64 bit signed integer.</span><br />The ability to use 64 bit integers in iTest is severely limited. </td>
+		</tr>
+		<tr>
+			<td>Formula String</td>
+			<td>Virtual Input<br />Virtual Timer</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">-</td>
+			<td> Specify a formula string as defined for <strong>Calculations</strong>.</td>
+		</tr>
+		<tr>
+			<td>High EU</td>
+			<td>Temperature<br />Analog Input<br />Analog Output<br />Frequency<br />Period<br />Digital Input<br />Digital Output<br />Virtual Input<br />Virtual Output<br />Virtual Timer<br />Totalize<br />Virtual Output Array<br />PWM Input<br />PWM Output</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> Specify the maximum values of the iTest channel’s range.</td>
+		</tr>
+		<tr>
+			<td>High Limit</td>
+			<td>Temperature<br />Analog Input<br />Analog Output<br />Frequency<br />Period<br />Virtual Input<br />Virtual Output<br />Virtual Timer<br />Totalize<br />Virtual Output Array<br />PWM Input<br />PWM Output</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> Specify the value at which the associated action occurs. You can specify a channel name, a formula, or a numeric value. For more information, refer to the <a class="wiki-page" href="Limits_and_Warnings.html">Limits and Warnings</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>High Limit Action</td>
+			<td>Temperature<br />Analog Input <br />Analog Output<br />Frequency<br />Period<br />Virtual Input<br />Virtual Output<br />Virtual Timer<br />Digital Input<br />Totalize<br />Virtual Output Array<br />PWM Input<br />PWM Output</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td>Specify the actions that iTest performs when the associated limits are met. You can select an action from the drop-down list of procedures and functions that have been configured for the current database, or you can configure a new procedure or function in these fields. For more information, refer to the <a class="wiki-page" href="Limits_and_Warnings.html">Limits and Warnings</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>High Limit Ignore Time</td>
+			<td> Temperature<br />Analog Input<br />Analog Output<br />Frequency<br />Period<br />Virtual Input<br />Virtual Output<br />Virtual Timer<br />Digital Input<br />Totalize<br />PWM Input<br />PWM Output</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> Specify the amount of time that iTest waits after reaching the specified <strong>High Limit</strong> before starting the specified limit action. For more information, refer to the <a class="wiki-page" href="Limits_and_Warnings.html">Limits and Warnings</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>High Rail</td>
+			<td>Analog Output</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> Specify the maximum analog voltage that can be set. These values correspond to the values set for the high EU.</td>
+		</tr>
+		<tr>
+			<td>High Warning</td>
+			<td>Temperature<br />Analog Input<br />Analog Output<br />Frequency<br />Period<br />Virtual Input<br />Virtual Output<br />Virtual Timer<br />Totalize<br />PWM Input<br />PWM Output</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> Specify the value at which the associated action occurs. You can specify a channel name, a formula, or a numeric value. For more information, refer to the <a class="wiki-page" href="Limits_and_Warnings.html">Limits and Warnings</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>High Warning Action</td>
+			<td> Temperature<br />Analog Input<br />Analog Output<br />Frequency<br />Period<br />Virtual Input<br />Virtual Output<br />Virtual Timer<br />Totalize<br />PWM Input<br />PWM Output</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> Specify the actions that iTest performs when the associated warning limits are met. You can select an action from the drop-down list of procedures and functions that have been configured for the current database or you can configure a new procedure or function in these fields. For more information, refer to the <a class="wiki-page" href="Limits_and_Warnings.html">Limits and Warnings</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>Initial</td>
+			<td>Virtual String<br />Virtual String Array</td>
+			<td> Initial String </td>
+			<td style="text-align:center;">-</td>
+			<td> Specify the initial text value for the iTest channel.</td>
+		</tr>
+		<tr>
+			<td>Keep Synchronized with LabCentral</td>
+			<td>All<br />(except Arrays)</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">-</td>
+			<td> When checked, this will pull the latest version of the iTest channel from its associated <em>.pmp</em> file in LabCentral. This will happen each time iTest is booted up. </td>
+		</tr>
+		<tr>
+			<td>Limits Active</td>
+			<td>Temperature<br />Analog Input<br />Analog Output<br />Frequency<br />Period<br />Digital Input<br />Digital Output<br />Virtual Input<br />Virtual Output<br />Virtual Timer<br />Totalize<br />Virtual Output Array<br />PWM Input<br />PWM Output</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> Select this option to specify limit and warning values for the iTest channel.</td>
+		</tr>
+		<tr>
+			<td>Linearization</td>
+			<td>Temperature</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">-</td>
+			<td> Select the type of linearization that will be applied to the iTest channel. This tells iTest how to convert the raw input value to engineering units.</td>
+		</tr>
+		<tr>
+			<td>Low EU</td>
+			<td><br />Temperature<br />Analog Input<br />Analog Output<br />Frequency<br />Period<br />Digital Input<br />Digital Output<br />Virtual Input<br />Virtual Output<br />Virtual Timer<br />Totalize<br />Virtual Output Array<br />PWM Input<br />PWM Output</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> Specify the minimum values of the iTest channel’s range.</td>
+		</tr>
+		<tr>
+			<td>Low Limit</td>
+			<td>Temperature<br />Analog Input<br />Analog Output<br />Frequency<br />Period<br />Virtual Input<br />Virtual Output<br />Virtual Timer<br />Totalize<br />Virtual Output Array<br />PWM Input<br />PWM Output</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> Specify the value at which the associated action occurs. You can specify a channel name, a formula, or a numeric value. For more information, refer to the <a class="wiki-page" href="Limits_and_Warnings.html">Limits and Warnings</a> documentation. </td>
+		</tr>
+		<tr>
+			<td>Low Limit Action</td>
+			<td>Temperature<br />Analog Input<br />Analog Output<br />Frequency<br />Period<br />Virtual Input<br />Virtual Output<br />Virtual Timer<br />Digital Input<br />Totalize<br />Virtual Output Array<br />PWM Input<br />PWM Output</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> Specify the actions that iTest performs when the associated limits are met. You can select an action from the drop-down list of procedures and functions that have been configured for the current database or you can configure a new procedure or function in these fields. For more information, refer to the <a class="wiki-page" href="Limits_and_Warnings.html">Limits and Warnings</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>Low Limit Ignore Time</td>
+			<td> Temperature<br />Analog Input<br />Analog Output<br />Frequency<br />Period<br />Virtual Input<br />Virtual Output<br />Virtual Timer<br />Digital Input<br />Totalize<br />Virtual Output Array<br />PWM Input<br />PWM Output</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> Specify the time iTest waits after reaching the specified <strong>Low Limit</strong> before starting the specified limit action. For more information, refer to the <a class="wiki-page" href="Limits_and_Warnings.html">Limits and Warnings</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>Lowpass Filter</td>
+			<td> Analog Input<br />Temperature </td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">-</td>
+			<td> A lowpass-filter ensures that only the low-frequency shares of the signals are evaluated. Higher-frequency photoelectric noise levels are not taken into account. The low-pass-filter is particularly suitable for noise suppression with slowly changing signal forms. For more information, refer to the <a class="wiki-page" href="Analog_Input_Filters.html">Analog Input Filters</a> documentation.</td>
+		</tr>
+		<tr>
+			<td> Low Rail </td>
+			<td> Analog Output </td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> Specify the minimum analog voltage that can be set. The value corresponds to the values set for the low EU.</td>
+		</tr>
+		<tr>
+			<td>Low Warning</td>
+			<td> Temperature<br />Analog Input<br />Analog Output<br />Frequency<br />Period<br />Virtual Input<br />Virtual Output<br />Virtual Timer<br />Totalize<br />PWM Input<br />PWM Output</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td>Specify the value at which the associated action occurs. You can specify a channel name, a formula, or a numeric value. For more information, refer to the <a class="wiki-page" href="Limits_and_Warnings.html">Limits and Warnings</a> documentation. </td>
+		</tr>
+		<tr>
+			<td>Low Warning Action</td>
+			<td> Temperature<br />Analog Input<br />Analog Output<br />Frequency<br />Period<br />Virtual Input<br />Virtual Output<br />Virtual Timer<br />Totalize<br />PWM Input <br />PWM Output</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> Specify the actions that iTest performs when the associated warning limits are met. You can select an action from the drop-down list of procedures and functions that have been configured for the current database, or you can configure a new procedure or function in these fields. For more information, refer to the <a class="wiki-page" href="Limits_and_Warnings.html">Limits and Warnings</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>Maximum Elements</td>
+			<td>Virtual Output Array<br />Virtual String Array</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> Specify the maximum number of elements defined for the array channel.</td>
+		</tr>
+		<tr>
+			<td>Measurement Window</td>
+			<td>Frequency</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td> Specify the aperture time for measuring frequencies in seconds. This value should be at least twice the length of the highest frequency’s period.</td>
+		</tr>
+		<tr>
+			<td>Number of Filter Samples</td>
+			<td> Analog Input<br />Temperature</td>
+			<td>Num Filter Samples </td>
+			<td style="text-align:center;">X</td>
+			<td> In the <strong>Num Filter Samples</strong> field, specify the number of averaging samples. This number determines how many measured values are used to calculate one averaged value. This is activated if the Filter Type field is <strong>Average</strong> or <strong>Sliding</strong>. For more information, refer to the <a class="wiki-page" href="Analog_Input_Filters.html">Analog Input Filters</a> documentation. </td>
+		</tr>
+		<tr>
+			<td>Num Periods</td>
+			<td>Period</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">-</td>
+			<td> Specify the number of periods to measure before returning a value.</td>
+		</tr>
+		<tr>
+			<td>Output Type</td>
+			<td>Analog Output</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">-</td>
+			<td> Select <strong>VOLTAGE</strong> or <strong>CURRENT</strong>.</td>
+		</tr>
+		<tr>
+			<td>Persistent Value </td>
+			<td> Virtual Output<br />Virtual String<br />Virtual Output Array </td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td>  Enables the automatic saving of channel values upon exit of iTest Console or Automation Panel. The persistent channel is saved to an <em>.ini</em> file, in the following order:<br />&nbsp;<br /><span style="padding-left: 1em;">1.  If the channel is in a module's database file, and the module <em>.ini</em> file is found, write to the module <em>.ini</em> file. The module <em>.ini</em> is assumed to be <em>&lt;ModuleID&gt;.ini</em>. The module database file is assumed to be named <em>&lt;ModuleID&gt;.fil</em>.</span><br /><span style="padding-left: 1em;">2. If the module <em>.ini</em> file is not found, and it is a modular solution, write to <em>sys.ini</em> if <em>sys.ini</em> is found.</span> <br /><span style="padding-left: 1em;">3. If the module <em>.ini</em> and <em>sys.ini</em> files are not found, or the solution is not modular, write to the <em>master.ini</em> file.</span> <br />&nbsp;<br /><img src="attachments/download/3740/caution.gif" alt="" /> This save is always performed on exit, so long as there has been successful communication between Data_Engine and the vxin_exec. It does not take into consideration if a test is running or even if communication is no longer occurring when the exit is performed.</td>
+		</tr>
+		<tr>
+			<td>Physical Channel</td>
+			<td>All</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> Specify a value that reflects the physical channel to which iTest is connected on a particular card. This value is ignored for virtual channels.</td>
+		</tr>
+		<tr>
+			<td>Prog. Gain</td>
+			<td>Analog Input</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td> Specify the gain for an A/D card with programmable grains using a real number. For example, a setting of 1 is equivalent to no gain and a setting of 2 is equivalent to a gain of 200%.</td>
+		</tr>
+		<tr>
+			<td>Pulse-Width Modulated Frequency</td>
+			<td> Digital Output </td>
+			<td> Sensitivity </td>
+			<td style="text-align:center;">X</td>
+			<td> For pulse-width modulated outputs. </td>
+		</tr>
+		<tr>
+			<td>Range</td>
+			<td>Analog Input</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">-</td>
+			<td> Select an input signal voltage range that the A/D card can handle.</td>
+		</tr>
+		<tr>
+			<td>Reference Junction</td>
+			<td>Temperature (using thermocouples)</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td> Specify the name of the channel used to measure the cold junction temperature of the isothermal reference block.</td>
+		</tr>
+		<tr>
+			<td>Reset Channel</td>
+			<td>Totalize</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">-</td>
+			<td> When the value is set to 1 and then back to 0, the totalized value is reset to 0.</td>
+		</tr>
+		<tr>
+			<td>Resolution</td>
+			<td>Frequency<br />Period</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">-</td>
+			<td> Specify the precision of the measurement. For example, a resolution of 0.1 Hz can return a frequency of tenths of Hz. For period, this value is expressed in seconds.</td>
+		</tr>
+		<tr>
+			<td>Setpoint</td>
+			<td> Temperature<br />Analog Input<br />Analog Output<br />Frequency<br />Period<br />Virtual Input<br />Virtual Output<br />Virtual Timer<br />Totalize<br />PWM Input<br />PWM Output</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> Specify the name of the iTest channel that contains the target value to be used for calculating statistics. </td>
+		</tr>
+		<tr>
+			<td>Slope Tolerance</td>
+			<td>Temperature<br />Analog Input<br />Analog Output<br />Frequency<br />Period</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> Specify a numeric value. The Slope for the channel must remain within plus or minus of this value for the duration of the Statistical Window for Stable to return true. Specify 999 to indicate Slope will not be evaluated when determining the value of Stable.</td>
+		</tr>
+		<tr>
+			<td>Stability Tolerance</td>
+			<td>Temperature<br />Analog Input<br />Analog Output<br />Frequency<br />Period<br />Virtual Input<br />Virtual Output<br />Virtual Timer<br />Totalize<br />PWM Input<br />PWM Output</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> Specify a numeric value that the channel must remain within plus or minus of this value around Setpoint for the duration of the Statistical Window for Stable to return 1 (true). Specify 999 to indicate Stability Tolerance is not evaluated when determining the value of Stable.</td>
+		</tr>
+		<tr>
+			<td>Starting Value</td>
+			<td>Virtual Timer</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">-</td>
+			<td> Specify the value at which a timer starts when reset.</td>
+		</tr>
+		<tr>
+			<td>Statistical Window</td>
+			<td> Temperature <br />Analog Input<br />Analog Output<br />Frequency<br />Period</td>
+			<td>Statistics Window</td>
+			<td style="text-align:center;">X</td>
+			<td> Specify the time in seconds over which statistics are calculated. This is a moving or boxcar window. Values greater than 10 seconds are functionally capped at 10 seconds.</td>
+		</tr>
+		<tr>
+			<td>Statistics Active</td>
+			<td>Temperature<br />Analog Input<br />Analog Output<br />Frequency<br />Period<br />Virtual Input<br />Virtual Output<br />Virtual Timer<br />Totalize<br />PWM Input<br />PWM Output</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td> Select this option to enable the statistics tracking feature. For further information regarding Statistics Active, refer to the <a class="wiki-page" href="AutomationPanel_Operators_Guide.html">AutomationPanel Operators Guide</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>Statistics Available</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td> Set to 1 to indicate that the Minimum, Maximum, and Mean statistical calculations are available for this channel. Set to 0 to indicate these calculations are not available.</td>
+		</tr>
+		<tr>
+			<td>Std Tolerance</td>
+			<td>Temperature<br />Analog Input<br />Analog Output<br />Frequency<br />Period </td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td>Specify a numeric value. The channel’s standard deviation must remain within plus or minus of this value for the duration of the Statistical Window for Stable to return true. Specify -999 to indicate Stability Tolerance will not be evaluated when determining the value of Stable.</td>
+		</tr>
+		<tr>
+			<td>Threshold</td>
+			<td> Frequency</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">-</td>
+			<td> Voltage above which counts should be registered for frequency inputs. </td>
+		</tr>
+		<tr>
+			<td>Transport Delay</td>
+			<td> Analog Input<br />Temperature<br />Frequency<br />Virtual Input <br />Virtual Output<br />Virtual Output Array </td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td> Number of seconds to delay recording of signal data so that it aligns with the slowest input. </td>
+		</tr>
+		<tr>
+			<td>Units Label</td>
+			<td>All</td>
+			<td style="text-align:center;">X</td>
+			<td style="text-align:center;">X</td>
+			<td> Select the engineering units of measurement to associate with the database channel. If the desired units are not listed, you can manually enter the desired units of measurement in the <strong>Units Label</strong> column in channel definition in the Display Area.</td>
+		</tr>
+		<tr>
+			<td>Unstable Reason</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td> A text string that iTest updates when the channel changes from stable to unstable or vice versa.</td>
+		</tr>
+		<tr>
+			<td>User Defined</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td> Specify a numeric value that can be manipulated by user-written code. Not available for all channel types. </td>
+		</tr>
+		<tr>
+			<td>User Defined1</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td> Used by iTest system code to indicate if the channel is available for use in set value tables, step tasks, and circuits. These channels could be used, for example, as a step parameter, a step operand, or both in a Step Condition (EOS). FlexEdit uses this to indicate if an Analog Input or Analog Output channel is to be listed in the AIM or AOM editors. This is tied to the <strong>&lt;checkuserdefined1&gt;</strong> FlexEdit XML tag.<br />&nbsp;<br />Supported values are:<br /><span style="padding-left: 1em;">>0: Indicates that the channel is available in the AIM and AOM editors.</span><br /><span style="padding-left: 1em;">2: Indicates that the channel is available as a parameter.</span><br /><span style="padding-left: 1em;">4: Indicates that the channel is available as an operand.</span><br />&nbsp;<br /><ins><span style="padding-left:1em;">iTest BTS systems only:</span></ins><br /><span style="padding-left: 1em;">8: Indicates that the channel is available as an assignable circuit channel in the Circuit Editor.</span><br /><span style="padding-left: 1em;">16: Indicates the channel is a user defined channel for a circuit calculation or parameter.</span><br /><span style="padding-left: 1em;">32: Indicates that the channel is available for use when configuring the <strong>Voltage</strong> column for a schedule.</span><br /><span style="padding-left: 1em;">64: Indicates that the channel is available for use when configuring the <strong>Temperature</strong> column for a schedule.</span><br /><span style="padding-left: 1em;">128: Indicates that the channel is available for use when configuring the <strong>Current</strong> column for a schedule.</span><br /><span style="padding-left: 1em;">256: Indicates that the channel is available for use when configuring the <strong>Power</strong> column for a schedule.</span><br /><span style="padding-left: 1em;">512: Indicates that the channel can be used as a column for the Circuit Monitor.</span><br /><span style="padding-left: 1em;">1024: Indicates that the channel is available for use when configuring the <strong>Profile</strong> column for a schedule.</span><br />&nbsp;<br />The values are combined to indicate that the channel can be used for more than one purpose. For example, a value of 6 indicates that the channel can be used as both a step parameter and a step operand.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Runtime-Only-RDB-Fields"></a>
+<h2 >Runtime Only RDB Fields<a href="#Runtime-Only-RDB-Fields" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following runtime RDB field's statistics are calculated by vxin_exec if a statistics channel is enabled in Test Manager's Channel Editor:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Runtime Only RDB Fields</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Options</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> Maximum </td>
+			<td> Specifies the maximum value of the channel during the window period set by iTest.</td>
+		</tr>
+		<tr>
+			<td> Mean </td>
+			<td> Specifies the mean or average value of the channel during the window period set by iTest. </td>
+		</tr>
+		<tr>
+			<td> Minimum </td>
+			<td> Specifies the minimum value of the channel during the window period set by iTest.</td>
+		</tr>
+		<tr>
+			<td> Slope </td>
+			<td> Returns the slope (rate of change) value for the channel; it is calculated over the <strong>Statistical Window</strong> period. </td>
+		</tr>
+		<tr>
+			<td> Stable </td>
+			<td> Set to 1 (true/stable) by iTest if the channel has met stability criteria for the duration of the window period; otherwise, this is 0 (false/unstable). </td>
+		</tr>
+		<tr>
+			<td> Std Deviation </td>
+			<td> Returns the standard deviation value for a channel; it is calculated over the <strong>Statistical Window</strong> period. </td>
+		</tr>
+	</table>
+</body>
+</html>

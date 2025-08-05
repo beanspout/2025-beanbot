@@ -1,0 +1,702 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Managing Layouts</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Managing_Layouts.html">Managing Layouts</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Managing-Layouts"></a>
+<h1 >Managing Layouts<a href="#Managing-Layouts" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Managing-Layouts">Managing Layouts</a><ul><li><a href="#Overview">Overview</a><ul><li><a href="#Previewing-Layouts">Previewing Layouts</a></li></ul>
+</li><li><a href="#Using-the-Editor-Interface">Using the Editor Interface</a><ul><li><a href="#Expanding-the-Editing-Area">Expanding the Editing Area</a></li><li><a href="#Selecting-Panels-and-Sub-Objects">Selecting Panels and Sub-Objects</a></li><li><a href="#Using-Shortcuts">Using Shortcuts</a></li><li><a href="#Viewing-the-Displayable-Area">Viewing the Displayable Area</a></li></ul>
+</li><li><a href="#Adding-a-New-Layout">Adding a New Layout</a></li><li><a href="#Modifying-Properties">Modifying Properties</a><ul><li><a href="#Layout-and-Layout-Toolbar-Properties">Layout and Layout Toolbar Properties</a></li><li><a href="#Panel-Properties">Panel Properties</a></li></ul>
+</li><li><a href="#Right-Click-Options">Right-Click Options</a><ul><li><a href="#Viewing-Invisible-Panels">Viewing Invisible Panels</a></li><li><a href="#Move">Move</a></li><li><a href="#Align">Align</a></li><li><a href="#Make-Same-Size">Make Same Size</a></li><li><a href="#Space-Evenly">Space Evenly</a></li><li><a href="#CutCopyPaste">Cut/Copy/Paste</a></li></ul>
+</li><li><a href="#Configuring-Connectors">Configuring Connectors</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Layouts are containers that you can use to add panels and configure the design of AutomationPanel's interface. You can use the Layouts editor to add panels and arrange them specific to the needs of your testing environment. After you have designed the layout, you can modify panel and sub-object properties using the properties panel.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Layouts Editor</strong></em></span><br /><img src="attachments/download/127065/44_LayoutsEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Previewing-Layouts"></a>
+<h3 >Previewing Layouts<a href="#Previewing-Layouts" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>In the list of layouts, you can view a preview of each layout by hovering over the layout name. This list also allows you to add, rename, delete, or duplicate your layouts. Layouts are organized by module.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The first time you use the Layouts editor, a placeholder image displays for the image of the layout. You must first make a change and save the solution for a preview of the layout to display.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Preview Layout</strong></em></span><br /><img src="attachments/download/112327/43_PreviewLayout.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p><a name="Using-the-Editor-Interface"></a>
+<h2 >Using the Editor Interface<a href="#Using-the-Editor-Interface" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following sections detail various ways you can interact with the editor's interface.</p>
+
+
+	<a name="Expanding-the-Editing-Area"></a>
+<h3 >Expanding the Editing Area<a href="#Expanding-the-Editing-Area" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To make editing easier, you can expand the editing area by hovering over the line dividing the editor and the properties panel, selecting the section divider, and dragging it to the right to make the area larger. To collapse the properties panel completely, click the arrow icon in this section.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Expand/Collapse Properties Panel - Layout Editor</strong></em></span><br /><img src="attachments/download/112306/ExpandorCollapsePropertiesPanel.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Selecting-Panels-and-Sub-Objects"></a>
+<h3 >Selecting Panels and Sub-Objects<a href="#Selecting-Panels-and-Sub-Objects" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Use the property panel to browse and edit the available properties; thereby, affecting the appearance, behavior, and other miscellaneous functions of the panel. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Edit Panel Selection</strong></em></span><br /><img src="attachments/download/117622/43_EditPanelSelection.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />When you select a panel, a bold yellow line displays around the panel, and the panel's properties display in the property panel.  When you select a sub-object, such as a channel tile, text tile, individual gauge, or individual bar, a thin yellow line displays around the sub-object, and its properties display in the property panel.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Panel Selection</strong></em></span><br /><img src="attachments/download/117625/SB43_PropertyManager.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p></p>
+
+
+	<p>You can select multiple panels by dragging the cursor to form a box around the panels you wish to select. Dragging the cursor from left to right will select panels that are fully enclosed by the box while dragging the cursor from right to left will select panels that are either partially or fully enclosed by the box. The property panel will only list the shared properties for panels selected in this manner. Any changes in the property panel will also apply to the whole group.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Dragging a Cursor from Left to Right</strong></em></span><br /><img src="attachments/download/117628/SB41_CursorLefttoRight.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Dragging a Cursor from Right to Left</strong></em></span><br /><img src="attachments/download/117629/SB41_CursorRighttoLeft.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Using-Shortcuts"></a>
+<h3 >Using Shortcuts<a href="#Using-Shortcuts" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following keyboard shortcuts are supported in the editor:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Shortcut Options and Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Keyboard Shortcut</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td><strong>CTRL + C</strong></td>
+			<td>Copies the selected panel. This includes all its content, such as properties and current configuration.</td>
+		</tr>
+		<tr>
+			<td><strong>CTRL + V</strong></td>
+			<td>Pastes the copied panel. The panel is offset by 20 pixels when pasted this way.</td>
+		</tr>
+		<tr>
+			<td><strong>CTRL + X</strong></td>
+			<td>Cuts the selected panel.</td>
+		</tr>
+		<tr>
+			<td><strong>CTRL + Z</strong></td>
+			<td>Undo the previous action.</td>
+		</tr>
+		<tr>
+			<td><strong>CTRL + Y</strong></td>
+			<td>Redo the previous undone action.</td>
+		</tr>
+		<tr>
+			<td><strong>ALT + Left-Click</strong></td>
+			<td>Borderless panels can be selected anywhere within the panel and moved as needed.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Viewing-the-Displayable-Area"></a>
+<h3 >Viewing the Displayable Area<a href="#Viewing-the-Displayable-Area" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Layouts may differ in size based on their <strong>Maximum Size</strong> property. This can cause panels outside of the displayable area to not fully display in AutomationPanel. The area outside of the displayable area will render as a gray brick background, indicating that these panels will not fully display in AutomationPanel.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Viewing Displayable Area</strong></em></span><br /><img src="attachments/download/134506/45_ViewingDisplayableArea.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Adding-a-New-Layout"></a>
+<h2 >Adding a New Layout<a href="#Adding-a-New-Layout" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To add a new layout, do the following:</p>
+
+
+	<ol>
+	<li>Right-click in the list of layouts and select <strong>Add</strong>. The new layout is added to the the list.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add</strong></em></span><br /><img src="attachments/download/119224/43_AddNewLayout.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Layout</strong></em></span><br /><img src="attachments/download/111450/43_NewLayout.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Right-click on the new layout and select <strong>Rename</strong>. Enter the new name then click <strong>OK</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Rename Layout</strong></em></span><br /><img src="attachments/download/111451/43_RenameLayout.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select the new layout to open it in the editor.</li>
+	</ol>
+
+
+	<a name="Modifying-Properties"></a>
+<h2 >Modifying Properties<a href="#Modifying-Properties" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>SolutionBuilder displays properties specific to the Layout and Layout Toolbar editors. You can access these properties in the property panel when you first load a layout/toolbar or by right-clicking the background and selecting the <strong>Properties...</strong> option.</p>
+
+
+	<a name="Layout-and-Layout-Toolbar-Properties"></a>
+<h3 >Layout and Layout Toolbar Properties<a href="#Layout-and-Layout-Toolbar-Properties" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following table describes general properties:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>SolutionBuilder Properties</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Option</strong></td>
+			<td style="width:115px;text-align:left;"><strong>Editor</strong></td>
+			<td style="text-align:left;"><strong>Value</strong></td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr style="background: #ededed;">
+			<td style="text-align:center;" colspan="4"><strong>Appearance</strong></td>
+		</tr>
+		<tr>
+			<td>Display Name</td>
+			<td>- Layout</td>
+			<td>String</td>
+			<td>Name shown in the tab for the layout in AutomationPanel. It can be localized by using a string table macro from a language translation file. By default, this field is blank and uses the file name in the layout's tab.</td>
+		</tr>
+		<tr>
+			<td>Show Panel Border</td>
+			<td>- Layout<br />- Layout Toolbar</td>
+			<td>True/False</td>
+			<td>The setting that shows/hides panel borders in SolutionBuilder and AutomationPanel. This setting is only accessible in SolutionBuilder.<br />&nbsp;<br />If set to False, panels cannot be added to the layout in AutomationPanel; the <strong>New Panel...</strong> right-click option will be disabled. Any attempt to add a panel to a borderless layout in AutomationPanel will result in an error message.</td>
+		</tr>
+		<tr style="background: #ededed;">
+			<td style="text-align:center;" colspan="4"><strong>Behavior</strong></td>
+		</tr>
+		<tr>
+			<td>Dockable</td>
+			<td>- Layout</td>
+			<td>True/False</td>
+			<td>The setting that defines if the layout is dockable. When a layout is dockable, it can be attached to specific areas on the AutomationPanel interface.</td>
+		</tr>
+		<tr>
+			<td>Load On Startup</td>
+			<td>- Layout</td>
+			<td>True/False</td>
+			<td>The setting that determines if the layout can be loaded on startup. If set to true, you will be prompted to clear this setting when closing a layout in AutomationPanel; this prompt does not display if this setting is set to false.</td>
+		</tr>
+		<tr>
+			<td>Maximum Size</td>
+			<td>- Layout</td>
+			<td>x, y</td>
+			<td>The maximum size of the layout. Panels displayed outside of this area may not be fully displayed in AutomationPanel. For reference, the outside area is rendered as a gray brick background. For more information, refer to the <a class="wiki-page" href="Managing_Layouts.html#Viewing-the-Displayable-Area">Viewing the Displayable Area</a> section.</td>
+		</tr>
+		<tr>
+			<td>Modify Properties Group</td>
+			<td>- Layout<br />- Layout Toolbar</td>
+			<td>String</td>
+			<td>The name of an iTest security group, which allows users of the group to modify panels. This setting is used when the "AP: Manage Panels" and "AP: Modify Panel Properties" security permissions are false.</td>
+		</tr>
+		<tr>
+			<td>Snap Grid Spacing</td>
+			<td>- Layout<br />- Layout Toolbar</td>
+			<td>Integer</td>
+			<td>The horizontal and vertical spacing of the grid to help align borderless panels. The grid is enabled when you right-click the background and select the <strong>Show Snap Grid</strong> option.</td>
+		</tr>
+		<tr>
+			<td>Wallpaper File</td>
+			<td>- Layout<br />- Layout Toolbar</td>
+			<td>File path</td>
+			<td>The path to the file used to display an image on the layout background.</td>
+		</tr>
+		<tr>
+			<td>Wallpaper Size Mode</td>
+			<td>- Layout<br />- Layout Toolbar</td>
+			<td>None<br />Tile<br />Center<br />Stretch<br />Zoom</td>
+			<td>The wallpaper display style.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Panel-Properties"></a>
+<h3 >Panel Properties<a href="#Panel-Properties" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Customize each panel's properties using the descriptions provided in the <a class="wiki-page" href="AutomationPanel_Operators_Guide.html#Panel-Types">Panel Types</a> documentation. The right-click options differ depending on the panel selected.</p>
+
+
+	<a name="Right-Click-Options"></a>
+<h2 >Right-Click Options<a href="#Right-Click-Options" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following options are available when you right-click in the editor:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Descriptions: List of Layouts</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="width:100px;text-align:left;"><strong>Editor</strong></td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Add</td>
+			<td>- Layout</td>
+			<td>Adds a new blank layout to the solution. The new layout displays at the end of the list. For more information, refer to the <a class="wiki-page" href="Managing_Layouts.html#Adding-a-New-Layout">Adding a New Layout</a> section.</td>
+		</tr>
+		<tr>
+			<td>Remove</td>
+			<td>- Layout</td>
+			<td>Removes a selected layout/toolbar.</td>
+		</tr>
+		<tr>
+			<td>Rename</td>
+			<td>- Layout</td>
+			<td>Enables editing of the layout/toolbar name.</td>
+		</tr>
+		<tr>
+			<td>Duplicate</td>
+			<td>- Layout</td>
+			<td>Duplicates a selected layout/toolbar.</td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td>- Layout</td>
+			<td>Cuts a selected layout/toolbar and removes it from the list. </td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td>- Layout</td>
+			<td>Copies a selected layout/toolbar.</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td>- Layout</td>
+			<td>Pastes a copied or cut layout/toolbar.</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td>- Layout</td>
+			<td>Undoes the last action.</td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td>- Layout</td>
+			<td>Redoes the last undone action.</td>
+		</tr>
+		<tr>
+			<td>Set as Default</td>
+			<td>- Layout</td>
+			<td>Sets the selected layout as the default layout. The default layout displays first in AutomationPanel. A checkmark will appear next to the menu option if this layout is the default layout.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Descriptions: Background</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="width: 125px;text-align:left;"><strong>Editor</strong></td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>New Panel...</td>
+			<td>- Layout<br />- Layout Toolbar</td>
+			<td>Adds a new panel to the layout/toolbar.</td>
+		</tr>
+		<tr>
+			<td>New Connector</td>
+			<td>- Layout<br />- Layout Toolbar</td>
+			<td> Adds a new connector object to the layout/toolbar. For more information, refer to the <a class="wiki-page" href="Managing_Layouts.html#Configuring-Connectors">Configuring Connectors</a> section.</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td>- Layout<br />- Layout Toolbar</td>
+			<td>Pastes a copied or cut panel.</td>
+		</tr>
+		<tr>
+			<td>Show Snap Grid</td>
+			<td>- Layout<br />- Layout Toolbar</td>
+			<td>Enables a grid background for aligning your panels on a layout.</td>
+		</tr>
+		<tr>
+			<td>Snap to Grid</td>
+			<td>- Layout<br />- Layout Toolbar</td>
+			<td>Allows you to move panels along the grid by either clicking and dragging or using your keyboard's arrow keys.</td>
+		</tr>
+		<tr>
+			<td>Show Invisible Panels</td>
+			<td>- Layout<br />- Layout Toolbar</td>
+			<td>View any panels with the <code>Visible=False</code> setting. For more information, refer to the <a class="wiki-page" href="Managing_Layouts.html#Viewing-Invisible-Panels">Viewing Invisible Panels</a> section.</td>
+		</tr>
+		<tr>
+			<td>Properties...</td>
+			<td>- Layout<br />- Layout Toolbar</td>
+			<td>Opens the properties specific to the layout/toolbar.</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td>- Layout<br />- Layout Toolbar</td>
+			<td>Undoes the previous action.</td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td>- Layout<br />- Layout Toolbar</td>
+			<td>Redoes the last undone action.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Descriptions: Property Panel</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="width: 125px;text-align:left;"><strong>Editor</strong></td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Expand All</td>
+			<td>- Layout<br />- Layout Toolbar</td>
+			<td>Expands all available nodes in the layout/panel.</td>
+		</tr>
+		<tr>
+			<td>Collapse All</td>
+			<td>- Layout<br />- Layout Toolbar</td>
+			<td>Collapses all available nodes in the layout/panel.</td>
+		</tr>
+		<tr>
+			<td>Help...</td>
+			<td>- Layout<br />- Layout Toolbar</td>
+			<td>Opens the help documentation for the selected panel. For more information, refer to the <a class="wiki-page" href="Introduction_to_SolutionBuilder.html#Accessing-Documentation">Introduction to SolutionBuilder</a> documentation.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p>Depending on whether the panel or one of its sub-objects is selected, different options are available in the right-click menu.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Right-click menu options vary depending on panel and sub-object type.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Panel Selection Right-Click Options</strong></em></span><br /><img src="attachments/download/117630/SB41_PanelRightClickOptions.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Sub-Object Right-Click Options</strong></em></span><br /><img src="attachments/download/117631/SubObjectRightClickOptions.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Descriptions: Common Panel Menu Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="width: 125px;text-align:left;"><strong>Editor</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Move</td>
+			<td>- Layout<br />- Layout Toolbar</td>
+			<td>Allows you to define whether a panel/connector will appear above or below other panels in the same grid. For more information, refer to the <a class="wiki-page" href="Managing_Layouts.html#Move">Move</a> section.</td>
+		</tr>
+		<tr>
+			<td>Align</td>
+			<td>- Layout<br />- Layout Toolbar</td>
+			<td>Allows you to align two or more panels horizontally or vertically. For more information, refer to the <a class="wiki-page" href="Managing_Layouts.html#Align">Align</a> section.</td>
+		</tr>
+		<tr>
+			<td>Make Same Size</td>
+			<td>- Layout<br />- Layout Toolbar</td>
+			<td>Allows you to make two or more panels the same size. For more information, refer to the <a class="wiki-page" href="Managing_Layouts.html#Make-Same-Size">Make Same Size</a> section.</td>
+		</tr>
+		<tr>
+			<td>Space Evenly</td>
+			<td>- Layout<br />- Layout Toolbar</td>
+			<td>Allows you to equally space three or more panels. For more information, refer to the <a class="wiki-page" href="Managing_Layouts.html#Space-Evenly">Space Evenly</a> section.</td>
+		</tr>
+		<tr>
+			<td>Cut/Copy/Paste</td>
+			<td>- Layout<br />- Layout Toolbar</td>
+			<td>Allows you to cut, copy, or paste a selected panel. For more information, refer to the <a class="wiki-page" href="Managing_Layouts.html#CutCopyPaste">Cut/Copy/Paste</a> section.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Viewing-Invisible-Panels"></a>
+<h3 >Viewing Invisible Panels<a href="#Viewing-Invisible-Panels" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To view panels that have the <code>Visible=False</code> setting, right-click within a layout and select <strong>Show Invisible Panels</strong>. This allows you to view any applicable panels without having to change the <code>Visible</code> property setting. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>View Invisible Panels</strong></em></span><br /><img src="attachments/download/117632/SB42_ViewInvisiblePanels.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Move"></a>
+<h3 >Move<a href="#Move" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This right-click option allows you to define whether a panel will appear above or below other panels in the same grid.</p>
+
+
+	<p>To move a panel above or below other panels, do the following:</p>
+
+
+	<ol>
+	<li>Click the panel you want to move. Once selected, it will appear with a yellow border.</li>
+		<li>Right-click the selected panel and hover over <strong>Move</strong>.</li>
+		<li>Click <strong>Above other Panels</strong> to make the selected panel appear over other panels in the same layout. Click <strong>Below other Panels</strong> to make the selected panel appear beneath other panels in the same layout. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Move</strong></em></span><br /><img src="attachments/download/70652/MovePanel.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<a name="Align"></a>
+<h3 >Align<a href="#Align" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This right-click option allows you to align two or more panels horizontally or vertically.</p>
+
+
+	<p>To align your panels, do the following:</p>
+
+
+	<ol>
+	<li>Hold <strong>Ctrl</strong> and click the panels you want to align. A yellow border will appear around the selected panels.</li>
+		<li>Right-click the selected panel to which you want to align and hover over <strong>Align</strong>.</li>
+		<li>To align panels horizontally, select <strong>Left</strong>, <strong>Center</strong>, or <strong>Right</strong>. To align panels vertically, select <strong>Top</strong>, <strong>Middle</strong>, or <strong>Bottom</strong>. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Align</strong></em></span><br /><img src="attachments/download/70681/Align.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<a name="Make-Same-Size"></a>
+<h3 >Make Same Size<a href="#Make-Same-Size" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This right-click option allows you to make two or more panels the same size.</p>
+
+
+	<p>To make your panels the same size, do the following:</p>
+
+
+	<ol>
+	<li>Hold <strong>Ctrl</strong> and click the panels you want to resize. A yellow border will appear around the selected panels.</li>
+		<li>Hold <strong>Ctrl</strong> and click the panel with the dimensions you want to use.</li>
+		<li>Right-click the panel with the dimensions you want to use and hover over <strong>Make Same Size.</strong></li>
+		<li>Select one of three options: <strong>Width</strong>, <strong>Height</strong>, or <strong>Both</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Make Same Size</strong></em></span><br /><img src="attachments/download/70680/MakeSameSize.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<a name="Space-Evenly"></a>
+<h3 >Space Evenly<a href="#Space-Evenly" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This right-click option allows you to equally space three or more panels. Panels can be evenly spaced right to left or up and down.</p>
+
+
+	<p>To evenly space three or more panels, do the following:</p>
+
+
+	<ol>
+	<li>Select the panels you want to evenly space by holding <strong>Ctrl</strong> and clicking three or more panels. A yellow border will appear around the selected panels. </li>
+		<li>Right-click any of the selected panels and hover over <strong>Space Evenly.</strong></li>
+		<li>To evenly space panels horizontally, select <strong>Across</strong>. To evenly panels vertically, select <strong>Down</strong>. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Space Evenly</strong></em></span><br /><img src="attachments/download/70683/SpaceEvenly.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<a name="CutCopyPaste"></a>
+<h3 >Cut/Copy/Paste<a href="#CutCopyPaste" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>When using the <strong>Cut</strong> or <strong>Copy</strong> right-click options, the selected panel is copied to the clipboard and can be pasted using the <strong>Paste</strong> right-click option. When pasting a selected panel, the panel will be pasted at the cursor position in the editor.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Pasting Panels</strong></em></span><br /><img src="attachments/download/112325/42_PastingPanels.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Configuring-Connectors"></a>
+<h2 >Configuring Connectors<a href="#Configuring-Connectors" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Connector object allows you to connect panels in layouts, making it easier to create flowcharts that can be viewed in AutomationPanel. These objects are only editable in SolutionBuilder.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Example: Connecting Panels</strong></em></span><br /><img src="attachments/download/127503/44_ConnectorObjectExample.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>To add a new Connector object, right-click within the editor and select the <strong>New Connector</strong> option. The following connector types are available: <strong>Line</strong>, <strong>Corner</strong>, <strong>Vertical S-Curve</strong>, <strong>Horizontal S-Curve</strong>, and <strong>Image</strong>. These connector types determine the appearance and properties of the Connector object. Use the descriptions provided in the table below to configure the Connector object.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>New Connector Object</strong></em></span><br /><img src="attachments/download/127504/44_NewConnectorObject.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Connector Properties</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+			<td style="text-align:left;"><strong>Supported Connector Types</strong></td>
+		</tr>
+		<tr>
+			<td>APID</td>
+			<td> The ID used to automate modifications to connector properties at runtime using channels or mailslot messages. Properties that support automation will display the &lt;ID&gt;.&lt;PropertyName&gt; value at the bottom of the Property Manager dialog.</td>
+			<td>- All</td>
+		</tr>
+		<tr>
+			<td>BeginArrowSize</td>
+			<td> Determines the size (in pixels) of the beginning arrow. The size is determined by two numeric values separated by a comma. The first numeric value specifies the width, and the second numeric value specifies the height. A value of <code>0,0</code> will result in the arrow being hidden.</td>
+			<td>- Line<br />- Corner<br />- Vertical S-Curve<br />- Horizontal S-Curve</td>
+		</tr>
+		<tr>
+			<td>Color</td>
+			<td> The color used for the Connector object.</td>
+			<td>- Line<br />- Corner<br />- Vertical S-Curve<br />- Horizontal S-Curve</td>
+		</tr>
+		<tr>
+			<td>EndArrowSize</td>
+			<td> Determines the size (in pixels) of the ending arrow. The size is determined by two numeric values separated by a comma. The first numeric value specifies the width, and the second numeric value specifies the height. A value of <code>0,0</code> will result in the arrow being hidden.</td>
+			<td>- Line<br />- Corner<br />- Vertical S-Curve<br />- Horizontal S-Curve</td>
+		</tr>
+		<tr>
+			<td>GroupID</td>
+			<td> Groups connectors together such that clicking on the visual representation of the panel in the Layout Editor selects all panels sharing the same Group ID. Clear this setting to remove the panel from the group.</td>
+			<td>- All</td>
+		</tr>
+		<tr>
+			<td>Radius</td>
+			<td> Determines the angle of the curve. A smaller value (e.g., 0) will result in the curve appearing more straight while a larger value (e.g., 50) will result in the curve appearing more rounded.</td>
+			<td>- Corner<br />- Vertical S-Curve<br />- Horizontal S-Curve</td>
+		</tr>
+		<tr>
+			<td>ImageFilePath</td>
+			<td> The file path to the image used for the Connector object.</td>
+			<td>- Image</td>
+		</tr>
+		<tr>
+			<td>Visible</td>
+			<td> Show or hide the entire connector.</td>
+			<td>- All</td>
+		</tr>
+		<tr>
+			<td>Width</td>
+			<td> Determines the width of the line for the Connector object.</td>
+			<td>- Line<br />- Corner<br />- Vertical S-Curve<br />- Horizontal S-Curve</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p>The following right-click options are available for the Connector object:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Connector Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+			<td style="text-align:left;"><strong>Keyboard Shortcut</strong></td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td> Removes the selected connector and copies it to the clipboard.</td>
+			<td> Ctrl + X</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td> Copies the selected connector to the clipboard.</td>
+			<td> Ctrl + C</td>
+		</tr>
+		<tr>
+			<td>Remove</td>
+			<td> Removes the selected connector.</td>
+			<td> Del</td>
+		</tr>
+		<tr>
+			<td>Move</td>
+			<td> Allows you to move the selected connector above or below other connectors using the respective option.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+</body>
+</html>

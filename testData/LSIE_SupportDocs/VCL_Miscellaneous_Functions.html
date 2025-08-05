@@ -1,0 +1,663 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>VCL Miscellaneous Functions</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="VCL_Miscellaneous_Functions.html">VCL Miscellaneous Functions</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="VCL-Miscellaneous-Functions"></a>
+<h1 >VCL Miscellaneous Functions<a href="#VCL-Miscellaneous-Functions" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#VCL-Miscellaneous-Functions">VCL Miscellaneous Functions</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#AliasToChanVal">AliasToChanVal</a></li><li><a href="#bitclear">bitclear</a></li><li><a href="#bitset">bitset</a></li><li><a href="#bittest">bittest</a></li><li><a href="#boxcar">boxcar</a></li><li><a href="#callingprocedureget">callingprocedureget</a></li><li><a href="#channelnameget">channelnameget</a></li><li><a href="#dvdt">dvdt</a></li><li><a href="#evalboolexpr">evalboolexpr</a></li><li><a href="#evaleos">evaleos</a></li><li><a href="#evalfunc">evalfunc</a></li><li><a href="#EvalSimpleExpr">EvalSimpleExpr</a></li><li><a href="#fifo">fifo</a></li><li><a href="#GetProperty">GetProperty</a></li><li><a href="#lookup">lookup</a></li><li><a href="#lookupary">lookupary</a></li><li><a href="#lowpassfilter">lowpassfilter</a></li><li><a href="#msgwait">msgwait</a></li><li><a href="#setbits">setbits</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following document lists miscellaneous VCL functions.</p>
+
+
+	<a name="AliasToChanVal"></a>
+<h2 >AliasToChanVal<a href="#AliasToChanVal" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Returns the value stored in a numeric channel. The numeric channel is referenced by a string stored in a local variable or a string channel. The stored string can be a channel name or an alias*. Invalid references will return -999.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+AliasToChanVal(&lt;Channel&gt;, &lt;CircuitID | ""&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>&lt;Channel&gt;</em>: A local variable or string channel containing the channel name or alias* of a numeric channel. The stored numeric channel must be stored by its channel name and not by a customer or module name.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;CircuitID | &quot;&quot;&gt;</em>: In a battery solution (BTS), this parameter would be the CircuitID; otherwise, the parameter is an empty string.</p>
+
+
+* <span style="font-size:0.90em;font-style: italic;">To ensure a successful return, select an Alias that is unique to a single channel. If you reference an Alias used by multiple channels, the returned value will be selected at random.</span>
+
+	<p><strong>Example</strong><br /><pre>
+SET lclValue AliasToChanVal(vsStringPlaceholder, "")
+
+* Given vsStringPlaceHolder contains the alias for the numeric channel (voDynoSpt).
+* Returns the value stored in the voDynoSpt channel.
+</pre></p>
+
+
+	<a name="bitclear"></a>
+<h2 >bitclear<a href="#bitclear" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Sets a bit, numbered 1-32, of a channel to 0. &lt;bit-number&gt; is a numeric constant, local variable or channel name containing an integer value of 1-32. The change is made to the specified bit of the channel defined in the SET command.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+SET &lt;ReturnValue&gt; bitclear(&lt;bit-number&gt;)
+</pre></p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET numSysBitChannel bitclear(5)
+
+* Where numSysBitChannel previously had a bitset performed on bit 5 and on bit 1.
+* In this example, bit 5 of numSysBitChannel would be set to 0, and the value of numSysBitChannel would be changed from 16 to 1.
+</pre><br />&nbsp;</p>
+
+
+	<a name="bitset"></a>
+<h2 >bitset<a href="#bitset" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Sets a bit, numbered 1-32, to 1. &lt;bit-number&gt; is a numeric constant, local variable or channel name containing an integer value of 1-32. The change is made to the specified bit of the channel defined in the SET command.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+SET &lt;ReturnValue&gt; bitset(&lt;bit-number&gt;)
+</pre></p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET numSysBitChannel bitset(5)
+
+* Where numSysBitChannel had no bits set yet, so numSysBitChannel value is 0.
+* In this example, bit 5 of numSysBitChannel would be set to 1, and the value of the numSysBitChannel channel would be 16. If a bitset was also done on bit 1, numSysBitChannel would be 17.
+</pre><br />&nbsp;</p>
+
+
+	<a name="bittest"></a>
+<h2 >bittest<a href="#bittest" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Returns the bit value of a specified bit, numbered 1-32, in a numeric channel.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+SET &lt;ReturnValue&gt; bittest(&lt;channel&gt;,&lt;bit-number&gt;)
+</pre></p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET numSysBitValue bittest(numSysBitChannel 5)
+
+* Where numSysBitChannel previously had a bitset performed on bit 5.
+* In this example, numSysBitValue would be set to 1.
+</pre><br />&nbsp;</p>
+
+
+	<a name="boxcar"></a>
+<h2 >boxcar<a href="#boxcar" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Returns the average value for an iTest channel over the last time duration (in seconds).  <br />The second parameter must be a numeric constant.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+SET &lt;ReturnValue&gt; boxcar(&lt;channel&gt;,&lt;seconds&gt;)
+</pre></p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET SpeedAvg boxcar(Speed, 2)
+
+*In this example, the SpeedAvg channel value is set to the average value of the Speed channel over the last two seconds.
+</pre><br />&nbsp;</p>
+
+
+	<a name="callingprocedureget"></a>
+<h2 >callingprocedureget<a href="#callingprocedureget" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Sets a string channel or local string variable to the name of the parent (calling) procedure or “autotest” if it has no parent. This function returns 0 if the function completes successfully. A -1 is returned upon failure. A -4 is returned if the function returns an empty string.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+SET &lt;ReturnValue&gt; callingprocedureget(&lt;channel&gt;)
+</pre></p>
+
+
+	<p><strong>Parameter</strong></p>
+
+
+	<p style="padding-left:1em;"><em>channel</em>: Set to the name of the calling procedure.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">This function will return an empty string if the procedure is &quot;spawned&quot; instead of &quot;executed&quot;. Additional examples of this occurring would be if the procedure was run as a limit action or started using the debugger in Test Manager.</td>
+		</tr>
+	</table></p>
+
+
+	<p><strong>Example 1</strong><br /><pre>
+* Given Procedure1 contains:
++0.0 EXECUTE Procedure2
+
+* Given Procedure2 contains:
++0.0 SET voStatus callingprocedureget(vsParent)
+
+* In this example, vsParent would be set to "Procedure1" after Procedure1 is run.
+</pre></p>
+
+
+	<p><strong>Example 2</strong><br /><pre>
+* Given that Procedure1 contains:
++0.0 SPAWN Procedure2
+
+* Given Procedure2 contains:
++0.0 SET voStatus callingprocedureget(vsParent)
+
+* In this example, vsParent would be set to "" after Procedure1 is run.
+</pre></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="channelnameget"></a>
+<h2 >channelnameget<a href="#channelnameget" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Sets a string channel or local string variable, passed as the second parameter, to the name of the channel or procedure argument passed as the first parameter to the function. The procedure argument must be passed by <code>ChanName</code>. The returned value is based on the channel type of the receiving iTest channel.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+SET &lt;ReturnValue&gt; channelnameget(&lt;channel1&gt;,&lt;channel2&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>channel1</em>: A channel name or a declared procedure argument. The argument must be passed by <code>ChanName</code>.</p>
+
+
+	<p style="padding-left:1em;"><em>channel2</em>: The name of a string channel or a local string variable.</p>
+
+
+	<p><strong>Example</strong><br /><pre>
+* Given that strChannel is a virtual string channel.
+
+Example 1:
++0.0 SET strStatus channelnameget(CLOCK_TIME,strChannel)
+
+* Given that strStatus is a virtual string channel.
+* In this example, the function would set strStatus to either "" (if successful) or an English error message on error.
+
+Example 2:
+SET voErr channelnameget(CLOCK_TIME,strChannel)
+
+* Given that voErr is a virtual output channel.
+* In this example, the function would set voErr to either 0 (if successful) or a negative number on error.
+
+Example 3:
+*Parent Procedure:
+EXECUTE ChildProcedure(CLOCK_TIME)
+
+* Child Procedure:
+$ARGUMENT arg1,Number,ChanName
+SET voErr channelnameget(arg1, strChannel)
+
+* In all examples, the function would set strChannel to "CLOCK_TIME" if the channel exists in the solution.
+</pre></p>
+
+
+<strong>Limitations</strong>
+	<ul>
+	<li>If an argument has been passed as the first parameter, then the referenced channel must be of a numeric type like a virtual output. String channels are not supported.<br />&nbsp;</li>
+	</ul>
+
+
+	<a name="dvdt"></a>
+<h2 >dvdt<a href="#dvdt" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Returns the rate of change value for an iTest channel over the last time duration (in seconds).  <br />The second parameter must be a numeric constant.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+SET &lt;ReturnValue&gt; dvdt(&lt;channel&gt;,&lt;seconds&gt;)
+</pre></p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET SpeedDvdt dvdt(Speed, 2)
+
+*In this example, the SpeedDvdt channel value is set to the rate of change value of the Speed channel over the last two seconds.
+</pre><br />&nbsp;</p>
+
+
+	<a name="evalboolexpr"></a>
+<h2 >evalboolexpr<a href="#evalboolexpr" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Evaluates an expression, represented by a string, and returns the result as a numeric constant; i.e., 0 (false), 1 (true), or -1 (error). Only a simple “operand operator operand” format is supported, so parentheses cannot be used to build complex expressions and the expression is evaluated strictly left to right. Supported operators are <, >, <=, >=, | and &#38;.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Numeric value comparisons are only to the first six (6) significant digits. For example, 1235740  1235749 and 3.96000  3.960009.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><strong>Syntax</strong><br /><pre>
+SET &lt;ReturnValue&gt; evalboolexpr(&lt;expression&gt;)
+</pre></p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET Cntr1 4
+SET Cntr2 3
+SET vsTemp "Cntr1 &gt; Cntr2" 
+SET Cntr3 evalboolexpr(vsTemp)
+
+* In this example, the function would set Cntr3 to 1.
+</pre><br />&nbsp;</p>
+
+
+	<a name="evaleos"></a>
+<h2 >evaleos<a href="#evaleos" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Used to evaluate a Step Condition. The operands within the Step Condition can be either a channel name or an alias name. It can be an alias name only in a battery solution. In this case, it will be converted to a channel name using the circuit ID provided as the second argument of the function. This function returns either 1 (True), 0 (False), or -1 (Error).</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Numeric value comparisons are only to the first six (6) significant digits. For example, 1235740  1235749 and 3.96000  3.960009.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>When used in a BTS environment, you must create a series of virtual output channels called num&lt;CID&gt;Circuit (<code>&lt;CID&gt; = circuit ID</code>, e.g., Cct01) There must be one for each circuit. These channels need to be set to the numeric value representing that circuit (e.g., for circuit 1, the <code>numCct01Circuit</code> channel must exist in the solution with a channel value of 1).</p>
+
+
+	<p><strong>Syntax</strong> <br /><pre>
+SET &lt;ReturnValue&gt; evaleos(&lt;eos&gt;,&lt;circuitID&gt;|"")
+</pre></p>
+
+
+	<p>In a non-battery solution, the &lt;circuitID&gt; parameter is an empty string.</p>
+
+
+	<p><strong>Example</strong> (non-battery):<br /><pre>
+SET voChan1 evalEOS("StepCondition1","")
+</pre><br />&nbsp;</p>
+
+
+	<a name="evalfunc"></a>
+<h2 >evalfunc<a href="#evalfunc" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Executes the specified procedure and returns its value.</p>
+
+
+	<p><strong>Syntax</strong> <br /><pre>
+SET &lt;ReturnValue&gt; evalfunc(&lt;string|channel&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>string</em> | <em>channel</em>: Either a literal string surrounded by double quotes that matches the name of a procedure or a virtual string channel that contains the name of a procedure. The reference to the procedure can also include any arguments.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">To include literal strings as part of an argument, the string must be surrounded by double-quotes that have been escaped using tilde characters. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p><strong>Example</strong><br /><pre>
+Example 1:
+
+SET voChannel1 evalfunc("NewProcedure1")
+
+* given that the NewProcedure1 procedure returns 99.
+* voChannel1 is set to 99.
+</pre></p>
+
+
+<pre>
+Example 2:
+
+SET voChannel1 evalfunc("ReturnNumberArg1(12, ~"abc~")")
+
+* given that the ReturnNumberArg1 procedure returns its first argument.
+* voChannel1 is set to 12.
+</pre>
+
+<pre>
+Example 3:
+
+VCLSTR lclString
+SET lclString "ReturnNumberArg2(~"abc~", 12, 13)" 
+SET voChannel1 evalfunc(lclString)
+
+* given that the ReturnNumberArg2 procedure returns its second argument.
+* voChannel1 is set to 12.
+</pre>
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">EvalFunc() only accepts returned numeric values; it does not accept returned strings. </td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="EvalSimpleExpr"></a>
+<h2 >EvalSimpleExpr<a href="#EvalSimpleExpr" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Evaluates a simple string expression with two operands. The operands can be either channel name or an alias name. It can be an alias name only in a battery solution. In this case, it will be converted to a channel name using the circuit ID provided as the second argument of the function. This function returns a numeric value. Only a simple “operand operator operand” format is supported, so parentheses can not be used to build complex expressions. Supported operators are +, -, *, or /.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+SET &lt;ReturnValue&gt; EvalSimpleExpr(&lt;Expression&gt;,  &lt;CircuitID&gt;|"")
+</pre></p>
+
+
+	<p>In a non-battery solution, the &lt;CircuitID&gt; parameter is an empty string.</p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET voResult EvalSimpleExpr("Voltage + 500", "")
+SET voResult EvalSimpleExpr("Voltage + 500", "Cct1")
+
+* Where "Voltage" is an alias or a channel name. For a battery solution with circuit "Cct1", the channel...
+* ...name might be "eCct1Voltage".  
+</pre><br />&nbsp;</p>
+
+
+	<a name="fifo"></a>
+<h2 >fifo<a href="#fifo" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Checks the status of the 'First In First Out' (FIFO) buffer and returns the value of the specified channel at a certain time in the past. The &lt;time&gt; parameter must be a numeric constant, in seconds, and can not be a reference to a channel or local variable.</p>
+
+
+	<p>A FIFO buffer is created for each channel referenced within a FIFO function in any existing iTest procedure (<em>*.tsc</em> files) in the solution. Only one buffer will be created for each channel, and its size is based on the provided &lt;time&gt; parameter and the system rate. Any subsequent FIFO commands for a channel will compare the &lt;time&gt; parameter versus the time encompassed by the existing FIFO buffer and increases the FIFO buffer size if the &lt;time&gt; parameter is larger. The FIFO buffer stores iTest channel values as single precision floating point numbers at the system rate, so a 10 second time parameter with a 100Hz system rate requires 4000 bytes of memory as iTest stores 1000 data points in the FIFO buffer for that channel. Each FIFO buffer is limited to no more than 100,000 data points.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#cc061c;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3741/Warning3.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>WARNING:</b></td>
+			<td style="vertical-align:top;">Multiple large FIFO buffers can degrade system performance as memory is allocated for these buffers.</td>
+		</tr>
+	</table></p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+SET &lt;ReturnValue&gt; fifo(&lt;channel name&gt;,&lt;time&gt;)</pre></p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET spdSysFifo5 fifo(spdSys,5)
+
+* Where spdSys was 2875 5 seconds ago and is currently 3005.
+* In this example, spdSysFifo5 is set to 2875.
+</pre><br />&nbsp;</p>
+
+
+	<a name="GetProperty"></a>
+<h2 >GetProperty<a href="#GetProperty" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Allows the operator to retrieve a single RDB property of an iTest channel from memory. The return value for the function is either a string or a numeric value depending on the RDB field specified.</p>
+
+
+	<p>The primary use case for this function is to retrieve the last average log value for a given channel instead of using FileServices. The GetProperty() VCL function's performance is real-time versus the high latency file I/O operations associated with FileServices.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>SET &lt;ReturnValue&gt; GetProperty(&lt;channel name&gt;,&lt;field name&gt;)</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>channel name</em>: An iTest channel or local variable name with no double quotes around it.</p>
+
+
+	<p style="padding-left:1em;"><em>field name</em>: A string constant (not an iTest channel or local variable) with double quotes around it.<br />The following values are supported for the field name:</p>
+
+
+	<p style="padding-left:2em;">"LastLoggedValue" <br />"Low EU" <br />"High EU" <br />"Low Rail" <br />"High Rail" <br />"Limit Status" <br />"Limits Active" <br />"Low Limit" <br />"Low Limit Action" <br />"Low Limit Ignore Time" <br />"Low Warning" <br />"Low Warning Action" <br />"High Warning" <br />"High Warning Action" <br />"High Limit" <br />"High Limit Action" <br />"High Limit Ignore Time"</p>
+
+
+	<p><strong>Example</strong><br /><pre>
+* to get the Low EU field for virtual output voTest1 the call would be:
++0.0 SET voRetVal GetProperty(voTest1, "Low EU")
+</pre><br />&nbsp;</p>
+
+
+	<a name="lookup"></a>
+<h2 >lookup<a href="#lookup" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Returns the non-linear value from a lookup table or its linearly interpolated value. The returned value is based on the value of the lookup channel for the table. For more information regarding lookup tables, refer to the <a class="wiki-page" href="Lookup_Tables.html">Lookup Tables</a> document.</p>
+
+
+	<p>Linear interpolation is used to compute the value of the return if applicable. Linear interpolation applies if the value of the lookup channel falls between two points in the table. If the <code>LookupTableExtrapolate=FALSE</code> <em>powertek.in</em> setting is present or missing, then RMISS is returned if the given value is outside of the range of the table. If <code>LookupTableExtrapolate=TRUE</code> is present, then linear interpolation is also applied if the value falls outside of the table's range. In this case, either the first or last two points in the table are used to interpolate the value depending on which table boundary was exceeded.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+SET &lt;ReturnValue&gt; lookup(&lt;tablename&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>channel</em>: The numeric channel or local variable that stores the return value.</p>
+
+
+	<p style="padding-left:1em;"><em>tablename</em>: The name of a table created in Test Manager located within the <em>Calculations/Lookup Tables</em> tree node. Only a literal string is accepted for this parameter.</p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET valSysChannel lookup(VoltsToRPM)
+
+* Where valSysChannel is a virtual output channel.
+* Where VoltsToRPM is a lookup table referencing a 0v to 10v analog input channel in which 0v has a return value of 0 rpm and 10v has a 
+return value of 5000 rpm.
+
+In this example, the function returns an interpolated RPM value from the lookup table based on the current voltage value of the lookup channel.
+</pre><br />&nbsp;</p>
+
+
+	<a name="lookupary"></a>
+<h2 >lookupary<a href="#lookupary" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Returns the linearly interpolated value from a lookup table. The returned value is based on an index of the virtual output array channel that is being used as the lookup channel for the table. For more information regarding lookup tables, refer to the <a class="wiki-page" href="Lookup_Tables.html">Lookup Tables</a> document.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+SET &lt;ReturnValue&gt; lookupary(&lt;tablename&gt;,&lt;arrayindex&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>channel</em>: The numeric channel or local variable that stores the return value.</p>
+
+
+	<p style="padding-left:1em;"><em>tablename</em>: The name of a table created in Test Manager located within the <em>Calculations/Lookup Tables</em> tree node.</p>
+
+
+	<p style="padding-left:1em;"><em>arrayindex</em>: The index of the virtual output array channel used to find the lookup value in the lookup table.</p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET tempReturnValue lookupary(CelsiusToFahrenheit, numIndexArray)
+
+* Where tempReturnValue is a virtual output channel. 
+* Where CelsiusToFahrenheit is a lookup table referencing a  0 °C  to  100 °C temperature channel within which 0 °C  has a return value of 32 
+°F and 100 °C has a return value of 212 °F.
+* Where numIndexArray is the index of the virtual output array channel referenced in the lookup table.
+
+In this example, the function returns an interpolated Fahrenheit value from the lookup table based on the temperature value stored in an 
+element of the virtual output array channel referenced in the table. The element being specified by the numIndexArray parameter.
+</pre><br />&nbsp;</p>
+
+
+	<a name="lowpassfilter"></a>
+<h2 >lowpassfilter<a href="#lowpassfilter" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Returns a filtered value based on the input channel and filtering coefficient. The filtering coefficient must be a constant value, a numeric channel, or a numeric array channel with a specified index.</p>
+
+
+	<p>The filter equation is as follows: OutputChannel[t] = <em>fc</em>*InputChannel[t] + (1 - <em>fc</em>)*OutputChannel[t-1]</p>
+
+
+	<p>In this equation, <em>fc</em> represents the filtering coefficient (0 > <em>fc</em> <= 1). The higher the value of <em>fc</em>, the more dynamic the output.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+SET &lt;output channel&gt; lowpassfilter &lt;input channel, filtering coefficient&gt; 
+</pre></p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET voDmo1Feedback lowPassFilter(voDmo1Square, 0.01)
+</pre></p>
+
+
+	<a name="msgwait"></a>
+<h2 >msgwait<a href="#msgwait" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Sends a mailslot message, periodically compares the value of the channel passed to the function against the given wait value, and exits the function if the timeout is reached or if the passed channel's value is not equal to the wait value.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+SET &lt;ReturnValue&gt; msgwait(&lt;message&gt;, &lt;channel&gt;, &lt;waitvalue&gt;, &lt;timeout&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>message</em>: message string to send to a mailslot, or a virtual string channel that contains the message to be sent to a mailslot</p>
+
+
+	<p style="padding-left:1em;"><em>channel</em>: VS or VO channel name in double quotes. This parameter must be a channel name. Customer and module names are invalid.</p>
+
+
+	<p style="padding-left:1em;"><em>waitvalue</em>: float or string value in double quotes. The msgwait function will wait while the channel value equals the waitvalue until the function times out.</p>
+
+
+	<p style="padding-left:1em;"><em>timeout</em>: time out time in seconds.</p>
+
+
+	<p><strong>Return values</strong></p>
+
+
+	<p style="padding-left:1em;">&nbsp;0: The function exited normally, wait channel no longer equal to wait value.<br />-1: Time out waiting for wait channel to be set to something other than wait value.</p>
+
+
+	<p><strong>Example</strong><br /><pre>
++0.1 SET xx msgwait("\\.\mailslot\Softpanel&gt;&gt;Hello from msgwait", "WaitChan", "3.4",5);
+</pre><br />&nbsp;</p>
+
+
+	<a name="setbits"></a>
+<h2 >setbits<a href="#setbits" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Sets the range of bits from high to low equal to the bit value specified (either 0 or 1). The setting occurs to the &lt;channel&gt; argument of the <code>SET</code> command.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+SET &lt;ReturnValue&gt; setbits(&lt;high bit&gt;,&lt;low bit&gt;,&lt;bit value&gt;)
+</pre></p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET numSysBitChannel setbits(5,1,0)
+
+* Where numSysBitChannel previously had a bitset performed on bit 5 and on bit 1.
+* In this example, bits 5 to 0 of numSysBitChannel would be set to 0, and the value of numSysBitChannel would be changed from 17 to 0.</p></pre>
+</body>
+</html>

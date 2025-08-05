@@ -1,0 +1,1398 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>DataEngine Mailslot Messages List</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="DataEngine_Mailslot_Messages_List.html">DataEngine Mailslot Messages List</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Standard-DataEngine-Messages-List"></a>
+<h1 >Standard DataEngine Messages List<a href="#Standard-DataEngine-Messages-List" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Standard-DataEngine-Messages-List">Standard DataEngine Messages List</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Channel-Messages">Channel Messages</a><ul><li><a href="#Set">Set</a></li><li><a href="#Set-AO">Set AO</a></li><li><a href="#Set-DO">Set DO</a></li><li><a href="#Set-EU-Range">Set EU Range</a></li><li><a href="#Set-Signal-Range">Set Signal Range</a></li><li><a href="#Set-VO">Set VO</a></li><li><a href="#Set-VS">Set VS</a></li></ul>
+</li><li><a href="#Data-Logging-Messages">Data Logging Messages</a><ul><li><a href="#CheckLogHeader">CheckLogHeader</a></li><li><a href="#DataArchive">DataArchive</a></li><li><a href="#Log-Cancel">Log Cancel</a></li><li><a href="#Log-Parse">Log Parse</a></li><li><a href="#Log-Start">Log Start</a></li><li><a href="#Log-Stop">Log Stop</a></li><li><a href="#StartLog">StartLog</a></li><li><a href="#StopLog">StopLog</a></li><li><a href="#UpdateMaxTransportDelay">UpdateMaxTransportDelay</a></li></ul>
+</li><li><a href="#Data-Quality-Messages">Data Quality Messages</a><ul><li><a href="#DQGroup-Apply">DQGroup Apply</a></li></ul>
+</li><li><a href="#Driver-Messages">Driver Messages</a><ul><li><a href="#RTDriverLoad">RTDriverLoad</a></li><li><a href="#RTDriverMsg">RTDriverMsg</a></li></ul>
+</li><li><a href="#Dynamic-Calculation-Messages">Dynamic Calculation Messages</a><ul><li><a href="#CalcEngine-Start">CalcEngine Start</a></li><li><a href="#CalcEngine-Stop">CalcEngine Stop</a></li></ul>
+</li><li><a href="#Dynamic-Name-Change-Messages">Dynamic Name Change Messages</a><ul><li><a href="#LoadAKAFile">LoadAKAFile</a></li><li><a href="#LoadAliasFile">LoadAliasFile</a></li></ul>
+</li><li><a href="#INI-File-Messages">INI File Messages</a><ul><li><a href="#INIRead">INIRead</a></li><li><a href="#INIReadFile">INIReadFile</a></li><li><a href="#INIReadMany">INIReadMany</a></li><li><a href="#INIWrite">INIWrite</a></li><li><a href="#INIWriteFile">INIWriteFile</a></li><li><a href="#INIWriteMany">INIWriteMany</a></li></ul>
+</li><li><a href="#Limits-Messages">Limits Messages</a><ul><li><a href="#Limits-Activate">Limits Activate</a></li><li><a href="#Limits-Deactivate">Limits Deactivate</a></li><li><a href="#Limits-Group-Apply">Limits Group Apply</a></li><li><a href="#Limits-Reactivate">Limits Reactivate</a></li></ul>
+</li><li><a href="#Miscellaneous-Messages">Miscellaneous Messages</a><ul><li><a href="#BackupLogFiles">BackupLogFiles</a></li><li><a href="#CopyField">CopyField</a></li><li><a href="#Die">Die</a></li><li><a href="#GenericMsg">GenericMsg</a></li><li><a href="#Load-Tablescfg">Load Tables.cfg</a></li><li><a href="#ResetCircleBuffer">ResetCircleBuffer</a></li><li><a href="#SysLog-Event-Add">SysLog Event Add</a></li></ul>
+</li><li><a href="#PID-Control-Loop-Messages">PID Control Loop Messages</a><ul><li><a href="#PID-Group-Apply">PID Group Apply</a></li><li><a href="#PID-Initialize">PID Initialize</a></li><li><a href="#PID-Modify">PID Modify</a></li><li><a href="#PID-Start">PID Start</a></li><li><a href="#PID-Stop">PID Stop</a></li></ul>
+</li><li><a href="#Procedure-Messages">Procedure Messages</a><ul><li><a href="#Sequence-Abort">Sequence Abort</a></li><li><a href="#Sequence-Resume">Sequence Resume</a></li><li><a href="#Sequence-Start">Sequence Start</a></li><li><a href="#Sequence-Suspend">Sequence Suspend</a></li></ul>
+</li><li><a href="#Statistics-Messages">Statistics Messages</a><ul><li><a href="#Statistics-Activate">Statistics Activate</a></li><li><a href="#Statistics-Deactivate">Statistics Deactivate</a></li><li><a href="#Statistics-Reset">Statistics Reset</a></li></ul>
+</li><li><a href="#Step-Conditions-EOS-Messages">Step Conditions (EOS) Messages</a><ul><li><a href="#Load-EOS">Load EOS</a></li><li><a href="#Update-EOS">Update EOS</a></li></ul></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The mailslot address for DataEngine is Data_Engine. All messages should reference an address like this:</p>
+
+
+<pre>
+\\.\mailslot\Data_Engine&gt;&gt;Your Message
+</pre>
+
+	<table style="width:800px;">
+		<tr>
+			<td style="background:#336699;width:2px;"></td>
+			<td style="width:20px;text-align:center;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;width:100px;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Use the tilde ( <img src="attachments/download/45870/tilde.png" alt="" /> ) to escape characters in mailslot messages.</td>
+		</tr>
+	</table>
+
+
+
+
+	<table style="width:800px;">
+		<tr>
+			<td style="background:#cc061c;width:2px;"></td>
+			<td style="width:20px;text-align:center;"><img src="attachments/download/3741/Warning3.png" alt="" /></td>
+			<td style="vertical-align:top;width:100px;"><b>WARNING:</b></td>
+			<td style="vertical-align:top;">Do not include a semi-colon in any messages to Data_Engine. Any text following the semi-colon, including the semi-colon, will not be included as part of the message.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Channel-Messages"></a>
+<h2 >Channel Messages<a href="#Channel-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Set"></a>
+<h3 >Set<a href="#Set" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sets a channel's value in the RDB to a given value.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+SET &lt;ChannelName&gt; &lt;NewValue&gt;
+</pre><br />&nbsp;</p>
+
+
+	<a name="Set-AO"></a>
+<h3 >Set AO<a href="#Set-AO" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sets an analog output channel's value in the RDB to a given value.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+SET AO &lt;ChannelName&gt; &lt;NewValue&gt;
+</pre><br />&nbsp;</p>
+
+
+	<a name="Set-DO"></a>
+<h3 >Set DO<a href="#Set-DO" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sets a digital output channel's value in the RDB to a given value.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+SET DO &lt;ChannelName&gt; &lt;NewValue&gt;
+</pre><br />&nbsp;</p>
+
+
+	<a name="Set-EU-Range"></a>
+<h3 >Set EU Range<a href="#Set-EU-Range" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sets an analog output channel's <strong>High EU</strong> and <strong>Low EU</strong> RDB field values to the given range.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+Set EU Range &lt;ChannelName&gt; &lt;LowEU&gt; &lt;HighEU&gt;
+</pre><br />&nbsp;</p>
+
+
+	<a name="Set-Signal-Range"></a>
+<h3 >Set Signal Range<a href="#Set-Signal-Range" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sets an analog output channel's <strong>High Rail</strong> and <strong>Low Rail</strong> RDB field values to the given range.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+Set Signal Range &lt;ChannelName&gt; &lt;LowRail&gt; &lt;HighRail&gt;
+</pre><br />&nbsp;</p>
+
+
+	<a name="Set-VO"></a>
+<h3 >Set VO<a href="#Set-VO" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sets a virtual output channel's value in the RDB to a given value.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+SET VO &lt;ChannelName&gt; &lt;NewValue&gt;
+</pre><br />&nbsp;</p>
+
+
+	<a name="Set-VS"></a>
+<h3 >Set VS<a href="#Set-VS" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sets a virtual string channel's value in the RDB to a given value.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+SET VS &lt;ChannelName&gt; &lt;NewValue&gt;
+</pre><br />&nbsp;</p>
+
+
+	<a name="Data-Logging-Messages"></a>
+<h2 >Data Logging Messages<a href="#Data-Logging-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="CheckLogHeader"></a>
+<h3 >CheckLogHeader<a href="#CheckLogHeader" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Checks if a set of header rows will be added to the next data log.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+CheckLogHeader &lt;LogName&gt; [Status]
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>&lt;LogName&gt;</em>: The name of the log file to check.</p>
+
+
+	<p style="padding-left:1em;"><em>[Status]</em>: The virtual output channel used to display the result.</p>
+
+
+	<p><strong>Status Values:</strong></p>
+
+
+	<table style="margin-left: 2.5em;width:500px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width: 50px;text-align:left;"><strong>Value</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td> Header rows will be added</td>
+		</tr>
+		<tr>
+			<td>0</td>
+			<td> Header rows won't be added</td>
+		</tr>
+		<tr>
+			<td>-1</td>
+			<td> Error parsing the log file or <em>.lol</em> file</td>
+		</tr>
+		<tr>
+			<td>-2</td>
+			<td> Unsupported data file type: <em>.mdf</em> or <em>.bin</em> (for transient logs only)</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><strong>Example:</strong><br /><pre>
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;CheckLogHeader MyDataFile voResultChannel" 
+</pre><br />&nbsp;</p>
+
+
+	<a name="DataArchive"></a>
+<h3 >DataArchive<a href="#DataArchive" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Creates or opens the specified directory as the project folder in the $DATADIR.  Logged Blackbox data, the system log, and logged data files are saved in this directory. This mailslot modifies the <code>DRHoldForReviewDir=</code> <em>powertek.ini</em> setting.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+DataArchive New|Open &lt;FolderName&gt;
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>New | Open</em>: The first argument can either be "New" or "Open." This denotes whether iTest should create a new folder or open an existing folder.</p>
+
+
+	<p style="padding-left:1em;"><em>FolderName</em>: This argument follows the Windows naming convention for folders. The following invalid characters will be replaced with an underscore character: <code>/:*?"|<></code>. Spaces in the data project folder name are supported.</p>
+
+
+	<p><strong>Example:</strong><br /><pre>
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;DataArchive Open MyProject" 
+</pre><br />&nbsp;</p>
+
+
+	<a name="Log-Cancel"></a>
+<h3 >Log Cancel<a href="#Log-Cancel" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Causes Data_Engine to cancel the log name listed. The existing data that has been gathered will be discarded.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+LOG CANCEL &lt;LogName&gt;
+</pre><br />&nbsp;</p>
+
+
+	<a name="Log-Parse"></a>
+<h3 >Log Parse<a href="#Log-Parse" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Forces the <em>logsetup.dat</em> and all Log Order List (<em>.lol</em>) files to be read into memory. This message is used after changing, adding, or deleting data log configurations or Log Order Lists in Test Manager.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Changes to Blackbox properties or <em>Blackbox.lol</em> requires an iTest restart. Log Parse will not update these during runtime.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+LOG PARSE
+</pre><br />&nbsp;</p>
+
+
+	<a name="Log-Start"></a>
+<h3 >Log Start<a href="#Log-Start" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Starts a data log. Only one instance of a log can be started at a time.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+LOG START &lt;LogName&gt; [Status]
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>LogName</em>: The name of the data log to start.</p>
+
+
+	<p style="padding-left:1em;"><em>[Status]</em>: The virtual output channel that is used to display the status of the log.</p>
+
+
+	<p><strong>Example:</strong></p>
+
+
+<pre>MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;LOG START NewLog1 voStatusChannel"</pre>
+
+	<p><strong>Status Values:</strong></p>
+
+
+	<table style="margin-left: 2.5em;width:500px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width: 50px;text-align:left;"><strong>Value</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Log Started</td>
+		</tr>
+		<tr>
+			<td>0</td>
+			<td>Idle</td>
+		</tr>
+		<tr>
+			<td>-1</td>
+			<td>Error: unable to start the log due to missing log order list (<em>.lol</em>) file</td>
+		</tr>
+		<tr>
+			<td>-2</td>
+			<td>Error: log already running</td>
+		</tr>
+	</table>
+
+
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">If your solution has logic that relies on the value of the status channel to perform an action, then it is important to set the channel to an invalid value, such as -9999, before starting the log. This enables the code to synchronize with log starts and stops by waiting for the status to change to a valid status code.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Log-Stop"></a>
+<h3 >Log Stop<a href="#Log-Stop" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Stops a single data log or all running data logs. A log file is generated that contains data that has been accumulated up to this point.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+LOG STOP All|&lt;LogName&gt;
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>All | LogName</em>: Stops the running data log. Use of the "All" string instructs Data_Engine to stop all running data logs.</p>
+
+
+	<p><strong>Examples:</strong><br /><pre>
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;LOG STOP All" 
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;LOG STOP NewLog1" 
+</pre><br />&nbsp;</p>
+
+
+	<a name="StartLog"></a>
+<h3 >StartLog<a href="#StartLog" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Starts a data log. Only one instance of a log can be started at a time. This mailslot message functions the same as Log Start.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+STARTLOG &lt;LogName&gt; [Status]
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>LogName</em>: The name of the data log to start.</p>
+
+
+	<p style="padding-left:1em;"><em>[Status]</em>: The virtual output channel that is used to display the status of the log.</p>
+
+
+	<p><strong>Example:</strong></p>
+
+
+<pre>MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;STARTLOG NewLog1 voStatusChannel"</pre>
+
+	<p><strong>Status Values:</strong></p>
+
+
+	<table style="margin-left: 2.5em;width:500px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width: 50px;text-align:left;"><strong>Value</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Log Started</td>
+		</tr>
+		<tr>
+			<td>0</td>
+			<td>Idle</td>
+		</tr>
+		<tr>
+			<td>-1</td>
+			<td>Error: unable to start the log due to missing log order list (<em>.lol</em>) file</td>
+		</tr>
+		<tr>
+			<td>-2</td>
+			<td>Error: log already running</td>
+		</tr>
+	</table>
+
+
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">If your solution has logic that relies on the value of the status channel to perform an action, then it is important to set the channel to an invalid value, such as -9999, before starting the log. This enables the code to synchronize with log starts and stops by waiting for the status to change to a valid status code.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="StopLog"></a>
+<h3 >StopLog<a href="#StopLog" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Stops a single data log or all running data logs. A log file is generated that contains data that has been accumulated up to this point. This mailslot message functions the same as Log Stop.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+STOPLOG All|&lt;LogName&gt;
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>All | LogName</em>: Stops the running data log. Use of the "All" string instructs Data_Engine to stop all running data logs.</p>
+
+
+	<p><strong>Examples:</strong><br /><pre>
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;STOPLOG All" 
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;STOPLOG NewLog1" 
+</pre><br />&nbsp;</p>
+
+
+	<a name="UpdateMaxTransportDelay"></a>
+<h3 >UpdateMaxTransportDelay<a href="#UpdateMaxTransportDelay" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Updates the <code>voSysMaxTransportDelay</code> system channel's value to the maximum time (in seconds) of any iTest channel that has a defined transport delay.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+updatemaxtransportdelay
+</pre><br />&nbsp;</p>
+
+
+	<a name="Data-Quality-Messages"></a>
+<h2 >Data Quality Messages<a href="#Data-Quality-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="DQGroup-Apply"></a>
+<h3 >DQGroup Apply<a href="#DQGroup-Apply" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Applies a Data Quality Group.</p>
+
+
+	<p><strong>Syntax:</strong></p>
+
+
+<pre>
+DQGroup Apply &lt;Group&gt;
+</pre>
+
+	<a name="Driver-Messages"></a>
+<h2 >Driver Messages<a href="#Driver-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Driver mailslot messages are communicated differently depending on whether the message is being sent to a distributed or non-distributed type system. For non-distributed systems, the message is sent directly to the driver's defined mailslot.</p>
+
+
+	<a name="RTDriverLoad"></a>
+<h3 >RTDriverLoad<a href="#RTDriverLoad" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <code>RTDriverLoad</code> mailslot message enables you to dynamically start a driver on a distributed system (e.g., RTX_DIST or Xenomai). If the driver is currently running, it will be stopped and restarted. This message does support the use of the "NODE NAME" advanced driver setting from the <em>.tdaddin</em> component when working with INTime as the real-time operating system.</p>
+
+
+	<p><strong>Syntax:</strong></p>
+
+
+<pre> RTDriverLoad &lt;driver&gt; </pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>driver</em>: The name of the driver's mailslot. Typically, it will match the name of the driver. This information is detailed in each driver's help documentation and, in some cases, can be configured by the driver's <em>.tdaddin</em> component.</p>
+
+
+	<p><strong>Example:</strong></p>
+
+
+<pre> MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;RTDriverLoad EtherCAT_1" </pre><br />&nbsp;
+
+	<a name="RTDriverMsg"></a>
+<h3 >RTDriverMsg<a href="#RTDriverMsg" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <code>RTDriverMsg</code> mailslot message enables you to send commands to drivers running on a distributed system (e.g., RTX_DIST or Xenomai). The <code>RTDriverMsg</code> message is first sent to Data_Engine, which then passes the included command to the indicated driver on the distributed system.</p>
+
+
+	<p><strong>Syntax:</strong></p>
+
+
+<pre> RTDriverMsg &lt;driver&gt; &lt;command&gt; </pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>driver</em>: The name of the driver's mailslot. Typically, it will match the name of the driver. This information is detailed in each driver's help documentation and, in some cases, can be configured by the driver's <em>.tdaddin</em> component.</p>
+
+
+	<p style="padding-left:1em;"><em>command</em>: command to be sent to the driver's mailslot.</p>
+
+
+	<p><strong>Example:</strong></p>
+
+
+<pre> MESSAGE "\\.\mailslot\Data_Engine&gt;&gt; RTDriverMsg EtherCAT_1 SetLogLevel:All" </pre><br />&nbsp;
+
+	<a name="Dynamic-Calculation-Messages"></a>
+<h2 >Dynamic Calculation Messages<a href="#Dynamic-Calculation-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="CalcEngine-Start"></a>
+<h3 >CalcEngine Start<a href="#CalcEngine-Start" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Stops the current execution of CalcEngine and starts a new CalcEngine process. Alternatively, the mailslot can also designate the INtime node to start the CalcEngine process on.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+CalcEngine Start [-nNodeX]
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>[-nNodeX]</em>: Optional argument. This argument defines the INtime node to run the CalcEngine RTA process on. X is the node designation; this is typically A, B, or C (e.g., [-nNodeA] starts <em>CalcEngine_rt4x.rta</em> on node A).<br />&nbsp;</p>
+
+
+	<a name="CalcEngine-Stop"></a>
+<h3 >CalcEngine Stop<a href="#CalcEngine-Stop" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Stops the current execution of CalcEngine.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+CalcEngine Stop
+</pre><br />&nbsp;</p>
+
+
+	<a name="Dynamic-Name-Change-Messages"></a>
+<h2 >Dynamic Name Change Messages<a href="#Dynamic-Name-Change-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="LoadAKAFile"></a>
+<h3 >LoadAKAFile<a href="#LoadAKAFile" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Causes Data_Engine to load a new <em>.aka</em> file while iTest is running. Data_Engine reloads the customer names in the RDB and also rebuilds the internal customer name tables on both the PC and the real-time systems. This message is used to support dynamic customer names.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+LOADAKAFILE &lt;CustomerNameFile&gt;
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>CustomerNameFile</em>: The given filename must include the (<em>.aka</em>) file extension.<br />&nbsp;</p>
+
+
+	<a name="LoadAliasFile"></a>
+<h3 >LoadAliasFile<a href="#LoadAliasFile" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Causes Data_Engine to load a new alias file while iTest is running. Data_Engine reloads the alias names in the RDB.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+LoadAliasFile &lt;AliasFileName&gt;
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>AliasFileName</em>: The given filename does not need to include the (<em>.als</em>) file extension.<br />&nbsp;</p>
+
+
+	<a name="INI-File-Messages"></a>
+<h2 >INI File Messages<a href="#INI-File-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="INIRead"></a>
+<h3 >INIRead<a href="#INIRead" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Reads the value of a <code>keyword=value</code> pair in an <em>.ini</em> file and sets a channel's value in the RDB. If a return channel is not specified, then Data_Engine assumes that the name of the channel to be set is the same as the given keyword. Data_Engine uses the value from the first found instance of the given keyword in the <em>.ini</em> file.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+INIRead &lt;FileName&gt; &lt;Keyword&gt; [ReturnChannel] [aryIDx=n]
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>FileName</em>: The filename must include the <em>.ini</em> file extension. If a fully-qualified file path is not given, then the file path defaults to the $SUPPORTDIR.</p>
+
+
+	<p style="padding-left:1em;"><em>Keyword</em>: This argument is not case-sensitive. Use of a customer or module name in the message to find a channel name in the <em>.ini</em> file and vice versa is not supported.</p>
+
+
+	<p style="padding-left:1em;"><em>[ReturnChannel]</em>: Optional argument. The use of local variables, defined in VCL using <code>VCLNUM</code> or <code>VCLSTR</code>, for this argument is not supported.</p>
+
+
+	<p style="padding-left:1em;"><em>[aryIDx=n]</em>: Optional argument. If the keyword in the file is the name of an un-indexed array channel, then the value 'n' from this argument will be used as the array index (element) of the channel to be set.</p>
+
+
+	<p><strong>Examples:</strong><br /><pre>
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;INIRead $SUPPORTDIR\master.ini voValue1 voValue2" 
+* results in the voValue2 channel being set to the value associated with the voValue1 keyword in the master.ini file
+
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;INIRead $SUPPORTDIR\master.ini voaArray[1]" 
+* results in voaArray[1]  being set to the value associated with the voaArray[1] keyword in the master.ini file
+
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;INIRead $SUPPORTDIR\master.ini voaArray" 
+* results in voaArray[0] being set to the value associated with the voaArray keyword in the master.ini file
+
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;INIRead $SUPPORTDIR\master.ini voaArray aryIdx=2" 
+* results in voaArray[2] being set to the value associated with the voaArray keyword in the master.ini file
+</pre><br />&nbsp;</p>
+
+
+	<a name="INIReadFile"></a>
+<h3 >INIReadFile<a href="#INIReadFile" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Reads the specified file as an <em>.ini</em> type file. <em>.ini</em> files use a <code>keyword=value</code> pair format. If the keyword on a line of the file matches the name of a channel in the RDB, then the channel is set to the value portion of the <code>keyword=value</code> pair.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+INIReadFile &lt;FileName&gt; [aryIDx=n]
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>FileName</em>: A fully-qualified path must be given, including the file extension.</p>
+
+
+	<p style="padding-left:1em;"><em>[aryIDx=n]</em>: Optional argument. If any keywords in the file matches the name of an unindexed array channel, then the value 'n' from this argument will be used as the array index (element) of the channel to be set.<br />&nbsp;</p>
+
+
+	<a name="INIReadMany"></a>
+<h3 >INIReadMany<a href="#INIReadMany" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Reads the values for the given keywords from an <em>.ini</em> file and sets the matching iTest channels to these values. <em>.ini</em> files use a <code>keyword=value</code> pair format.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+INIReadMany &lt;FileName&gt; &lt;Keyword1&gt; &lt;Keyword2&gt; ... &lt;Keywordn&gt; [aryIDx=n]
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>FileName</em>: The filename must include the <em>.ini</em> file extension. If a fully-qualified file path is not given, then the file path defaults to the $SUPPORTDIR.</p>
+
+
+	<p style="padding-left:1em;"><em>Keyword1...n</em>: This argument is not case-sensitive.  Use of a customer or module name in the message to find a channel name in the <em>.ini</em> file and vice versa is not supported.</p>
+
+
+	<p style="padding-left:1em;"><em>[aryIDx=n]</em>: Optional argument. If any keywords in the file matches the name of an unindexed array channel, then the value 'n' from this argument will be used as the array index (element) of the channel to be set.</p>
+
+
+	<p><strong>Example:</strong><br /><pre>
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;INIReadMany $SUPPORTDIR\master.ini voNumeric1 voNumeric2 vsString1" 
+</pre><br />&nbsp;</p>
+
+
+	<a name="INIWrite"></a>
+<h3 >INIWrite<a href="#INIWrite" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Updates the value of a <code>keyword=value</code> pair in an <em>.ini</em> file to either a given value or a given iTest channel's value. Data_Engine also sets the channel to the given value, if provided. All found instances of the keyword in the <em>.ini</em> file are updated. If a matching keyword is not found in the <em>.ini</em> file, then a new <code>keyword=value</code> pair is added to the end of the <em>.ini</em> file.</p>
+
+
+	<p>No type checking is performed, so it is possible to set a keyword, intended to store a numeric value, to a string value in the <em>.ini</em> file.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+INIWrite &lt;FileName&gt; &lt;Channel&gt; [Value] [aryIDx=n]
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>FileName</em>: The filename must include the <em>.ini</em> file extension. If a fully-qualified file path is not given, then the file path defaults to the $SUPPORTDIR.</p>
+
+
+	<p style="padding-left:1em;"><em>Channel</em>:  Use of a customer or module name in the message to find a channel name in the <em>.ini</em> file and vice versa is not supported.</p>
+
+
+	<p style="padding-left:1em;"><em>[Value]</em>: Optional argument. If this argument is not provided, then Data_Engine writes the current value of the channel to the <em>.ini</em> file. If this argument is provided, then the channel's value in iTest will also be set to this argument.</p>
+
+
+	<p style="padding-left:1em;"><em>[aryIDx=n]</em>: Optional argument. If the Channel argument is the name of an unindexed array channel, the value 'n' from this argument is used as the array index (element) of the channel when setting the value.</p>
+
+
+	<p><strong>Examples:</strong><br /><pre>
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;INIWrite $SUPPORTDIR\master.ini voValue1 1" 
+* results in the voValue1 keyword's value in the master.ini file being set to 1 and the voValue1 channel's value being set to 1
+
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;INIWrite $SUPPORTDIR\master.ini voArray[1]" 
+* results in the voArray[1] keyword's value in the master.ini file being set to the current value of voArray[1]
+
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;INIWrite $SUPPORTDIR\master.ini voArray aryIdx=1" 
+* results in the voArray keyword's value in the master.ini file being set to the current value of voArray[1]
+</pre><br />&nbsp;</p>
+
+
+	<a name="INIWriteFile"></a>
+<h3 >INIWriteFile<a href="#INIWriteFile" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Causes Data_Engine to write the specified file as an <em>.ini</em> file. If the keyword on a line of the file is the name of a channel in the RDB, then the value of that <code>keyword=value</code> pair, in the file, is updated to the current value of that iTest channel. <em>.ini</em> files use a <code>keyword=value</code> pair format.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+INIWriteFile &lt;FileName&gt; [aryIDx=n]
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>FileName</em>: A fully-qualified path must be given, including the file extension.</p>
+
+
+	<p style="padding-left:1em;"><em>[aryIDx=n]</em>: Optional argument. If any keywords in the file matches the name of an unindexed array channel, then the value 'n' from this argument will be used as the array index (element) of the channel when reading and setting the channel's value.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">If the array channel is listed as an unindexed channel and listed again as an indexed array channel with the same element as the <code>aryIDx</code> argument value 'n', then both entries in the <em>.ini</em> file will be updated.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="INIWriteMany"></a>
+<h3 >INIWriteMany<a href="#INIWriteMany" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Updates the values of a set of keyword=value pairs in an <em>.ini</em> file to the given channels' values. All found instances of a keyword in the <em>.ini</em> file that match a given channel will be updated. If a given channel does not have a matching keyword in the <em>.ini</em> file, then a new <code>keyword=value</code> pair is added to the end of the <em>.ini</em> file. <em>.ini</em> files use a <code>keyword=value</code> pair format.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+INIWriteMany &lt;FileName&gt; &lt;Channel1&gt; &lt;Channel2&gt; ... &lt;Channeln&gt; [aryIDx=n]
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>FileName</em>: The filename must include the <em>.ini</em> file extension. If a fully-qualified file path is not given, then the file path defaults to the $SUPPORTDIR.</p>
+
+
+	<p style="padding-left:1em;"><em>Channel1...n</em>: This argument is not case-sensitive. Use of a customer or module name in the message to find a channel name in the <em>.ini</em> file and vice versa is not supported.</p>
+
+
+	<p style="padding-left:1em;"><em>[aryIDx=n]</em>: Optional argument. If any channels are the name of an unindexed array channel, then the value 'n' from this argument will be used as the array index (element) of the channel when reading and setting the channel's value in the RDB.</p>
+
+
+	<p><strong>Example:</strong><br /><pre>
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;INIReadMany $SUPPORTDIR\master.ini voNumeric1 voNumeric2 vsString1" 
+</pre><br />&nbsp;</p>
+
+
+	<a name="Limits-Messages"></a>
+<h2 >Limits Messages<a href="#Limits-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Limits-Activate"></a>
+<h3 >Limits Activate<a href="#Limits-Activate" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This message either turns on the global limits flag or, if one or more channel names are given, sets the channel's <strong>Limits Active</strong> RDB field value to 1.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+Limits Activate All|&lt;Channel1...Channeln&gt;
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>All | channel1...channeln</em>: This argument is either the string "All" or a space-delimited list of iTest channels. If this argument is "All," the global limits flag is turned on.  To turn on a specific channel's limits, use the channel's channel, customer, or module name as this argument.</p>
+
+
+	<p><strong>Examples:</strong><br /><pre>
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;Limits Activate All" 
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;Limits Activate spdDt1Dyno aiDt1DynoTorque" 
+</pre><br />&nbsp;</p>
+
+
+	<a name="Limits-Deactivate"></a>
+<h3 >Limits Deactivate<a href="#Limits-Deactivate" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This message either turns off the global limits flag or, if one or more channel names are given, sets the channel's <strong>Limits Active</strong> RDB field value to 0.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+Limits Deactivate All|&lt;Channel1...Channeln&gt;
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>All | channel1...channeln</em>: This argument is either the string "All" or a space-delimited list of iTest channels. If this argument is "All," the global limits flag is turned off.  To turn off a specific channel's limits, use the channel's channel, customer, or module name.</p>
+
+
+	<p><strong>Examples:</strong><br /><pre>
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;Limits Deactivate All" 
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;Limits Deactivate spdDt1Dyno aiDt1DynoTorque" 
+</pre><br />&nbsp;</p>
+
+
+	<a name="Limits-Group-Apply"></a>
+<h3 >Limits Group Apply<a href="#Limits-Group-Apply" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Applies a Limit Group. If <code>LimitsVer=3.2</code> in the <em>powertek.ini</em> file, then the applied limit group replaces the current limit settings. Otherwise, the limit group is applied with a layered approach.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+Limits Group Apply &lt;group&gt;
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>group</em>: Is the name of the Limits Group to be applied. Do not include the <em>.lim</em> file extension.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">If <code>LimitsVer=3.2</code>, this mailslot message will reactivate limits on channels that had been individually deactivated using either the <code>Limits Deactivate</code> mailslot message to Data_Engine or the <code>Limits Deactivate</code> VCL command.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Limits-Reactivate"></a>
+<h3 >Limits Reactivate<a href="#Limits-Reactivate" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Activates all channels that have been deactivated individually.  To be activated, a channel must have limits defined and its <strong>Limits Active</strong> RDB field value must be 0. If this criteria is met, the channel's <strong>Limits Active</strong> RDB field value is set to 1.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+Limits Reactivate
+</pre><br />&nbsp;</p>
+
+
+	<a name="Miscellaneous-Messages"></a>
+<h2 >Miscellaneous Messages<a href="#Miscellaneous-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="BackupLogFiles"></a>
+<h3 >BackupLogFiles<a href="#BackupLogFiles" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Copies the current iTest log files from both the GUI and RT PC to the <em>$SYSTEMDIR/Log/Archives</em> folder.</p>
+
+
+	<a name="CopyField"></a>
+<h3 >CopyField<a href="#CopyField" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Copies RDB field value(s) from one iTest channel to another iTest channel or internal variable. If an RDB Field argument is not provided as part of the SOURCE argument, then the current value of the &lt;SourceChannel&gt; is used.  If an RDB Field argument is not provided as part of the &lt;DestinationChannel&gt; argument, then the &lt;DestinationChannel&gt; is set to the value passed from the SOURCE argument if it not a string channel. When writing to a string channel (virtual string or virtual string array), the String Value RDB Field argument must be included as part of the DEST argument.</p>
+
+
+	<p>If the destination channel is not in the database, the program will assume that the destination is an internal variable and send the <code>Set VO</code> or <code>Set VS</code> commands to Data_Engine to set the internal variable's value. If sequential fields are used (e.g., calibration coefficients C0-C6), then brackets may be used to indicate that you want to access a specific element within that array. This element number would most likely be an intervar or database channel used for looping over all the index values.</p>
+
+
+	<p>This function returns a 1 upon success.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+CopyField;SOURCE=&lt;SourceChannel&gt;|&lt;Field&gt;[&lt;ElementNumber&gt;];DEST=&lt;DestinationChannel&gt;|&lt;Field&gt;;RETURN=&lt;ReturnChannel&gt;
+</pre></p>
+
+
+	<p>Required Arguments:<br />SOURCE=&lt;SourceChannel&gt;[ | &lt;Field&gt;[ [&lt;ElementNumber&gt;] ] ]<br />DEST=&lt;DestinationChannel&gt;[ | &lt;Field&gt;]</p>
+
+
+	<p>Optional Arguments:<br />RETURN=&lt;ReturnChannel&gt;</p>
+
+
+	<p><strong>Examples:</strong><br /><pre>
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;CopyField;SOURCE=ChannelIn|SpanEU;DEST=ChannelOut|High Warning;RETURN=CalState" 
+* sets ChannelOut's High Warning RDB field value to ChannelIn's SpanEU RDB field value
+
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;CopyField;SOURCE=ChannelIn;DEST=ChannelOut|High EU;RETURN=CalState" 
+* sets ChannelOut's High EU RDB field value to ChannelIn's current value
+
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;CopyField;SOURCE=ChannelIn;DEST=ChannelOut;RETURN=CalState" 
+* sets ChannelOut's value to ChannelIn's current value
+
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;CopyField;SOURCE=ChannelIn|Alias;DEST=vsChannel|String Value;RETURN=CalState" 
+* sets vsChannel's value to ChannelIn's Alias RDB field value
+
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;CopyField;SOURCE=Channel1|C[%&lt;i&gt;%];DEST=Channel2[%&lt;i&gt;%]" 
+* (where i is an intervar used for looping over values in the coefficient array)
+</pre><br />&nbsp;</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">CopyField is an exception to the rule of semi-colon use in mailslot messages to Data_Engine.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Die"></a>
+<h3 >Die<a href="#Die" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sends the Shutdown command to vxin_exec, closes the TCP/IP socket, and then closes itself.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+DIE
+</pre><br />&nbsp;</p>
+
+
+	<a name="GenericMsg"></a>
+<h3 >GenericMsg<a href="#GenericMsg" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This is a general utility mailslot message used to send commands directly to the vxin_exec. Use of this mailslot message is detailed with any feature that takes advantage of it.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre> 
+GenericMsg &lt;command&gt; &lt;argument1&gt;...&lt;argumentn&gt;
+</pre></p>
+
+
+	<p><strong>Examples:</strong><br /><pre>
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;GenericMsg ShowChannel spdDt1Dyno" 
+
+* displays the real-time value of the spdDt1Dyno channel in the vxin_exec command window
+</pre><br /><pre>
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;GenericMsg MasterSchedule NotifyEvents &lt;Text&gt;" 
+
+* Adds the &lt;Text&gt; to the Master Schedule Event Log with the current step name; if there isn't a current step, then it writes "???".
+* In this example, &lt;Text&gt; is a placeholder for any string no longer than 255 bytes; longer strings are truncated to 255 bytes.
+* This particular GenericMsg only works if the following setting is in the powertek.ini file: MasterScheduleLogEvents=TRUE.
+</pre></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Load-Tablescfg"></a>
+<h3 >Load Tables.cfg<a href="#Load-Tablescfg" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Updates the Lookup tables with the current contents of the <em>tables.cfg</em> file during runtime.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+load tables.cfg
+</pre><br />&nbsp;</p>
+
+
+	<a name="ResetCircleBuffer"></a>
+<h3 >ResetCircleBuffer<a href="#ResetCircleBuffer" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Resets buffered data in CircularBuffer.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+ResetCircleBuffer &lt;ChannelName&gt;
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>channelname</em>: virtual output channel used to store the result of the mailslot message.
+	<ul>
+	<li>-1 = Data_Engine did not create a circle buffer</li>
+		<li>0 = Invalid circle buffer instance</li>
+		<li>1 = success</li>
+	</ul></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="SysLog-Event-Add"></a>
+<h3 >SysLog Event Add<a href="#SysLog-Event-Add" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Adds a line to the System Log stored in the <em>SystemLog.slg</em> file.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+SysLog Event Add &lt;Type&gt; &lt;Text&gt;
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>type</em>: This argument populates the Type column in the System Log and must not contain any white-space characters.</p>
+
+
+	<p style="padding-left:1em;"><em>text</em>: This argument populates the Description column in the System Log.<br />&nbsp;</p>
+
+
+	<a name="PID-Control-Loop-Messages"></a>
+<h2 >PID Control Loop Messages<a href="#PID-Control-Loop-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="PID-Group-Apply"></a>
+<h3 >PID Group Apply<a href="#PID-Group-Apply" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Causes Data_Engine to read the specified PID Group from the <em>$SUPPORTDIR\PID\pidgroups.cfg</em> file, apply the found coefficients (P, I ,D) to the PIDs in the group, sends the PID Modify mailslot to Data_Engine, and logs an entry in the <em>data_engine.log</em> file. If the <em>pidgroups.cfg</em> file does not exist, then no action is performed.</p>
+
+
+	<p>The PIDTune utility maintains the <em>pidgroups.cfg</em> file via its <strong>File > Save Settings to Group</strong> menu options.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+PID Group Apply &lt;group&gt;
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>group</em>: PID Group to apply.</p>
+
+
+	<p><strong>Example:</strong></p>
+
+
+	<p>Given the following contents in the <em>pidgroups.cfg</em> file:<br /><pre>
+$GROUP HS1
+SPEED.HS1    P=154.411    I=0.005    D=0.00509
+$END-GROUP
+</pre></p>
+
+
+	<p>The following VCL will result in the Speed.HS1 PIDs being modified:<br /><pre>
++0.01 MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;PID Group Apply HS1" 
+</pre><br />&nbsp;</p>
+
+
+	<a name="PID-Initialize"></a>
+<h3 >PID Initialize<a href="#PID-Initialize" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>If a PID file is specified for the <code>LastModeHS1</code>, <code>LastModeHS2</code>, <code>LastModeLSx</code>, and <code>LastMode&lt;pidgroup&gt;</code> fields in the <em>powertek.ini</em> file, then Data_Engine starts the PID using the file specified. The PID is not started if the listed PID file is not defined in the solution.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+PID Initialize
+</pre></p>
+
+
+	<p><strong>Example:</strong><br />Given the <em>powertek.ini</em> settings are as follows:<br /><pre>
+LastModeHS1=Speed.HS1
+LastModeHS2=Position.HS2
+LastModeDyno1=CoolantTemp.Dyno1
+</pre><br />The following VCL will start the Speed.HS1 loop for the HS1 group, Position.HS2 loop for the HS2 group, and CoolantTemp.Dyno1 for the Dyno1 loop.<br /><pre>+0.01 MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;PID Initialize"</pre><br />&nbsp;</p>
+
+
+	<a name="PID-Modify"></a>
+<h3 >PID Modify<a href="#PID-Modify" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Changes the specified PID to the mode specified in the PID file.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+PID Modify &lt;PIDgroup&gt; &lt;PIDfile&gt;
+</pre></p>
+
+
+	<p><strong>Example:</strong><br /><pre>
++0.01 MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;PID Modify HS1 Speed.HS1" 
+</pre><br />&nbsp;</p>
+
+
+	<a name="PID-Start"></a>
+<h3 >PID Start<a href="#PID-Start" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Starts a PID. Data_Engine looks at the extension of the specified PID file to determine which PID group to start. Data_Engine then starts this PID group with the given file.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+PID Start &lt;PIDfile&gt;
+</pre></p>
+
+
+	<p><strong>Example:</strong><br /><pre>
++0.01 MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;PID Start Speed.HS1" 
+</pre><br />&nbsp;</p>
+
+
+	<a name="PID-Stop"></a>
+<h3 >PID Stop<a href="#PID-Stop" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Stops the specified PID.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+PID Stop &lt;PIDgroup&gt;
+</pre></p>
+
+
+	<p><strong>Example:</strong><br /><pre>
++0.01 MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;PID Stop HS1" 
+</pre><br />&nbsp;</p>
+
+
+	<a name="Procedure-Messages"></a>
+<h2 >Procedure Messages<a href="#Procedure-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Sequence-Abort"></a>
+<h3 >Sequence Abort<a href="#Sequence-Abort" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Aborts a running procedure. This mailslot message will not abort a child procedure that was started using the <code>EXECUTE VCL</code> command. In this case, you must abort the parent procedure to abort the child procedure.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+SEQUENCE ABORT &lt;ProcedureName&gt;
+</pre><br />&nbsp;</p>
+
+
+	<a name="Sequence-Resume"></a>
+<h3 >Sequence Resume<a href="#Sequence-Resume" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Resumes a suspended procedure.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+SEQUENCE RESUME &lt;ProcedureName&gt;
+</pre><br />&nbsp;</p>
+
+
+	<a name="Sequence-Start"></a>
+<h3 >Sequence Start<a href="#Sequence-Start" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Starts another procedure that executes in parallel with the parent procedure. After this mailslot message is sent, the parent procedure will continue on to the next instruction without waiting for the child procedure to complete. By default, a new instance of the child procedure will be started even if one is already running unless <code>AllowMultipleProcInstances=FALSE</code> is present in the <em>powertek.ini</em> file and the child procedure does not accept arguments.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>SEQUENCE START &lt;ProcedureName&gt;</pre></p>
+
+
+	<p>Additionally, you can add the <code>VCL SET</code> command to the <code>SEQUENCE START</code> mailslot message to capture the returned value of a called procedure.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>SEQUENCE START SET &lt;ChannelName&gt; &lt;ProcedureName&gt;</pre></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Sequence-Suspend"></a>
+<h3 >Sequence Suspend<a href="#Sequence-Suspend" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Suspends a running procedure until the <code>SEQUENCE RESUME</code> mailslot message is sent.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+SEQUENCE SUSPEND &lt;ProcedureName&gt;
+</pre><br />&nbsp;</p>
+
+
+	<a name="Statistics-Messages"></a>
+<h2 >Statistics Messages<a href="#Statistics-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Statistics-Activate"></a>
+<h3 >Statistics Activate<a href="#Statistics-Activate" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sends a packet to vxin_exec to activate statistics measurements for all iTest channels or for a given group of iTest Channels. A channel must have the <strong>Statistics Available</strong> RDB field value equal to 1 to be activated.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+Statistics Activate [&lt;Channel1...Channeln&gt;]
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>[channel1...channeln]</em>: Optional argument. This argument is a space-delimited list of iTest channel, customer, or module names.<br />&nbsp;</p>
+
+
+	<a name="Statistics-Deactivate"></a>
+<h3 >Statistics Deactivate<a href="#Statistics-Deactivate" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sends a packet to vxin_exec to deactivate statistics measurements for all iTest channels or for a given group of iTest Channels.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+Statistics Deactivate [&lt;Channel1...Channeln&gt;]
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>[channel1...channeln]</em>: Optional argument. This argument is a space-delimited list of iTest channel, customer, or module names.<br />&nbsp;</p>
+
+
+	<a name="Statistics-Reset"></a>
+<h3 >Statistics Reset<a href="#Statistics-Reset" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Resets statistics measurements for all iTest channels or a given group of iTest Channels for which the <strong>Statistics Available</strong> RDB field is equal to 1. This deletes the current buffer contents for each channel and can, optionally, resize each channel's statistics measurement window.</p>
+
+
+	<p>If the optional <em>[windowsize]</em> argument(s) are not included, then all measurement windows are resized to 10 seconds, by default.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+Statistics Reset [WindowSize]|[&lt;Channel1...Channeln&gt;]|[&lt;WindowSize1&gt; &lt;Channel1&gt;...&lt;WindowSizen&gt; &lt;Channeln&gt;]
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>[windowsize]</em>: Optional argument. The window size is in seconds. The maximum supported window size is 10 seconds.</p>
+
+
+	<p style="padding-left:1em;"><em>[channel1...channeln]</em>: Optional argument. This argument's format is a space-delimited list of iTest channel, customer, or module names.</p>
+
+
+	<p style="padding-left:1em;"><em>[windowsize1 Channel1...windowsizen channeln]</em>: Optional argument. This format is a combination of the two other formats with the window size followed by the affected channel's name.</p>
+
+
+	<p><strong>Example:</strong><br /><pre>
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;Statistics Reset 10" 
+* results in all channels with Statistics Available equal to 1 having their statistics measurement windows...
+* ...resized to 10 seconds and their statistics buffer contents deleted.
+
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;Statistics Reset voStat01 voStat02" 
+* results in the voStat01 and voStat02 statistics buffer contents being deleted.
+
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;Statistics Reset 5 voStat01 10 voStat02" 
+* results in the voStat01 and voStat02 statistics buffer contents being deleted. Also voStat01's statistics...
+* ...measurement window would be set to 5 seconds and voStat02's statistics measurement window would be set to 10 seconds.
+</pre><br />&nbsp;</p>
+
+
+	<a name="Step-Conditions-EOS-Messages"></a>
+<h2 >Step Conditions (EOS) Messages<a href="#Step-Conditions-EOS-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Load-EOS"></a>
+<h3 >Load EOS<a href="#Load-EOS" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Dynamically reloads the Step Condition files. Step Condition files are also referred to as End of State (EOS) files.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+Load EOS
+</pre><br />&nbsp;</p>
+
+
+	<a name="Update-EOS"></a>
+<h3 >Update EOS<a href="#Update-EOS" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Data_Engine sends a packet to vxin_exec to update a given Step Condition with a new set of conditions.  Step Conditions are also referred to as End of State (EOS) Conditions.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+Update EOS &lt;eosName&gt; &lt;eosCondition&gt;
+</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>eosname</em>: The name of the Step Condition to be updated.</p>
+
+
+	<p style="padding-left:1em;"><em>eoscondition</em>: The replacement EOS condition.</p>
+</body>
+</html>

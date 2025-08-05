@@ -1,0 +1,339 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Creating Schedules</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Creating_Schedules.html">Creating Schedules</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Creating-Schedules"></a>
+<h1 >Creating Schedules<a href="#Creating-Schedules" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Creating-Schedules">Creating Schedules</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Creating-Schedules-in-Test-Manager">Creating Schedules in Test Manager</a></li><li><a href="#Generating-Schedules-Using-the-Schedule-Wizard">Generating Schedules Using the Schedule Wizard</a></li><li><a href="#Adding-Schedule-Components-to-an-Existing-Schedule">Adding Schedule Components to an Existing Schedule</a></li><li><a href="#Duplicating-Schedules">Duplicating Schedules</a></li><li><a href="#Editing-Schedules">Editing Schedules</a></li><li><a href="#Managing-List-and-Matrix-Pages">Managing List and Matrix Pages</a></li></ul>
+</li><li><a href="#Related-Topics">Related Topics</a></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Schedules are standard containers for structuring information in iTest. They are composed of tables, where each row in the schedule is a step in the test. Schedules may contain loops, nested loops, and conditional actions, step tasks, and other special behavior. They are used to store information, such as battery and engine specifications and test sequences. For example, you can set up your schedule so that each step has a mode pair for the engine, a step time, dyno and throttle setpoints, and a number of step tasks. Schedules are generated in Test Manager or by using the Schedule Wizard. This document describes the methods for creating new schedules in your solution and setting up schedule components.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Schedules can also be created in SolutionBuilder. See the <a class="wiki-page" href="Tests.html">SolutionBuilder</a> documentation for more information.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Creating-Schedules-in-Test-Manager"></a>
+<h2 >Creating Schedules in Test Manager<a href="#Creating-Schedules-in-Test-Manager" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To create new schedules in Test Manager, do the following:</p>
+
+
+	<ol>
+	<li>Expand the <strong>Test Development > Schedules</strong> folders in the tree bar.</li>
+		<li>Right-click the <em>Schedules</em> folder and select <strong>New Schedule</strong>. The New Schedule dialog displays.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add New Schedule</strong></em></span><br /><img src="attachments/download/47384/AddNewSchedule.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select Schedule Type</strong></em></span><br /><img src="attachments/download/47383/ScheduleType.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select the schedule type you want to create.<br />&nbsp;
+<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Available options may vary depending on your application.</td>
+		</tr>
+	</table></li>
+		<li>Click <strong>OK</strong>. The new schedule opens in Test Manager with predefined columns but no rows. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Schedule</strong></em></span><br /><img src="attachments/download/47385/NewSchedule.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Right-click within the schedule to add new rows, columns, steps, import information from a <em>.csv</em> file, etc. For more information, refer to the <a class="wiki-page" href="#Editing-Schedules">Editing Schedules</a> section below.</li>
+		<li>When you are finished configuring your schedule, click the save icon or click <strong>File > Save</strong> from the main menu.</li>
+	</ol>
+
+
+	<a name="Generating-Schedules-Using-the-Schedule-Wizard"></a>
+<h2 >Generating Schedules Using the Schedule Wizard<a href="#Generating-Schedules-Using-the-Schedule-Wizard" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The second method for creating a new schedule is used to import rows from an external comma separated variable file (<em>.csv</em>) into an existing schedule template.</p>
+
+
+	<p>To generate a schedule using the Schedule Wizard, do the following:</p>
+
+
+	<ol>
+	<li>Expand the <em>Test Development</em> > <em>Schedules</em> folders in the tree bar.</li>
+		<li>Right-click the <em>Schedules</em> folder and select <strong>Generate Schedule</strong>. The Schedule Wizard dialog displays.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Schedule Wizard</strong></em></span><br /><img src="attachments/download/47386/ScheduleWizard.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the <strong>Browse...</strong> button to open Windows Explorer and browse for a CSV file to import.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Browse for File</strong></em></span><br /><img src="attachments/download/47387/SelectCSV.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>Next</strong>. </li>
+		<li>Select the schedule template for the new schedule. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select Schedule Template</strong></em></span><br /><img src="attachments/download/47391/SelectScheduleTemplate.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the drop-down field to select the starting column in the template.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select Starting Column</strong></em></span><br /><img src="attachments/download/47389/StartingColumn.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Enter the starting row and column.</li>
+		<li>Enter the number of rows and columns to import. </li>
+		<li>Click <strong>Next</strong>.</li>
+		<li>Define a file name to write the generated schedule to.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Set Outputted File Name</strong></em></span><br /><img src="attachments/download/47390/OutputtedFileName.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>Finish</strong>.</li>
+	</ol>
+
+
+	<p>Your new schedule, which reflects the contents of the <em>.csv</em> file, will be available in the Test Manager tree. For example, importing the following <em>.csv</em> file into the 3rd column of the previously shown Steady State Schedule will result in this schedule with four rows.</p>
+
+
+	<p><strong>SpeedLoad.csv</strong><br /><pre>
+1000, 80
+2000, 70
+3000, 60
+4000, 65
+</pre></p>
+
+
+	<p>&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>New Schedule</strong></em></span><br /><img src="attachments/download/92049/Schedule.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Adding-Schedule-Components-to-an-Existing-Schedule"></a>
+<h2 >Adding Schedule Components to an Existing Schedule<a href="#Adding-Schedule-Components-to-an-Existing-Schedule" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can modify functionality of existing schedules by adding pre-built schedule components. Usually these are from modules that have been imported into your solution. To add schedule components to a schedule, right-click within the schedule and select the <strong>Add Schedule Component</strong> option. A dialog with your solution's available schedule components displays. Select the schedule components you want to add, and those columns will be appended to the end of your current schedule.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Add Schedule Component</strong></em></span><br /><img src="attachments/download/47522/AddScheduleComponent.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Schedule components that would duplicate an existing column will not be listed in the Add Schedule Component dialog.</td>
+		</tr>
+	</table><br />&nbsp;</p>
+
+
+	<a name="Duplicating-Schedules"></a>
+<h2 >Duplicating Schedules<a href="#Duplicating-Schedules" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To duplicate a schedule in Test Manager, right-click the name of the schedule and select <strong>Duplicate</strong>. A copy of the schedule will be placed immediately below the original with a number "1" added to the end of the name. You can then rename it accordingly.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#cc061c;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3741/Warning3.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>WARNING:</b></td>
+			<td style="vertical-align:top;">Do not attempt to duplicate a schedule through Windows Explorer by copy/paste. This action will break the schedule.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Editing-Schedules"></a>
+<h2 >Editing Schedules<a href="#Editing-Schedules" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To edit a schedule in Test Manager, use the <strong>Schedule</strong> menu or right-click within the schedule to add new rows, columns, steps, import information from a .csv file, etc. For more information, refer to the table below.</p>
+
+
+	<p>The following options are disabled if AutomationPanel or iTest Console is running:</p>
+
+
+	<ul>
+	<li>Add Column</li>
+		<li>Insert Column</li>
+		<li>Edit Column</li>
+		<li>Delete Column</li>
+		<li>Move Column Right</li>
+		<li>Move Column Left</li>
+	</ul>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Edit Schedule</strong></em></span><br /><img src="attachments/download/95319/TM42_EditSchedule.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Schedule Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Right-Click Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Add Column</td>
+			<td>Opens the <strong>Add Column</strong> dialog. <br />&nbsp;<br />Under the General tab, configure the column's channel, title, units, and default value. Select the checkbox next to <strong>Reset each row to</strong> to reset the row to a specified value. Select the checkbox next to <strong>Read-only in runtime editor</strong> to prevent the column values from being modified in iTest Console or other runtime editors. <br />&nbsp;<br />Under the Layout tab, select the column type. Depending on the column type, additional information may be necessary. Additional information can be entered in the field under <strong>List information</strong>. Select the checkbox next to <strong>Mark as required</strong> to make the column required in the schedule. Select the checkbox next to <strong>Show at runtime</strong> to show the column at runtime.<br />&nbsp;<br />The new column is added to the end of the column list.</td>
+		</tr>
+		<tr>
+			<td>Insert Column</td>
+			<td>Opens the <strong>Insert Column</strong> dialog. <br />&nbsp;<br />Under the General tab, configure the column's channel, title, units, and default value. Select the checkbox next to <strong>Reset each row to</strong> to reset the row to a specified value. Select the checkbox next to <strong>Read-only in runtime editor</strong> to prevent the column values from being modified in iTest Console or other runtime editors. <br />&nbsp;<br />Under the Layout tab, select the column type. Depending on the column type, additional information may be necessary. Additional information can be entered in the field under <strong>List information</strong>. Select the checkbox next to <strong>Mark as required</strong> to make the column required in the schedule. Select the checkbox next to <strong>Show at runtime</strong> to show the column at runtime.<br />&nbsp;<br />The new column is added to the left of the selected column. If a column is not selected, the new column will be added to the beginning of the schedule.</td>
+		</tr>
+		<tr>
+			<td>Edit Column</td>
+			<td>Opens the <strong>Edit Column</strong> dialog for the selected column.<br />&nbsp;<br />Under the General tab, configure the column's channel, title, units, and default value. Select the checkbox next to <strong>Reset each row to</strong> to reset the row to a specified value. Select the checkbox next to <strong>Read-only in runtime editor</strong> to prevent the column values from being modified in iTest Console or other runtime editors. <br />&nbsp;<br />Under the Layout tab, select the column type. Depending on the column type, additional information may be necessary. Additional information can be entered in the field under <strong>List information</strong>. Select the checkbox next to <strong>Mark as required</strong> to make the column required in the schedule. Select the checkbox next to <strong>Show at runtime</strong> to show the column at runtime.</td>
+		</tr>
+		<tr>
+			<td>Reset Column</td>
+			<td>Enter the channel value to use to reset the column's values. Once entered, this action cannot be undone.</td>
+		</tr>
+		<tr>
+			<td>Delete Column</td>
+			<td>Deletes the selected column.</td>
+		</tr>
+		<tr>
+			<td>Move Column Right</td>
+			<td>Moves the column to the right. Only available when the entire column is selected.</td>
+		</tr>
+		<tr>
+			<td>Move Column Left</td>
+			<td>Moves the column to the left. Only available when the entire column is selected.</td>
+		</tr>
+		<tr>
+			<td>Show/Hide Columns</td>
+			<td>Opens the Show Columns dialog. Check the columns you want to show.</td>
+		</tr>
+		<tr>
+			<td>Freeze Columns</td>
+			<td>Locks the columns from the first (leftmost) column in the spreadsheet to the selected column. Frozen columns do not scroll when you scroll horizontally through the document.</td>
+		</tr>
+		<tr>
+			<td>Unfreeze Columns</td>
+			<td>Unlocks columns frozen by the <strong>Freeze Columns</strong> option.</td>
+		</tr>
+		<tr>
+			<td>Insert Step</td>
+			<td>Inserts a step at a specific row in a schedule.</td>
+		</tr>
+		<tr>
+			<td>Insert Many Steps</td>
+			<td>Inserts a user-defined number of steps at a specific row in a schedule. A dialog will be displayed where you can enter the number of steps you wish to insert.</td>
+		</tr>
+		<tr>
+			<td>Add Step</td>
+			<td>Adds a new step under the last step in the schedule.</td>
+		</tr>
+		<tr>
+			<td>Add Many Steps</td>
+			<td>Adds a user-defined number of steps under the last step in the schedule. A dialog will be displayed where you can enter the number of steps you wish to add.</td>
+		</tr>
+		<tr>
+			<td>Delete Step</td>
+			<td>Deletes the selected step. You will get a prompt asking you to confirm the deletion.</td>
+		</tr>
+		<tr>
+			<td>Import From CSV</td>
+			<td>Imports the contents of any comma-separated value file into an existing schedule. The following dialog will be displayed:<br />&nbsp;<br /><img src="attachments/download/95320/42_ImportFromCSV.png" alt="" /> </td>
+		</tr>
+		<tr>
+			<td>View Schedule</td>
+			<td>Opens the selected schedule in the Schedule View dialog. Set Plot Properties before viewing a schedule.</td>
+		</tr>
+		<tr>
+			<td>Plot Properties</td>
+			<td>Opens the Plot Configuration dialog box in which you can plot the values on the schedule.</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td>Copies the selected cell or row.</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td>Places the cell or row that is saved to the clipboard in the selected location.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Managing-List-and-Matrix-Pages"></a>
+<h2 >Managing List and Matrix Pages<a href="#Managing-List-and-Matrix-Pages" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can add, rename, or delete List and Matrix pages using their respective right-click options (as described in the table below). When adding a new list or matrix page, you can select an existing list/matrix page to use as a template.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Right-Click Options</strong></em></span><br /><img src="attachments/download/116678/43_ListMatrixPageOptions.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Add New List Page Dialog</strong></em></span><br /><img src="attachments/download/116679/43_AddListPageDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>Click <strong>OK</strong>. The new page will be added to the schedule.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>New Page</strong></em></span><br /><img src="attachments/download/116680/43_NewListPage.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Option Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Add List page</td>
+			<td> Launches the Add List Page dialog, which allows you to add a new list page.</td>
+		</tr>
+		<tr>
+			<td>Add Matrix page</td>
+			<td> Launches the Add Matrix Page dialog, which allows you to add a new matrix page.</td>
+		</tr>
+		<tr>
+			<td>Rename page</td>
+			<td> Allows you to rename the name of the page. The name must be unique.</td>
+		</tr>
+		<tr>
+			<td>Delete page</td>
+			<td> Deletes the selected page.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Related-Topics"></a>
+<h1 >Related Topics<a href="#Related-Topics" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul>
+	<li><a class="wiki-page" href="ScheduleRunner.html#Column-Types">Schedule - Column Types</a></li>
+		<li><a class="wiki-page" href="ScheduleRunner.html#Parameters">Schedule - List Page Parameters</a></li>
+		<li><a class="wiki-page" href="Step_Tasks_in_Test_Manager.html">Step Tasks</a></li>
+	</ul>
+</body>
+</html>

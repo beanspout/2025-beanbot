@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ITest Reports</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Using_ReportBuilder_SolutionBuilder_iTest.html">Using ReportBuilder SolutionBuilder iTest</a></li>
+<li><a href="ITest_Reports.html">ITest Reports</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Generating-a-Web-Report-in-SolutionDemo"></a>
+<h1 >Generating a Web Report in Solution.Demo<a href="#Generating-a-Web-Report-in-SolutionDemo" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>iTest includes the ability to create reports using test result data. This feature is based on LabAgent's WebReport feature. Report templates can be created in SolutionBuilder or LabCentral.</p>
+
+
+	<p>As supplied, iTest include a simple default report template. Only <em>.wrpt</em> templates can be viewed and edited in SolutionBuilder; the <em>.xml</em> type templates available from LabCentral can be useful when reports are fixed and should not be edited.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">SolutionBuilder can create and edit .wrpt template files. LabCentral can create and edit both .xml and .wrpt type templates.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Generating-Web-Reports-in-AutomationPanel"></a>
+<h2 >Generating Web Reports in AutomationPanel<a href="#Generating-Web-Reports-in-AutomationPanel" class="wiki-anchor">&para;</a></h2>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">This is an example from Solution.Demo. This may not be included in every solution.</td>
+		</tr>
+	</table></p>
+
+
+	<p>LabAgent Web Reports uses LabAgent's functionality to generate PDF reports. When LabAgent WebReports is launched, LabAgent is automatically started if it is not already running.</p>
+
+
+	<p>To generate a Web Report using LabAgent WebReports, do the following:</p>
+
+
+	<p>After running a test in AutomationPanel, click the <strong>Generate Report</strong> button located on the Main layout. The <strong>Reports</strong> dialog displays.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Generate Report Button</strong></em></span><br /><img src="attachments/download/90299/41_GenerateReportButton.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />Use the Data Folder drop-down menu to select a project folder. This folder will be used to determine which data files can be used to generate your Web Report.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Data Folder</strong></em></span><br /><img src="attachments/download/98799/42_DataFolderDropDown.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />Use the Data File drop-down menu to select a <em>.dat</em> file to generate your Web Report.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Data File</strong></em></span><br /><img src="attachments/download/98800/42_DataFileDropDown.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />Use the Report Template drop-down menu to select a template for your Web Report.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Report Template</strong></em></span><br /><img src="attachments/download/98801/42_ReportDropDown.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />Click the <strong>Create Report</strong> button to generate your Web Report. The status of the report is indicated below the Report File field. Once generated, the Web Report will appear in the Report File drop-down menu.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Create Report</strong></em></span><br /><img src="attachments/download/98802/42_CreateReportButton.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />To open the file location, click <strong>Open Folder</strong>. The Web Report PDF file is saved in the same location as its corresponding <em>.dat</em> file. To open the Web Report PDF, click the <strong>View Report</strong> button.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Report File</strong></em></span><br /><img src="attachments/download/98803/42_ReportFile.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />The PDF will load in a new window.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Summary Report PDF</strong></em></span><br /><img src="attachments/download/98804/42_SummaryReport.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+</body>
+</html>

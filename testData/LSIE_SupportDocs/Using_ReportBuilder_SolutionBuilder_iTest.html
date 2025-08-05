@@ -1,0 +1,1260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Using ReportBuilder SolutionBuilder iTest</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Using_ReportBuilder_SolutionBuilder_iTest.html">Using ReportBuilder SolutionBuilder iTest</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Using-ReportBuilder"></a>
+<h1 >Using ReportBuilder<a href="#Using-ReportBuilder" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Using-ReportBuilder">Using ReportBuilder</a><ul><li><a href="#Overview">Overview</a><ul><li><a href="#ReportBuilder-Right-Click-Options">ReportBuilder Right-Click Options</a></li></ul>
+</li><li><a href="#Adding-a-Report">Adding a Report</a></li><li><a href="#Report-Objects">Report Objects</a></li><li><a href="#Format-Panel">Format Panel</a></li><li><a href="#Using-AampD-Report-Objects">Using A&amp;D Report Objects</a><ul><li><a href="#Contour-Plot">Contour Plot</a></li><li><a href="#Plot">Plot</a><ul><li><a href="#Plot-Object-Use-with-Multiple-Data-Files">Plot Object Use with Multiple Data Files</a></li></ul>
+</li><li><a href="#Pie">Pie</a></li><li><a href="#Bar">Bar</a></li><li><a href="#Table">Table</a></li><li><a href="#Indicator">Indicator</a></li><li><a href="#Image">Image</a></li><li><a href="#Adding-an-Image-to-an-Object">Adding an Image to an Object</a></li></ul>
+</li><li><a href="#Using-Macro-Substitutions">Using Macro Substitutions</a><ul><li><a href="#Indices">Indices</a><ul><li><a href="#Syntax">Syntax</a></li><li><a href="#Example">Example</a></li></ul>
+</li><li><a href="#Timestamps">Timestamps</a><ul><li><a href="#Syntax-2">Syntax</a></li><li><a href="#Examples">Examples</a></li></ul>
+</li></ul>
+</li><li><a href="#CopyingPasting-Objects-in-Multiple-Reports">Copying/Pasting Objects in Multiple Reports</a></li><li><a href="#Save-Reports">Save Reports</a></li><li><a href="#Preview-Report">Preview Report</a></li><li><a href="#Standalone-Reports-Editor">Standalone Reports Editor</a></li><li><a href="#Generating-PDF-Reports">Generating PDF Reports</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<p><a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>SolutionBuilder allows for the creation of web report templates which when coupled with LabAgent provides a tool for visualizing information in data files. Report objects can be configured to display the contents of data files. When data files are loaded, their contents populate the report. This functionality enables you to reuse templates by simply changing the loaded data files. Only <em>.dat</em>  formatted data files are supported. In addition, SolutionBuilder uses the <em>.wrpt</em> file extension for web report templates and stores the files in the <em>$SUPPORTDIR\WebReports</em> folder.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">SolutionBuilder does not support web report templates provided from LabWorX with the <em>.xml</em> extension.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>The ReportBuilder interface is displayed in the image below:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>ReportBuilder</strong></em></span><br /><img src="attachments/download/117148/43_ReportBuilderSB.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>ReportBuilder Interface Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+			<td style="text-align:left;"><strong>Keyboard Shortcut</strong></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="3">Object Right-Click Options</th>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td> Deletes the selected object.</td>
+			<td style="text-align:center;">Delete</td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td> Removes the selected object from the report and copies it to the clipboard.</td>
+			<td style="text-align:center;">Ctrl + X</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td> Copies the selected object to the clipboard.</td>
+			<td style="text-align:center;">Ctrl + C</td>
+		</tr>
+		<tr>
+			<td>Duplicate</td>
+			<td> Duplicates the selected object.</td>
+			<td style="text-align:center;">Ctrl + D</td>
+		</tr>
+		<tr>
+			<td>Export XML...</td>
+			<td> Launches the Export Xml dialog, which allows you to copy the XML representation of the selected object(s). For more information, refer to the <strong>Copying/Pasting Objects in Multiple Reports</strong> section.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>To Front</td>
+			<td> Sends the selected object to the front of other objects in the report.</td>
+			<td style="text-align:center;">Ctrl + Shift + F</td>
+		</tr>
+		<tr>
+			<td>To Back</td>
+			<td> Sends the selected object to the back of other objects in the report.</td>
+			<td style="text-align:center;">Ctrl + Shift + B</td>
+		</tr>
+		<tr>
+			<td>Properties</td>
+			<td> Opens the object's properties dialog or displays the object's properties in the Format panel.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Group</td>
+			<td> Groups the selected objects in the report.</td>
+			<td style="text-align:center;">Ctrl + G</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="3">Report Right-Click Options</th>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td> Undoes the previous action.</td>
+			<td style="text-align:center;">Ctrl + Z</td>
+		</tr>
+		<tr>
+			<td>Import XML...</td>
+			<td> Launches the Import Xml dialog, which allows you to paste the XML representation of the selected object(s). For more information, refer to the <strong>Copying/Pasting Objects in Multiple Reports</strong> section.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Paste Here</td>
+			<td> Pastes the copied object to the report. The object is pasted at the location where you right-clicked on the report.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Select Vertices</td>
+			<td> Selects the edge points of each object in the report.</td>
+			<td style="text-align:center;">Ctrl + Shift + I</td>
+		</tr>
+		<tr>
+			<td>Select All</td>
+			<td> Selects all objects in the report.</td>
+			<td style="text-align:center;">Ctrl + A</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p>This document describes A&#38;D-specific objects and the different ways of using data files to display data. For in-depth information about the ReportBuilder functionality, refer to the <a href="https://github.com/jgraph/drawio/wiki" class="external">Draw.io Online User Manual</a>.</p></p>
+
+
+	<p><a name="ReportBuilder-Right-Click-Options"></a>
+<h3 >ReportBuilder Right-Click Options<a href="#ReportBuilder-Right-Click-Options" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following right-click options are available in the left pane of the ReportBuilder editor.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Add</td>
+			<td>Adds a new web report template. See the <strong>Adding a Report</strong> section for more information.</td>
+		</tr>
+		<tr>
+			<td>Remove</td>
+			<td>Removes a selected web report template.</td>
+		</tr>
+		<tr>
+			<td>Rename</td>
+			<td>Enables renaming of the web report template.</td>
+		</tr>
+		<tr>
+			<td>Duplicate</td>
+			<td>Duplicates a selected web report template and its name is appended with an incremented number.</td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td>Deletes a selected web report template and places a copy of it on the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td>Copies the selected web report template to the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td>Pastes the copied or cut web report template from the clipboard. The web report template name is appended with an incremented number.</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td>Undoes the previous action.</td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td>Redoes the last undone action.</td>
+		</tr>
+		<tr>
+			<td>Preview...</td>
+			<td>Opens a preview of the web report template in a new browser tab. See the <strong>Preview Report</strong> section for more information.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Adding-a-Report"></a>
+<h2 >Adding a Report<a href="#Adding-a-Report" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To access ReportBuilder in SolutionBuilder, select <strong>Displays > Reports</strong>.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Open ReportBuilder</strong></em></span><br /><img src="attachments/download/127088/iTest44_ReportSB.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Right-click in the left pane and select <strong>Add</strong> in order to add a web report template. By default, the template will be named <strong>WebReport</strong>. See <a class="wiki-page" href="#Generating-PDF-Reports">Generating WebReports</a> for more information.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Add Report</strong></em></span><br /><img src="attachments/download/119227/43_AddReportSB.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p><a name="Report-Objects"></a>
+<h2 >Report Objects<a href="#Report-Objects" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Report objects are the different shapes and tools you can add to the layout. There are different report object types such as A&#38;D-specific objects, arrows, and clipart. There are also objects that allow you to create process models and flowcharts. The table below describes each of the report object types. To add them to the layout, select an object and drag and release it onto the layout.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Report Object Types</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;"><strong>Type</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>A&#38;D</td>
+			<td>Plot, pie, bar, table, and indicator objects. These are used to display channel values from a data file.</td>
+		</tr>
+		<tr>
+			<td>General</td>
+			<td>Basic shapes, lines, arrows, text, and title objects.</td>
+		</tr>
+		<tr>
+			<td>Miscellaneous</td>
+			<td>Various miscellaneous objects such as title text, ordered list, unordered list, tables, text, timestamp, shapes, lines, and gear icons.</td>
+		</tr>
+		<tr>
+			<td>Advanced</td>
+			<td>Advanced shapes for modeling such as manual input, and/or tape data, delay, loop limit, etc. </td>
+		</tr>
+		<tr>
+			<td>Basic</td>
+			<td>Basic shapes like cones, callouts, stars, banners, and documents. It also includes a trapezoid, pentagon, octagon, triangle, and other shapes.</td>
+		</tr>
+		<tr>
+			<td>Arrows</td>
+			<td>Various arrows and multi-directional arrows.</td>
+		</tr>
+		<tr>
+			<td>UML</td>
+			<td>Objects used in Unified Modeling Language (UML) diagrams. UML diagrams provide a means for visualizing the design of a system.</td>
+		</tr>
+		<tr>
+			<td>BPMN General</td>
+			<td>Objects used in Business Process Modeling and Notation (BPMN) diagrams. BPMN diagrams are used to design process model flowcharts.</td>
+		</tr>
+		<tr>
+			<td>Flowchart</td>
+			<td>Objects used in flowcharts that represent concepts such as data, databases, direct data, predefined processes, etc. </td>
+		</tr>
+		<tr>
+			<td>Clipart</td>
+			<td>Clipart icons such as computers, file folders, gears, and user types. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+	<p><a name="Format-Panel"></a>
+<h2 >Format Panel<a href="#Format-Panel" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can use the format panel to modify page settings and object properties. When you select an object on the layout, three tabs display in the format panel: style, text, and arrange. Each tab contains various object properties which you can use to customize the objects in your report. The settings in the panel depend on the object that is selected.</p>
+
+
+	<p>When you use the format panel to modify an object's text properties, the changes apply to the entire object. However, you can limit text property changes to only highlighted text. Note that if the entire object's text is highlighted, then the font size property only applies to the first line of highlighted text.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Format Panel - Page Settings</strong></em></span><br /><img src="attachments/download/131958/LC39_FormatPanelPageSettings.png" style="padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Format Panel Tabs - Object Properties</strong></em></span><br /><img src="attachments/download/86714/LC32_FormatPanel.png" style="padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p></p>
+
+
+	<p><a name="Using-AampD-Report-Objects"></a>
+<h2 >Using A&#38;D Report Objects<a href="#Using-AampD-Report-Objects" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>A&#38;D report objects enable you to display data from <em>.dat</em> files in various formats. The following sections describe how to use the A&#38;D objects and their unique properties.</p>
+
+
+	<a name="Contour-Plot"></a>
+<h3 >Contour Plot<a href="#Contour-Plot" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Contour Plot object is used to view the relationship of data in a 3D chart. To add a Contour Plot object, do the following:</p>
+
+
+	<ol>
+	<li>Click the A&#38;D Contour Plot object from the left panel and drag it onto the layout. </li>
+		<li>Right-click the Contour Plot object and select <strong>Properties</strong>. The Contour Plot Properties dialog displays.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Properties</strong></em></span><br /><img src="attachments/download/120271/LC38_ContourPlotProperties.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Contour Plot Properties Dialog</strong></em></span><br /><img src="attachments/download/119910/LC38_ContourPlotPropertiesDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Configure the Contour Plot object using the descriptions provided in the table below.</li>
+		<li>Click <strong>OK</strong> when finished. If you have a data file loaded, the Contour Plot object will display the data from the file in the format you defined.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>A&#38;D Contour Plot Object</strong></em></span><br /><img src="attachments/download/110438/LC36_ContourPlotTool.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Contour Plot Property Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2"><strong>Data Tab</strong></th>
+		</tr>
+		<tr>
+			<td>X-Axis</td>
+			<td>Click the <img src="attachments/download/110440/dotdotdot.png" alt="" /> button to open the Channel Selection dialog. From this dialog, select a channel for the X-Axis.</td>
+		</tr>
+		<tr>
+			<td>Y-Axis</td>
+			<td>Click the <img src="attachments/download/110440/dotdotdot.png" alt="" /> button to open the Channel Selection dialog. From this dialog, select a channel for the Y-Axis.</td>
+		</tr>
+		<tr>
+			<td>Z-Axis</td>
+			<td>Click the <img src="attachments/download/110440/dotdotdot.png" alt="" /> button to open the Channel Selection dialog. From this dialog, select a channel for the Z-Axis.</td>
+		</tr>
+		<tr>
+			<td>Number of Columns*</td>
+			<td>The number of columns to be used to define the grid for the Contour Plot.</td>
+		</tr>
+		<tr>
+			<td>Number of Rows*</td>
+			<td>The number of rows to be used to define the grid for the Contour Plot.</td>
+		</tr>
+		<tr>
+			<td>File Index Field</td>
+			<td>Enter the 1 based index of the data file to read data from in the provided field.</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2"><strong>Axes Tab</strong></th>
+		</tr>
+		<tr>
+			<td>Axis</td>
+			<td>The axis to edit.</td>
+		</tr>
+		<tr>
+			<td>Minimum</td>
+			<td>The starting value of the axis. Defaults to using the minimum of the plotted data to determine the range.</td>
+		</tr>
+		<tr>
+			<td>Maximum</td>
+			<td>The ending value of the axis. Defaults to using the maximum of the plotted data to determine the range.</td>
+		</tr>
+		<tr>
+			<td>Show Axis Label</td>
+			<td>When checked, the axis label is displayed.</td>
+		</tr>
+		<tr>
+			<td>Use Master Name Label</td>
+			<td>When checked, the Master Name Label is displayed in the axis label. When unchecked, the Master Name is displayed in the axis label.<br />&nbsp;<br /><ins><strong>Note:</strong></ins> This setting is only available with using ReportBuilder in LabCentral.</td>
+		</tr>
+		<tr>
+			<td>Use CustomerName/Alias Label</td>
+			<td>When checked, the Customer Name/Alias is displayed in the axis label. When unchecked, the channel name is displayed in the axis label.<br />&nbsp;<br /><ins><strong>Note:</strong></ins> This setting is only available with using ReportBuilder in iTest.</td>
+		</tr>
+		<tr>
+			<td>Include Units In Label</td>
+			<td>When checked, parenthetical units are appended to the label. Names without units always treat this property as OFF.</td>
+		</tr>
+		<tr>
+			<td>Margin</td>
+			<td>The size of the margin next to the axis. By default, this value is 50 for the X/Y axes. This value is 100 for the Z axis; this is also the minimum value for the Z axis.</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;font-style: italic;">The Contour Plot requires its data to be in a regularly spaced grid; however, test data is not typically regularly spaced. By specifying the number of rows and columns, the grid is defined for the Contour Plot. For each point of the grid, the test data is used to linearly interpolate along both the X and Y-axis in order to obtain a calculated Z value for that point which then is used to draw the Contour Plot. The values to use for the columns and rows depend on the test data as well as the height and width of the plot in the report. If the plot is large and occupies a lot of space, then larger values for columns and rows are necessary.</span>
+
+	<p>&nbsp;</p>
+
+
+	<a name="Plot"></a>
+<h3 >Plot<a href="#Plot" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Plot object is used to view the relationship of data between two or more variables along an X and Y axis. To add a Plot object to your report, do the following:</p>
+
+
+	<ol>
+	<li>Click the A&#38;D Plot object from the left panel and drag it onto the layout.</li>
+		<li>Right-click the Plot object and select <strong>Properties</strong>. The Plot Properties dialog displays.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Properties</strong></em></span><br /><img src="attachments/download/120272/LC38_PlotProperties.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Plot Properties Dialog</strong></em></span><br /><img src="attachments/download/120313/LC38_PlotPropertiesDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Configure the Plot object using the descriptions provided in the table below.</li>
+		<li>Click <strong>OK</strong> when finished. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>A&#38;D Plot Object</strong></em></span><br /><img src="attachments/download/110442/LC32_Plot.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Plot Property Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2"><strong>General Tab</strong></th>
+		</tr>
+		<tr>
+			<td rowspan="2">Use Master Name Label</td>
+			<td>(LabCentral) When checked, the Master Name label will be displayed.</td>
+		</tr>
+		<tr>
+			<td>(iTest) When checked, the Customer Name or Alias (if either are available for the channel) will be displayed in the legend instead of the channel name. The Customer Name will take precedence over the Alias if the channel has both.</td>
+		</tr>
+		<tr>
+			<td>Legend Orientation</td>
+			<td>The location of the legend on the plot object. Options include <strong>None</strong>, <strong>Top Left</strong>, <strong>Top Right</strong>, <strong>Bottom Left</strong>, and <strong>Bottom Right</strong>.</td>
+		</tr>
+		<tr>
+			<td>Number of Legend Columns</td>
+			<td>The number of columns used to display the legend.</td>
+		</tr>
+		<tr>
+			<td>X Axis Grid</td>
+			<td>Turns the x-axis grid on or off.</td>
+		</tr>
+		<tr>
+			<td>Y Axis Grid</td>
+			<td>Turns the y-axis grid on or off.<br />&nbsp;<br /><ins><strong>Note:</strong></ins> The Y1 axis will align with the Y2 axis if no channels are specified for Y1.</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2"><strong>Axes Tab</strong></th>
+		</tr>
+		<tr>
+			<td>Axis</td>
+			<td>The axis to edit.</td>
+		</tr>
+		<tr>
+			<td>Minimum</td>
+			<td>The starting value of the axis. Defaults to using the minimum of the plotted data to determine the range.</td>
+		</tr>
+		<tr>
+			<td>Maximum</td>
+			<td>The ending value of the axis. Defaults to using the maximum of the plotted data to determine the range.</td>
+		</tr>
+		<tr>
+			<td>Show Axis Label</td>
+			<td>When checked, the axis label is displayed.</td>
+		</tr>
+		<tr>
+			<td>Use Master Name Label</td>
+			<td>When checked, the Master Name Label is displayed in the axis label. When unchecked, the Master Name is displayed in the axis label.<br />&nbsp;<br /><ins><strong>Note:</strong></ins> This setting is only available with using ReportBuilder in LabCentral.</td>
+		</tr>
+		<tr>
+			<td>Use CustomerName/Alias Label</td>
+			<td>When checked, the Customer Name/Alias is displayed in the axis label. When unchecked, the channel name is displayed in the axis label.<br />&nbsp;<br /><ins><strong>Note:</strong></ins> This setting is only available with using ReportBuilder in iTest.</td>
+		</tr>
+		<tr>
+			<td>Include Units In Label</td>
+			<td>When checked, parenthetical units are appended to the label. Names without units always treat this property as OFF.</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2"><strong>Data Tab</strong></th>
+		</tr>
+		<tr>
+			<td>Show Points</td>
+			<td>When checked, the data points are displayed in the plot.</td>
+		</tr>
+		<tr>
+			<td>Show Lines</td>
+			<td>When checked, a line connects the data points in the plot.</td>
+		</tr>
+		<tr>
+			<td>X-Axis*</td>
+			<td>Click the <img src="attachments/download/110440/dotdotdot.png" alt="" /> button to open the Channel Selection dialog. From this dialog, select a channel for the X-Axis.</td>
+		</tr>
+		<tr>
+			<td>Add*</td>
+			<td>Launches the Channel Selection dialog. From this dialog, select a channel for the Y1/Y2 axis.<br />&nbsp;<br /><ins><strong>Note:</strong></ins> The Y1 axis will align with the Y2 axis if no channels are specified for Y1.</td>
+		</tr>
+		<tr>
+			<td>Delete*</td>
+			<td>Removes the selected channel(s) from the list.</td>
+		</tr>
+		<tr>
+			<td>Move Up</td>
+			<td>Moves the selected row(s) above its current placement.</td>
+		</tr>
+		<tr>
+			<td>Move Down</td>
+			<td>Moves the selected row(s) below its current placement.</td>
+		</tr>
+		<tr>
+			<td>Color</td>
+			<td>The color of the channel's value.</td>
+		</tr>
+		<tr>
+			<td>Name</td>
+			<td>The channel.</td>
+		</tr>
+		<tr>
+			<td>Y Axis</td>
+			<td>Double-click the Y Axis column to specify which Y-axis to use (Y1 or Y2).<br />&nbsp;<br /><ins><strong>Note:</strong></ins> The Y1 axis will align with the Y2 axis if no channels are specified for Y1.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><span style="padding-left: 2.30em;">*</span> <span style="font-size:0.90em;font-style: italic;">Use of these options with multiple data files requires special consideration, refer to the <strong>Plot Object Use with Multiple Data Files</strong> section.</span></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Plot-Object-Use-with-Multiple-Data-Files"></a>
+<h4 >Plot Object Use with Multiple Data Files<a href="#Plot-Object-Use-with-Multiple-Data-Files" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The use of a Plot object with multiple data files requires special consideration when using a channel for the X-axis. Unless using a defined range for the X-axis, the Y-axis channels will determine the data log files that the X-axis range is fitted from.</p>
+
+
+	<p>If the X-axis channel is in a source data file for a Y-axis channel, then the X-axis minimum and maximum range will be adjusted to fit with the corresponding Y-axis data points. If a Y-axis channel's source data file does not also include the X-axis channel, then the X-axis channel data points will not be used to determine the X-axis range for the Plot object. Instead, the epoch time column data points will be used.</p>
+
+
+	<a name="Pie"></a>
+<h3 >Pie<a href="#Pie" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Pie object is used to view different proportions of channel data from the <em>.dat</em> file in a circular chart. To add a Pie object to your report, do the following:</p>
+
+
+	<ol>
+	<li>Click the A&#38;D Pie object from the left panel and drag it onto the layout.</li>
+		<li>Right-click the Pie object and select <strong>Properties</strong>. This displays the Pie Properties dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Properties</strong></em></span><br /><img src="attachments/download/120273/LC38_PieProperties.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Pie Properties Dialog</strong></em></span><br /><img src="attachments/download/110445/LC35_PiePropertiesDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Configure the Pie object using the descriptions provided in the table below.</li>
+		<li>Click <strong>OK</strong> when finished. If a data file is loaded, the pie chart object will display the data from the file in the format you defined.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>A&#38;D Pie Object</strong></em></span><br /><img src="attachments/download/110444/LC32_Pie.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Pie Property Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2"><strong>General Tab</strong></th>
+		</tr>
+		<tr>
+			<td rowspan="2">Show Label</td>
+			<td>(LabCentral) When checked, the Master Name label will be displayed.</td>
+		</tr>
+		<tr>
+			<td>(iTest) When checked, the Customer Name or Alias (if either are available for the channel) will be displayed in the legend instead of the channel name. The Customer Name will take precedence over the Alias if the channel has both.</td>
+		</tr>
+		<tr>
+			<td>Legend Orientation</td>
+			<td>The location of the legend on the Pie object. Options include <strong>None</strong>, <strong>Top Left</strong>, <strong>Top Right</strong>, <strong>Bottom Left</strong>, and <strong>Bottom Right</strong>.</td>
+		</tr>
+		<tr>
+			<td>Number of Legend Columns</td>
+			<td>The number of columns used to display the legend.</td>
+		</tr>
+		<tr>
+			<td>Radius</td>
+			<td>The radius setting used to increase or decrease the size of the pie chart. The value 1 is equal to 100% of the normal size. If you enter a value like .5, the size of the pie will decrease to 50% of the size of the  surrounding rectangular outline. </td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2"><strong>Data Tab</strong></th>
+		</tr>
+		<tr>
+			<td>Type</td>
+			<td>This setting determines how and what data is displayed in the pie. Select one of the following options:<br /><ins><strong>Standard:</strong></ins> Data is taken from the first row of the file for the selected channels.<br /><ins><strong>Frequency Distribution (first channel only):</strong></ins> Counts the frequency of each individual element in a column of the data file. </td>
+		</tr>
+		<tr>
+			<td>Add</td>
+			<td>Opens the Channel Selection dialog. You can use this dialog to choose which channels are displayed in the pie chart.<br />&nbsp;<br />Note that channels that are missing from the loaded data file(s) are marked with a "***" in the chart's legend. These channels are not shown in the chart's wedges. If no data files are loaded, then missing channels are given placeholder wedges in the chart. </td>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td>Deletes the selected channel.</td>
+		</tr>
+		<tr>
+			<td>Move Up</td>
+			<td>Moves the selected channel up in the list. The first channel in the list will be displayed first, displaying clockwise from the top of the pie.</td>
+		</tr>
+		<tr>
+			<td>Move Down</td>
+			<td>Moves the selected channel down in the list.</td>
+		</tr>
+		<tr>
+			<td>Color</td>
+			<td>The color of the channel's value.</td>
+		</tr>
+		<tr>
+			<td>Name</td>
+			<td>The channel.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Bar"></a>
+<h3 >Bar<a href="#Bar" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Bar object is used to display data from a <em>.dat</em> file as rectangular bars. The height of the bar is proportional to the values it represents. To add a Bar object to your report, do the following:</p>
+
+
+	<ol>
+	<li>Click the A&#38;D Bar object from the left panel and drag it onto the layout.</li>
+		<li>Right-click the Bar object and select the <strong>Properties</strong> option. This displays the Bar Properties dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Properties</strong></em></span><br /><img src="attachments/download/120274/LC38_BarProperties.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Bar Properties Dialog</strong></em></span><br /><img src="attachments/download/110451/LC35_BarPropertiesDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Configure the Bar object using the descriptions provided in the table below.</li>
+		<li>Click <strong>OK</strong> when finished. If you have a data file loaded, the Bar object will display the data from the file in the format you defined.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>A&#38;D Bar Object</strong></em></span><br /><img src="attachments/download/110448/LC32_BarChart.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Bar Property Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2"><strong>General Tab</strong></th>
+		</tr>
+		<tr>
+			<td rowspan="2">Show Label</td>
+			<td>(LabCentral) When checked, the Master Name label will be displayed.</td>
+		</tr>
+		<tr>
+			<td>(iTest) When checked, the Customer Name or Alias (if either are available for the channel) will be displayed in the legend instead of the channel name. The Customer Name will take precedence over the Alias if the channel has both.</td>
+		</tr>
+		<tr>
+			<td>Legend Orientation</td>
+			<td>The location of the legend on the bar object. Options include <strong>None</strong>, <strong>Top Left</strong>, <strong>Top Right</strong>, <strong>Bottom Left</strong>, and <strong>Bottom Right</strong>.</td>
+		</tr>
+		<tr>
+			<td>Number of Legend Columns</td>
+			<td>The number of columns used to display the legend.</td>
+		</tr>
+		<tr>
+			<td>Bar Width</td>
+			<td>The width of the individual bars in the bar graph. The value 1 is equal to 100% of the normal size. If you enter a value like .5, the size of each bar will decrease 50%. Any value above 1 causes the individual bars in the chart to overlap.</td>
+		</tr>
+		<tr>
+			<td>Y Axis Minimum</td>
+			<td>The minimum value on the Y-axis.</td>
+		</tr>
+		<tr>
+			<td>Y Axis Maximum</td>
+			<td>The maximum value on the Y-axis.</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2"><strong>Data Tab</strong></th>
+		</tr>
+		<tr>
+			<td>Type</td>
+			<td>This setting determines how and what data is displayed in the bar graph. Select one of the following options:<br /><ins><strong>Standard:</strong></ins> Data is taken from the first row of the file.<br /><ins><strong>Frequency Distribution (first channel only):</strong></ins> Counts the frequency of each individual element in a column of the data file. </td>
+		</tr>
+		<tr>
+			<td>Add</td>
+			<td>Opens the Channel Selection dialog. You can use this dialog to choose which channels are displayed in the bar graph.</td>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td>Deletes the selected channel.</td>
+		</tr>
+		<tr>
+			<td>Move Up</td>
+			<td>Moves the selected channel up in the list. The first channel in the list will be displayed first, in the most left position.</td>
+		</tr>
+		<tr>
+			<td>Move Down</td>
+			<td>Moves the selected channel down in the list.</td>
+		</tr>
+		<tr>
+			<td>Color</td>
+			<td>The color of the channel's value.</td>
+		</tr>
+		<tr>
+			<td>Name</td>
+			<td>The channel.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Table"></a>
+<h3 >Table<a href="#Table" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Table object is used to view data from the <em>.dat</em> file. Using the Table object makes it easier to visualize and analyze individual data points in the file.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">A maximum of 100 rows is permitted.</td>
+		</tr>
+	</table></p>
+
+
+	<p>To add a Table object to your report, do the following:</p>
+
+
+	<ol>
+	<li>Click the A&#38;D Table object from the left panel and drag it onto the layout.</li>
+		<li>Right-click the Table object and select <strong>Properties</strong>. This displays the Table Properties dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Properties</strong></em></span><br /><img src="attachments/download/120275/LC38_TableProperties.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Table Properties Dialog</strong></em></span><br /><img src="attachments/download/133266/LC39_TablePropertiesDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Configure the Table object using the descriptions in the table below.</li>
+		<li>Click <strong>OK</strong> when finished. If you have a data file loaded, the table object will display the data from the file in the format you defined.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>A&#38;D Table Object</strong></em></span><br /><img src="attachments/download/110454/LC32_Table.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Table Property Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2"><strong>General Tab</strong></th>
+		</tr>
+		<tr>
+			<td>Data Direction</td>
+			<td>Indicates the direction that the data is taken from the <em>.dat</em> file and displayed in the report.<br />&nbsp;<br /><ins><strong>Use data from beginning of file:</strong></ins> Pulls the data from the beginning of the file. For example, if there are 16 rows in the table, the data from the first 16 rows of the file will be pulled and displayed.<br /><ins><strong>Use data from end of file:</strong></ins> Pulls the data from the end of the file. For example, if there are 5 rows in the table, the data from the last 5 rows of the file will be pulled and displayed.</td>
+		</tr>
+		<tr>
+			<td>Rows</td>
+			<td>The number of rows in the table. The maximum value is 100 rows.</td>
+		</tr>
+		<tr>
+			<td>Rows to Skip</td>
+			<td>The number of rows in the file to skip before using data to display in the table.</td>
+		</tr>
+		<tr>
+			<td>Hide Empty Rows</td>
+			<td> When checked, only rows with data will be shown in the table.</td>
+		</tr>
+		<tr>
+			<td>Hide Empty Columns</td>
+			<td> When checked, any table columns whose channel is not in the loaded data will be hidden.</td>
+		</tr>
+		<tr>
+			<td rowspan="2">Show Label</td>
+			<td>(LabCentral) When checked, the Master Name label will be displayed.</td>
+		</tr>
+		<tr>
+			<td>(iTest) When checked, the Customer Name or Alias (if either are available for the channel) will be displayed in the legend instead of the channel name. The Customer Name will take precedence over the Alias if the channel has both.</td>
+		</tr>
+		<tr>
+			<td>Show Units</td>
+			<td> When checked, the units for each column are listed in the table. These units are provided by the selected data file. If no units are specified in the data file, then the channel units are shown.</td>
+		</tr>
+		<tr>
+			<td>Highlight Name</td>
+			<td> The channel to read when highlighting a row.</td>
+		</tr>
+		<tr>
+			<td>Highlight Value</td>
+			<td> If the channel matches the value specified in this field, then the row containing the channel is highlighted in the report.</td>
+		</tr>
+		<tr>
+			<td>Add</td>
+			<td>Opens the Channel Selection dialog. You can use this dialog to choose which channels are displayed in the table.</td>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td>Deletes the selected channel.</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2"><strong>Colors Tab</strong></th>
+		</tr>
+		<tr>
+			<td>Header</td>
+			<td>The color value for the background of the header.</td>
+		</tr>
+		<tr>
+			<td>Header Text</td>
+			<td>The color value for the text in the header.</td>
+		</tr>
+		<tr>
+			<td>Odd Row</td>
+			<td>The background color value for the odd rows.</td>
+		</tr>
+		<tr>
+			<td>Odd Row Text</td>
+			<td>The text color for the odd rows.</td>
+		</tr>
+		<tr>
+			<td>Even Row</td>
+			<td>The background color value for the even rows.</td>
+		</tr>
+		<tr>
+			<td>Even Row Text</td>
+			<td>The text color for the even rows.</td>
+		</tr>
+		<tr>
+			<td>Highlight Row</td>
+			<td> The background color to use when highlighting.</td>
+		</tr>
+		<tr>
+			<td>Highlight Row Text</td>
+			<td> The text color to use when highlighting.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Indicator"></a>
+<h3 >Indicator<a href="#Indicator" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Indicator object is used to display a set color based on one or more values assigned to a channel. To add an Indicator object to your report, do the following:</p>
+
+
+	<ol>
+	<li>Click the A&#38;D Indicator object from the left panel and drag it onto the layout.</li>
+		<li>Right-click in the Indicator object and select <strong>Properties</strong>. The Indicator Properties dialog displays.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Properties</strong></em></span><br /><img src="attachments/download/120276/LC38_IndicatorPropertiesOption.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Indicator Properties Dialog</strong></em></span><br /><img src="attachments/download/119912/LC38_IndicatorProperties.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Configure the Indicator object using the descriptions provided in the table below.</li>
+		<li>Click <strong>OK</strong> when finished.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>A&#38;D Indicator Object</strong></em></span><br /><img src="attachments/download/110456/IndicatorSample.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Indicator Property Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2"><strong>General Tab</strong></th>
+		</tr>
+		<tr>
+			<td> Data</td>
+			<td> Allows you to select a value from the data file loaded to ReportBuilder. You can select either the first or last value as well as a value from a specific row. The row is specified in the <strong>Row Index</strong> field.</td>
+		</tr>
+		<tr>
+			<td> Row Index</td>
+			<td> The row in the data file to pull the value from. A positive number counts rows from the top of the data file, and a negative number counts rows from the bottom of the data file. For example, if the number 5 was entered, then the fifth row from the top of the data file will be used to pull the value. If the number -5 was entered, then the fifth row from the bottom of the data file will be used to pull the value. <br />&nbsp;<br />This property is only available when <strong>Use specific row from the data file</strong> is selected in the <strong>Data</strong> drop-down menu.</td>
+		</tr>
+		<tr>
+			<td> Source</td>
+			<td> Allows you to select a channel for your Indicator object.</td>
+		</tr>
+		<tr>
+			<td> Show Value</td>
+			<td> When checked, your Indicator will show the channel's value instead of a label.</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2"><strong>Values Tab</strong></th>
+		</tr>
+		<tr>
+			<td> Value</td>
+			<td> State value or string that will cause the set color and string to display (i.e., the state of the indicator).  This field supports the use of channels and macros, allowing you to dynamically control the states based on the loaded data. If a channel is referenced, then the specified channel will be read from the same row that the indicator's source is reading from. If using a macro (e.g., <code>%&lt;voChannel01&gt;%</code>), then values can be read from different data rows, attributes, or header values. For more information, refer to the <ins><strong>Using Macro Substitutions</strong></ins> section.<br />&nbsp;<br />For strings, a case-insensitive comparison is used (e.g., <code>helloworld=HelloWorld</code>). If a match is not found, then the indicator displays a gray background. <br />&nbsp;<br />For numeric values, to determine the indicator's state, the channel's value is checked against each state value to find the closest state value that is also >= to the channel value. For example, if the indicator's properties are set where a state value of 9 indicates the color "red" and 10 indicates the color "blue," then a channel value of 9.9 would indicate the color "blue" since 10 >= 9.9 > 9.</td>
+		</tr>
+		<tr>
+			<td> Label</td>
+			<td> The text that will display when your channel qualifies for this indicator state.</td>
+		</tr>
+		<tr>
+			<td> Color</td>
+			<td> The color that will display when your channel qualifies for this indicator state.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Image"></a>
+<h3 >Image<a href="#Image" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Image object is used to display an image file in the report. To add an Image object, do the following:</p>
+
+
+	<ol>
+	<li>Click the A&#38;D Image object from the left panel and drag it onto the layout.</li>
+		<li>Right-click the Image object and select <strong>Edit Image</strong>. The Edit Image dialog displays.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Edit Image</strong></em></span><br /><img src="attachments/download/122753/LC38_EditImageDisplayObject.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Edit Image Dialog</strong></em></span><br /><img src="attachments/download/122754/LC38_EditImageDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Configure the Image object using the descriptions provided in the table below.</li>
+		<li>Click <strong>OK</strong> when finished. The Image object will display the loaded image file in the generated report.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Image Display Object</strong></em></span><br /><img src="attachments/download/122755/LC38_ImageDisplayObject.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Image Project Property Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Image</td>
+			<td> The image file to use for the object. The following image files are supported: PNG, BMP, JPG/JPEG, GIF, and SVG. You can enter a file path to the image file or click the <img src="attachments/download/110440/dotdotdot.png" alt="" /> button to browse for an image file. The <code>$file()</code> macro is supported and can be used to pull an image from a project file; this macro supports the use of wildcard characters.</td>
+		</tr>
+		<tr>
+			<td>Format</td>
+			<td> The format to use for the Image object. Options include <strong>Normal</strong>, <strong>Center</strong>, <strong>Stretch Image</strong>, and <strong>Zoom</strong>.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+	<p><a name="Adding-an-Image-to-an-Object"></a>
+<h3 >Adding an Image to an Object<a href="#Adding-an-Image-to-an-Object" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To add an image to a report object, do the following:</p>
+
+
+	<ol>
+	<li>Open a report.</li>
+		<li>Add an object like a rectangle.</li>
+		<li>Click <strong>Edit Image</strong> on the right panel. The <strong>Select Image</strong> dialog will display.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Edit Image</strong></em></span><br /><img src="attachments/download/110458/EditImage.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Select Image</strong></em></span><br /><img src="attachments/download/110457/SelectImage.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</li>
+		<li>Select the <strong>Browse Images</strong> icon ( <img src="attachments/download/111195/dotdotdot.png" alt="" /> ). This will show you images from <em>$SUPPORTDIR\Art</em>.</li>
+		<li>Once you have selected the image, select <strong>OK.</strong> The image will display in the report object.</li>
+	</ol>
+
+
+	<a name="Using-Macro-Substitutions"></a>
+<h2 >Using Macro Substitutions<a href="#Using-Macro-Substitutions" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>ReportBuilder provides support for macro substitutions. These substitutions can be used in text, title, indicator, or shape objects to display the values of channels, header values, or a timestamp.</p>
+
+
+	<p>The syntax for a macro substitution is shown below:</p>
+
+
+<pre>%&lt;ChannelName&gt;%</pre>
+
+	<a name="Indices"></a>
+<h3 >Indices<a href="#Indices" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>You can include index values in the macro substitution to display a specific data value from the data file. Positive index values read rows from the top of the file. Negative index values read rows from the bottom of the file. For example, if you use the number 6, the data point in the sixth row from the top of the file is displayed.</p>
+
+
+	<p>If the index value references a non-existent row in the file, then the macro will resolve to an empty string. For example, if a data file has 5 rows, and your macro is @%&lt;ChannelName:6&gt;%, then the macro will resolve to an empty string. If the channel does not contain any data rows (e.g., invalid channel name or truncated data file), then the macro will resolve to an empty string.</p>
+
+
+	<a name="Syntax"></a>
+<h4 >Syntax<a href="#Syntax" class="wiki-anchor">&para;</a></h4>
+
+
+<pre>%&lt;ChannelName:number&gt;%</pre>
+
+	<a name="Example"></a>
+<h4 >Example<a href="#Example" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>In this example, the channel value in the eighth row from the bottom of the file is displayed.</p>
+
+
+<pre>%&lt;voDmo1Feedback:-8&gt;%</pre>
+
+	<a name="Timestamps"></a>
+<h3 >Timestamps<a href="#Timestamps" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <code>%&lt;CURRENTDATETIME&gt;%</code> macro can be used to show a timestamp on a generated report. This timestamp is based on the date/time on the machine used to generate the report. By default, the <code>%&lt;CURRENTDATETIME&gt;%</code> uses the following date format: <code>MM/dd/yyyy HH:mm:ss</code>. You can specify a date format using the following values; these are case-sensitive:</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">You must select a data file in order to use this macro. The dash ( - ), slash ( / ), colon ( : ), and space characters are supported.</td>
+		</tr>
+	</table>
+
+
+
+
+	<ul>
+	<li>yyyy - 4 digit year</li>
+		<li>yy - 2 digit year</li>
+		<li>MM - 2 digit month (01 - 12)</li>
+		<li>dd - 2 digit day of the month</li>
+		<li>hh - 2 digit hour (00 - 11)</li>
+		<li>HH - 2 digit hour (00 - 23)</li>
+		<li>mm - 2 digit minute (00 - 59)</li>
+		<li>ss - 2 digit seconds (00 - 59)</li>
+		<li>aaa - AM or PM</li>
+	</ul>
+
+
+	<a name="Syntax-2"></a>
+<h4 >Syntax<a href="#Syntax-2" class="wiki-anchor">&para;</a></h4>
+
+
+<pre>%&lt;CURRENTDATETIME:DateFormat&gt;%</pre>
+
+	<a name="Examples"></a>
+<h4 >Examples<a href="#Examples" class="wiki-anchor">&para;</a></h4>
+
+
+<pre>%&lt;CURRENTDATETIME&gt;%</pre>
+
+<pre>%&lt;CURRENTDATETIME:MM/dd/yyyy HH:mm:ss aaa&gt;%</pre>
+
+<pre>%&lt;CURRENTDATETIME:MM-dd-yyyy HH:mm:ss aaa&gt;%</pre>
+
+	<a name="CopyingPasting-Objects-in-Multiple-Reports"></a>
+<h2 >Copying/Pasting Objects in Multiple Reports<a href="#CopyingPasting-Objects-in-Multiple-Reports" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Objects can be copied/pasted between different instances of ReportBuilder via the <strong>Export XML...</strong> and <strong>Import XML...</strong> right-click options.</p>
+
+
+	<p>To copy/paste objects in multiple reports, do the following:</p>
+
+
+	<ol>
+	<li>Right-click on the object(s) you want to copy. Select the <strong>Export XML...</strong> option. The Export Xml dialog displays.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Export Xml Dialog</strong></em></span><br /><img src="attachments/download/120267/LC38_ExportXmlDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Highlight the XML representation and copy it to the clipboard via the <strong>Copy</strong> right-click option or the <strong>Ctrl + C</strong> keyboard shortcut.</li>
+		<li>Click <strong>Close</strong> to exit the Export Xml dialog.</li>
+		<li>Right-click in the report and select the <strong>Import XML...</strong> option. The Import Xml dialog displays.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Import Xml Dialog</strong></em></span><br /><img src="attachments/download/120266/LC38_ImportXmlDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Paste the copied XML representation in the dialog. Click the <strong>Import</strong> button to import the object(s) into the report. Click <strong>Close</strong> to exit the Import Xml dialog.</li>
+	</ol>
+
+
+	<a name="Save-Reports"></a>
+<h2 >Save Reports<a href="#Save-Reports" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Changes made to the report will be saved along with all other SolutionBuilder changes by clicking the <strong>Save</strong> button located at the bottom of SolutionBuilder.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Save Report</strong></em></span><br /><img src="attachments/download/127375/44_SaveReport.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p></p>
+
+
+	<p><a name="Preview-Report"></a>
+<h2 >Preview Report<a href="#Preview-Report" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To preview a report, do the following:</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">This feature requires iView 4.5/LabAgent 3.6 or higher. Patching this feature requires patching LabAgent.</td>
+		</tr>
+	</table></p>
+
+
+	<ol>
+	<li>Right-click the report you want to preview and select <strong>Preview.</strong><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Preview Report</strong></em></span><br /><img src="attachments/download/119228/43_PreviewReport.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 1em;" alt="" /><br />&nbsp;</li>
+		<li>Select the data file to use for the preview then click <strong>Next.</strong><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select Data File</strong></em></span><br /><img src="attachments/download/90262/SelectDataFile.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 1em;" alt="" /><br />&nbsp;</li>
+		<li>Once the preview is generated, select <strong>Finish</strong> to view the report preview.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>View Report Preview</strong></em></span><br /><img src="attachments/download/90260/ViewReport.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<a name="Standalone-Reports-Editor"></a>
+<h2 >Standalone Reports Editor<a href="#Standalone-Reports-Editor" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Individual report templates can be edited via SolutionBuilder's standalone Reports editor by sending the following command-line:</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+SolutionBuilder.exe $SUPPORTDIR\WebReports\&lt;Template Name&gt;
+</pre></p>
+
+
+	<p>Where:</p>
+
+
+	<ul>
+	<li><em>&lt;Template Name&gt;</em> is the name of the web report template file to open.</li>
+	</ul>
+
+
+	<p><strong>Example:</strong><br /><pre>
+SolutionBuilder.exe $SUPPORTDIR\WebReports\TestSummaryTemplate.wrpt
+</pre></p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Standalone Reports Editor</strong></em></span><br /><img src="attachments/download/134720/45_StandaloneReportsEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p></p>
+
+
+	<a name="Generating-PDF-Reports"></a>
+<h2 >Generating PDF Reports<a href="#Generating-PDF-Reports" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>LabAgent can generate PDF reports using a local data file via its WebReport feature. Web report templates are configured in ReportBuilder then run using a LabAgent mailslot message. Alternatively, web report templates can be configured in LabCentral and then the template file downloaded to the <em>$SUPPORTDIR\WebReports</em> folder from the <em>WebReports</em> folder in Manage Lab Files.</p>
+
+
+	<p>To generate the PDF report, send the $WEBREPORT mailslot message to LabAgent as specified below:</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">A third-party tool must be used to view generated PDF files.</td>
+		</tr>
+	</table></p>
+
+
+	<p><span style="font-size:16px;font-weight:bold;">$WEBREPORT</span></p>
+
+
+	<p><strong>Syntax:</strong><br /><pre> $WEBREPORT;&lt;ReportName&gt;;&lt;DataFilePath&gt;;&lt;PDFFilePath&gt;;&lt;StatusChannel&gt;</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>&lt;ReportName&gt;</em>: Name of the report template file located in <em>$SUPPORTDIR\WebReports</em> with optional file extension. <em>.XML</em> and <em>.WRPT</em> files are supported. If no extension is provided, then <em>.XML</em> will be used. If no <em>.XML</em> file exists, then <em>.WRPT</em> will be used.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;DataFilePath&gt;</em>: The path to a data or image file to use in the report. Multiple data/image files can be used in the report by specifying a folder or a comma-delimited list; note that only one report will be generated. The file path can be a fully-qualified path or a relative path under the <code>DRHoldForReviewDir</code> <em>powertek.ini</em> setting. Note that previewing reports via SolutionBuilder's <strong>Preview</strong> option are restricted to data files under the $SUPPORTDIR regardless of the specified file path. Macro substitution is supported (e.g., $SYSTEMDIR or $SUPPORTDIR). If the specified file path is a folder, then the files are processed in alphabetical order. In the event of a channel name appearing in multiple files, data files are prioritized in the order they are listed; the data from the file with the highest priority is used in the report.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;PDFFilePath&gt;</em>: Full path to the destination PDF file.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;StatusChannel&gt;</em>: (Optional parameter) Name of channel to update with error/success code from report generation.</p>
+
+
+	<p><strong>Example of Using a Single Data File</strong></p>
+
+
+<pre>$WEBREPORT;MyReport;TestData.dat;C:\ADT\MyReport.pdf 
+$WEBREPORT;MyReport;C:\ADT\iTest4.3\Data\PR-001\TestData.dat;C:\ADT\MyReport.pdf </pre>
+
+	<p><strong>Example of Using Multiple Data Files - Folder</strong></p>
+
+
+<pre>$WEBREPORT;MyReport;C:\ADT\iTest4.3\Data\PR-001;C:\ADT\MyReport.pdf</pre>
+
+	<p><strong>Example of Using Multiple Data Files - List of Files</strong></p>
+
+
+<pre>$WEBREPORT;MyReport;TestData1.dat, TestData2.dat, TestData3.dat;C:\ADT\MyReport.pdf;Counter1</pre>
+
+	<p>In this example, <em>TestData1.dat</em> is given priority followed by <em>TestData2.dat</em> then <em>TestData3.dat</em>.</p>
+
+
+	<p><strong>Error Handling</strong></p>
+
+
+	<p>If an error occurs during the report generation, it will be reported to the LabAgent log file as well as to the Softpanel message queue. If a status channel is specified, it will be updated with one of the following values:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Status Code Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Status Code</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> 0</td>
+			<td> Report successfully generated.</td>
+		</tr>
+		<tr>
+			<td> 1</td>
+			<td> Invalid message format.</td>
+		</tr>
+		<tr>
+			<td> 2</td>
+			<td> Invalid report name.</td>
+		</tr>
+		<tr>
+			<td> 3</td>
+			<td> Invalid data file name.</td>
+		</tr>
+		<tr>
+			<td> 4</td>
+			<td> Problem writing to the <em>.pdf</em> file.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="ITest_Reports.html">Generating a Web Report in Solution.Demo</a></li>
+	</ul>
+</body>
+</html>

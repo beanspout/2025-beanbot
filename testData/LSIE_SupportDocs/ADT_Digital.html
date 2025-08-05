@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ADT Digital</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="ADT_Digital.html">ADT Digital</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="ADT-Digital-Object"></a>
+<h1 >ADT Digital Object<a href="#ADT-Digital-Object" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#ADT-Digital-Object">ADT Digital Object</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Field-Definitions">Field Definitions</a><ul><li><a href="#General-Tab">General Tab</a></li></ul>
+</li><li><a href="#ADT-Digital-Object-Properties">ADT Digital Object Properties</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The ADT Digital display object will display one or more channel values using different colors. These are based on any configured limits and/or warnings.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>ADT Digital</strong></em></span><br /><img src="attachments/download/6689/adtdigital.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Field-Definitions"></a>
+<h2 >Field Definitions<a href="#Field-Definitions" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="General-Tab"></a>
+<h3 >General Tab<a href="#General-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>General Tab</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Option</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td><strong>Channel...</strong></td>
+			<td>Opens the Channel Selection dialog, which you can use to select the database channels whose names and values you want to display on the ADTDigitalIndicator control. Note that you may need to resize the display object as you add database channels to be able to view them.</td>
+		</tr>
+		<tr>
+			<td><strong>Copy/Paste</strong></td>
+			<td>This allows you to copy an entry and paste it back into the list.</td>
+		</tr>
+		<tr>
+			<td><strong>Add Separator</strong></td>
+			<td>Adds a blank row in the list to provide spacing. This is visible when the control is displayed as well.</td>
+		</tr>
+		<tr>
+			<td><strong>Remove</strong></td>
+			<td>Deletes the selected database channel(s) from the channels list.</td>
+		</tr>
+		<tr>
+			<td><strong>Remove All</strong></td>
+			<td>Deletes all database channels in the channels list.</td>
+		</tr>
+		<tr>
+			<td><strong>Move Up/Move Down</strong></td>
+			<td>Movies entries up and down in the list. It can also move a separator up or down.</td>
+		</tr>
+		<tr>
+			<td><strong>Cell Widths Ratio</strong></td>
+			<td>Select the relative widths of the cells in the ADTDigitalIndicator.</td>
+		</tr>
+		<tr>
+			<td><strong>Label Field</strong></td>
+			<td>Select a label for the ADTDigitalIndicator. The default is <b>Automatic</b>. If Alias, Description, Customer Name, or Module Name was selected but not defined for a channel in its channel definition, the channel name displays by default. The Customer Name/Alias and Alias/Customer Name options will display both labels in the leftmost cell.</td>
+		</tr>
+		<tr>
+			<td><strong>Control ID</strong></td>
+			<td>Specific ID that iTest uses to reference the control.</td>
+		</tr>
+		<tr>
+			<td><strong>Display Units</strong></td>
+			<td>Configured on a channel-by-channel basis from the list. This field checks to see what units are defined for the selected channel, and then checks for any alternative units of measurement that are available.</td>
+		</tr>
+		<tr>
+			<td><strong>Display Decimal Points</strong></td>
+			<td>Configured on a channel-by-channel basis from the list.</td>
+		</tr>
+		<tr>
+			<td><strong>Limit Colors Active</strong></td>
+			<td>When selected, the background color changes to reflect the limit state of the database channel (Red=limit, Yellow=warning, etc.).</td>
+		</tr>
+		<tr>
+			<td><strong>Display as Time</strong></td>
+			<td>When selected, database channel values display as units of time.</td>
+		</tr>
+		<tr>
+			<td><strong>Draw Borders</strong></td>
+			<td>When selected, adds borders around the ADTDigitalIndicator object and each channel.</td>
+		</tr>
+		<tr>
+			<td><strong>Editable</strong></td>
+			<td>When selected, allows the change of the displayed channel’s value by editing the value field in the control during Runtime.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="ADT-Digital-Object-Properties"></a>
+<h2 >ADT Digital Object Properties<a href="#ADT-Digital-Object-Properties" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>These properties are useful when issuing the following mailslot message:</p>
+
+
+<pre>
+\\.\mailslot\DisplayName&gt;&gt;$SETITEMPROPERTY ControlID PropertyName PropertyValue
+</pre>
+
+	<p>The following are the names of the properties that can be changed by mailslot message to the display.  These property names may or may not be the same as the property names shown on the display object property setup dialogs.  Most of these property names are self-explanatory.  The first column is the data type of the property.</p>
+
+
+	<p>The int or OLE_COLOR for color is the color RGB values.  “BSTR” means the type of the property is string.  “int”, “float”, “long”, “short”, “double” means the type of the property is number.  “Boolean” means the property value should be 1 or 0.</p>
+
+
+	<p>Font property syntax is complicated.<br />&lt;font name&gt;,&lt;bold&gt;,,&lt;italic&gt;,&lt;font size&gt;,,&lt;strikeout&gt;,&lt;underline&gt;, <br />example: Arial,0,0,0,97500,0,0,0,400</p></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>ADT Digital Object Properties</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Type</strong></td>
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Notes</strong></td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>BackColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ForeColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ChannelName</strong></td>
+			<td>delimiters: \r\n, semicolon, \n, comma</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>DataSource</strong></td>
+			<td>not implemented</td>
+		</tr>
+		<tr>
+			<td>var</td>
+			<td><strong>Variant</strong></td>
+			<td>not implemented</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>Enabled</strong></td>
+			<td>not implemented</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>LimitColorsActive</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LabelWidth</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>ValueWidth</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>UnitsWidth</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>DisplayFormat</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>LabelField</strong>*</td>
+			<td>values are case-sensitive</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>DrawBorders</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>Editable</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>BackColor1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>DisplayUnits</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>font</td>
+			<td><strong>Font</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>DisplayPrecisions</strong>**</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;">values: Automatic, Channel Name, Customer Name, Module Name, Alias, Description, Customer Name/Alias, Alias/Customer Name</span><br />** <span style="font-size:0.90em;">syntax: set each channel separately using a comma delimited list</span>
+
+	<p>&nbsp;</p>
+</body>
+</html>

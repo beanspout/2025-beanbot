@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>How to Set Up and Use Remote Calibration</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="How-To_Guides.html">How-To Guides</a></li>
+<li><a href="How_to_Set_Up_and_Use_Remote_Calibration.html">How to Set Up and Use Remote Calibration</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="How-to-Set-Up-and-Use-Remote-Calibration"></a>
+<h1 >How to Set Up and Use Remote Calibration<a href="#How-to-Set-Up-and-Use-Remote-Calibration" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#How-to-Set-Up-and-Use-Remote-Calibration">How to Set Up and Use Remote Calibration</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Sharing-the-Folder">Sharing the Folder</a></li><li><a href="#Connecting-Remotely">Connecting Remotely</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The remote calibration feature enables you to perform channel calibrations from a remote PC using the iTest Calibrate utility. This feature can be useful for performing calibrations at measurement locations, such as a test cell, from a remote PC.</p>
+
+
+	<p>The purpose of this document is to provide instructions for setting up connection with a remote PC in order to share calibration data. For more information on calibrating channels, refer to the <a class="wiki-page" href="Calibrate.html">Calibration Utility</a> documentation.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">An iTest license is required to use this feature on the remote PC.</td>
+		</tr>
+	</table></p>
+
+
+	<p>&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Remote Calibration</strong></em></span><br /><img src="attachments/download/45400/38_RemoteCalibrateDiagram.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Sharing-the-Folder"></a>
+<h2 >Sharing the Folder<a href="#Sharing-the-Folder" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To allow connection from a remote PC, you need to share the local iTest installation folder on your network. Depending on your company's IT restrictions, you may only be able to share this folder with a specific user; otherwise, you can share with everyone on the network. To share the folder so it can be used remotely, do the following:</p>
+
+
+	<ol>
+	<li>Go to your <em>$SYSTEMDIR</em>.</li>
+		<li>Right-click the name of the folder and select <strong>Properties</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Folder Properties</strong></em></span><br /><img src="attachments/download/45287/38_FolderProperties.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>On the ADT Properties dialog, select the <strong>Sharing</strong> tab.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Sharing Tab</strong></em></span><br /><img src="attachments/download/45288/38_SharingTab.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the <strong>Share</strong> button. This opens the Network access dialog.</li>
+		<li>Select the drop-down next to the <strong>Add</strong> button. Choose to share your folder with everyone or find specific people. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Share Folder</strong></em></span><br /><img src="attachments/download/45289/38_FindPeople.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>If sharing with everyone, select <strong>Everyone</strong>, and then click the <strong>Add</strong> button.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Share with Everyone</strong></em></span><br /><img src="attachments/download/45295/38_ShareWithEveryone.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>If sharing with specific people, select <strong>Find people...</strong>. In the Select Users or Groups dialog, enter the names of the users or groups in the <strong>Enter the object names to select</strong> field.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Users or Groups</strong></em></span><br /><img src="attachments/download/45291/38_SelectUsersOrGroups.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>Check Names</strong> to verify the names of the users or group.</li>
+		<li>Click <strong>OK</strong>.</li>
+		<li>Modify the permission level, so that the user/group has read and write capabilities. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Permission Level</strong></em></span><br /><img src="attachments/download/45292/38_PermissionLevel.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>Share</strong>. Sharing your folder may take several minutes to complete. When it is finished, a dialog displays, indicating that the folder is shared.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Sharing Finished</strong></em></span><br /><img src="attachments/download/45294/38_FolderShared.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>Done</strong> when it's finished.</li>
+	</ol>
+
+
+	<a name="Connecting-Remotely"></a>
+<h2 >Connecting Remotely<a href="#Connecting-Remotely" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Once you have properly shared the iTest folder, you can connect remotely to the PC in the test cell. On the remote PC, do the following:</p>
+
+
+	<ol>
+	<li>Go to <em>$EXECUTEDIR</em>.</li>
+		<li>Double-click <em>Calibrate.exe</em> to launch the utility.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Calibration Utility</strong></em></span><br /><img src="attachments/download/45296/38_CalibrationUtility.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select <strong>Calibrate > Select PC Connection</strong> from the top menu.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select PC Connection</strong></em></span><br /><img src="attachments/download/45297/38_SelectPCConnection.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>In the Select a Network Connection dialog, click the <strong>Browse</strong> button to search for the <em>config.ini</em> file on the remote PC. This will auto-fill the test cell PC name and the shared iTest directory. Alternatively, manually enter the test cell PC name and the shared iTest directory. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select Network Connection</strong></em></span><br /><img src="attachments/download/45298/38_SelectNetworkConnection.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>OK</strong>. The list of channels that can be calibrated displays in the utility as if it was running locally.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Channels</strong></em></span><br /><img src="attachments/download/45299/38_CalibrationChannels.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Perform calibrations as normal.</li>
+	</ol>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Modules</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Modules.html">Modules</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Managing-Modules-in-Test-Manager"></a>
+<h1 >Managing Modules in Test Manager<a href="#Managing-Modules-in-Test-Manager" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Managing-Modules-in-Test-Manager">Managing Modules in Test Manager</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Importing-and-Exporting-Modules">Importing and Exporting Modules</a></li><li><a href="#Viewing-and-Changing-an-Imported-Module">Viewing and Changing an Imported Module</a></li><li><a href="#Editing-a-Standalone-Module">Editing a Standalone Module</a></li><li><a href="#Right-Click-Options">Right-Click Options</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Modules in iTest are a collection of iTest files that are designed to be added and removed from your solution as a named unit and provide additional functionality (e.g., running a specific test or providing a ready to run interface to a device). To support the use of modules, set the <code>MODULARITY</code> <em>powertek.ini</em> setting to TRUE. For more information about modules, refer to the <a class="wiki-page" href="Modules_in_iTest.html">Modules in iTest</a> documentation. This document details how to manage modules in Test Manager.</p>
+
+
+	<a name="Importing-and-Exporting-Modules"></a>
+<h2 >Importing and Exporting Modules<a href="#Importing-and-Exporting-Modules" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>There are two methods to import modules in Test Manager:</p>
+
+
+	<ol>
+	<li>Right-click the name of the solution in the Test Manager tree and select <strong>Add Module</strong>.</li>
+		<li>Click <strong>File</strong> from the Test Manager main menu and select <strong>Add Module to Solution</strong>.</li>
+	</ol>
+
+
+	<p>There are two methods to export modules in Test Manager:</p>
+
+
+	<ol>
+	<li>Select <strong>File > Export to LabCentral > Module...</strong> from the main menu. A dialog displays, prompting you to select the module to export.</li>
+		<li>Right-click the specific module name in the Test Manager tree and select the <strong>Export</strong> option.</li>
+	</ol>
+
+
+	<p>For more information about importing and exporting modules, refer to the <a class="wiki-page" href="Modules_in_iTest.html">Modules in iTest</a> documentation.</p>
+
+
+	<a name="Viewing-and-Changing-an-Imported-Module"></a>
+<h2 >Viewing and Changing an Imported Module<a href="#Viewing-and-Changing-an-Imported-Module" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Module Properties editor is used to describe and assign properties to your module. This editor can be accessed by double-clicking the <em>Module Properties</em> node.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Module Properties Editor</strong></em></span><br /><img src="attachments/download/131779/44_module7.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>Module Editor Fields</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Field</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Class</td>
+			<td>The module type (i.e., System, Device, Specimen, Test, Utility).</td>
+		</tr>
+		<tr>
+			<td>Subclass</td>
+			<td>The module subclass. This is used to differentiate between device modules. For example, in iTest.BTS, the Bcc1PolyScience and the Cincinnati CSZ560i modules use the <strong>Device</strong> class, indicating that they are device modules. However, the Bcc1PolyScience module uses the <strong>Chiller</strong> subclass while the Cincinnati CSZ560i module uses the <strong>Chamber</strong> subclass.</td>
+		</tr>
+		<tr>
+			<td>Module Version</td>
+			<td>The module version number.</td>
+		</tr>
+		<tr>
+			<td>ID</td>
+			<td>The module ID. This field is read-only for the System module (i.e., Sys). <br />If using SolutionBuilder, click the <strong>Change...</strong> button to change the module ID. You must either save previous modifications or reopen the solution prior to changing the module ID. Refer to the <a class="wiki-page" href="Modules_in_iTest.html#Module-Naming">Module Naming</a> section for the proper naming convention.</td>
+		</tr>
+		<tr>
+			<td>Process Order</td>
+			<td>Select the process order for the module. The process order defines the order for the calculations compared to the other modules in the solution. A lower number will always precede a higher number when the calculation files are ordered.</td>
+		</tr>
+		<tr>
+			<td>GLevel</td>
+			<td> The GLevel used for the module. This field can only be edited in the Module Properties editor; otherwise, this field will be read-only.</td>
+		</tr>
+		<tr>
+			<td>Icon File</td>
+			<td>The icon file used for the module.</td>
+		</tr>
+		<tr>
+			<td>Description</td>
+			<td>The description for the module. This is typically used to enter revision notes for the module.</td>
+		</tr>
+		<tr>
+			<td>File Name*</td>
+			<td>The list of files available in the module. You can double-click the file name to edit it if the editor is available. For example, double-clicking a layout file will launch the Layouts editor. If an editor is not available, then an error message will display.</td>
+		</tr>
+		<tr>
+			<td>Channel Definitions*</td>
+			<td>The list of channels available in the module including the channel name, channel type, description, and more.</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;font-style: italic;">This field is only available in SolutionBuilder.</span></p>
+
+
+	<a name="Editing-a-Standalone-Module"></a>
+<h2 >Editing a Standalone Module<a href="#Editing-a-Standalone-Module" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>If you export a module from your solution to the $SYSTEMDIR, you will be able to open that module directly in Test Manager. This allows you to work on the module independently of the solution. This can often be an easier way to see all of the features a module has to offer and make changes. After editing the standalone module, you will be required to add it back to a solution to test and validate your changes.</p>
+
+
+	<p>To open a standalone module, select <strong>File > Open</strong> from the Test Manager menu. The Open dialog shows both modules and solutions in the $SYSTEMDIR. If you select a module to edit, the Test Manager tree will no longer show a <em>Modules</em> element in the tree as modules cannot contain other modules. The top node in the tree for a module is <em>Module Properties</em>.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Open Module</strong></em></span><br /><img src="attachments/download/96324/module13.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Module Properties</strong></em></span><br /><img src="attachments/download/96325/module14.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Right-Click-Options"></a>
+<h2 >Right-Click Options<a href="#Right-Click-Options" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following options are available when right-clicking on the <em>Modules</em> node or on a specific module in Test Manager's tree bar:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>New</td>
+			<td> Launches the New Module dialog, allowing you to create a new module. Modules are created from either a template module or a pre-existing module in LabCentral.</td>
+		</tr>
+		<tr>
+			<td>Add Module</td>
+			<td> Launches the Add Module dialog, allowing you to import a module. For more information, refer to the <a class="wiki-page" href="Modules_in_iTest.html#Importing-Modules">Importing Modules</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>Channel Assignment</td>
+			<td> Launches the Channel Assignment dialog, allowing you to assign module channels to system I/O channels where appropriate. For more information, refer to the <a class="wiki-page" href="Modules_in_iTest.html#Channel-Assignment">Channel Assignment</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>Module Configuration</td>
+			<td> Launches the Module Configuration dialog, allowing you to determine module settings from a single interface. For more information, refer to the <a class="wiki-page" href="Modules_in_iTest.html#Module-Configuration-Dialog">Module Configuration Dialog</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>Export</td>
+			<td> Exports the selected module to your local drive or to LabCentral. For more information, refer to the <a class="wiki-page" href="Modules_in_iTest.html#Exporting-Modules">Exporting Modules</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>Update</td>
+			<td> Downloads the latest version of the module from LabCentral. This option is only available when <code>ModuleRevisionControl=TRUE</code>. For more information, refer to the <a class="wiki-page" href="Interacting_with_LabCentral.html#Updating-Modules">Updating Modules</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td> Deletes the selected module. You will be prompted to confirm the deletion. Selecting <strong>Yes</strong> will completely remove the module from your solution.</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td> Copies or duplicates the selected module. A dialog displays, prompting you to enter the name and module ID for the new module.</td>
+		</tr>
+		<tr>
+			<td>Rename</td>
+			<td> Renames the module. If there are any open files in Test Manager, they will be closed before performing the rename. Refer to the <a class="wiki-page" href="Modules_in_iTest.html#Module-Naming">Module Naming</a> documentation for the proper naming convention.</td>
+		</tr>
+		<tr>
+			<td>Properties</td>
+			<td> Opens the Module Properties editor. For more information, refer to the <a class="wiki-page" href="#Viewing-and-Changing-an-Imported-Module">Viewing and Changing an Imported Module</a> section above.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Interacting_with_LabCentral.html">Interacting with LabCentral</a></li>
+		<li><a class="wiki-page" href="Managing_Modules_in_SolutionBuilder.html">Managing Modules in SolutionBuilder</a></li>
+		<li><a class="wiki-page" href="Modules_in_iTest.html">Modules in iTest</a></li>
+	</ul>
+</body>
+</html>

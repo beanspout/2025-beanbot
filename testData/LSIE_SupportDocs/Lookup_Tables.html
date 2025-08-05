@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Lookup Tables</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Lookup_Tables.html">Lookup Tables</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Lookup-Tables"></a>
+<h1 >Lookup Tables<a href="#Lookup-Tables" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Lookup-Tables">Lookup Tables</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Configuration">Configuration</a></li><li><a href="#Creating-a-Lookup-Table">Creating a Lookup Table</a></li><li><a href="#Using-the-Lookup-Function">Using the Lookup Function</a><ul><li><a href="#Syntax">Syntax</a></li><li><a href="#Parameters">Parameters</a></li><li><a href="#Example">Example</a></li></ul></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Lookup tables, also referred to as 1D tables, are used for non-linear conversions. Support is also provided for linear interpolation between data points. Lookup tables convert sensor values to engineering unit values, and they provide a return value based upon the contents of a channel. Lookup operations can be performed in procedures or calculations.</p>
+
+
+	<p>For example, flowmeters often receive a calibration certificate that lists the flowmeter's output frequency for several flow rates. You can enter the flow versus frequency information into a table and a virtual output channel stores the calibrated flow information.</p>
+
+
+	<a name="Configuration"></a>
+<h2 >Configuration<a href="#Configuration" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Each table contains a lookup channel name and two sets of points—the lookup value (input) and the return value (output). The function of the channel is to define a set of return values that can be obtained based on the value of the lookup channel. Each pair of points defines a line for the purposes of linear interpolation.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+	<p>Using the following table, if the value of the lookup channel at run-time is 17.5, then the return value of the lookup would be 2.5.</p>
+
+
+<pre>
+Return    Lookup 
+  0         5
+  1         10
+  2         15
+  3         20
+</pre>
+
+	<a name="Creating-a-Lookup-Table"></a>
+<h2 >Creating a Lookup Table<a href="#Creating-a-Lookup-Table" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Lookup tables can be created in Test Manager from the tree bar. To create a new lookup table, do the following:</p>
+
+
+	<ol>
+	<li>In the Test Manager tree bar, expand the <em>Calculations</em> folder.</li>
+		<li>Right-click the <em>Lookup Tables</em> folder and select the option <strong>New Table</strong>. A new table displays in the tree bar titled "NewTable1." <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Table</strong></em></span><br /><img src="attachments/download/45847/38_AddNewLookupTable.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Double-click the new table in the tree node to open the editor.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Lookup Table Editor</strong></em></span><br /><img src="attachments/download/45849/38_NewLookupTable.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the <img src="attachments/download/45850/dot.png" alt="" /> button to choose the lookup channel. This opens the Channel Selection dialog.</li>
+		<li>Select a channel from the list, and then click <strong>OK</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Channel Selection Dialog</strong></em></span><br /><img src="attachments/download/45848/38_SelectChannel.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Define the points in the table. Points in the left column are return values, and points in the right column are lookup values.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Return Values and Lookup Values</strong></em></span><br /><img src="attachments/download/45846/38_LookupEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select <strong>File > Save</strong> to save the table, or press the shortcut combination <strong>CTRL+S</strong>.</li>
+	</ol>
+
+
+	<a name="Using-the-Lookup-Function"></a>
+<h2 >Using the Lookup Function<a href="#Using-the-Lookup-Function" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To use a lookup table, use Test Manager to create the table, define the points in the table, and assign the lookup channel name. After you have created the table, it can be used in any formula by using the lookup function. For more information about the lookup function, see the <a class="wiki-page" href="VCL_Miscellaneous_Functions.html#lookup">VCL Miscellaneous Functions</a> document.</p>
+
+
+	<a name="Syntax"></a>
+<h3 >Syntax<a href="#Syntax" class="wiki-anchor">&para;</a></h3>
+
+
+<pre>
+&lt;resultchannel&gt; lookup(&lt;tablename&gt;)
+</pre>
+
+	<a name="Parameters"></a>
+<h3 >Parameters<a href="#Parameters" class="wiki-anchor">&para;</a></h3>
+
+
+	<p><em>resultchannel</em>: The numeric channel or local variable that stores the return value.</p>
+
+
+	<p><em>tablename</em>: The name of the lookup table.</p>
+
+
+	<a name="Example"></a>
+<h3 >Example<a href="#Example" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>If the table you created is called MyTable and the result channel is called voResult, then the formula for accessing the table and assigning the result to the channel would appear as follows:</p>
+
+
+<pre>
+voResult lookup(MyTable)
+</pre>
+
+	<p>If you were using the following table and you set the lookup channel to 10, the return value would be 5000.</p>
+
+
+<pre>
+Return    Lookup 
+  0          0
+  5000       10
+  10000      20
+  20000      30
+</pre>
+
+	<p>If the result channel in the lookup table is a virtual output array channel, use the lookupary function. For more information about the lookupary function, see the <a class="wiki-page" href="VCL_Miscellaneous_Functions.html#lookupary">VCL Miscellaneous Functions</a> document.</p>
+
+
+<pre>
+voResult lookupary(MyTable, ArrayIndex)
+</pre>
+</body>
+</html>

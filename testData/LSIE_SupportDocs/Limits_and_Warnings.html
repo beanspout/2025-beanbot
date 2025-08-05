@@ -1,0 +1,421 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Limits and Warnings</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Limits_and_Warnings.html">Limits and Warnings</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Limits-and-Warnings"></a>
+<h1 >Limits and Warnings<a href="#Limits-and-Warnings" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Limits-and-Warnings">Limits and Warnings</a><ul><li><a href="#Overview">Overview</a><ul><li><a href="#Legacy-vs-32-Limits">Legacy vs 3.2 Limits</a></li></ul>
+</li><li><a href="#Limit-Attributes">Limit Attributes</a></li><li><a href="#Limit-and-Warning-Visual-Indicators">Limit and Warning Visual Indicators</a></li><li><a href="#Configuring-Limits">Configuring Limits</a></li><li><a href="#Configuring-Limit-Groups">Configuring Limit Groups</a></li><li><a href="#Limit-Mailslot-Messages">Limit Mailslot Messages</a></li><li><a href="#Limit-INI-Settings">Limit INI Settings</a></li><li><a href="#Using-AlarmStatus">Using AlarmStatus</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Limits and Warnings are iTest's method of providing both safety checking and some event-based processing of actions based on a channel reaching a user-defined value or set of values. Each scalar numeric channel in iTest can have up to four limit ranges configured, and each range can have a defined action that occurs when the channel's value crosses into that range. These ranges can be changed dynamically from a test or manually from certain screens in the operator console.</p>
+
+
+	<a name="Legacy-vs-32-Limits"></a>
+<h3 >Legacy vs 3.2 Limits<a href="#Legacy-vs-32-Limits" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <code>LimitsVer=</code> <em>powertek.ini</em> setting is used to determine if your solution is using legacy limits. By default, the <code>LimitsVer=</code> <em>powertek.ini</em> setting will be set to <code>LimitsVer=3.2</code>. Some features may not be available when using legacy limits, and the behavior for managing limits and limit groups may differ. For example, SolutionBuilder's Limit Groups editor will be in read-only mode when using legacy limits.</p>
+
+
+	<p>The following behaviors occur when <code>LimitsVer=3.2</code>:</p>
+
+
+	<ul>
+	<li>All channels that have limits enabled will appear in each limit group. This means that if you add or delete a channel from any of the limit group editors, that channel is added/deleted from all limit groups.</li>
+		<li>The <strong>Delay Time</strong>, <strong>Active</strong>, <strong>Low Warning Ignore Time</strong>, and <strong>High Warning Ignore Time</strong> columns will be available in the Limit Groups editor. Note that the <strong>Low/High Warning Ignore Time</strong> columns will only be available in SolutionBuilder's Limit Groups editor.</li>
+		<li>A new limit group will be automatically populated with all channels that have limits.</li>
+		<li>Adding/removing limits to a channel would set the <strong>Limits Active</strong> field in the channel definition file even when the channel is referenced by its customer name in the Channel Select dialog.</li>
+	</ul>
+
+
+	<p>All new iTest installations should have <code>LimitsVer=3.2</code> This allows complete control over which channels are active and also the activation timing for each limit group, both without having to write custom VCL. This is the preferred method for managing groups of limits.</p>
+
+
+	<a name="Limit-Attributes"></a>
+<h2 >Limit Attributes<a href="#Limit-Attributes" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Limit attributes are fields that are associated with each channel in the RDB. The fields used specifically by the limit system are as follows:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Limit Attribute Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:150px;text-align:left;"><strong>Field Name</strong> </td>
+			<td style="width:50px;text-align:left;"><strong>Type</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> Limits Active</td>
+			<td> 1 OR 0 </td>
+			<td>If 1, then limits are currently active for this channel. </td>
+		</tr>
+		<tr>
+			<td> Limit Status </td>
+			<td>Float</td>
+			<td>The current limit state of a channel: 0 = OK, 1 = Low Warning, 2 = High Warning, 3 = Low Limit, 4 = High Limit.</td>
+		</tr>
+		<tr>
+			<td> Low Limit Action</td>
+			<td>String</td>
+			<td>The name of a procedure or schedule to run.</td>
+		</tr>
+		<tr>
+			<td> Low Warning Action</td>
+			<td>String</td>
+			<td>The name of a procedure or schedule to run.</td>
+		</tr>
+		<tr>
+			<td> High Warning Action</td>
+			<td>String</td>
+			<td>The name of a procedure or schedule to run.</td>
+		</tr>
+		<tr>
+			<td> High Limit Action</td>
+			<td>String</td>
+			<td>The name of a procedure or schedule to run.</td>
+		</tr>
+		<tr>
+			<td> Low Limit</td>
+			<td>Float</td>
+			<td>Any valid value.</td>
+		</tr>
+		<tr>
+			<td> Low Warning</td>
+			<td>Float</td>
+			<td>Any valid value.</td>
+		</tr>
+		<tr>
+			<td> High Warning</td>
+			<td>Float</td>
+			<td>Any valid value.</td>
+		</tr>
+		<tr>
+			<td> High Limit</td>
+			<td>Float</td>
+			<td>Any valid value.</td>
+		</tr>
+		<tr>
+			<td> Low Limit Ignore Time    </td>
+			<td>Float</td>
+			<td>The amount of time that iTest waits after the channel value goes below its <strong>Low Limit/Low Warning</strong> value before starting the specified limit action. The default value is 0.<br />&nbsp;<br />iTest starts accumulating the <strong>Low Limit Ignore Time</strong> when the database channel value is equal to or below the specified low limit/low warning. The <strong>Ignore Time</strong> is reset to zero when the database channel value goes above the low limit/low warning.<br />&nbsp;<br />This setting is designed to reduce nuisance limits on noisy signals.</td>
+		</tr>
+		<tr>
+			<td> High Limit Ignore Time</td>
+			<td>Float</td>
+			<td>Same as low limit ignore time, but it applies to the value exceeding the <strong>High Limit/High Warning</strong> value.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Limit-and-Warning-Visual-Indicators"></a>
+<h2 >Limit and Warning Visual Indicators<a href="#Limit-and-Warning-Visual-Indicators" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>As a channel's value crosses into a new limit range, messages are sent to the iTest message queue. Messages have the following format:<br /><pre>
+Limits &lt;status&gt; on &lt;channel name&gt; [value= &lt;channel value&gt;]
+</pre></p>
+
+
+	<p>Where:</p>
+
+
+	<ul>
+	<li><em>&lt;status&gt;</em> is one of the following values: <strong>OK</strong>, <strong>Low Warning</strong>, <strong>High Warning</strong>, and <strong>High Limit</strong>.</li>
+		<li><em>&lt;channel name&gt;</em> is the label for the channel that violated the limit. This could be the channel name, module name, or customer name depending on the display label.</li>
+		<li><em>&lt;channel value&gt;</em> is the value that caused the limit to trigger.</li>
+	</ul>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Example of Limit Violation Message</strong></em></span><br /><img src="attachments/download/95686/limit1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>In addition to messages, limits and warnings cause a channel's displayed value to change colors depending on its current status. If limits checking is currently enabled, almost all locations in iTest will display the value with the following pre-defined colors:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Limit Colors</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Status</strong></td>
+			<td style="text-align:left;"><strong>Color</strong></td>
+		</tr>
+		<tr>
+			<td>High/Low Limit</td>
+			<td> Red</td>
+		</tr>
+		<tr>
+			<td>High/Low Warning</td>
+			<td> Yellow</td>
+		</tr>
+		<tr>
+			<td>Normal</td>
+			<td> Green</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>In iTest Console, limit colors are visible on all iTest display objects (e.g., ADTBar, iTest Console Signal Bar, and AlarmStatus). In AutomationPanel, limit colors are visible on panels, including the Bar, Gauge, Chart, Tile, Channel List, and Data Quality panels.</p>
+
+
+	<a name="Configuring-Limits"></a>
+<h2 >Configuring Limits<a href="#Configuring-Limits" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Limit checking is enabled/disabled through the following methods:</p>
+
+
+	<ol>
+	<li>Modifying the <strong>Limits Active</strong> column in the Channel Definitions editor. When this field is set to <strong>Yes</strong>, limits will be enabled for the channel, and the channel will be added to the DEFAULT.LIM limit group.</li>
+		<li>Checking the <strong>Limits</strong> checkbox in the New/Edit Channel dialog. When checked, limits will be enabled for the channel, and the channel will be added to the DEFAULT.LIM limit group.</li>
+		<li>Modfiying the <strong>Active</strong> column in the Limit Groups editor. This column sets the state for the channel in the limit group. If set to <strong>Inactive</strong>, then limits are not checked for that channel when the limit group is enabled.</li>
+	</ol>
+
+
+	<p>Limit settings can be configured in the Channel Definitions editor or the Limit Groups editor. The Channel Definitions editor allows you to configure the default limit settings; these settings will be used in the DEFAULT.LIM limit group, which is used as the foundation for creating and modifying limit groups. The Limit Groups editor allows you to configure the limit settings for each channel without modifying the channel definition file. Use the descriptions in the table below to configure the limit settings.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Limit Setting Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Field</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Low Limit</td>
+			<td> The lowest value at which the test specimen should run for the given channel.</td>
+		</tr>
+		<tr>
+			<td>Low Limit Action</td>
+			<td> The action iTest performs when the associated low warning limit is met.</td>
+		</tr>
+		<tr>
+			<td>Low Warning</td>
+			<td> The value at which a warning is issued, indicating that the channel value is approaching its low limit.</td>
+		</tr>
+		<tr>
+			<td>Low Warning Action</td>
+			<td> The action iTest performs when the associated low warning limit is met.</td>
+		</tr>
+		<tr>
+			<td>High Warning</td>
+			<td> The value at which a warning is issued, indicating that the channel value is approaching its high limit.</td>
+		</tr>
+		<tr>
+			<td>High Warning Action</td>
+			<td> The action iTest performs when the associated high warning limit is met.</td>
+		</tr>
+		<tr>
+			<td>High Limit</td>
+			<td> The highest value at which the test specimen should run for the given channel.</td>
+		</tr>
+		<tr>
+			<td>High Limit Action</td>
+			<td> The action iTest performs when the associated high warning limit is met.</td>
+		</tr>
+		<tr>
+			<td>Low Limit Ignore Time (s)</td>
+			<td> The amount of time that iTest waits after the channel value goes below its Low Limit/Low Warning value before starting the specified limit action.</td>
+		</tr>
+		<tr>
+			<td>High Limit Ignore Time (s)</td>
+			<td> The amount of time that iTest waits after the channel value exceeds the High Limit/High Warning value before starting the specified limit action.</td>
+		</tr>
+		<tr>
+			<td>Low Limit Warning Ignore Time*</td>
+			<td> The amount of time that iTest waits after the channel value goes below its Low Warning value before starting the specified limit action. A blank value indicates that the High Limit Ignore Time will be used.</td>
+		</tr>
+		<tr>
+			<td>High Limit Warning Ignore Time*</td>
+			<td> The amount of time that iTest waits after the channel value goes below its High Warning value before starting the specified limit action. A blank value indicates that the Low Limit Ignore Time will be used.</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;font-style: italic;">This field is configured in SolutionBuilder's Limit Groups editor or in the Channel Definitions editor.</span>
+
+	<p>&nbsp;</p>
+
+
+	<p>If using the New/Edit Channel Dialog to configure limit settings, the <strong>Edit Action</strong> button is activated if a VCL function is selected. When active, the <strong>Edit Action</strong> button opens the Function Prototype Guide to allow easy modification of the VCL function's arguments.</p>
+
+
+	<a name="Configuring-Limit-Groups"></a>
+<h2 >Configuring Limit Groups<a href="#Configuring-Limit-Groups" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Limit groups are used to change the high and low range for channels during different operating conditions for the test environment. For example, the default limits for a channel may be set in a wide range in order to catch abnormal operating conditions when the engine or speciment is not running. As a test proceeds, different limit groups may be applied to make that range smaller.</p>
+
+
+	<p>Limit groups can be managed in Test Manager or SolutionBuilder by using the Limit Groups editor. For more information, refer to the following documents:</p>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Limit_Groups_in_SolutionBuilder.html">Managing Limit Groups in SolutionBuilder</a></li>
+		<li><a class="wiki-page" href="Managing_Limit_Groups_in_Test_Manager.html">Managing Limit Groups in Test Manager</a></li>
+	</ul>
+
+
+	<a name="Limit-Mailslot-Messages"></a>
+<h2 >Limit Mailslot Messages<a href="#Limit-Mailslot-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Data_Engine handles the following limit mailslot messages:</p>
+
+
+	<p>All limit mailslot messages are handled by Data_Engine. They are as follows:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Mailslot Messages</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Mailslot Message</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Limits Activate ALL</td>
+			<td> Start checking limits. Any individual channel de-activated will still be de-activated.</td>
+		</tr>
+		<tr>
+			<td>Limits Activate &lt;channelname&gt;</td>
+			<td>Turn on limits checking for a channel that previously had limits de-activated with Limits Deactivate &lt;channelname&gt;.</td>
+		</tr>
+		<tr>
+			<td>Limits Deactivate ALL</td>
+			<td> Stop checking limits. Any individually de-activated channel will still be de-activated when Limits Activate ALL is sent.</td>
+		</tr>
+		<tr>
+			<td>Limits Deactivate &lt;channelname&gt;</td>
+			<td>Turn off limits checking for that channel only.</td>
+		</tr>
+		<tr>
+			<td>Limits Group Apply Default</td>
+			<td>Apply the default limit group.</td>
+		</tr>
+		<tr>
+			<td>Limits Group Apply groupname</td>
+			<td> Apply the specified limit group.</td>
+		</tr>
+		<tr>
+			<td>Limits Reactivate</td>
+			<td> Turn on limits checking for all channels that previously had limits de-activated with Limits Deactivate &lt;channelname&gt;.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Limit-INI-Settings"></a>
+<h2 >Limit INI Settings<a href="#Limit-INI-Settings" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following <em>powertek.ini</em> settings are used to enhance or modify the behavior of limits: <code>LimitsActiveOnStartup</code>, <code>LimitsRMISS</code>, <code>LimitsVer</code>, and <code>NonLimitsColor</code>. For more information on each setting, refer to its entry in the <a class="wiki-page" href="ITest_INI_Options.html">iTest INI Options</a> and <a class="wiki-page" href="ITest_Advanced_INI_Options.html">iTest Advanced INI Options</a> documentation.</p>
+
+
+	<a name="Using-AlarmStatus"></a>
+<h2 >Using AlarmStatus<a href="#Using-AlarmStatus" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>AlarmStatus is an important program for the operator to use at runtime to monitor and manage the list of channels with limits while iTest is running. Depending upon the options set in your solution, the operator can have a different level of control using AlarmStatus. Some locations allow the operators to add and delete channels with limits, temporarily disable some channels and edit limit ranges and actions, all while iTest is running. For more information, refer to the <a class="wiki-page" href="AlarmStatus.html">AlarmStatus</a> documentation.</p>
+
+
+	<p>AlarmStatus is controlled by settings in the <em>powertek.ini</em> file. These settings are described below:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Alarm Status Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<th>Option</th>
+			<th>Description</th>
+			<th>Default Value</th>
+		</tr>
+		<tr>
+			<td>AlarmStatusEdit</td>
+			<td>When set to true, limits can be edited through the AlarmStatus interface. This will add a right-click edit option on the AlarmStatus.</td>
+			<td>FALSE</td>
+		</tr>
+		<tr>
+			<td>AlarmStatusLimitControl</td>
+			<td>Enable/disable the ability to activate/deactivate alarms from the screen.</td>
+			<td>FALSE</td>
+		</tr>
+		<tr>
+			<td>AlarmStatusDisplayAlias</td>
+			<td>AlarmStatus shows Alias by default. You can turn this option off by setting this value to FALSE.</td>
+			<td>TRUE</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Limit_Groups_in_SolutionBuilder.html">Managing Limit Groups in SolutionBuilder</a></li>
+		<li><a class="wiki-page" href="Managing_Limit_Groups_in_Test_Manager.html">Managing Limit Groups in Test Manager</a></li>
+		<li><a class="wiki-page" href="Channel_Definitions_in_SolutionBuilder.html">Managing Channels in SolutionBuilder</a></li>
+		<li><a class="wiki-page" href="Managing_Channels_in_Test_Manager.html">Managing Channels in Test Manager</a></li>
+		<li><a class="wiki-page" href="AlarmStatus.html">AlarmStatus</a></li>
+	</ul>
+</body>
+</html>

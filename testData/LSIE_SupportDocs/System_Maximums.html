@@ -1,0 +1,815 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>System Maximums</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="System_Maximums.html">System Maximums</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="iTest-Maximums-from-ConfigReport"></a>
+<h1 >iTest Maximums (from ConfigReport)<a href="#iTest-Maximums-from-ConfigReport" class="wiki-anchor">&para;</a></h1>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>iTest Maximum Types</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Maximum Type</strong> </td>
+			<th style="text-align:center;" colspan="2"><strong>Maximum Values</strong></th>
+			<td style="text-align:left;"><strong>Last Modified By</strong>*</td>
+			<td style="text-align:left;"><strong>Added By</strong>**</td>
+			<td style="text-align:left;"><strong>Comment</strong></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<td></td>
+			<td style="text-align:left;"><strong>Current</strong></td>
+			<td style="text-align:left;"><strong>Initial</strong></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Number of bytes of characters in a channel name </td>
+			<td style="text-align:center;">32</td>
+			<td style="text-align:center;">32</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Number of bytes of characters in a customer name or alias (including terminating NULL) </td>
+			<td style="text-align:center;">64</td>
+			<td style="text-align:center;">64</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Channels that can have limits </td>
+			<td style="text-align:center;">500</td>
+			<td style="text-align:center;">500</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Channels that can have statistics </td>
+			<td style="text-align:center;">100</td>
+			<td style="text-align:center;">100</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Channels that can have Data Quality </td>
+			<td style="text-align:center;">100</td>
+			<td style="text-align:center;">100</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Real I/O channels </td>
+			<td style="text-align:center;">2000</td>
+			<td style="text-align:center;">1000</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2.539 Patch</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>1kHz channels </td>
+			<td style="text-align:center;">512</td>
+			<td style="text-align:center;">512</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Virtual String channels </td>
+			<td style="text-align:center;">1800</td>
+			<td style="text-align:center;">800</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">4.0 Release</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Total Virtual Array channels (both output and string arrays) </td>
+			<td style="text-align:center;">100</td>
+			<td style="text-align:center;">100</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Virtual String Array channels </td>
+			<td style="text-align:center;">50</td>
+			<td style="text-align:center;">10</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.7 build 169</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2.548 Patch</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Data sourcing channels </td>
+			<td style="text-align:center;">300</td>
+			<td style="text-align:center;">200</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.4.483 Patch</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.4 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Database files </td>
+			<td style="text-align:center;">175</td>
+			<td style="text-align:center;">100</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.7.491 Patch</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Customer name files </td>
+			<td style="text-align:center;">50</td>
+			<td style="text-align:center;">50</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Internal variables </td>
+			<td style="text-align:center;">2000</td>
+			<td style="text-align:center;">2000</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Dynamic Calculation formula length in bytes </td>
+			<td style="text-align:center;">512</td>
+			<td style="text-align:center;">512</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Procedures </td>
+			<td style="text-align:center;">3000</td>
+			<td style="text-align:center;">1500</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">4.0 Release</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Calculation files </td>
+			<td style="text-align:center;">200</td>
+			<td style="text-align:center;">200</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Custom Blocks </td>
+			<td style="text-align:center;">512</td>
+			<td style="text-align:center;">200</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">4.2 Release</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Test Control Toolbars </td>
+			<td style="text-align:center;">100</td>
+			<td style="text-align:center;">50</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.6.607 Patch</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Columns in a schedule    </td>
+			<td style="text-align:center;">300</td>
+			<td style="text-align:center;">150</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">4.3.354 Patch</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Rows in a schedule </td>
+			<td style="text-align:center;">100000</td>
+			<td style="text-align:center;">100000</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Lines in a calculation </td>
+			<td style="text-align:center;">5000</td>
+			<td style="text-align:center;">10000</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2.392 Patch</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Lines in combined calculation procedure for each calculation rate built at runtime</td>
+			<td style="text-align:center;">10000</td>
+			<td style="text-align:center;">10000</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.4 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Lines in a procedure </td>
+			<td style="text-align:center;">5000</td>
+			<td style="text-align:center;">5000</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2.392 Patch</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Lines in a dynamic calculation </td>
+			<td style="text-align:center;">2000</td>
+			<td style="text-align:center;">2000</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.4 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Lines in a 1kHz calculation </td>
+			<td style="text-align:center;">100</td>
+			<td style="text-align:center;">100</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Continuous lines with no pause in procedure </td>
+			<td style="text-align:center;">60</td>
+			<td style="text-align:center;">60</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2.349 Patch</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Local variables defined in a procedure </td>
+			<td style="text-align:center;">50</td>
+			<td style="text-align:center;">50</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.4 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Defined data logs </td>
+			<td style="text-align:center;">200</td>
+			<td style="text-align:center;">100</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2.761 Patch</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>1kHz active logs </td>
+			<td style="text-align:center;">1</td>
+			<td style="text-align:center;">1</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>UVL channels </td>
+			<td style="text-align:center;">256</td>
+			<td style="text-align:center;">256</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Seconds in Blackbox </td>
+			<td style="text-align:center;">3600</td>
+			<td style="text-align:center;">3600</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Channels in Blackbox (non kHz) </td>
+			<td style="text-align:center;">1500</td>
+			<td style="text-align:center;">800</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">4.0 Release</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Channels in Blackbox (1 kHz) </td>
+			<td style="text-align:center;">400</td>
+			<td style="text-align:center;">500</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">4.3 Release</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Objects on a display </td>
+			<td style="text-align:center;">300</td>
+			<td style="text-align:center;">300</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Charts on a display </td>
+			<td style="text-align:center;">6</td>
+			<td style="text-align:center;">4</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2.660 Patch</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Objects on a report </td>
+			<td style="text-align:center;">200</td>
+			<td style="text-align:center;">200</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Pages in a report </td>
+			<td style="text-align:center;">10</td>
+			<td style="text-align:center;">10</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Parameters in a RPP file </td>
+			<td style="text-align:center;">2000</td>
+			<td style="text-align:center;">2000</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Mailslot messages in an ADTButton object </td>
+			<td style="text-align:center;">10</td>
+			<td style="text-align:center;">10</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Channels in an ADTDigital object </td>
+			<td style="text-align:center;">30</td>
+			<td style="text-align:center;">30</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>ADTIndicator string length</td>
+			<td style="text-align:center;">50</td>
+			<td style="text-align:center;">50</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Channels on an axis for any chart object</td>
+			<td style="text-align:center;">16</td>
+			<td style="text-align:center;">16</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td><span style="font-size:0.8em;">ADTStripchart object limit: 12</span></td>
+		</tr>
+		<tr>
+			<td>Rows in a picklist </td>
+			<td style="text-align:center;">260</td>
+			<td style="text-align:center;">260</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2.447 Patch</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Number of picklists </td>
+			<td style="text-align:center;">800</td>
+			<td style="text-align:center;">200</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.6 Release</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Number of modules </td>
+			<td style="text-align:center;">100</td>
+			<td style="text-align:center;">100</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Limit groups </td>
+			<td style="text-align:center;">50</td>
+			<td style="text-align:center;">20</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.4.1305 Patch</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Data quality group </td>
+			<td style="text-align:center;">60</td>
+			<td style="text-align:center;">20</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2.777 Patch</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Look up tables </td>
+			<td style="text-align:center;">100</td>
+			<td style="text-align:center;">100</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Rows on a look up table </td>
+			<td style="text-align:center;">1000</td>
+			<td style="text-align:center;">1000</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>1kHz PIDs </td>
+			<td style="text-align:center;">8</td>
+			<td style="text-align:center;">8</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Mode pairs </td>
+			<td style="text-align:center;">75</td>
+			<td style="text-align:center;">75</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>PID groups </td>
+			<td style="text-align:center;">30</td>
+			<td style="text-align:center;">30</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>TestMgr tree item length in bytes </td>
+			<td style="text-align:center;">128</td>
+			<td style="text-align:center;">128</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Sequence VCL block code size in bytes </td>
+			<td style="text-align:center;">2048</td>
+			<td style="text-align:center;">1023</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Maximum vm instructions allocated to tests per scan </td>
+			<td style="text-align:center;">1600</td>
+			<td style="text-align:center;">1600</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Maximum number of limit violations processed per scan</td>
+			<td style="text-align:center;">200</td>
+			<td style="text-align:center;">200</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Maximum number of channels allowed in a log </td>
+			<td style="text-align:center;">2000</td>
+			<td style="text-align:center;">1500</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">4.0 Release</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Maximum number of channels allowed in a 1kHz log </td>
+			<td style="text-align:center;">512</td>
+			<td style="text-align:center;">512</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Maximum number of entries allowed in a table </td>
+			<td style="text-align:center;">2000</td>
+			<td style="text-align:center;">2000</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Maximum number of items allowed in an array file (<em>.ary</em>) </td>
+			<td style="text-align:center;">20000</td>
+			<td style="text-align:center;">20000</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Maximum number of timer channels allowed in one DB file </td>
+			<td style="text-align:center;">30</td>
+			<td style="text-align:center;">30</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Maximum number of channels allowed in RDB </td>
+			<td style="text-align:center;">14000</td>
+			<td style="text-align:center;">5000</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.5 Release</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">2.1 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Maximum length (in bytes) of a Virtual String value (including terminating NULL) </td>
+			<td style="text-align:center;">128</td>
+			<td style="text-align:center;">128</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Maximum number of module actions that can be in process </td>
+			<td style="text-align:center;">10</td>
+			<td style="text-align:center;">10</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.4 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Maximum file size (in MB) for the following FileServices mailslot commands:<br />&nbsp;<br /><span style="font-size:0.9em;">- $AppendFile<br />- $ChangeHeaderValue<br />- $ChangeLoggedValue<br />- $ChangeLoggedValueMany<br />- $DeleteRecord<br />- $GetHeaderValue<br />- $GetLoggedValue<br />- $GetRecordNum<br />- $Poly<br />- $WriteToLogFile<br />- $WriteToTextFile</span></td>
+			<td style="text-align:center;">512</td>
+			<td style="text-align:center;">512</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.4.1305 Patch</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;font-style: italic;">Lists the earliest software version that includes the current maximum. A notation will be included stating whether or not the change was introduced as a patch or as part of a release.</span><br />** <span style="font-size:0.90em;font-style: italic;">Lists the earliest software version that introduced this limit to iTest.</span>
+
+	<a name="Additional-Maximums"></a>
+<h1 >Additional Maximums<a href="#Additional-Maximums" class="wiki-anchor">&para;</a></h1>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Additional Maximums</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Maximum Type</strong> </td>
+			<th style="text-align:center;" colspan="2"><strong>Maximum Values</strong></th>
+			<td style="text-align:left;"><strong>Last Modified By</strong>*</td>
+			<td style="text-align:left;"><strong>Added By</strong>**</td>
+			<td style="text-align:left;"><strong>Comment</strong></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<td></td>
+			<td style="text-align:left;"><strong>Current</strong></td>
+			<td style="text-align:left;"><strong>Initial</strong></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Max length of Report Page name </td>
+			<td style="text-align:center;">128</td>
+			<td style="text-align:center;">128</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2.367 Patch</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Max number of characters for Test Manager tree bar node label </td>
+			<td style="text-align:center;">128</td>
+			<td style="text-align:center;">128</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Max number of bytes for step condition string </td>
+			<td style="text-align:center;">1024</td>
+			<td style="text-align:center;">1024</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Max number of characters for suffix for internally created channel</td>
+			<td style="text-align:center;">10</td>
+			<td style="text-align:center;">10</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Max number of channels on one axis for ADTStripchart.ocx controls</td>
+			<td style="text-align:center;">12</td>
+			<td style="text-align:center;">12</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Maximum length of Limit Group node label </td>
+			<td style="text-align:center;">28</td>
+			<td style="text-align:center;">28</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Maximum length of Calculations node label</td>
+			<td style="text-align:center;">31</td>
+			<td style="text-align:center;">31</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Maximum length of Procedure node label </td>
+			<td style="text-align:center;">31</td>
+			<td style="text-align:center;">31</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td><span style="font-size:0.8em;">Does not apply to the Procedure Folder node label.</span></td>
+		</tr>
+		<tr>
+			<td>Maximum length of Dynamic Calculations node label </td>
+			<td style="text-align:center;">31</td>
+			<td style="text-align:center;">31</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Maximum length of Control Mode Group node label </td>
+			<td style="text-align:center;">32</td>
+			<td style="text-align:center;">32</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Max number of active logs at RunTime </td>
+			<td style="text-align:center;">32</td>
+			<td style="text-align:center;">32</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Max number of running procedures</td>
+			<td style="text-align:center;">200</td>
+			<td style="text-align:center;">200</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Max number of elements for an array-style RDB channel with defined array fields (i.e., includes a "Maximum Elements" RDB Field) </td>
+			<td style="text-align:center;">256</td>
+			<td style="text-align:center;">256</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">4.1 Release</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Max length of an OCX display control ID field (bytes)</td>
+			<td style="text-align:center;">32</td>
+			<td style="text-align:center;">50</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.4.495 Patch</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Max number of tasks available for a FlexEdit category</td>
+			<td style="text-align:center;">50</td>
+			<td style="text-align:center;">40</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.7.595 Patch</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.4 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Maximum number of support directories in $SystemDir</td>
+			<td style="text-align:center;">256</td>
+			<td style="text-align:center;">128</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">4.0.391 Patch</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">3.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Maximum number of active dynamic calculation files</td>
+			<td style="text-align:center;">10</td>
+			<td style="text-align:center;">1</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">4.4.188 Patch</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;font-style: italic;">Lists the earliest software version that includes the current maximum. A notation will be included stating whether or not the change was introduced as a patch or as part of a release.</span><br />** <span style="font-size:0.90em;font-style: italic;">Lists the earliest software version that introduced this limit to iTest.</span>
+
+	<a name="BTS-related-System-Maximums"></a>
+<h1 >BTS-related System Maximums<a href="#BTS-related-System-Maximums" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>These system maximums override the normal system maximums when working with a BTS (Battery) system.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>BTS-Related System Maximums</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Maximum Type</strong> </td>
+			<th style="text-align:center;" colspan="2"><strong>Maximum Values</strong></th>
+			<td style="text-align:left;"><strong>Last Modified By</strong>*</td>
+			<td style="text-align:left;"><strong>Added By</strong>**</td>
+			<td style="text-align:left;"><strong>Comment</strong></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<td></td>
+			<td style="text-align:left;"><strong>Current</strong></td>
+			<td style="text-align:left;"><strong>Initial</strong></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Total Virtual Array channels (both output and string arrays) </td>
+			<td style="text-align:center;">1500</td>
+			<td style="text-align:center;">500</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">4.1.335 Patch</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Virtual String Array channels</td>
+			<td style="text-align:center;">100</td>
+			<td style="text-align:center;">50</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Rows in a Transient Profile schedule</td>
+			<td style="text-align:center;">700000</td>
+			<td style="text-align:center;">700000</td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">-</span></td>
+			<td style="text-align:center;"><span style="font-size:0.8em;">4.2 Release</span></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;font-style: italic;">Lists the earliest software version that includes the current maximum. A notation will be included stating whether or not the change was introduced as a patch or as part of a release.</span><br />** <span style="font-size:0.90em;font-style: italic;">Lists the earliest software version that introduced this limit to iTest.</span>
+</body>
+</html>

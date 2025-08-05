@@ -1,0 +1,423 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>FlexEdit</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="FlexEdit.html">FlexEdit</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+ <span style="display: none;">
+
+
+	<p><img src="attachments/download/93003/ADT_LOGO_OUTLINE.png" style="width: 100px;" alt="" /></p>
+
+
+	 </span>
+
+
+	 <div class="CoverPage" class="body">
+
+
+	 <div class="Title">
+
+
+	<p style="text-align:center;"><br /><strong><span style="font-size:30pt;color: #005CAA;">FlexEdit</span></strong></p>
+
+
+	 </div>
+
+
+	<p style="text-align:center;"><br /><em><span style="font-size:12pt;font-style: italic;">Product Version 4.5</span></em></p>
+
+
+	<p style="text-align:center;"><br /><strong><span style="font-size:16pt;">Prepared By</span></strong><br />ADT Software Engineering</p>
+
+
+	<p style="text-align:center;"><br /><span style="font-size: 10pt;color:red;">A&#38;D Confidential Document Distributable only to A&#38;D Customers</span><br /><span style="font-size: 10pt;color:black;">Copyright A&#38;D Company, Limited<br />A&#38;D Technology Inc.</span></p>
+
+
+	 </div>
+
+
+	 <h1>Table of Contents</h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Overview">Overview</a></li><li><a href="#Framework-Requirements">Framework Requirements</a></li><li><a href="#Framework-Constraints">Framework Constraints</a></li><li><a href="#Launching-FlexEdit">Launching FlexEdit</a><ul><li><a href="#Launching-FlexEdit-Using-VCL">Launching FlexEdit Using VCL</a></li></ul>
+</li><li><a href="#Using-FlexEdit">Using FlexEdit</a></li><li><a href="#Performing-Tasks">Performing Tasks</a></li><li><a href="#Searching-for-Information">Searching for Information</a></li><li><a href="#Using-Diagnostic-Tools">Using Diagnostic Tools</a></li><li><a href="#Using-Save-and-Restore">Using Save and Restore</a><ul><li><a href="#Saving-Configurations">Saving Configurations</a></li><li><a href="#Restoring-Configurations">Restoring Configurations</a></li><li><a href="#Restoring-Tasks">Restoring Tasks</a></li></ul>
+</li><li><a href="#Server-Upload-and-Server-Download">Server Upload and Server Download</a></li><li><a href="#Using-Mailslot-Messages">Using Mailslot Messages</a></li><li><a href="#See-Also">See Also</a></li></ul></p>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>FlexEdit is a standalone iTest application used by operators to complete a workflow of routine maintenance tasks and collect runtime data while iTest is active. FlexEdit uses a single interface, consisting of four separate panes for tasks, messages, references, and editors. The FlexEdit framework is typically pre-configured for operators; however, it can be customized to better suit the testing environment. For more information on how to customize FlexEdit, refer to the <a class="wiki-page" href="FlexEdit_Design_Guide.html">FlexEdit Design Guide</a>.</p>
+
+
+	<p>This document discusses the general aspects of FlexEdit such as its general interface, performing tasks, using diagnostic tools, and more.</p>
+
+
+	<a name="Framework-Requirements"></a>
+<h2 >Framework Requirements<a href="#Framework-Requirements" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>These requirements are seen as essential and have been designed into FlexEdit:</p>
+
+
+	<ul>
+	<li>Multi-Language support</li>
+		<li>Ability for the customer to add their own editor</li>
+		<li>Ability to control the flow or ordering of tasks without re-compiling the tool</li>
+		<li>Ability to group tasks together under category names</li>
+		<li>Ability to launch the tool with a specific page showing</li>
+		<li>Ability to launch the tool with different workflows via command line</li>
+		<li>Ability to secure pages</li>
+		<li>Ability to run online and offline (i.e., with a GUI running or not)</li>
+	</ul>
+
+
+	<a name="Framework-Constraints"></a>
+<h2 >Framework Constraints<a href="#Framework-Constraints" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>There are some guidelines that the framework has to abide by to work within the iTest architecture:</p>
+
+
+	<ul>
+	<li>Cannot add new RDB channels with the tool (mapping only).</li>
+		<li>Will only edit existing file formats.</li>
+		<li>If iTest is running, customer names cannot be renamed if they are referenced in VCL or calculations.</li>
+		<li>Can be used in addition to any current A&#38;D tool or editor.</li>
+		<li>Each page of the editor will have an independent state. If it requires information from another editor, it will get it from RDB or another source. When the editor is saved, it will write its own file. Custom pages could communicate with other pages via INI files or mailslot messages if necessary.</li>
+		<li>The workflow of the interface will primarily be a tree control. This tree will be initialized from a configuration file and new nodes will not be able to be added dynamically. In other words, the operator will work with a fixed set of tasks.</li>
+		<li>Cannot edit iTest FIL files (except through the use of the CAV editor).</li>
+		<li>Cannot edit or create new displays.</li>
+		<li>Cannot edit VCL code.</li>
+	</ul>
+
+
+	<a name="Launching-FlexEdit"></a>
+<h2 >Launching FlexEdit<a href="#Launching-FlexEdit" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>FlexEdit utilizes XML files to define the interface's configuration. When launching FlexEdit, you can specify which XML file to open via the following command-line argument:</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">If an XML file is not specified, then the default <em>FlexEdit.xml</em> file will be used.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+FlexEdit.exe /xml &lt;XML file path&gt;
+</pre></p>
+
+
+	<p><strong>Example:</strong><br /><pre>
+FlexEdit.exe /xml C:\ADT\iTest4.3\Execute\FlexEdit.xml
+</pre></p>
+
+
+	<p>The following command-line argument can be used to open a specified file in its associated editor:</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+FlexEdit.exe /xml &lt;XML file path&gt; /file &lt;file path&gt;
+</pre></p>
+
+
+	<p><strong>Example:</strong><br /><pre>
+FlexEdit.exe /xml C:\ADT\iTest4.3\Execute\FlexEdit.xml /file C:\ADT\iTest4.3\Solution.Demo\TestNotes.txt
+</pre></p>
+
+
+	<p>You can also use the following command-line argument to launch a specific task in FlexEdit:</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">For task names that contain spaces, you must use double quotes around the task name.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+FlexEdit.exe /xml &lt;XML file path&gt; /task &lt;task name&gt;
+</pre></p>
+
+
+	<p><strong>Example:</strong><br /><pre>
+FlexEdit.exe /xml C:\ADT\iTest4.3\Execute\FlexEdit.xml /task "Test Notes" 
+</pre></p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Test Manager, SolutionBuilder, and AlarmStatus must not be running in order to launch FlexEdit.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Launching-FlexEdit-Using-VCL"></a>
+<h3 >Launching FlexEdit Using VCL<a href="#Launching-FlexEdit-Using-VCL" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>FlexEdit can be launched using the VCL programming language. This can be difficult because of nested double quotes. You can use the escape sequence ~" to pass the double quote to the next layer.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">In the example below, the /s is an argument to FileServices.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><strong>Example:</strong><br /><pre>
++0.0 MESSAGE "\\.\mailslot\FileServices&gt;&gt;$Execute ~"FlexEdit.exe /task ~"Engine Data~"~ /s valSysFileSvcs" 
+</pre></p>
+
+
+	<a name="Using-FlexEdit"></a>
+<h2 >Using FlexEdit<a href="#Using-FlexEdit" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The FlexEdit interface consists of four panes and a control menu. These panes are used for completing tasks, viewing diagnostic messages, and searching for channel information. The image below represents a general display of the FlexEdit interface:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>FlexEdit Interface</strong></em></span><br /><img src="attachments/download/119913/43_FlexEditInterface.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Pane Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Pane</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Tasks</td>
+			<td> A list of workflow categories and various tasks that must be completed by the operator. For more information, refer to the <a class="wiki-page" href="#Performing-Tasks">Performing Tasks</a> section below.</td>
+		</tr>
+		<tr>
+			<td>Editor</td>
+			<td> Enables the operator to perform configurations and calibrations, as necessary, for testing. For more information, refer to the <a class="wiki-page" href="FlexEdit_Editors.html">FlexEdit Editors</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>Reference</td>
+			<td> A tree node list of channels and modules. For more information, refer to the <a class="wiki-page" href="#Searching-for-Information">Searching for Information</a> section below.</td>
+		</tr>
+		<tr>
+			<td>Messages</td>
+			<td> Communicates diagnostic information. This pane contains the following tabs: <strong>Errors</strong>, <strong>Find Results 1</strong>, and <strong>Find Results 2</strong>. For more information, refer to the <a class="wiki-page" href="#Using-Diagnostic-Tools">Using Diagnostic Tools</a> section below.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>You can modify the location of each pane (except for the Editor pane) via the <strong>Docking</strong> feature. To undock a pane, select the top of the pane and drag it away from its current location. The possible places you can redock the pane display on the interface. Hover over one of the options to highlight it; when you release the mouse, the pane will dock in that location.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Docking/Undocking Panes</strong></em></span><br /><img src="attachments/download/119914/43_FlexEditDocking.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Performing-Tasks"></a>
+<h2 >Performing Tasks<a href="#Performing-Tasks" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Tasks pane is comprised of workflow categories and various tasks that must be completed by the operator. Clicking a workflow category will expand its contents and display the tasks that must be completed within it. Tasks represent the different assignments performed by the operator to prepare for upcoming tests or to influence tests that are currently running. The list of workflow categories and tasks is defined in the XML file; refer to the <a class="wiki-page" href="FlexEdit_Design_Guide.html">FlexEdit Design Guide</a> for more information.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Tasks Pane</strong></em></span><br /><img src="attachments/download/34278/FE37_CategoriesAndTasks.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />As the operator completes the various tasks for each category, you can click the checkbox next to the name of the task to mark it as "done." Depending on the design of your <em>FlexEdit.xml</em> file, the checkbox may automatically be checked when the tasks are complete. The total number of tasks and the number of completed tasks are displayed in the status bar.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Marking Tasks as Done</strong></em></span><br /><img src="attachments/download/34279/FE37_Checked.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Tasks Complete</strong></em></span><br /><img src="attachments/download/34281/FE37_TasksComplete.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />To navigate through the various tasks, you can use the <strong>Up</strong> and <strong>Down</strong> arrow buttons to navigate through the task list in sequential order. These buttons are located in the control menu above the panes.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Navigation Buttons</strong></em></span><br /><img src="attachments/download/34280/FE37_ArrowButtons.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Searching-for-Information"></a>
+<h2 >Searching for Information<a href="#Searching-for-Information" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Reference pane, also referred to as the Helper Bar, contains a list of channels and modules that can be used as references. You can drag and drop channels from the Helper Bar to the Editor pane. You can also right-click within the Helper Bar to manually search for a channel or view a channel's properties.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Reference Pane</strong></em></span><br /><img src="attachments/download/34365/FE37_HelperBarSearch.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Drag and Drop Channels</strong></em></span><br /><img src="attachments/download/119915/43_FlexEditDragAndDrop.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>To manually search for a channel, right-click within the Helper Bar and select the <strong>Search</strong> option. The Channel Search dialog displays, which is used to define the criteria for your channel search (i.e., sub string, name, and type). Clicking the checkbox near the bottom of the dialog will display the outputted search results to a new tree node.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Channel Search Dialog</strong></em></span><br /><img src="attachments/download/34366/FE37_ChannelSearch.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Search Results</strong></em></span><br /><img src="attachments/download/34367/FE37_SearchResults.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />To view a channel's properties, right-click on a channel within the Helper Bar and select the <strong>Properties</strong> option. The Channel Properties dialog displays. The property options that are listed in the Channel Properties dialog are dependent on the channel type.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Properties</strong></em></span><br /><img src="attachments/download/34368/FE37_Properties.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Channel Properties</strong></em></span><br /><img src="attachments/download/34369/FE37_ChannelProperties.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Using-Diagnostic-Tools"></a>
+<h2 >Using Diagnostic Tools<a href="#Using-Diagnostic-Tools" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Messages pane communicates any errors or results that occur in FlexEdit. When FlexEdit is started, any initialization errors that occurred when parsing the <em>FlexEdit.xml</em> will display in the Errors tab.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Error Messages</strong></em></span><br /><img src="attachments/download/34371/FE37_Messages.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />The <strong>Find in Files</strong> feature is accessible in FlexEdit by selecting <strong>File > Find in Files...</strong> from the menu bar. The Find In Files dialog displays, where you can use the various search field settings to refine your search. The search results display in the Find Results 1 tab by default; you can use the <strong>Display in Find 2</strong> checkbox in the Find In Files dialog to display the search results in the Find Results 2 tab.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Find What</strong></em></span><br /><img src="attachments/download/34374/FE37_ai.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Results</strong></em></span><br /><img src="attachments/download/34373/FE37_ai2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Using-Save-and-Restore"></a>
+<h2 >Using Save and Restore<a href="#Using-Save-and-Restore" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Saving-Configurations"></a>
+<h3 >Saving Configurations<a href="#Saving-Configurations" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Configurations can be saved and outputted as a <em>.zip</em> file either to a LabCentral server or to a local folder. This local folder can either be on the same PC or can be a network share.</p>
+
+
+	<p>After selecting <strong>File > Save Configuration</strong>, you will be prompted to select a filename from the drop-down menu or manually enter a new filename. Comments can be entered in the box below. In addition, you can select an existing file and its comments to be overwritten by checking the file's checkbox.<br />&nbsp; <br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Save Configuration</strong></em></span> <br /><img src="attachments/download/125220/44_FlexEditLabCentral.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The Save Configuration feature can be disabled by setting the <code>voSysFlexEditSaveDisable</code> channel to 1 or greater. In addition to disabling the <strong>File > Save Configuration</strong> menu option; this setting will also disable the <strong>Server Upload</strong> button. The <code>voSysFlexEditSaveDisable</code> channel is not automatically created by iTest.</p>
+
+
+	<a name="Restoring-Configurations"></a>
+<h3 >Restoring Configurations<a href="#Restoring-Configurations" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Restore Configuration feature allows you to restore files to a previous state. After selecting <strong>File > Restore Configuration</strong>, you will be prompted to select from previously saved versions of the file. File states can be sorted by name, size, or last date of modification. <br />&nbsp; <br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Restore Configuration</strong></em></span> <br /><img src="attachments/download/125221/44_FlexEditRestore.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The Restore Configuration feature can be disabled by setting the <code>voSysFlexEditRestoreDisable</code> channel to 1 or greater.  In addition to disabling the <strong>File > Restore Configuration</strong> menu option, the <strong>Server Download</strong> button and the <strong>File > Restore Tasks...</strong> menu option will be disabled. You can also use the <strong>&lt;disablemenulist&gt;</strong> and <strong>&lt;enableoverwrite&gt;</strong> tags in the <em>FlexEdit.xml</em> file to disable or limit the ability to restore configurations and tasks.</p>
+
+
+	<a name="Restoring-Tasks"></a>
+<h3 >Restoring Tasks<a href="#Restoring-Tasks" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Restore Tasks feature allows you to restore selected tasks from a saved configuration for the solution. After saving a configuration, select the <strong>File > Restore Tasks...</strong> menu option. This will open the Restore Tasks dialog.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#cc061c;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3741/Warning3.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>WARNING:</b></td>
+			<td style="vertical-align:top;">If a task has "Restore Tasks" listed as a disabled menu item in the <strong>&lt;disablemenulist&gt;</strong> tag, then the task cannot be selected for restoration. The task will be grayed out in the Restore Tasks dialog, and its checkbox cannot be checked.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Restore Tasks Dialog</strong></em></span><br /><img src="attachments/download/118615/43_FlexEditRestoreTasksDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Click the checkboxes next to the tasks you want to restore then click the <strong>Restore</strong> button. Note that tasks in the current solution will be overwritten with the task files from the saved configuration.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Select Tasks</strong></em></span><br /><img src="attachments/download/118614/43_FlexEditSelectTasksRestore.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Server-Upload-and-Server-Download"></a>
+<h2 >Server Upload and Server Download<a href="#Server-Upload-and-Server-Download" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The <strong>Server Upload</strong> feature allows you to save a file to LabCentral or to a local folder. This local folder can either be on the same PC or can be a network share.</p>
+
+
+	<p>To launch the Server Upload dialog, select a file in FlexEdit, and then click the <strong>Server Upload</strong> ( <img src="attachments/download/118671/43_ServerUploadButton.png" alt="" /> ) button. Enter the filename and any applicable comments in the <strong>Filename</strong> and <strong>Comment</strong> fields. In addition, you can select an existing file and its comments to be overwritten by checking the file's checkbox.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Server Upload Dialog</strong></em></span><br /><img src="attachments/download/118672/43_ServerUploadDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The <strong>Server Download</strong> feature allows you to download a file from LabCentral or a local folder. This local folder can either be on the same PC or can be a network share.</p>
+
+
+	<p>To launch the Server Download dialog, select a file in FlexEdit, and then click the <strong>Server Download</strong> ( <img src="attachments/download/118673/43_ServerDownloadButton.png" alt="" /> ) button. Select a file from the provided list, and enter any applicable comments.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Server Download Dialog</strong></em></span><br /><img src="attachments/download/125222/44_ServerDownloadDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Using-Mailslot-Messages"></a>
+<h2 >Using Mailslot Messages<a href="#Using-Mailslot-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>FlexEdit supports the use of the following mailslot messages through <code>\\.\mailslot\FlexEdit</code>:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Mailslot Messages</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Mailslot Message</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>DIE</td>
+			<td> This mailslot message closes FlexEdit. If there are modified open documents, the user is prompted to save the changes prior to exiting.</td>
+		</tr>
+		<tr>
+			<td>SAVEALL</td>
+			<td> This mailslot message causes FlexEdit to save any open, modified documents. An optional channel name can be specified with this message. If so, then the channel is set to "Executing" while saving, and then set to "Completed" when all saving is complete.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="FlexEdit_Design_Guide.html">FlexEdit Design Guide</a>
+	<ul>
+	<li><a class="wiki-page" href="FlexEdit_Tags.html">FlexEdit Tags</a></li>
+	</ul>
+	</li>
+		<li><a class="wiki-page" href="FlexEdit_Editors.html">FlexEdit Editors</a></li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>MessagesEditor</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="MessagesEditor.html">MessagesEditor</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="MessagesEditor"></a>
+<h1 >MessagesEditor<a href="#MessagesEditor" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The MessagesEditor is used to define mailslot messages, containing a series of instructions, to any mailslot destination. The MessagesEditor can be accessed in numerous locations throughout AutomationPanel and SolutionBuilder (e.g., through configuring the Button panel's <strong>Message On/Off</strong> property).</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>MessagesEditor</strong></em></span><br /><img src="attachments/download/118903/43_MessagesEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Using-the-MessagesEditor"></a>
+<h2 >Using the MessagesEditor<a href="#Using-the-MessagesEditor" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The MessagesEditor contains the following fields:</p>
+
+
+	<ul>
+	<li><ins><strong>Destination:</strong></ins> This is used to set the destination mailslot to send the message to.</li>
+		<li><ins><strong>Message:</strong></ins> This is used to define the message that will be sent. Channel substitution (e.g., <code>%&lt;ChannelName&gt;%</code>) is supported.</li>
+	</ul>
+
+
+	<p>The following right-click options are available:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2">Destination Field</th>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td> Undoes the last action.</td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td> Removes the selected text and copies it to the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td> Copies the selected text to the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td> Pastes the copied text.</td>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td> Deletes the selected text.</td>
+		</tr>
+		<tr>
+			<td>Select All</td>
+			<td> Selects all text in the field.</td>
+		</tr>
+		<tr>
+			<td>Right to left Reading order</td>
+			<td> Shifts the text justification in the field from left to right and vice versa.</td>
+		</tr>
+		<tr>
+			<td>Show Unicode control characters</td>
+			<td> Displays Unicode control characters.</td>
+		</tr>
+		<tr>
+			<td>Insert Unicode control character</td>
+			<td> Opens a drop-down menu of available Unicode control characters. Select one of the available Unicode control characters to insert it into the field.</td>
+		</tr>
+		<tr>
+			<td>Open IME</td>
+			<td> Opens/closes IME (i.e., Input Method Editor).</td>
+		</tr>
+		<tr>
+			<td>Reconversion</td>
+			<td> This right-click option is not applicable.</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2">Message Field</th>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td> Undoes the last action.</td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td> Removes the selected text and copies it to the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td> Copies the selected text to the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td> Pastes the copied text.</td>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td> Deletes the selected text.</td>
+		</tr>
+		<tr>
+			<td>Select All</td>
+			<td> Selects all text in the field.</td>
+		</tr>
+		<tr>
+			<td>Select Channel...</td>
+			<td> Launches the Channel Selection dialog, allowing you to select a channel to use in the mailslot message.</td>
+		</tr>
+		<tr>
+			<td>Select Procedure...</td>
+			<td> Launches the Select Procedure dialog, allowing you to select a procedure to use in the mailslot message. For more information, refer to the <a class="wiki-page" href="#Selecting-Procedures">Selecting Procedures</a> section below.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Selecting-Procedures"></a>
+<h3 >Selecting Procedures<a href="#Selecting-Procedures" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>You can select a procedure to use in the mailslot message via the <strong>Select Procedure...</strong> right-click option. This option launches the Select Procedure dialog. From this dialog, select the procedure to use, and then click <strong>OK</strong>.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Select Procedure Dialog</strong></em></span><br /><img src="attachments/download/122635/43_SelectProcedureDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Column/Field Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Column/Field</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Name</td>
+			<td> The name of the procedure.</td>
+		</tr>
+		<tr>
+			<td>Level</td>
+			<td> The procedure's priority level.</td>
+		</tr>
+		<tr>
+			<td>Return</td>
+			<td> The value the argument returns (i.e., <strong>Number</strong>, <strong>String</strong>, or <strong>None</strong>).</td>
+		</tr>
+		<tr>
+			<td>Arguments</td>
+			<td> The name of arguments used in the procedure.</td>
+		</tr>
+		<tr>
+			<td>Description</td>
+			<td> The description of the selected procedure. This field is blank if a procedure has not been selected.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Mailslot-Reference-Lists"></a>
+<h2 >Mailslot Reference Lists<a href="#Mailslot-Reference-Lists" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Mailslot message reference lists are sorted by destination and can be accessed from the following documents:</p>
+
+
+	<ul>
+	<li><a class="wiki-page" href="DataEngine_Mailslot_Messages_List.html">Data Engine</a></li>
+		<li><a class="wiki-page" href="File_Services.html">File Services</a></li>
+		<li><a class="wiki-page" href="PythonEngine_Mailslot_Messages.html">PythonEngine</a></li>
+		<li><a class="wiki-page" href="Standard_Softpanel_Messages_List.html">Softpanel</a></li>
+	</ul>
+</body>
+</html>

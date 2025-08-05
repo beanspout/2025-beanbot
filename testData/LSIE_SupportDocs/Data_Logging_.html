@@ -1,0 +1,750 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Data Logging </title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Data_Logging_.html">Data Logging</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Data-Logging"></a>
+<h1 >Data Logging<a href="#Data-Logging" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Data-Logging">Data Logging</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Blackbox-Logging">Blackbox Logging</a></li><li><a href="#Data-Log-Overview">Data Log Overview</a><ul><li><a href="#Data-Log-Types">Data Log Types</a><ul><li><a href="#Average-Log">Average Log</a></li><li><a href="#Snapshot-Log">Snapshot Log</a></li><li><a href="#Transient-Log">Transient Log</a></li></ul>
+</li><li><a href="#Data-File-Formats">Data File Formats</a><ul><li><a href="#DAT-Files">DAT Files</a></li><li><a href="#MDF-Files">MDF Files</a></li><li><a href="#MDF-Multi-rate-Files">MDF Multi-rate Files</a></li><li><a href="#BIN-Files">BIN Files</a></li></ul>
+</li><li><a href="#PrePost-Log-Actions">Pre/Post Log Actions</a><ul><li><a href="#Wait-Channel">Wait Channel</a></li></ul>
+</li><li><a href="#Transport-Delay">Transport Delay</a></li></ul>
+</li><li><a href="#Log-Order-List-Overview">Log Order List Overview</a><ul><li><a href="#Using-Array-Channels">Using Array Channels</a></li></ul>
+</li><li><a href="#Log-Header-Form-Overview">Log Header Form Overview</a><ul><li><a href="#Using-Array-Channels-2">Using Array Channels</a></li><li><a href="#Displaying-the-Operator-Screen">Displaying the Operator Screen</a></li><li><a href="#Masterini-File">Master.ini File</a></li></ul>
+</li><li><a href="#Data-Logging-Powertekini-Settings">Data Logging Powertek.ini Settings</a><ul><li><a href="#AutoFileIncrement">AutoFileIncrement</a></li><li><a href="#DataRedStringMap">DataRedStringMap</a></li><li><a href="#DataRedSplitFiles">DataRedSplitFiles</a></li><li><a href="#DataRedIgnoreLOLChanges">DataRedIgnoreLOLChanges</a></li><li><a href="#ExcludeDisabledModuleLOL">ExcludeDisabledModuleLOL</a></li><li><a href="#Date-and-Time-Format">Date and Time Format</a></li><li><a href="#LogAllDBFiles">LogAllDBFiles</a></li><li><a href="#MaxConvertedFileSizeMB">MaxConvertedFileSizeMB</a></li><li><a href="#MaxDataFileSizeMB">MaxDataFileSizeMB</a></li><li><a href="#RDBHeader">RDBHeader</a></li></ul>
+</li><li><a href="#Status-Channel">Status Channel</a></li><li><a href="#Project-Folder-Management">Project Folder Management</a><ul><li><a href="#Modifying-the-Active-Project">Modifying the Active Project</a></li></ul>
+</li><li><a href="#Data-Logs-Tool">Data Logs Tool</a><ul><li><a href="#Using-Quick-Logs">Using Quick Logs</a></li></ul>
+</li><li><a href="#Data-Log-Browser-Tool">Data Log Browser Tool</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The iTest data logging feature enables you to create, save, and use data files for reporting and analysis. Data is primarily logged in ASCII, a tab delimited format which is compatible with Excel, Uniplot, Matlab, and other common data analysis tools. These data files are stored in the iTest project folder located in the <em>$DATADIR</em>.</p>
+
+
+	<p>Data logs are composed of three different parts: information from the data log editor, log order lists, and log header forms. Combined, these elements allow you to create logs customized for your testing needs. The first step to creating a data log is to define the log header form. You can then create a log order list file and use the data log editor to combine the different parts to create the data log.</p>
+
+
+	<p>Data logging editors can be found in Test Manager or SolutionBuilder. These editors utilize log order lists and log header form files to define the details of the outputted data file. For more information on using Data Logging editors in Test Manager or SolutionBuilder, refer to the <a class="wiki-page" href="#See-Also">See Also</a> section. The following sections describe the general process of data logging in iTest.</p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Blackbox-Logging"></a>
+<h2 >Blackbox Logging<a href="#Blackbox-Logging" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest includes a built-in, event-driven data recorder with a circular buffer used to record data at a user-defined rate and duration. For more information on using and configuring Blackbox data logging, refer to the <a class="wiki-page" href="#See-Also">See Also</a> section.</p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Data-Log-Overview"></a>
+<h2 >Data Log Overview<a href="#Data-Log-Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Aside from selecting the Log Order List and the Log Header Form, there are some additional components and settings that are available for each data log.</p>
+
+
+	<a name="Data-Log-Types"></a>
+<h3 >Data Log Types<a href="#Data-Log-Types" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The data log type defines how data is obtained over the course of a running test. Data log types include average, snapshot, and transient. The following sections detail each data log type.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Unless otherwise noted, each data log type only supports the DAT (i.e., ASCII) data format. </td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Average-Log"></a>
+<h4 >Average Log<a href="#Average-Log" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Average data logs record the average values for selected channels over a defined period of time and rate as well as other optional statistics.</p>
+
+
+	<a name="Snapshot-Log"></a>
+<h4 >Snapshot Log<a href="#Snapshot-Log" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Snapshot data logs record a single instance of the selected channels.</p>
+
+
+	<a name="Transient-Log"></a>
+<h4 >Transient Log<a href="#Transient-Log" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Transient data logs continuously record selected channels for a defined period of time and rate. The transient data log type supports the DAT, MDF, MDF Multi-rate, and BIN data formats. Transient logs also support time aligning channel values. If using channel substitution (e.g., <code>%&lt;CLOCK_TIME&gt;%</code>) in the output file name, then the output file name will include the channel value as of when the data log was started.</p>
+
+
+	<p>These logs will accumulate up to a maximum of (2GB - 5MB) of raw data before writing the output file. This output file may be further split into multiple smaller files based on the <code>AutoFileIncrement</code>, <code>MaxConvertedFileSizeMB</code>, and <code>MaxDataFileSizeMB</code> <em>powertek.ini</em> settings; refer to their entries in the <a class="wiki-page" href="#Data-Logging-Powertekini-Settings">Powertek.ini Settings</a> section below or the <a class="wiki-page" href="ITest_INI_Options.html#Data-Logging">iTest INI Options</a> documentation for more information. For more information about transport delay and time alignment, refer to the <a class="wiki-page" href="#Transport-Delay">Transport Delay</a> section.</p>
+
+
+	<a name="Data-File-Formats"></a>
+<h3 >Data File Formats<a href="#Data-File-Formats" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Data logs can be outputted in four different formats: DAT, MDF, MDF Multi-rate, and BIN. DAT files are more common and can be used for all data log types, whereas MDF, MDF Multi-rate, and BIN can only be used for Transient data logs. When data files are created, they are saved to a sub-folder in the $DATADIR location.</p>
+
+
+	<a name="DAT-Files"></a>
+<h4 >DAT Files<a href="#DAT-Files" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>iTest data (DAT) files are tab-delimited ASCII formatted files. Each file consists of three sections including the header, the data descriptions, and the data values. For complete information, refer to the <a class="wiki-page" href="ITest_ASCII_Data_File_Format.html">iTest ASCII Data File Format</a> documentation.</p>
+
+
+	<a name="MDF-Files"></a>
+<h4 >MDF Files<a href="#MDF-Files" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Transient data logs can be outputted as Measurement Data Format (MDF). MDF files contain the raw measurement data and any associated metadata. It utilizes a compressed binary format to reduce the size of the data which makes it an efficient option for saving space and storing data quickly. Data logs outputted as MDF files will have the file extension <em>.mf4</em>.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">MDF files are an <a href="https://www.asam.net/" class="external">ASAM</a> standard.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="MDF-Multi-rate-Files"></a>
+<h4 >MDF Multi-rate Files<a href="#MDF-Multi-rate-Files" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>MDF Multi-rate files support up to three LOL files, each having their own rate. These LOL files are defined in the <em>logsetup.ini</em> file; this file resides in the same location as the <em>logsetup.dat</em> file and must be manually created/updated using an ASCII text editor. An example of the <em>logsetup.ini</em> file is displayed below:</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The <em>logsetup.ini</em> file is stored in the <em>$SUPPORTDIR/Data</em> folder by default. The location can be modified using the <code>LogSetupFilePath</code> <em>powertek.ini</em> setting. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Logsetup.ini File</strong></em></span><br /><img src="attachments/download/107893/42_LogSetupFile.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>When using this format as the <strong>Output Type</strong> in the Data Log editor, the <strong>Rate (Hz)</strong> and <strong>LOL</strong> values are ignored.</p>
+
+
+	<a name="Formatting"></a>
+<h5 >Formatting<a href="#Formatting" class="wiki-anchor">&para;</a></h5>
+
+
+	<p>The <em>LogSetup.ini</em> file entry format is: &lt;logname&gt;_&lt;number&gt;=&lt;lolfile&gt;,&lt;rate&gt;.</p>
+
+
+	<p><strong>Where:</strong></p>
+
+
+	<p><em>&lt;logname&gt;</em> is the name of the defined log. This is not the name of the output file.<br /><em>&lt;number&gt;</em> is the numbered (1 - 3) instance of the log.<br /><em>&lt;lolfile&gt;</em> is the name of the Log Order List (LOL) file, including the <em>.lol</em> file extension; e.g., <em>SysHeader.lol</em>.<br /><em>&lt;rate&gt;</em> is the rate the log is to run at in Hz. This value must be an even multiple of the system rate or 1kHz, if kHz logging is enabled.</p>
+
+
+	<a name="BIN-Files"></a>
+<h4 >BIN Files<a href="#BIN-Files" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>You can also save the outputted data of a transient log as a binary (BIN) file. BIN files omit the conversion process and retain data in its native binary format. When this log type is enabled, iTest generates two files for every log:</p>
+
+
+	<ol>
+	<li>A <em>.DAT</em> file that contains only the header lines.</li>
+		<li>A <em>.BIN</em> file that contains the binary data.</li>
+	</ol>
+
+
+	<p>The BIN filename format is: <em>&lt;logname&gt;.&lt;index&gt;.bin</em>.</p>
+
+
+	<p><strong>Where</strong>:</p>
+
+
+	<p><em>&lt;logname&gt;</em> is the name of the defined log.<br /><em>&lt;index&gt;</em> is the number of logs created for that log. The value starts at 00000 and increases as 00001, 00002, 00003, etc.</p>
+
+
+	<p>The <em>.DAT</em> file will contain an additional line, similar to the example below:</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>BINARYFILE=&lt;logname&gt;.&lt;index&gt;.bin</pre>
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Using this format is the responsibility of the customer and requires the A&#38;D Technology supplied document defining the syntax of iTest native binary format. Additionally, viewing data in binary format requires a custom parser. Any data saved in binary format will not be viewable in LabCentral or other standard viewers.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="PrePost-Log-Actions"></a>
+<h3 >Pre/Post Log Actions<a href="#PrePost-Log-Actions" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Each data log allows for up to 3 mailslot messages to be sent immediately before or after a data log is taken. The post-log actions are performed after the data file is generated. Depending on any latency due to the time required to generate the final data file, there may be a short delay before the mailslot messages are sent.</p>
+
+
+	<a name="Wait-Channel"></a>
+<h4 >Wait Channel<a href="#Wait-Channel" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>A wait channel can be designated for a data log. The log will wait for this channel to be set to a non-zero value before it starts recording data points. This allows for synchronization of the start of data logging with completion of any pre-log actions.</p>
+
+
+	<a name="Transport-Delay"></a>
+<h3 >Transport Delay<a href="#Transport-Delay" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Transport Delay refers to the number of seconds to delay recording of signal data, so that it aligns with the slowest input. This is designed to time-shift slow data such as emissions and allow it to align with instantaneous data such as speed and torque. The resolution of time is dependent on system scan rate for your system. The Transport Delay affects transient data logs and time aligned channels. All channels that are configured with a transport delay time will be delayed by the number of seconds in the Transport Delay column of the channel definition editor.</p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Log-Order-List-Overview"></a>
+<h2 >Log Order List Overview<a href="#Log-Order-List-Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>A log order list (LOL) is a list of channels that are logged to the data file. Each row in the file defines a channel logged to the outputted data file. Log order lists can be added using the editors in Test Manager or SolutionBuilder. LOL file contents can also be modified using FlexEdit. Alternatively, FlexEdit's pre-built DLL plugin editors also allow modifying LOL files pertaining to their supported device.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Log Order List files use the <em>.lol</em> file extension and are stored in the <em>$SUPPORTDIR/Data</em> folder by default. Their location can be modified using the <code>LogListFilePath</code> <em>powertek.ini</em> setting. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>The log order list editor descriptions can also be found in the table provided below.</p>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>LOL Editor Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Column</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Channel</td>
+			<td>Displays a list of channels to select from. This channel will be added to the outputted data file. <ins><strong>Note</strong></ins>: The value entered in this field reflects what is displayed. If the customer name is entered it will display the customer name. This column is sortable. </td>
+		</tr>
+		<tr>
+			<td>Alias/Customer Name</td>
+			<td>Indicates the selected channel's alias or customer name. You can change the column type by right-clicking anywhere within the editor and selecting the option <strong>Show Customer Name</strong>/ <strong>Show Alias</strong>, as applicable. This column is read-only and cannot be edited. Information will be automatically populated in this column, depending on the channel name selected.</td>
+		</tr>
+		<tr>
+			<td>Module ID</td>
+			<td>Indicates the module ID to which the channel belongs. This column is read-only and cannot be edited.</td>
+		</tr>
+		<tr>
+			<td>StdDev</td>
+			<td>Computes the standard deviation over the average period. In the data file, the StdDev column is labeled as <em>&lt;channelname&gt;_STDDev</em>.</td>
+		</tr>
+		<tr>
+			<td>Min</td>
+			<td>Computes the minimum value detected during the average period. In the data file, the Min column is labeled as <em>&lt;channelname&gt;_Min</em>.</td>
+		</tr>
+		<tr>
+			<td>Max</td>
+			<td>Computes the maximum value detected during the average period. In the data file, the Max column is labeled as <em>&lt;channelname&gt;_Max</em>.</td>
+		</tr>
+		<tr>
+			<td>Delta</td>
+			<td>Displays the difference between the channel value at the start of the log and the channel value at the end of the log. In the data file, the Delta column is labeled as <em>&lt;channelname&gt;_Delta</em>.</td>
+		</tr>
+		<tr>
+			<td>CV</td>
+			<td>The coefficient of variance. In the data file, the CV column is labeled as <em>&lt;channelname&gt;_CV</em>.</td>
+		</tr>
+		<tr>
+			<td>RMS</td>
+			<td>The root mean squared. The CV column is labeled as <em>&lt;channelname&gt;_RMS</em>. The formula is:<br /><img src="attachments/download/86472/RMSFormula.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>Data Quality</td>
+			<td>Enables the logging of high and low data quality values. This adds two new columns to the outputted data file labeled: <em>&lt;channelname&gt;_DQHigh</em> and <em>&lt;channelname&gt;_DQLow</em>. To use this feature, high and low data quality must be enabled for the specified channel via the Edit Channel dialog. If this has not been set up, the checkbox in this column will be disabled. For more information, refer to the <a class="wiki-page" href="ITest_Data_Quality.html">iTest Data Quality</a> documentation.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The statistical values are meaningful only for average logs. Snapshot and transient logs ignore the statistics columns.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Using-Array-Channels"></a>
+<h3 >Using Array Channels<a href="#Using-Array-Channels" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Virtual array channels used in a Log Order list must reference an index unless it is a non-Blackbox log order list used in a battery (BTS) system. For more information regarding logging array channels, refer to the <a class="wiki-page" href="ITest_Array_channels.html#Array-Elements-and-Logging">Array Elements and Logging</a> documentation.</p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Log-Header-Form-Overview"></a>
+<h2 >Log Header Form Overview<a href="#Log-Header-Form-Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Log header forms are used to define the list of keyword-value pairs that appear at the top of the data file known as the header. They can also be used to present a dialog to the operator before starting a test, prompting them to enter data. The log header form is created using the Log Header Form editors in Test Manager or SolutionBuilder. The log header form files are referred to as user variable list files (UVL) and use the <em>.uvl</em> file extension.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Log header form files are stored, by default, in the <em>$SUPPORTDIR/Varlists</em> folder. This can be modified using the <code>UserVariableListPath</code> <em>powertek.ini</em> setting.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><table>
+		<tr>
+			<td style="background:#cc061c;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3741/Warning3.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>WARNING:</b></td>
+			<td style="vertical-align:top;">Header data written to a data log file does not change once the file is created even if the data log is taken multiple times and writes to the same file.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Using-Array-Channels-2"></a>
+<h3 >Using Array Channels<a href="#Using-Array-Channels-2" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>You can use array channels in UVL files with a static index or no index. If a static index is used, the name will be used as it is in the header of any data logs using the UVL file. If the array channel in the UVL file has no index specified, then it will use the index passed to the STARTLOG command. The unindexed channel name appears in the header of the data log; however, the value comes from the indexed element specified by STARTLOG. For more information regarding logging array channels, refer to the <a class="wiki-page" href="ITest_Array_channels.html#Array-Elements-and-Logging">Array Elements and Logging</a> documentation.</p>
+
+
+	<a name="Displaying-the-Operator-Screen"></a>
+<h3 >Displaying the Operator Screen<a href="#Displaying-the-Operator-Screen" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>UVL files can be used to create a screen for the operator to enter test specific values at the start of a test. There are two methods for displaying this screen.</p>
+
+
+	<p><ins>Method 1 (iTest Console only):</ins> Send the Softpanel mailslot message <code>$NEWFORM;filename.uvl</code> <br /><ins>Method 2 (AutomationPanel only):</ins> Use FlexEdit to present the form to the operator using the Softpanel mailslot message <code>$FlexEdit;filename.uvl</code>.</p>
+
+
+	<p>The following examples demonstrate these screens:</p>
+
+
+	<p><strong>Message</strong>:</p>
+
+
+<pre>$NEWFORM;SysSchHeader.uvl</pre>
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Operator Screen Using $NEWFORM</strong></em></span><br /><img src="attachments/download/87074/Console41_NEWFORMUVLScreen.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p><strong>Message</strong>:</p>
+
+
+<pre>$FlexEdit;$SUPPORTDIR/varlists/SysSchHeader.uvl</pre>
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Operator Screen Using $FlexEdit</strong></em></span><br /><img src="attachments/download/87078/41_LaunchFlexEdit.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Masterini-File"></a>
+<h3 ><strong><em>Master.ini</em></strong> File<a href="#Masterini-File" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <em>master.ini</em> file supplies values to Datared when writing header values to data logs. Normally, the values for each channel of a UVL are written to the <em>master.ini</em> file via the tools launched by either the <code>$NEWFORM</code> or <code>$FlexEdit</code> mailslot messages to Softpanel. When the user saves from either of these screens, the data is written to the RDB and the <em>master.ini</em> file. If a channel does not have an entry in the <em>master.ini</em> file, then the current value of that channel will be read from the RDB instead.</p>
+
+
+	<p>When datared receives a binary file to convert to ASCII, the following sequence of tasks occurs:</p>
+
+
+	<ol>
+	<li>datared verifies whether the output filename exists. If the file exists, go to the last step of this process.</li>
+		<li>Locates the UVL filename specified for the header of the data log.</li>
+		<li>If the UVL filename is set to &lt;default&gt;, it reads the UVL filename from the <code>LastUserVariableList</code> <em>powertek.ini</em> entry.</li>
+		<li>For all non-control type channels listed in the UVL file, it reads the channels' values from the <em>master.ini</em> file and writes them to the header of the outputted data file. If a channel from the UVL file does not appear in the <em>master.ini</em> file or is a control type channel, the value is read from the RDB.</li>
+		<li>It then converts the binary data file to ASCII format and merges the results into the outputted data file.</li>
+	</ol>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Data-Logging-Powertekini-Settings"></a>
+<h2 >Data Logging Powertek.ini Settings<a href="#Data-Logging-Powertekini-Settings" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>These settings impact the generated data log files.</p>
+
+
+	<a name="AutoFileIncrement"></a>
+<h3 >AutoFileIncrement<a href="#AutoFileIncrement" class="wiki-anchor">&para;</a></h3>
+
+
+	<p><code>AutoFileIncrement</code> is a <em>powertek.ini</em> setting that activates automatic data log file splitting. When <code>AutoFileIncrement=FALSE</code>, the output file is still automatically split when the binary file size reaches 2GB - 5MB.</p>
+
+
+	<p>The criteria used to determine when to split the data log file is encapsulated in the <code>MaxDataFileSizeMB</code> <em>powertek.ini</em> setting when <code>AutoFileIncrement=TRUE</code>. The log header information will be replicated in each file. Each generated data file has a .##### number appended to the base name. The range of this number is 0.00001 - 0.99999. The base data log filename is determined when the log is started even when using channel substitution (e.g., <code>%&lt;CLOCK_TIME&gt;%</code>). For example, an output data file name that includes <code>%&lt;CLOCK_TIME&gt;%</code> may be named <em>NewLog1_4813.3901367188.00000.dat</em> and the next file would be named <em>NewLog1_4813.3901367188.00001.dat</em>.</p>
+
+
+	<p>If a new data log is started and shares the name of a previously split data file, then it will append to the last file in the sequence until it meets the criteria to split the data file. For example, if there were ten split instances of the SysManual_Trans log, then it will append to the last one (i.e., <em>SysManual_Trans.00009.dat</em>) instead of <em>SysManual_Trans.dat</em>.</p>
+
+
+	<p>This setting is only valid when used with Transient data logs. Other limitations may be present based on other <em>powertek.ini</em> settings used in conjunction with <code>AutoFileIncrement</code>.</p>
+
+
+	<a name="DataRedStringMap"></a>
+<h3 >DataRedStringMap<a href="#DataRedStringMap" class="wiki-anchor">&para;</a></h3>
+
+
+	<p><code>DataredStringMap</code> is a <em>powertek.ini</em> setting used by Datared to map a value to a string before writing it to the <em>.dat</em> file. This setting has the potential to reduce your requirement for Virtual String channels by allowing you to use numerics in VCL which are automatically replaced with string values in the built data log file.</p>
+
+
+	<p>Format of DataredStringMap: <code>&lt;ChannelName&gt;,&lt;PickListFile&gt;;&lt;ChannelName&gt;,&lt;PickListFile&gt;</code></p>
+
+
+	<p>Where &lt;ChannelName&gt; can be channel name, alias, or customer name. Each group of Channel-Picklist file is separated by a semi-colon.<br />The picklist file is located in the <em>$SUPPORTDIR\PickList\</em> directory, and it is a comma-separated file with a numeric value in the first column and a string value in the second column, e.g.,:<br /><span style="padding-left:2em;">1,charge</span><br /><span style="padding-left:2em;">2,discharge</span><br /><span style="padding-left:2em;">3,stop</span><br /><span style="padding-left:2em;">4,idle</span></p>
+
+
+	<p><strong>Example:</strong> <code>DataredStringMap=MyChan1,ModeValueMap.pkl;MyChan2,StatusValueMap.pkl</code></p>
+
+
+	<a name="DataRedSplitFiles"></a>
+<h3 >DataRedSplitFiles<a href="#DataRedSplitFiles" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>If the LOL file changes since the last time data was logged, the generated data log will not append to the pre-existing log file. Rather, it will write to a new file that has a .###### number appended to the base name, similar to when <code>AutoFileIncrement=True</code>. The <code>MaxDataFileSizeMB</code>, <code>MaxConvertedFileSizeMB</code>, and <code>AutoFileIncrement</code> <em>powertek.ini</em> settings can also affect how data files are split as they are being generated.</p>
+
+
+	<a name="DataRedIgnoreLOLChanges"></a>
+<h3 >DataRedIgnoreLOLChanges<a href="#DataRedIgnoreLOLChanges" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>When the <code>DataRedIgnoreLOLChanges</code> setting is set to TRUE, then new logs will use the last PARAMS line as the header if the LOL file changes since the last time data was logged. Missing channels will have -999999 as their value.</p>
+
+
+	<a name="ExcludeDisabledModuleLOL"></a>
+<h3 >ExcludeDisabledModuleLOL<a href="#ExcludeDisabledModuleLOL" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>If the <code>ExcludeDisabledModuleLOL</code> setting is set to TRUE, channels in the Log Order List that include the disabled module ID as part of their name will be excluded from the data file. <code>ExcludeDisabledModuleLOL</code> will be treated as FALSE if <code>DataRedIgnoreLOLChanges</code> is set to TRUE.</p>
+
+
+	<a name="Date-and-Time-Format"></a>
+<h3 >Date and Time Format<a href="#Date-and-Time-Format" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The date and time format for data files can be changed using the following <em>powertek.ini</em> settings: <code>DataRedTimeStampSeconds</code>, <code>DRDateFormat</code>, and <code>DRTimeFormat</code>. The time can be specified in epoch format (the number of seconds since January 1, 1970).</p>
+
+
+	<ul>
+	<li><ins><strong>DataRedTimeStampSeconds:</strong></ins> If set to TRUE, Date/Time columns are added in data files. Time is in epoch format.</li>
+		<li><ins><strong>DRDateFormat:</strong></ins> The format of the date field. This setting is also used to format the <code>vsSysDate</code> and the <code>vsSysDateTime</code> system channels. To learn more, see the <a class="wiki-page" href="ITest_System_Channels.html">iTest System Channels</a> guide.</li>
+		<li><ins><strong>DRTimeFormat:</strong></ins> The format of the time field (i.e., H:M:S).</li>
+	</ul>
+
+
+	<a name="LogAllDBFiles"></a>
+<h3 >LogAllDBFiles<a href="#LogAllDBFiles" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This setting is a list of comma-separated <em>.fil</em> files that will be used to populate the Log Order List when the <strong>All Channels</strong> options is used. If this setting is not present when the <strong>All Channels</strong> option is used, then the system will log as many channels as possible, up to the system maximum.</p>
+
+
+	<a name="MaxConvertedFileSizeMB"></a>
+<h3 >MaxConvertedFileSizeMB<a href="#MaxConvertedFileSizeMB" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The size in MB to limit the generated log (ASCII) file to before splitting the file. This is only applicable to <em>.dat</em> format data logs. This "splits" the data log into more manageable blocks as part of a post-processing action. The split data log files will have a .##### number appended to the base name, similar to automatic data log file splitting when <code>AutoFileIncrement=True</code>.</p>
+
+
+	<a name="MaxDataFileSizeMB"></a>
+<h3 >MaxDataFileSizeMB<a href="#MaxDataFileSizeMB" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Requires <code>AutoFileIncrement=TRUE</code>. The size in MB to limit the binary file to before generating the log (ASCII) file. The minimum value is 1MB, and the maximum value is 2GB-5MB. This "splits" long data logs into more manageable blocks and helps prevent loss of data in catastrophic conditions. Due to the binary file being in a different format and not containing all of the content that will appear in its generated ASCII log file, it is possible for the generated data log file to be larger (or smaller) than the value of this setting. If this setting is missing, <code>AutoFileIncrement</code> uses a default size of 1MB to limit the binary file to before generating the log file.</p>
+
+
+	<a name="RDBHeader"></a>
+<h3 >RDBHeader<a href="#RDBHeader" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Additional <em>data.def</em> fields can be added to data file headers using the <code>RDBHeaderAdditions</code> <em>powertek.ini</em> setting. These are rows of values added before Params and Units rows.</p>
+
+
+	<p><strong>Example:</strong><br /><pre>
+"RDBHeaderAdditions=""Field 1"", ""Field 2"", ""Field 3"" 
+where Field 1, Field 2, etc. are the names of fields in data.def
+</pre></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Status-Channel"></a>
+<h2 >Status Channel<a href="#Status-Channel" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The <code>Log Start</code> and <code>StartLog</code> data_engine mailslot messages and the STARTLOG VCL command support including a reference to a virtual output channel to record the progress of a data log. Refer to the applicable <a class="wiki-page" href="Reference_Lists.html">Reference List</a> for more information about each of these instructions.</p>
+
+
+	<p style="padding-left:1em;">1 = Log started<br />0 = Idle<br />-1 = Error: unable to start log due to missing log order list (.LOL) file<br />-2 = Error: log already running</p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Project-Folder-Management"></a>
+<h2 >Project Folder Management<a href="#Project-Folder-Management" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest data is logged to a sub-folder of the system's $DATADIR directory. This is referred to as a "project folder". You can modify the exact folder location with the <code>DataArchive</code> mailslot message to Data_Engine.</p>
+
+
+	<a name="Modifying-the-Active-Project"></a>
+<h3 >Modifying the Active Project<a href="#Modifying-the-Active-Project" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>You can modify the active project during runtime using the following Data_Engine mailslot message:</p>
+
+
+<pre>DataArchive Open &lt;ProjectName&gt;</pre>
+
+	<p><strong>Where</strong>:
+
+	<p><em>&lt;ProjectName&gt;</em> is the name of the folder the data will be saved to.<br />&nbsp;<br />When this command is executed, the following events occur:</p>
+</p>
+
+
+	<ol>
+	<li>The <em>powertek.ini</em> setting, <code>DrHoldReviewDir</code>, is set to the new project name entered in the command.</li>
+		<li>If the project name specified in the command does not exist as a sub-folder in $DATADIR, the folder will be created.
+	<ul>
+	<li>The new folder is initialized with a copy of the iTest <em>config.ini</em> file and the general purpose <em>INFO.ini</em> file.</li>
+		<li>A new <em>Systemlog.slg</em> file is created in the folder.</li>
+	</ul>
+	</li>
+		<li>All future data files are logged to the specified location.</li>
+	</ol>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Data-Logs-Tool"></a>
+<h2 >Data Logs Tool<a href="#Data-Logs-Tool" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Data Logs dialog is a tool that you can use to control and monitor your data logs. This dialog is available in both iTest Console and AutomationPanel by selecting <strong>Tools</strong> > <strong>Data Logs...</strong> from the main menu. The Data Logs dialog enables you to monitor the status and activity of active data logs that were started manually or via automated tests. From this dialog, you can start, stop, and abort logs as well as create quick (temporary) logs.</p>
+
+
+	<p>The Data Logs dialog below displays the start and completion of the Manual_Avg log. It lasts for four seconds and when completed a new data log event displays in the <strong>Data Log Events</strong> field. This entry indicates the completion time and the log's data file. The SysTestAvg600sec average log file is then aborted. When data logs are aborted, no <em>.dat</em> file is created.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Data Logs Dialog</strong></em></span><br /><img src="attachments/download/72498/38_DataLogging.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />The following tables describe the dialog interface and functionality.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Data Logs Columns</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Column</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Name</td>
+			<td>The name of the data log.</td>
+		</tr>
+		<tr>
+			<td>Status</td>
+			<td>The current status of the data log. Types include:<br />&nbsp;<br /><ins><strong>Idle:</strong></ins> The data log is currently inactive.<br /><ins><strong>Logging:</strong></ins> The data log is currently active and logging data.<br /><ins><strong>Waiting for Channel:</strong></ins> The data log is waiting until the wait channel is set to 1 before starting. </td>
+		</tr>
+		<tr>
+			<td>Type</td>
+			<td>The data log type. Types include average, snapshot, and transient logs. For more information, see <a class="wiki-page" href="#Data-Log-Types">Data Log Types</a>.</td>
+		</tr>
+		<tr>
+			<td>Duration</td>
+			<td>The duration of the log. The value in this column counts down once the log is started and the status transitions from <strong>Idle</strong> to <strong>Logging</strong>.</td>
+		</tr>
+		<tr>
+			<td>Wait Channel</td>
+			<td>The channel the log will wait for before starting. The channel's value must be set to a non-zero value before the data log starts. The log's wait channel is displayed in parenthesis.</td>
+		</tr>
+		<tr>
+			<td>File</td>
+			<td>The name of the file outputted data is written to. This does not support including a filepath of any sort.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Data Logs Actions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Action</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Start</td>
+			<td>Initiates the selected log.</td>
+		</tr>
+		<tr>
+			<td>Stop</td>
+			<td>Stops a running average or transient log. The action creates an output file with all accumulated data up to the current point. </td>
+		</tr>
+		<tr>
+			<td>Abort</td>
+			<td>Cancels the running log. This does not create an output file.</td>
+		</tr>
+		<tr>
+			<td>Data Browser</td>
+			<td>Launches the Data Browser application. <ins><strong>Note:</strong></ins> The Data Logs dialog in iTest Console will display and launch the A&#38;D Technology Data Miner tool. To access DataMiner, refer to the customer portal at <a href="https://support.aanddtech.com/home" class="external">support.aanddtech.com</a> then add the DataMiner file to the $EXECUTEDIR folder.</td>
+		</tr>
+		<tr>
+			<td>New Quick Log</td>
+			<td>Opens the Quick Data Logs dialog to allow creation of new quick (temporary) data logs.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Additional Fields</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Field</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Data Log Events</td>
+			<td>The Data Log Events text window displays messages received from the logging subsystem since the dialog was initialized. Each time the dialog is exited and restarted, the window is emptied.</td>
+		</tr>
+		<tr>
+			<td>Project Name</td>
+			<td> The project name field indicates the current project folder defined in the <em>powertek.ini</em> file's <code>DRHoldForReviewDir</code> setting. To browse other data files, click the project folder icon ( <img src="attachments/download/119436/ProjectFolderIcon.png" alt="" /> ) next to this field.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Using-Quick-Logs"></a>
+<h3 >Using Quick Logs<a href="#Using-Quick-Logs" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Quick Data Logs dialog is used to create temporary data logs. The logs display in the Data Log Status window until the iTest application is exited. When iTest restarts, all quick logs created in the previous session will no longer be available. Quick logs are used and managed similarly to permanent data logs; quick logs can be started, stopped, aborted, and viewed. In the Data Logs dialog, quick logs display in blue font. For complete descriptions of the dialog, refer to the Quick Data Log table below.</p>
+
+
+	<p>In the following graphic, a new quick log is created by clicking the <strong>New Quick Log</strong> button on the Data Logs dialog. The new quick log is an average log that has a duration of 60 seconds. It logs only the channels in the <em>MAIN.lol</em> file and data is saved to the <em>QuickLog_Sept12_17.dat</em> file. Quick logs display in blue font on the Data Logs dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Data Logs Dialog</strong></em></span><br /><img src="attachments/download/72502/38_QuickDataLog.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Data-Log-Browser-Tool"></a>
+<h2 >Data Log Browser Tool<a href="#Data-Log-Browser-Tool" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Data Log Browser is an AutomationPanel application used to graph logged test data. When you select a project's data file, the header data and parameters automatically populate in the window. You can then select which parameters you want to display in the chart, view the plotted data, and evaluate the various data points. For complete information about this application, refer to the <a class="wiki-page" href="Data_Log_Browser.html">Data Log Browser</a> documentation.</p>
+
+
+	<p>In the graphic below, the Data Log Browser is opened by clicking the <strong>Data Browser</strong> button on the Data Logs dialog. A project folder and data file are selected which then populate channel information from the log file in the Parameters and Header Data sections. Selecting parameters displays the information graphically on the chart and populates data values in the editor below the chart. In the chart, the zoom in/out functionality is used to view information for specific data points. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Data Log Browser</strong></em></span><br /><img src="attachments/download/72501/DataLogBrowser.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Working_with_the_Black_Box.html">Blackbox Logging</a></li>
+		<li><a class="wiki-page" href="Data_Logging_in_Test_Manager.html">Data Logging in Test Manager</a></li>
+		<li><a class="wiki-page" href="Data_Logging_in_SolutionBuilder.html">Data Logging in SolutionBuilder</a></li>
+		<li><a class="wiki-page" href="Recovering_incomplete_data_files.html">Recovering Incomplete Data Files</a></li>
+	</ul>
+</body>
+</html>

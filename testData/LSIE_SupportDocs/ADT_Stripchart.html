@@ -1,0 +1,435 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ADT Stripchart</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="ADT_Stripchart.html">ADT Stripchart</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="ADT-Stripchart-Object"></a>
+<h1 >ADT Stripchart Object<a href="#ADT-Stripchart-Object" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#ADT-Stripchart-Object">ADT Stripchart Object</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Field-Definitions">Field Definitions</a><ul><li><a href="#General-Tab">General Tab</a></li><li><a href="#Axes-Tab">Axes Tab</a></li></ul>
+</li><li><a href="#ADT-Stripchart-Object-Properties">ADT Stripchart Object Properties</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The ADT Stripchart display object graphically plots the status of selected database channels over time. Channel values display as a series of scrolling lines, in the strip chart.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>ADT Strip Chart</strong></em></span><br /><img src="attachments/download/6695/adtstripchart.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Field-Definitions"></a>
+<h2 >Field Definitions<a href="#Field-Definitions" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="General-Tab"></a>
+<h3 >General Tab<a href="#General-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>General Tab</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Option</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td><strong>Main Title</strong></td>
+			<td>Text that becomes the title at the top of the ADTStripChart. </td>
+		</tr>
+		<tr>
+			<td><strong>Subtitle</strong></td>
+			<td>Type the text that displays as the subtitle, under the title, at the top of the ADTStripChart. </td>
+		</tr>
+		<tr>
+			<td><strong>Label Field</strong></td>
+			<td>Select a label for the ADTStripChart. The default is <strong>Automatic</strong>. If an <strong>Alias</strong>, <strong>Customer Name</strong>, <strong>Module Name</strong>, or <strong>Description</strong> was not defined for a database channel in its channel definition, the database channel name displays by default.</td>
+		</tr>
+		<tr>
+			<td><strong>Grid</strong></td>
+			<td>Select the type of grid, if any, that displays on the ADTStripChart.</td>
+		</tr>
+		<tr>
+			<td><strong>Control ID</strong></td>
+			<td>Unique name for the control assigned by the application. This name can be used in mailslot messages to change control properties during runtime on the iTest Console. If you have multiple strip charts that will be updated programmatically, each will need a unique Control ID.</td>
+		</tr>
+		<tr>
+			<td><strong>Permit Runtime Changes</strong></td>
+			<td>Allows changes to be made programmatically.</td>
+		</tr>
+		<tr>
+			<td><strong>Show Digital Values</strong></td>
+			<td>When selected this will show values on the legend.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Axes-Tab"></a>
+<h3 >Axes Tab<a href="#Axes-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Axes Tab</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Option</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td><strong>Channels</strong></td>
+			<td>Lists the channels that display on the ADTStripChart. Click the <strong>Channel...</strong> button below this field to open the Channel Selection dialog, which you can use to select the database channels whose names and values display on the ADTStripChart. </td>
+		</tr>
+		<tr>
+			<td><strong>Channel Button</strong></td>
+			<td>Allows you to add a new channel.</td>
+		</tr>
+		<tr>
+			<td><strong>Delete Button</strong></td>
+			<td>Deletes the database channel selected in the <strong>Channels</strong> list.</td>
+		</tr>
+		<tr>
+			<td><strong>Y Axis Min</strong></td>
+			<td>Specify the minimum value for plotting on the Y axis for the channel selected in the <strong>Channels</strong> list. If this is disabled, click a channel name.</td>
+		</tr>
+		<tr>
+			<td><strong>Y Axis Max</strong></td>
+			<td>Specify the maximum value for plotting on the Y axis for the channel selected in the <strong>Channels</strong> list. If this is disabled, click a channel name.</td>
+		</tr>
+		<tr>
+			<td><strong>X Axis Size (seconds)</strong></td>
+			<td>Specify the number of seconds to display on the X axis. Note that 100 scans in a 100-Hz system displays data for the previous second.</td>
+		</tr>
+		<tr>
+			<td><strong>Scroll Buffer Pages</strong></td>
+			<td>Specify the number of pages of data that you want to buffer while the strip chart is active. You can then scroll back through this historical data.</td>
+		</tr>
+		<tr>
+			<td><strong>Memory Use (bytes)</strong></td>
+			<td>Read-only field. Indicates the amount of memory used to store the <strong>Scroll Buffer Pages</strong>.</td>
+		</tr>
+		<tr>
+			<td><strong>X Axis Size (data points)</strong></td>
+			<td>This is the number of horizontal samples displayed by the strip chart (including on buffer pages).</td>
+		</tr>
+		<tr>
+			<td><strong>Sample Rate</strong></td>
+			<td>Rate at which the signal(s) in the strip chart being drawn is sampled (in Hz). </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="ADT-Stripchart-Object-Properties"></a>
+<h2 >ADT Stripchart Object Properties<a href="#ADT-Stripchart-Object-Properties" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>These properties are useful when issuing the following mailslot message:</p>
+
+
+<pre>
+\\.\mailslot\DisplayName&gt;&gt;$SETITEMPROPERTY ControlID PropertyName PropertyValue
+</pre>
+
+	<p>The following are the names of the properties that can be changed by mailslot message to the display.  These property names may or may not be the same as the property names shown on the display object property setup dialogs.  Most of these property names are self-explanatory.  The first column is the data type of the property.</p>
+
+
+	<p>The int or OLE_COLOR for color is the color RGB values.  “BSTR” means the type of the property is string.  “int”, “float”, “long”, “short”, “double” means the type of the property is number.  “Boolean” means the property value should be 1 or 0.</p>
+
+
+	<p>Font property syntax is complicated.<br />&lt;font name&gt;,&lt;bold&gt;,,&lt;italic&gt;,&lt;font size&gt;,,&lt;strikeout&gt;,&lt;underline&gt;, <br />example: Arial,0,0,0,97500,0,0,0,400</p></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>ADT Stripchart Object Properties</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Type</strong></td>
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Notes</strong></td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ChannelName</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>LabelField</strong>*</td>
+			<td>values are case-sensitive</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>Rate</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ChangesOK</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>Points</strong></td>
+			<td>not implemented</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AproxMemSize</strong></td>
+			<td>not implemented</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>NumBufPages</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>ChartWidthSeconds</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMinY1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMaxY1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMinY2</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMaxY2</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMinY3</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMaxY3</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMinY4</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMaxY4</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMinY5</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMaxY5</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMinY6</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMaxY6</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMinY7</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMaxY7</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMinY8</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMaxY8</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMinY9</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMaxY9</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMinY10</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMaxY10</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMinY11</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMaxY11</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMinY12</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMaxY12</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ShowDigitalValues</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>GraphBackColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>GraphForeColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>DeskColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>ShadowColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>TextColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>XAxisColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>YAxisColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>font</td>
+			<td><strong>SubtitleFont</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>font</td>
+			<td><strong>MaintitleFont</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>font</td>
+			<td><strong>LabelFont</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>MainTitle</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>SubTitle</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>GridLineControl</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;">values: Automatic, Channel Name, Customer Name, Module Name, Alias, Description</span>
+
+	<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,810 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>VCL Command List</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="VCL_Command_List.html">VCL Command List</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="VCL-Command-List"></a>
+<h1 >VCL Command List<a href="#VCL-Command-List" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#VCL-Command-List">VCL Command List</a><ul><li><a href="#Array-File-Commands">Array File Commands</a><ul><li><a href="#ClearArray">ClearArray</a></li><li><a href="#LoadArray">LoadArray</a></li><li><a href="#ReadArray">ReadArray</a></li><li><a href="#SetArray">SetArray</a></li><li><a href="#StoreArray">StoreArray</a></li></ul>
+</li><li><a href="#Limits-Commands">Limits Commands</a><ul><li><a href="#Limits-Activate">Limits Activate</a></li><li><a href="#Limits-Deactivate">Limits Deactivate</a></li><li><a href="#Limits-Reactivate">Limits Reactivate</a></li></ul>
+</li><li><a href="#Logging-Commands">Logging Commands</a><ul><li><a href="#StartLog">StartLog</a></li><li><a href="#StopLog">StopLog</a></li></ul>
+</li><li><a href="#Miscellaneous-Commands">Miscellaneous Commands</a><ul><li><a href="#Execute">Execute</a></li><li><a href="#Exit">Exit</a></li><li><a href="#Message">Message</a><ul><li><a href="#Using-Channel-Substitution">Using Channel Substitution</a></li><li><a href="#Messaging-Drivers">Messaging Drivers</a></li></ul>
+</li><li><a href="#Pause">Pause</a></li><li><a href="#Preempt">Preempt</a></li><li><a href="#PyExec">PyExec</a></li><li><a href="#PySpawn">PySpawn</a></li><li><a href="#Return">Return</a></li><li><a href="#Set">Set</a></li><li><a href="#Spawn">Spawn</a></li><li><a href="#Suspend">Suspend</a></li><li><a href="#VCLNum">VCLNum</a></li><li><a href="#VCLStr">VCLStr</a></li></ul>
+</li><li><a href="#Ramp-Commands">Ramp Commands</a><ul><li><a href="#HoldRamp">HoldRamp</a></li><li><a href="#Ramp">Ramp</a></li><li><a href="#RampCOS">RampCOS</a></li><li><a href="#RampSIN">RampSIN</a></li><li><a href="#RampTable">RampTable</a></li><li><a href="#ResumeRamp">ResumeRamp</a></li><li><a href="#StopRamp">StopRamp</a></li></ul>
+</li><li><a href="#Timer-Commands">Timer Commands</a><ul><li><a href="#TimerReset">TimerReset</a></li><li><a href="#TimerSetStart">TimerSetStart</a></li><li><a href="#TimerStart">TimerStart</a></li><li><a href="#TimerStop">TimerStop</a></li></ul></li></ul></li></ul>
+
+
+	<a name="Array-File-Commands"></a>
+<h2 >Array File Commands<a href="#Array-File-Commands" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>These VCL commands and functions are intended to be used with arrays that were sourced from a <em>.ary</em> file. These will not work with virtual array channels, unless otherwise noted in the description.</p>
+
+
+	<a name="ClearArray"></a>
+<h3 >ClearArray<a href="#ClearArray" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sets all elements of an array in memory to zero.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+CLEARARRAY &lt;ArrayName&gt;
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>arrayname</em>: The name of an array file without the (<em>.ary</em>) file extension that has been loaded into memory. This cannot be parameterized by using a local variable or iTest channel to store the name of the file. Do not surround the filename with double-quotes even though it is referenced as a literal string.</p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="LoadArray"></a>
+<h3 >LoadArray<a href="#LoadArray" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Loads the values from an array file into memory. If the array filename matches the name of a virtual array channel, then instead of loading the file into memory, it will populate the elements of the channel from the array file. If no such file exists, the LOADARRAY command creates the array in memory, but the STOREARRAY command must be run to save the array in memory as an (<em>.ary</em>) file on the computer. The maximum number of array elements is 20,000 when loading an array into memory.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+LOADARRAY &lt;ArrayName&gt; &lt;Size&gt;
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>arrayname</em>: The name of an array file without the (<em>.ary</em>) file extension. This cannot be parameterized by using a local variable or iTest channel to store the name of the file or the name of the virtual array channel. Do not surround the filename with double-quotes even though it is referenced as a literal string.</p>
+
+
+	<p style="padding-left:1em;"><em>size</em>: The number of elements available in the array. iTest will reserve enough memory to support this number of elements.<br />&nbsp;</p>
+
+
+	<a name="ReadArray"></a>
+<h3 >ReadArray<a href="#ReadArray" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Returns a value from an element of an array that has been loaded into memory using the LOADARRAY VCL command.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+readarray(&lt;ArrayName&gt; &lt;Element&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>arrayname</em>: The name of an array file without the (<em>.ary</em>) file extension that has been previously loaded into memory. This cannot be parameterized by using a local variable or iTest channel to store the name of the file. Do not surround the filename with double-quotes even though it is referenced as a literal string.</p>
+
+
+	<p style="padding-left:1em;"><em>element</em>: An element is also referred to as an "array index". This parameter defines the element of the array to be read from memory. Only floating point values can be used. The index starts at zero and floating point values are truncated to integers.</p>
+
+
+	<p><strong>Example</strong><br /><pre>
++0.0 SET voNum1 readarray("newArrayFile" 1)
+
+* sets the voNum1 channel value to the contents of element 1 in the newArrayFile array stored in memory.
+</pre><br />&nbsp;</p>
+
+
+	<a name="SetArray"></a>
+<h3 >SetArray<a href="#SetArray" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Stores a value in an element of an array that has been loaded into memory using the LOADARRAY VCL command.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+SETARRAY &lt;ArrayName&gt; &lt;Element&gt; &lt;Value&gt;
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>arrayname</em>: The name of an array file without the (<em>.ary</em>) file extension that has been previously loaded into memory. This cannot be parameterized by using a local variable or iTest channel to store the name of the file. Do not surround the filename with double-quotes even though it is referenced as a literal string.</p>
+
+
+	<p style="padding-left:1em;"><em>element</em>: An element is also referred to as an "array index". This parameter defines the element of the array to be set in memory. Only floating point values can be used. The index starts at zero and floating point values are truncated to integers.</p>
+
+
+	<p style="padding-left:1em;"><em>value</em>: Only floating point values and literal string values can be used. Literal string values must be surrounded by double-quotes.</p>
+
+
+	<p><strong>Example</strong><br /><pre>
++0.0 SETARRAY newArrayFile 1 200.2
+</pre></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="StoreArray"></a>
+<h3 >StoreArray<a href="#StoreArray" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Stores the contents of an array in memory or a virtual array channel to an array <em>(.ary)</em> file.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+STOREARRAY &lt;ArrayName|ChannelName&gt;
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>arrayname|channelname</em>: The name of an array file without the (<em>.ary</em>) file extension or the name of a virtual array channel. This cannot be parameterized by using a local variable or iTest channel to store the name of the file or the name of the virtual array channel. When referencing an array file, do not surround the filename with double-quotes even though it is referenced as a literal string.</p>
+
+
+	<p><strong>Examples</strong><br /><pre>
++0.0 STOREARRAY newArrayFile
++0.0 STOREARRAY voaSysArrayChan1
+</pre><br />&nbsp;</p>
+
+
+	<a name="Limits-Commands"></a>
+<h2 >Limits Commands<a href="#Limits-Commands" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Limits-Activate"></a>
+<h3 >Limits Activate<a href="#Limits-Activate" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Turns on the global limits flag or if an iTest channel is given, this command sets the given channel's <strong>Limits Active</strong> RDB field value to 1.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+Limits Activate All|&lt;Channel&gt;
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>All | channel</em>: This parameter is either the string "All" or an iTest channel name. If this parameter is "All", the global limits flag is turned on.  To turn on a specific channel's limits use the channel's channel, customer, or module name as this parameter.</p>
+
+
+	<p><strong>Examples</strong><br /><pre>
+Limits Activate All
+Limits Activate spdDt1Dyno
+</pre><br />&nbsp;</p>
+
+
+	<a name="Limits-Deactivate"></a>
+<h3 >Limits Deactivate<a href="#Limits-Deactivate" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Turns off the global limits flag or if an iTest channel is given, this command sets the given channel's <strong>Limits Active</strong> RDB field value to 0.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+Limits Deactivate All|&lt;Channel&gt;
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>All | channel</em>: This parameter is either the string "All" or an iTest channel name. If this parameter is "All", the global limits flag is turned off.  To turn off a specific channel's limits use the channel's channel, customer, or module name as this parameter.</p>
+
+
+	<p><strong>Examples</strong><br /><pre>
++0.0 Limits Deactivate All
++0.0 Limits Deactivate spdDt1Dyno
+</pre><br />&nbsp;</p>
+
+
+	<a name="Limits-Reactivate"></a>
+<h3 >Limits Reactivate<a href="#Limits-Reactivate" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Activates all channels that have been deactivated individually.  To be activated a channel must have limits defined and it's <strong>Limits Active</strong> RDB field value must be 0. If this criteria is met, the channel's <strong>Limits Active</strong> RDB field value is set to 1.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+Limits Reactivate
+</pre><br />&nbsp;</p>
+
+
+	<a name="Logging-Commands"></a>
+<h2 >Logging Commands<a href="#Logging-Commands" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="StartLog"></a>
+<h3 >StartLog<a href="#StartLog" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Starts a log that was previously defined in the Test Manager. STARTLOG can optionally take a virtual output channel name as a second argument to track the progress of the log:</p>
+
+
+	<p style="padding-left:1em;">1 = Log started<br />0 = Idle<br />-1 = Error: unable to start log due to missing log order list (<em>.LOL</em>) file<br />-2 = Error: log already running</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+STARTLOG &lt;LogName&gt; [Status]
+</pre><br />&nbsp;</p>
+
+
+	<a name="StopLog"></a>
+<h3 >StopLog<a href="#StopLog" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Allows a user to stop a running average or transient log. This command stops the running log and saves any accumulated data.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+STOPLOG &lt;LogName&gt;
+</pre><br />&nbsp;</p>
+
+
+	<a name="Miscellaneous-Commands"></a>
+<h2 >Miscellaneous Commands<a href="#Miscellaneous-Commands" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Execute"></a>
+<h3 >Execute<a href="#Execute" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The principal use for this VCL command is to start another procedure from within the currently executing procedure that issued this command.  In this context, after an EXECUTE command is issued, the issuing procedure will wait until the child procedure is finished running before continuing to its next instruction.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Parent procedures inherit the priority level of the procedures they execute.</td>
+		</tr>
+	</table></p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+EXECUTE &lt;Procedure&gt;
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>procedure</em> : The name of the procedure to be executed or a virtual string channel that contains the name of the procedure to be executed.</p>
+
+
+	<p><strong>Example</strong><br /><pre>
++0.0 EXECUTE SysInit
+* executes the SysInit procedure
+</pre><br />&nbsp;</p>
+
+
+	<a name="Exit"></a>
+<h3 >Exit<a href="#Exit" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Stops the currently running procedure that issued this VCL command before its normal end.  Typically, this command is used when a conditional value evaluates to true.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+EXIT
+</pre><br />&nbsp;</p>
+
+
+	<a name="Message"></a>
+<h3 >Message<a href="#Message" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sends a message to an iTest Windows process. The MESSAGE command is one of the most commonly used commands in the VCL language. Many iTest processes support a variety of mailslot commands that enable you to perform test system functions.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+MESSAGE "\\Machine\Mailslot\Process&gt;&gt;Message" 
+</pre><br /><pre>
+* Shortened syntax to send messages only to the local machine.
+MESSAGE "Process&gt;&gt;Message" 
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>machine</em>: [Optional] The name of the Windows system to send the message to. Usually, this is a period, which references the local machine. For systems with multiple Windows systems connected, this may be the name of another machine. If using the shortened syntax, this parameter and the &lt;mailslot&gt; parameter are not included in the message and the message is sent to the local machine. This parameter must be included if using the longer syntax.</p>
+
+
+	<p style="padding-left:1em;"><em>mailslot</em>: [Optional] This part of the message is fixed. It should always be <em>mailslot</em>.  If using the shortened syntax, this parameter and the &lt;machine&gt; parameter are not included in the message. This parameter must be included if using the longer syntax.</p>
+
+
+	<p style="padding-left:1em;"><em>process</em>: Name of the iTest Windows process.</p>
+
+
+	<p style="padding-left:1em;"><em>message</em>: Message to be sent to the process.
+	<table>
+		<tr>
+			<td style="background:#cc061c;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3741/Warning3.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>WARNING:</b></td>
+			<td style="vertical-align:top;">Do not include a semi-colon in any messages to Data_Engine. Any text following the semi-colon, including the semi-colon, will not be included as part of the message.</td>
+		</tr>
+	</table>
+
+</p>
+
+
+	<a name="Using-Channel-Substitution"></a>
+<h4 >Using Channel Substitution<a href="#Using-Channel-Substitution" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The MESSAGE command allows for channel substitution so that current channel values can be included as part of the message. This command also accepts macros defined in the <em>config.ini</em> file, such as $DATADIR.</p>
+
+
+	<p>Channel substitution is done by surrounding a channel's name with %&lt; &gt;%. If the channel is a virtual string, the string value is included in the message. Otherwise, a number, with precision as specified for the iTest channel, is included in the message. If the channel is an array channel, the array index is specified through the use of magic brackets (e.g., <code>%&lt;channelname[index]&gt;%</code>).</p>
+
+
+	<p>ASCII characters is done by surrounding an ASCII code with curly braces.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#ebd700;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3740/caution.gif" alt="" /></td>
+			<td style="vertical-align:top;"><b>CAUTION:</b></td>
+			<td style="vertical-align:top;">If the substituted string value from a virtual string channel matches the name of another virtual string channel, then the second channel's string value will be substituted into the message.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><strong>Examples</strong><br /><pre>
+* Example: channel substitution
++0.0 MESSAGE “\\.\mailslot\Softpanel&gt;&gt;The value of DYNO_FDBK = %&lt;DYNO_FDBK&gt;%" 
+
+* Example: double channel substitution due to a virtual string name
+* given vsChan1 channel value is "vsChan2" and vsChan2 channel value is "HelloWorld" 
++0.0 MESSAGE "\\.\mailslot\Softpanel&gt;&gt;The returned string is %&lt;vsChan1&gt;%. We expect HelloWorld." 
+
+* Example: channel substitution for an array channel
++0.0 MESSAGE "\\.\mailslot\Softpanel&gt;&gt;The value of VOA_CHANNEL = %&lt;VOA_CHANNEL[i]&gt;%" 
+
+* Example: includes macro
++0.0 MESSAGE "\\.\mailslot\Softpanel&gt;&gt;iTest is installed at: $SYSTEMDIR" 
+
+* Example: shortened syntax
++0.0 MESSAGE "Softpanel&gt;&gt;iTest is installed at: $SYSTEMDIR" 
+
+* Example: driver on non-distributed system
++0.0 MESSAGE "\\.\mailslot\EtherCAT_1&gt;&gt; SetLogLevel:All" 
+
+* Example: driver on distributed system
++0.0 MESSAGE "\\.\mailslot\Data_Engine&gt;&gt; RTDriverMsg EtherCAT_1 SetLogLevel:All" 
+
+* Example: embedding an ASCII character 13 (enter)
++0.0 MESSAGE "\\.\Mailslot\Softpanel&gt;&gt;LIFTOFF IN PROGRESS,{13} PLEASE WAIT" 
+</pre></p>
+
+
+	<a name="Messaging-Drivers"></a>
+<h4 >Messaging Drivers<a href="#Messaging-Drivers" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Driver mailslot messages are communicated differently depending on whether the message is being sent to a distributed or non-distributed type system (i.e., IBS vs. RTX_DIST system types for example).</p>
+
+
+	<p>For non-distributed systems, the message is sent directly to the driver's defined mailslot.<br />For distributed systems, the message must first be routed to Data_Engine using the RTDriverMsg mailslot message. Data_Engine then passes the message to the indicated driver on the distributed system.<br />&nbsp;</p>
+
+
+	<a name="Pause"></a>
+<h3 >Pause<a href="#Pause" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Pauses the currently executing procedure for the given time period.  The defined time period can be in increments as small as one one-hundredth of a second (e.g. 0.01 seconds).</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+PAUSE &lt;Time&gt;
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>time</em>: Using a channel name or local variable as this parameter will make the procedure pause based on a dynamic value. E.g. setting the channel's value to 0 will end a PAUSE.<br />&nbsp;</p>
+
+
+	<a name="Preempt"></a>
+<h3 >Preempt<a href="#Preempt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Stops running procedures that have a level assignment less than the given value, except for the procedure that issued the PREEMPT command.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+PREEMPT &lt;Level&gt;
+</pre><br />&nbsp;</p>
+
+
+	<a name="PyExec"></a>
+<h3 >PyExec<a href="#PyExec" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Execute a Python script. The calling procedure is suspended until the script completes or the specified timeout period elapses. The return value from the script is placed into the specified channel. If the timeout period is less than zero, then there is no timeout and the procedure will only resume when the script has completed.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+PYEXEC &lt;Script string&gt;, &lt;Return value channel&gt;, &lt;Timeout period, in seconds&gt;
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>script string</em>: A string (or string channel) specifying the python file and function (with parameters) within that file to call. This is case-sensitive.</p>
+
+
+	<p style="padding-left:1em;"><em>return value channel</em>: The return value from the script will be stored into this channel. This channel can be a number or a string, the return value will be converted to correct format. If the script has no return value, then a string channel will be set to empty and a numeric channel will be set to zero.</p>
+
+
+	<p style="padding-left:1em;"><em>timeout period</em>: The maximum amount of time, in seconds, to wait for the script to complete. If the script doesn't complete in this amount of time, then the return value channel does NOT get set to a new value.</p>
+
+
+	<p><strong>Example</strong><br /><pre>
++0.0 PYEXEC "pyExample1 square(voDmo1Ch5)", voReturnChan, 10
+</pre></p>
+
+
+	<a name="PySpawn"></a>
+<h3 >PySpawn<a href="#PySpawn" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Execute a Python script. The calling procedure continues execution immediately after the script is started. It does NOT wait for the script to complete like PYEXEC.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+PYSPAWN &lt;Script string&gt;
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>script string</em>: A string(or string channel) specifying the python file and function (with parameters) within that file to call. This is case-sensitive.</p>
+
+
+	<a name="Return"></a>
+<h3 >Return<a href="#Return" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Causes the executing procedure to exit and return a value.  The executing procedure must be defined to return a value or string.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+RETURN &lt;ReturnValue&gt;
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>returnvalue</em>: The returned value can be the result of an expression, a literal value, a local variable’s value, another channel’s value, or the returned value from a VCL function.<br />&nbsp;</p>
+
+
+	<a name="Set"></a>
+<h3 >Set<a href="#Set" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sets the value of a channel to the result of an expression, a literal value, a local variable’s value, another channel’s value, or the returned value from a VCL function. Literal string values must be surrounded by double-quotes.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+SET &lt;ChannelName&gt; &lt;Expression&gt;
+</pre></p>
+
+
+	<p>The SET command allows for channel substitution in the literal string when setting string channels. This allows you to build up string values using a series of referenced channels without using concat.</p>
+
+
+	<p>The character pair \" is considered to be the beginning of an embedded string, except in the case of "\\.\mailslot\". All other instances of \" will have the backslash before the double-quotes trimmed off.</p>
+
+
+	<p><strong>Examples</strong><br /><pre>
++0.0 SET voNum1 voNum2             !! voNum1's value is set to the current value of voNum2
++0.0 SET voNum1 voNum2 + 3         !! voNum1's value is set to the current value of voNum2 + 3
++0.0 SET voNum1 round(voNum2)      !! voNum1's value is set to the value returned from the round() function
++0.0 SET vsStr1 "Hello\"           !! vsStr1's value is set to Hello
++0.0 SET vsStr1 "\\.\mailslot\"    !! vsStr1's value is set to \\.\mailslot\
++0.0 SET vsStr1 "%&lt;vsStr2&gt;% %&lt;vsStr3&gt;%%&lt;voNum2&gt;%"        !! vsStr1's value is set to a string combining the contents of the vsStr2, vsStr3, and voNum2 channels
+</pre><br />&nbsp;</p>
+
+
+	<a name="Spawn"></a>
+<h3 >Spawn<a href="#Spawn" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Starts another procedure that executes in parallel with the parent procedure. After this command is issued, the procedure will continue on to the next instruction without waiting for the spawned procedure to complete.<br />By default, a new instance of the child procedure will be started even if one is already running, unless <code>AllowMultipleProcInstances=FALSE</code> is present in the <em>powertek.ini</em> file.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+SPAWN &lt;Procedure&gt;
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>procedure</em> : The name of the procedure to be spawned or a virtual string channel that contains the name of the procedure to be spawned.<br />&nbsp;</p>
+
+
+	<a name="Suspend"></a>
+<h3 >Suspend<a href="#Suspend" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Suspends the currently running procedures until a given iTest channel's value becomes non-zero.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+SUSPEND [Level] controlparam=&lt;ChannelName&gt;
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>level</em>: Optional parameter. If given, only running procedures that have a level assignment less than or equal to this parameter are suspended, except for the procedure that issued the SUSPEND command.  If this parameter is not given, only the procedure that issued the SUSPEND command is suspended.  This parameter can also be a returned value from a VCL function.</p>
+
+
+	<p style="padding-left:1em;"><em>ChannelName</em>: iTest channel that is monitored. Use of virtual output array channels is not supported for this parameter.<br />&nbsp;</p>
+
+
+	<a name="VCLNum"></a>
+<h3 >VCLNum<a href="#VCLNum" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Defines a local float variable.  Its scope is defined only during the execution of the procedure and is limited to the procedure that issued the command.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+VCLNUM &lt;label&gt;
+</pre><br />&nbsp;</p>
+
+
+	<a name="VCLStr"></a>
+<h3 >VCLStr<a href="#VCLStr" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Defines a local string variable.  Its scope is defined only during the execution of the procedure and is limited to the procedure that issued the command.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+VCLSTR &lt;label&gt;
+</pre><br />&nbsp;</p>
+
+
+	<a name="Ramp-Commands"></a>
+<h2 >Ramp Commands<a href="#Ramp-Commands" class="wiki-anchor">&para;</a></h2>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#ebd700;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3740/caution.gif" alt="" /></td>
+			<td style="vertical-align:top;"><b>CAUTION:</b></td>
+			<td style="vertical-align:top;">Procedures do not wait for a ramp cycle to complete before continuing to the next instruction.</td>
+		</tr>
+	</table></p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Example Ramp Shapes</strong></em></span><br /><img src="attachments/download/3996/rampShape.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="HoldRamp"></a>
+<h3 >HoldRamp<a href="#HoldRamp" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Suspends the ramp cycle for a given iTest channel.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+HOLDRAMP &lt;ChannelName&gt;
+</pre><br />&nbsp;</p>
+
+
+	<a name="Ramp"></a>
+<h3 >Ramp<a href="#Ramp" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Performs a linear ramp of an iTest channel's value from its current value to a target value over a given period of time.<br />Refer to the diagram above for a graphical example.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+RAMP &lt;ChannelName&gt; &lt;TargetValue&gt; &lt;Seconds&gt;
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>channelname</em>: A local variable can not be passed as this parameter.</p>
+
+
+	<p style="padding-left:1em;"><em>targetvalue</em>: A numeric constant, a local variable, or a channel, module, or customer name can be used.<br />&nbsp;</p>
+
+
+	<a name="RampCOS"></a>
+<h3 >RampCOS<a href="#RampCOS" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Performs a cosine-shaped ramp of an iTest channel's value from its current value to a target value over a given period of time.  <br />Refer to the diagram above for a graphical example.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+RAMPCOS &lt;ChannelName&gt; &lt;TargetValue&gt; &lt;Seconds&gt;
+</pre></p>
+
+
+	<p>See the RAMP VCL command entry for an explanation of the command parameters.<br />&nbsp;</p>
+
+
+	<a name="RampSIN"></a>
+<h3 >RampSIN<a href="#RampSIN" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Performs a sine-shaped ramp of an iTest channel's value from its current value to a target value over a given period of time. <br />Refer to the diagram above for a graphical example.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+RAMPSIN &lt;ChannelName&gt; &lt;TargetValue&gt; &lt;Seconds&gt;
+</pre></p>
+
+
+	<p>See the RAMP VCL command entry for an explanation of the command parameters.<br />&nbsp;</p>
+
+
+	<a name="RampTable"></a>
+<h3 >RampTable<a href="#RampTable" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Ramps a given iTest channel based on setpoints from a tab-delimited (default) 2D table (<em>.tbl</em>) over a period of time. The ramp stops after the final row is read. The parameters for this command allow for configuring the table, starting row, column, and number of rows per second to use.<br />The table must be loaded into memory, using the TableLoad() VCL function, prior to running the RampTable command.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+RAMPTABLE &lt;ChannelName&gt; &lt;File&gt; &lt;Row&gt; &lt;Column&gt; &lt;Rows/Sec&gt;
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>channelname</em>: iTest channel to be ramped.</p>
+
+
+	<p style="padding-left:1em;"><em>file</em>: Name of the tab-delimited 2D table file (<em>.tbl</em>) used to provide setpoints for the channel ramping. Do not include the file extension or filepath for the filename.</p>
+
+
+	<p style="padding-left:1em;"><em>row</em>: The first row in the table to begin using for setpoints.</p>
+
+
+	<p style="padding-left:1em;"><em>column</em>: The column in the table to use for setpoints.</p>
+
+
+	<p style="padding-left:1em;"><em>rows/sec</em>: The number of rows to use per seconds for setpoints.</p>
+
+
+	<p><strong>Example</strong><br /><pre>
+VCLSTR MyTable                    !! define a local variable for the table name
+SET MyTable "SpeedTable"          !! set the local variable to the table name
+LOADTABLE MyTable 0 0             !! load the table into memory, assumes default filepath and extension
+RAMPTABLE spdDt1Dyno MyTable 1 10 0.5    
+* ramps the spdDt1Dyno channel using the 10th column, starting on row 1 at a rate of 1 row per 2 seconds
+PAUSE 100                         !! given 50 rows in the table, wait for 100 seconds to ramp the channel
+CLEARTABLE MyTable                !! optional; clears the table from shared memory
+</pre><br />&nbsp;</p>
+
+
+	<a name="ResumeRamp"></a>
+<h3 >ResumeRamp<a href="#ResumeRamp" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Resumes a ramp cycle for a given iTest channel that was suspended by the HOLDRAMP VCL command.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+RESUMERAMP &lt;ChannelName&gt;
+</pre><br />&nbsp;</p>
+
+
+	<a name="StopRamp"></a>
+<h3 >StopRamp<a href="#StopRamp" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Stops a ramp cycle for a given iTest channel.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+STOPRAMP &lt;ChannelName&gt;
+</pre><br />&nbsp;</p>
+
+
+	<a name="Timer-Commands"></a>
+<h2 >Timer Commands<a href="#Timer-Commands" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="TimerReset"></a>
+<h3 >TimerReset<a href="#TimerReset" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Resets a timer channel to its default starting value.  If the timer channel is already incrementing, the value is reset and the timer channel will continue to increment.  The default starting value is defined in the timer channel's <strong>Starting Value</strong> RDB field.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+TIMERRESET &lt;ChannelName&gt;
+</pre><br />&nbsp;</p>
+
+
+	<a name="TimerSetStart"></a>
+<h3 >TimerSetStart<a href="#TimerSetStart" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sets the value at which a timer channel begins counting at. If the timer channel is already incrementing, then the timer is set to the given value and continues to increment.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+TIMERSETSTART &lt;ChannelName&gt; &lt;Value&gt;
+</pre><br />&nbsp;</p>
+
+
+	<a name="TimerStart"></a>
+<h3 >TimerStart<a href="#TimerStart" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Starts a timer channel incrementing.  It begins counting from the value it had when the last instance of the TIMERSTOP VCL command was issued, regardless of any SET VCL commands or mailslot messages that may have been issued in the interim. To change the start value of a timer channel refer to the TIMERSETSTART VCL command.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+TIMERSTART &lt;ChannelName&gt;
+</pre><br />&nbsp;</p>
+
+
+	<a name="TimerStop"></a>
+<h3 >TimerStop<a href="#TimerStop" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Stops a timer channel.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+TIMERSTOP &lt;ChannelName&gt;
+</pre></p>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Step Tasks</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Step_Tasks.html">Step Tasks</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Step-Tasks-in-SolutionBuilder"></a>
+<h1 >Step Tasks in SolutionBuilder<a href="#Step-Tasks-in-SolutionBuilder" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Step-Tasks-in-SolutionBuilder">Step Tasks in SolutionBuilder</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Parts-of-a-Step-Task">Parts of a Step Task</a></li><li><a href="#Step-Task-Actions">Step Task Actions</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>This document describes the <strong>Step Task</strong> columns in iTest schedules and master schedules. iTest schedules contain three step task columns while master schedules contain two step task columns. There are two types of step tasks: <strong>Conditional</strong> and <strong>Unconditional</strong>. Unconditional step tasks are only supported in master schedules; these step tasks are performed immediately once the step is entered.</p>
+
+
+	<p>Conditional step tasks are continuously evaluated in order from left to right when a new step is entered. The first time a step task's condition evaluates as true, Schedule Runner executes the action defined in the step task. At this point, the evaluation of the step task stops, and the schedule remains on that step unless an <strong>End Step</strong> or <strong>Go To Step</strong> action is triggered.</p>
+
+
+	<p>The following image displays the <strong>Step Task</strong> columns in an iTest schedule.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Step Tasks within Schedules</strong></em></span><br /><img src="attachments/download/127081/44_StepTasks.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Throughout iTest, step conditions may also be referred to as end of state (EOS) conditions.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><a name="Parts-of-a-Step-Task"></a>
+<h2 >Parts of a Step Task<a href="#Parts-of-a-Step-Task" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Each step task consists of four elements:</p>
+
+
+	<ol>
+	<li><ins><strong>Description</strong></ins>: This is a label that represents the step task. It is shown in the schedule spreadsheet to indicate what task is selected for a particular step task column. Note that this field is not available for master schedules.</li>
+		<li><ins><strong>Condition</strong></ins>: Conditions are referred to as step conditions. A step condition is a sequence of one or more expressions joined by a logical operator, which can be either <strong>AND</strong> or <strong>OR</strong>. Each expression consists of a parameter, followed by an operator, followed by an operand. Parameters and operands support simple expressions with only one operator; you can perform addition, subtraction, multiplication, and division. In addition, parameters and operands support the use of channels of all types except for virtual strings and virtual string arrays. For more information, refer to the <a class="wiki-page" href="Step_Conditions.html">Step Conditions</a> documentation.</li>
+		<li><ins><strong>Action</strong></ins>: There are a number of pre-defined actions built into iTest. The selected action for a step task occurs when the condition entered above evaluates to true for the first time after a new step is executed. Actions are described in the <a class="wiki-page" href="Step_Tasks.html#Step-Task-Actions">Step Task Actions</a> table below. </li>
+		<li><ins><strong>Arguments</strong></ins>: Actions have arguments that provide additional information about what the action is supposed to do. Actions and their arguments are described in the <a class="wiki-page" href="Step_Tasks.html#Step-Task-Actions">Step Task Actions</a> table below.</li>
+	</ol>
+
+
+	<p>For schedules, step tasks are created in SolutionBuilder's Step Task Check Setup dialog. To access the step task dialog, navigate to <strong>Tests > Schedules</strong> from the SolutionBuilder main menu. In a schedule, click a cell in a <strong>Step Task</strong> column to open the Step Task Check Setup dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Step Task Check Setup Dialog</strong></em></span><br /><img src="attachments/download/99079/42_StepTaskCheckSetupDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />For master schedules, step tasks are created in SolutionBuilder's Edit Step Task dialog. To access this dialog, navigate to <strong>Tests</strong> > <strong>Master Schedules</strong> from the SolutionBuilder main menu. In a master schedule, click a cell in a <strong>Step Task</strong> column to open the Edit Step Task dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Edit Step Task Dialog</strong></em></span><br /><img src="attachments/download/114909/41_StepTaskDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;</p></p>
+
+
+	<a name="Step-Task-Actions"></a>
+<h2 >Step Task Actions<a href="#Step-Task-Actions" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The available step task actions and their arguments are described in the table below:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Step Task Actions - Descriptions and Arguments</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Argument</strong>  </td>
+		</tr>
+		<tr>
+			<td>Change Log Time</td>
+			<td>Supports high-speed logging during the transient part of a step; it then changes to snapshot logs for the remainder of the step. </td>
+			<td>New Log Time (in seconds)</td>
+		</tr>
+		<tr>
+			<td>End Step</td>
+			<td>Stops the step immediately and proceeds to the next scheduled step.</td>
+			<td>None</td>
+		</tr>
+		<tr>
+			<td>Go To Step</td>
+			<td>Ends the current step and goes to the specified step number indicated in the dialog.</td>
+			<td>Valid Step Number or Label</td>
+		</tr>
+		<tr>
+			<td>Increment Value</td>
+			<td>Adds a constant value to the current value of a channel; subtracts if a negative value is used. Syntax similar to "set value": channel +1, where 1 can be any numeric value. To decrement: channel +-1 </td>
+			<td>Channel + Value </td>
+		</tr>
+		<tr>
+			<td>Jump To Step</td>
+			<td>Jumps ahead to specified step indicated in the dialog. </td>
+			<td>Valid Step Number or Label</td>
+		</tr>
+		<tr>
+			<td>Pause</td>
+			<td>Holds the test until a ResumeSchedule command is received.</td>
+			<td>None</td>
+		</tr>
+		<tr>
+			<td>Pause GoToStep</td>
+			<td>Resumes from Pause and the test goes to the user-entered step number rather than the next step.</td>
+			<td>Valid Step Number</td>
+		</tr>
+		<tr>
+			<td>Save Value</td>
+			<td>Writes the channel name and value to the circuit's INI file so the value can be restored when iTest is restarted.</td>
+			<td>Alias Name</td>
+		</tr>
+		<tr>
+			<td>Set Value</td>
+			<td>Sets a channel or parameter to a value with the syntax <code>channel=value</code>. To set multiple values simultaneously, separate the <code>channel=value</code> inputs by semicolons. <code>value</code> can also be a simple expression with operators +, -, * or /. For example,<br /><code>Cntr1=Cntr2+Cntr3;Cntr4=Cntr1;Counter4=Counter2*6</code>.<br />&nbsp;<br /><strong><ins>Note</ins></strong>: String channels are not supported.</td>
+			<td>Channel = Value</td>
+		</tr>
+		<tr>
+			<td>Start New File</td>
+			<td>Supports breaking a potentially extremely large data file into smaller sections. It appends three digits to the current data file name starting at "001". Each time this action is executed the extender is incremented by 1. If this action is executed after the extender reaches "999",  it results in an error message, and the extender is not incremented.</td>
+			<td>None</td>
+		</tr>
+		<tr>
+			<td>Start Procedure</td>
+			<td>Launches the procedure asynchronously (spawn). The procedure name can be entered directly or selected from a picklist. The Start Procedure picklist is defined in the picklist file set by the <code>EOSActionPickList=</code> <em>powertek.ini</em> setting (e.g., <code>EOSActionPickList=SysActions</code>).<br />&nbsp;<br />Any necessary procedure arguments should be included in parentheses; for BTS, a special circuit index argument is typically required (i.e., <code>&lt;procedure name&gt;($index$)</code>).</td>
+			<td>Procedure Name</td>
+		</tr>
+		<tr>
+			<td>Stop Test</td>
+			<td>Stops the Schedule Runner from running the schedule.</td>
+			<td>None</td>
+		</tr>
+		<tr>
+			<td>Start Log</td>
+			<td>Starts the specified data log</td>
+			<td>name of data log or name of Virtual String containing the name of the data log</td>
+		</tr>
+		<tr>
+			<td>Stop Log</td>
+			<td>Stops the specified data log</td>
+			<td>name of data log or name of Virtual String containing the name of the data log</td>
+		</tr>
+		<tr>
+			<td>Module Action*</td>
+			<td>Sends a module action to the selected module(s). For more information, refer to the <a class="wiki-page" href="SystemAction_Vcl_Function.html#ModuleAction">ModuleAction</a> documentation.</td>
+			<td>Module(s) and Action. Both are selected from predefined fixed lists.</td>
+		</tr>
+		<tr>
+			<td>System Action*</td>
+			<td>Sends a system action to the selected module(s). For more information, refer to the <a class="wiki-page" href="SystemAction_VCL_Function.html#SystemAction-VCL-Function">SystemAction</a> documentation.</td>
+			<td>Module(s) and Action. Both are selected from predefined fixed lists.</td>
+		</tr>
+		<tr>
+			<td>Stop Master Schedule**</td>
+			<td>Prematurely stops the master schedule at its current step.</td>
+			<td>None</td>
+		</tr>
+		<tr>
+			<td>End Loop**</td>
+			<td>Ends the loop on its current step.</td>
+			<td>None</td>
+		</tr>
+		<tr>
+			<td>Top of Loop**</td>
+			<td>Ends the current step and proceeds to the first step of the loop.</td>
+			<td>None</td>
+		</tr>
+		<tr>
+			<td>Pause Master Schedule**</td>
+			<td>Holds the test in its current position until a ResumeSchedule command is received.</td>
+			<td>None</td>
+		</tr>
+		<tr>
+			<td>Spawn Python Script**</td>
+			<td>The specified script is started when the condition is met the first time. Choosing this option enables you to specify a script in the <strong>Script String</strong> field.</td>
+			<td>Python Script Name</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;font-style: italic;">Only applicable to non-BTS systems.</span><br />** <span style="font-size:0.90em;font-style: italic;">Only applicable to master schedules.</span></p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Step_Conditions.html">Step Conditions</a></li>
+	</ul>
+</body>
+</html>

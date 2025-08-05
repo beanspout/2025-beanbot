@@ -1,0 +1,428 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Managing Channels in Test Manager</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Managing_Channels_in_Test_Manager.html">Managing Channels in Test Manager</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Managing-Channels"></a>
+<h1 >Managing Channels<a href="#Managing-Channels" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Managing-Channels">Managing Channels</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Channel-Definition-Files">Channel Definition Files</a><ul><li><a href="#Creating-a-Channel-Definition-File">Creating a Channel Definition File</a></li><li><a href="#Duplicating-Many-Channels">Duplicating Many Channels</a></li><li><a href="#Renaming-Channels">Renaming Channels</a></li><li><a href="#Right-Click-Options">Right-Click Options</a></li><li><a href="#Activating-and-Deactivating-Channel-Definition-Files">Activating and Deactivating Channel Definition Files</a></li></ul>
+</li><li><a href="#Channel-Names">Channel Names</a><ul><li><a href="#Alias-Names">Alias Names</a><ul><li><a href="#Creating-a-New-Alias-Names-File">Creating a New Alias Names File</a></li><li><a href="#Right-Click-Options-2">Right-Click Options</a></li><li><a href="#Activating-and-Deactivating-Alias-Name-Files">Activating and Deactivating Alias Name Files</a></li></ul>
+</li><li><a href="#Customer-Names">Customer Names</a><ul><li><a href="#Creating-a-Customer-Name-File">Creating a Customer Name File</a></li><li><a href="#Right-Click-Options-3">Right-Click Options</a></li></ul>
+</li><li><a href="#Module-Names">Module Names</a></li></ul>
+</li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>In Test Manager, you can manage channel definition files and channel names using their respective nodes. To access the various editors, expand the Channels node in Test Manager.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Channels Node</strong></em></span><br /><img src="attachments/download/101585/42_ChannelsNode.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Channel-Definition-Files"></a>
+<h2 >Channel Definition Files<a href="#Channel-Definition-Files" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Channels are stored in channel definition files. These files are flat, tab delimited ASCII files that use the <em>.fil</em> extension and are displayed in a spreadsheet editor. Each row represents a channel, and each column represents a unique attribute or field for that channel. Column field entries can support numeric values, text, channel names, and simple expressions. Support of these entries is dependent on the column type (e.g., the <strong>Physical Channel</strong> column only supports numeric values). For more information about iTest channels, refer to the <a class="wiki-page" href="ITest_Channels.html">iTest Channels</a> documentation.</p>
+
+
+	<p>Channels can be managed in SolutionBuilder or Test Manager and are stored in the <em>$SUPPORTDIR\DB</em> folder. The following sections detail how to manage channels in Test Manager.</p>
+
+
+	<a name="Creating-a-Channel-Definition-File"></a>
+<h3 >Creating a Channel Definition File<a href="#Creating-a-Channel-Definition-File" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>When you create a new channel definition file, you must also add channels, define channel properties, and assign unique attributes to the channel. The following section outlines this process.</p>
+
+
+	<p>To create a channel definition file, do the following:</p>
+
+
+	<ol>
+	<li>Open Test Manager and expand the <em>Channels</em> and <em>Channel Definitions</em> nodes in the tree bar.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Expand Folders</strong></em></span><br /><img src="attachments/download/101599/38_ExpandChannelFolders.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Right-click the <em>Channel Definitions</em> node and select <strong>New ChannelDefinition</strong>. A blank editor displays.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add New ChannelDefinition File</strong></em></span><br /><img src="attachments/download/101598/38_AddNewChannelDefinition.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Right-click within the editor and select <strong>Add to End</strong>. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add New Channel</strong></em></span><br /><img src="attachments/download/101597/42_AddtoEnd.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br />The New Channel dialog displays. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Channel Dialog</strong></em></span><br /><img src="attachments/download/101596/38_NewChannelDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Enter a name for the channel in the <strong>Channel Name</strong> field.</li>
+		<li>Use the <strong>Channel Type</strong> drop-down to select a channel type. Depending on the channel type you select, the available fields that need to be completed change. </li>
+		<li>To activate <strong>Limits</strong>, <strong>Statistics</strong>, or <strong>Data Quality</strong>, click the appropriate checkboxes. These options will cause additional tabs and fields to display in the dialog that must be completed.</li>
+		<li>When the channel's properties have been defined, click <strong>OK</strong>. <br />&nbsp;<br />The new channel displays in the editor.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Channel Row</strong></em></span><br /><img src="attachments/download/101595/42_NewRow.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Edit the channel's unique attributes by modifying the values in each column.
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Each channel type has unique column headers. If you have a file with multiple channel types, the column headers will change when you select the channel row.</td>
+		</tr>
+	</table>
+
+
+</li>
+		<li>To re-edit the channel, double-click the channel name and the Edit Channel dialog will display.</li>
+	</ol>
+
+
+	<a name="Duplicating-Many-Channels"></a>
+<h3 >Duplicating Many Channels<a href="#Duplicating-Many-Channels" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>As your channel definition files grow larger and more complicated, you can save time by duplicating a channel into many different channels. To duplicate a channel in Test Manager, right-click a channel and select the option <strong>Duplicate Many</strong>. This feature duplicates the channel into the number of copies specified and assigns each a unique channel name. A maximum of 1,000 channels can be added at one time. This feature is only supported for Virtual Output channels.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Duplicate Many</strong></em></span><br /><img src="attachments/download/101591/37_DuplicateManyMenuOption.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Duplicate Many Dialog</strong></em></span><br /><img src="attachments/download/101600/37_DuplicateChannelMany.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Renaming-Channels"></a>
+<h3 >Renaming Channels<a href="#Renaming-Channels" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Channels can be renamed by editing the Channel Name field in the Edit Channel dialog. After saving your changes, a dialog displays prompting you to propagate the channel name changes. Click <strong>Yes</strong> to propagate the name changes; click <strong>No</strong> to close the dialog.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Propagate Name Changes</strong></em></span><br /><img src="attachments/download/101790/42_PropagateNameChangesDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>When you propagate the channel name changes, the <em>ChangeNames.log</em> is saved with the name change results. A dialog displays with the option to view the <em>ChangeNames.log</em> file immediately or at a later time.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>View ChangeNames.log</strong></em></span><br /><img src="attachments/download/101791/42_ViewChangeNames.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Right-Click-Options"></a>
+<h3 >Right-Click Options<a href="#Right-Click-Options" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following table describes the possible actions you can perform when you right-click within the Channel Definition File editor:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width: 150px;"><strong>Action</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Insert Before</td>
+			<td>Displays the New Channel dialog prompting you to create a new channel. After you have specified the details of the channel, the new channel is inserted before the selected channel.</td>
+		</tr>
+		<tr>
+			<td>Add to End</td>
+			<td>Displays the New Channel dialog prompting you to create a new channel. After you have specified the details of the channel, the new channel is added to the end of the channel list.</td>
+		</tr>
+		<tr>
+			<td>Edit</td>
+			<td>Enables you to edit the selected channel using the Edit Channel dialog.</td>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td>Deletes the selected channel row from the editor.</td>
+		</tr>
+		<tr>
+			<td>Duplicate</td>
+			<td>Duplicates the selected channel. This displays the New Channel dialog with the configurations kept from the duplicated channel.</td>
+		</tr>
+		<tr>
+			<td>Duplicate Many</td>
+			<td>Displays the Duplicate Channel Many dialog. You can use this option to create multiple duplicates of the selected channel by indicating a starting index and the number of copies to make. A maximum of 1,000 channels can be duplicated. This feature is only applicable for Virtual Output channels.</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td>Copies the value in a cell.</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td>Pastes the copied value into a new cell.</td>
+		</tr>
+		<tr>
+			<td>Copy Channel (s)</td>
+			<td>Copies the selected channel.</td>
+		</tr>
+		<tr>
+			<td>Insert Copied Channel(s)</td>
+			<td>Inserts a new version of the copied channel(s) and provides it a unique name.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Activating-and-Deactivating-Channel-Definition-Files"></a>
+<h3 >Activating and Deactivating Channel Definition Files<a href="#Activating-and-Deactivating-Channel-Definition-Files" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Channel definition files can be activated or deactivated, as necessary. To do this, right-click on a channel definition file node in the Test Manager tree bar and select/deselect the <strong>Active</strong> option. When "inactive," the channels contained in the channel definition file will not be loaded into the RDB at start-up.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Activating and Deactivating Channel Definition Files</strong></em></span><br /><img src="attachments/download/129691/44_ActiveInactiveChannelDefinitionFiles.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Channel-Names"></a>
+<h2 >Channel Names<a href="#Channel-Names" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Each channel in iTest can have up to three names and an optional label. The channel name is its primary name; there are also alias names, customer names, and module names. The primary channel name is the name as defined in the channel definition file. The same channel can be referenced by its other names, depending upon the configuration of the solution you are running.</p>
+
+
+	<a name="Alias-Names"></a>
+<h3 >Alias Names<a href="#Alias-Names" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The alias name is a label that can be used in displays and other parts of the iTest interface. The alias name can only contain local language characters and the space character. Aliases can be used for display objects, data logging, the channel select dialog, and on some Test Manager editors. The alias string can be set in the channel definition editor, the Edit Channel dialog, or in the various alias names editors.</p>
+
+
+	<p>Use of an alias name is not supported in many places, when it is a functional component. E.g., aliases cannot be used as either a Parameter or an Operand in a Step Task. BTS systems are the exception to this.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Edit Channel Dialog</strong></em></span><br /><img src="attachments/download/101588/iTest37_EditChannelDialogAlias.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />You can create separate alias files and activate or deactivate them from Test Manager. This is useful because it enables you to have different sets of alias files depending on your own external customer or testing requirements. The stand-alone alias files are located in the Test Manager navigation tree <strong>Channels > Alias Names</strong>. The view is the same as the Customer Name editor, however, unlike customer names duplicate alias names are permitted. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Alias Names</strong></em></span><br /><img src="attachments/download/101587/37_AliasDefinition.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Creating-a-New-Alias-Names-File"></a>
+<h4 >Creating a New Alias Names File<a href="#Creating-a-New-Alias-Names-File" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>To create a new Alias Name file, do the following:</p>
+
+
+	<ol>
+	<li>Expand the <em>Channels</em> node in the tree bar.</li>
+		<li>Right-click the <em>Alias Names</em> node and select the option <strong>New AliasDefinition</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add New Alias Name File</strong></em></span><br /><img src="attachments/download/101586/NewAliasDefinition.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br />A blank editor displays. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Alias Name File Editor</strong></em></span><br /><img src="attachments/download/101593/42_AliasFileEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Right-click in the editor and select one of the options <strong>Insert Before</strong> or <strong>Add to End</strong>. A blank row displays in the editor.</li>
+		<li>Click the drop-down in the Channel Name column and select a channel name. Depending on the configurations of the channel, the module name and description may be automatically added to the editor.</li>
+		<li>Enter an alias name for the channel in the Alias column.</li>
+		<li> Repeat for each alias name you want to add.</li>
+		<li>Save the file.</li>
+	</ol>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">You cannot edit the Module Name or the Description columns.</td>
+		</tr>
+	</table></p>
+
+
+	<p>Alias filenames are loaded upon iTest initialization. Any alias names specified in the alias files override the values stored in the channel definition files. When loading alias names from files, the last loaded name will override any previously loaded names. <br />&nbsp;</p>
+
+
+	<a name="Right-Click-Options-2"></a>
+<h4 >Right-Click Options<a href="#Right-Click-Options-2" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The following table describes the possible actions you can perform when you right-click within the Alias Names editor:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Action</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Insert Before</td>
+			<td>    Adds a new row before the selected alias name row.</td>
+		</tr>
+		<tr>
+			<td>Add to End</td>
+			<td>Adds a new row to the end of the alias name list.</td>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td>Deletes the selected alias name.</td>
+		</tr>
+		<tr>
+			<td>Move Up</td>
+			<td>Moves the selected alias name up within the list.</td>
+		</tr>
+		<tr>
+			<td>Move Down</td>
+			<td>Moves the selected alias name down within the list.</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td>Copies the value in a cell.</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td>Pastes the copied value into a new cell.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Activating-and-Deactivating-Alias-Name-Files"></a>
+<h4 >Activating and Deactivating Alias Name Files<a href="#Activating-and-Deactivating-Alias-Name-Files" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Alias files can be activated or inactivated, as necessary. You can activate or deactivate these files by right-clicking an alias file name in the Test Manager tree bar and selecting or deselecting the <strong>Active</strong> option.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Activating and Deactivating Alias Files</strong></em></span><br /><img src="attachments/download/101603/ActiveorUnactive.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Customer-Names"></a>
+<h3 >Customer Names<a href="#Customer-Names" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Each channel can also be assigned to a customer name. Customer names are not stored in the channel definition files. They are applied via an external file called an <em>.aka</em> file. Each row of the customer name file contains the channel name and the customer name that the channel will be assigned to. This enables channel referencing with multiple names throughout iTest and allows channels to be mapped to different I/O values depending on the hardware that is installed. The customer name editor is displayed below: <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Custom Name Editor</strong></em></span><br /><img src="attachments/download/101602/CustomerNames.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />Customer names utilize the same rules as channel names including length, character set, etc. There should not be any duplicate customer names in the system. If there are, the first channel which gets the customer name in a given file will have that name.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">For advanced usage of customer names, refer to the document <a class="wiki-page" href="Dynamic_Customer_Names.html">Dynamic Customer Names</a>.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Creating-a-Customer-Name-File"></a>
+<h4 >Creating a Customer Name File<a href="#Creating-a-Customer-Name-File" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>To create a new Customer Name file, do the following:</p>
+
+
+	<ol>
+	<li>Expand the <em>Channels</em> node in the tree bar.</li>
+		<li>Right-click the <em>Customer Names</em> folder and select the option <strong>New CustomerNames</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add New Customer Name File</strong></em></span><br /><img src="attachments/download/101601/NewCustomerNameFile.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br />A blank editor displays. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Customer Names Editor</strong></em></span><br /><img src="attachments/download/101594/42_CustomerNamesEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Right-click in the editor and select one of the options <strong>Insert Before</strong> or <strong>Add to End</strong>. A blank row displays in the editor.</li>
+		<li>Click the drop-down in the Channel Name column and select a channel name. Depending on the configurations of the channel, the module name and description may be automatically added to the editor.</li>
+		<li>Enter a customer name for the channel in the Customer Name column.</li>
+		<li>Repeat for each customer name you want to create.</li>
+		<li>Save the file.</li>
+	</ol>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">You cannot edit the Module Name or the Description columns.</td>
+		</tr>
+	</table></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Right-Click-Options-3"></a>
+<h4 >Right-Click Options<a href="#Right-Click-Options-3" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The following table describes the possible actions you can perform when you right-click within the Customer Names editor:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Action</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Insert Before</td>
+			<td>Adds a new row before the selected customer name row.</td>
+		</tr>
+		<tr>
+			<td>Add to End</td>
+			<td>Adds a new row to the end of the customer names list.</td>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td>Deletes the selected customer name.</td>
+		</tr>
+		<tr>
+			<td>Move Up</td>
+			<td>Moves the selected customer name up within the list.</td>
+		</tr>
+		<tr>
+			<td>Move Down</td>
+			<td>Moves the selected customer name down within the list.</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td>Copies the value in a cell.</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td>Pastes the copied value into a new cell.</td>
+		</tr>
+		<tr>
+			<td>Update VCL Ref</td>
+			<td>Updates the VCL references using the customer names.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Module-Names"></a>
+<h3 >Module Names<a href="#Module-Names" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Module channels are channels that were created for specific modules. The module name is an advanced concept and may only be necessary to understand if you are troubleshooting and need to trace back to some logic in a module, or are developing a module yourself.  Module channels can reference other iTest channels that have been mapped with channel assignments. When channels are mapped, a module name can be used to refer to the same value in the RDB as a channel name. This concept is only relevant for modular solutions, for more information regarding this feature refer to the <a class="wiki-page" href="Modules.html">Modules</a> documentation.</p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="ITest_Channels.html">iTest Channels</a></li>
+	</ul>
+</body>
+</html>

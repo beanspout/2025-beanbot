@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Eclipse and PyDev Setup</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Automating_iTest_with_Python.html">Automating iTest with Python</a></li>
+<li><a href="Eclipse_and_PyDev_Setup.html">Eclipse and PyDev Setup</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Eclipse-and-PyDev-Setup"></a>
+<h1 >Eclipse and PyDev Setup<a href="#Eclipse-and-PyDev-Setup" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Eclipse-and-PyDev-Setup">Eclipse and PyDev Setup</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Downloading-and-Installing-Eclipse">Downloading and Installing Eclipse</a></li><li><a href="#Installing-PyDev">Installing PyDev</a></li><li><a href="#Creating-and-Setting-Up-Your-Python-Project">Creating and Setting Up Your Python Project</a></li><li><a href="#Setting-Up-Debug-Configuration">Setting Up Debug Configuration</a></li><li><a href="#Debugging-iTest-Python-Scripts-Remotely">Debugging iTest Python Scripts Remotely</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The iTest package includes the PythonWin IDE to help with debugging Python scripts. You can launch this as a standalone application or from Test Manager by right-clicking a script and selecting the <strong>Debug...</strong> option. In some cases, the IDE may not be adequate for all developers. This guide explains how to install Eclipse and connect it to the iTest PythonEngine executable to use the Eclipse debugger instead of PythonWin. It outlines the process for downloading and installing Eclipse and adding PyDev to enhance your debugging system.</p>
+
+
+	<a name="Downloading-and-Installing-Eclipse"></a>
+<h2 >Downloading and Installing Eclipse<a href="#Downloading-and-Installing-Eclipse" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To download Eclipse:</p>
+
+
+	<ol>
+	<li>Using your web browser, navigate to <a class="external" href="https://www.eclipse.org/downloads/">https://www.eclipse.org/downloads/</a>. At the time of this document's creation, Eclipse Neon is the version used.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Get Eclipse Neon</strong></em></span><br /><img src="attachments/download/35395/GetEclipseNeon.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>Download 64 bit</strong>. This opens a new web page.</li>
+		<li>Click <strong>Download</strong> on the web page to download the program.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Download</strong></em></span><br /><img src="attachments/download/35391/Download.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Save the Eclipse install to a location on your PC.</li>
+		<li>Open the install. A list of Eclipse installations displays.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Eclipse Installer</strong></em></span><br /><img src="attachments/download/35392/EclipseInstaller.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Installation Type</strong></em></span><br /><img src="attachments/download/35398/InstallationOptions.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select <strong>Eclipse IDE for C/C++ Developers</strong>.</li>
+		<li> Select an installation folder.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Installation Folder</strong></em></span><br /><img src="attachments/download/35396/InstallationFolder.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>Install</strong> to begin the program installation.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Installing</strong></em></span><br /><img src="attachments/download/35399/InstallingtoFolder.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>Launch</strong> to launch the program.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Launch</strong></em></span><br /><img src="attachments/download/35404/Launch.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>eclipse neon.1</strong></em></span><br /><img src="attachments/download/35403/Launching.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select a workspace directory and click <strong>OK</strong>. The Welcome screen displays.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select Your Workspace Directory</strong></em></span><br /><img src="attachments/download/35432/WorkspaceDirectory.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Welcome</strong></em></span><br /><img src="attachments/download/35431/Welcome.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<a name="Installing-PyDev"></a>
+<h2 >Installing PyDev<a href="#Installing-PyDev" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To install PyDev onto Eclipse:</p>
+
+
+	<ol>
+	<li>Select <strong>Help > Install New Software</strong> from the main menu. The Available Software dialog displays.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Install New Software</strong></em></span><br /><img src="attachments/download/35400/InstallNewSoftware.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Available Software Dialog</strong></em></span><br /><img src="attachments/download/35385/AvailableSoftwareDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>In the <strong>Work with</strong> field, enter <a class="external" href="http://pydev.org/updates">http://pydev.org/updates</a> and click <strong>Add</strong>.</li>
+		<li>You are prompted to add a repository. Enter <strong>PyDev</strong> and click <strong>OK</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>PyDev Repository</strong></em></span><br /><img src="attachments/download/35418/PyDevRepository.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the <strong>Select All</strong> button, and then click <strong>Next</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select All Installation Items</strong></em></span><br /><img src="attachments/download/35423/SelectAll.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Review the installation items and click <strong>Next</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Review Installation Items</strong></em></span><br /><img src="attachments/download/35397/InstallationItems.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Review the licenses and accept the terms of agreement. Click <strong>Finish</strong>. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Review Licenses and Accept Terms of Agreement</strong></em></span><br /><img src="attachments/download/35386/AgreetoLicense.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>OK</strong> on the security warning dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Security Warning Dialog</strong></em></span><br /><img src="attachments/download/35422/SecurityWarning.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select the option to trust the certificates and click <strong>OK</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Trust Certificates</strong></em></span><br /><img src="attachments/download/35428/TrustCertificate.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Once PyDev has been installed, you will need to restart Eclipse. When prompted, click <strong>Yes</strong>. Eclipse will close and reopen.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Restart Eclipse</strong></em></span><br /><img src="attachments/download/35420/RestartEclipse.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select <strong>Window > Preferences</strong> from the main menu to open the Preferences dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Preferences</strong></em></span><br /><img src="attachments/download/35430/WindowPreferences.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Preferences Dialog</strong></em></span><br /><img src="attachments/download/35414/PreferencesDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Use the navigation menu to open the <strong>PyDev</strong>, <strong>Interpreters</strong>, and the <strong>Python Interpreter</strong> branches.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Python Interpreter Branch</strong></em></span><br /><img src="attachments/download/35419/PythonInterpreters.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the <strong>New</strong> button. This opens the Select Interpreter dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select Interpreter Dialog</strong></em></span><br /><img src="attachments/download/35425/SelectInterpreter.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Enter iTestPython in the interpreter name field.</li>
+		<li>Use the browse button to search for the Python interpreter located in the iTest installation. This is the <em>python.exe</em> application file.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>iTest Installation Python Interpreter</strong></em></span><br /><img src="attachments/download/35417/Pyhon_EXE.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>Open</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Python Interpreters</strong></em></span><br /><img src="attachments/download/35421/Select_Interpreter.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>OK</strong>. A new dialog displays, prompting you to select folders to add to the SYSTEM python path. By default, all folder options are selected. Use this setting.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Python Folder Selection</strong></em></span><br /><img src="attachments/download/35426/SelectionNeededDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>OK</strong>. Your Python Interpreter set up is complete.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Python Interpreters</strong></em></span><br /><img src="attachments/download/35401/InterpreterDefined.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select <strong>OK</strong> to exit the Preferences dialog.</li>
+	</ol>
+
+
+	<a name="Creating-and-Setting-Up-Your-Python-Project"></a>
+<h2 >Creating and Setting Up Your Python Project<a href="#Creating-and-Setting-Up-Your-Python-Project" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To create a new Python project:</p>
+
+
+	<ol>
+	<li>Exit the Welcome screen.</li>
+		<li>Open the PyDev perspective. Select <strong>Window > Perspective > Open Perspective > Other...</strong> from the main menu. This opens the Open Perspective dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>PyDev Perspective</strong></em></span><br /><img src="attachments/download/35415/PyDevPerspective.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Open Perspective</strong></em></span><br /><img src="attachments/download/35411/OpenPerspective.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Highlight <strong>PyDev</strong> and click <strong>OK</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New PyDev Perspective</strong></em></span><br /><img src="attachments/download/35409/NewPerspective.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Right-click the default named folder and select <strong>New</strong>. The Select a Wizard dialog opens.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select a Wizard Dialog</strong></em></span><br /><img src="attachments/download/35424/SelectAWizard.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Expand the <em>PyDev</em> folder.</li>
+		<li>Select the <strong>PyDev Project</strong> option.</li>
+		<li>Click <strong>Next</strong>. This opens the PyDev Project dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>PyDev Project Dialog</strong></em></span><br /><img src="attachments/download/35416/PyDevProject.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Enter "iTest" as the name of the project.</li>
+		<li>Use the remaining default settings. Click <strong>Finish</strong>.</li>
+		<li>Right-click the iTest project folder and <strong>New > Other...</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Your Project</strong></em></span><br /><img src="attachments/download/35408/NewOther.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Expand the <em>PyDev</em> folder and highlight the <strong>&#38;Link to Existing Source</strong> subfolder.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Link to Existing Source</strong></em></span><br /><img src="attachments/download/35405/LinkToSource.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>Next</strong>. This opens the Add Pre-Existing Source Folders dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Pre-Existing Source Folders Dialog</strong></em></span><br /><img src="attachments/download/35412/PreExistingSourceFolders.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Enter "PythonScripts" in the <strong>Name</strong> field. </li>
+		<li>Click the <strong>Browse</strong> button to locate the installation location of your <em>PythonScripts</em> folder.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Link to Existing Source</strong></em></span><br /><img src="attachments/download/35413/PreExistingFolderAdde.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>Finish</strong>.</li>
+	</ol>
+
+
+	<a name="Setting-Up-Debug-Configuration"></a>
+<h2 >Setting Up Debug Configuration<a href="#Setting-Up-Debug-Configuration" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To set up debug configuration:</p>
+
+
+	<ol>
+	<li>Expand the iTest project folder and the <em>PythonScripts</em> folder.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Expand the Project Folder</strong></em></span><br /><img src="attachments/download/35394/ExpandProjectFolder.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Right-click the script to debug. Select <strong>Debug As > Python Run</strong> from the menu options.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Debug Script</strong></em></span><br /><img src="attachments/download/35388/DebugAsPythonRun.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br />The debug of the python script results in an error message. This is due to missing DLLs. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Console Message</strong></em></span><br /><img src="attachments/download/35389/DLLFailure.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br />Open the Eclipse Debug Configurations:<br />&nbsp;</li>
+		<li>Select <strong>Run > Debug Configurations...</strong> from the main menu. This opens the Debug Configurations dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Debug Configurations</strong></em></span><br /><img src="attachments/download/35406/NavigateToDebugConfigurations.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Debug Configurations Dialog</strong></em></span><br /><img src="attachments/download/35390/DebugConfigurationsDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select your configuration.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Configuration</strong></em></span><br /><img src="attachments/download/35427/SelectYourConfiguration.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select the Environment tab.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Environment Tab</strong></em></span><br /><img src="attachments/download/35393/EnvironmentTab.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select the <strong>New</strong> button. This opens the New Environment Variable dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Environment Variable</strong></em></span><br /><img src="attachments/download/35407/NewEnvironmentVariable.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Add the iTest Execute folder to the path.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Adding the iTest Execute Folder</strong></em></span><br /><img src="attachments/download/71687/NewEnvironment.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>OK</strong>.</li>
+		<li>Click <strong>Close</strong> and save your new debug configuration.<br />&nbsp;<br />You can now begin debugging your iTest python scripts.</li>
+	</ol>
+
+
+	<a name="Debugging-iTest-Python-Scripts-Remotely"></a>
+<h2 >Debugging iTest Python Scripts Remotely<a href="#Debugging-iTest-Python-Scripts-Remotely" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To debug iTest Python Scripts remotely:</p>
+
+
+	<ol>
+	<li>Open the Python Debug Perspective. Select <strong>Window > Perspective > Open Perspective > Other...</strong> from the main menu.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Opening Debug Perspective</strong></em></span><br /><img src="attachments/download/35410/OpeningDebugPerspective.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select <strong>Debug</strong> from the Open Perspective dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Open Perspective Dialog</strong></em></span><br /><img src="attachments/download/35387/Debug.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>OK</strong>.</li>
+		<li>Select the PyDev Debug Server icon. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Starting the PyDev Server</strong></em></span><br /><img src="attachments/download/35429/StartPyDevServer.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br />Now, when you call Python Scripts from iTest, it will stop at the breakpoint.</li>
+	</ol>
+</body>
+</html>

@@ -1,0 +1,57 @@
+{
+  "error_codes": [
+    {
+      "code": "E1001",
+      "description": "Communication timeout with device",
+      "category": "communication",
+      "severity": "high",
+      "troubleshooting_steps": [
+        "Check cable connections",
+        "Verify power supply",
+        "Test communication settings",
+        "Restart communication interface"
+      ],
+      "related_components": ["VICM", "AnywhereUSB", "Communication Interface"],
+      "documentation_reference": "VICM_Setup_Guide.pdf"
+    },
+    {
+      "code": "E2005",
+      "description": "Temperature sensor fault",
+      "category": "temperature",
+      "severity": "medium",
+      "troubleshooting_steps": [
+        "Check sensor wiring",
+        "Verify sensor calibration",
+        "Replace faulty sensor",
+        "Update sensor configuration"
+      ],
+      "related_components": ["Temperature Sensor", "Calibration Manager"],
+      "documentation_reference": "Temperature_Sensor_Manual.pdf"
+    },
+    {
+      "code": "E3010",
+      "description": "Power supply voltage out of range",
+      "category": "power",
+      "severity": "critical",
+      "troubleshooting_steps": [
+        "Check input voltage levels",
+        "Inspect power supply connections",
+        "Verify load requirements",
+        "Replace power supply if necessary"
+      ],
+      "related_components": ["Power Supply", "Acopian Unit"],
+      "documentation_reference": "Power_Supply_Specifications.pdf"
+    }
+  ],
+  "common_issues": [
+    {
+      "issue": "Cycler communication failure",
+      "symptoms": ["No response from cycler", "Timeout errors", "Connection lost"],
+      "solutions": [
+        "Check Anderson Cycler connections",
+        "Verify switch contactor box status",
+        "Reset communication interface"
+      ]
+    }
+  ]
+}

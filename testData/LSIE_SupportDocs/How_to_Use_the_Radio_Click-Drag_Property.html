@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>How to Use the Radio Click-Drag Property</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="How-To_Guides.html">How-To Guides</a></li>
+<li><a href="How_to_Use_the_Radio_Click-Drag_Property.html">How to Use the Radio Click-Drag Property</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="How-to-Use-the-Radio-Click-Drag-Property"></a>
+<h1 >How to Use the Radio Click-Drag Property<a href="#How-to-Use-the-Radio-Click-Drag-Property" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#How-to-Use-the-Radio-Click-Drag-Property">How to Use the Radio Click-Drag Property</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Setting-Up-a-Gear-Shift-Panel">Setting Up a Gear Shift Panel</a><ul><li><a href="#Gear-Shift-Panel-Effects">Gear Shift Panel Effects</a></li></ul></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The <strong>Radio Click-Drag</strong> property enables users to click a Radio button and while holding the mouse button down, drag the cursor to a different Radio button within the same panel that shares the same channel, and release the mouse button to select this other Radio button. This allows the user to use a series of Button tiles to create a graphical control that mimics the actions of a gear shift, light switch, lever, etc.</p>
+
+
+	<p>This document outlines an example method to use the <strong>Radio Click-Drag</strong> property to create a panel that presents a digital representation of a basic car gear shifter. For the purposes of this document, the following images will be used. Images, image placements, and texts may be changed to better suit your needs.</p>
+
+
+	<p>&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Gear Handle Image</strong></em></span><br /><img src="attachments/download/85804/GearHandle6.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Gear Shift Bar Image</strong></em></span><br /><img src="attachments/download/85805/Bar1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Setting-Up-a-Gear-Shift-Panel"></a>
+<h2 >Setting Up a Gear Shift Panel<a href="#Setting-Up-a-Gear-Shift-Panel" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To set up a gear shift panel, do the following:</p>
+
+
+	<ol>
+	<li>Launch AutomationPanel.</li>
+		<li>Select a layout from the Layout tabs or add a new layout by selecting <strong>File > New > Layout.</strong><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Adding a New Layout</strong></em></span><br /><img src="attachments/download/85806/AddNewLayoutiTest.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Right-click the layout and select <strong>New Panel...</strong> or add a new panel by selecting <strong>File > New > Panel.</strong> This opens the <strong>Add Panel</strong> dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add a New Panel Dialog</strong></em></span><br /><img src="attachments/download/85810/41_AddNewPanel.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select the Tile panel. Rename the panel by opening Property Manager and changing the name.</li>
+		<li>Right-click the Tile panel and select <strong>Add > Button.</strong> Repeat this step for the number of buttons you want to add. For the purposes of this guide, four buttons will be added. Resize the panel as necessary.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add Button</strong></em></span><br /><img src="attachments/download/85812/41_AddButton.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Open the Property Manager. </li>
+		<li>Set <strong>Radio Click-Drag</strong> to True under the Tile properties. </li>
+		<li>For this example, we used the following property configuration for each button:</li>
+	<ul>
+	<li>Image Placement: MiddleCenter<br />For most cases, <strong>Stretch</strong> is a more appropriate selection, but it can lead to a pixelated look. For this example, we chose <strong>Middle Center</strong> to sidestep this issue and to crop the tops and bottom of the bar to create a more seamless look.</li>
+		<li>Style: NoBorder<br />Unless the intention is to create some kind of sectioned look, this should always be selected to create a seamless appearance.</li>
+		<li>Button Type: Radio<br />Always required to use the Radio Click-Drag property.</li>
+		<li>Channel: Cntr1<br />For this example, we used the generic Cntr1 virtual output channel to store the value representing the position of the gear shifter.</li>
+		<li>Radio Value: 0, 1, 2, etc.<br />Always required. Any value or range of values can be used for the Radio Value. Any buttons that share the same Radio Value will activate/deactivate together.</li>
+		<li>Image Off: Gear Shift Bar Image</li>
+		<li>Image On: Gear Handle Image</li>
+		<li>Text Off: (Leave blank)</li>
+		<li>Text On: (Leave blank)</li>
+	</ul></li>
+	</ol>
+
+
+	<p>After any additional customization, the Gear Shift panel can now be used. To see its effects, refer to the section below.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Gear Shift Panel</strong></em></span><br /><img src="attachments/download/85813/41_GearShiftPanel.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Gear-Shift-Panel-Effects"></a>
+<h3 >Gear Shift Panel Effects<a href="#Gear-Shift-Panel-Effects" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To see the Gear Shift panel effects, do the following:</p>
+
+
+	<ol>
+	<li>Right-click the layout in AutomationPanel and select <strong>New Panel...</strong> or add a new panel by selecting <strong>File > New > Panel.</strong> This opens the <strong>Add Panel</strong> dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add a New Panel Dialog</strong></em></span><br /><img src="attachments/download/85810/41_AddNewPanel.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select the Tile panel. Rename the panel by opening Property Manager and changing the name.</li>
+		<li>Right-click the Tile panel and select <strong>Add > Indicator.</strong> Repeat this step for the number of indicators you want to add. For the purposes of this guide, four buttons will be added. Resize the panel as necessary.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add Indicator</strong></em></span><br /><img src="attachments/download/85814/41_AddIndicator.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Open Property Manager.</li>
+		<li>Add a state to each indicator by right-clicking each indicator and selecting <strong>Add State.</strong> The amount of states added are dependent on the amount of radio buttons you have. For this guide, there will be four states per indicator. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add State</strong></em></span><br /><img src="attachments/download/85817/41_AddState.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Under the Tile properties, set the channel to <strong>Cntr1</strong> and indicator type to <strong>Both String and Color</strong>. These properties may differ.</li>
+		<li>Customize each indicator state to display the information you want to display based on the radio value. For example, Button 1 triggers Indicator 1 when the radio value is 0. Indicator 1 will then display the word "Park" in white font and a blue background. Button 2 triggers Indicator 2 when the radio value is 1. Indicator 2 will then display the word "Reverse" in white font and a blue background, and Indicator 1 will display the word "Park" in black font and a gray background.</li>
+	</ol>
+
+
+	<p>Once you have finished customizing each indicator state, you can use the Gear Shift panel to manipulate the indicator panel. Together, the two panels create a digital representation of a car gear shift.</p>
+
+
+	<p>&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Gear Shift Panel Effects</strong></em></span><br /><img src="attachments/download/85893/41_GearShiftPanelEffects3.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+</body>
+</html>

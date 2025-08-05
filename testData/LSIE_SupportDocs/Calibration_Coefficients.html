@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Calibration Coefficients</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="ITest_Channels.html">ITest Channels</a></li>
+<li><a href="Calibration_Coefficients.html">Calibration Coefficients</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Calibration-Coefficients"></a>
+<h1 >Calibration Coefficients<a href="#Calibration-Coefficients" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>For a given input channel, there is an entry in the channel definition file (<em>.fil</em>) that represents this channel. If it is an analog input, temperature, or virtual input channel then it has a set of coefficients and an order associated with it. The default values for order and coefficients are in this file.</p>
+
+
+	<p>The following section of <em>data.def</em> shows the relevant fields from the RDB for calibration:</p>
+
+
+<pre>
+FIELD "Order"         FLOAT4  4  0
+FIELD "C0"            FLOAT4  4  0
+FIELD "C1"            FLOAT4  4  1
+FIELD "C2"            FLOAT4  4  0
+FIELD "C3"            FLOAT4  4  0
+FIELD "C4"            FLOAT4  4  0
+FIELD "C5"            FLOAT4  4  0
+FIELD "C6"            FLOAT4  4  0
+</pre>
+
+	<p>The Calibrate program allows you to create up to 5th order polynomials using these fields. It applies all coefficents (C0-C5) and unused ones are assumed to be 0. When the calibrate program computes new coefficients for a channel, it does not write the new coefficients to the (<em>.fil</em>) file. Instead, it writes all coefficients to a file called <em>calcoeffs.txt</em>. In the example of <code>aiDynoTorque</code>, this would appear as the following example:</p>
+
+
+<pre>
+aiDynoTorque  -2.563842 14650.526367 0.000000 0.000000 0.000000 0.000000 0.000000
+</pre>
+
+	<p>Calibrate also keeps the calibration history in a file called <em>caltable.csv</em> which, as the name implies, is a comma separated text file.</p>
+
+
+<pre>
+0,aiDynoTorque,,ftlb,2003/10/20,12:54,2004/01/18,0,0,0,try,ryyry,,ryry,,,2,1,-15.18375242,12.08897485,0,0,0,0,
+1.256,9.528,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,100,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2,0,100,
+°C,0,1,,,90,ryyrry,0.25,1,2,ryyry,100,0,No Device,,2,2003/11/03,volts,2
+</pre>
+
+	<p>Therefore, coefficients appear in three places in the iTest file structure. However, the one that is most important to iTest is the set of coefficients in <em>calcoeffs.txt</em>. This is because after loading the RDB from the channel definition files, it reads <em>calcoeffs.txt</em>. Any coefficients in <em>calcoeffs.txt</em> will then override the coefficients from the channel definition files.</p>
+</body>
+</html>

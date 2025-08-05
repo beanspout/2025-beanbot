@@ -1,0 +1,82 @@
+body{
+	background:#F8F9FA;
+	margin:0px;}
+
+.line-blue{
+	background:#2D6A9F;
+	height:7px;
+	margin:0px;}
+
+#search-div{
+	text-align:center;}
+
+#search-div	.searchbutton{
+	background:#2D6A9F;
+	border:0;
+	color:#fff;
+	cursor:pointer;
+	margin-top:5px;
+	padding:5px 30px;}
+	
+#search-div	.searchbutton:hover{
+	background:#204B73;}
+
+#search-div	.searchfield{
+	border:1px solid #ccc;
+	margin-top:8px;
+	padding:6px;
+	width:80%;}
+
+.sidebar-header{
+	background:#E3E6EB;
+	height:75px;}
+	
+.sidebar-links{
+	background:#eee;
+	border-bottom:1px solid #ccc;
+	text-align:center;}
+	
+.sidebar-links a{
+	background:#eee;
+	color:#444;
+	display:inline-block;
+	padding:.7em 1em .7em 1em;
+	position:relative;
+	text-decoration:none;
+	text-shadow:0 1px 0 rgba(255,255,255,.5);}
+
+.sidebar-links a:hover{
+	background:#fff;}
+
+
+
+/*/////////////////////////////////////////////////////////////////////////////////
+COLLAPSABLE LIST Styles
+/////////////////////////////////////////////////////////////////////////////////*/
+
+ul.collapsibleList{
+	padding-left:30px;}
+
+ul.collapsibleList ul{
+	margin-bottom:8px;
+	padding-left:25px;}
+
+.collapsibleList li{
+  list-style-image:url('img/button.png');
+  cursor:auto;
+	margin:4px 0px;}
+	
+.collapsibleList li a{
+	color:#2D6A9F;
+	text-decoration:none;}
+	
+.collapsibleList li a:hover{
+	color:#333;}
+
+li.collapsibleListOpen{
+  list-style-image:url('img/button-open.png');
+  cursor:pointer;}
+
+li.collapsibleListClosed{
+  list-style-image:url('img/button-closed.png');
+  cursor:pointer;}

@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Calculations</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Calculations.html">Calculations</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Calculations"></a>
+<h1 >Calculations<a href="#Calculations" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Calculations">Calculations</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Continuous-Calculations">Continuous Calculations</a><ul><li><a href="#Calculation-Rates">Calculation Rates</a></li><li><a href="#Syntax">Syntax</a></li></ul>
+</li><li><a href="#Dynamic-Calculations">Dynamic Calculations</a></li><li><a href="#Ordering-Calculations">Ordering Calculations</a><ul><li><a href="#Ordering-Module-Calculations">Ordering Module Calculations</a></li></ul>
+</li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Calculations are a series of periodically calculated formulas. The calculated results are stored as channel values that can be logged, displayed, verified for limits and quality, and more. Calculations can also transform raw inputs, such as temperature, pressure, or voltage, from a test cell into required engineering unit values. These calculations supplement the VCL code and support the flow of control for test logic. The syntax of these calculations follow standard algebraic notation, utilizing expressions constructed from a sequence of operators, operands, and functions.</p>
+
+
+	<p><a name="Continuous-Calculations"></a>
+<h2 >Continuous Calculations<a href="#Continuous-Calculations" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Continuous calculations begin as soon as iTest is initialized and continue until the system is exited. Calculations are stored in separate files within folders that represent the rate of calculations. The following calculation folders are available, by default:</p>
+
+
+	<ul>
+	<li>1 Hz</li>
+		<li>10 Hz</li>
+		<li>100 Hz</li>
+		<li>System Rate</li>
+	</ul>
+
+
+	<p>For the 1000 Hz calculation folder to appear, the <code>Support1kHz</code> <em>powertek.ini</em> setting must be set to TRUE.</p>
+
+
+	<a name="Calculation-Rates"></a>
+<h3 >Calculation Rates<a href="#Calculation-Rates" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>By default, iTest calculations are supported at the following rates: 1 Hz, 10 Hz, 100 Hz, or system rate. To support calculations at a rate up to 1000 Hz, the <code>Support1kHz</code> <em>powertek.ini</em> option must be set to TRUE, and it must be running on a dedicated machine with a real-time operating system. A special task executes and enables the scanning of PIDs, logging, and calculations at rates up to 1000 Hz.</p>
+
+
+	<p>Calculations are executed in the following priority:</p>
+
+
+	<ol>
+	<li>1000 Hz</li>
+		<li>System Rate</li>
+		<li>100 Hz</li>
+		<li>10 Hz</li>
+		<li>1 Hz</li>
+	</ol>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#ebd700;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3740/caution.gif" alt="" /></td>
+			<td style="vertical-align:top;"><b>CAUTION:</b></td>
+			<td style="vertical-align:top;">Calculations running at 1000 Hz have the potential to slow the system. Calculations that involve strings are CPU intensive and should be calculated at 10 Hz or 1 Hz.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Syntax"></a>
+<h3 >Syntax<a href="#Syntax" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Calculations use the following format:<br /><pre>
+&lt;ChannelName&gt; &lt;Formula&gt;
+</pre><br />The destination channel name and expression must be separated by a blank space character. This character is an implied equal sign; you do not need to include an equal sign between the channel name and the expression.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">A single line in the Calculations editor cannot exceed 1023 bytes.</td>
+		</tr>
+	</table></p></p>
+
+
+	<a name="Dynamic-Calculations"></a>
+<h2 >Dynamic Calculations<a href="#Dynamic-Calculations" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Dynamic calculations run independently and asynchronously to the real-time system as they are processed by separate executables. This enables you to perform modifications to the calculation file while it is actively running without affecting the system or causing a full rebuild. Test Manager and SolutionBuilder support the creation of multiple dynamic calculation files, but only ten may be active at a given time. The <em>CalcEngine</em> application executes the dynamic calculations and processes them at system scan rate.</p>
+
+
+	<p>Dynamic calculations support the following channel types:</p>
+
+
+	<ul>
+	<li>Virtual Output</li>
+		<li>Analog Input</li>
+		<li>Analog Output</li>
+		<li>Digital Output</li>
+		<li>PWM Output</li>
+	</ul>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The use of string channels is not supported.</td>
+		</tr>
+	</table></p>
+
+
+	<p>To use dynamic calculations, the CalcEngine application can be configured to initiate upon startup. To do so, edit the <em>powertek.ini</em> file in the $SUPPORTDIR with the following additions:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>CalcEngine Configuration Settings</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:120px;text-align:left;"><strong>Operating System</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Windows</td>
+			<td>Add \\calcengine.exe>> to the <code>Preload=</code> entry.</td>
+		</tr>
+		<tr>
+			<td>INtime</td>
+			<td> Add\\calcengine.rta>> to the <code>RTxPreload=</code> entry.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>For INtime, the name used is dependent on the system version. For more information, refer to the <a class="wiki-page" href="INtime_Extensions.html">INtime Extensions</a> documentation to determine which RTA file to use. For INtime >= 4.2, specify the CPU node on which to run (e.g., <em>\\CalcEngine.rta -nNodeA>></em>). <em>CalcEngine.rta</em> may be (re)started with a mailslot to data_engine (e.g., "CalcEngine Start" or "CalcEngine Start -nNodeA").</p></p>
+
+
+	<p><a name="Ordering-Calculations"></a>
+<h2 >Ordering Calculations<a href="#Ordering-Calculations" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can change the order that calculations are executed within a calculation rate folder. This enables you to have a finer control over the order that the files are run. Calculations can only be ordered within a specific rate. In other words, you cannot order 10 Hz and 100 Hz calculations. <br />To modify the calculation order for a specific folder rate, right-click on a folder and select Order Calculations. This opens the Calculation Order dialog, where you can drag and drop the calculation files to reorder when the calculations are executed.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Ordering Calculations</strong></em></span><br /><img src="attachments/download/117204/43_OrderCalculations.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>When finished, click <strong>OK</strong>. Note that the new order is not reflected visually in the list of calculations.</p>
+
+
+	<a name="Ordering-Module-Calculations"></a>
+<h3 >Ordering Module Calculations<a href="#Ordering-Module-Calculations" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>In addition to the manual reordering of your solution’s calculations, module calculations can be controlled by defining the process order value of each module. A lower process order number places the module’s calculations earlier in the calculation loop. By default, new modules have a process order of 2 and the calculations in the system module have an order of 1. Without adjusting these values, the calculations in the base system occur prior to the calculations in the modules.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">If two modules have the same order, the order by which they are processed is indeterminate.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Calculations_in_Test_Manager.html">Calculations in Test Manager</a></li>
+		<li><a class="wiki-page" href="Managing_Calculations_in_SolutionBuilder.html">Calculations in SolutionBuilder</a></li>
+	</ul>
+</body>
+</html>

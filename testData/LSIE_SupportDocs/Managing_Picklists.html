@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Managing Picklists</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Managing_Picklists.html">Managing Picklists</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Managing-Picklists"></a>
+<h1 >Managing Picklists<a href="#Managing-Picklists" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Managing-Picklists">Managing Picklists</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Creating-a-New-Picklist">Creating a New Picklist</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>A picklist is a file that contains a list of values or strings that can be used to populate drop-down fields in display objects such as AutomationPanel's <a class="wiki-page" href="AutomationPanel_Operators_Guide.html#Tile-Panel">Tile Panel</a>. Picklist values can also be paired with mailslot messages which enables you to send a message or perform an action when an option is selected.</p>
+
+
+	<p>To access the Picklist editor, select <strong>Displays > Picklists</strong> from the main menu.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Picklists Editor</strong></em></span><br /><img src="attachments/download/127069/SB44_PicklistEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Creating-a-New-Picklist"></a>
+<h2 >Creating a New Picklist<a href="#Creating-a-New-Picklist" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To create a new picklist, do the following:</p>
+
+
+	<ol>
+	<li>Right-click in the list of picklists and select <strong>Add</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add</strong></em></span><br /><img src="attachments/download/119229/43_AddNewPicklist.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Right-click the name of the new picklist and select <strong>Rename...</strong><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Rename Picklist</strong></em></span><br /><img src="attachments/download/119230/43_RenamePicklist.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Enter a new name for the picklist in the Rename dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Rename Dialog</strong></em></span><br /><img src="attachments/download/112398/SB41_RenamePicklistDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the name of the picklist to open the picklist editor.</li>
+		<li>Right-click in the editor and select <strong>Add to End</strong>. This adds a new row to the editor.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add to End</strong></em></span><br /><img src="attachments/download/112479/SB43_AddToEndPicklist.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the cell in the <strong>Label</strong> column to enter a label value. This value is the option that the user selects in the drop-down list.</li>
+		<li>Click the cell in the <strong>Value</strong> column to enter a value associated to the label.</li>
+		<li>Click the cell in the <strong>Messages</strong> column to enter a mailslot message or click the button to the right of the field to open the MessagesEditor. For more information, refer to the <a class="wiki-page" href="MessagesEditor.html">MessagesEditor</a> documentation.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Button</strong></em></span><br /><img src="attachments/download/112404/DotDotDotButton.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Messages Editor</strong></em></span><br /><img src="attachments/download/112480/SB43_MessagesEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Repeat for each option to display in the picklist.</li>
+		<li>Click <strong>Save</strong> when you're finished.</li>
+	</ol>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Picklists Editor Column Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Column</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Label</td>
+			<td>This is the text the operator will see for that picklist selection.</td>
+		</tr>
+		<tr>
+			<td>Value</td>
+			<td>The value written to a parameter.</td>
+		</tr>
+		<tr>
+			<td>Messages</td>
+			<td>The message sent when a picklist option is selected.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+</body>
+</html>

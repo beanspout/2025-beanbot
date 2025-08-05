@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ChannelSelectEXE</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="ChannelSelectEXE.html">ChannelSelectEXE</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="ChannelSelectexe"></a>
+<h1 >ChannelSelect.exe<a href="#ChannelSelectexe" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>The <em>ChannelSelect.exe</em> application launches a modeless version of the Channel Select dialog. The altered dialog will not display OK or Cancel selections, allowing users to select channels while interacting with other windows. This tool supports dragging and dropping channel selections to supported drop targets. It can also set a string channel to the selected channel name via the /ReturnChannel command-line argument.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Channel Select Dialog Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Column</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Type Filter</td>
+			<td>List of available filters including channel type and module.</td>
+		</tr>
+		<tr>
+			<td>Name Filter</td>
+			<td>Filters the list of iTest channels to just those channels that contain the filter string. This field supports the following conditions:<br />- To filter using a replacement symbol for one or more characters, use * anywhere in the name to represent or replace a series of characters.<br />- To filter for the beginning of a channel name, use ^ as a prefix before the name.<br />- To filter for the end of a channel name, use $ as a suffix after the name.</td>
+		</tr>
+		<tr>
+			<td>First Column Label</td>
+			<td>Click the drop-down menu to set the first column label to one of the following: <strong>Channel Name</strong>, <strong>Customer Name</strong>, <strong>Module Name</strong>. </td>
+		</tr>
+		<tr>
+			<td>Second Column Label</td>
+			<td>Click the drop-down menu to set the second column to one of the following: <strong>Channel Name</strong>, <strong>Customer Name</strong>, <strong>Module Name</strong>, <strong>Alias</strong>, <strong>Description</strong>.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>To sort channels by label, click on the first or second column header.</p>
+
+
+	<a name="Selecting-Channels"></a>
+<h2 >Selecting Channels<a href="#Selecting-Channels" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Channels can be selected singularly or multiple channels can be selected by using <strong>Ctrl + Left-click</strong> or <strong>Shift + Left-click</strong>.</p>
+
+
+	<p>Drag and drop selection is also supported, as shown below:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Drag and Drop</strong></em></span><br /><img src="attachments/download/97698/DragAndDrop.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Valid drag and drop targets include:</p>
+
+
+	<ul>
+	<li>FlexEdit </li>
+		<li>Button Tile Properties</li>
+		<li>ComboBox Tile Properties</li>
+		<li>Chart Panel </li>
+		<li>Simple Gauge Panel</li>
+		<li>Channel List Panel</li>
+	</ul></p>
+
+
+	<a name="Using-FileServices-to-Launch-ChannelSelectexe"></a>
+<h2 >Using FileServices to Launch ChannelSelect.exe<a href="#Using-FileServices-to-Launch-ChannelSelectexe" class="wiki-anchor">&para;</a></h2>
+
+
+	<p><strong>Example Mailslot Messages:</strong></p>
+
+
+	<p><code>\\.\mailslot\FileServices>>$Execute;ChannelSelect.exe</code><br /><code>\\.\mailslot\FileServices>>$Execute;"ChannelSelect.exe /ReturnChannel vsSysChannelName"</code></p>
+
+
+	<a name="Command-Line-Arguments"></a>
+<h2 >Command-Line Arguments<a href="#Command-Line-Arguments" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="ReturnChannel-ltchannel_namegt"></a>
+<h3 >/ReturnChannel &lt;channel_name&gt;<a href="#ReturnChannel-ltchannel_namegt" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>If specified, double-clicking a channel name will set the specified return channel to the name of the clicked channel. <em>ChannelSelect.exe</em> will then exit.</p>
+
+
+	<p style="padding-left:1em;"><strong>Syntax:</strong></p>
+
+
+<pre>ChannelSelect.exe /ReturnChannel &lt;channel_name&gt;</pre>
+
+	<p style="padding-left:1em;"><strong>Parameters:</strong></p>
+
+
+	<p style="padding-left:2em;"><ins><em>channel_name:</em></ins> The name of a string channel that will be set to the selected channel name</p>
+</body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>PIDTune</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="PIDTune.html">PIDTune</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="PID-Tune"></a>
+<h1 >PID Tune<a href="#PID-Tune" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#PID-Tune">PID Tune</a><ul><li><a href="#Overview">Overview</a></li></ul>
+</li><li><a href="#Launching-the-Utility">Launching the Utility</a></li><li><a href="#Components">Components</a><ul><li><a href="#File-Menu">File Menu</a></li><li><a href="#Tool-Bar">Tool Bar</a></li><li><a href="#Plot-Display">Plot Display</a></li><li><a href="#List-Box">List Box</a></li><li><a href="#Manual-Setpoint-Control-Mode">Manual Setpoint Control Mode</a></li><li><a href="#Square-Wave-Setpoint-Control-Mode">Square Wave Setpoint Control Mode</a></li><li><a href="#Additional-Settings">Additional Settings</a></li></ul>
+</li><li><a href="#Using-the-PID-Tune-Utility">Using the PID Tune Utility</a><ul><li><a href="#Tuning-a-PID-File-in-Manual-Mode">Tuning a PID File in Manual Mode</a></li><li><a href="#Tuning-a-PID-File-in-Square-Wave-Mode">Tuning a PID File in Square Wave Mode</a></li><li><a href="#Specifying-Advanced-Tuning-Parameters">Specifying Advanced Tuning Parameters</a><ul><li><a href="#Feed-Forward-Control">Feed Forward Control</a></li><li><a href="#Reverse-Acting">Reverse Acting</a></li></ul>
+</li><li><a href="#Specifying-Y-Axis-Ranges">Specifying Y Axis Ranges</a></li><li><a href="#PID-Group-Settings">PID Group Settings</a><ul><li><a href="#Saving-PID-Group-Settings">Saving PID Group Settings</a></li><li><a href="#Loading-PID-Group-Settings">Loading PID Group Settings</a></li><li><a href="#Deleting-PID-Group-Settings">Deleting PID Group Settings</a></li></ul></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The iTest PID Tune utility is used to tune Proportional Integral Derivative controls (PIDs), which are also referred to as control loops. PIDs stabilize a process or device at a commanded setpoint by measuring an input value and adjusting an output value based on the derived error. PIDs can also track moving setpoints and define the response characteristics of a control system. PID Tune is available while iTest Console or AutomationPanel is running; you can launch it from these applications or from the <em>$EXECUTE</em> folder using <em>PIDTune.exe</em>.</p>
+
+
+	<p>For more information regarding Proportional Integral Derivative controls and control theory, please refer to the following guides: <a class="wiki-page" href="Control_Theory.html">Control Theory</a> and <a class="wiki-page" href="Managing_Proportional_Integral_Derivative_Controls.html">Managing Proportional Integral Derivative Controls</a>.</p>
+
+
+	<a name="Launching-the-Utility"></a>
+<h1 >Launching the Utility<a href="#Launching-the-Utility" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>When you first launch the PID Tune application, an empty dialog displays.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Empty PID Dialog</strong></em></span><br /><img src="attachments/download/102229/42_PIDEmpty.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;<br />To open a file, select the <strong>Open</strong> option on the menu bar and browse for a file to display.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Browse for File</strong></em></span><br /><img src="attachments/download/32708/37_BrowseForFile.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>PID Display</strong></em></span><br /><img src="attachments/download/102575/42_PID.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The PID Tune window will not display any tuning features until you select a file.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Components"></a>
+<h1 >Components<a href="#Components" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="File-Menu"></a>
+<h2 >File Menu<a href="#File-Menu" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>File Menu Options and Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:900px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Open</td>
+			<td>Opens the File Select dialog.</td>
+		</tr>
+		<tr>
+			<td>Close</td>
+			<td>Closes the open PID file but keeps the application open.</td>
+		</tr>
+		<tr>
+			<td>Save</td>
+			<td>Saves the current configuration settings of the PID file.</td>
+		</tr>
+		<tr>
+			<td>Save Settings To Group</td>
+			<td>Displays the PIDGroupDlg. This dialog is used to save your current configuration settings as a group. You can later restore the set of PID settings for multiple PID loops.</td>
+		</tr>
+		<tr>
+			<td>Load Settings From Group</td>
+			<td>Displays the PIDGroupDlg dialog with all previously saved group configurations.</td>
+		</tr>
+		<tr>
+			<td>Open Secondary PID</td>
+			<td>Enables you to open a secondary PID dialog and modify the setpoint value. The dialog display contains values for Units, Setpoint, Feedback, and Output. This feature is useful when there are dependencies between control loops.</td>
+		</tr>
+		<tr>
+			<td>Open Simultaneous PID</td>
+			<td>Enables you to open the Simultaneous PID dialog to tune a second PID simultaneously.</td>
+		</tr>
+		<tr>
+			<td>Setpoint Control Mode</td>
+			<td>Modifies the tuning mode of the dialog. Modes include:<br />&nbsp;<br /><strong>Manual</strong>: Enables you to define a single setpoint.<br />&nbsp;<br /><strong>Square Wave</strong>: Enables you to create a variation in the defined setpoint. When this option is selected, additional boxes for defining the low setting, maximum setting, and the period of time for each setting, display in place of manual control.<br />&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Advanced Tuning Parameters</td>
+			<td>Displays the Advanced Tuning Parameters dialog which enables you to select a feed forward channel and/or indicate if the selected PID loop is reverse acting.</td>
+		</tr>
+		<tr>
+			<td>Recent Files</td>
+			<td>Displays the five most recent files that have been opened.</td>
+		</tr>
+		<tr>
+			<td>Exit</td>
+			<td>Exits the PID Tune display.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Tool-Bar"></a>
+<h2 >Tool Bar<a href="#Tool-Bar" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>PID Tune Tool Bar Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:900px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Component</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Open</td>
+			<td>Opens the file browser to browse and select a file.</td>
+		</tr>
+		<tr>
+			<td>Save</td>
+			<td>Saves the current configuration settings of the PID file.</td>
+		</tr>
+		<tr>
+			<td>Y Axis Ranges</td>
+			<td>Opens the Y Axis Ranges dialog. You can use the dialog to use auto range or to specify low and high values for the left and the right y-axes.</td>
+		</tr>
+		<tr>
+			<td>Setpoint Control Mode</td>
+			<td>Modifies the tuning mode of the dialog. Modes include:<br />&nbsp;<br /><strong>Manual</strong>: Enables you to define a single setpoint.<br />&nbsp;<br /><strong>Square Wave</strong>: Enables you to create a variation in the defined setpoint. When this option is selected, additional boxes for defining the low setting, maximum setting, and the period of time for each setting, display in place of manual control.<br />&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Advanced Tuning Parameters</td>
+			<td>Displays the Advanced Tuning Parameters dialog which enables you to select a feed forward channel and/or indicate if the selected PID loop is reverse acting.</td>
+		</tr>
+		<tr>
+			<td>Secondary PID</td>
+			<td>Enables you to open a secondary PID dialog and modify the setpoint value. The dialog display contains values for Units, Setpoint, Feedback, and Output. This feature is useful when there are dependencies between control loops.</td>
+		</tr>
+		<tr>
+			<td>Simultaneous PID</td>
+			<td>Enables you to open a second PID file in the Simultaneous PID window. This allows you to tune two PIDs simultaneously. Any modifications made to either file can be saved by selecting <strong>Save</strong> on the main window. Changes can also be saved by closing the Simultaneous Window and selecting <strong>Yes</strong> when prompted to save. If the main PID window is closed, then the Simultaneous PID window will also close. <br /><strong>Specifics:</strong><br /><span style="padding-left:2em;">* Only allows tuning in Manual Mode; for more information, refer to <a class="wiki-page" href="#Tuning-a-PID-File-in-Manual-Mode">Tuning a PID File in Manual Mode</a>.</span><br /><span style="padding-left:2em;">* Loop Rate is linked to the settings in the main PID Tune window.</span><br /><span style="padding-left:2em;">* Advanced Tuning Parameters are linked to the settings in the main PID Tune window (i.e., Reverse Acting and Feed Forward channel features).</span><br /><span style="padding-left:2em;">* The Y-Axes range cannot be modified independent of the main PID Tune window.</span> </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Plot-Display"></a>
+<h2 >Plot Display<a href="#Plot-Display" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The plot display visually communicates the setpoint and feedback signals (on the left Y-axis) and the control signal (indicated on the right Y-axis). The plot colors correspond to the names displayed at the bottom of the plot.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Plot</strong></em></span><br /><img src="attachments/download/59518/PIDPlot.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="List-Box"></a>
+<h2 >List Box<a href="#List-Box" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The list box identifies the names and colors of the setpoint, feedback, and the control signal that is plotted. This field also indicates the associated values at any moment and its unit of measurement.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>List Box and Values</strong></em></span><br /><img src="attachments/download/32716/37_ListBox.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Manual-Setpoint-Control-Mode"></a>
+<h2 >Manual Setpoint Control Mode<a href="#Manual-Setpoint-Control-Mode" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Manual mode is used to define the PID setpoint value manually. When this setting is in use, the display contains a setpoint control slider and field, which contains the value of the primary PID. You can change the value by using the slider or typing a value into the box. The minimum and maximum setpoint values are defined in the <em>Control Loops</em>. For more information, refer to the <a class="wiki-page" href="Managing_Proportional_Integral_Derivative_Controls.html">Managing Proportional Integral Derivative Controls</a> document.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Manual</strong></em></span><br /><img src="attachments/download/102576/42_PIDSetPoint.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Square-Wave-Setpoint-Control-Mode"></a>
+<h2 >Square Wave Setpoint Control Mode<a href="#Square-Wave-Setpoint-Control-Mode" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Square Wave mode connects the control process in a feedback loop with a relay or variation of setpoint values. This causes an oscillation in the control signal, which creates a square wave in the plot display. The Square Wave mode contains three different fields for defining the low and high settings and the period of time (in seconds) that the high or low setpoint setting is maintained. This mode is used for tracking moving setpoints.</p>
+
+
+	<ul>
+	<li><ins><strong>Low Setting:</strong></ins> Specifies the minimum value of the square wave setpoint signal.</li>
+		<li><ins><strong>High Setting:</strong></ins> Specifies the maximum value of the square wave setpoint signal.</li>
+		<li><ins><strong>Periods:</strong></ins> Specifies the time period of the square wave setpoint signal (in seconds).</li>
+	</ul>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Square Wave</strong></em></span><br /><img src="attachments/download/102577/42_PIDSquare.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Additional-Settings"></a>
+<h2 >Additional Settings<a href="#Additional-Settings" class="wiki-anchor">&para;</a></h2>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>PID Settings</strong></em></span><br /><img src="attachments/download/98532/42_PIDSettings.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Additional PID Settings</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:900px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Loop Rate (Hz)</td>
+			<td>The loop frequency rate specified in Hz.</td>
+		</tr>
+		<tr>
+			<td>Hold</td>
+			<td>When this checkbox is selected, the PID control system is put on hold. This causes the output value to remain at its current value until the hold setting is deselected. </td>
+		</tr>
+		<tr>
+			<td>Proportional Gain (%)</td>
+			<td>The percentage of proportional gain affects the responsiveness of the system. A low gain setting causes the system to be sluggish or unresponsive, whereas a high gain setting increases the responsiveness the system, at too high a setting the system may begin to oscillate or vibrate. Use the slider to change the value or enter a value into the text field.</td>
+		</tr>
+		<tr>
+			<td>Integral Rate</td>
+			<td>The integral control monitors the cumulative error over time; if the setpoint is not reached, a gain is introduced in order to reach the setpoint value. Use this setting to modify the rate at which the gain is reset to account for the error. Use the slider to change the value or enter a value into the text field.</td>
+		</tr>
+		<tr>
+			<td>Derivative Time</td>
+			<td> The derivative control enables you to monitor the change in error with respect to time. You can use this setting to modify the rate at which the error changes at the current moment. Use the slider to change the value or enter a value into the text field.</td>
+		</tr>
+		<tr>
+			<td>Feed Forward *</td>
+			<td>The predicated value of PID output that is added to the PID algorithm output. You can use this setting to modify the predicated value of the PID output. Use the slider to change the value or enter a value into the text field.</td>
+		</tr>
+		<tr>
+			<td>Foldback (%) *</td>
+			<td>When foldback is active, this percentage is a reduction in the Kp, Kd, and Ki constant values. For example, if the Foldback % is 25 and Ki = 50, then the Ki constant value will be 37.5 when foldback is active. The Foldback % is always a positive percentage. Use the slider to change the value or enter a value into the text field.</td>
+		</tr>
+		<tr>
+			<td>Foldback Threshold (%) *</td>
+			<td>The percentage of the setpoint range where the Kp, Kd, and Ki constants are reduced by the Foldback %. The Foldback Threshold % can either be positive or negative. Use the slider to change the value or enter a value into the text field.</td>
+		</tr>
+		<tr>
+			<td>Min Output (%) *</td>
+			<td>The minimum value of the output as a percentage. Use the slider to change the value or enter a value into the text field.</td>
+		</tr>
+		<tr>
+			<td>Max Output (%) *</td>
+			<td>The maximum value of the output as a percentage. Use the slider to change the value or enter a value into the text field.</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;font-style: italic;">Only available for Windup Clamping PIDs. For more information, refer to the <strong>PID Configuration Descriptions</strong> table in the <a class="wiki-page" href="Control_Loops.html">Control Loops in Test Manager</a> or <a class="wiki-page" href="Control_Loops_in_SolutionBuilder.html">Control Loops in SolutionBuilder</a> documentation.</span><br />&nbsp;
+
+	<a name="Using-the-PID-Tune-Utility"></a>
+<h1 >Using the PID Tune Utility<a href="#Using-the-PID-Tune-Utility" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Tuning-a-PID-File-in-Manual-Mode"></a>
+<h2 >Tuning a PID File in Manual Mode<a href="#Tuning-a-PID-File-in-Manual-Mode" class="wiki-anchor">&para;</a></h2>
+
+
+	<ol>
+	<li>Select <strong>Open</strong> from the PID tool bar. The File Select dialog displays.</li>
+		<li>Choose a PID you want to tune. The file extensions indicate what PID types are included in the file.</li>
+		<li>Click <strong>Open</strong> to open the selected PID in the PID Tune dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>PID Tune Dialog</strong></em></span><br /><img src="attachments/download/102575/42_PID.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>By default, the tool is configured to operate in manual mode. </li>
+		<li>To change the setpoint of the PID, click (or press) and drag the <strong>Setpoint Control</strong> slider to the appropriate value. You can also type the value in the field below the slider; the value is applied when you click (or press) <strong>Enter</strong>. The selected value displays in the value column for the primary PID.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Setpoint Value</strong></em></span><br /><img src="attachments/download/59520/PIDSetPointValue.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>To change the <strong>Proportional Gain</strong>, <strong>Integral Rate</strong>, or <strong>Derivative Time</strong> values, click (or press) the slider indicator and drag it to an appropriate value. You can also type the value in the field below the slider; the value is applied when you click (or press) <strong>Enter</strong>. </li>
+		<li>Click the arrow to the right of the <strong>Loop Rate</strong> field and select the rate of the loop frequency.</li>
+		<li>Select the checkbox next to <strong>Hold</strong> to put the PID control system on hold. This causes the output value to remain at its current value until the hold setting is deselected.</li>
+		<li>To view a secondary PID, click the <strong>Secondary PID</strong> option from the tool bar and select a PID and mode. A new dialog displays:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Secondary PID</strong></em></span><br /><img src="attachments/download/32721/37_SecondaryPID.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>To change the secondary PID’s setpoint, use the dialog to drag the slider to the appropriate value. You can also type the value in the field below the slider; the value is applied when you click (or press) <strong>Enter</strong>. The selected value displays in the <strong>Setpoint</strong> column of the new dialog.</li>
+		<li>To tune a second PID simultaneously, click the <strong>Simultaneous PID</strong> option from the tool bar and select a PID. Alternatively, select <strong>File > Open Simultaneous PID</strong> to select a PID. The second PID file will display in the Simultaneous PID window. Repeat steps 5-8 to modify the PID in the Simultaneous PID window. Refer to the table under the <a class="wiki-page" href="#Tool-Bar">Tool Bar</a> section for more information.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Simultaneous PID</strong></em></span><br /><img src="attachments/download/102578/42_SimultaneousPID.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br />If the PID is not running when selecting a PID as a simultaneous PID, then an error message will display:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Error Message</strong></em></span><br /><img src="attachments/download/94988/41_SimultaneousPIDErrorMessage.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>To save the settings you have specified and apply them to other PIDs, select <strong>File > Save Settings to Group</strong>; for more information, refer to <a class="wiki-page" href="#Saving-PID-Group-Settings">Saving PID Group Settings</a>.</li>
+		<li>Select <strong>File > Close</strong> to no longer display the PID for tuning.</li>
+		<li>Select <strong>File > Exit</strong> to close the PID Tune window.</li>
+	</ol>
+
+
+	<a name="Tuning-a-PID-File-in-Square-Wave-Mode"></a>
+<h2 >Tuning a PID File in Square Wave Mode<a href="#Tuning-a-PID-File-in-Square-Wave-Mode" class="wiki-anchor">&para;</a></h2>
+
+
+	<ol>
+	<li>Select <strong>Open</strong> from the PID tool bar. The File Select dialog displays.</li>
+		<li>Choose a PID you want to tune. The file extensions indicate what PID types are included in the file.</li>
+		<li>Click <strong>Open</strong> to open the selected PID in the PID Tune dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>PID Tune Dialog</strong></em></span><br /><img src="attachments/download/102579/42_PIDSquareWave.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select <strong>Setpoint Control Mode</strong> option from the tool bar and choose the Square Wave option.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select Control Mode</strong></em></span><br /><img src="attachments/download/32723/37_SelectSquareWave.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Enter a value in the <strong>Low Setting</strong> field to change the minimum value of the square wave setpoint signal.</li>
+		<li>Enter a value in the <strong>High Setting field</strong> to change the maximum value of the square wave setpoint signal.</li>
+		<li>Enter a value in seconds in the <strong>Period(s)</strong> field to change the length of the square wave setpoint signal period.</li>
+		<li>To change the <strong>Proportional Gain</strong>, <strong>Integral Rate</strong>, or <strong>Derivative Time</strong> value, click (or press) and drag the associated slider to the appropriate value. You can also type the value in the field below the slider, the value is applied when you click (or press) <strong>Enter</strong>.</li>
+		<li>Click the arrow to the right of the <strong>Loop Rate</strong> field and select the rate of loop frequency.</li>
+		<li>Select the checkbox next to <strong>Hold</strong> to put the PID control system on hold. This causes the output value to remain at its current value until the hold setting is deselected.</li>
+		<li>To view a secondary PID, click the <strong>Secondary PID</strong> option from the tool bar and select a PID and mode. A new dialog displays:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Secondary PID</strong></em></span><br /><img src="attachments/download/32721/37_SecondaryPID.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>To change the secondary PID’s setpoint, use the dialog to drag the slider to the appropriate value. You can also type the value in the field below the slider, the value is applied when you click (or press) <strong>Enter</strong>.</li>
+		<li>To tune a second PID simultaneously, click the <strong>Simultaneous PID</strong> option from the tool bar and select a PID. Alternatively, select <strong>File > Open Simultaneous PID</strong> to select a PID. The second PID file will display in the Simultaneous PID window. Repeat steps 5-8 of the Manual mode instructions to modify the PID in the Simultaneous PID window. Refer to the table under the <a class="wiki-page" href="#Tool-Bar">Tool Bar</a> section for more information.</li>
+		<li>To save the settings you have specified and apply them to other PIDs, select <strong>File > Save Settings to Group</strong>; for more information, refer to <a class="wiki-page" href="#Saving-PID-Group-Settings">Saving PID Group Settings</a>.</li>
+		<li>Select <strong>File > Close</strong> to no longer display the PID for tuning.</li>
+		<li>Select <strong>File > Exit</strong> to close the PID Tune window.</li>
+	</ol>
+
+
+	<a name="Specifying-Advanced-Tuning-Parameters"></a>
+<h2 >Specifying Advanced Tuning Parameters<a href="#Specifying-Advanced-Tuning-Parameters" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Advanced Tuning Parameter dialog enables you to define a feed forward control channel and whether the PID is reverse acting.</p>
+
+
+	<a name="Feed-Forward-Control"></a>
+<h3 >Feed Forward Control<a href="#Feed-Forward-Control" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Feed forward control is used to improve control loop response to disturbances. The control reacts as soon as a disturbance occurs, which cancels the effect of the disturbance. When you select a channel for the feed forward control, the channel value is algebraically added to the control output calculated by iTest, all before the final output value is sent to the hardware.</p>
+
+
+	<a name="Reverse-Acting"></a>
+<h3 >Reverse Acting<a href="#Reverse-Acting" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Enabling the reverse acting setting ensures the control output value adjusts to behave in the correct direction. The default behavior is direct acting, where an increase in the control output causes an increase in the feedback value. For the reverse acting setting, when there is an increase in the control output, there is a decrease in the feedback value. For example, <strong><em>increasing</em></strong> the opening of a chiller flow control valve <strong><em>decreases</em></strong> the temperature of the chilled fluid.</p>
+
+
+	<p>To define these settings, perform the following:</p>
+
+
+	<ol>
+	<li>Select <strong>Advanced Tuning Parameters</strong> from the PID Tune tool bar. The dialog displays.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Advanced Tuning</strong></em></span><br /><img src="attachments/download/32724/37_AdvancedTuningParameters.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>In the <strong>Feed Forward Channel</strong> field, click the drop-down to select a channel.</li>
+		<li>To enable reverse acting, click the checkbox next to this field.</li>
+		<li>Click <strong>Apply</strong> to apply the new channel. </li>
+		<li>Click <strong>OK</strong> to exit the dialog.</li>
+	</ol>
+
+
+	<a name="Specifying-Y-Axis-Ranges"></a>
+<h2 >Specifying Y Axis Ranges<a href="#Specifying-Y-Axis-Ranges" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can specify the range of the left (Setpoint and Feedback) and right (Output) Y-axis scales on the PID Tune dialog.</p>
+
+
+	<ol>
+	<li>Select the <strong>Y Axis Ranges</strong> button from the tool bar.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Y Axis Range Values</strong></em></span><br /><img src="attachments/download/32725/37_YAxisRanges.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select the checkbox next to <strong>Auto Range</strong> to use automated values. When this setting is selected, the y axis values are obtained from the setpoint and the feedback channels' low and high settings, as defined in the device file.</li>
+		<li>Specify <strong>Low</strong> and <strong>High</strong> ranges for the left and right Y axes.</li>
+		<li>Click <strong>Apply</strong> to confirm your selection and then click <strong>OK</strong>.</li>
+	</ol>
+
+
+	<a name="PID-Group-Settings"></a>
+<h2 >PID Group Settings<a href="#PID-Group-Settings" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>It is possible to save the settings you have specified when tuning a PID and apply them to other PIDs. These options are available through the <strong>File</strong> menu.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>PID Group</strong></em></span><br /><img src="attachments/download/32722/37_AddNewGroup.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Saving-PID-Group-Settings"></a>
+<h3 >Saving PID Group Settings<a href="#Saving-PID-Group-Settings" class="wiki-anchor">&para;</a></h3>
+
+
+	<ol>
+	<li>Select <strong>File > Save Settings to Group</strong> to open the PIDGroup dialog.</li>
+		<li>Select an existing group or click the <strong>New Group</strong> button.</li>
+		<li>If you are adding a new group, type a name for the group in the text entry field in the Groups window. This name can include alphanumeric characters as well as characters such as underscores, periods, and hyphens.</li>
+		<li>Click <strong>OK</strong> to save the group settings.</li>
+	</ol>
+
+
+	<a name="Loading-PID-Group-Settings"></a>
+<h3 >Loading PID Group Settings<a href="#Loading-PID-Group-Settings" class="wiki-anchor">&para;</a></h3>
+
+
+	<ol>
+	<li>Select <strong>File > Load Settings From Group</strong> to open the PIDGroup dialog.</li>
+		<li>Select a group from which to load a pre-defined set of settings and then click <strong>OK</strong>.</li>
+	</ol>
+
+
+	<p>Your previous configuration will display in the PID Tune dialog.</p>
+
+
+	<a name="Deleting-PID-Group-Settings"></a>
+<h3 >Deleting PID Group Settings<a href="#Deleting-PID-Group-Settings" class="wiki-anchor">&para;</a></h3>
+
+
+	<ol>
+	<li>Select <strong>File > Load Settings From Group</strong> to open the PIDGroup dialog.</li>
+		<li>Select the group with the settings you want to delete. </li>
+		<li>Then click the <strong>Delete Group</strong> button. The group is deleted without prompting you.</li>
+	</ol>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#ebd700;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3740/caution.gif" alt="" /></td>
+			<td style="vertical-align:top;"><b>CAUTION:</b></td>
+			<td style="vertical-align:top;">You cannot undo a deleted PID group.</td>
+		</tr>
+	</table></p>
+</body>
+</html>

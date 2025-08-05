@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>PID Control Box</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Managing_Proportional_Integral_Derivative_Controls.html">Managing Proportional Integral Derivative Controls</a></li>
+<li><a href="PID_Control_Box.html">PID Control Box</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="PID-Control-Dialog"></a>
+<h1 >PID Control Dialog<a href="#PID-Control-Dialog" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#PID-Control-Dialog">PID Control Dialog</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Auto-Mode">Auto Mode</a></li><li><a href="#Manual-Mode">Manual Mode</a><ul><li><a href="#Changing-Setpoints">Changing Setpoints</a></li><li><a href="#Manual-Ramp-Interface">Manual Ramp Interface</a></li><li><a href="#Slider-Rates-Dialog">Slider Rates Dialog</a></li><li><a href="#Using-X-Mode">Using X Mode</a></li></ul>
+</li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The PID Control dialog is the primary operator interface for switching control modes and manually changing setpoints. This dialog is a floating dialog on top of iTest Console's main window. AutomationPanel has a similar dialog. For more information regarding AutomationPanel, refer to the <a class="wiki-page" href="Mode_Control_Dialog.html">Mode Control Dialog</a> documentation.</p>
+
+
+	<p>The appearance of the PID Control dialog can be modified using several <em>powertek.ini</em> settings. For more information regarding these settings, refer to the PIDs section in the <a class="wiki-page" href="ITest_INI_Options.html">Common INI Options</a> documentation.</p>
+
+
+	<a name="Auto-Mode"></a>
+<h2 >Auto Mode<a href="#Auto-Mode" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The dialog can be set to Auto mode. This forces the dialog to act only as an indicator and is enabled by the softpanel mailslot message $AUTO.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Auto Mode</strong></em></span><br /><img src="attachments/download/97212/42_PID3.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Manual-Mode"></a>
+<h2 >Manual Mode<a href="#Manual-Mode" class="wiki-anchor">&para;</a></h2>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Manual Mode</strong></em></span><br /><img src="attachments/download/97210/42_PID1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The channel setpoints are controlled by changing the sliders or typing in new digital values. These channels are defined by the control loop configuration.</p>
+
+
+	<a name="Changing-Setpoints"></a>
+<h3 >Changing Setpoints<a href="#Changing-Setpoints" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The high and low EU ranges cannot be exceeded by typing in values or using the slider. However, the ranges can be edited at runtime by clicking on the value. This is shown below. The range can only be scaled down. It can never be changed to exceed the maximum EU range for that PID.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Changing Setpoints</strong></em></span><br /><img src="attachments/download/97211/42_PID2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Manual-Ramp-Interface"></a>
+<h3 >Manual Ramp Interface<a href="#Manual-Ramp-Interface" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Manual ramp allows the user to enter a desired value and ramp to that value at a defined rate and is enabled by the softpanel mailslot message $RAMP or the <strong>Show Ramp Dialog</strong> menu option.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Manual Ramp Interface</strong></em></span><br /><img src="attachments/download/97213/42_PID4.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Slider-Rates-Dialog"></a>
+<h3 >Slider Rates Dialog<a href="#Slider-Rates-Dialog" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Line Rate sets the rate when controlling with the left and right arrow keys, and Page Rate controls the rate when using the page up and page down buttons to change the setpoint.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Set Sliderbar Rates</strong></em></span><br /><img src="attachments/download/97214/42_PID5.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Set PID Slider Rates</strong></em></span><br /><img src="attachments/download/97215/42_PID6.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Using-X-Mode"></a>
+<h3 >Using X Mode<a href="#Using-X-Mode" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The standard modes for dyno/throttle modules are:</p>
+
+
+	<p><strong>Spd/Pos Spd/Trq Trq/Pos Trq/Spd</strong></p>
+
+
+	<p>There is also a <strong>Runtime Configurable</strong> mode in which the user can select the feedback channel for the throttle PID. When this is utilized, the mode set will change to the following:</p>
+
+
+	<p><strong>Spd/Pos Spd/Trq Spd/X Trq/Pos Trq/Spd Trq/X</strong></p>
+
+
+	<p>The X loop is added to the throttle loop group and the mode list is extended to provide 2 new mode pairs, as shown in the following screenshots:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>X Mode</strong></em></span><br /><img src="attachments/download/97608/pidnew1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Control Modes</strong></em></span><br /><img src="attachments/download/97609/pidnew2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>The PID Control dialog will have new modes available in the mode list, as shown below:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Select Mode</strong></em></span><br /><img src="attachments/download/97611/Xmode2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />The PID Control dialog will have a new configuration dialog, accessed via the existing menu as shown below:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>X Mode Configuration</strong></em></span><br /><img src="attachments/download/97612/Xmode3.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />The X mode PID mode is identified by a <em>powertek.ini</em> setting, as shown below:</p>
+
+
+<pre>PidXMode=X.Dt1Throt</pre>
+
+	<p>If this setting is not present in the <em>powertek.ini</em>, the X mode configuration menu item will not be shown in the PID Control dialog.</p>
+
+
+	<p>When the X Mode Configuration dialog is opened, the user picks the feedback value, the loop direction, the PID gains, and the setpoint limits. If the channel has been used in X mode before, the values are loaded from the new file <em>xmode.lst</em>. If not, default PID values and loop direction are used and the min and max setpoint values are loaded from the feedback channel’s min and max EU values.</p>
+
+
+	<p>If an X loop is selected (from PID Control), the configuration display will open but editing the configuration will not be possible.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>X Mode Configuration</strong></em></span><br /><img src="attachments/download/97610/pidnew5.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Pressing the default button resets the PID values to safe default values (P = 50, I = 0, D = 0). Optionally, you can override the defaults by putting the following INI options in <em>powertek.ini</em>:</p>
+
+
+<pre>
+PidXModeDefaultP=50
+PidXModeDefaultI=0
+PidXModeDefaultD=0
+</pre>
+
+	<p>Pressing the <strong>Save</strong> button writes the changes to the mode file defined as the X mode file in <em>powertek.ini</em>, and writes the new values to the file <em>xmode.lst</em>. In addition, you can hook a procedure to get called when the <strong>Save</strong> button is pressed. Set the option PIDXModeSaveProcedure to the name of the procedure you would like to run when this button is pressed.</p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Mode_Control_Dialog.html">AutomationPanel Mode Control dialog</a></li>
+		<li><a class="wiki-page" href="ITest_INI_Options.html">Common INI Options</a></li>
+	</ul>
+</body>
+</html>

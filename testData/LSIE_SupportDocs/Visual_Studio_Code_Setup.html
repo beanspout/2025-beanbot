@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Visual Studio Code Setup</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Visual_Studio_Code_Setup.html">Visual Studio Code Setup</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Visual-Studio-Code-Setup"></a>
+<h1 >Visual Studio Code Setup<a href="#Visual-Studio-Code-Setup" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Visual-Studio-Code-Setup">Visual Studio Code Setup</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Installing-VS-Code">Installing VS Code</a><ul><li><a href="#Install-VS-Code">Install VS Code</a></li><li><a href="#Modify-iTest-script-pywincmd">Modify iTest script pywin.cmd</a></li><li><a href="#Update-the-VS-CodePython-Path">Update the VS Code/Python Path</a></li><li><a href="#Start-VS-Code-using-iTest-script-pywincmd">Start VS Code using iTest script pywin.cmd</a></li></ul>
+</li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The iTest package includes the PythonWin IDE to help with debugging Python scripts. You can launch this as a standalone application or from Test Manager by right-clicking a script and selecting the <strong>Debug...</strong> option. In some cases, the IDE may not be adequate for all developers. This guide outlines the process for downloading and installing the VS Code IDE to enhance your debugging system by connecting it to the iTest PythonEngine executable as a replacement for the PythonWin debugger.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">"VS Code" is another name for the Visual Studio Code software.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Installing-VS-Code"></a>
+<h2 >Installing VS Code<a href="#Installing-VS-Code" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Install-VS-Code"></a>
+<h3 >Install VS Code<a href="#Install-VS-Code" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Using your web browser, navigate to <a class="external" href="https://code.visualstudio.com/download">https://code.visualstudio.com/download</a>. Click on the <strong>User: 32bit</strong> version to download the installer. Run the installer after it is downloaded.</p>
+
+
+	<a name="Modify-iTest-script-pywincmd"></a>
+<h3 >Modify iTest script <strong><em>pywin.cmd</em></strong><a href="#Modify-iTest-script-pywincmd" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>In a text editor, load <em>pywin.cmd</em> from the <em>iTest/Execute</em> folder. This script will establish that you want to use VS Code for debugging. Starting VS Code with this script will temporarily add the <em>iTest/Execute</em> folder to your path so your python scripts will have access to the iTest-specific functions supplied by the iTest DLLs (e.g., RDBSetValue and SendToMailslot).</p>
+
+
+<pre>set PATH=%~dp0;%PATH%
+%~dp0\Python37\Lib\site-packages\pythonwin\Pythonwin.exe %1 %2
+REM if you would rather use VS Code to debug, comment out the previous line and:
+REM 1) In VS Code Settings be sure to set
+REM     "Python: Python Path" to "${env:PYINTPATH}" 
+REM 2) Uncomment the following lines
+REM set PYINTPATH=%~dp0\Python37\python.exe
+REM CD "%USERPROFILE%\AppData\Local\Programs\Microsoft VS Code" 
+REM Code.exe %2</pre>
+
+	<p>Edit the file as described in the comments in the file. When you are finished, it should look like this:</p>
+
+
+<pre>set PATH=%~dp0;%PATH%
+REM %~dp0\Python37\Lib\site-packages\pythonwin\Pythonwin.exe %1 %2
+REM if you would rather use VS Code to debug, comment out the previous line and:
+REM 1) In VS Code Settings be sure to set
+REM     "Python: Python Path" to "${env:PYINTPATH}" 
+REM 2) Uncomment the following lines
+set PYINTPATH=%~dp0\Python37\python.exe
+CD "%USERPROFILE%\AppData\Local\Programs\Microsoft VS Code" 
+Code.exe %2</pre>
+
+	<a name="Update-the-VS-CodePython-Path"></a>
+<h3 >Update the VS Code/Python Path<a href="#Update-the-VS-CodePython-Path" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Launch VS Code by clicking on the modified <em>pywin.cmd</em>.</p>
+
+
+	<p>In VS Code, under <strong>File > Preferences > Settings > Extensions > Python > Python Path</strong> enter <code>${env:PYINTPATH}</code>. This, in combination with the PYINTPATH variable settings in <em>pywin.cmd</em>, will establish that the interpreter supplied with iTest is to be used. Close VS Code so that all of the settings are saved.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>VS Code Path</strong></em></span><br /><img src="attachments/download/133828/40_iTest40-VisualStudioPath.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Start-VS-Code-using-iTest-script-pywincmd"></a>
+<h3 >Start VS Code using iTest script <strong><em>pywin.cmd</em></strong><a href="#Start-VS-Code-using-iTest-script-pywincmd" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Re-start VS Code using <em>pywin.cmd</em> file. Locate the python file (*<em>.py</em>) to be debugged (<strong>File > Open File</strong>).</p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Visual_Studio_Code_Debugger_Python_Scripts.html">Visual Studio Code Debugger: Python Scripts</a></li>
+	</ul>
+</body>
+</html>

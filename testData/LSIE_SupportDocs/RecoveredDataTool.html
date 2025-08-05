@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>RecoveredDataTool</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="RecoveredDataTool.html">RecoveredDataTool</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="RecoveredDataTool"></a>
+<h1 >RecoveredDataTool<a href="#RecoveredDataTool" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#RecoveredDataTool">RecoveredDataTool</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Interface">Interface</a></li><li><a href="#Operation">Operation</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>This tool helps to process data files found in <em>RecoveredData</em> folders. There have been instances where data logging was not completed upon exiting iTest. Upon the next start-up, iTest will look for incomplete data files and copy them to a new folder named <em>$DATADIR\RecoveredData_YYYY_MM_DD_HH_MM_SS</em> folder. It will then convert them to a DAT file; it will not merge them into the project data log. This tool was created to help manage those files and merge them into the project data log.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">This tool only supports DAT files; MDF and BIN files are not supported.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Interface"></a>
+<h2 >Interface<a href="#Interface" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The <strong>Recovered data folder</strong> field is the path to the folder containing the recovered data.</p>
+
+
+	<p>The <strong>Project output file</strong> field is the path and filename of the project data file that the selected files will be merged into. A new file will be created containing the selected project file and the merged files. This new file will be named <code>"Project output file".recovered</code>.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>RecoveredDataTool Interface</strong></em></span><br /><img src="attachments/download/130438/44_RecoveredDataTool.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Operation"></a>
+<h2 >Operation<a href="#Operation" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Use the <strong>Browse</strong> button next to the <strong>Recovered data folder</strong> field to select the <em>RecoveredData</em> folder. After selection, the RecoveredDataTool will populate the upper file list with the DAT files found in the folder.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>List of DAT Files From Recovered Folder</strong></em></span><br /><img src="attachments/download/130439/44_RecoveredDataFiles.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The RecoveredDataTool will combine all of the DAT files with the same base name and place them in a new subfolder named <em>Combined</em>. The lower files list will be populated with the newly created combined DAT files. The name of the files will have the base name with "_combined" appended.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Combined DAT Files</strong></em></span><br /><img src="attachments/download/130440/44_CombinedDATFiles.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">This may take a long time if there are many DAT files in the <em>RecoveredData</em> folder. There is a status indicator at the bottom of the window to show the progress.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>Use the <strong>Browse</strong> button next to the <strong>Project output file</strong> field to select the project data file to merge the data to. After selection, you can select the individual recovered DAT file(s) from the upper list or the combined DAT file(s) from the lower list to merge in with the <strong>Project output file</strong> by clicking the <strong>Combine</strong> button. Only the DAT files from the last list used for selection will be used for the combine. For example, selecting a DAT file from the lower list, and then selecting a DAT file from the upper list, will result in the DAT file from the upper list being used for the combine.</p>
+
+
+	<p>After clicking <strong>Combine</strong>, the selected file(s) will be merged in with the <strong>Project output file</strong> into a new file with <code>.recovered</code> appended to its name. Recovered files will not be removed when they are combined; however, the destination file will be overwritten if combined into again. Data row positions in the combined file are determined using the timestamps stored in the second column of each data file being combined together.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#ebd700;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3740/caution.gif" alt="" /></td>
+			<td style="vertical-align:top;"><b>CAUTION:</b></td>
+			<td style="vertical-align:top;">Data integrity checks are not performed when merging files. This includes if added data points per row exceed or are fewer than the listed parameters as well as if the timestamp formatting differs.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+</body>
+</html>

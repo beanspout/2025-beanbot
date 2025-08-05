@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Setting Up the Test Control Toolbar</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Setting_Up_the_Test_Control_Toolbar.html">Setting Up the Test Control Toolbar</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Test-Control-Toolbar"></a>
+<h1 >Test Control Toolbar<a href="#Test-Control-Toolbar" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Test-Control-Toolbar">Test Control Toolbar</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Configuration">Configuration</a></li></ul>
+</li><li><a href="#Pre-Defined-Button-Types">Pre-Defined Button Types</a><ul><li><a href="#Common-Buttons">Common Buttons</a></li><li><a href="#Schedule-Buttons">Schedule Buttons</a></li><li><a href="#Procedure-Buttons">Procedure Buttons</a></li><li><a href="#User-Defined-Buttons">User-Defined Buttons</a><ul><li><a href="#Adding-a-New-Toolbar">Adding a New Toolbar</a></li></ul>
+</li></ul>
+</li><li><a href="#Runtime-Toolbar">Runtime Toolbar</a></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Test Control Toolbar is a section of iTest Console that can be used as the primary way to launch and control tests. The toolbar allows a selection from a number of different test types and each of them can have a set of pre-defined and custom buttons that can be used to control the running test.</p>
+
+
+	<p>The Test Control Toolbar Editor allows you to assign a name to a test, select the <strong>Test Type</strong> (Procedure, Sequence or Schedule), select the specific instance to run, and configure additional toolbar buttons to control the test. All of the test types have their own set of buttons hard coded, but there is also an option to add customized buttons for each Test Type.</p>
+
+
+	<p>For example, the VCL Procedure test type has four buttons hard coded – <strong>Start</strong>, <strong>Stop</strong>, <strong>Pause</strong> and <strong>Resume</strong>. However, there are several blank buttons  available that can be configured specific to your test, as shown in the example below:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>VCL Procedure Test Type</strong></em></span><br /><img src="attachments/download/95870/42_IT40-TM_TCTB2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>You can add new toolbars by right-clicking on the <strong>Test Control Toolbar</strong> folder and selecting the <strong>New TestCtrlToolbar</strong> option. When you double-click on a toolbar you created, you will be prompted to associate that toolbar with a specific test. The editor that appears will then allow you to configure the buttons for that test type.</p>
+
+
+	<p>When the selection is a procedure, an additional text editor will be available to describe the test. This text will then appear on the user interface when the user selects that test at runtime.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">HTML can also be used in procedure text to format the output.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Configuration"></a>
+<h2 >Configuration<a href="#Configuration" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Test Manager editor for test control toolbars is shown above. In addition to the individual button definitions, there are also the following fields:</p>
+
+
+	<ul>
+	<li><strong>Test Type</strong> - This is either a procedure or a schedule type. For some iTest systems, a sequence may also be an option. Selecting either procedure or schedule will change the selections available for the next item.</li>
+		<li><strong>Test</strong> - Defines the actual test to run when selecting the start button. For procedures, this will be a list of procedures. For schedules, it will be a list of all schedules in the solution.</li>
+	</ul>
+
+
+	<a name="Pre-Defined-Button-Types"></a>
+<h1 >Pre-Defined Button Types<a href="#Pre-Defined-Button-Types" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Common-Buttons"></a>
+<h2 >Common Buttons<a href="#Common-Buttons" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><strong>Start</strong> - Each type of test has a start button. This button is grayed out in iTest Console if flgSysTestRunning is non-zero, which indicates that a test is already running. If the test type is "Schedule," then this button will trigger the procedure defined in the <em>powertek.ini</em> setting: ScheduleStartScript.</li>
+	</ul>
+
+
+	<ul>
+	<li><strong>Stop</strong> - Each type also has a stop button. If the test type is "Schedule," then this button will trigger the procedure defined in the <em>powertek.ini</em> setting: ScheduleStopScript.</li>
+	</ul>
+
+
+	<a name="Schedule-Buttons"></a>
+<h2 >Schedule Buttons<a href="#Schedule-Buttons" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><strong>Reload</strong> - This button is only active, if the Schedule has been "unlocked." This will save any changes made to the schedule to disk, update the schedule loaded in memory to match the schedule on disk, and will trigger the procedure defined in the <em>powertek.ini</em> setting: ScheduleReloadScript.</li>
+	</ul>
+
+
+	<ul>
+	<li><strong>Lock/Unlock</strong> - This button can be used to lock the schedule so that nothing can be accidentally typed into the cells while the schedule is running.</li>
+	</ul>
+
+
+	<a name="Procedure-Buttons"></a>
+<h2 >Procedure Buttons<a href="#Procedure-Buttons" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><strong>Pause</strong> - This will suspend the main procedure that was started with the start button.</li>
+	</ul>
+
+
+	<ul>
+	<li><strong>Resume</strong> - This will cause the main procedure that was started with the start button to resume execution.</li>
+	</ul>
+
+
+	<a name="User-Defined-Buttons"></a>
+<h2 >User-Defined Buttons<a href="#User-Defined-Buttons" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The remaining buttons can be customized to have any behavior and appearance that you want.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Test Control Toolbar Button Setup</strong></em></span><br /><img src="attachments/download/95871/42_tctb3.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<ul>
+	<li><strong>Name/Tooltip</strong> - gives the name in the Test Manager editor and will provide a tooltip at runtime. </li>
+		<li><strong>Icon File</strong> - browse to an image file to display for this button's icon. </li>
+		<li><strong>Mailslot</strong> - mailslot address to send a message to. </li>
+		<li><strong>Message</strong> - the actual command or message to send to that address. </li>
+		<li><strong>Delete This Button</strong> checkbox - button configuration is removed on save if this is checked.</li>
+	</ul>
+
+
+	<a name="Adding-a-New-Toolbar"></a>
+<h3 >Adding a New Toolbar<a href="#Adding-a-New-Toolbar" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To add a new toolbar and associate it with a specific test, complete the following procedure:</p>
+
+
+	<ol>
+	<li>Expand the <strong>Test Development</strong> folder from the Test Manager Tree and right-click on the <strong>Test Control Toolbar</strong> folder. Select the New TestCtrlToolbar option. A new toolbar (most likely named New TestCtrlToolbar1) will appear under the tree.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Toolbar</strong></em></span><br /><img src="attachments/download/95872/42_TCTTree.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /> <br />&nbsp;</li>
+		<li>Double-click on the toolbar you just added. The following editor will be displayed:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Toolbar Editor</strong></em></span><br /><img src="attachments/download/95873/IT42-TM_TCTBNew.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select the type of test that this toolbar will be associated with in the <strong>Test Type</strong> field. The default buttons (the ones that will be displayed in runtime) will change slightly depending on which <strong>Test Type</strong> you select.</li>
+		<li>Now select the specific test name from the <strong>Test</strong> field.</li>
+		<li>At this point, you can customize button(s) specific to this test by clicking on the gray buttons. Configure each in the following dialog:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Test Control Toolbar Button Setup</strong></em></span><br /><img src="attachments/download/95871/42_tctb3.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Once you have finished configuring your toolbar, right click on the generic toolbar name in the Tree and select the <strong>Rename</strong> option. Type in a unique name for the toolbar.</li>
+		<li>Click <strong>File > Save</strong>.</li>
+	</ol>
+
+
+	<a name="Runtime-Toolbar"></a>
+<h1 >Runtime Toolbar<a href="#Runtime-Toolbar" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>At runtime, selecting a schedule test will bring up the iTest schedule viewer with the selected schedule showing. Clicking <strong>Start</strong> will then start cycling through the rows of the schedule to run the test.</p>
+
+
+	<p>The test control interface in iTest Console will appear similar to the following:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Test Control Interface</strong></em></span><br /><img src="attachments/download/95874/42_TCTConsole.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>In the AutomationPanel, the toolbar is called Test Monitor and appears as follows:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Test Monitor</strong></em></span><br /><img src="attachments/download/95875/42_TCTCommon.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Only one schedule test can run at a time that uses the iTest schedule interface. You can run other schedules in the background but you will not be able to monitor the progress with the iTest Schedule Viewer.</td>
+		</tr>
+	</table></p>
+
+
+	<p>Selecting a procedure will bring up an HTML view of the text you typed in when you defined the procedure test in Test Manager. This is typically not very useful visually, but it serves as a placeholder to make sure that only one procedure test can run at a time from the Test Control Toolbar. If another one is selected, iTest will ask if you want to shut down the running procedure test first.</p>
+</body>
+</html>

@@ -1,0 +1,830 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Managing Schedules</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Managing_Schedules.html">Managing Schedules</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Managing-Schedules"></a>
+<h1 >Managing Schedules<a href="#Managing-Schedules" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Managing-Schedules">Managing Schedules</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Using-the-Editor">Using the Editor</a></li><li><a href="#Adding-a-New-Schedule">Adding a New Schedule</a><ul><li><a href="#Steady-State-Schedules">Steady State Schedules</a></li><li><a href="#Transient-Schedules">Transient Schedules</a></li><li><a href="#Schedule-Limitations">Schedule Limitations</a></li></ul>
+</li><li><a href="#Creating-New-Schedule-Groups">Creating New Schedule Groups</a></li><li><a href="#Editing-Schedules">Editing Schedules</a><ul><li><a href="#Data-Page">Data Page</a><ul><li><a href="#Pasting-Content-into-Schedules">Pasting Content into Schedules</a></li><li><a href="#View-Profile">View Profile</a></li><li><a href="#Moving-Columns">Moving Columns</a></li></ul>
+</li><li><a href="#Header-Page">Header Page</a><ul><li><a href="#Adding-a-New-Keyword-and-Value-Pair">Adding a New Keyword and Value Pair</a></li></ul>
+</li><li><a href="#Notes-Page">Notes Page</a></li><li><a href="#Managing-Schedule-Pages">Managing Schedule Pages</a></li></ul>
+</li><li><a href="#Exporting-Schedules">Exporting Schedules</a></li><li><a href="#Schedule-Examples">Schedule Examples</a><ul><li><a href="#Steady-State-Example">Steady State Example</a></li><li><a href="#Transient-Schedule-Example">Transient Schedule Example</a></li></ul>
+</li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>In iTest, schedules are a method of describing a test sequence as a series of steps. They provide a convenient and efficient way of describing complex test sequences. In addition, schedules may contain loops, nested loops, conditional actions, step tasks, and other special behavior. The schedules are executed by internal iTest code called <strong>Schedule Runner</strong>. For more information about Schedule Runner, refer to the <a class="wiki-page" href="ScheduleRunner.html">ScheduleRunner</a> documentation.</p>
+
+
+	<p>In standard iTest (non-BTS), Schedule Runner recognizes two types of schedules: <strong>Steady-State</strong> and <strong>Transient</strong>. These two schedules use pre-configured templates that are typically included with iTest solutions. In addition, iTest solutions will typically provide at least one pre-configured schedule. Schedule templates are defined in <em>$SUPPORTDIR\Tables.def</em> and are relevant to the solution. The schedule templates are available when adding a new schedule; refer to the <a class="wiki-page" href="#Adding-a-New-Schedule">Adding a New Schedule</a> section below for more information. If a test sequence requires a combination of schedule types (e.g., Steady State and Transient), then a master schedule can be used to run this test sequence. For more information, refer to the <a class="wiki-page" href="Managing_Master_Schedules.html">Managing Master Schedules</a> documentation.</p>
+
+
+	<p>Typically, schedules have three pages (i.e., Data page, Header page, and Notes page). These pages are used to configure the schedule, as needed. The type of test is defined on the Header page (e.g., <code>Test Type = SteadyState</code>). For more information, refer to the <a class="wiki-page" href="#Editing-Schedules">Editing Schedules</a> section below. For more information relating to the format of schedule files (including <em>Tables.def</em>), refer to the <a class="wiki-page" href="Schedule_File_Format.html">Schedule File Format</a> section.</p>
+
+
+	<p>To access this editor, select <strong>Tests > Schedules</strong> from the main menu or select the Schedules shortcut on the main page.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Schedules Menu Option</strong></em></span><br /><img src="attachments/download/127070/SB44_SchedulesMenuOption.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Schedules Shortcut</strong></em></span><br /><img src="attachments/download/112964/SchedulesShortcut.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Using-the-Editor"></a>
+<h2 >Using the Editor<a href="#Using-the-Editor" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Schedules editor is divided into two parts: the left pane and the editing area.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Schedules Editor Interface</strong></em></span><br /><img src="attachments/download/113107/43_SchedulesEditorInterface.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>The left pane consists of all available schedules in the system and module folders. The following right-click options are available:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Add</td>
+			<td>Adds a new schedule. For more information, refer to the <a class="wiki-page" href="#Adding-a-New-Schedule">Adding a New Schedule</a> section.</td>
+		</tr>
+		<tr>
+			<td>Remove</td>
+			<td>Removes the selected schedule.</td>
+		</tr>
+		<tr>
+			<td>Rename…</td>
+			<td>Launches the Rename dialog, which is used to rename the schedule.</td>
+		</tr>
+		<tr>
+			<td>Duplicate</td>
+			<td>Duplicates the selected schedule. A unique index value is added to the end of the duplicated schedule.</td>
+		</tr>
+		<tr>
+			<td>Export to LabCentral...</td>
+			<td>Exports the selected schedule to LabCentral's Manage Lab Files page. <ins><strong>Note:</strong></ins> Your system must be connected to LabCentral for this option to be available.</td>
+		</tr>
+		<tr>
+			<td>Add Group…</td>
+			<td>Adds a new schedule group. For more information, refer to the <a class="wiki-page" href="#Creating-New-Schedule-Groups">Creating New Schedule Groups</a> section.</td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td>Deletes a selected schedule and copies it to the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td>Copies a selected schedule to the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Pastes</td>
+			<td>Pastes the selected schedule.</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td>Undoes the last action.</td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td>Redoes the last undone action.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p>The editing area is composed of three pages: <strong>Data</strong>, <strong>Header</strong>, and <strong>Notes</strong>. Each page is used to customize your schedule. You can modify test steps, header data, and schedule notes by double-clicking in these pages.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Editor Pages</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Page</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Data</td>
+			<td>The Data page is used to write your tests. Each row in the schedule is a step in the test. Schedules can contain loops, nested loops, conditional actions, step tasks, and other special behavior. For more information, refer to the <a class="wiki-page" href="#Data-Page">Data Page</a> section.</td>
+		</tr>
+		<tr>
+			<td>Header</td>
+			<td>The Header page of the schedule is a set of keyword/value pairs that can be modified prior to running a test. For more information, refer to the <a class="wiki-page" href="#Header-Page">Header Page</a> section.</td>
+		</tr>
+		<tr>
+			<td>Notes</td>
+			<td> The Notes page can be used to provide additional information about the schedule. This is a free-form text editor, and it can be used to easily add, delete, and modify schedule details, as necessary. For more information, refer to the <a class="wiki-page" href="#Notes-Page">Notes Page</a> section.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Adding-a-New-Schedule"></a>
+<h2 >Adding a New Schedule<a href="#Adding-a-New-Schedule" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To create a new schedule, do the following:</p>
+
+
+	<ol>
+	<li>Select <strong>Tests > Schedules</strong> from the main menu or select the Schedules shortcut to open the editor.</li>
+		<li>Right-click in the left pane and select <strong>Add</strong>. This opens the New Schedule dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Schedule Dialog</strong></em></span><br /><img src="attachments/download/114623/43_NewScheduleDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>The New Schedule dialog contains schedule templates available to use for creating schedules. These templates are defined in <em>$SUPPORTDIR\Tables.def</em> and are relevant to the solution. The following schedule templates are available in Solution.Demo:
+	<ul>
+	<li><ins><strong>Steady_State_Template_1</strong></ins>: This template is an example of a steady-state test type (i.e., <code>TestType=SteadyState</code>). This test type is used to evaluate the performance of a system or component under a series of constant, or steady-state, conditions (steps). For more information, refer to the <a class="wiki-page" href="#Steady-State-Schedules">Steady State Schedules</a> section.</li>
+		<li><ins><strong>Transient_Template_1</strong></ins>: This template is an example of a transient test type (i.e., <code>TestType=Transient</code>). This test type is typically a test that runs at a relatively high frequency (e.g., 10 Hz). For more information, refer to the <a class="wiki-page" href="#Transient-Schedules">Transient Schedules</a> section.</li>
+	</ul>
+	</li>
+		<li>Select one of the available schedule templates, and then click <strong>OK</strong>. Your new schedule displays in the editing area.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Schedule - Steady State</strong></em></span><br /><img src="attachments/download/112970/43_NewScheduleSteadyState.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Configure the schedule using the descriptions provided in the <a class="wiki-page" href="#Editing-Schedules">Editing Schedules</a> section.</li>
+		<li>Click the <strong>Save</strong> icon when you are finished.</li>
+	</ol>
+
+
+	<a name="Steady-State-Schedules"></a>
+<h3 >Steady State Schedules<a href="#Steady-State-Schedules" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>A steady state test sequence is used to evaluate the performance of a system or component under a series of constant, or steady-state, conditions (steps). The characteristics for each schedule step is defined on the Data page by a series of column settings in each of the step rows. The schedule columns define a wide range of settings including step time, setpoint values, mode settings, looping details, conditional actions, ramp value, and more. Schedule columns can be added or removed depending on the required nature of the test sequence. The Header page settings are related to the whole sequence (e.g., Logging, Limits, etc.).</p>
+
+
+	<a name="Transient-Schedules"></a>
+<h3 >Transient Schedules<a href="#Transient-Schedules" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>A transient test sequence is typically a test that runs at a relatively high frequency (e.g., 10 Hz). It usually contains a small number of variables while other system variables are held constant. The characteristics of each transient test are mainly described on the Header page (e.g., Logging, Limits, Step Time, etc.). The Data page contains columns of setpoints that are issued on each step. Columns can be added or removed as required.</p>
+
+
+	<a name="Schedule-Limitations"></a>
+<h3 >Schedule Limitations<a href="#Schedule-Limitations" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following limitations are applicable to Steady State and/or Transient schedules:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Schedule Limitations</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Limitation</strong></td>
+			<td style="text-align:left;"><strong>Value/Description</strong></td>
+		</tr>
+		<tr>
+			<td>Steady State minimum step duration</td>
+			<td>0.1 seconds</td>
+		</tr>
+		<tr>
+			<td>Transient minimum step duration</td>
+			<td>0.01 seconds</td>
+		</tr>
+		<tr>
+			<td>Columns in a schedule</td>
+			<td>200</td>
+		</tr>
+		<tr>
+			<td>Rows in a schedule</td>
+			<td>100,000</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Creating-New-Schedule-Groups"></a>
+<h2 >Creating New Schedule Groups<a href="#Creating-New-Schedule-Groups" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Schedule groups provide a way to organize and categorize your schedules. After you add a new group, you can add new schedules to it. To create a group, right-click in the left pane and select the <strong>Add Group…</strong> option. After you enter a name for the group, the new schedule group will display in the left pane as a folder.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Empty groups are not retained in-between saves.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>New Schedule Group</strong></em></span><br /><img src="attachments/download/112971/43_NewScheduleGroup.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Editing-Schedules"></a>
+<h2 >Editing Schedules<a href="#Editing-Schedules" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Schedules are composed of three pages: Data, Header, and Notes. The editors in these pages are used to customize your schedule. You can modify test steps, header data, and schedule notes by double-clicking in the editor pages.</p>
+
+
+	<a name="Data-Page"></a>
+<h3 >Data Page<a href="#Data-Page" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Data page is used to write your tests. Each row in the schedule is a step in the test. Schedules can contain loops, nested loops, conditional actions, step tasks, and other special behavior.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Data Page</strong></em></span><br /><img src="attachments/download/116421/43_DataPage.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>The following column types are available for each type of schedule template in Solution.Demo:</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">For a full list of available columns, refer to the <a class="wiki-page" href="ScheduleRunner.html#Column-Types">Column Types</a> documentation.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Schedule Column Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Column</strong></td>
+			<td style="text-align:left;"><strong>Field Type</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="3">Steady State Schedules</th>
+		</tr>
+		<tr>
+			<td>StepTime</td>
+			<td>HH:MM:SS</td>
+			<td>The duration of the test step. 0 indicates that the step will not end until a step task condition returns true.</td>
+		</tr>
+		<tr>
+			<td>Demand</td>
+			<td>Channel</td>
+			<td>The channel used for demand. </td>
+		</tr>
+		<tr>
+			<td>RampMode</td>
+			<td>Picklist</td>
+			<td>Determines the ramp type. Options include <strong>Rate</strong> and <strong>Time</strong>.</td>
+		</tr>
+		<tr>
+			<td>RampValue</td>
+			<td>Picklist/Numeric Value</td>
+			<td>The virtual output channel or numeric value used for ramping.</td>
+		</tr>
+		<tr>
+			<td>JumpToStep*</td>
+			<td>Dialog</td>
+			<td>Launches the Jump Setup dialog. This column determines the step number to jump to. This entry is verified to ensure that the destination step exists in the schedule. The jump is performed at the end of a step. <ins><strong>Note:</strong></ins> This number is adjusted automatically if rows above the destination step are inserted or deleted. <br /><strong>Example:</strong><br />- Jump to Step is set to 2, and Step 1 is deleted.<br />- Step 2 is now Step 1, so Jump to Step is changed to 1.<br />Likewise, if a step is inserted above Step 2, then Step 2 becomes Step 3. This time, the Jump to Step value is adjusted to 3.</td>
+		</tr>
+		<tr>
+			<td>JumpsToDo*</td>
+			<td>Dialog</td>
+			<td>Launches the Jump Setup dialog. This column determines the number of times the jump is performed.</td>
+		</tr>
+		<tr>
+			<td>JumpsDone*</td>
+			<td>Dialog</td>
+			<td>Launches the Jump Setup dialog. This column displays the number of jumps done. Note that when viewing the Schedule during runtime, this field does not display an updating value unless viewing in the AutomationPanel GUI environment.</td>
+		</tr>
+		<tr>
+			<td>LimitsGroup</td>
+			<td>Picklist</td>
+			<td>The limit group applied to the schedule. Limit groups are configured using SolutionBuilder's Limit Groups editor. For more information, refer to the <a class="wiki-page" href="Limit_Groups_in_SolutionBuilder.html">Limit Groups</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>LogFile</td>
+			<td>Picklist</td>
+			<td>The type of log file used for this step of the schedule.</td>
+		</tr>
+		<tr>
+			<td>LogStart</td>
+			<td>Numeric</td>
+			<td>The time logging will be started.</td>
+		</tr>
+		<tr>
+			<td>StepTask (1, 2, 3)</td>
+			<td>Dialog</td>
+			<td>Launches the Step Task Check Setup dialog. This is an action that is performed when a condition evaluates to true. For more information, refer to the <a class="wiki-page" href="Step_Tasks.html">Step Tasks</a> documentation.</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="3">Transient Schedules</th>
+		</tr>
+		<tr>
+			<td>Temp</td>
+			<td>Channel</td>
+			<td>The channel used to determine temperature.</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;font-style: italic;">If a forward jump (to a higher-numbered step) is specified, then <strong>Times to Jump</strong> cannot be specified. For non-BTS systems, the <strong>Counter</strong> field in the Jump Setup dialog is disabled.</span>
+
+	<p>&nbsp;</p>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>Data Page Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Keyboard Shortcut</strong> </td>
+		</tr>
+		<tr>
+			<td>Add Column*</td>
+			<td>Opens the <strong>Add Column</strong> dialog. <br />&nbsp;<br />Under the General tab, configure the column's channel, title, units, and default (initial) value. Select the checkbox next to <strong>Reset each row to</strong> to reset the row to a specified value. Select the checkbox next to <strong>Read-only in runtime editor</strong> to prevent the column values from being modified during runtime from AutomationPanel.<br />&nbsp;<br />Under the Layout tab, select the column type. Depending on the column type, additional information may be necessary. Additional information can be entered in the field under the <strong>Type</strong> drop-down list. Select the checkbox next to <strong>Mark as required</strong> to make the column required in the schedule. Select the checkbox next to <strong>Show at runtime</strong> to show the column at runtime.<br />&nbsp;<br />The new column is added to the end of the column list.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Insert Column*</td>
+			<td>Opens the <strong>Insert Column</strong> dialog. <br />&nbsp;<br />Under the General tab, configure the column's channel, title, units, and default (initial) value. Select the checkbox next to <strong>Reset each row to</strong> to reset the row to a specified value. Select the checkbox next to <strong>Read-only in runtime editor</strong> to prevent the column values from being modified during runtime from AutomationPanel.<br />&nbsp;<br />Under the Layout tab, select the column type. Depending on the column type, additional information may be necessary. Additional information can be entered in the field under the <strong>Type</strong> drop-down list. Select the checkbox next to <strong>Mark as required</strong> to make the column required in the schedule. Select the checkbox next to <strong>Show at runtime</strong> to show the column at runtime.<br />&nbsp;<br />The new column is added to the left of the selected column. If a column is not selected, the new column will be added to the beginning of the schedule.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Edit Column*</td>
+			<td>Opens the <strong>Edit Column</strong> dialog for the selected column.<br />&nbsp;<br />Under the General tab, configure the column's channel, title, units, and default value. Select the checkbox next to <strong>Reset each row to</strong> to reset the row to a specified value. Select the checkbox next to <strong>Read-only in runtime editor</strong> to prevent the column values from being modified during runtime from AutomationPanel.<br />&nbsp;<br />Under the Layout tab, select the checkbox next to <strong>Mark as required</strong> to make the column required in the schedule. Select the checkbox next to <strong>Show at runtime</strong> to show the column at runtime. Note that you cannot change the column type.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Delete Column*</td>
+			<td> Deletes the column. </td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Move Column Right*</td>
+			<td>Moves the column to the right. This option is disabled when right-clicking the last column in the spreadsheet. </td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Move Column Left*</td>
+			<td>Moves the column to the left. This option is disabled when right-clicking the first column in the spreadsheet. </td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Freeze Columns</td>
+			<td>Locks the column in place so that only the columns to the right of the frozen column in the spreadsheet are scrollable.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Unfreeze Columns</td>
+			<td>Unlocks the column so that all columns can be scrolled.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Insert Step</td>
+			<td>Inserts a step in the schedule. The new step is inserted before the highlighted row.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Insert Many Steps</td>
+			<td>Inserts many steps in the schedule at once. You will be prompted to enter the number of rows to add to the schedule. The new steps are inserted before the highlighted row. </td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Add Step</td>
+			<td>Inserts a new step at the end of the schedule.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Add Many Steps</td>
+			<td>Adds many new steps to the end of the schedule at once. You will be prompted to enter the number of rows to add to the schedule. The new steps are inserted before the highlighted row. </td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Delete Step</td>
+			<td>Deletes the highlighted step or steps. Jump To steps and Step Task Go to Steps are automatically adjusted when steps are deleted.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Add Schedule Component...*</td>
+			<td> Launches the Add Schedule Component dialog. This dialog allows you to add components from modules that have been imported into your solution. After selecting the component and clicking <strong>OK</strong>, the component's columns will be added to the end of your current schedule. <br />&nbsp;<br /><ins><strong>Note:</strong></ins> This option is only available for modular solutions.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td>Copies the content of the highlighted cells. </td>
+			<td> <strong>CTRL + C</strong></td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td>Pastes the copied values. See the Pasting Content into Schedules section below for pasting rules.</td>
+			<td><strong>CTRL + P</strong></td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td>Reverts the last change made to the schedule. </td>
+			<td><strong>CTRL + Z</strong></td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td>Reapplies the undone change made to the schedule.</td>
+			<td><strong>CTRL + Y</strong></td>
+		</tr>
+		<tr>
+			<td>View Profile</td>
+			<td>Launches the Schedule Profile Review dialog. This option is only available if the Data Page contains Mode and Step Time columns. See the View Profile section below for more information on this dialog.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;font-style: italic;">Only available in non-BTS solutions.</span>
+
+	<p>&nbsp;</p></p>
+
+
+	<p><a name="Pasting-Content-into-Schedules"></a>
+<h4 >Pasting Content into Schedules<a href="#Pasting-Content-into-Schedules" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>There are certain rules that apply when pasting content into schedules.</p>
+
+
+	<a name="Pasting-From-Excel"></a>
+<h5 >Pasting From Excel<a href="#Pasting-From-Excel" class="wiki-anchor">&para;</a></h5>
+
+
+	<ul>
+	<li>Only numeric values are allowed for the following column types: numeric and integer.</li>
+		<li>Columns that accept plain text input allow numeric or string values. In the case of the setpoint column type, simple expressions are also allowed.</li>
+		<li>Columns that use a non-editable picklist accept numeric or string values. The cell value will be cleared if the pasted value is not a valid picklist option.</li>
+		<li>Additional steps will be added to the schedules as needed to accommodate the pasted data.</li>
+	</ul>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Pasting From Excel</strong></em></span><br /><img src="attachments/download/115154/43_PastingFromExcel.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Pasting-From-Another-Schedule"></a>
+<h5 >Pasting From Another Schedule<a href="#Pasting-From-Another-Schedule" class="wiki-anchor">&para;</a></h5>
+
+
+	<ul>
+	<li>Columns that accept plain text input allow pasting from any column type.</li>
+		<li>Columns that use a non-editable picklist accept pasted input from any column type. The cell value will be cleared if the pasted value is not a valid picklist option.</li>
+		<li>The following columns accept pasted input from each other: numeric and integer.</li>
+		<li>Other column types require that the pasted data come from the same column type.</li>
+		<li>Additional steps will be added to the schedules as needed to accommodate the pasted data.</li>
+	</ul></p>
+
+
+	<a name="View-Profile"></a>
+<h4 >View Profile<a href="#View-Profile" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The View Profile option provides a chart view of the schedule currently being edited. To launch the Schedule Profile Review Dialog, right-click a column on the Data page and click <strong>View Profile</strong>. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Schedule Profile Review Dialog</strong></em></span><br /><img src="attachments/download/96947/ScheduleProfileReview.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The View Profile option is only available for schedules with Mode and Step Time columns.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Moving-Columns"></a>
+<h4 >Moving Columns<a href="#Moving-Columns" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>In addition to the <strong>Move Column Left</strong> and <strong>Move Column Right</strong> right-click options, you can drag and drop columns to specified locations in the Data page.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Dragging and Dropping Columns</strong></em></span><br /><img src="attachments/download/126515/44_DragDropColumns.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Header-Page"></a>
+<h3 >Header Page<a href="#Header-Page" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Header page of the schedule is a set of keyword/value pairs that can be modified prior to running a test. The image below shows the possible right-click options available in this page.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Header Page</strong></em></span><br /><img src="attachments/download/113052/43_HeaderPage.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Header Page Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+			<td style="width:120px;text-align:left;"><strong>Keyboard Shortcut</strong> </td>
+		</tr>
+		<tr>
+			<td>Insert Before</td>
+			<td>Launches the Insert List Keyword dialog, which you can use to specify a new Keyword/Value pair. When you click <strong>OK</strong>, the new Keyword/Value pair is added before the highlighted pair. For more information, refer to the <a class="wiki-page" href="#Adding-a-New-Keyword-and-Value-Pair">Adding a New Keyword and Value Pair</a> section.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Add to End</td>
+			<td>Launches the Add List Keyword dialog, which you can use to specify a new Keyword/Value pair. When you click <strong>OK</strong>, the new Keyword/Value pair is added to the end of the editor. For more information, refer to the <a class="wiki-page" href="#Adding-a-New-Keyword-and-Value-Pair">Adding a New Keyword and Value Pair</a> section.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Edit</td>
+			<td>Launches the Edit List Keyword dialog, which you can use to modify the Keyword/Value pair.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td>Deletes the selected row. This option is only enabled for custom rows.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Move Up</td>
+			<td>Moves the selected row up one row in the editor. This option is only enabled for custom rows.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Move Down</td>
+			<td>Moves the selected row down one row in the editor. This option is only enabled for custom rows.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td>Copies the value of the selected cell.</td>
+			<td><strong>CTRL + C</strong></td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td>Pastes the copied value into the selected cell. <strong><ins>Note</ins></strong>: You cannot paste values into cells when the row type is different than the source row type. </td>
+			<td><strong>CTRL + V</strong></td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td>Undoes the last performed action.</td>
+			<td><strong>CTRL + Z</strong></td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td>Redoes the last undone action.</td>
+			<td><strong>CTRL + Y</strong></td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Adding-a-New-Keyword-and-Value-Pair"></a>
+<h4 >Adding a New Keyword and Value Pair<a href="#Adding-a-New-Keyword-and-Value-Pair" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>To add a new Keyword/Value pair, do the following:</p>
+
+
+	<ol>
+	<li>Right-click in the editor and select either <strong>Insert Before</strong> or <strong>Add to End</strong>. The Insert/Add List Keyword dialog displays.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>List Keyword Dialog</strong></em></span><br /><img src="attachments/download/116773/43_ListParameterDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Under the General tab, configure the following:
+	<ul>
+	<li>Enter the name for the keyword in the <strong>Name</strong> field.</li>
+		<li>Enter the initial value for the keyword in the <strong>Initial Value</strong> field.</li>
+		<li>Check the <strong>Read-only in runtime editor</strong> box to have the Keyword/Value pair read-only at runtime.</li>
+	</ul>
+	</li>
+		<li>Under the Layout tab, configure the following:
+	<ul>
+	<li>Select the parameter type using the drop-down menu in the <strong>Type</strong> field. For a full list of parameter types, refer to the <a class="wiki-page" href="ScheduleRunner.html#Parameter-Types">Parameter Types</a> documentation.</li>
+		<li>Check the <strong>Mark as required</strong> box to mark the parameter as required. Parameters with this setting enabled will be bolded. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Required Parameter</strong></em></span><br /><img src="attachments/download/116766/43_RequiredListParameter.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ul></li>
+	</ol>
+
+
+	<a name="Notes-Page"></a>
+<h3 >Notes Page<a href="#Notes-Page" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Notes page can be used to provide additional information about the schedule. This is a free-form text editor, and it can be used to easily add, delete, and modify schedule details, as necessary.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Notes Page</strong></em></span><br /><img src="attachments/download/113054/43_NotesPage.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>Notes Page Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+			<td style="width:120px;text-align:left;"><strong>Keyboard Shortcut</strong> </td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td>Copies and remove the selected text.</td>
+			<td><strong>CTRL + X</strong></td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td>Copies the selected text.</td>
+			<td><strong>CTRL + C</strong></td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td>Pastes the copied text.</td>
+			<td><strong>CTRL + P</strong></td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td>Undoes the last change made.</td>
+			<td><strong>CTRL + Z</strong></td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td>Redoes the last undone change made.</td>
+			<td><strong>CTRL + Y</strong></td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+	<a name="Managing-Schedule-Pages"></a>
+<h3 >Managing Schedule Pages<a href="#Managing-Schedule-Pages" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>You can add, rename, or delete List and Matrix pages using their respective right-click options (as described in the table below). When adding a new list or matrix page, you can select an existing list/matrix page to use as a template. Click <strong>OK</strong> to add the new page to the schedule.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Right-Click Options</strong></em></span><br /><img src="attachments/download/125744/44_SchedulePageOptions.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>New List Page Dialog</strong></em></span><br /><img src="attachments/download/125745/44_NewListPageDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>New Schedule Page</strong></em></span><br /><img src="attachments/download/125746/44_NewSchedulePage.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Option Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Add List Page</td>
+			<td> Launches the Add List Page dialog, which allows you to add a new list page.</td>
+		</tr>
+		<tr>
+			<td>Add Matrix Page</td>
+			<td> Launches the Add Matrix Page dialog, which allows you to add a new matrix page.</td>
+		</tr>
+		<tr>
+			<td>Rename Page</td>
+			<td> Allows you to rename the name of the page. The name must be unique. </td>
+		</tr>
+		<tr>
+			<td>Delete Page</td>
+			<td> Deletes the selected page.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Exporting-Schedules"></a>
+<h2 >Exporting Schedules<a href="#Exporting-Schedules" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Schedules can be exported to LabCentral's Manage Lab Files page using the following steps:</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Schedules can only be exported if iTest is connected to LabCentral.</td>
+		</tr>
+	</table></p>
+
+
+	<ol>
+	<li>Right-click on the schedule you want to upload and select the <strong>Export to LabCentral...</strong> option.</li>
+		<li>You will be prompted to enter a comment to appear with the exported schedule.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Enter Comment</strong></em></span><br /><img src="attachments/download/113106/SB42_ExportAddComment.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;<br />Upon successful upload, the exported schedule will appear in LabCentral's <em>Schedule</em> folder, accessed through the <strong>Test Systems > Manage Lab Files</strong> page. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Shown in Schedule Folder</strong></em></span><br /><img src="attachments/download/113105/42_LCExported.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<a name="Schedule-Examples"></a>
+<h2 >Schedule Examples<a href="#Schedule-Examples" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Solution.Demo is a basic solution used to demonstrate iTest fundamentals. It includes two schedule templates (i.e., <strong>Steady_State_Template_1</strong> and <strong>Transient_Template_1</strong>). Your solution will include schedules and templates that are relevant to your application. The following sections are examples of each schedule type.</p>
+
+
+	<a name="Steady-State-Example"></a>
+<h3 >Steady State Example<a href="#Steady-State-Example" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Steady State example below is an eight-step test sequence that sets a series of values for the <code>Demand</code> channel. In this schedule, step 4 will loop back to step 1 twice, as defined in the <strong>JumpToStep</strong> and <strong>JumpsToDo</strong> columns on the Data page. This means that steps 1 - 4 will be repeated a total of three times. Step 5 has a step task, which will stop the test when <code>voDmo1Feedback > voDmo1Demand * 1.1</code>.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Steady State Schedule Example</strong></em></span><br /><img src="attachments/download/115410/43_SteadyStateScheduleExample.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Step Task from Step 5</strong></em></span><br /><img src="attachments/download/114511/43_StepTaskExample.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>A transient type data log will start on step 1 and end on step 7, as defined by the <code>TransientLogStartStep</code> and <code>TransientLogEndStep</code> entries on the Header page. On step 8, a snap type data log will take place 1 second after the start of the step.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Header Page</strong></em></span><br /><img src="attachments/download/115411/43_HeaderPageExample.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>The image below displays the transient data collected for the <code>voDmo1Demand</code> channel:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Transient Data Log</strong></em></span><br /><img src="attachments/download/114513/43_TransientDataLogExample.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Transient-Schedule-Example"></a>
+<h3 >Transient Schedule Example<a href="#Transient-Schedule-Example" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Transient schedule example is a 200-step test that sets sequence values for the <code>voDmo1Demand</code> channel. A transient type data log will start on step 1 and end on the last schedule step. Note that when <code>TransientLogEndStep=-1</code>, the transient type data log will end on the last schedule step. The <strong>Default</strong> limit group will be applied for the duration of the schedule. The step time is 0.1 seconds (10 Hz).</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Transient Schedule Example - Data Page</strong></em></span><br /><img src="attachments/download/114514/43_TransientDataPageExample.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Transient Schedule Example - Header Page</strong></em></span><br /><img src="attachments/download/114515/43_TransientHeaderPageExample.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>The image below displays the transient data collected for the <code>voDmo1Demand</code> channel:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Transient Data Log</strong></em></span><br /><img src="attachments/download/114516/43_TransientDataLogExample-TransientSchedule.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Tests.html">Managing Tests</a></li>
+		<li><a class="wiki-page" href="Step_Tasks.html">Step Tasks</a></li>
+	</ul>
+</body>
+</html>

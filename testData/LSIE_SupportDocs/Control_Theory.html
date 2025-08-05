@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Control Theory</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Managing_Proportional_Integral_Derivative_Controls.html">Managing Proportional Integral Derivative Controls</a></li>
+<li><a href="Control_Theory.html">Control Theory</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Control-Theory"></a>
+<h1 >Control Theory<a href="#Control-Theory" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Control-Theory">Control Theory</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Dyno-Controller-PID-Theory">Dyno Controller PID Theory</a></li><li><a href="#EXAMPLE-Engine-Coolant-Using-a-Closed-Loop-PID">EXAMPLE: Engine Coolant Using a Closed-Loop PID</a></li><li><a href="#EXAMPLE-Dynamometer-Control-Using-a-Closed-Loop-PID">EXAMPLE: Dynamometer Control Using a Closed-Loop PID</a></li><li><a href="#EXAMPLE-Engine-and-Dynamometer-Control-Using-Software-PIDs">EXAMPLE: Engine and Dynamometer Control Using Software PIDs</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>A PID loop is comprised of a feedback signal, a setpoint signal, and a control signal.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>PID Loop</strong></em></span><br /><img src="attachments/download/95730/PIDdiagram1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>By measuring and comparing the resulting feedback to the desired setpoint, an error is derived. With feedback, or closed loop, control, the system does not need to know in advance exactly what disturbances will affect the process. In addition, the system does not need to know specific quantitative relationships between these disturbances and their ultimate effects on the controlled variables.</p>
+
+
+	<p>In a simple control system, as shown in the following figure, the setpoint is entered by the thermostat. So the thermostat develops an error internally. The effects of that error can be seen as a control output that actuates the fuel solenoid bringing the system into control.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Simple Control System</strong></em></span><br /><img src="attachments/download/95731/PIDdiagram2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>This is an example of a closed loop system. Error is derived from the difference in room temperature and setpoint</p>
+
+
+	<a name="Dyno-Controller-PID-Theory"></a>
+<h2 >Dyno Controller PID Theory<a href="#Dyno-Controller-PID-Theory" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following figure depicts a manual method used for dyno control.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Manual Method for Dyno Control</strong></em></span><br /><img src="attachments/download/95732/PIDdiagram3.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The operator in this figure derives the error by comparing the setpoint to the feedback and implements control with the hand valve. The problem with this system is lack of repeatability and limits of control speed, not to mention operator fatigue, boredom, and more.</p>
+
+
+	<p>Closed loop technologies eliminate the problems associated with human control of a dyno. Dyno controllers using setpoint and feedback develop an error. The error is processed through the three-mode controller and becomes the control signal. The three-mode controller is the device that implements a PID control function in a process controller such as a dyno control.</p>
+
+
+	<p>After gaining an understanding of PID controls, it is possible to tune the controls for each application so that response is optimized. For example, a control loop can maintain the temperature of a tank of water at a set temperature.</p>
+
+
+	<p>A PID control has three major control variables that are set to define how the PID operates:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Variables</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Variable</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Proportional control</td>
+			<td> Monitors only the magnitude of the error (the difference between the feedback and the setpoint signal) and applies a proportional amount of that error to the control signal. Increasing the proportional band gain increases the responsiveness of the system, but may cause severe oscillations about the setpoint. The process load is the variable that causes the error (for example, cold air that cools down a tank that is being maintained at a fixed temperature). Using only proportional control, you can adjust the proportional gain to work with fixed process loads. If the process load varies substantially, adding integral and derivative controls helps reduce the error.</td>
+		</tr>
+		<tr>
+			<td>Integral control</td>
+			<td> Monitors cumulative error over time. If the setpoint is not reached, a gain is introduced so that the setpoint can be reached. The variable for integral controls defines how often the gain is reset to account for the error. A bigger integral gain responds more quickly to a varying process load, but severe oscillations about the setpoint may occur.</td>
+		</tr>
+		<tr>
+			<td>Derivative control</td>
+			<td> Monitors the change in error with respect to time. A constant error initiates no response from the derivative portion of the controller, while a rapid rate of error change produces a greater response from the derivative portion of the controller. For example, the derivative portion of a controller could reverse the sign and increase the magnitude of the gain if the process error is small and the rate of error change is high to minimize or eliminate the overshoot of a setpoint.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="EXAMPLE-Engine-Coolant-Using-a-Closed-Loop-PID"></a>
+<h2 >EXAMPLE: Engine Coolant Using a Closed-Loop PID<a href="#EXAMPLE-Engine-Coolant-Using-a-Closed-Loop-PID" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following example illustrates the use of PID control for engine processes. The requirement is to stabilize the temperature of engine coolant. A heat exchanger acts as a vehicle radiator.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>PID Control for Engine Processes</strong></em></span><br /><img src="attachments/download/95733/PIDexample1a.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>In this example, an electronic valve controls the flow of water to the heat exchanger and opens proportionally to the control signal.</p>
+
+
+	<p>A thermocouple monitors the engine’s water temperature. The control and feedback signals, along with a setpoint signal from the user (or system), control the engine’s coolant temperature.</p>
+
+
+	<p>A controller is required to define the scale, rate, and magnitude of the heat exchangers output ability to remove heat (deg/gal/min).</p>
+
+
+	<p>The following figure shows a schematic of the PID control system. The difference (error) between the setpoint signal and feedback signal is calculated. From this error, the proportional gain, derivative gain, and integral gain are calculated. The sum of the gains is calculated and an output signal is sent to the control valve. The results are monitored by the thermocouple and this process repeats.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>PID Control System Schematic</strong></em></span><br /><img src="attachments/download/95765/PIDexample1b.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>An additional option for a PID control is shown in the following figure. With this type of system, an additional gain can be used if it is determined that another parameter has a predictable effect on the system. With the engine example, the existence of an additional coolant load, such as a dynamometer, may affect the response of the PID. A gain could be introduced to control the coolant temperature that is proportional to the load applied by the dynamometer.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Additional Gain</strong></em></span><br /><img src="attachments/download/95766/PIDexample1c.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="EXAMPLE-Dynamometer-Control-Using-a-Closed-Loop-PID"></a>
+<h2 >EXAMPLE: Dynamometer Control Using a Closed-Loop PID<a href="#EXAMPLE-Dynamometer-Control-Using-a-Closed-Loop-PID" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>In the following figure, a dynamometer applies a load to the engine to achieve a desired speed. Dyno load is controlled by a current controller (inner PID loop) while the speed sensor provides feedback to the outer PID loop.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Nested Loop</strong></em></span><br /><img src="attachments/download/95767/PIDexample2a.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>In this example, the analog output (control) channel of the outer PID loop is also the setpoint to the current controller that allows current to the dyno field proportionally to the commanded control signal (typically 0-10 vdc).</p>
+
+
+	<p>A speed feedback pickup (rpm; frequency/voltage input) monitors the dyno shaft’s speed. The engine’s speed is maintained based on parameter definitions of the command and feedback signals.</p>
+
+
+	<p>One (PID) controller is required to define the scale, rate, and magnitude of the final field current output (Amps).</p>
+
+
+	<a name="EXAMPLE-Engine-and-Dynamometer-Control-Using-Software-PIDs"></a>
+<h2 >EXAMPLE: Engine and Dynamometer Control Using Software PIDs<a href="#EXAMPLE-Engine-and-Dynamometer-Control-Using-Software-PIDs" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To illustrate the use of PID control of a dynamometer and engine using advanced software control features, refer to the following figure.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Embedded PIDs in Software</strong></em></span><br /><img src="attachments/download/95768/PIDexample3a.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>In this example, two analog database channels are driven. One channel drives the current to the throttle actuator field proportionally to the control signal setpoint (typically 0-10 vdc). Another channel drives the current to the Dyno field (0-10 vdc).</p>
+
+
+	<p>Speed and torque feedback sensors monitor the dyno. These two signals, along with setpoint signals from the user (or system), provide stable control of an engine’s load at a given speed.</p>
+
+
+	<p>Two PIDs are active in the definition scale, rate, and magnitude of the dyno field and the throttle field output current. Each PID is embedded in software designed to control their respective loops. Typical software control modes are Speed Mode and Load Mode.</p>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Introduction to Test Manager</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Introduction_to_Test_Manager.html">Introduction to Test Manager</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Introduction-to-Test-Manager"></a>
+<h1 >Introduction to Test Manager<a href="#Introduction-to-Test-Manager" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Introduction-to-Test-Manager">Introduction to Test Manager</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Running-Test-Manager">Running Test Manager</a></li><li><a href="#Navigating-in-Test-Manager">Navigating in Test Manager</a></li><li><a href="#Terminology">Terminology</a><ul><li><a href="#Macros">Macros</a></li><li><a href="#Other">Other</a></li></ul></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Test Manager is a powerful software tool that is used to develop test configurations that are run on a test system during runtime. You can use Test Manager to design all elements of the testing experience, such as tests, interfaces, and solution components. Its use can be approached from multiple levels of application development that may vary by expertise and power. The documentation discusses basic, intermediate, and advanced application development. From a basic level, Test Manager supports the following:</p>
+
+
+	<ul>
+	<li>Data Logs</li>
+		<li>Limits</li>
+		<li>Channels</li>
+		<li>Schedules</li>
+		<li>Control Loops </li>
+		<li>Calculations</li>
+		<li>Picklists</li>
+	</ul>
+
+
+	<p>If your requirements exceed what can be achieved with the previous list, Test Manager supports intermediate application development tools, such as:</p>
+
+
+	<ul>
+	<li>Writing VCL code</li>
+		<li>Adding new drivers and devices</li>
+		<li>Managing modules</li>
+		<li>Setting up EventViewer</li>
+	</ul>
+
+
+	<p>Test Manager also supports advanced developmental features, such as:</p>
+
+
+	<ul>
+	<li>Automation</li>
+		<li>LabCentral integration</li>
+	</ul>
+
+
+	<p>When Test Manager is first launched, the Select Solution dialog displays. For more information about the Select Solution dialog, refer to the <a class="wiki-page" href="Select_Support.html">Select Support</a> documentation.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The Select Solution dialog does not display if AutomationPanel or iTest Console is already running.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Running-Test-Manager"></a>
+<h2 >Running Test Manager<a href="#Running-Test-Manager" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To start Test Manager, click the Test Manager icon on your computer or locate the <em>TestMgr.exe</em> file in your $EXECUTE folder. On most systems, Test Manager prompts you to specify the solution to edit upon start up. Once you have selected a solution, the application interface displays.</p>
+
+
+	<p>The default interface contains a menu bar, a tool bar, a tree bar, and an output bar. The default gray area in the middle of the application is the file viewer, where all editing occurs. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Default Test Manager Interface</strong></em></span><br /><img src="attachments/download/119481/43_TMInterface.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />If you initialize Test Manager while iTest is running, Test Manager will <ins>not</ins> prompt you to select a solution to edit. The currently running solution will automatically open. If you make changes in Test Manager while the system is running, the changes may have immediate repercussions and modify the outcome of your tests. It is best to avoid major changes in Test Manager while running tests with a real specimen.</p>
+
+
+	<a name="Navigating-in-Test-Manager"></a>
+<h2 >Navigating in Test Manager<a href="#Navigating-in-Test-Manager" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To learn more about the Test Manager tree and menu options, refer to the <a class="wiki-page" href="Test_Manager_Navigation.html">Test Manager Navigation</a> documentation.</p>
+
+
+	<a name="Terminology"></a>
+<h2 >Terminology<a href="#Terminology" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following terms are commonly used throughout the iTest system and its documentation. It is useful to understand their definitions and applications before reading further.</p>
+
+
+	<a name="Macros"></a>
+<h3 >Macros<a href="#Macros" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Throughout Test Manager and across iTest documentation, macros are used to refer to specific locations in the installation folder. Current values for these macros are located in the <em>Config.ini</em> file (e.g., <em>C:\ADT\iTest3.8\Config.ini</em>).</p>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>iTest Macro Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:100px;text-align:left;"><strong>Term</strong> </td>
+			<td style="text-align:left;"><strong>Definition</strong> </td>
+		</tr>
+		<tr>
+			<td>$SYSTEMDIR</td>
+			<td>This is the folder where iTest is installed on the PC.<br />&nbsp;<br />Example: <em>C:\ADT\iTest4.1\</em></td>
+		</tr>
+		<tr>
+			<td>$SUPPORTDIR</td>
+			<td>This is the solution folder.<br />&nbsp;<br />Example: <em>C:\ADT\iTest4.1\Solution.Demo\</em> </td>
+		</tr>
+		<tr>
+			<td>$DATADIR</td>
+			<td>This is the folder that contains all logged data.<br />&nbsp;<br />Example: <em>C:\ADT\iTest4.1\Data\</em></td>
+		</tr>
+		<tr>
+			<td>$EXECUTEDIR</td>
+			<td>This is the folder that contains iTest executable files and other binary files.<br />&nbsp;  <br />Example: <em>C:\ADT\iTest4.1\Execute\</em></td>
+		</tr>
+		<tr>
+			<td>$PYTHONDIR</td>
+			<td>This is the folder that contains Python support files including the supported libraries.<br />&nbsp;  <br />Example: <em>C:\ADT\iTest4.1\Execute\Python37\</em></td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+	<a name="Other"></a>
+<h3 >Other<a href="#Other" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Additional Terms</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:100px;text-align:left;"><strong>Term</strong> </td>
+			<td style="text-align:left;"><strong>Definition</strong> </td>
+		</tr>
+		<tr>
+			<td>RDB</td>
+			<td> The RDB, or real-time database, refers to the live portion of memory on the PC that contains all channels and the current value of the channel attributes such as value, names, and limits among others.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+</body>
+</html>

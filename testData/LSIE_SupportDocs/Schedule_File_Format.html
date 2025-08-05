@@ -1,0 +1,1169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Schedule File Format</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Schedule_File_Format.html">Schedule File Format</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+ <span style="display: none;">
+
+
+	<p><img src="attachments/download/93003/ADT_LOGO_OUTLINE.png" style="width: 100px;" alt="" /></p>
+
+
+	 </span>
+
+
+	 <div class="CoverPage" class="body">
+
+
+	 <div class="Title">
+
+
+	<p style="text-align:center;"><br /><strong><span style="font-size:30pt;color: #005CAA;">Schedule File Format</span></strong></p>
+
+
+	 </div>
+
+
+	<p style="text-align:center;"><br /><em><span style="font-size:12pt;font-style: italic;">Product Version 4.5</span></em></p>
+
+
+	<p style="text-align:center;"><br /><strong><span style="font-size:16pt;">Prepared By</span></strong><br />ADT Software Engineering</p>
+
+
+	<p style="text-align:center;"><br /><span style="font-size: 10pt;color:red;">A&#38;D Confidential Document Distributable only to A&#38;D Customers</span><br /><span style="font-size: 10pt;color:black;">Copyright A&#38;D Company, Limited<br />A&#38;D Technology Inc.</span></p>
+
+
+	 </div>
+
+
+	 <h1>Table of Contents</h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Schedule-File-Format">Schedule File Format</a><ul><li><a href="#Introduction">Introduction</a><ul><li><a href="#Schedule-Data">Schedule Data</a></li><li><a href="#Page-Layout">Page Layout</a></li><li><a href="#Metadata">Metadata</a></li><li><a href="#Summary">Summary</a></li></ul>
+</li><li><a href="#File-Format-Specification">File Format Specification</a><ul><li><a href="#Section-Identifiers">Section Identifiers</a><ul><li><a href="#Schedule-Definition">Schedule Definition</a></li><li><a href="#Schedule-Contents">Schedule Contents</a></li><li><a href="#Schedule-Parsing">Schedule Parsing</a></li></ul>
+</li><li><a href="#Schedule-Definition-File-Specification">Schedule Definition File Specification</a><ul><li><a href="#Meta-Data">Meta Data</a></li><li><a href="#List-Page">List Page</a></li><li><a href="#Matrix-Page">Matrix Page</a></li><li><a href="#Notes-Page">Notes Page</a></li></ul>
+</li><li><a href="#Schedule-Contents-File-Specification">Schedule Contents File Specification</a><ul><li><a href="#List-Page-2">List Page</a></li><li><a href="#Matrix-Page-2">Matrix Page</a></li><li><a href="#Notes-Page-2">Notes Page</a></li></ul>
+</li></ul>
+</li><li><a href="#Advanced-Topics">Advanced Topics</a><ul><li><a href="#Schedule-Templates">Schedule Templates</a><ul><li><a href="#Creating-New-Templates">Creating New Templates</a></li></ul></li></ul></li></ul></li></ul></p>
+
+
+	<a name="Schedule-File-Format"></a>
+<h1 >Schedule File Format<a href="#Schedule-File-Format" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Introduction"></a>
+<h2 >Introduction<a href="#Introduction" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following contains information pertaining to the structure of the iTest schedule (<em>*.SC2</em>) file. The application of schedule files is beyond the scope of this document and will therefore not be discussed.</p>
+
+
+	<a name="Schedule-Data"></a>
+<h3 >Schedule Data<a href="#Schedule-Data" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>In general, the purpose of a schedule within the iTest Data Acquisition and Control System is to bring the unit under test and/or the test cell to some user defined state. This state is defined by a series of operating points, commonly know as setpoints. For example, consider commanding a dynamometer to some fixed RPM and the engine throttle position to some fixed percentage. Collectively, these two setpoints would represent a single entry, or step, in the schedule. In most cases, every entry in the schedule would represent a unique operating point.  For example, consider the following:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Example</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Setpoint Number</strong></td>
+			<td style="text-align:left;"><strong>Dyno RPM</strong> </td>
+			<td style="text-align:left;"><strong>Throttle Position</strong></td>
+		</tr>
+		<tr>
+			<td>1    </td>
+			<td>1000    </td>
+			<td>30%</td>
+		</tr>
+		<tr>
+			<td>2    </td>
+			<td>1250    </td>
+			<td>40%</td>
+		</tr>
+		<tr>
+			<td>3    </td>
+			<td>1500    </td>
+			<td>50%</td>
+		</tr>
+		<tr>
+			<td>4    </td>
+			<td>1750    </td>
+			<td>60%</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>In this example, the value of RPM and throttle position are different for every step. There are cases, however, where the value of a particular setpoint would be the same for the entire schedule. For example, consider engine coolant temperature as shown below:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Example</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Setpoint Number</strong></td>
+			<td style="text-align:left;"><strong>Dyno RPM</strong></td>
+			<td style="text-align:left;"><strong>Throttle Position</strong></td>
+			<td style="text-align:left;"><strong>Coolant Temperature</strong></td>
+		</tr>
+		<tr>
+			<td>1    </td>
+			<td>1000    </td>
+			<td>30%</td>
+			<td>200 ° F</td>
+		</tr>
+		<tr>
+			<td>2    </td>
+			<td>1250    </td>
+			<td>40%</td>
+			<td>200 ° F</td>
+		</tr>
+		<tr>
+			<td>3    </td>
+			<td>1500    </td>
+			<td>50%</td>
+			<td>200 ° F</td>
+		</tr>
+		<tr>
+			<td>4    </td>
+			<td>1750    </td>
+			<td>60%</td>
+			<td>200 ° F</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>Given this scenario, one approach would be to include the coolant temperature in each step of the schedule as shown above. In order to reduce the number of columns in the schedule, an alternative solution is available. Rather than include these static setpoints in every step they are separated and "stored" in a different section of the schedule as shown below:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Example: Coolant Temperature = 200° F</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Setpoint Number</strong></td>
+			<td style="text-align:left;"><strong>Dyno RPM</strong></td>
+			<td style="text-align:left;"><strong>Throttle Position</strong></td>
+		</tr>
+		<tr>
+			<td>1    </td>
+			<td>1000    </td>
+			<td>30%</td>
+		</tr>
+		<tr>
+			<td>2    </td>
+			<td>1250    </td>
+			<td>40%</td>
+		</tr>
+		<tr>
+			<td>3    </td>
+			<td>1500    </td>
+			<td>50%</td>
+		</tr>
+		<tr>
+			<td>4    </td>
+			<td>1750    </td>
+			<td>60%</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>By convention, any setpoint that applies globally to all steps within the schedule are written to the <strong>Header</strong> as is the case with engine coolant temperature. These items are stored in the Header list in INI file format (<code>&lt;keyword&gt; = &lt;value&gt;</code>).</p>
+
+
+	<p>Finally, there may be a need to include descriptive text within the schedule that details the purpose of the test or anything else deemed appropriate by the user. These "notes" are also included in yet another section of the schedule. For example:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Example: Coolant Temperature = 200° F</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Setpoint Number</strong></td>
+			<td style="text-align:left;"><strong>Dyno RPM</strong></td>
+			<td style="text-align:left;"><strong>Throttle Position</strong></td>
+		</tr>
+		<tr>
+			<td>1    </td>
+			<td>1000    </td>
+			<td>30%</td>
+		</tr>
+		<tr>
+			<td>2    </td>
+			<td>1250    </td>
+			<td>40%</td>
+		</tr>
+		<tr>
+			<td>3    </td>
+			<td>1500    </td>
+			<td>50%</td>
+		</tr>
+		<tr>
+			<td>4    </td>
+			<td>1750    </td>
+			<td>60%</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>Torque response test for a 6 cylinder. Initial test was run in F Wing Cell 15 on July 22, 2010.</p>
+
+
+	<p>In summary, there are 3 general types of sections within any given schedule:</p>
+
+
+	<ol>
+	<li>The list of global values known as the ‘Header Data’.</li>
+		<li>The variable setpoint values known as the ‘Step Data’.</li>
+		<li>The descriptive text known as the ‘Notes’.</li>
+	</ol>
+
+
+	<p>In fact, these 3 sections are each assigned a generic type, which can be one of the following:</p>
+
+
+	<ul>
+	<li>LIST for header data pages.</li>
+		<li>MATRIX for step data pages.</li>
+		<li>NOTES for Notes pages.</li>
+	</ul>
+
+
+	<p>Even though there are three general sections within any given schedule, there is no restriction as to the number of ‘Header Data’ and ‘Step Data’ sections that can be included within a schedule. The number of each of these sections is left to the user’s discretion. For example:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Example</strong></em></span><br /><img src="attachments/download/286/sched1.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p><ins><strong>EXCEPTION:</strong></ins> The only exception is that there can only be one ‘Notes’ section.</p>
+
+
+	<p>From within Test Manager, these different sections are represented as separate tabs as shown below.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Separate Tabs</strong></em></span><br /><img src="attachments/download/287/sched2.JPG" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Page-Layout"></a>
+<h3 >Page Layout<a href="#Page-Layout" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To increase the ease of use of schedules within Test Manager, additional functionality has been provided to reduce the length of time required to create new schedules. The properties and configuration of the individual columns in the case of the ‘Step Data’ pages, and the properties of the items in the ‘Header Data’ pages can also be stored within the schedule file. For example, the user may wish to include a column within the schedule where all cells within that column presents the user with a drop-down list of RDB channels when selected. There are many such properties, all of which will be discussed in later sections of this document. Suffice it to say at this point, that each page, (‘Header’, ‘Step’, and ‘Notes’) has a corresponding section within the schedule that contains the ‘Page Layout’ information. Consider the following:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Page Layout</strong></em></span><br /><img src="attachments/download/288/sched3.JPG" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Metadata"></a>
+<h3 >Metadata<a href="#Metadata" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Lastly, there is one additional section of the schedule file that must be introduced. Given the flexible nature of the schedule file’s layout, an additional section of information is required that describes the schedule in its entirety.  This ‘Meta Data’ describes the remaining data in the schedule file (e.g., the number of pages) and is included at the very top of the schedule file.</p>
+
+
+	<p>When the schedule file is read by Test Manager, the Meta Data is read first to determine the number of pages. Each page layout section is then read in order to create the correct number and type of pages. Finally, each page's data is read and applied to its corresponding page layout.</p>
+
+
+	<a name="Summary"></a>
+<h3 >Summary<a href="#Summary" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>In summary, a schedule file will be comprised of the following:</p>
+
+
+	<p>Where:</p>
+
+
+	<ul>
+	<li>There is only one Meta Data section.</li>
+		<li>There can be only one Notes section.</li>
+		<li>There can be any number of Header Data (LIST) and Step Data (MATRIX) sections.</li>
+		<li>For every Header Data section, there is a corresponding Header Data Page Layout section.</li>
+		<li>For every Step Data section, there is a corresponding Step Data Page Layout section.</li>
+	</ul>
+
+
+	<a name="File-Format-Specification"></a>
+<h2 >File Format Specification<a href="#File-Format-Specification" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>What follows is a detailed description of all the component sections of a schedule file along with a description of the section identifiers used to write these different sections to file and how these identifiers are then used to read the schedule back from file. The example from Section 2.1 will be used throughout the remainder of this section to illustrate the schedule file format.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Example: Coolant Temperature = 200° F</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Setpoint Number</strong></td>
+			<td style="text-align:left;"><strong>Dyno RPM</strong></td>
+			<td style="text-align:left;"><strong>Throttle Position</strong></td>
+		</tr>
+		<tr>
+			<td>1    </td>
+			<td>1000    </td>
+			<td>30%</td>
+		</tr>
+		<tr>
+			<td>2    </td>
+			<td>1250    </td>
+			<td>40%</td>
+		</tr>
+		<tr>
+			<td>3    </td>
+			<td>1500    </td>
+			<td>50%</td>
+		</tr>
+		<tr>
+			<td>4    </td>
+			<td>1750    </td>
+			<td>60%</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>Torque response test for a 6 cylinder. Initial test was run in F Wing Cell 15 on July 22, 2010.</p>
+
+
+	<p>This would appear as follow as viewed from Test Manager:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Torque Response Test</strong></em></span><br /><img src="attachments/download/289/sched4.JPG" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The actual schedule file would contain the following general sections:</p>
+
+
+<pre>
+[STARTDEFINITION]
+definitiontype= SCHEDULE
+definitionname= Step Schedule
+pagecount= 3
+[PAGE1]
+pagetype= LIST
+name= Header
+Parameters=1
+ColumnDefFields= Channel, Type, Required, Default, Description, Runtime Show, Lock Column, Allow Edit, TM Hide , Col Width
+Parameter.1= "Coolant Temperature" INT 0 EMPTYSTRING "Coolant Temperature" 1 0 1 0 -1.00000
+[PAGE2]
+pagetype= MATRIX
+name= Data
+Columns=2
+ColumnDefFields= Channel, Type, Required, Default, Description, Runtime Show, Lock Column, Allow Edit, TM Hide , Col Width
+Column.1= "valDt1DynoSchSetpoint" NUM 0 0 "DynoSetpoint" 1 0 1 0 -1.0000
+Column.2= "valDt1ThrotSchSetpoint" NUM 0 0 "ThrotSetpoint" 1 0 1 0 -1.0000
+[PAGE3]
+pagetype= NOTE
+name= Notes
+[ENDDEFINITION]
+[STARTCONTENTS]
+[Header]
+Coolant Temperature= 200
+[Data]
+valDt1DynoSchSetpoint    valDt1ThrotSchSetpoint
+EU    %
+1000.0    30.0
+1250.0    40.0
+1500.0    50.0
+1750.0    60.0
+[Notes]
+Torque response test for a 6 cylinder.  Initial test was run in F Wing Cell 15 on July 22, 2010
+[ENDCONTENTS]
+</pre>
+
+	<a name="Section-Identifiers"></a>
+<h3 >Section Identifiers<a href="#Section-Identifiers" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>At the highest level, the schedule file contains two main sections: the schedule definition and the schedule contents.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Section Identifiers</strong></em></span><br /><img src="attachments/download/290/sched5.JPG" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Schedule-Definition"></a>
+<h4 >Schedule Definition<a href="#Schedule-Definition" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>This section is delimited by the [STARTDEFINITION] – [ENDDEFINITION] section identifiers.  It contains the Meta Data and Page Layout information. There is no restriction on the number of page definitions with the exception that there is only one ‘Meta Data’ page and one ‘Notes’ page</p>
+
+
+	<a name="Schedule-Contents"></a>
+<h4 >Schedule Contents<a href="#Schedule-Contents" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>This section is delimited by the [STARTCONTENTS] – [ENDCONTENTS] section identifiers.  It contains the actual data associated with each page.  In the case of a ‘Step Data’ page, it contains the list of setpoint values for each step in the schedule.  For ‘Header Data’ pages, it contains the list of &lt;keyword&gt; = &lt;value&gt; combinations.  For the ‘Notes’ page it simply contains the actual text that are the notes for this schedule.</p>
+
+
+	<a name="Schedule-Parsing"></a>
+<h4 >Schedule Parsing<a href="#Schedule-Parsing" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The purpose of this section is to describe at a very high level how Test Manager parses the Schedule file. It is not intended to describe in detail the contents of the various sections of a schedule file.  Please refer to Section 3.2 for more detailed information.</p>
+
+
+	<p>When Test Manager reads the schedule file, it begins with the Meta Data found in the Schedule Definition.  It will discover the number of pages, n, associated with the schedule by reading the &lt;pagecount&gt; keyword found in the Meta Data. Then it will read each of the n page’s layout sections, [PAGE1] through [PAGEn], in turn to discover the configuration and layout of those pages.  Each page layout has an entry that defines the type and name of that specific page.  It is through the use of this name that Test Manager establishes the relationship between a page’s layout and its contents.  In our example for PAGE1, name=Header and its pagetype=LIST.  Using this information Test Manager knows to look for a section in the Schedule Contents section of the file labeled [Header].</p>
+
+
+	<a name="Schedule-Definition-File-Specification"></a>
+<h3 >Schedule Definition File Specification<a href="#Schedule-Definition-File-Specification" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Once again, our simple example will be used to describe each sections format specification.</p>
+
+
+	<a name="Meta-Data"></a>
+<h4 >Meta Data<a href="#Meta-Data" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Example:<br /><pre>
+[STARTDEFINITION]
+definitiontype= SCHEDULE
+definitionname= Step Schedule
+pagecount= 3
+</pre></p>
+
+
+	<p>Where:</p>
+
+
+	<p>Opening section identifier =  [STARTDEFINITION]</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Keyword Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Keyword</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>definitiontype</td>
+			<td>The type of schedule contained within the file. Can be one of the following:<br />- Schedule<br />- Systable<br />- Table<br />- Batterytype</td>
+		</tr>
+		<tr>
+			<td>definitionname</td>
+			<td>The name associated with this schedule (Please see Section 4.1 under Advance topics)</td>
+		</tr>
+		<tr>
+			<td>pagecount </td>
+			<td>The number of pages in the schedule</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="List-Page"></a>
+<h4 >List Page<a href="#List-Page" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Example:<br /><pre>
+[PAGE1]
+pagetype= LIST
+name= Header
+Parameters=1
+ColumnDefFields= Channel, Type, Required, Default, Description, Runtime Show, Lock Column, Allow Edit, TM Hide, Col Width
+Parameter.1= "Coolant Temperature" INT 0 EMPTYSTRING "Coolant Temperature" 1 0 1 0
+</pre></p>
+
+
+	<p>Where:<br />Opening section identifier =  [PAGEn]</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Keyword Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Keyword</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>pagetype </td>
+			<td>The type of schedule.  ‘LIST’ in the case of a Header Data page.</td>
+		</tr>
+		<tr>
+			<td>name </td>
+			<td>The name of this page. It will appear on the tab for this page as seen within Test Manager.</td>
+		</tr>
+		<tr>
+			<td>Parameters </td>
+			<td>The number of &lt;keyword&gt;=&lt;value&gt; pairs in the LIST.  This will define the number of lines in the LIST page.</td>
+		</tr>
+		<tr>
+			<td>ColumnDefFields    </td>
+			<td>Although not used by iTest to parse the file, this entry is used by users reading the file in a text editor such as Notepad.  It defines the meaning of the individual entries in each ‘Parameter’ definition as defined below.<br />- <strong>Channel</strong> – The &lt;keyword&gt; name for this entry.<br />- <strong>Type</strong> – The type of entry.  See below for details.<br />- <strong>Required</strong> – If marked as required, the entry cannot be deleted.<br />- <strong>Default</strong> – Default value.  <br />- <strong>Description</strong> – Does not apply to LIST pages.  EMPTYSTRING by default.<br />- <strong>Runtime Show</strong> – Show this entry while running in iTest. If this value is set to 0, then a visual indication will be available while editing the schedule. In Test Manager, this visual indication is the applicable row being grayed out. In SolutionBuilder, this visual indication is the <img src="attachments/download/133980/ScheduleRuntimeHidden.png" alt="" /> icon in the row.<br />- <strong>Lock Column</strong> – Prevent the row value from being changed through a runtime editor.<br />- <strong>Allow Edit</strong> – Allow user to edit entry. If this value is set to 0, then a visual indication will be available while editing the schedule. This visual indication is the applicable entry being displayed in gray font.<br />- <strong>TM Hide</strong> – Does not apply to LIST pages.<br />- <strong>Col Width</strong> – Does not apply to LIST pages.  -1 by default.</td>
+		</tr>
+		<tr>
+			<td>Parameter.n    </td>
+			<td>The actual entries in the LIST with properties as defined by the ColumnDefFields.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>Parameter Type Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Parameter Type</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Validation/Notes</strong></td>
+		</tr>
+		<tr>
+			<td> Numeric </td>
+			<td> A numeric type parameter. </td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> Integer </td>
+			<td> An integer type parameter. </td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> Time </td>
+			<td> A time type parameter. </td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> Text </td>
+			<td> A text type parameter. </td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> TimeText </td>
+			<td> A time entry with colons, as needed (e.g., 00:00:00). </td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> TimeTextFull </td>
+			<td> A time entry in the format of <code>000:00:00.00</code>. </td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> Limit File List </td>
+			<td> A pick list of limit file (<em>.lim</em>) selections.</td>
+			<td> Only available in SolutionBuilder for non-BTS solutions.</td>
+		</tr>
+		<tr>
+			<td> Data Log </td>
+			<td> A picklist of data log selections. </td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> User Defined List </td>
+			<td> A picklist of user defined entries. </td>
+			<td> The list entry is semi-colon delimited (e.g., TRUE;FALSE). </td>
+		</tr>
+		<tr>
+			<td> Generic File List </td>
+			<td> A picklist of file selections. </td>
+			<td> The list entry must be a fully qualified path. $ substitutions are allowed in the file specification.</td>
+		</tr>
+		<tr>
+			<td> Generic Function List </td>
+			<td> A picklist of VCL procedure selections. It is intended that the VCL procedure return a value or string. </td>
+			<td> The list entry must be a fully qualified path. $ substitutions are allowed in the file specification. Use of wildcards is supported. E.g., <code>$SUPPORTDIR\Test\SysFunctions\*.tsc</code>. </td>
+		</tr>
+		<tr>
+			<td> User Picklist </td>
+			<td> A picklist of items in a picklist file (<em>.pkl</em>). </td>
+			<td> Users can select an option from the list. The picklist file must reside in the active support directory. </td>
+		</tr>
+		<tr>
+			<td> Editable User Picklist </td>
+			<td> A generic input parameter. Also provides a pick list of items from a picklist file (<em>.pkl</em>) residing in the active support directory. </td>
+			<td> User can either manually type in an entry or select from the list. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+	<a name="Matrix-Page"></a>
+<h4 >Matrix Page<a href="#Matrix-Page" class="wiki-anchor">&para;</a></h4>
+
+
+	<p><strong>Example</strong><br /><pre>
+[PAGE2]
+pagetype= MATRIX
+name= Data
+Columns=2
+ColumnDefFields= Channel, Type, Required, Default, Description, Runtime Show, Lock Column, Allow Edit, TM Hide , Col Width
+Column.1= "valDt1DynoSchSetpoint" NUM 0 0 "DynoSetpoint" 1 0 1 0 -1.0000
+Column.2= "valDt1ThrotSchSetpoint" NUM 0 0 "ThrotSetpoint" 1 0 1 0 -1.0000
+</pre><br />Where:<br />Opening section identifier =  [PAGEn]</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Keyword Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Keyword</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>pagetype </td>
+			<td>The type of schedule. ‘MATRIX’ in the case of a Step Data page.</td>
+		</tr>
+		<tr>
+			<td>name </td>
+			<td>The name of this page. It will appear on the tab for this page as seen within Test Manager.</td>
+		</tr>
+		<tr>
+			<td>Columns </td>
+			<td>The number columns in the MATRIX.  </td>
+		</tr>
+		<tr>
+			<td>ColumnDefFields    </td>
+			<td>Although not used by iTest to parse the file, this entry is used by users reading the file in a text editor such as Notepad. It defines the meaning of the individual entries in each ‘Column’ definition as defined below.<br />- <strong>Channel</strong> – The RDB channel tied to this column.<br />- <strong>Type</strong> – The type of entry.  See below for details.<br />- <strong>Required</strong> – If marked as required, the column cannot be deleted.<br />- <strong>Default</strong> – Default value.  <br />- <strong>Description</strong> – The title of the column as it appears in Test Manager or iTest.<br />- <strong>Runtime Show</strong> – Show this entry while running in iTest. If this value is set to 0, then a visual indication will be available while editing the schedule. In Test Manager, this visual indication is a blue background color for the column. In SolutionBuilder, this visual indication is the <img src="attachments/download/133980/ScheduleRuntimeHidden.png" alt="" /> icon in the column header.<br />- <strong>Lock Column</strong> – Prevent the column values from being changed through a runtime editor.<br />- <strong>Allow Edit</strong> – Does not apply to MATRIX pages.<br />- <strong>TM Hide</strong> – Legacy setting to hide the column from view in Test Manager.<br />- <strong>Col Width</strong> – Width of the column as specified by the user. By default, the column width is dictated by the column description. A value of -1 will result in using the default column width, and the minimum column width is 1. This field is only used when viewing schedules in Test Manager.</td>
+		</tr>
+		<tr>
+			<td>Column.n </td>
+			<td>The actual entries in the MATRIX with properties as defined by the ColumnDefFields. Each of these represents a column in the page</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>Column Type Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Column Type</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>iTest Channel Name Example</strong> </td>
+			<td style="text-align:left;"><strong>Validation/Notes</strong></td>
+		</tr>
+		<tr>
+			<td> Numeric </td>
+			<td> A numeric type parameter. </td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> Integer </td>
+			<td> An integer type parameter. </td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> Time </td>
+			<td> A time type parameter. </td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> Text </td>
+			<td> A text type parameter. </td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> TimeText </td>
+			<td> A time entry with colons, as needed (e.g., 000:00:00). </td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> TimeTextFull </td>
+			<td> A time entry in the format of 000:00:00.00. </td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td> Jump To Step </td>
+			<td> Used for looping; the indicated step number or label would be next if there are remaining jumps to do. </td>
+			<td> numSRJumpToStep    </td>
+			<td> Only one <strong>Jump To Step</strong> type column is allowed. Step must be within range. If one of these are defined, all 3 jump related columns must be defined.<br />Must be 0. </td>
+		</tr>
+		<tr>
+			<td> Jumps To Do </td>
+			<td> Number of jumps/loops to be performed.</td>
+			<td> numSRJump    </td>
+			<td> Only one <strong>Jumps To Do</strong> type column is allowed. 0 <= x < 2^32 </td>
+		</tr>
+		<tr>
+			<td> Jumps Done    </td>
+			<td> Jumps/loops completed (this will automatically increment after each jump). </td>
+			<td> numSRJumps </td>
+			<td> Only one <strong>Jumps Done</strong> type column is allowed. BTS systems support the use of channels with this column type. For more information, see the <a class="wiki-page" href="ScheduleRunner.html#Jump-Counters">Jump Counters</a> section. </td>
+		</tr>
+		<tr>
+			<td> Step Task</td>
+			<td> Creates a <strong>Step Condition</strong> column and its underlying structure to setup step conditions as well as their actions.</td>
+			<td> vsSysSchStepCondition</td>
+			<td> Up to 5 <strong>EOSIgnoreTime</strong> columns are allowed. </td>
+		</tr>
+		<tr>
+			<td> EOSCondition </td>
+			<td> Creates a step condition parameter. </td>
+			<td style="text-align:center;">-</td>
+			<td> This column is automatically created when a <strong>Step Task</strong> column is created. This option is only available in Test Manager.<br />Must follow a <strong>Step Task</strong> column and be followed by an <strong>EOSAction</strong> column.</td>
+		</tr>
+		<tr>
+			<td> EOSAction </td>
+			<td> Creates a step condition action parameter. </td>
+			<td style="text-align:center;">-</td>
+			<td> This column is automatically created when a <strong>Step Task</strong> column is created. This option is only available in Test Manager.<br />Must follow an <strong>EOSCondition</strong> column and be followed by an <strong>EOSGo To</strong> column.</td>
+		</tr>
+		<tr>
+			<td> EOSGo To </td>
+			<td> Creates a step condition GoTo step parameter for the GoTo action. </td>
+			<td style="text-align:center;">-</td>
+			<td> This column is automatically created when a <strong>Step Task</strong> column is created. This option is only available in Test Manager.<br />Must follow an <strong>EOSAction</strong> column.</td>
+		</tr>
+		<tr>
+			<td> EOSIgnoreTime</td>
+			<td> Creates a step condition ignore time parameter. </td>
+			<td style="text-align:center;">-</td>
+			<td>This column is automatically created when a <strong>Step Task</strong> column is created. This option is only available in Test Manager. <br />Must follow an <strong>EOSGo To</strong> column.</td>
+		</tr>
+		<tr>
+			<td> Modes </td>
+			<td> Create a picklist of mode pair selections.</td>
+			<td> vsDt1SchMode</td>
+			<td> Only one <strong>Modes</strong> type column is allowed. ScheduleRunner automatically executes this procedure. </td>
+		</tr>
+		<tr>
+			<td> Tests</td>
+			<td> Create a pick list of VCL procedure (<em>.tsc</em>) selections. The procedure is spawned at the beginning of a test step/aborted at the end. </td>
+			<td>    vsSysSchTask </td>
+			<td> Up to 5 <strong>Tests</strong> columns are allowed.</td>
+		</tr>
+		<tr>
+			<td> Limit File List</td>
+			<td> A pick list of limit file (<em>.lim</em>) selections. Used to change limit groups for a particular step.</td>
+			<td> vsSysSchLimitsGroup    </td>
+			<td> Only one <strong>Limits</strong> type column is allowed. </td>
+		</tr>
+		<tr>
+			<td> Data Log</td>
+			<td> Name of the data log to run.</td>
+			<td> vsSysLogFile</td>
+			<td> Only one <strong>Data Log</strong> type column is allowed if LogDuration exists. </td>
+		</tr>
+		<tr>
+			<td> Log Start</td>
+			<td> If positive, the log starts at that time. <br />If negative, the log starts at step time - logstart. </td>
+			<td>timSysTestLog</td>
+			<td> Total value must not be greater than step time. Must follow a <strong>Data Log</strong> column.</td>
+		</tr>
+		<tr>
+			<td> User Defined List </td>
+			<td> A pick list of user defined entries. </td>
+			<td style="text-align:center;">-</td>
+			<td> The list entry is semi-colon delimited (e.g., TRUE;FALSE). </td>
+		</tr>
+		<tr>
+			<td> Generic File List </td>
+			<td> A a pick list of file selections. </td>
+			<td style="text-align:center;">-</td>
+			<td> The list entry must be a fully qualified path. $ substitutions are allowed in the file specification. </td>
+		</tr>
+		<tr>
+			<td> Generic Function List </td>
+			<td> A picklist of VCL procedure selections. It is intended that the VCL procedure return a value or string.  </td>
+			<td style="text-align:center;">-</td>
+			<td> The list entry must be a fully qualified path. $ substitutions are allowed in the file specification. Use of wildcards is supported. E.g., <code>$SUPPORTDIR\Test\SysFunctions\*.tsc</code>. </td>
+		</tr>
+		<tr>
+			<td> User Picklist </td>
+			<td> Create a pick list of items from a picklist file (<em>.pkl</em>). </td>
+			<td style="text-align:center;">-</td>
+			<td> Users can select an option from the list. The picklist file must reside in the active support directory. <br />Picklist message options:<br />&nbsp;&nbsp;&nbsp; - Send message when entering the step<br />&nbsp;&nbsp;&nbsp; - Send message at step time in previous column<br />&nbsp;&nbsp;&nbsp; - Send message at step time left in previous column<br />&nbsp;&nbsp;&nbsp; - Send message when there is 1 second left<br />&nbsp;&nbsp;&nbsp; - Do not send message </td>
+		</tr>
+		<tr>
+			<td> Editable User Picklist </td>
+			<td> Create a generic input parameter. Also provides a pick list of items from a picklist file (<em>.pkl</em>) residing in the active support directory. </td>
+			<td style="text-align:center;">-</td>
+			<td> User can either manually type or select from the list. </td>
+		</tr>
+		<tr>
+			<td> Step Time</td>
+			<td> The duration of the step (usually in seconds).</td>
+			<td> timSysStep</td>
+			<td> Only one <strong>Step Time</strong> type column is allowed. Required if not in the header. User may set this channel to end the step.<br /><ins><strong>Note:</strong></ins> 0 = infinite time. (TestTime keeps incrementing the time). </td>
+		</tr>
+		<tr>
+			<td> Setpoint</td>
+			<td> Ramps the setpoint channel to the new target value (the value of the cell) with options on ramping. The target value may be a constant, a channel, or a simple expression (e.g., <code>Cntr1 * 10</code>). A channel may be of any type except for virtual string and virtual string array. </td>
+			<td> valDt1DynoSetpoint </td>
+			<td> Multiple <strong>Setpoint</strong> type columns are allowed. Simple expressions are constantly re-evaluated over the course of the step. Picklists are optional. If utilized, only the value in a picklist is displayed and used.<br />&nbsp;<br />Ramping may be based on either a rate or time. This is determined by the setpoint column's <strong>Default Ramp Type</strong> and <strong>Default Ramp Value</strong> settings or by <strong>Ramp Type</strong> and <strong>Ramp Value</strong> type columns immediately to the right of the <strong>Setpoint type</strong> column. Setting <strong>Default Ramp Type</strong> to "StepTime" causes the setpoint to be ramped over the duration of the step.<br />&nbsp;<br />For rate-based ramps, the setpoint channel ramps at a constant rate (i.e., ramp value per system scan) toward the target value.<br />For time-based ramps, the setpoint channel ramps from the initial value to the target value over the specified time period. If the setpoint expression's value changes during a time-based ramp, then the current value will jump and continue ramping to the new value at the old rate. After the ramp time has elapsed, the setpoint is set directly to the expression's value.<br />&nbsp;<br />Blank setpoints will be left unchanged.</td>
+		</tr>
+		<tr>
+			<td> Ramp Type    </td>
+			<td> Selection of ramp mode. Options are <strong>Rate</strong> or <strong>Time</strong>. </td>
+			<td>RampMode/ valDt1DynoSchRampValue</td>
+			<td> Multiple <strong>Ramp Type</strong> type columns are allowed. Must follow a <strong>Setpoint</strong> column. </td>
+		</tr>
+		<tr>
+			<td> Ramp Value    </td>
+			<td>The ramp value is used differently between a rate-based and a time-based type ramp. The ramp value for rate-based ramps is the amount that the setpoint channel ramps by (e.g., 100 RPM) until it reaches the target value. The ramp value for time-based type ramps is the period of time (e.g., 5 seconds) that iTest will take to increase the setpoint channel value to the target value.<br />&nbsp;<br />You can enter a numeric value (e.g., 8.00) or a virtual output channel name (e.g., <code>valDt1DynoSchRampValue</code>) to be read at runtime. Alternatively, you can use the drop-down list to select a virtual output channel.  </td>
+			<td> valDt1DynoSchRampValue </td>
+			<td> Multiple <strong>Ramp Value</strong> type columns are allowed. Must follow a <strong>Ramp Type</strong> column. <br />&nbsp;<br />For both the rate and time-based ramp types, the setpoint channel value is updated at the system scan rate.<br />&nbsp;<br />The values in this column are read at runtime. </td>
+		</tr>
+		<tr>
+			<td> Operator Message</td>
+			<td> Optional text for an Operator Message.</td>
+			<td> vsSysOperatorMsg    </td>
+			<td> Only one <strong>Operator Message</strong> type column is allowed. </td>
+		</tr>
+		<tr>
+			<td> Channel List  </td>
+			<td> Not supported. Recommended to not use in a matrix page. </td>
+			<td style="text-align:center;">-</td>
+			<td>More than one <strong>Channel List</strong> column is allowed. </td>
+		</tr>
+		<tr>
+			<td>Step Label </td>
+			<td> Optional step label used instead of a step number in a <strong>Jump To Step</strong> type column or as the step number used by any step task performing a Go To Step action. </td>
+			<td> vsSysSchStepName </td>
+			<td> Only one <strong>Step Label</strong> type column is allowed and it must always be the first column. Only alphanumeric characters, underscores, @ signs, and periods are supported.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+	<a name="Notes-Page"></a>
+<h4 >Notes Page<a href="#Notes-Page" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Example <br /><pre>
+[PAGE3]
+pagetype= NOTE
+name= Notes
+</pre></p>
+
+
+	<p>Where:<br />Opening section identifier =  [PAGEn]</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Keyword Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Keyword</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>pagetype </td>
+			<td>The type of schedule. ‘NOTE’ in the case of a Notes page.</td>
+		</tr>
+		<tr>
+			<td>name </td>
+			<td>The name of this page.  It will appear on the tab for this page as seen within Test Manager.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Schedule-Contents-File-Specification"></a>
+<h3 >Schedule Contents File Specification<a href="#Schedule-Contents-File-Specification" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The data contents of any given page or page type is assumed to be in the order as specified in the Page Layout section.</p>
+
+
+	<a name="List-Page-2"></a>
+<h4 >List Page<a href="#List-Page-2" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Previously, it was described that a LIST page will have some number, n, parameters that are to be included in the LIST page.  They were enumerated as:<br /><pre>
+Parameter.1 = …………………..
+Parameter.2 = ……………………
+…….
+Parameter.n = ………………….
+</pre></p>
+
+
+	<p>For each of the Parameters, a single line will be displayed on the LIST page as seen in Test Manager.<br />Even though the layout section includes these identifying labels, the Schedule Contents section does not.  It is assumed that for every one of the n parameters specified in the Layout there will be a single line item in the Contents section.</p>
+
+
+	<p>*Example *</p>
+
+
+<pre>
+[STARTCONTENTS]
+[Header]
+Coolant Temperature= 200
+</pre>
+
+	<p>Where:<br />Opening section identifier =  [&lt;Page Name&gt;], “Header’ in this example.  The Page Name is defined in the Page Layout section as defined in Section 3.1.3.</p>
+
+
+	<a name="Matrix-Page-2"></a>
+<h4 >Matrix Page<a href="#Matrix-Page-2" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Previously, it was described that a MATRIX page will have some number, n, columns that are to be included in the MATRIX page.  They were enumerated as:<br /><pre>
+Column.1 = …………………..
+Column.2 = ……………………
+…….
+Column.n = ………………….
+</pre></p>
+
+
+	<p>For each of the Columns' entries in the page layout, a single column will be displayed on the MATRIX page as seen in Test Manager assuming of course that none are being intentionally hidden.  Even though the layout section includes these identifying labels, the Schedule Contents section does not.  It is assumed the first row is the RDB channel names and the second row is the units associated with those channels.  After these two rows it is further assumed that every following line in the Contents Section of a MATRIX page will result in a single row, or step, in the schedule.</p>
+
+
+	<p>*Example *</p>
+
+
+<pre>
+[Data]
+valDt1DynoSchSetpoint    valDt1ThrotSchSetpoint
+EU    %
+1000.0    30.0
+1250.0    40.0
+1500.0    50.0
+1750.0    60.0
+</pre>
+
+	<p>Where:<br />Opening section identifier =  [&lt;Page Name&gt;], ‘Data’ in this example. The Page Name is defined in the Page Layout section as defined in Section 3.1.3.</p>
+
+
+	<a name="Notes-Page-2"></a>
+<h4 >Notes Page<a href="#Notes-Page-2" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>*Example *<br /><pre>
+[Notes]
+Torque response test for a 6 cylinder.  Initial test was run in F Wing Cell 15 on July 22, 2010
+[ENDCONTENTS]
+</pre></p>
+
+
+	<p>Where:<br />Opening section identifier =  [&lt;Page Name&gt;], “Notes’ in this example.  The Page Name is defined in the Page Layout section as defined in Section 3.1.3.</p>
+
+
+	<a name="Advanced-Topics"></a>
+<h2 >Advanced Topics<a href="#Advanced-Topics" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Schedule-Templates"></a>
+<h3 >Schedule Templates<a href="#Schedule-Templates" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>When creating a new schedule by right-clicking the &lt;Test Development&gt;&lt;Schedules&gt; node on the Test Manager Tree Bar as shown below</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>New Schedule</strong></em></span><br /><img src="attachments/download/292/sched6.JPG" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /></p>
+
+
+	<p>You will be presented with a dialog box populated with a list of ‘Schedule Types’</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Dialog</strong></em></span><br /><img src="attachments/download/291/sched7.JPG" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /></p>
+
+
+	<p>The entries in this list are defined in a file named <em>Tables.def</em> which is located at the root of the current solution.  An illustrative example of the contents of this file is shown below:</p>
+
+
+<pre>
+[STARTDEFINITION]
+definitiontype= SCHEDULE
+definitionname= Transient Schedule
+pagecount= 3
+[PAGE1]
+name= Data
+pagetype= MATRIX
+Columns=3
+ColumnDefFields= Channel, Type, Required/Not required, Default, Description, Show/Hide, Lock Column
+Column.1= "vsSysSchMode" MODES 0 ? "ModePair" 1 0
+Column.2= "valSysDynoSetpoint" NUM 0 0 "DynoSetpoint" 1 0
+Column.3= "valSysThrotSetpoint" NUM 0 0 "ThrotSetpoint" 1 0
+[PAGE2]
+name= Header
+pagetype= LIST
+Parameters=20
+ColumnDefFields= Channel, Type, Required/Not required, Default, Description, Show/Hide, Lock Column
+Parameter.1= "ScheduleStatusChannel" CHANNEL 0 EMPTYSTRING "None" 0 0
+Parameter.2= "TestModuleID" TEXT 0 EMPTYSTRING "None" 0 0
+Parameter.3= "TestType" PICKLIST&lt;SysTestType&gt; 0 EMPTYSTRING "None" 0 0
+Parameter.4= "LogType" TEXT 0 EMPTYSTRING "None" 0 0
+Parameter.5= "TestName" TEXT 0 EMPTYSTRING "None" 0 0
+Parameter.6= "RestartStep" PICKLIST&lt;SysTestRestartStep&gt; 0 EMPTYSTRING "None" 1 0
+Parameter.7= "TestStartMode" PICKLIST&lt;SysTestStartMode&gt; 0 EMPTYSTRING "None" 1 0
+Parameter.8= "StartProcedure" TESTS 0 EMPTYSTRING "None" 1 0
+Parameter.9= "StopProcedure" TESTS 0 EMPTYSTRING "None" 1 0
+Parameter.10= "EndProcedure" TESTS 0 EMPTYSTRING "None" 1 0
+Parameter.11= "StartDisplay" PICKLIST&lt;SysTestYesNo&gt; 0 EMPTYSTRING "None" 1 0
+Parameter.12= "Status" USERLIST&lt;NotStarted;Stopped;Completed&gt; 0 EMPTYSTRING "None" 1 0
+Parameter.13= "CurrentStep" INT 0 EMPTYSTRING "None" 1 0
+Parameter.14= "PredictedTestTime" NUM 0 EMPTYSTRING "None" 1 0
+Parameter.15= "ElapsedTestTime" NUM 0 EMPTYSTRING "None" 1 0
+Parameter.16= "StepTime" NUM 0 EMPTYSTRING "None" 1 0
+Parameter.17= "Limits" LIMITS 0 EMPTYSTRING "None" 1 0
+Parameter.18= "TransientLogName" LOGS 0 EMPTYSTRING "None" 1 0
+Parameter.19= "TransientLogStartStep" INT 0 EMPTYSTRING "None" 1 0
+Parameter.20= "TransientLogEndStep" INT 0 EMPTYSTRING "None" 1 0
+[PAGE3]
+pagetype= NOTE
+name= Notes
+[ENDDEFINITION]
+
+[STARTDEFINITION]
+definitiontype= SCHEDULE
+definitionname= Step Schedule
+pagecount= 3
+[PAGE1]
+pagetype= MATRIX
+name= Data
+Columns=25
+ColumnDefFields= Channel, Type, Required, Default, Description, Runtime Show, Lock Column, Allow Edit, TM Hide, Col Width
+Column.1= "vsDt1SchMode" MODES 0 ? "ModePair" 1 0 1 0 15.375000
+Column.2= "timSysStep" NUM 0 0 "StepTime" 1 0 1 0 10.000000
+Column.3= "valDt1DynoSchSetpoint" NUM 0 0 "DynoSetpoint" 1 0 1 0 10.625000
+Column.4= "valDt1DynoSchRampValue" NUM 0 0 "DynoRampValue" 1 0 1 0 13.500000
+Column.5= "valDt1ThrotSchSetpoint" NUM 0 0 "ThrotSetpoint" 1 0 1 0 10.500000
+Column.6= "valDt1ThrotSchRampValue" NUM 0 0 "ThrotRampValue" 1 0 1 0 13.375000
+Column.7= "numSysSchJump" INT 0 ? "JumpToStep" 1 0 1 0 10.250000
+Column.8= "numSysSchJumps" INT 0 ? "JumpsToDo" 1 0 1 0 10.000000
+Column.9= "numSysSchJumpsDone" INT 0 ? "JumpsDone" 1 0 1 0 10.000000
+Column.10= "vsSysSchLimitsGroup" LIMITS 0 ? "Limits" 1 0 1 0 10.000000
+Column.11= "vsSysLogFile" LOGS 0 ? "LogFileName" 1 0 1 0 15.875000
+Column.12= "timSysTestLog" NUM 0 0 "LogDuration" 1 0 1 0 10.000000
+Column.13= "vsSysStepTask1" EOS 0 ? "StepTask1" 1 0 1 0 20.500000
+Column.14= "vsSysSchTask1Cond" EOSCondition 0 ? "EOSCondition" 1 0 1 1 0.000000
+Column.15= "vsSysStepTask1Action" EOSAction 0 ? "EOSAction" 1 0 1 1 0.000000
+Column.16= "vsSysStepTask1Arg" EOSGoTo 0 ? "EOSGoTo" 1 0 1 1 0.000000
+Column.17= "vsSysSchTask2" EOS 0 ? "StepTask2" 1 0 1 0 22.000000
+Column.18= "vsSysSchTask2Cond" EOSCondition 0 ? "StepTask2Cond" 1 0 1 1 0.000000
+Column.19= "vsSysStepTask2Action" EOSAction 0 ? "StepTask2Action" 1 0 1 1 0.000000
+Column.20= "vsSysStepTask2Arg" EOSGoTo 0 ? "StepTask2Arg" 1 0 1 1 0.000000
+Column.21= "vsSysSchTask3" EOS 0 ? "StepTask3" 1 0 1 0 21.250000
+Column.22= "vsSysSchTask3Cond" EOSCondition 0 ? "StepTask3Cond" 1 0 1 1 0.000000
+Column.23= "vsSysStepTask3Action" EOSAction 0 ? "StepTask3Action" 1 0 1 1 0.000000
+Column.24= "vsSysStepTask3Arg" EOSGoTo 0 ? "StepTask3Arg" 1 0 1 1 0.000000
+Column.25= "vsSysOperatorMsg" TEXT 0 ? "OperatorMessage" 1 0 1 0 14.250000
+[PAGE2]
+pagetype= LIST
+name= Header
+Parameters=18
+ColumnDefFields= Channel, Type, Required, Default, Description, Runtime Show, Lock Column, Allow Edit, TM Hide, Col Width
+Parameter.1= "ScheduleStatusChannel" CHANNEL 0 EMPTYSTRING "None" 0 0 1 0 -1.000000
+Parameter.2= "TestModuleID" TEXT 0 EMPTYSTRING "None" 0 0 1 0 -1.000000
+Parameter.3= "TestType" PICKLIST&lt;SysTestType&gt; 0 EMPTYSTRING "None" 0 0 1 0 -1.000000
+Parameter.4= "LogType" TEXT 0 EMPTYSTRING "None" 0 0 1 0 -1.000000
+Parameter.5= "TestName" TEXT 0 EMPTYSTRING "None" 0 0 1 0 -1.000000
+Parameter.6= "RestartStep" PICKLIST&lt;SysTestRestartStep&gt; 0 EMPTYSTRING "None" 1 0 1 0 -1.000000
+Parameter.7= "TestStartMode" PICKLIST&lt;SysTestStartMode&gt; 0 EMPTYSTRING "None" 1 0 1 0 -1.000000
+Parameter.8= "StartProcedure" TESTS 0 EMPTYSTRING "None" 1 0 1 0 -1.000000
+Parameter.9= "StopProcedure" TESTS 0 EMPTYSTRING "None" 1 0 1 0 -1.000000
+Parameter.10= "EndProcedure" TESTS 0 EMPTYSTRING "None" 1 0 1 0 -1.000000
+Parameter.11= "StartDisplay" PICKLIST&lt;SysTestYesNo&gt; 0 EMPTYSTRING "None" 1 0 1 0 -1.000000
+Parameter.12= "Status" USERLIST&lt;NotStarted;Stopped;Completed&gt; 0 EMPTYSTRING "None" 1 0 1 0 -1.000000
+Parameter.13= "CurrentStep" INT 0 EMPTYSTRING "None" 1 0 1 0 -1.000000
+Parameter.14= "PredictedTestTime" NUM 0 EMPTYSTRING "None" 1 0 1 0 -1.000000
+Parameter.15= "ElapsedTestTime" NUM 0 EMPTYSTRING "None" 1 0 1 0 -1.000000
+Parameter.16= "CurrentStepEndTime" NUM 0 EMPTYSTRING "None" 1 0 1 0 -1.000000
+Parameter.17= "DynoRampMode" USERLIST&lt;Time;Rate&gt; 0 EMPTYSTRING "None" 1 0 1 0 -1.000000
+Parameter.18= "ThrotRampMode" USERLIST&lt;Time;Rate&gt; 0 EMPTYSTRING "None" 1 0 1 0 -1.000000
+[PAGE3]
+pagetype= NOTE
+name= Notes
+[ENDDEFINITION]
+</pre>
+
+	<p>Upon close inspection of this file, it should be noticed that it is merely a Schedule File (<em>*.SC2</em>) that contains two separate schedules.  The name of the first being ‘Transient Schedule’ and the second being ‘Step Schedule’.  It should also be noticed that the schedule definitions in Table.Def only contain the Page Layout sections of the Schedule.  The Page Contents have been omitted.  This is done intentionally as the schedule definitions in this file are unique in that they are merely templates from which new schedules can be easily created.</p>
+
+
+	<p>When creating a new schedule from such a template, all the page layout information is imported into a new, blank schedule and all that remains for the user to do is populate it with the necessary Header and Step data.</p>
+
+
+	<a name="Creating-New-Templates"></a>
+<h4 >Creating New Templates<a href="#Creating-New-Templates" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>In order to add a new template to <em>Tables.Def</em>, open an existing schedule that you wish to serve as the basis of the template. In our on-going example, we will use <em>ExampleSchedule.sc2</em>.  Select  &lt;Schedule&gt;&lt;Save Schedule Layout&gt; Main Menu as shown below.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Save Schedule Template</strong></em></span><br /><img src="attachments/download/294/sched8.JPG" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>When prompted by:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Schedule Definition Name</strong></em></span><br /><img src="attachments/download/293/sched9.JPG" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Specify a new template name, such as <code>ExampleSchedule</code>. After this action has been executed, inspection of the <em>Tables.def</em> reveals that the Schedule Definition portion of our example schedule has been appended to the end of the tables.def template file.</p>
+
+
+	<p>When we attempt to create a new schedule, we will see that our newly created template has been added to the list as shown below:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>New Schedule Template</strong></em></span><br /><img src="attachments/download/295/sched10.JPG" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+</body>
+</html>

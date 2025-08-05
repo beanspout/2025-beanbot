@@ -1,0 +1,401 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>DspDrv AP exe</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="DspDrv_AP_exe.html">DspDrv AP exe</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="DspDrv_APexe"></a>
+<h1 >DspDrv_AP.exe<a href="#DspDrv_APexe" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#DspDrv_APexe">DspDrv_AP.exe</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Using-Mailslot-Messages">Using Mailslot Messages</a><ul><li><a href="#OPENLAYOUT">$OPENLAYOUT</a></li><li><a href="#EXECUTE">$EXECUTE</a><ul><li><a href="#Example">Example</a></li></ul>
+</li></ul>
+</li><li><a href="#Using-the-Powertekini-Option">Using the Powertek.ini Option</a><ul><li><a href="#GUI">GUI</a><ul><li><a href="#Example-2">Example</a></li></ul>
+</li></ul>
+</li><li><a href="#Using-the-DspDrv_APexe-Mailslot">Using the DspDrv_AP.exe Mailslot</a><ul><li><a href="#Messages">Messages</a><ul><li><a href="#DIE">DIE</a></li><li><a href="#GetItemProperty">$GetItemProperty</a></li><li><a href="#MINIMIZE">$MINIMIZE</a></li><li><a href="#RESTORE">$RESTORE</a></li><li><a href="#SetItemProperty">$SetItemProperty</a></li></ul>
+</li></ul>
+</li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p><em>DspDrv_AP.exe</em> is an application that launches AutomationPanel layouts. This feature is useful for touch-screen devices because it provides a lightweight version of the interface. There are a couple methods for using <em>DspDrv_AP.exe</em>; you can use it to launch layouts independently of AutomationPanel by using mailslot messages, or you can use the <code>GUI</code> <em>powertek.ini</em> option to open layouts with <em>DspDrv_AP.exe</em> when you launch <em>iTest.exe</em>.</p>
+
+
+	<p>When <em>DspDrv_AP.exe</em> is running, you can use its mailslot to control the layout; it supports messages, such as <code>$SETITEMPROPERTY</code>, <code>$MINIMIZE</code>, and <code>$RESTORE</code>.</p>
+
+
+	<p>The information for using these methods and the mailslot are detailed in the sections below.</p>
+
+
+	<a name="Using-Mailslot-Messages"></a>
+<h2 >Using Mailslot Messages<a href="#Using-Mailslot-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="OPENLAYOUT"></a>
+<h3 >$OPENLAYOUT<a href="#OPENLAYOUT" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>You can open layouts with <em>DspDrv_AP.exe</em> by using the <code>$OPENLAYOUT</code> mailslot message and its command line arguments. The arguments enable you to specify the size and location of the layout when it launches and whether it is launched in a separate window display or opened in the primary AutomationPanel application.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">To use this mailslot message, AutomationPanel must be running.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><strong>Syntax:</strong></p>
+
+
+<pre>$OPENLAYOUT;&lt;layoutname&gt; [StatusChan=&lt;statuschan&gt;];&lt;x,y&gt;;&lt;w,h&gt;;&lt;true/false&gt;</pre>
+
+	<p><strong>Arguments</strong>:</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;layoutname&gt;</em>: The name of the layout that you want to open.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;x,y&gt;</em>: The location of the layout when it's opened, where <em>x</em> and <em>y</em> are coordinates starting from the upper-left corner of the screen indicating where the layout should be opened.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;w,h&gt;</em>: The size of the layout when it's opened, where <em>w</em> is width and <em>h</em> is height.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;true/false&gt;</em>: The argument that determines whether the layout is opened in a separate window using <em>DspDrv_AP.exe</em> or normally in AutomationPanel. To launch using <em>DspDrv_AP.exe</em>, set this value to <strong>true</strong>. By default, it is false.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;statuschan&gt;</em>: (Optional) The name of the virtual output channel used to display the status of the message. <em>DspDrv_AP.exe</em> sets the channel to 1 before the layout is loaded. If the layout loaded successfully, the channel is set to 0. If the layout didn't load successfully, the channel is set to -1.</p>
+
+
+	<p><strong>Example:</strong></p>
+
+
+<pre>$OPENLAYOUT;Main;10,10;200,200;true</pre></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="EXECUTE"></a>
+<h3 >$EXECUTE<a href="#EXECUTE" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>You can open layouts with <em>DspDrv_AP.exe</em> by using the <code>$EXECUTE</code> mailslot message and its command line arguments. The arguments enable you to specify the size and location of the layout when it launches.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">You can use this method to open AutomationPanel layouts while running iTest Console.</td>
+		</tr>
+	</table>
+
+
+
+
+	<table>
+		<tr>
+			<td style="background:#cc061c;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3741/Warning3.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>WARNING:</b></td>
+			<td style="vertical-align:top;">When used with iTest Console, the name of the layout to be opened cannot match the name of any displays (e.g., <em>Main.layout</em> cannot be opened if <em>Main.dsp</em> exists).</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$EXECUTE;DspDrv_AP.exe &lt;layout&gt; /location &lt;x,y&gt; /size &lt;w,h&gt; /statuschan &lt;statuschannel&gt; /topmost</pre>
+
+	<p><strong>Arguments</strong>:</p>
+
+
+	<p><em>&lt;layout&gt;</em>: The full file path of the layout file, including the <em>.layout</em> file extension. This supports iTest macros (e.g., $SUPPORTDIR).</p>
+
+
+	<p><em>/location &lt;x,y&gt;</em>: (Optional) The location of the layout when it is opened, where x and y are coordinates starting from the upper-left corner of the screen indicating where the layout should be opened.</p>
+
+
+	<p><em>/size &lt;w,h&gt;</em>: (Optional) The size of the layout when it is opened, where <em>w</em> is width and <em>h</em> is height.</p>
+
+
+	<p><em>/statuschan &lt;statuschannel&gt;</em>: (Optional) The virtual output channel used to display the status of the message. <em>DspDrv_AP.exe</em> sets the channel to 1 before the layout is loaded. If the layout loaded successfully, the channel is set to 0. If the layout didn't load successfully, the channel is set to -1.</p>
+
+
+	<p><em>/topmost</em>: (Optional) When used, the layout will display as a topmost window.</p>
+
+
+	<a name="Example"></a>
+<h4 >Example<a href="#Example" class="wiki-anchor">&para;</a></h4>
+
+
+<pre>$EXECUTE;DspDrv_AP.exe $SupportDir/Layouts/More.layout /location 500,500 /size 100,100 /topmost</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="Using-the-Powertekini-Option"></a>
+<h2 >Using the <em><strong>Powertek.ini</strong></em> Option<a href="#Using-the-Powertekini-Option" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="GUI"></a>
+<h3 >GUI<a href="#GUI" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <code>GUI</code> <em>powertek.ini</em> option causes the layout to open independently of AutomationPanel by invoking <em>DspDrv_AP.exe</em>. When you launch <em>iTest.exe</em> and select a solution, the layout specified in the INI file opens. If you want to open any subsequent displays (e.g., with buttons), the layout must be set up to use the <code>$EXECUTE</code> Softpanel mailslot message.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>GUI=dspdrv_AP.exe &lt;layout&gt; /MainGui /location &lt;x,y&gt; /size &lt;w,h&gt; /statuschan &lt;statuschan&gt; /topmost</pre>
+
+	<p><strong>Arguments</strong>:</p>
+
+
+	<p><em>&lt;layout&gt;</em>: The full file path of the layout file, including the <em>.layout</em> file extension. This supports iTest macros (e.g., $SUPPORTDIR).</p>
+
+
+	<p><em>/MainGui</em>: This option is required when you want to display a layout as the primary interface. When you close this layout, iTest shuts down. When you close layouts that do not have this argument, it will not shut down iTest; it will just close the layout.</p>
+
+
+	<p><em>/location &lt;x,y&gt;</em>: (Optional) The location of the layout when it's opened, where x and y are coordinates starting from the upper-left corner of the screen, indicating where the layout should be opened.</p>
+
+
+	<p><em>/size &lt;w,h&gt;</em>: (Optional) The size of the layout when it is opened, where <em>w</em> is width and <em>h</em> is height.</p>
+
+
+	<p><em>/statuschan &lt;statuschannel&gt;</em>: (Optional) The virtual output channel used to display the status of the message. <em>DspDrv_AP.exe</em> sets the channel to 1 before the layout is loaded. If the layout loaded successfully, the channel is set to 0. If the layout didn't load successfully, the channel is set to -1.</p>
+
+
+	<p><em>/topmost</em>: (Optional) When used, the layout will display as a topmost window.</p>
+
+
+	<a name="Example-2"></a>
+<h4 >Example<a href="#Example-2" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>In this example, <em>DspDrv_AP.exe</em> will launch the Master Schedules layout when <em>iTest.exe</em> is launched.</p>
+
+
+<pre>GUI=dspdrv_AP.exe "$SupportDir\Layouts\Master Schedules.layout" /MainGui /location 500,500 /size 900,500</pre>
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">You must use quotation marks around the file path if the name of the file has spaces in it.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Using-the-DspDrv_APexe-Mailslot"></a>
+<h2 >Using the <strong><em>DspDrv_AP.exe</em></strong> Mailslot<a href="#Using-the-DspDrv_APexe-Mailslot" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>When you use <em>DspDrv_AP.exe</em>, a mailslot is opened with the AutomationPanel layout. The name of the mailslot is the name of the open layout. This mailslot can be used to send messages, such as <code>$SETITEMPROPERTY</code>, <code>DIE</code>, and <code>$RESTORE</code>. Refer to the <a class="wiki-page" href="#Messages">Messages</a> section below for complete descriptions of the supported mailslot messages.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>\\.\mailslot\&lt;layoutname&gt;</pre>
+
+	<p><strong>Where</strong>:</p>
+
+
+	<p><em>&lt;layoutname&gt;:</em> refers to the name of the open AutomationPanel layout.</p>
+
+
+	<a name="Messages"></a>
+<h3 >Messages<a href="#Messages" class="wiki-anchor">&para;</a></h3>
+
+
+	<a name="DIE"></a>
+<h4 >DIE<a href="#DIE" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Closes the layout.</p>
+
+
+	<p><strong>Syntax</strong>:<br /><pre>DIE</pre></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="GetItemProperty"></a>
+<h4 >$GetItemProperty<a href="#GetItemProperty" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Gets the value of a property for a panel/display object and sets an iTest channel to this value. This message requires a Property ID, which is specified in Property Manager.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>$GetItemProperty;&lt;PropertyID&gt;=&lt;ChannelName&gt;</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>&lt;PropertyID&gt;</em>: The name of the Automation ID and property name. This is visible at the bottom of the Property Manager dialog when you select a property that supports automation.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;ChannelName&gt;</em>: The name of the iTest channel set to the property value of a panel/display object.</p>
+
+
+	<p><strong>Property ID Syntax</strong>:<br /><pre>&lt;AutomationID&gt;.&lt;PropertyName&gt;</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>&lt;AutomationID&gt;</em>: The name assigned to the panel or object in Property Manager.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;PropertyName&gt;</em>: The internal name for the property. (This is not necessarily the name displayed in the left column of Property Manager.)</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">If an object doesn't have an Automation ID defined, then none of its properties can be modified, and Property Manager will not display a PropertyID.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+	<a name="MINIMIZE"></a>
+<h4 >$MINIMIZE<a href="#MINIMIZE" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Minimizes the layout.</p>
+
+
+	<p><strong>Syntax</strong>:<br /><pre>$MINIMIZE</pre></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="RESTORE"></a>
+<h4 >$RESTORE<a href="#RESTORE" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Reopens a minimized layout.</p>
+
+
+	<p><strong>Syntax</strong>:<br /><pre>$RESTORE</pre></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="SetItemProperty"></a>
+<h4 >$SetItemProperty<a href="#SetItemProperty" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>Sets the value of a property for a panel/display object. This message requires a Property ID, which is specified in Property Manager.</p>
+
+
+	<p><strong>Syntax</strong>:<br /><pre>$SetItemProperty;&lt;PropertyID&gt;=&lt;Value&gt;</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>&lt;PropertyID&gt;</em>: The name of the Automation ID and property name. This is visible at the bottom of the Property Manager dialog when you select a property that supports automation.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;Value&gt;</em>: The value that the panel/display object property is set to.</p>
+
+
+	<p><strong>Property ID Syntax</strong>:<br /><pre>&lt;AutomationID&gt;.&lt;PropertyName&gt;</pre></p>
+
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p style="padding-left:1em;"><em>&lt;AutomationID&gt;</em>: The name assigned to the panel or object in Property Manager.</p>
+
+
+	<p style="padding-left:1em;"><em>&lt;PropertyName&gt;</em>: The internal name for the property. (This is not necessarily the name displayed in the left column of Property Manager.)</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">If an object doesn't have an Automation ID defined, then none of its properties can be modified, and Property Manager will not display a PropertyID.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="ITest_exe.html">iTest.exe</a></li>
+		<li><a class="wiki-page" href="Standard_Softpanel_Messages_List.html">Softpanel Mailslot Messages</a></li>
+	</ul>
+</body>
+</html>

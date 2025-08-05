@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ScheduleViewer2D</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="ScheduleViewer2D.html">ScheduleViewer2D</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="ScheduleViewer2D"></a>
+<h1 >ScheduleViewer2D<a href="#ScheduleViewer2D" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Runtime-Operation"></a>
+<h2 >Runtime Operation<a href="#Runtime-Operation" class="wiki-anchor">&para;</a></h2>
+
+
+The following right-click options are disabled while iTest Console or AutomationPanel are running:
+	<ul>
+	<li>Add Column</li>
+		<li>Insert Column</li>
+		<li>Edit Column</li>
+		<li>Delete Column</li>
+		<li>Move Column Right</li>
+		<li>Move Column Left</li>
+	</ul>
+
+
+	<a name="Command-Line-Arguments"></a>
+<h2 >Command Line Arguments<a href="#Command-Line-Arguments" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The ScheduleViewer2D command line only supports arguments with components in the following order:</p>
+
+
+	<ol>
+	<li><strong>ScheduleName</strong>: Name of the schedule to load.</li>
+		<li><strong>Width</strong>: -1 to ignore.</li>
+		<li><strong>Height</strong>: -1 to ignore.</li>
+		<li><strong>Left</strong>: -1 to ignore.</li>
+		<li><strong>Top</strong>: -1 to ignore.</li>
+		<li><strong>Topmost</strong>: 1 - topmost/0 - non-topmost.</li>
+		<li><strong>Lock</strong>: 1-Lock/0 - unlock.</li>
+		<li><strong>StepChan</strong>: Name of virtual output channel for the current step number.</li>
+		<li><strong>ViewType</strong>: 1 - battery test/2 - battery.</li>
+		<li><strong>CircuitID</strong>: Circuit ID.</li>
+		<li><strong>MailslotNameChan</strong>: Virtual string channel name that ScheduleViewer2D sets the Mailslot name to be.</li>
+	</ol>
+
+
+	<p>The argument components must be inputted in the order listed above and separated by a space to be interpreted correctly. Multiple instances of ScheduleViewer2D can run simultaneously. Each has a unique mailslot name (e.g., <code>ScheduleViewer2D1 - ScheduleViewer2D99</code>). If <code>MailslotNameChan</code> is given to ScheduleViewer2D, it sets the mailslot name to this channel. The value includes "\\.\mailslot\".</p>
+
+
+	<a name="Example-1"></a>
+<h2 >Example 1:<a href="#Example-1" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Launch a schedule as locked and non-topmost.<br /><pre>ScheduleViewer2D MyScheduleName -1 -1 -1 -1 0 1</pre></p>
+
+
+	<a name="Example-2"></a>
+<h2 >Example 2:<a href="#Example-2" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Launch a test for circuit <strong>Cct03</strong>.<br /><pre>ScheduleViewer2D MyBattTest -1 -1 -1 -1 0 1 voStepChan 1 Cct03</pre></p>
+
+
+	<a name="Example-3"></a>
+<h2 >Example 3:<a href="#Example-3" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Launch a test for circuit <strong>Cct03</strong> with a mailslot name channel.<br /><pre>ScheduleViewer2D MyBattTest -1 -1 -1 -1 0 1 voStepChan 1 Cct03 vsMailslotName</pre></p>
+</body>
+</html>

@@ -1,0 +1,949 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Reporting</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Reporting.html">Reporting</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Reporting"></a>
+<h1 >Reporting<a href="#Reporting" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Reporting">Reporting</a><ul><li><a href="#Overview">Overview</a></li></ul>
+</li><li><a href="#Report-Parameters">Report Parameters</a><ul><li><a href="#Secondary-Report-Parameter-Editor">Secondary Report Parameter Editor</a></li><li><a href="#Built-In-Parameters">Built-In Parameters</a></li><li><a href="#Importing-Parameters">Importing Parameters</a></li><li><a href="#Parameter-Formulas">Parameter Formulas</a></li></ul>
+</li><li><a href="#Array-Based-Formulas">Array-Based Formulas</a><ul><li><a href="#Report-Array-Functions-for-Formulas">Report Array Functions for Formulas</a></li></ul>
+</li><li><a href="#Command-Line-Arguments">Command Line Arguments</a></li><li><a href="#Report-Pages">Report Pages</a><ul><li><a href="#Orientation">Orientation</a></li><li><a href="#Parameters">Parameters</a></li><li><a href="#Color">Color</a></li><li><a href="#Grid">Grid</a></li><li><a href="#Report-Page-Objects">Report Page Objects</a><ul><li><a href="#ADT-Report-Matrix">ADT Report Matrix</a></li><li><a href="#ADT-Report-Parameter">ADT Report Parameter</a></li><li><a href="#ADT-Report-File-View">ADT Report File View</a></li></ul>
+</li><li><a href="#Multiple-Page-Reports">Multiple Page Reports</a></li><li><a href="#Generating-Reports">Generating Reports</a></li></ul>
+</li><li><a href="#How-to-Create-a-New-Report">How to Create a New Report</a><ul><li><a href="#Defining-Parameter-Sets">Defining Parameter Sets</a></li><li><a href="#Creating-a-Report-Page">Creating a Report Page</a></li><li><a href="#Saving-a-Report-as-a-PDF">Saving a Report as a PDF</a></li><li><a href="#ImportingExporting-Report-Data">Importing/Exporting Report Data</a></li><li><a href="#Unit-Conversion">Unit Conversion</a></li></ul>
+</li><li><a href="#iTest-Reports-Command-Line-and-Arrays">iTest Reports Command Line and Arrays</a><ul><li><a href="#Command-Line-Arguments-2">Command Line Arguments</a></li><li><a href="#Array-Functions">Array Functions</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest Reports is A&#38;D Technology's legacy reporting tool serving as an alternative to the Uniplot tool that is most commonly used to generate reports.</p>
+
+
+	<p>The iTest Reports feature is located under the <em>Presentation</em> folder of the iTest tree. iTest reports are built using an editor that is similar to the one used in display building, and are built by following two steps:</p>
+
+
+	<ol>
+	<li>Parameter definition (defining the parameters that will be included in the report).</li>
+		<li>Report page configuration (determining the report’s visual format).</li>
+	</ol>
+
+
+	<p>The reasoning behind this two-step process is to effectively separate the report from the actual content and allow the re-use of parameter sets between reports. A user would first define the parameter set that will be used in the report, and then configure the report by associating those parameters to specific channels that are tied to display objects (e.g., ADTIndicator, etc.).</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Reports Feature</strong></em></span><br /><img src="attachments/download/96203/42_ReportsFeature.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Report-Parameters"></a>
+<h1 >Report Parameters<a href="#Report-Parameters" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>Report parameters are added via a common spreadsheet editor and contain several common attributes.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Report Parameter Attributes</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Parameter Attribute</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> Parameter Name </td>
+			<td> This is the equivalent of the channel name and is used exclusively within a report. It does not have to match any name in the RDB. However, if it does, the remaining columns are populated with the default information from that channel name including <strong>Type</strong>, <strong>Display Name</strong> (Alias), and <strong>Units</strong>. Note that the parameter name and channel name must be different when creating an array type parameter. Standard practice is to append an “_A” to the channel name to form the parameter name. </td>
+		</tr>
+		<tr>
+			<td> Type </td>
+			<td> <strong>Numeric</strong>, <strong>Array</strong> or <strong>String</strong>. </td>
+		</tr>
+		<tr>
+			<td> Display Name </td>
+			<td> The string used to display this parameter. Display names follow the iTest channel naming convention (only alphanumeric characters, underscores, and periods are supported). However, the display name can use the international character set. </td>
+		</tr>
+		<tr>
+			<td> Units </td>
+			<td> Enter the correct unit that corresponds with the report parameter. </td>
+		</tr>
+		<tr>
+			<td> Source </td>
+			<td> Where the parameter is located. The available sources are:<br /><ins><strong>RDB:</strong></ins> The value comes from a field in a live RDB database. <br /><ins><strong>File:</strong></ins> The value or array comes from a supported file type – either <em>.dat</em> or <em>.ini</em> format. <br /><ins><strong>Formula:</strong></ins> The value is computed based on a standard iTest formula string using other parameters and perhaps arrays as inputs. <br /><ins><strong>Prompt:</strong></ins> The values can optionally be prompted for when the report initially runs.<br /><ins><strong>Comment:</strong></ins> Returns the string from the <strong>Comment</strong> field of the parameter.<br /><ins><strong>ImportData:</strong></ins> The value or array comes from a file that was exported from another Report. </td>
+		</tr>
+		<tr>
+			<td> <em>Option1</em> </td>
+			<td> The name of this field depends on what was chosen for the parameter source. For example:<br /><ins><strong>RDB:</strong></ins> Field Name.<br /><ins><strong>File:</strong></ins> Filename. Select <strong>INPUTFILE (1-5)</strong> to specify a filename passed in via the command line or prompt or click the <strong>Browse</strong> button to select a specific file. <br /><ins><strong>Formula:</strong></ins> The formula string; this is any valid iTest formula.<br /><ins><strong>ImportData:</strong></ins> Filename, select <strong>IMPORTDATA (1-5)</strong> to specify a filename passed in via the command line or click the <strong>Browse</strong> button to select a specific file. </td>
+		</tr>
+		<tr>
+			<td> <em>Secondary Option</em> </td>
+			<td> The name of this field also depends on what was chosen for the parameter source. For example:<br /><ins><strong>RDB:</strong></ins> Channel Name.<br /><ins><strong>File:</strong></ins> Channel Name for <em>.dat</em> or <em>.ini</em> file. </td>
+		</tr>
+		<tr>
+			<td> Row Specifier </td>
+			<td> Row specification is required only for <em>.dat</em> or <em>.sc2</em> file-based parameters. For numerics or strings, it is a way to specify exactly which row of data will be used from the <em>.sc2</em>, <em>.ini</em> or <em>.dat</em> file to get the value for the parameter. For array type parameters, a range of rows may be used. The row specification can be one of the following:<br /><ins><strong>ALL:</strong></ins> Will populate an array parameter from all the rows in the file. This is only valid with arrays.<br /><ins><strong>#:</strong></ins> An explicit row number, such as 1 or 20.<br /><ins><strong>LAST:</strong></ins> A string reference to the last row in the file.<br /><ins><strong>LAST-n:</strong></ins> A string reference to a row relative to the last row in the file, where 'n' denotes the offset to be used (e.g., LAST-2 references the row two higher than the last row).<br /><ins><strong># to #:</strong></ins> Will populate an array parameter from a range of rows in the file. This is only valid with arrays.<br /><ins><strong>LAST-(n+1) to LAST-n:</strong></ins> Will populate an array parameter from a range of rows relative to the last row in the file. This is only valid with arrays.<br />The row specifier for an array range is &lt;startrow&gt; to &lt;endrow&gt;. For example, Last-10 to Last.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>You can also access a list of reporting functions in the Helper Bar. These can then be dragged directly from the list to the Main Display Area to create new formulas.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Report Functions</strong></em></span><br /><img src="attachments/download/4627/Reports2.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Secondary-Report-Parameter-Editor"></a>
+<h2 >Secondary Report Parameter Editor<a href="#Secondary-Report-Parameter-Editor" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>In addition to editing the parameters in the actual spreadsheet, you can also open the Report Parameter Editor for that parameter by either double-clicking the row or using the <strong>Edit</strong> right-click option. This secondary editor is more structured and appears as follows:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Report Parameter Editor</strong></em></span><br /><img src="attachments/download/96204/42_ReportParameterEditorDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Built-In-Parameters"></a>
+<h2 >Built-In Parameters<a href="#Built-In-Parameters" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>In addition to the parameters you create, all reports will include the following built-in parameters:</p>
+
+
+	<ul>
+	<li><strong>REPORTTIME</strong> – Displays the time the report is generated (String). </li>
+		<li><strong>REPORTDATE</strong> – Displays the date the report is generated (String). </li>
+		<li><strong>SOLUTION</strong> – Full path of the solution used to generate the data (String). </li>
+		<li><strong>MACHINENAME</strong> – Network name of the Test Cell PC. </li>
+		<li><strong>INPUTFILE (1-5)</strong> – Returns the name of the source data file.</li>
+	</ul>
+
+
+	<a name="Importing-Parameters"></a>
+<h2 >Importing Parameters<a href="#Importing-Parameters" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Report Parameters Editor includes the <strong>Import Parameters</strong> feature which can be accessed by right-clicking anywhere within the editor and selecting <strong>Import Parameters...</strong>. This option allows you to automatically create a report parameter set from the contents of an iTest <em>.ini</em> or <em>.dat</em> file. Using the Import Parameters feature can save a lot of typing time when creating reports.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Import Parameters Right-Click Option</strong></em></span><br /><img src="attachments/download/96205/42_ImportParameters.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">This feature is only available in the spreadsheet view and not in the report parameter editor.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Parameter-Formulas"></a>
+<h2 >Parameter Formulas<a href="#Parameter-Formulas" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>A user can use any valid iTest formula in a report, including the logic for an "if then else" formula. Below is an example of how an "if then else" formula can be used:</p>
+
+
+<pre>#if (DataTag = 102) \n RawSpeed \n #else \n -999 \n #endif
+
+Where the "\n" means newline - reformatted, it would look like this:
+
+#if (DataTag = 102)
+    RawSpeed
+#else
+    -999
+#endif</pre>
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The “\n” is used because the RPP file is written in a CSV format and embedded carriage returns are not allowed.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Array-Based-Formulas"></a>
+<h1 >Array-Based Formulas<a href="#Array-Based-Formulas" class="wiki-anchor">&para;</a></h1>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The following paragraph is referring to array-type parameters since an array can also be created with VCL script.</td>
+		</tr>
+	</table></p>
+
+
+	<p>In addition to computing numeric values via formulas, the reporting system can be used to create new arrays from formulas. For example, if two array parameters are created from loading in columns of a data file (e.g., <code>Speed</code> and <code>SpeedTarget</code>), a new array parameter could be created that would show the difference between the two. This new formula would look something like the following:</p>
+
+
+	<p><code>Speed – SpeedTarget</code></p>
+
+
+	<p>When creating array parameters using formulas, the new array size will be set to the size of the smallest array.</p>
+
+
+	<a name="Report-Array-Functions-for-Formulas"></a>
+<h2 >Report Array Functions for Formulas<a href="#Report-Array-Functions-for-Formulas" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>A number of built-in functions have been added for dealing with arrays that are constructed in the reporting system. The functions below are all used to return a numeric value by analyzing the contents of an array. That numeric value can either be used in other formulas or displayed on a report.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">If an array function has more than one argument, then the arguments should be separated by a space and not a comma (the <em>.rpp</em> file is a comma-separated file).</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>The number, -999, is used to signify “exclude from evaluation." This is useful when only a portion of an array should be analyzed. For example, assume <code>DataTag</code> has a value of 102 when the desired lines of data are being logged and some other value for the remaining lines.</p>
+
+
+	<p>This formula can be used to create an array where desired speed values appear but all others are set to -999.</p>
+
+
+<ins>#if (DataTag = 102) \n RawSpeed \n #else \n -999 \n #endif.</ins>
+	<ol>
+	<li>RptArrayCountValid(ArrayName) - number of values in an array (excludes -999 values).</li>
+		<li>RptArrayCountAll(ArrayName) - no exclusions (includes -999 values).</li>
+		<li>RptArraySum (ArrayParam) – sums the array.</li>
+		<li>RptArrayMax (ArrayParam) – returns the Max in the array.</li>
+		<li>RtpArrayMin (ArrayParam) – returns the minimum in the Array.</li>
+		<li>RtpArrayAvg (ArrayParam) – averages the values in the Array.  </li>
+		<li>RptArrayStdDev (ArrayParam) – finds standard deviation in the array.  </li>
+		<li>RptArrayCountValue(ArrayParam ValueToCount) - counts the number of occurrences of a value. &lt;ValueToCount&gt; can be a number or a parameter.</li>
+		<li>RptArrayGetValue(ArrayParam Index in Array)    - &lt;Index in Array&gt; can be a number or a parameter.</li>
+	</ol>
+
+
+<ins>A set of functions returns a modified array instead of a numeric value:</ins> 
+	<ol>
+	<li>RptArrayShift(ArrayParam  ShiftInPoints) - this will shift the points of an array up or down by a specified number of points. This is currently being used to compensate for the transport delay in emissions systems.</li>
+		<li>RptArrayRegression(&lt;ArrayParamX&gt;  &lt;ArrayParamY&gt;) - where X has reference values and Y has observed values. The regression result in the return array will be: 
+	<ol>
+	<li>1 – y intercept</li>
+		<li>2 - slope</li>
+		<li>3 – R2</li>
+		<li>4 – standard error</li>
+	</ol>
+	</li>
+		<li>RptArrayAvgGroups(&lt;ArrayParam&gt; &lt;Number of points in each group to average&gt;) - The second argument can be either a number or numeric parameter. It averages every certain number of points as set by the second argument and then generates a new array.</li>
+		<li>RptArrayCombine(&lt;ArrayParam1&gt; &lt;ArrayParam2&gt;) - generates a new array which combines array 1 values with array 2 values.</li>
+		<li>RptArraySort(&lt;ArrayParam&gt; &lt;Ascending/Descending&gt;) - returns a sorted array.</li>
+		<li>RptArrayExtract(&lt;ArrayParam&gt; &lt;Number of Points to Exact&gt;) - takes the number of points from the beginning of the array to generate a new array. The second argument can be a number or numeric parameter.</li>
+		<li>RptArrayExtract(&lt;ArrayParam&gt; &lt;StartPoint&gt; &lt;EndPoint&gt;) extracts points from &lt;StartPoint&gt; to &lt;EndPoint&gt; and then generates a new array. The second and third arguments can be either a number or a numeric parameter.</li>
+		<li>RptArrayExtractEvery(ArrayParam StartPoint NumberOfPoints) - extracts data from ArrayParam beginning at StartPoint for every NumberOfPoints. For example, if the function called is RptArrayExtractEvery(sysSpeed 5 3), data will be extracted from array sysSpeed, starting at 5th point, then 8th, 11th, 14th (every third point).</li>
+	</ol>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">If these functions are used, they must be used by themselves and cannot be used in conjunction with other VCL-style formulas. To use the results in a formula, first create a numeric parameter set to one of the report array functions and then use the resulting numeric parameter in a formula.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Command-Line-Arguments"></a>
+<h1 >Command Line Arguments<a href="#Command-Line-Arguments" class="wiki-anchor">&para;</a></h1>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Command Line Arguments</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Argument/Switch</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> /rf &lt;ReportFile&gt; </td>
+			<td> Report file to load.</td>
+		</tr>
+		<tr>
+			<td> /o &lt;OutputFile&gt; </td>
+			<td> If the extension of &lt;OutputFile&gt; is <em>.pdf</em>, then the report will be saved as a PDF file. Otherwise, the report will be saved as a snapshot. If this argument is used in conjunction with /h, the system will exit when the output file is generated.</td>
+		</tr>
+		<tr>
+			<td> /NoPrompt </td>
+			<td> Do not prompt for the prompt value. Instead use the default.</td>
+		</tr>
+		<tr>
+			<td> /NoErrMsg </td>
+			<td> Do not display any error messages.</td>
+		</tr>
+		<tr>
+			<td> /p </td>
+			<td> Automatically print the report once it has been loaded. If this argument is used in conjunction with /h, the system will exit after printing.</td>
+		</tr>
+		<tr>
+			<td> /h </td>
+			<td> Do not display the report window.</td>
+		</tr>
+		<tr>
+			<td> /OL </td>
+			<td> Set print orientation as “landscape”.</td>
+		</tr>
+		<tr>
+			<td> /OP </td>
+			<td> Set print orientation as “portrait”.</td>
+		</tr>
+		<tr>
+			<td> /ut </td>
+			<td> Sets the global units type (<strong>SI</strong>, <strong>ME</strong>, <strong>EN</strong>, or <strong>OG</strong>).</td>
+		</tr>
+		<tr>
+			<td> /ExportParam &lt;RPP File&gt; </td>
+			<td> The <em>.rpp</em> file that will be used by /ExportData to a data file. The default path is <em>$SUPPORTDIR\Reports\</em>.</td>
+		</tr>
+		<tr>
+			<td> /ExportData &lt;Data File&gt; </td>
+			<td> iTestReport will evaluate the given /ExportParam <em>.rpp</em> file and output the result to &lt;Data File&gt;. The default path is <em>$DATADIR\ReportData\</em>.<br />If no /ExportParam is found, iTestReport will output the <em>.rpp</em> file(s) in the currently loaded <em>.rpt</em> file to the output data file.<br />If the &lt;Data File&gt; has <em>.ini</em> as an extension, then it will output the non-array parameters in INI format.</td>
+		</tr>
+		<tr>
+			<td> /ImportData1 &lt;Data File&gt; to /ImportData10 &lt;Data File&gt; </td>
+			<td> Load the parameters in the &lt;DataFile&gt; which is generated by &lt;ExportData&gt; into the current local RDB.</td>
+		</tr>
+		<tr>
+			<td> /Timeout &lt;Timeout in Seconds&gt; </td>
+			<td> Sets the timeout in seconds for polling /ImportData &lt;DataFile&gt;. The default in iTest Console is two (2) seconds.</td>
+		</tr>
+		<tr>
+			<td> /mv &lt;MacroName&gt;=&lt;Value&gt; </td>
+			<td> Sets the value for <span>&lt;MacroName&gt;</span> in the input file name. Applicable to macro-based filenames. This is used primarily by LabCentral before calling a report with multiple files. Consider the following example:<br />&nbsp; <br /><code>/mv RUN_NUM=5</code><br />&nbsp; <br />If there is no /mv, iTestReport will prompt for the macro value. You can use as many /mv arguments as needed. However, there should be no spaces in the &lt;MacroName&gt;=&lt;Value&gt; string. Also supports switch /path &lt;PATH&gt;  for data files, which can have macros like $SUPPORTDIR, for example.</td>
+		</tr>
+		<tr>
+			<td> /path &lt;Path&gt; </td>
+			<td> Applied to data files that do not have paths in them. Can include macros (e.g., $SUPPORTDIR, $SYSTEMDIR, etc.). It is important to note that the /importdata switch will use the /path switch if a filepath is not defined in the argument sent with the /importdata switch. </td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Report-Pages"></a>
+<h1 >Report Pages<a href="#Report-Pages" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>Once the report parameters have been configured, the overall look of the report needs to be formatted. This is done by using the Report editor, which behaves much like the iTest Display editor.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Sample Report Page</strong></em></span><br /><img src="attachments/download/4690/reports5.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Report pages can be used to format the data from one or more report parameter files. The properties for a report page include the following tabbed sections.</p>
+
+
+	<a name="Orientation"></a>
+<h2 >Orientation<a href="#Orientation" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>This section allows you to choose the page size of the report.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Orientation Tab</strong></em></span><br /><img src="attachments/download/96211/42_OrientationTab.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Parameters"></a>
+<h2 >Parameters<a href="#Parameters" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>This section is for choosing which parameter set(s) to use in the report.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Parameters Tab</strong></em></span><br /><img src="attachments/download/96212/42_ParametersTab.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Color"></a>
+<h2 >Color<a href="#Color" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>This section allows you to choose a background color and/or image for the report.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Color Tab</strong></em></span><br /><img src="attachments/download/96213/42_ColorTab.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Grid"></a>
+<h2 >Grid<a href="#Grid" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>This section allows you to determine whether to show a grid, and how it should appear on the page when you configure your report.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Grid Tab</strong></em></span><br /><img src="attachments/download/96214/42_GridTab.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Controls will Snap To Grid marks by default. Deselect this option if you do not want controls to automatically snap to the grid.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Report-Page-Objects"></a>
+<h2 >Report Page Objects<a href="#Report-Page-Objects" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The report page editor features several objects that can be used to format the report. Some of these objects are taken directly from the iTest display object list, and others are created specifically for iTest reports. The following objects are the same objects used for the display system:</p>
+
+
+	<ul>
+	<li>ADTImage </li>
+		<li>ADTSeparator </li>
+		<li>ADTTitle </li>
+		<li>ADTIndicator</li>
+	</ul>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The ADTIndicator does not update in Real-time like it does in a display. It is a static instance.</td>
+		</tr>
+	</table></p>
+
+
+	<p>The following objects have been added exclusively for iTest reports.</p>
+
+
+	<a name="ADT-Report-Matrix"></a>
+<h3 >ADT Report Matrix<a href="#ADT-Report-Matrix" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <strong>ADT Report Matrix</strong> object (only valid with array type parameters) allows the printing of multiple array parameters in a column or row-based format. The column or row headers can be customized for the matrix object based on the selected orientation.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>ADT Report Matrix</strong></em></span><br /><img src="attachments/download/96215/42_ADTReportMatrix.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The ADT Report Matrix object has the following property sheet for customizing the object:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>ADT Report Matrix Properties</strong></em></span><br /><img src="attachments/download/96216/42_ADTReportMatrixProperties.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="ADT-Report-Parameter"></a>
+<h3 >ADT Report Parameter<a href="#ADT-Report-Parameter" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <strong>ADT Report Parameter</strong> object is the report equivalent of the ADTDigitalIndicator object used for display building. The difference is that the ADT Report Parameter allows you to specify a label for each value being displayed, and is used to display both the string and numeric parameters.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Sample ADT Report Parameter Object</strong></em></span><br /><img src="attachments/download/96288/42_SampleReportParameter.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The ADT Report Parameter object can be customized with the following control properties:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>ADT Report Parameter Properties</strong></em></span><br /><img src="attachments/download/96289/42_ReportParameterProperties.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="ADT-Report-File-View"></a>
+<h3 >ADT Report File View<a href="#ADT-Report-File-View" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <strong>ADT Report File View</strong> object displays the contents of any text file on the report page. This is useful for gathering operator comments of text output generated from other programs like CycleManager.</p>
+
+
+	<a name="Multiple-Page-Reports"></a>
+<h2 >Multiple Page Reports<a href="#Multiple-Page-Reports" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest supports multiple pages per defined report. When you edit a report in Test Manager, it will show up in a tabbed view. By right-clicking on the tab at the bottom, you can add and delete pages.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Add New Report Page</strong></em></span><br /><img src="attachments/download/96295/42_AddNewReportPage.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>When adding a new page, a prompt appears asking for the page name.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Input Page Title</strong></em></span><br /><img src="attachments/download/96296/42_InputPageTitle.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>When you print the report, all pages will be sent to a PDF or the destination printer.</p>
+
+
+	<a name="Generating-Reports"></a>
+<h2 >Generating Reports<a href="#Generating-Reports" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Once reports are created, they can be viewed and printed using the <em>iTestReport.exe</em> program. The command line parameters for iTestReport are as follows:</p>
+
+
+<pre>/df &lt;data-file&gt;
+/rf &lt;report-file&gt;
+/o &lt;output-file&gt;, if the output file extension is PDF, then output to a PDF file; otherwise, output as a report snapshot
+/p , print report
+/h , kills iTestReport.exe once a report is generated
+/noprompt , do not prompt for values, default prompt values will be used </pre>
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">There is a known issue with /o to a PDF output file. When this is the case, the PDF save dialog box is always shown.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><code>iTestReport /df &lt;data-file&gt; /rf &lt;report-file&gt; [/v] [ /o &lt;output-file&gt;  ] /noprompt</code></p>
+
+
+	<p>Where:</p>
+
+
+	<ul>
+	<li>The &lt;data-file&gt; is the name of the <em>.dat</em>, <em>.ini</em>, or <em>.sc2</em> file that is supplying the values for the report parameters. You can pass multiple data files by including an index after the /df option (e.g., /df1, /df2, etc.). The files are then referenced in the <em>.rpp</em> file as INPUTFILE1, INPUTFILE2, etc. </li>
+		<li>&lt;report-file&gt; is the name of the <em>.rpt</em> file which defines the report layout.</li>
+		<li>/noprompt will cause the prompting for prompt type report parameters to not occur. In this case, the report will show the last value (or 0 if no last value exists).</li>
+	</ul>
+
+
+	<p>iTestReport is also used in interactive “Viewer” mode. This mode enables the following features:</p>
+
+
+	<ul>
+	<li>Viewing the report on the display screen. </li>
+		<li>Saving or viewing report snapshots (see below). </li>
+		<li>Generating a report output file (<em>.pdf</em>, etc.).</li>
+	</ul>
+
+
+	<p>iTestReport can be run interactively from the command line via a mailslot command or attached to a button on a display. When running interactively, you can save a snapshot of the report. A snapshot consists of all the files necessary to create that report at that point in time. This feature will save the report page file (<em>.rpt</em>), all of the report parameter files (<em>.rpp</em>), and a snapshot of all the data used for that report under the current DATADIR directory in a subfolder called <strong>SavedReports</strong>. Once a report has been saved, it can be opened again using the menu option <strong>File > Open Report Snapshot</strong> in iTestReport.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Open Report Snapshot</strong></em></span><br /><img src="attachments/download/4720/reports18.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Select Report Snapshot</strong></em></span><br /><img src="attachments/download/4721/reports19.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Another way of viewing a report is by using DataAnalysis. This is accomplished by selecting the <strong>File > Send to iTestReport</strong> option. You will then be prompted to select the report file with which to view the current data set.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Send Data File to iTestReport</strong></em></span><br /><img src="attachments/download/4722/reports20.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="How-to-Create-a-New-Report"></a>
+<h1 >How to Create a New Report<a href="#How-to-Create-a-New-Report" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>As mentioned previously, the first step to creating a report is to define and configure the parameter sets. Once this has been accomplished, you can then format your report pages by assigning these parameters to display objects that will appear on the final report.</p>
+
+
+	<a name="Defining-Parameter-Sets"></a>
+<h2 >Defining Parameter Sets<a href="#Defining-Parameter-Sets" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Since iTest does not ship with any predefined parameters, you must first create some of your own. The following procedure will walk you through the steps for creating a parameter set that includes both an array and a numeric.</p>
+
+
+	<ol>
+	<li>In Test Manager, expand the <em>Presentation</em> folder, and then expand the <em>Reports</em> folder.</li>
+		<li>Right-click on the <em>Report Parameters</em> folder and select <strong>New ReportSet</strong>. A blank parameter page will open in the display area.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New ReportSet</strong></em></span><br /><img src="attachments/download/96305/42_NewReportSet.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click on the <strong>NewReportSet(1)</strong> that was just created in the tree and rename it accordingly.</li>
+		<li>Right-click anywhere on the parameter page (gray area) to display the following options:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Right-Click Options</strong></em></span><br /><img src="attachments/download/96306/42_ReportSetRightClickOptions.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select the <strong>Insert Before</strong> option to add a row. Double-click in the row to bring up the secondary Report Parameter Editor. You are now ready to configure a parameter set.</li>
+		<li>First, set up the arrays. The <strong>Parameter Name</strong> is <code>tEngH2Oinlet</code>.<br />&nbsp;
+<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Always make sure that the Parameter Name is different than the Channel Name when creating arrays.</td>
+		</tr>
+	</table>  </li>
+		<li>Enter <strong>Temp – H2O Inlet</strong> in the <strong>Display Name</strong> field.</li>
+		<li>Leave the <strong>Units</strong> field blank at this time. It will auto-populate if you’ve chosen <strong>RDB</strong> from the <strong>Source</strong> field.</li>
+		<li>Select the <strong>File</strong> option in the <strong>Source</strong> field.</li>
+		<li>Select the <strong>InputFile1</strong> option in the <strong>Filename</strong> field.</li>
+		<li>Manually type "tEngineH2OInlet" in the <strong>Channel Name</strong> field.</li>
+		<li>Choose <strong>ALL</strong> in the <strong>Row Specifier</strong> field.</li>
+		<li>Leave the <strong>Comment</strong> field blank (unless you want to add one). Your Report Parameter Editor window should look like the one below:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Inlet Parameter</strong></em></span><br /><img src="attachments/download/96308/42_InletParameter.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>OK</strong> to accept the array you’ve created and navigate back to the primary display editor.</li>
+		<li>Repeat steps 4-15 again; this time creating an array for <code>tEngH2OOutlet</code>. When you have finished, the Report Parameter Editor should look like the one below:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Outlet Parameter</strong></em></span><br /><img src="attachments/download/96309/42_OutletParameter.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Next, create a Numeric parameter and pull the value from the RDB.</li>
+		<li>Add another row to your parameter set and double-click on it to navigate to the Report Parameter Editor.</li>
+		<li>Fill in the fields to match the screen below:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Of Temperature Parameter</strong></em></span><br /><img src="attachments/download/96310/42_OfTempParameter.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;
+<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Units will auto-populate in the actual report objects since the value is being pulled from the RDB. Choose EU in the Field Name to pull the most current value.</td>
+		</tr>
+	</table></li>
+		<li>Click <strong>OK</strong>.</li>
+		<li>Continue setting up any additional parameters as you see fit.</li>
+	</ol>
+
+
+	<a name="Creating-a-Report-Page"></a>
+<h2 >Creating a Report Page<a href="#Creating-a-Report-Page" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Report pages incorporate report page objects that are associated with the parameters that you defined in the previous section. Since iTest does not ship with any pre-defined report pages, you must create them on your own.</p>
+
+
+	<p>The following procedure will walk you through the steps for creating a report page. You will use the available report page objects and associate them with existing parameters.</p>
+
+
+	<ol>
+	<li>In Test Manager, expand the <em>Presentation</em> folder, and then expand the <em>Reports</em> folder.</li>
+		<li>Right-click on the <em>Report Pages</em> folder and select <strong>New Report Template</strong>. A blank report grid will open in the display area.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Report Template</strong></em></span><br /><img src="attachments/download/96311/42_NewReportTemplate.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click on the <strong>Report(1)</strong> that was just created in the tree and rename it accordingly (you may need to close the report in the display area first by clicking the X button in the upper right-hand corner).</li>
+		<li>For example purposes, click on the <strong>ADT Report Parameter</strong> object to insert a report parameter onto the page.</li>
+		<li>Right-click on the <strong>ADT Report Parameter</strong> object and select <strong>Properties</strong>.</li>
+		<li>Select the record that reads <strong>None None 0</strong>, and click the <strong>Delete</strong> button. This default is just a parameter placeholder and should be removed.</li>
+		<li>Click the <strong>Insert</strong> button to display the Select Parameter popup.</li>
+		<li>Select a parameter in the <strong>Parameter</strong> field and type in a name for the parameter in the <strong>Label</strong> field.</li>
+		<li>Repeat the previous step for any additional parameters for this object.</li>
+		<li>Click <strong>OK</strong> when finished and position/resize the object as desired.</li>
+		<li>Continue to configure your report page using any of the display objects available. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Sample Report Template</strong></em></span><br /><img src="attachments/download/96312/42_SampleReportTemplate.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Save your report.
+<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">You can export your report to the LabCentral database at this time if desired.</td>
+		</tr>
+	</table></li>
+		<li>Open the console by clicking <strong>File > Save All and Restart iTest Console</strong> (may say <strong>Save All and Restart</strong>, depending on your version) from the file menu.</li>
+		<li>When prompted, choose the solution from which you created your report page. </li>
+		<li>Once iTest Console has been started, you’ll need to add the <em>iTestReport.exe</em> tool to your toolkit. To do this:
+	<ol>
+	<li>Right-click anywhere in the <strong>Tools</strong> section and select <strong>New Tool</strong>.</li>
+		<li>Type in an appropriate name for the tool (e.g., iTest Reports).</li>
+		<li>Select <em>iTestReport.exe</em> from the <strong>Filename</strong> field.</li>
+		<li>Enter any argument in the <strong>Arguments</strong> field (not required). An example is if you wanted to be able to pull a specific report when executing this tool.</li>
+		<li>Click <strong>OK</strong> to add this tool to your toolkit.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add iTestReport.exe Tool</strong></em></span><br /><img src="attachments/download/96313/42_AddNewReportTool.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+	</li>
+		<li>Click the iTest Reports tool that you just created.</li>
+		<li>Click <strong>File > Open</strong>. The popup will default to the current iTest solution.</li>
+		<li>Select the report you wish to open and click <strong>Open</strong>. </li>
+		<li>If you chose to use an INPUTFILE when configuring your parameters, you will be asked to choose a data file to use. Choose one and click <strong>Open</strong>.</li>
+		<li>The report will be displayed.</li>
+	</ol>
+
+
+	<a name="Saving-a-Report-as-a-PDF"></a>
+<h2 >Saving a Report as a PDF<a href="#Saving-a-Report-as-a-PDF" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Once you’ve run the report and are able to view the data in its entirety, you can now save the report as a <em>.pdf</em> file by clicking <strong>File > Save As PDF</strong>.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">In order to use this feature, you must have the CutePDFWriter executable installed on your machine. iTest also supports Adobe PDF Writer, which becomes the default if installed. PDF995 is no longer an installation option but can still be used by iTest Reports if previously installed properly.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Save as PDF</strong></em></span><br /><img src="attachments/download/12178/reports29.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="ImportingExporting-Report-Data"></a>
+<h2 >Importing/Exporting Report Data<a href="#ImportingExporting-Report-Data" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest allows you to export report data to a data file, and then import report data back again to be reused accordingly. This is beneficial when you want to export a particular stage of a result and then reuse a different stage in your report.</p>
+
+
+	<p>You would need to determine the specific path and data file name to export the <em>.rpt</em> file to, and then use the import feature to read back the data file.</p>
+
+
+For example, the following arguments shows how an HDDT test could be split into several individual stages and exported:
+	<ul>
+	<li>Export data for a Cold start test<br /><pre>iTestReport /h /ExportParam &lt;Cold RPP File&gt; /ExportData &lt;Cold Data&gt;</pre></li>
+		<li>Export data for a Hot start test<br /><pre>iTestReport /h /ExportParam &lt;Hot RPP File&gt; /ExportData &lt;Hot Data&gt;</pre></li>
+		<li>Generate a report from the two data files<br /><pre>iTestReport /timeout 5 /ImportData1 &lt;Cold Data&gt; /ImportData2 &lt;Hot Data&gt; /rf &lt;Report RPT&gt;</pre></li>
+	</ul>
+
+
+	<p>iTest supports the following command line arguments for importing/exporting report data.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">These commands can be used in combination with any existing commands used for a data file.</td>
+		</tr>
+	</table></p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Command Line Arguments</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Argument</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>/dfl &lt;InputFile1&gt;</td>
+			<td>    The /df command could also be used here, and the &lt;InputFile&gt; are for the INPUTFILE1 to INPUTFILE5 defined in the RPP file.</td>
+		</tr>
+		<tr>
+			<td>/rf &lt;ReportFile&gt;</td>
+			<td>    Loads a specific report file.</td>
+		</tr>
+		<tr>
+			<td>/o &lt;OutputFile&gt;</td>
+			<td>    If  the extension of &lt;OutputFile&gt; is PDF, then the report will be saved as a PDF file. Otherwise, the report will be saved as a report snapshot. If used with the argument /h, the report application will exit after the output file is generated.</td>
+		</tr>
+		<tr>
+			<td>/NoPrompt</td>
+			<td>    Do not prompt for “Prompt” value; just use the default.</td>
+		</tr>
+		<tr>
+			<td>/p</td>
+			<td>    Automatically print the report after it is loaded. If used with the argument /h, the system will exit after printing.</td>
+		</tr>
+		<tr>
+			<td>/h</td>
+			<td>    Kills the <em>iTestReport.exe</em> application after the report has been generated.</td>
+		</tr>
+		<tr>
+			<td>/OL</td>
+			<td> Set the report orientation to landscape.</td>
+		</tr>
+		<tr>
+			<td>/OP</td>
+			<td> Set the report orientation to portrait.</td>
+		</tr>
+		<tr>
+			<td>/ut</td>
+			<td>    SI, ME, EG, OG. Sets the global units type.</td>
+		</tr>
+		<tr>
+			<td>/ExportParam &lt;RPP File&gt;</td>
+			<td>    Loads the <em>.rpp</em> file that will be used by /ExportData to a data file. The default path is <em>$SUPPORTDIR\Reports\</em>.</td>
+		</tr>
+		<tr>
+			<td>/ExportData &lt;Data File&gt;</td>
+			<td> The iTestReport application will evaluate the given /ExportParam <em>.rpp</em> file and output the result to &lt;Data File&gt;. The default path is <em>$DATADIR\ReportData\</em>. If no /ExportParam is found, it will output the <em>.rpp</em> file(s) in the current RPT file to output to &lt;Data File&gt;.</td>
+		</tr>
+		<tr>
+			<td>/ImportData1 &lt;Data File&gt; to /ImportData5 &lt;Data File&gt;</td>
+			<td> Loads the parameters in &lt;Data File&gt;, which is generated by &lt;ExportData&gt; into the current local RDB.</td>
+		</tr>
+		<tr>
+			<td>/Timeout &lt;Timeout in Seconds&gt;</td>
+			<td>    Sets the time out (in seconds) for polling /ImportData &lt;DataFile&gt;. The default in iTest report is 2 seconds.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>Report parameters defined in the Report Parameter Editor using ImportData as their Source will read data from the files specified in the /ImportData1 and /ImportData2 command line arguments. Since separate files are imported, parameters can have the same in both files.</p>
+
+
+	<a name="Unit-Conversion"></a>
+<h2 >Unit Conversion<a href="#Unit-Conversion" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following command line arguments can be used within iTest reports for unit conversion:</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">These arguments are not case sensitive.</td>
+		</tr>
+	</table></p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Unit Conversion Arguments</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Argument</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>/ut si</td>
+			<td>    // SI unit</td>
+		</tr>
+		<tr>
+			<td>/ut me</td>
+			<td>    // metric</td>
+		</tr>
+		<tr>
+			<td>/ut en</td>
+			<td>    // english</td>
+		</tr>
+		<tr>
+			<td>/ut og</td>
+			<td>    // original</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="iTest-Reports-Command-Line-and-Arrays"></a>
+<h1 >iTest Reports Command Line and Arrays<a href="#iTest-Reports-Command-Line-and-Arrays" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Command-Line-Arguments-2"></a>
+<h2 >Command Line Arguments<a href="#Command-Line-Arguments-2" class="wiki-anchor">&para;</a></h2>
+
+
+<pre>/df1 (or /df) &lt;InputFile1&gt;
+/df2     &lt;InputFile2&gt;
+:
+:
+/dfn     &lt;InputFilen&gt;</pre>
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">These &lt;InputFile&gt; are for the INPUTFILE1 to INPUTFILE10 defined in the RPP file.</td>
+		</tr>
+	</table></p>
+
+
+	<p><code>/rf    &lt;ReportFile&gt;></code><br />The <em>.rpt</em> file to load.</p>
+
+
+	<p><code>/o    &lt;OutputFile&gt;</code><br />If extension of &lt;OutputFile&gt;  is PDF, then save the report as a PDF file. Otherwise, save as report snapshot. If used with /h, exit after output file is generated.</p>
+
+
+	<p><code>/NoPrompt</code> <br />Do not prompt for “Prompt” value; use the default.</p>
+
+
+	<p><code>/NoErrMsg</code><br />Do not show any error messages.</p>
+
+
+	<p><code>/p</code><br />Automatically print report after it is loaded. If used with /h, exit after print.</p>
+
+
+	<p><code>/h</code>    <br />Do not show report window.</p>
+
+
+	<p><code>/OL</code><br />Set print out report orientation as landscape.</p>
+
+
+	<p><code>/OP</code><br />Set print out report orientation as portrait.</p>
+
+
+	<p><code>/ut  SI or ME or EN or OG</code><br />Set global units type</p>
+
+
+	<p><code>/ExportParam &lt;RPP File&gt;</code><br />The <em>.rpp</em> file that is going to be used by /ExportData to a data file. Default path is <em>$SUPPORTDIR\Reports\</em>.</p>
+
+
+	<p><code>/ExportData &lt;Data File&gt;</code><br />iTestReport will evaluate the given /ExportParam <em>.rpp</em> file and output the result to &lt;Data File&gt;. Default path is <em>$DATADIR\ReportData\</em>. If no /ExportParam found, it will output RPP file(s) in currently load RPT file to output data file. If the &lt;Data File&gt; has INI as extension, then output the non-array parameters in INI format.</p>
+
+
+	<p><code>/ImportData1 &lt;DataFile&gt; to /ImportData10 &lt;DataFile&gt;</code><br />Load the parameters in &lt;DataFile&gt; which is generated by &lt;ExportData&gt; into current local RDB.</p>
+
+
+	<p><code>/Timeout &lt;Timeout in Seconds&gt;</code><br />Set timeout in seconds for polling /ImportData &lt;DataFile&gt;. Default in iTestConsole is 2 seconds.</p>
+
+
+	<p><code>/mv &lt;MacroName&gt;=&lt;Value&gt;</code><br />Set value for <span>&lt;MacroName&gt;</span> in input file name. For example:</p>
+
+
+<pre>/mv RUN_NUM=5
+You can as many /mv as needed. There should be no space in &lt;MacroName&gt;=&lt;Value&gt; string.</pre>
+
+	<p><code>/path &lt;Path&gt;</code><br />&lt;Path&gt; can have macros like $SUPPORTDIR, $SYSTEMDIR, etc., will be applied to data files from /df and /importdata that does not have path in it.</p>
+
+
+	<a name="Array-Functions"></a>
+<h2 >Array Functions<a href="#Array-Functions" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><code>&lt;Number&gt;     RptArraySum( &lt;ArrayParam&gt;)</code></li>
+		<li><code>&lt;Number&gt;     RptArrayMax(&lt;ArrayParam&gt;)</code></li>
+		<li><code>&lt;Number&gt;     RptArrayMin(&lt;ArrayParam&gt;)</code></li>
+		<li><code>&lt;Number&gt;    RptArrayAvg(&lt;ArrayParam&gt;)</code></li>
+		<li><code>&lt;Number&gt;    RptArrayStdDev(&lt;ArrayParam&gt;)</code></li>
+		<li><code>&lt;Array&gt;    RptArrayShift(&lt;ArrayParam&gt; &lt;ShiftAmount&gt;)</code></li>
+		<li><code>&lt;Number&gt;    RptArrayCountAll(&lt;ArrayParam&gt;)</code></li>
+		<li><code>&lt;Number&gt;     RptArrayCountValid(&lt;ArrayParam&gt;)</code></li>
+		<li><code>&lt;Number&gt;    RptArrayCountValue(&lt;ArrayParam&gt; &lt;ValuetoCount&gt;)</code></li>
+		<li><code>&lt;Number&gt;    RptArrayGetValue(&lt;ArrayParam&gt; &lt;Index&gt;)</code></li>
+		<li><code>&lt;Array&gt;    RptArrayRegression(&lt;ArrayParamX&gt; &lt;ArrayParamY&gt;)</code><br />    1 – y intercept<br />    2 – slope<br />    3 – R2<br />    4 – standard error<br />    5 – standard estimated error (SEE)</li>
+		<li><code>&lt;Array&gt;    RptArrayCurveFit(&lt;ArrayParamX&gt; &lt;ArrayParamY&gt; &lt;order&gt;)</code><br />    1 – R2<br />    2 – Standard error<br />    3 – C0    <br />    4 – C1<br />    5 – C2<br />    6 – C3<br />    7 – C4<br />    8 – C5<br />    9 – C6<br />    Maximum order supported is 6</li>
+		<li><code>&lt;Array&gt;    RptArrayAvgGroups(&lt;ArrayParam&gt; &lt;NumberOfPoints in each group&gt;)</code></li>
+		<li><code>&lt;Array&gt;    RptArrayCombine(&lt;ArrayParam1&gt; &lt;ArrayParam2&gt;)</code></li>
+		<li><code>&lt;Array&gt;    RptArraySort(&lt;ArrayParam&gt; &lt;Ascending/Descending&gt;)</code></li>
+		<li><code>&lt;Array&gt;    RptArrayExtract(&lt;ArrayParam&gt; &lt;NumOfPoints to extract&gt;)</code></li>
+		<li><code>&lt;Array&gt;    RptArrayExtract(&lt;ArrayParam&gt; &lt;StartPoint&gt; &lt;Numberof Points&gt;)</code></li>
+		<li><code>&lt;Array&gt;    RptArrayExtractEvery(&lt;ArrayParam&gt; &lt;StartPoint&gt; &lt;Every Nth Point&gt;)</code></li>
+	</ul>
+</body>
+</html>

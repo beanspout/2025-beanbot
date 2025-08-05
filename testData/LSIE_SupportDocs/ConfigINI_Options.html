@@ -1,0 +1,691 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ConfigINI Options</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="ConfigINI_Options.html">ConfigINI Options</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Configini-Options"></a>
+<h1 >Config.ini Options<a href="#Configini-Options" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Configini-Options">Config.ini Options</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#iTest-INI-Options">iTest INI Options</a></li><li><a href="#LabWorX-Exclusive-INI-Options">LabWorX Exclusive INI Options</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The configuration options impact all iTest solutions on the PC. Many of these options define the communications between iTest and LabCentral, LabMinder, LabAgent, or any of the other LabWorX products.</p>
+
+
+	<a name="iTest-INI-Options"></a>
+<h2 >iTest INI Options<a href="#iTest-INI-Options" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following options are specific to iTest and are not exclusive to interaction with the LabWorX products.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>iTest INI Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1500px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<th colspan="5">INI Options not Exclusive to Interaction with LabWorX</th>
+		</tr>
+		<tr style="background: #ededed;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Version</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong> </td>
+		</tr>
+		<tr>
+			<td> AllowMultiByteSolutionNames</td>
+			<td> iTest 4.3</td>
+			<td> When set to TRUE, solutions with Kanji characters in their names are listed and can be selected in the Select Solution dialog.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td> AllowMultiByteSolutionNames=FALSE</td>
+		</tr>
+		<tr>
+			<td> AutoCrashProblemReport</td>
+			<td> iTest 3.2</td>
+			<td> If true, then problem reports (behavior depends on <code>ProblemReportDest</code>) for the majority of the core iTest programs are automatically created and processed.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td> AutoCrashProblemReport=FALSE</td>
+		</tr>
+		<tr>
+			<td> AUTOPATCHFOLDER<sup><a href="#fn1">1</a></sup></td>
+			<td style="text-align:center;">-</td>
+			<td> The network folder that system patches are downloaded from. This setting is configurable from LabCentral. This option is only when applying system patches.</td>
+			<td style="text-align:center;">-</td>
+			<td> AUTOPATCHFOLDER=&lt;Folder Name&gt;</td>
+		</tr>
+		<tr>
+			<td> AUTOPATCHIGNOREMAX<sup><a href="#fn1">1</a></sup></td>
+			<td> iTest 3.8</td>
+			<td> Enables users to ignore patch applications for a certain number of times. After the maximum ignore value has been reached, the user must accept and install patches. The counter is increased when the Select Patches dialog is closed without clicking <strong>Apply Patches</strong> or <strong>Ignore Patches</strong>, the <strong>Ignore Patches</strong> button is selected, or only certain patch files are applied. The counter for ignoring patches is reset to 0 when all patch files have been installed. This option can only be used when <code>AUTOPATCHMODE=PROMPT</code>. This setting is configurable from LabCentral.</td>
+			<td style="text-align:center;">0</td>
+			<td>AUTOPATCHIGNOREMAX=5</td>
+		</tr>
+		<tr>
+			<td> AUTOPATCHMODE<sup><a href="#fn1">1</a></sup></td>
+			<td style="text-align:center;">-</td>
+			<td> Enables users to control how iTest patches are applied. This setting is configurable from LabCentral.<br />&nbsp;<br /><ins><strong>AUTO:</strong></ins> The system checks for patches upon startup. If new patches are available, they are automatically downloaded.<br /><ins><strong>MANUAL:</strong></ins> The system does not check for new patches unless the user initiates it.<br /><ins><strong>NONE:</strong></ins> The automated patch system is not used (i.e., disabled). This is the default setting.<br /><ins><strong>PROMPT:</strong></ins> The system checks for new patches upon startup. If new patches are available, the user can select which updates to download.</td>
+			<td style="text-align:center;">NONE</td>
+			<td>AUTOPATCHMODE=PROMPT</td>
+		</tr>
+		<tr>
+			<td> DataDir </td>
+			<td style="text-align:center;">-</td>
+			<td> Path to store data logs. </td>
+			<td style="text-align:center;">-</td>
+			<td>DataDir=C:\ADT\iTest4.1\Solution.Demo\DATA\ </td>
+		</tr>
+		<tr>
+			<td>DeleteExternalSolutionLinkWhenDone</td>
+			<td>iTest 4.2.179</td>
+			<td>Setting this to TRUE will cause a junction point in the iTest $SYSTEMDIR to be deleted when all applications using it have exited.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>DeleteExternalSolutionLinkWhenDone=FALSE</td>
+		</tr>
+		<tr>
+			<td> Domain</td>
+			<td style="text-align:center;">-</td>
+			<td> Name of the Windows Domain to use if you are using Windows Security.</td>
+			<td style="text-align:center;">None, DSP-AA</td>
+			<td>Domain=&lt;Windows Domain Name&gt;</td>
+		</tr>
+		<tr>
+			<td> ExecuteDir </td>
+			<td> iTest 3.1 </td>
+			<td> Path to the <em>$SYSTEMDIR\Execute</em> folder. </td>
+			<td style="text-align:center;">-</td>
+			<td> ExecuteDir=C:\ADT\iTest4.1\Execute\ </td>
+		</tr>
+		<tr>
+			<td> ETHERCATXMLDIR  </td>
+			<td> iTest 4.3 </td>
+			<td> Path to the folder storing the EtherCAT Network Interface (ENI) file. </td>
+			<td style="text-align:center;">None </td>
+			<td> ETHERCATXMLDIR=C:\ADT\iTest4.3\ECAT\ </td>
+		</tr>
+		<tr>
+			<td> iTestBackgroundCloseTimeSec </td>
+			<td> iTest 4.1 </td>
+			<td> Amount of time (in seconds) before <em>iTestBackground.exe</em> closes finished INtime console windows. This setting must be added to the <em>$SYSTEMDIR\config.ini</em> file on the RT PC. Modifying this setting requires <em>iTestBackground.exe</em> to be restarted before the change is recognized. </td>
+			<td style="text-align:center;">15</td>
+			<td> iTestBackground=5</td>
+		</tr>
+		<tr>
+			<td> iTestLogin</td>
+			<td> iTest 2.2</td>
+			<td> This will turn on security for iTest. <br />If <code>iTestLogin=FALSE</code>, then security is off. If this is not present or <code>iTestLogin=TRUE</code>, then security is on.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td> iTestLogin=TRUE</td>
+		</tr>
+		<tr>
+			<td>iTestLoginComboBox</td>
+			<td>iTest 4.2</td>
+			<td>Enables a combobox containing a list of usernames from <em>users.dat</em> for the AutomationPanel and SolutionBuilder login dialog.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>iTestLoginComboBox=TRUE</td>
+		</tr>
+		<tr>
+			<td> MappedRemoteDrive</td>
+			<td> iTest 2.3</td>
+			<td> Specifies the drive letter of the shared/mapped iTest drive of the runtime PC. Applicable only to a 2 PC configuration. This applies to RTX_DIST system type only.</td>
+			<td style="text-align:center;"><em>\\iTestRT\iTestXX</em>, where XX is the iTest version number.</td>
+			<td> MappedRemoteDrive=\\iTestRT\iTest22</td>
+		</tr>
+		<tr>
+			<td> MiniDumpType</td>
+			<td> iTest 4.0</td>
+			<td> Specifies the level of dump detail. See online help for the MINIDUMP_TYPE parameter of Microsoft's MiniDumpWriteDump function. For example, MiniDumpType=2 would specify MiniDumpWithFullMemory.</td>
+			<td style="text-align:center;">0</td>
+			<td>MiniDumpType=0</td>
+		</tr>
+		<tr>
+			<td>NewSolutionZipPath</td>
+			<td>iTest 4.2</td>
+			<td>Specifies the path to a zip file containing a solution that will be used as the basis for all new solutions created by iTest. The solution folder within the zip file must begin with <code>Solution.</code>. Not to be used with BTS systems (use <code>SolutionZipPath</code> for those systems).</td>
+			<td style="text-align:center;">-</td>
+			<td>NewSolutionZipPath=$SYSTEMDIR\Installation\Solution.New.zip</td>
+		</tr>
+		<tr>
+			<td>PasswordFailedLoginDisable</td>
+			<td>iTest 4.4</td>
+			<td> The number of login failures before the user is disabled. Entering the correct user credentials prior to the user being disabled will reset the number of login failures back to 0.<br />&nbsp;<br />To disable this setting, enter a value <= 0. By default, this value is set to -1.</td>
+			<td style="text-align:center;">-1</td>
+			<td> PasswordFailedLoginDisable=3</td>
+		</tr>
+		<tr>
+			<td>PasswordMinimumLength</td>
+			<td> iTest 4.4</td>
+			<td> When set, setting a user password in the Security Editor will require the password to contain at least this many characters. To disable this setting, enter -1.</td>
+			<td style="text-align:center;">-1</td>
+			<td> PasswordMinimumLength=5</td>
+		</tr>
+		<tr>
+			<td>PasswordSpecialCharacterRequired</td>
+			<td> iTest 4.4</td>
+			<td> When set to TRUE, setting a user password in the Security Editor will require the password to contain at least one special character. Special characters include:<br /><pre>
+!#$%&#38;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~
+</pre></td>
+			<td style="text-align:center;">FALSE</td>
+			<td> PasswordMinimumLength=FALSE</td>
+		</tr>
+		<tr>
+			<td> ProblemReportDest</td>
+			<td> iTest 3.2</td>
+			<td> Place to send ProblemReports (LabCentral, local folder, or network share). If unspecified, ProblemReports are sent to the <em>$SYSTEMDIR</em>. </td>
+			<td style="text-align:center;">$SYSTEMDIR</td>
+			<td> ProblemReportDest=C:\ADT\iTest4.2\folder\</td>
+		</tr>
+		<tr>
+			<td> PythonDir </td>
+			<td> iTest 4.1 </td>
+			<td> Path to the Python support files including the libraries. </td>
+			<td style="text-align:center;">-</td>
+			<td>PythonDir=C:\ADT\iTest4.1\Execute\Python37\ </td>
+		</tr>
+		<tr>
+			<td> RemoteShareName</td>
+			<td> iTest 2.3</td>
+			<td> Specifies the <em>machine_name\share_name</em> that is mapped to a local drive (see <code>MappedRemoteDrive</code>). This applies to RTX_DIST system type only.</td>
+			<td style="text-align:center;">None</td>
+			<td> RemoteShareName=&lt;Machine Name\Share Name&gt;</td>
+		</tr>
+		<tr>
+			<td> remotesupportdir</td>
+			<td> iTest 2.2</td>
+			<td> Location of solution mirror on crate systems. This is helpful for utilizing FTP to send schedule files down to PowerPC systems.    </td>
+			<td style="text-align:center;"><em>i:\</em></td>
+			<td>remotesupportdir=i:\support</td>
+		</tr>
+		<tr>
+			<td>SecurityLogExtraLogging</td>
+			<td> iTest 4.4</td>
+			<td> When set to TRUE, changes made to Users or Groups using the Security Editor are logged to the <em>SecurityShell.log</em> file.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>SecurityLogExtraLogging=TRUE</td>
+		</tr>
+		<tr>
+			<td> selectsupport</td>
+			<td style="text-align:center;">-</td>
+			<td> If TRUE, prompt user to select solution on startup.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>selectsupport=TRUE</td>
+		</tr>
+		<tr>
+			<td> SelectSupportExcludes</td>
+			<td style="text-align:center;">-</td>
+			<td> Comma separated list of solution names to be filtered out by SelectSupport.</td>
+			<td style="text-align:center;">None</td>
+			<td>SelectSupportExcludes=Solution1,Solution2</td>
+		</tr>
+		<tr>
+			<td> SelectSupportStyle</td>
+			<td> iTest 3.7</td>
+			<td> Determines which style of the selection solution dialog to launch. When iTest is first launched after a new installation, this setting is not set to any value. This causes the Select Solution dialog with both display styles to appear. When this setting is set to <strong>COMBO</strong>, the traditional Select Solution dialog displays with the combo drop-down box. When this setting is set to <strong>TREE</strong>, the Select Support dialog using the tree style displays. </td>
+			<td style="text-align:center;">-</td>
+			<td>SelectSupportStyle=TREE</td>
+		</tr>
+		<tr>
+			<td>SelectSupportExternalSolution</td>
+			<td>iTest 4.2.179</td>
+			<td>Setting this to TRUE will change the Select Support dialog to allow the user to select a solution folder outside the iTest $SYSTEMDIR and create a junction point to it in the iTest $SYSTEMDIR.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>SelectSupportExternalSolution=FALSE</td>
+		</tr>
+		<tr>
+			<td> SerialNumber</td>
+			<td style="text-align:center;">-</td>
+			<td> Installation serial number.</td>
+			<td style="text-align:center;">-</td>
+			<td>SerialNumber=XXXX-XXXX-XXXX-XXXX</td>
+		</tr>
+		<tr>
+			<td> SingleUserLogin</td>
+			<td> iTest 3.7</td>
+			<td> Allows iTest Console, AutomationPanel, and SolutionBuilder to share the same user login with Test Manager, reducing the number of login prompts. When set to TRUE, Test Manager and/or SolutionBuilder must be closed before the user is able to log in/out or switch users using the <strong>File > User Login.../User Logout</strong> options or the <code>$LOGINREQUEST/$LOGOUTREQUEST</code> softpanel mailslot messages. </td>
+			<td style="text-align:center;">FALSE</td>
+			<td>SingleUserLogin=FALSE</td>
+		</tr>
+		<tr>
+			<td> SolutionZipPath</td>
+			<td> iTest 3.8</td>
+			<td> Specifies the path for the solution zip file used by SolutionBuilder. This file is used as a template when creating new solutions and patching old ones. This setting is configurable from LabCentral.</td>
+			<td style="text-align:center;">-</td>
+			<td>SolutionZipPath=$SYSTEMDIR\Installation\Battery\Solution.Battery.zip</td>
+		</tr>
+		<tr>
+			<td> SupportDir </td>
+			<td style="text-align:center;">-</td>
+			<td> Path to selected solution.</td>
+			<td style="text-align:center;">- </td>
+			<td> SupportDir=C:\ADT\iTest3.7\Solution.Demo\ </td>
+		</tr>
+		<tr>
+			<td> SystemDir </td>
+			<td style="text-align:center;">-</td>
+			<td> Path to iTest installation.</td>
+			<td style="text-align:center;">-</td>
+			<td> SystemDir=C:\ADT\iTest3.7\ </td>
+		</tr>
+		<tr>
+			<td> TMUseLegacyVCLEditor </td>
+			<td> iTest 3.7</td>
+			<td> iTest 3.7 has an enhanced editor with IntelliSense; however, the editor does not support multi-byte characters (e.g., Kanji). <code>TMUseLegacyVCLEditor</code> enables you to revert back to the legacy editor if you are working in a language that requires multibyte characters. You can switch between editor types as needed by changing the setting and restarting Test Manager. </td>
+			<td style="text-align:center;">FALSE</td>
+			<td>TMUseLegacyVCLEditor=FALSE</td>
+		</tr>
+		<tr>
+			<td> UdpMailslotPort</td>
+			<td> iTest 3.8</td>
+			<td> Enables users to use UDP to send mailslot messages between machines to improve performance and eliminate multiple second lag times. By default, <em>RDBServ.exe</em> listens on port 4622 and will send UDP messages. To confirm, look for "UdpMailslotServer running on port 4622..." in the <em>RDBServ.log</em> file. To disable this feature, set <code>UdpMailslotPort=0</code>.<br />&nbsp; <br />By default, applications using <em>mailbox.dll</em> will use UDP until disabled by adding the <code>UdpMailslotPort=0</code> entry to <em>config.ini</em>. Alternatively, unchecking all the network card's networking items except <strong>Internet Protocol Version 4 (TCP/IPv4)</strong> can also effectively disable UDP.  </td>
+			<td style="text-align:center;">-</td>
+			<td> UdpMailslotPort=4622</td>
+		</tr>
+		<tr>
+			<td>UserExpirationDays</td>
+			<td>iTest 4.4</td>
+			<td> The number of days until a newly created user's password expires. Editing an existing user will reset the timer until the password expires. For example, if this setting is set to 30, and a modification is made to the user prior to 30 days passing, then the password will expire 30 days after the modification was saved. Once the password has expired, the user will be prompted to change their password on their next login attempt.<br />&nbsp;<br />To disable this setting, enter a value <= 0. By default, this value is set to -1.</td>
+			<td style="text-align:center;">-1</td>
+			<td> UserExpirationDays=30</td>
+		</tr>
+		<tr>
+			<td> UseWindowsSecurity</td>
+			<td style="text-align:center;">-</td>
+			<td> If true, Domain security is being used to log into iTest.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>UseWindowsSecurity=FALSE</td>
+		</tr>
+		<tr>
+			<td> WebReportDataPrecision</td>
+			<td style="text-align:center;">-</td>
+			<td> The number of decimal points used in web report channel/parameter values. If this setting does not exist, then the web report channel/parameter values are not affected. </td>
+			<td style="text-align:center;">-</td>
+			<td>WebReportDataPrecision=3</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p id="fn1" class="footnote"><sup>1</sup> For more information about iTest auto-patching, see <a class="wiki-page" href="Auto-patching.html">Auto-patching</a>.</p>
+
+
+	<a name="LabWorX-Exclusive-INI-Options"></a>
+<h2 >LabWorX Exclusive INI Options<a href="#LabWorX-Exclusive-INI-Options" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following options are related to LabWorX products.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>LabWorX Exclusive INI Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1500px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<th colspan="5">INI Options Exclusive to Interaction with LabWorX</th>
+		</tr>
+		<tr style="background: #ededed;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Version</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong> </td>
+		</tr>
+		<tr>
+			<td>BlockDesktopImg</td>
+			<td> LabAgent 3.9</td>
+			<td> When set to TRUE, the desktop image will be blocked when viewed through LabCentral or the local LabAgent user interface.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td> BlockDesktopImg=TRUE</td>
+		</tr>
+		<tr>
+			<td> Clients</td>
+			<td style="text-align:center;">-</td>
+			<td> This is the name and IP address of the computers allowed to connect to the LabAgent web server. The list is semicolon-separated and can contain IP addresses or computer names. For example, if only the LabCentral machine was only allowed to connect to LabAgent, it may look like this: <code>Clients=192.168.0.1;LabCentral</code>.</td>
+			<td style="text-align:center;">-</td>
+			<td>Clients=192.168.0.1;LabCentral</td>
+		</tr>
+		<tr>
+			<td> ClientSecurity</td>
+			<td> LabAgent 3.7</td>
+			<td>If set to TRUE, then LabAgent rejects connections from clients outside of its <code>Clients</code> list. In other words, only the IP addresses specified by the <code>Clients</code> setting can connect to LabAgent. If set to FALSE or missing, then LabAgent defers its client security as to whether <code>iTestLogin=TRUE/FALSE</code>. Refer to the <code>Clients</code> and <code>iTestLogin</code> entries for more information.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>ClientSecurity=TRUE/FALSE</td>
+		</tr>
+		<tr>
+			<td> Cloudify</td>
+			<td style="text-align:center;">-</td>
+			<td> This setting should be set to true when working with a LabCentral Server that is behind a firewall and running LabCloud mode. By default, this value is false and is used for normal LabCentral Servers that aren't blocked by firewalls.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>Cloudify=FALSE</td>
+		</tr>
+		<tr>
+			<td> DacWebServerPort</td>
+			<td style="text-align:center;">-</td>
+			<td> This is the port that LabAgent listens to for anyone trying to make a connection.</td>
+			<td style="text-align:center;">80</td>
+			<td>DacWebServerPort=80</td>
+		</tr>
+		<tr>
+			<td> DataRetentionEnable</td>
+			<td> LabCentral 2.9</td>
+			<td> Specifies whether data retention is enabled (true) or disabled (false). This field is updated by LabCentral when the user clicks <strong>Save</strong> on the Manage Test System Groups editor.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td> DataRetention=TRUE/FALSE</td>
+		</tr>
+		<tr>
+			<td> DataRetentionPeriodDays</td>
+			<td> LabCentral 2.9</td>
+			<td> The number of days that data is retained at the test station once it has been uploaded to LabCentral. After this period, the locally stored data is purged. Valid range is 0-365 days. This field is updated by LabCentral when the user clicks <strong>Save</strong> on the Manage Test System Groups editor.</td>
+			<td style="text-align:center;">365</td>
+			<td>DataRetentionPeriodDays=30</td>
+		</tr>
+		<tr>
+			<td> DiagnosticsEnable</td>
+			<td style="text-align:center;">-</td>
+			<td> Enables test system diagnostics for the test system group.</td>
+			<td style="text-align:center;">-</td>
+			<td>DiagnosticsEnable=TRUE/FALSE</td>
+		</tr>
+		<tr>
+			<td> DiagnosticsLolFile</td>
+			<td style="text-align:center;">-</td>
+			<td> The name of an LOL file located in the <em>$SUPPORTDIR\DATA</em> that contains the list of channels that will be logged if Test System Diagnostics are enabled. This setting is controlled by LabCentral. </td>
+			<td style="text-align:center;">-</td>
+			<td> DiagnosticsLolFile=TestSysDiagnostic.lol</td>
+		</tr>
+		<tr>
+			<td> DiagnosticsSampleRate</td>
+			<td style="text-align:center;">-</td>
+			<td> The interval (in seconds) that LabAgent samples data for the Test System Diagnostics feature. This setting is controlled by LabCentral.</td>
+			<td style="text-align:center;">60.0</td>
+			<td>DiagnosticsSampleRate=60.0</td>
+		</tr>
+		<tr>
+			<td> DiagnosticsStateChannel</td>
+			<td style="text-align:center;">-</td>
+			<td> The diagnostic state channel. The state channel is an optional item that displays as a horizontal bar above the diagnostic chart on the Test System Diagnostics page. This bar shows the changing value of the state channel during the acquisition period. This channel must be a channel in the selected LOL file for the <code>DiagnosticsLolFile</code> option.</td>
+			<td style="text-align:center;">-</td>
+			<td>DiagnosticsStateChannel=flgSysInUse<br />vsStateChan (iViewBox Group)</td>
+		</tr>
+		<tr>
+			<td> DiagnosticUploadMinutes</td>
+			<td style="text-align:center;">-</td>
+			<td> The diagnostic data upload interval time in minutes.</td>
+			<td style="text-align:center;">-</td>
+			<td>DiagnosticUploadMinutes=1<br />30 (iViewBox Group)</td>
+		</tr>
+		<tr>
+			<td> EnableSSL</td>
+			<td style="text-align:center;">-</td>
+			<td> Enables SSL (Secure Sockets Layer) to provide communication security. This setting is controlled by LabCentral, and it is only used when the LabCentral Server is using SSL. This does not apply to pages hosted by LabAgent.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>EnableSSL=TRUE/FALSE</td>
+		</tr>
+		<tr>
+			<td> ExternalFilesPath</td>
+			<td> iView 3.3</td>
+			<td> Destination folder for files created by iViewConnect WriteFile commands.</td>
+			<td style="text-align:center;">-</td>
+			<td>ExternalFilesPath=$SYSTEMDIR\ExternalFiles</td>
+		</tr>
+		<tr>
+			<td> ICENTRAL</td>
+			<td style="text-align:center;">-</td>
+			<td> The method LabAgent uses to determine the server name for communication.</td>
+			<td style="text-align:center;">-</td>
+			<td>ICENTRAL=&lt;Server Name&gt;</td>
+		</tr>
+		<tr>
+			<td> iCentralConfigFolder</td>
+			<td> iTest 3.2</td>
+			<td> LabCentral folder for module export/import.</td>
+			<td style="text-align:center;">None</td>
+			<td> iCentralConfigFolder=&lt;Folder Name&gt;</td>
+		</tr>
+		<tr>
+			<td> ICentralServerPort</td>
+			<td style="text-align:center;">-</td>
+			<td> This is the port which the LabCentral server is listening to on its host computer.</td>
+			<td style="text-align:center;">-</td>
+			<td> ICentralServerPort=81</td>
+		</tr>
+		<tr>
+			<td> iCentralTestCellName</td>
+			<td style="text-align:center;">-</td>
+			<td> The name of the test cell.</td>
+			<td style="text-align:center;">-</td>
+			<td>iCentralTestCellName=ANDT100455</td>
+		</tr>
+		<tr>
+			<td>InstallerPatchPath</td>
+			<td>LabCentral 3.9</td>
+			<td> The UNC path to the selected patch level for the test system group. This setting is pushed down to applicable test systems after saving changes to the test system group on LabCentral.</td>
+			<td style="text-align:center;">-</td>
+			<td>InstallerPatchPath=\\QAVMW2K22\CONFIG\\InstallerPatches\PatchLevel</td>
+		</tr>
+		<tr>
+			<td> IsolatedUploads</td>
+			<td> iView 4.5<br />LabCentral 3.5</td>
+			<td> If true, then LabAgent will upload project data to LabCentral's isolated upload queue under <em>$UploadFolder\_iso\&lt;timestamp&gt;</em>.<br />If false, LabAgent's project data uploads go to the standard upload queue (e.g., <em>$UploadFolder</em>).</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>IsolatedUploads=FALSE</td>
+		</tr>
+		<tr>
+			<td> IncludeLabScheduler</td>
+			<td> iTest 3.7</td>
+			<td> Enables users to upload battery specification files to the <em>Part Template</em> folder in LabCentral. Setting this property to true disables the synchronization menu items in Test Manager.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td> IncludeLabScheduler=FALSE</td>
+		</tr>
+		<tr>
+			<td> iViewLinksToHide</td>
+			<td> iView 4.5<br />LabCentral 3.5</td>
+			<td> Navigation links listed under this setting are hidden in both LabAgent Web Server and LabCentral's Test System Details page.<br />This value should be formatted as a comma-separated list of the desired link IDs. See the example value for the full list of supported IDs. </td>
+			<td style="text-align:center;">-</td>
+			<td> iViewLinksToHide=SystemStatus, CustomViews, DesktopImage, OperatorComments, ConfigurationReport, TestSystemHealth, DataQualityInformation, Solution, DataFiles, LogFiles, WebLogs, MapDefaultChannels, LabScheduler, CalibrationData</td>
+		</tr>
+		<tr>
+			<td> iViewUtilizationDialogEnable</td>
+			<td> iView 3.3</td>
+			<td> When this setting is true, the utilization reason dialog displays. When it is set to false, the dialog will not display. If the <code>$TESTCELLSTATUS</code> mailslot message is sent to LabAgent, it will display the utilization reason dialog regardless of the value for this setting. </td>
+			<td style="text-align:center;">TRUE</td>
+			<td>iViewUtilizationDialogEnable=TRUE/FALSE</td>
+		</tr>
+		<tr>
+			<td> LabSchedulerAllowUpload</td>
+			<td> LabCentral 3.1</td>
+			<td> Controls visibility of the manual <strong>Upload</strong> button on the LabScheduler panel in iTest.BTS. </td>
+			<td style="text-align:center;">TRUE</td>
+			<td>LabSchedulerAllowUpload=TRUE</td>
+		</tr>
+		<tr>
+			<td> LicenseDetachMinutes</td>
+			<td> LabAgent 3.7</td>
+			<td> The maximum detach duration (in minutes) for manually detaching a license on the test system via the LabAgent <strong>Detach iTest.Pro License...</strong> system tray menu option or the $DETACHLICENSE mailslot message. If this setting is missing or has a value less than 0, then the default value will be used. This can be configured on LabCentral via the Licenses Settings page under <strong>Server Settings</strong>.</td>
+			<td style="text-align:center;">120</td>
+			<td> LicenseDetachMinutes=120</td>
+		</tr>
+		<tr>
+			<td> LogDataFullThresholdPercentage</td>
+			<td style="text-align:center;">-</td>
+			<td> The maximum percentage of drive space permitted for diagnostic and utilization data.</td>
+			<td style="text-align:center;">90</td>
+			<td>LogDataFullThresholdPercentage=90</td>
+		</tr>
+		<tr>
+			<td> ModuleRevisionControl</td>
+			<td style="text-align:center;">-</td>
+			<td> This setting enables you to import and export modules between Test Manager and Subversion. When this option is set to true, modules are uploaded to the LabCentral Subversion Repository and stored in the <em>Modules</em> Lab File folder. When this setting is set to false, the normal LabCentral file share is used.</td>
+			<td style="text-align:center;">None</td>
+			<td>ModuleRevisionControl=TRUE/FALSE</td>
+		</tr>
+		<tr>
+			<td> MODULEUPLOADFOLDER</td>
+			<td style="text-align:center;">-</td>
+			<td> This is the folder to send new modules and solutions to when copying them to LabCentral. This should be a subfolder of the LabCentral folder.</td>
+			<td style="text-align:center;">-</td>
+			<td>MODULEUPLOADFOLDER=&lt;Folder Name&gt;</td>
+		</tr>
+		<tr>
+			<td> OEMFileNamePattern</td>
+			<td> LabCentral 3.5</td>
+			<td> Specifies the format of the data file name for automated OEM test requests using a variety of macros.<br />This is set via LabCentral's Test System Group Editor. See LabCentral's <em>Managing Test System Groups</em> documentation for usage details.</td>
+			<td style="text-align:center;">-</td>
+			<td>OEMFileNamePattern= <em>{TR}_{PartID}_{TestName}_{Segment}</em></td>
+		</tr>
+		<tr>
+			<td> PartsDBTransactionMaxUpdateSeconds</td>
+			<td> LabCentral 2.4</td>
+			<td> The maximum the Part Tracker working polling interval can go.</td>
+			<td style="text-align:center;">3600</td>
+			<td> PartsDBTransactionMaxUpdateSeconds=3600</td>
+		</tr>
+		<tr>
+			<td> PartsDBTransactionUpdateSeconds</td>
+			<td> LabCentral 2.4</td>
+			<td> The polling interval (in seconds) that LabAgent uses to process the transaction directory for Part Tracker. When LabAgent successfully connects to LabCentral but fails to send the command to LabCentral, then this value is added to the working polling interval. On successfully sending a Part Tracker command to LabCentral, the working polling interval will be reset to this setting's value.</td>
+			<td style="text-align:center;">120</td>
+			<td> PartsDBTransactionUpdateSeconds=120</td>
+		</tr>
+		<tr>
+			<td> PartTrackerTransactionMirrorDir</td>
+			<td> LabCentral 2.4</td>
+			<td> If this directory is specified, then any part tracker transaction files that are successfully processed by LabAgent get moved to this directory. If this setting is set to an empty string or does not exist, then LabAgent deletes the transaction files after successfully processing them.</td>
+			<td style="text-align:center;">Empty string</td>
+			<td>PartTrackerTransactionMirrorDir=&lt;Directory Name&gt;</td>
+		</tr>
+		<tr>
+			<td> SecureConfigurations</td>
+			<td style="text-align:center;">-</td>
+			<td> This turns on security for new solutions in Test Manager. If true, whenever you create a new solution in Test Manager, you are prompted to enter a user group allowed to use the solution. User groups are defined within LabCentral. Only one group can be assigned to use a solution.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td> SecureConfigurations=FALSE</td>
+		</tr>
+		<tr>
+			<td> ServerSerialNumber</td>
+			<td style="text-align:center;">-</td>
+			<td> The LabCentral server serial number.</td>
+			<td style="text-align:center;">-</td>
+			<td> ServerSerialNumber=XXXX-XXXX-XXXX</td>
+		</tr>
+		<tr>
+			<td> StatusCodeChannel</td>
+			<td> iView 4.0</td>
+			<td> Holds the name of the channel that is updated with the LabCentral Status. The default channel name for LabAgent-iTest systems is <code>voSysServerStatus</code>. The LabCentral status can be:<br />0 = Undefined<br />1 = OK: LabAgent can connect to LabCentral<br />2 = Error: LabAgent can't connect to LabCentral</td>
+			<td style="text-align:center;">voSysServerStatus</td>
+			<td>StatusCodeChannel=voSysServerStatus</td>
+		</tr>
+		<tr>
+			<td> StatusDescriptionChannel</td>
+			<td> LabCentral 2.4</td>
+			<td> Holds the name of the virtual string that contains the description of the LabCentral Status code in StatusCodeChannel.</td>
+			<td style="text-align:center;">-</td>
+			<td>StatusDescriptionChannel=&lt;Channel Name&gt;</td>
+		</tr>
+		<tr>
+			<td>TargetPatchVerDAC</td>
+			<td>LabCentral 3.9</td>
+			<td> The iTest version of the selected patch level for the test system group. This setting is pushed down to applicable test systems after saving changes to the test system group on LabCentral.</td>
+			<td style="text-align:center;">-</td>
+			<td>TargetPatchVerDAC=4.4.0.172</td>
+		</tr>
+		<tr>
+			<td>TargetPatchVerLabAgent</td>
+			<td>LabCentral 3.9</td>
+			<td> The LabAgent version of the selected patch level for the test system group. This setting is pushed down to applicable test systems after saving changes to the test system group on LabCentral.</td>
+			<td style="text-align:center;">-</td>
+			<td>TargetPatchVerLabAgent=3.9.0.11</td>
+		</tr>
+		<tr>
+			<td> TRSolutionChangeWaitSecs</td>
+			<td> LabAgent 3.6</td>
+			<td> Allows you to configure how long LabAgent will wait before timing out during a solution swap.</td>
+			<td style="text-align:center;">600</td>
+			<td> TRSolutionChangeWaitSecs=600</td>
+		</tr>
+		<tr>
+			<td> UploadFolder</td>
+			<td style="text-align:center;">-</td>
+			<td> This is the location where data files should be uploaded to when sending them to LabCentral.    </td>
+			<td style="text-align:center;">-</td>
+			<td>UploadFolder=\\iCentral\UPLOAD</td>
+		</tr>
+		<tr>
+			<td> UseHTTPUpload</td>
+			<td> iView 4.4</td>
+			<td> Allows data files to be uploaded to LabCentral via HTTP/HTTPS.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>UseHTTPUpload=TRUE/FALSE</td>
+		</tr>
+		<tr>
+			<td> UtilizationEnable</td>
+			<td style="text-align:center;">-</td>
+			<td> Enables or disables utilization data collection.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>Utilization=TRUE/FALSE</td>
+		</tr>
+		<tr>
+			<td> UtilizationThresholdMinutes</td>
+			<td style="text-align:center;">-</td>
+			<td> The utilization event log threshold. This is the duration of time to wait before checking for a change.</td>
+			<td style="text-align:center;">-</td>
+			<td> UtilizationThresholdMinutes=5</td>
+		</tr>
+		<tr>
+			<td> UtilizationUploadHours</td>
+			<td style="text-align:center;">-</td>
+			<td> The utilization data upload interval time in hours.</td>
+			<td style="text-align:center;">-</td>
+			<td>UtilizationUploadHours=1</td>
+		</tr>
+		<tr>
+			<td> UtilizationWatchdogMinutes</td>
+			<td style="text-align:center;">-</td>
+			<td> The utilization event watchdog interval in minutes. This is used to record data in the utilization log if no change has occurred.</td>
+			<td style="text-align:center;">-</td>
+			<td> UtilizationWatchdogMinutes=30</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+</body>
+</html>

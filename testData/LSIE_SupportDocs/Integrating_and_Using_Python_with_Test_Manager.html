@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Integrating and Using Python with Test Manager</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Automating_iTest_with_Python.html">Automating iTest with Python</a></li>
+<li><a href="Integrating_and_Using_Python_with_Test_Manager.html">Integrating and Using Python with Test Manager</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Integrating-and-Using-Python-with-Test-Manager"></a>
+<h1 >Integrating and Using Python with Test Manager<a href="#Integrating-and-Using-Python-with-Test-Manager" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Integrating-and-Using-Python-with-Test-Manager">Integrating and Using Python with Test Manager</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Adding-the-Python-Scripts-Folder">Adding the Python Scripts Folder</a></li><li><a href="#Using-Python-Scripts-in-Test-Manager">Using Python Scripts in Test Manager</a><ul><li><a href="#Using-Menu-Options">Using Menu Options</a></li><li><a href="#Debugging">Debugging</a></li></ul>
+</li><li><a href="#Saving-Python-Scripts">Saving Python Scripts</a></li><li><a href="#Calling-a-Python-Script">Calling a Python Script</a></li><li><a href="#Specifying-Modules">Specifying Modules</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can integrate Python with Test Manager to quickly and efficiently add and debug Python scripts. These scripts can be stored in two locations: either the system support directory (i.e., $SUPPORTDIR) or in the iTest installation folder (i.e., $SYSTEMDIR). This folder is visible in Test Manager <strong><ins>only</ins></strong> when it is located in the $SUPPORTDIR.</p>
+
+
+	<a name="Adding-the-Python-Scripts-Folder"></a>
+<h2 >Adding the Python Scripts Folder<a href="#Adding-the-Python-Scripts-Folder" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>If the <em>Python Scripts</em> folder does not display in Test Manager, do the following:</p>
+
+
+	<ol>
+	<li>Use a text editor to open the <em>moduledefinition.xml</em> file located in your $SUPPORTDIR.</li>
+		<li>Add the following line to the System type section:<br />&nbsp;<br /><pre>&lt;Folder&gt;Python Scripts&lt;/Folder&gt;</pre><br />&nbsp;<br /><span style="font-size: 11px;"> <em><strong>Python Module</strong></em></span><br /><img src="attachments/download/29765/PythonScriptsFolder.png" style="padding-top:0.5em;padding-bottom:1em;" alt="" /><br />&nbsp;</li>
+		<li>Save the file.</li>
+		<li>Relaunch Test Manager.</li>
+	</ol>
+
+
+	<p>Once you add this line, the <em>Python Scripts</em> folder will be available when you launch Test Manager situated beneath the <em>Test Development</em> folder in the tree bar.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The folder in Test Manager corresponds to the <em>Python Scripts</em> folder located <strong><ins>only</ins></strong> in the support directory.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Using-Python-Scripts-in-Test-Manager"></a>
+<h2 >Using Python Scripts in Test Manager<a href="#Using-Python-Scripts-in-Test-Manager" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>When creating Python scripts in Test Manager, the standard VCL editor options and debugging tools are available.</p>
+
+
+	<a name="Using-Menu-Options"></a>
+<h3 >Using Menu Options<a href="#Using-Menu-Options" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To perform different actions, right-click a script in the <em>Python Scripts</em> folder to access the menu options.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Python Scripts Test Manager</strong></em></span><br /><img src="attachments/download/29764/PythonScriptTM.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />The following table lists the various right-click menu options available for Python scripts:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Python Script Right-click Menu Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Save</td>
+			<td>Saves changes to the Python script.</td>
+		</tr>
+		<tr>
+			<td>Duplicate...</td>
+			<td>Duplicates a selected Python script.</td>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td>Deletes a selected Python script.</td>
+		</tr>
+		<tr>
+			<td>Rename</td>
+			<td>Renames a selected Python script.</td>
+		</tr>
+		<tr>
+			<td>Print...</td>
+			<td>Launches the Print dialog to specify printer settings and print a Python script. </td>
+		</tr>
+		<tr>
+			<td>Properties...</td>
+			<td>This feature is disabled for Python scripts.</td>
+		</tr>
+		<tr>
+			<td>Debug...</td>
+			<td>Launches a selected Python script in the debugging tool PythonWin. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Debugging"></a>
+<h3 >Debugging<a href="#Debugging" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To debug your Python scripts, right-click the name of the script and select the <strong>Debug...</strong> option. This launches the PythonWin debugging tool. Debugging does not occur automatically, so you must select <strong>File > Debug > Go</strong> to debug the script, or you can press the <strong>F5</strong> shortcut key.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Debugging with PythonWin</strong></em></span><br /><img src="attachments/download/50457/PythonWin.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Saving-Python-Scripts"></a>
+<h2 >Saving Python Scripts<a href="#Saving-Python-Scripts" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest only supports Python scripts that are saved as UTF-8, so when editing or creating scripts in a text editor, you must save any <em>.py</em> script files as UTF-8—not the default system encoding.</p>
+
+
+	<a name="Calling-a-Python-Script"></a>
+<h2 >Calling a Python Script<a href="#Calling-a-Python-Script" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>When calling a Python script, you must specify the Python module that contains the function to be executed. If your script file is <em>Script1.py</em>, then the module name for this is <em>Script1</em>; the file extension cannot be included in the module name.</p>
+
+
+	<a name="Specifying-Modules"></a>
+<h2 >Specifying Modules<a href="#Specifying-Modules" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Script files can be located in sub-directories within the <em>PythonScripts</em> folder.  When specifying a module that is contained in a sub-directory, the sub-directories must be separated using the period (.) character, not a slash as is typical in Windows. For example, if your <em>PythonScripts</em> folder contains a sub-directory called <em>Dir1</em>, which contains a script file called <em>Script1.py</em>, then the module specification for this file would be <em>Dir1.Script1</em>.</p>
+</body>
+</html>

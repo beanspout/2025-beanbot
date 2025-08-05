@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Python Packages support</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Automating_iTest_with_Python.html">Automating iTest with Python</a></li>
+<li><a href="Python_Packages_support.html">Python Packages support</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Python-Packages-Support"></a>
+<h1 >Python Packages Support<a href="#Python-Packages-Support" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Python-Packages-Support">Python Packages Support</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Packages">Packages</a><ul><li><a href="#Restrictions">Restrictions</a></li></ul></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>This guide provides support and details restrictions for using Python packages in the iTest development suite.</p>
+
+
+	<a name="Packages"></a>
+<h2 >Packages<a href="#Packages" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Python packages (<em>*.whl</em>) are files that can be used to add new APIs and extend the functionality of Python. By default, iTest includes several of these packages in the <em>$SYSTEMDIR\PythonPackages</em> folder; however, the user can add more if they need additional functionality in Python. When PythonEngine is run with the <code>/installpackages</code> command line option, it will attempt to install any Python packages found in the <em>$SYSTEMDIR\PythonPackages</em> folder, and then exit. The <em>PythonPackages.log</em> file will be updated with the status of each Python package installation.</p>
+
+
+	<p>When launching iTest, iTest will check if there are any packages in the <em>$SUPPORTDIR\PythonPackages</em> folder that do not currently exist in the <em>$SYSTEMDIR\PythonPackages</em> folder. If iTest finds any of these "missing" packages, then it will automatically run PythonEngine with the <code>/installpackages</code> command line option to install these packages before continuing to launch. In addition, any "missing" packages will be copied to the <em>$SYSTEMDIR\PythonPackages</em> folder, and the <em>PythonPackages.log</em> file will be updated.</p>
+
+
+	<p>The following packages are included in iTest by default:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Default Python Packages</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Package Name</strong> </td>
+			<td style="text-align:left;"><strong>WHL File</strong> </td>
+		</tr>
+		<tr>
+			<td>debugpy-1.8.0</td>
+			<td>debugpy-1.8.0-cp11-cp11-win_amd64.whl</td>
+		</tr>
+		<tr>
+			<td>NumPy 1.26.1</td>
+			<td>numpy-1.26.1-cp311-cp311-win_amd64.whl</td>
+		</tr>
+		<tr>
+			<td>SciPy 1.11.3</td>
+			<td>scipy-1.11.3-cp311-cp311-win_amd64.whl</td>
+		</tr>
+		<tr>
+			<td>Pandas 2.1.1</td>
+			<td>pandas-2.1.1-cp311-cp311-win_amd64.whl</td>
+		</tr>
+		<tr>
+			<td>Six 1.16.0</td>
+			<td>six-1.16.0-py2.py3-none-any.whl</td>
+		</tr>
+		<tr>
+			<td>python_dateutil 2.8.2</td>
+			<td>python_dateutil-2.8.2-py2.py3-none-any.whl</td>
+		</tr>
+		<tr>
+			<td>pytz 2023.3.post1</td>
+			<td>pytz-2023.3.post1-py2.py3-none-any.whl</td>
+		</tr>
+		<tr>
+			<td>pycparser 2.21</td>
+			<td>pycparser-2.21-py2.py3-none-any.whl</td>
+		</tr>
+		<tr>
+			<td>pythonnet 3.0.3</td>
+			<td>pythonnet-3.0.3-py3-none-any.whl</td>
+		</tr>
+		<tr>
+			<td>pyserial 3.5</td>
+			<td>pyserial-3.5-py2.py3-none-any.whl</td>
+		</tr>
+		<tr>
+			<td>cffi 1.16.0</td>
+			<td>cffi-1.16.0-cp311-cp311-win_amd64.whl</td>
+		</tr>
+		<tr>
+			<td>clr-loader 0.2.6</td>
+			<td>clr_loader-0.2.6-py3-none-any.whl</td>
+		</tr>
+		<tr>
+			<td>et-xmlfile  1.1.0</td>
+			<td>et_xmlfile-1.1.0-py3-none-any.whl</td>
+		</tr>
+		<tr>
+			<td>openpyxl 3.1.2</td>
+			<td>openpyxl-3.1.2-py2.py3-none-any.whl</td>
+		</tr>
+		<tr>
+			<td>pywin32 306</td>
+			<td>pywin32-306-cp311-cp311-win_amd64.whl</td>
+		</tr>
+		<tr>
+			<td>tzdata  2023.3</td>
+			<td>tzdata-2023.3-py2.py3-none-any.whl</td>
+		</tr>
+		<tr>
+			<td>pdfkit 1.0.0 </td>
+			<td> pdfkit-1.0.0-py3-none-any.whl </td>
+		</tr>
+		<tr>
+			<td>PyPDF 4.3.0 </td>
+			<td> pypdf-4.3.0-py3-none-any.whl </td>
+		</tr>
+		<tr>
+			<td>PikePDF 9.1.1</td>
+			<td> pikepdf-9.1.1-cp311-cp311-win_amd64.whl </td>
+		</tr>
+		<tr>
+			<td>Deprecated 1.2.14</td>
+			<td> Deprecated-1.2.14-py2.py3-none-any.whl</td>
+		</tr>
+		<tr>
+			<td>lxml-5.2.2</td>
+			<td> lxml-5.2.2-cp311-cp311-win_amd64.whl</td>
+		</tr>
+		<tr>
+			<td>wrapt 1.16.0</td>
+			<td> wrapt-1.16.0-cp311-cp311-win_amd64.whl</td>
+		</tr>
+		<tr>
+			<td>packaging 24.1</td>
+			<td> packaging-24.1-py3-none-any.whl</td>
+		</tr>
+		<tr>
+			<td>pillow 10.4.0</td>
+			<td> pillow-10.4.0-cp311-cp311-win_amd64.whl</td>
+		</tr>
+		<tr>
+			<td>pynput 1.7.7</td>
+			<td> pynput-1.7.7-py2.py3-none-any.whl</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Restrictions"></a>
+<h3 >Restrictions<a href="#Restrictions" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This feature only applies when using the default Python installed as part of iTest. If the user sets the <code>PythonHome</code> setting in <em>powertek.ini</em> to a Python installation that is not the default, then PythonEngine does not attempt to install any packages there. The user must maintain that Python installation themselves.</p>
+</body>
+</html>

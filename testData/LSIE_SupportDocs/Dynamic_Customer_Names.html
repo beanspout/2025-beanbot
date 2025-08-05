@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Dynamic Customer Names</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="ITest_Channels.html">ITest Channels</a></li>
+<li><a href="Dynamic_Customer_Names.html">Dynamic Customer Names</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Dynamic-Customer-Names"></a>
+<h1 >Dynamic Customer Names<a href="#Dynamic-Customer-Names" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Introduction"></a>
+<h2 >Introduction<a href="#Introduction" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Allowing dynamic customer names has been added to iTest 3.1 for the purpose of bringing new ECUs into the test cell without stopping iTest or even doing a $REBUILD. This feature allows a customer name to be re-assigned to a different channel. The remainder of this document explains how the feature works.</p>
+
+
+	<a name="Dynamic-Customer-Names-2"></a>
+<h2 >Dynamic Customer Names<a href="#Dynamic-Customer-Names-2" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Customer names are currently stored in .AKA files that are loaded when iTestConsole first launches. To support the dynamic feature, a new mailslot message was added to cause Data_Engine to load a new AKA filename, while iTest is running. The new mailslot message is as follows:</p>
+
+
+<pre>
+Data_Engine&gt;&gt;LOADAKAFILE filename.aka
+</pre>
+
+	<p>The effect is that Data_Engine re-loads the customer names in the RDB and also rebuilds the internal customer name tables on both the PC and the real-time systems.</p>
+
+
+	<p>After the new aka file has been updated, Data_Engine may need to communicate to auxiliary programs such as ASAP3Server to re-initialize their channel name maps. Some of these programs may also be running on the real-time system, so mailslot messages are not always possible. In order to signal all processes that a customer name re-mapping has occurred, a new system counter called voSysAkaChangeCounter is incremented. Any program that can be affected by customer names changing locations should monitor this channel and rebuild their RDB channel handle arrays when the value changes.</p>
+
+
+	<p>In addition, the iTest display system automatically refreshes to reflect the change.</p>
+
+
+	<a name="Limitations-and-New-RDB-Flag-for-Virtual-Output-Type-Channels"></a>
+<h2 >Limitations and New RDB Flag for Virtual Output Type Channels<a href="#Limitations-and-New-RDB-Flag-for-Virtual-Output-Type-Channels" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Virtual Output channels are the only channel type allowed to have dynamic customer names. These channels cannot have limits or be referenced in a limit group. These channels cannot be used in VCL or calculations. A new channel definition flag called “VCL Ref” was added to support this feature. The value of this flag, set automatically during the TestBuilder phase, will be 1 if the given Virtual Output is ever referenced in VCL, calculations, or limit groups. If the Virtual Output is never referenced, then the value will be 0. Additionally, if a new LOADAKAFILE mailslot message is received that attempts to change the customer name for a channel that has a non-zero value for VCL Ref, then iTest will not allow the change and will perform the following actions:</p>
+
+
+	<ul>
+	<li>Send a Red error message to Softpanel that indicates what channel was blocked from having its customer name changed.</li>
+		<li>Add 1 to the value of a new system channel – voSysAkaChangeErrs. Note that this channel will only be created if the new RDB Field is actually located in the DATA.DEF file.</li>
+	</ul>
+
+
+	<a name="TestManager"></a>
+<h2 >TestManager<a href="#TestManager" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>TestManager previously would not allow the same customer name be assigned to different channels. This restriction has been removed for those customer name files that are not marked as active. One has to be careful not to activate multiple .aka files containing the same customer names.</p>
+</body>
+</html>

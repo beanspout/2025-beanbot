@@ -1,0 +1,441 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>VCL Array functions</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="VCL_Array_functions.html">VCL Array functions</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="VCL-Array-Functions"></a>
+<h1 >VCL Array Functions<a href="#VCL-Array-Functions" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#VCL-Array-Functions">VCL Array Functions</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#ARRAYCOPY">ARRAYCOPY</a></li><li><a href="#ARRAYINIT">ARRAYINIT</a></li><li><a href="#ArrayItemIndex">ArrayItemIndex</a></li><li><a href="#ArrayMax">ArrayMax</a></li><li><a href="#ArrayMaxIndex">ArrayMaxIndex</a></li><li><a href="#ArrayMean">ArrayMean</a></li><li><a href="#ArrayMin">ArrayMin</a></li><li><a href="#ArrayMinIndex">ArrayMinIndex</a></li><li><a href="#ArrayStdDev">ArrayStdDev</a></li><li><a href="#ArraySum">ArraySum</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>These functions are intended to be used with array channels. Since array channels start with index 0, all of these functions will assume that the index arguments are 0 based.</p>
+
+
+	<a name="ARRAYCOPY"></a>
+<h2 >ARRAYCOPY<a href="#ARRAYCOPY" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Copies the elements of one array channel to another. Arrays must be of the same type, otherwise you will get a compile error. Elements from the source array are copied to the destination array. When copying, the size of the smallest array is used. For example, if the source is 5 elements and the destination is 10 elements, 5 elements will be copied; if the source is 10 elements and the destination is 5 elements, 5 elements will be copied.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>
+ARRAYCOPY &lt;DestinationArray&gt; &lt;SourceArray&gt;
+</pre>
+
+	<p><strong>Parameters</strong>:</p>
+
+
+	<p><em>DestinationArray</em>: The name of the array channel of the destination array.</p>
+
+
+	<p><em>SourceArray</em>: The name of the array channel of the source array.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>
+ARRAYCOPY myarray1 myarray2
+</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="ARRAYINIT"></a>
+<h2 >ARRAYINIT<a href="#ARRAYINIT" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Initializes the elements of an array channel to a known value. If the expression type doesn't match the array type, you will get a compile error.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>
+ARRAYINIT &lt;ArrayChannel&gt; &lt;Expression&gt;
+</pre>
+
+	<p><strong>Parameters</strong>:</p>
+
+
+	<p><em>ArrayChannel</em>: The name of the array channel.</p>
+
+
+	<p><em>Expression</em>: The expression of value that each element in the array is set to.</p>
+
+
+	<p><strong>Example:</strong></p>
+
+
+<pre>
+ARRAYINIT myarray 1 + 2
+ARRAYINIT mystrarray "itworks" 
+</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="ArrayItemIndex"></a>
+<h2 >ArrayItemIndex<a href="#ArrayItemIndex" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Returns the array index of the first found instance of the specified value in the array. Returns -1 if the value is not found. This function supports both numeric and string values. When searching for numeric values, the function uses an approximate value check that supports up to 14 digits of precision.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>
+ArrayItemIndex(&lt;ArrayChannel&gt;, &lt;ArrayValue&gt;)
+</pre>
+
+	<p><strong>Parameters</strong>:</p>
+
+
+	<p><em>ArrayChannel</em>: The name of the virtual array channel.</p>
+
+
+	<p><em>ArrayValue</em>: The value in the array that is used to look up the array index. This parameter can also be a channel name, customer name, indexed virtual array channel, or local variable.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>
+SET voReturnChannel ArrayItemIndex(voArraySpeed, 75)
+</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="ArrayMax"></a>
+<h2 >ArrayMax<a href="#ArrayMax" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Finds the maximum value between two indexes in an array.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>ArrayMax(&lt;ArrayChannel&gt;, &lt;StartIndex&gt;, &lt;StopIndex&gt;)</pre>
+
+	<p><strong>Parameters</strong>:</p>
+
+
+	<p><em>ArrayChannel</em>: The name of the array channel.</p>
+
+
+	<p><em>StartIndex</em>: The first index of the array subset.</p>
+
+
+	<p><em>StopIndex</em>: The last index of the array subset.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>SET voReturnChannel ArrayMax(voArrayTemp, 5, 180)</pre>
+
+	<p><strong>Notes</strong>:</p>
+
+
+	<ul>
+	<li>If &lt;StartIndex&gt; is < 0, it will use 0.</li>
+		<li>If &lt;StartIndex&gt; is >= &lt;StopIndex&gt;, then the function will return -999.</li>
+		<li>If &lt;StopIndex&gt; is < 0 or it is >= the size of the array, it will use the size of the array minus 1.</li>
+	</ul>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="ArrayMaxIndex"></a>
+<h2 >ArrayMaxIndex<a href="#ArrayMaxIndex" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Finds the index of the maximum value between two indexes in an array.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>ArrayMaxIndex(&lt;ArrayChannel&gt;, &lt;StartIndex&gt;, &lt;StopIndex&gt;)</pre>
+
+	<p><strong>Parameters</strong>:</p>
+
+
+	<p><em>ArrayChannel</em>: The name of the array channel.</p>
+
+
+	<p><em>StartIndex</em>: The first index of the array subset.</p>
+
+
+	<p><em>StopIndex</em>: The last index of the array subset.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>SET voReturnChannel ArrayMaxIndex(voArrayTemp, 5, 180)</pre>
+
+	<p><strong>Notes</strong>:</p>
+
+
+	<ul>
+	<li>If &lt;StartIndex&gt; is < 0, it will use 0.</li>
+		<li>If &lt;StartIndex&gt; is >= &lt;StopIndex&gt;, then the function will return -999.</li>
+		<li>If &lt;StopIndex&gt; is < 0 or it is >= the size of the array, it will use the size of the array minus 1.</li>
+	</ul>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="ArrayMean"></a>
+<h2 >ArrayMean<a href="#ArrayMean" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Calculates the mean for a subset of values located between two indexes in an array.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>ArrayMean(&lt;ArrayChannel&gt;, &lt;StartIndex&gt;, &lt;StopIndex&gt;)</pre>
+
+	<p><strong>Parameters</strong>:</p>
+
+
+	<p><em>ArrayChannel</em>: The name of the array channel.</p>
+
+
+	<p><em>StartIndex</em>: The first index of the array subset.</p>
+
+
+	<p><em>StopIndex</em>: The last index of the array subset.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>SET voReturnChannel ArrayMean(voArrayAmp, 0, 200)</pre>
+
+	<p><strong>Notes</strong>:</p>
+
+
+	<ul>
+	<li>If &lt;StartIndex&gt; is < 0, it will use 0.</li>
+		<li>If &lt;StartIndex&gt; is >= &lt;StopIndex&gt;, then the function will return -999.</li>
+		<li>If &lt;StopIndex&gt; is < 0 or it is >= the size of the array, it will use the size of the array minus 1.</li>
+	</ul>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="ArrayMin"></a>
+<h2 >ArrayMin<a href="#ArrayMin" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Finds the minimum value between two indexes in an array.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>ArrayMin(&lt;ArrayChannel&gt;, &lt;StartIndex&gt;, &lt;StopIndex&gt;)</pre>
+
+	<p><strong>Parameters</strong>:</p>
+
+
+	<p><em>ArrayChannel</em>: The name of the array channel.</p>
+
+
+	<p><em>StartIndex</em>: The first index of the array subset.</p>
+
+
+	<p><em>StopIndex</em>: The last index of the array subset.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>SET voReturnChannel ArrayMin(voArrayWatt, 18, 133)</pre>
+
+	<p><strong>Notes</strong>:</p>
+
+
+	<ul>
+	<li>If &lt;StartIndex&gt; is < 0, it will use 0.</li>
+		<li>If &lt;StartIndex&gt; is >= &lt;StopIndex&gt;, then the function will return -999.</li>
+		<li>If &lt;StopIndex&gt; is < 0 or it is >= the size of the array, it will use the size of the array minus 1.</li>
+	</ul>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="ArrayMinIndex"></a>
+<h2 >ArrayMinIndex<a href="#ArrayMinIndex" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Finds the index of the minimum value between two indexes in an array.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>ArrayMinIndex(&lt;ArrayChannel&gt;, &lt;StartIndex&gt;, &lt;StopIndex&gt;)</pre>
+
+	<p><strong>Parameters</strong>:</p>
+
+
+	<p><em>ArrayChannel</em>: The name of the array channel.</p>
+
+
+	<p><em>StartIndex</em>: The first index of the array subset.</p>
+
+
+	<p><em>StopIndex</em>: The last index of the array subset.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>SET voReturnChannel ArrayMinIndex(voArrayWatt, 18, 133)</pre>
+
+	<p><strong>Notes</strong>:</p>
+
+
+	<ul>
+	<li>If &lt;StartIndex&gt; is < 0, it will use 0.</li>
+		<li>If &lt;StartIndex&gt; is >= &lt;StopIndex&gt;, then the function will return -999.</li>
+		<li>If &lt;StopIndex&gt; is < 0 or it is >= the size of the array, it will use the size of the array minus 1.</li>
+	</ul>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="ArrayStdDev"></a>
+<h2 >ArrayStdDev<a href="#ArrayStdDev" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Calculates the standard deviation for a subset of values located between two indexes in an array.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>ArrayStdDev(&lt;ArrayChannel&gt;, &lt;StartIndex&gt;, &lt;StopIndex&gt;)</pre>
+
+	<p><strong>Parameters</strong>:</p>
+
+
+	<p><em>ArrayChannel</em>: The name of the array channel.</p>
+
+
+	<p><em>StartIndex</em>: The first index of the array subset.</p>
+
+
+	<p><em>StopIndex</em>: The last index of the array subset.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>SET voReturnChannel ArrayStdDev(voArrayPressure, 18, 133)</pre>
+
+	<p><strong>Notes</strong>:</p>
+
+
+	<ul>
+	<li>If &lt;StartIndex&gt; is < 0, it will use 0.</li>
+		<li>If &lt;StartIndex&gt; is >= &lt;StopIndex&gt;, then the function will return -999.</li>
+		<li>If &lt;StopIndex&gt; is < 0 or it is >= the size of the array, it will use the size of the array minus 1.</li>
+	</ul>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="ArraySum"></a>
+<h2 >ArraySum<a href="#ArraySum" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Calculates the sum for a subset of values located between two indexes in an array.</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+ArraySum(&lt;ArrayChannel&gt; &lt;StartIndex&gt; &lt;StopIndex&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters:</strong></p>
+
+
+	<p><em>ArrayChannel:</em> The name of the array channel.</p>
+
+
+	<p><em>StartIndex:</em> The first index of the array subset.</p>
+
+
+	<p><em>StopIndex:</em> The last index of the array subset.</p>
+
+
+	<p><strong>Example:</strong><br /><pre>
+SET voReturnChannel ArraySum(voaDemo1, 0, 15)
+</pre></p>
+
+
+	<p><strong>Notes:</strong></p>
+
+
+	<ul>
+	<li>If &lt;StartIndex&gt; is < 0, it will use 0.</li>
+		<li>If &lt;StartIndex&gt; is >= &lt;StopIndex&gt;, then the function will return -999.</li>
+		<li>If &lt;StopIndex&gt; is < 0 or it is >= the size of the array, it will use the size of the array minus 1.</li>
+	</ul>
+
+
+	<p>&nbsp;</p>
+</body>
+</html>

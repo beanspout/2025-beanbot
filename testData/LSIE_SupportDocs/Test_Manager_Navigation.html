@@ -1,0 +1,415 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Test Manager Navigation</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Introduction_to_Test_Manager.html">Introduction to Test Manager</a></li>
+<li><a href="Test_Manager_Navigation.html">Test Manager Navigation</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Test-Manager-Navigation"></a>
+<h1 >Test Manager Navigation<a href="#Test-Manager-Navigation" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Test-Manager-Navigation">Test Manager Navigation</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Using-the-Tree-Bar">Using the Tree Bar</a><ul><li><a href="#Right-click-Actions">Right-click Actions</a></li><li><a href="#Tree-Bar-Shortcuts">Tree Bar Shortcuts</a></li></ul>
+</li><li><a href="#Using-the-Helper-Bar">Using the Helper Bar</a><ul><li><a href="#Helper-Bar-Shortcuts">Helper Bar Shortcuts</a></li><li><a href="#Drag-and-Drop">Drag and Drop</a></li></ul>
+</li><li><a href="#Searching-for-Text">Searching for Text</a><ul><li><a href="#Find-in-Files">Find in Files</a></li><li><a href="#VCL-Look-Up">VCL Look Up</a></li></ul>
+</li><li><a href="#Using-the-Tabbing-Feature">Using the Tabbing Feature</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Test Manager is a comprehensive tool for configuring your test solutions. This guide describes the different tools used to navigate within Test Manager to efficiently create solutions and prepare them for use at runtime.</p>
+
+
+	<a name="Using-the-Tree-Bar"></a>
+<h2 >Using the Tree Bar<a href="#Using-the-Tree-Bar" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Test Manager tree bar provides an overview of the different categories that are used to configure your iTest solution. These categories create the entire basis for the solution, including features such as channels, data logs, calculations, and tests. Each category is contained in a folder, which contains files and possibly sub-folders. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Tree Bar</strong></em></span><br /><img src="attachments/download/45574/38_TreeBar.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>The table below lists each category and provides a brief description of its purpose and features.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Tree Bar Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Category</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+			<td style="width:150px;text-align:left;"><strong>Sub-categories</strong></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="3">Solution</th>
+		</tr>
+		<tr>
+			<td>Devices</td>
+			<td>Used to manage the physical hardware for testing. You can use this category to manage and configure devices such as drivers and I/O modules.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Channels</td>
+			<td>Used to manage iTest database channels. This category includes features such as channel/alias/customer names, attributes, and limits.</td>
+			<td>Channel Definitions<br />Alias Names<br />Customer Names<br />Internal Variables<br />Limit Groups<br />Data Quality Groups<br />Channel Attributes</td>
+		</tr>
+		<tr>
+			<td>Calculations</td>
+			<td>Used to create calculations performed during every system scan. This category includes files for features such as dynamic calculations, system rate calculations, and lookup tables.</td>
+			<td>1 Hz<br />10 Hz<br />100 Hz<br />System Rate<br />Dynamic Calculations<br />Lookup Tables</td>
+		</tr>
+		<tr>
+			<td>Control Loops</td>
+			<td>Used to define the Proportional Integral Derivative (PID) loops that control dyno and throttle settings when run in iTest.</td>
+			<td>Control Modes<br />HS1<br />HS2</td>
+		</tr>
+		<tr>
+			<td>Test Development</td>
+			<td>Used to develop tests and schedules that are executed during runtime. This category includes features such as VCL procedures, schedules, Python scripts, step conditions, and set value tables.</td>
+			<td>Procedures<br />Schedules<br />Python Scripts<br />Step Conditions<br />Set Value Tables</td>
+		</tr>
+		<tr>
+			<td>Data Logging</td>
+			<td>Used to create and customize logs for data logging.</td>
+			<td>Data Logs<br />Log Order Lists<br />Log Header Forms</td>
+		</tr>
+		<tr>
+			<td>Presentation</td>
+			<td>Contains features used to develop the iTest display, such as picklists, reports, and displays (interfaces).</td>
+			<td>Displays<br />Reports<br />Picklists<br />Plot Buffer<br />Unit Conversions</td>
+		</tr>
+		<tr>
+			<td>Test Notes</td>
+			<td>A text file used to contain solution notes such as:<br />- Date and time modifications<br />- Overview of modifications<br />- Test execution notes</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Global Settings</td>
+			<td>Used to specify system properties for various category files.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="3">Module</th>
+		</tr>
+		<tr>
+			<td>Modules</td>
+			<td> Used to create modular solutions. For more information, refer to the <a class="wiki-page" href="Modules.html">Modules</a> documentation.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Right-click-Actions"></a>
+<h3 >Right-click Actions<a href="#Right-click-Actions" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>If you want to create a new file or folder within a category or modify an existing file or folder, right-click an item. When you right-click an item in the tree bar, a menu displays. Menu options vary depending on the component selected. The following options are used to perform common actions:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-click Actions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Action</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>New ...</td>
+			<td>Creates a new file or folder within the selected category.</td>
+		</tr>
+		<tr>
+			<td>Save</td>
+			<td>Saves the file. This option is only available if a file is open in the main Display Area.</td>
+		</tr>
+		<tr>
+			<td>Duplicate</td>
+			<td>Creates a duplicate of the selected file in the tree bar with the same name as the file that was duplicated with a number appended to the name.</td>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td>Deletes the selected file after prompting for confirmation.</td>
+		</tr>
+		<tr>
+			<td>Rename</td>
+			<td>Highlights the selected file and changes the area around it into a text box in which the file can be renamed. Press <strong>Enter</strong> after typing the new name.</td>
+		</tr>
+		<tr>
+			<td>Print</td>
+			<td>Opens a print dialog that prints the data associated with the file selected in the tree bar.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">You can restore deleted files using the <strong>Tools > Rollback</strong> command (not available for all files).</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Tree-Bar-Shortcuts"></a>
+<h3 >Tree Bar Shortcuts<a href="#Tree-Bar-Shortcuts" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The tree bar supports the following standard shortcuts: <strong>CTRL+C</strong>, <strong>CTRL+V</strong>, <strong>CTRL+X</strong>, and <strong>CTRL+Z</strong>. To use these shortcuts, the item in the tree bar must be in edit mode. To activate edit mode, select an item and press <strong>F2</strong> or click the item twice, slowly.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Edit Mode</strong></em></span><br /><img src="attachments/download/45688/EditMode.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">If you replace an entire item name, using <strong>CTRL+Z</strong> will clear the name. If you press <strong>Enter</strong>, the item will revert to its previous name.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Using-the-Helper-Bar"></a>
+<h2 >Using the Helper Bar<a href="#Using-the-Helper-Bar" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can use the Helper Bar to display lists of channels, commands, functions, or mailslot messages. You can filter the lists of channel definition and mailslot messages by selecting filter criteria from the list at the top of the Helper Bar. You can also drag and drop commands, channel definitions, calculations, and mailslot messages from their corresponding lists into procedure files.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Helper Bar</strong></em></span><br /><img src="attachments/download/45542/38_HelperBar.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Helper-Bar-Shortcuts"></a>
+<h3 >Helper Bar Shortcuts<a href="#Helper-Bar-Shortcuts" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following table displays the different helper bar icons, titles, and descriptions.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Helper Bar Icon Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Icon</strong> </td>
+			<td style="text-align:left;"><strong>Title</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td style="text-align:center;"><img src="attachments/download/45537/HelperBarIcon.png" alt="" /></td>
+			<td>Helper Bar</td>
+			<td>Opens the helper bar.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;"><img src="attachments/download/45536/ChannelListIcon.png" alt="" /></td>
+			<td>Channel List</td>
+			<td>Displays the complete list of channels configured in the <em>Channels</em> folder.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;"><img src="attachments/download/45539/VCLCommandIcon.png" alt="" /></td>
+			<td>VCL Command List</td>
+			<td>Displays the list of VCL commands and their arguments.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;"><img src="attachments/download/45540/VCLFunctionIcon.png" alt="" /></td>
+			<td>VCL Function List</td>
+			<td>Displays the list of VCL functions and their arguments. This includes function types such as math, strings, tables, operators, miscellaneous, etc.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;"><img src="attachments/download/45538/MessageListIcon.png" alt="" /></td>
+			<td>Messages List</td>
+			<td>Displays a list of common mailslot messages.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p>To filter the lists for other options, click the drop-down button next to the name of the list you are currently viewing.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>List Filter</strong></em></span><br /><img src="attachments/download/45546/38_HelperBarFilter.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Drag-and-Drop"></a>
+<h3 >Drag and Drop<a href="#Drag-and-Drop" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>You can drag and drop one or many channels from the helper bar into an editor. The following editors support this functionality:</p>
+
+
+	<ul>
+	<li>Alias Names</li>
+		<li>Limit Groups</li>
+		<li>Log Header Forms</li>
+		<li>Log Order Lists</li>
+		<li>Report Parameters</li>
+		<li>Customer Names</li>
+		<li>Internal Variables</li>
+		<li>Calculations</li>
+		<li>Procedures</li>
+		<li>Set Value Tables</li>
+	</ul>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Drag and Drop</strong></em></span><br /><img src="attachments/download/119487/DragandDrop_HelperBar.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Searching-for-Text"></a>
+<h2 >Searching for Text<a href="#Searching-for-Text" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can search for specific text in Test Manager files by using the <strong>Find in Files > VCL Look Up</strong> feature. To access this tool, select <strong>File > Find in Files</strong> from the main menu, or select the <strong>Find in Files</strong> icon on the tool bar. This opens a new section beneath the file viewer with two tabs: <strong>Find In Files</strong> and <strong>VCL Look Up</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Find in Files Icon</strong></em></span><br /><img src="attachments/download/45564/38_FindInFilesIcon.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Find in Files</strong></em></span><br /><img src="attachments/download/45563/38_FindInFiles.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />When you search for text using the <strong>Find in Files</strong> feature, the results display in the output bar at the bottom of Test Manager. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Search Results</strong></em></span><br /><img src="attachments/download/45570/38_SearchResults.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />When you are looking up VCL commands and functions, you can double-click the name of a procedure or description in the results tab to open the procedure in Test Manager's file viewer.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Open Files From Results</strong></em></span><br /><img src="attachments/download/119488/OpenFileFromResults.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Find-in-Files"></a>
+<h3 >Find in Files<a href="#Find-in-Files" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Find in Files Tab</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Field/Button</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Find what</td>
+			<td>The text to search for in Test Manager files. Clicking the drop-down displays a list of the most recent searched for text. This list is cleared when you the exit the application.</td>
+		</tr>
+		<tr>
+			<td>Match case</td>
+			<td>Searches for the text using the capitalization used in the <strong>Find what</strong> field. Only results matching the case type display.</td>
+		</tr>
+		<tr>
+			<td>Match whole word</td>
+			<td>Searches for text matching whole words used in the Find what field. If this option is not selected, the search will return all occurrences of the string, even if the occurrences are not complete words. </td>
+		</tr>
+		<tr>
+			<td>File types</td>
+			<td>Searches for text in a specific file type. Clicking the drop-down displays a list of all possible files types in Test Manager.</td>
+		</tr>
+		<tr>
+			<td>Searching File</td>
+			<td>Displays the name of the current file being searched. This is used after the <strong>Find Now</strong> button is clicked.</td>
+		</tr>
+		<tr>
+			<td>Display in Find 2</td>
+			<td>Displays the results of the search in the Find Results 2 tab. This enables you to view the results of two searches at the same time, separately. (This option disables the <strong>Search in Previous Results</strong> field.)</td>
+		</tr>
+		<tr>
+			<td>Search in Previous Results</td>
+			<td>Searches for text within the most recent set of results. This enables you to further refine the search.</td>
+		</tr>
+		<tr>
+			<td>Find Now</td>
+			<td>Initiates the search. Results display in Find Results 1. (Results will display in the Find Results 2 tab when the Display in Find 2 checkbox is selected.)</td>
+		</tr>
+		<tr>
+			<td>Stop</td>
+			<td>Stops the search.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="VCL-Look-Up"></a>
+<h3 >VCL Look Up<a href="#VCL-Look-Up" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>VCL Look Up Tab</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Field/Button</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Look up</td>
+			<td>The VCL text to search for in Test Manager files. Clicking the drop-down displays a list of the most recent searched for text. This list is cleared when you the exit the application.</td>
+		</tr>
+		<tr>
+			<td>Match case</td>
+			<td>Searches for the text using the capitalization used in the <strong>Find what</strong> field. Only results matching the case type display.</td>
+		</tr>
+		<tr>
+			<td>Match whole word</td>
+			<td>Searches for text matching whole words used in the Find what field. If this option is not selected, the search will return all occurrences of the string, even if the occurrences are not complete words. </td>
+		</tr>
+		<tr>
+			<td>File names only</td>
+			<td>Displays only the file name in the results. When this option is not selected, a description of the VCL also displays in the results.</td>
+		</tr>
+		<tr>
+			<td>Look Now</td>
+			<td>Initiates the search. Results display in the VCL Help tab.</td>
+		</tr>
+		<tr>
+			<td>Stop</td>
+			<td>Stops the search.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Using-the-Tabbing-Feature"></a>
+<h2 >Using the Tabbing Feature<a href="#Using-the-Tabbing-Feature" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Test Manager is a traditional multi-document interface, so you can have multiple editors open at once and you can quickly navigate between them using the <strong>CTRL+Tab</strong> shortcut.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Tabbing</strong></em></span><br /><img src="attachments/download/119489/TestManagerTabbing.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+</body>
+</html>

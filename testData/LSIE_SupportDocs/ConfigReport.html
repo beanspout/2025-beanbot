@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ConfigReport</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="ConfigReport.html">ConfigReport</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Configuration-Report-Overview"></a>
+<h1 >Configuration Report Overview<a href="#Configuration-Report-Overview" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Configuration-Report-Overview">Configuration Report Overview</a><ul><li><a href="#Running-a-Report">Running a Report</a></li><li><a href="#iTest-Maximums">iTest Maximums</a></li><li><a href="#Command-Line-Option">Command Line Option</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<p>iTest's Configuration Report allows you to build a report based on options that you select in the ConfigReport dialog. These selections will then be used to compile a web page with report data that can be viewed or printed.</p>
+
+
+	<a name="Running-a-Report"></a>
+<h2 >Running a Report<a href="#Running-a-Report" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>In the ConfigReport dialog, select the options you want to include in your report, and then click the <strong>View</strong> button.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>ConfigReport Dialog</strong></em></span><br /><img src="attachments/download/91553/41_ConfigReport.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Use the links in the table of contents to navigate to the corresponding sections.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Header data is taken from the last modified data (DAT) file present in the current project folder. This may not be the last data file to be run.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>View Report</strong></em></span><br /><img src="attachments/download/94033/41_ViewReport.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /> <br />&nbsp;</p>
+
+
+	<a name="iTest-Maximums"></a>
+<h2 >iTest Maximums<a href="#iTest-Maximums" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can use the Configuration Report to view the current maximum settings for your version of iTest. Although there is no specific option associated with this in the ConfigReport dialog, iTest maximums are automatically added to the end of any generated report. Click the <strong>iTest Maximums</strong> link at the very end of the table of contents to navigate to that section. For more information, refer to the <a class="wiki-page" href="System_Maximums.html">System Maximums</a> documentation.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>iTest Maximums Example</strong></em></span><br /><img src="attachments/download/94034/41_ConfigReportExample.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /> <br />&nbsp;</p>
+
+
+	<a name="Command-Line-Option"></a>
+<h2 >Command Line Option<a href="#Command-Line-Option" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To run ConfigReport from the command line, use the following syntax:<br /><pre>
+ConfigReport.exe &lt;filepath&gt;\&lt;filename&gt;.html
+</pre></p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The user interface will not open when running <em>ConfigReport.exe</em> from the command line; it will just generate the requested report file.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>The Configuration Report contains an additional command line option that checks all <em>.tsc</em> files to analyze them for consecutive lines of real-time code. This is code with a +0.0 in front of every statement with no pause in between. As of iTest 3.4, the limit on these lines is 50 in a row, so this option is useful for checking every procedure to see if there are any potential issues with this limitation. The report is generated from the command line using the following syntax:<br /><pre>
+ConfigReport ShowMaxNoPauseVCL
+</pre></p>
+
+
+	<p>The following report section will be generated at the bottom of the report when using this command line option:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Show Max Non-Stop VCL Lines</strong></em></span><br /><img src="attachments/download/121011/43_configReport4.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Configuration_Reports.html">SolutionBuilder Configuration Reports</a></li>
+	</ul>
+</body>
+</html>

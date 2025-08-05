@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ADT Button</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="ADT_Button.html">ADT Button</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="ADT-Button-Object"></a>
+<h1 >ADT Button Object<a href="#ADT-Button-Object" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#ADT-Button-Object">ADT Button Object</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Field-Definitions">Field Definitions</a><ul><li><a href="#General-Tab">General Tab</a></li><li><a href="#Messages-Tab">Messages Tab</a></li></ul>
+</li><li><a href="#ADT-Button-Object-Properties">ADT Button Object Properties</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The ADT Button display object will allow a user to send mailslot messages when turned on and off. Buttons can also adjust channel values and operate as check boxes and radio buttons.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>ADT Button</strong></em></span><br /><img src="attachments/download/6686/ADTButtonOverview.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Field-Definitions"></a>
+<h2 >Field Definitions<a href="#Field-Definitions" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="General-Tab"></a>
+<h3 >General Tab<a href="#General-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>General Tab</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Option</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td><strong>Type</strong></td>
+			<td>Select the type of button you want to configure:<br />&nbsp;<br /><ins><strong>Push</strong></ins> acts as a momentary switch that stays on only when being pressed. This can change a channel value.<br /><ins><strong>Toggle</strong></ins> turns on or off each time it is pushed. It also changes the value of a channel.<br /><ins><strong>Save Text</strong></ins> sends a mailslot message to save text in an object that was inserted by an <strong>ADT Data Entry</strong> control. <br /><ins><strong>Hyperlink</strong></ins> applies push characteristics without a border. The cursor appears as a hand (as on a web page) when positioned over this button during runtime.<br /><ins><strong>Check</strong></ins> applies toggle characteristics and includes an unfilled checkbox on its left edge. When the button is on, a checkmark appears inside the checkbox. When the button is off, the checkmark does not display.<br /><ins><strong>Circular</strong></ins> applies toggle characteristics and includes an unfilled circle on its left edge. When this button is on, a black dot appears inside the disk. When the button is off, the black dot does not display. This can act like a radio button.</td>
+		</tr>
+		<tr>
+			<td><strong>Channel Name</strong></td>
+			<td>Click the <strong>Channel...</strong> button to open the Channel Selection dialog, which you can use to select the database channel whose value changes when the state of the button changes. The button state may also be controlled by changing the database channel value. Channel names are optional except when you are configuring the ADTButton as a <strong>Toggle</strong>, <strong>Check</strong>, or <strong>Circular</strong> radio button. </td>
+		</tr>
+		<tr>
+			<td><strong>Radio Index</strong></td>
+			<td>Only used with <strong>Toggle</strong>, <strong>Check</strong>, and <strong>Circular</strong> button types. When set to -1, Toggle, Check, and Circular buttons function as stand-alone buttons. When set to a positive number, the button functions as a radio button with all other buttons that have a radio index set to a positive number (radio buttons are a group of buttons in which only one button can be selected at a time). The buttons in a radio button group must share the same database channel, but each must have a unique radio index.</td>
+		</tr>
+		<tr>
+			<td><strong>Off Text</strong></td>
+			<td>Type the text that displays on the ADTButton when it is off.</td>
+		</tr>
+		<tr>
+			<td><strong>Off Picture File Path</strong></td>
+			<td>Click the … button to the right of this field to display the <strong>Open</strong> dialog box in which you can locate and select a graphic. This graphic displays on the ADTButton when it is OFF.</td>
+		</tr>
+		<tr>
+			<td><strong>On Text</strong></td>
+			<td>Type the text that displays on the ADTButton when it is on.</td>
+		</tr>
+		<tr>
+			<td><strong>On Picture File Path</strong></td>
+			<td>Click the … button to the right of this field to display the <strong>Open</strong> dialog box in which you can locate and select a graphic. This graphic displays on the ADTButton when it is ON.</td>
+		</tr>
+		<tr>
+			<td><strong>Border Type</strong></td>
+			<td>Select a border for the ADTButton.</td>
+		</tr>
+		<tr>
+			<td><strong>Tooltip Text</strong></td>
+			<td>Type the text that displays when the cursor is placed over the ADTButton during runtime. </td>
+		</tr>
+		<tr>
+			<td><strong>Control ID</strong></td>
+			<td>Provides a unique name for the control. This name can be used in mailslot messages to change control properties during runtime on the iTest Console. </td>
+		</tr>
+		<tr>
+			<td><strong>Permit Runtime Changes</strong></td>
+			<td>When selected, allows changes to be made programmatically.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Messages-Tab"></a>
+<h3 >Messages Tab<a href="#Messages-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Messages Tab</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Option</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td><strong>Mailslot and Message</strong></td>
+			<td><strong>On Messages</strong> are sent when the button goes from off to on. <strong>Off Messages</strong> are sent when the button goes from on to off.<br />Double-click in the <strong>Mailslot</strong> field and select the desired mailslot from the list or type a valid mailslot address. After specifying a mailslot, double-click in the <strong>Message</strong> field and select a command from the list. You can also type a valid command in this field.<br />After selecting a command, you must customize it by replacing all fields between angle brackets (<,>) with actual values.<br />After a valid mailslot has been assigned to the ADT Button, a new row is added to add another message.<br />To delete a row, simply click it and hit the <strong>Delete</strong> key on your keyboard.<br />&nbsp;<br />Messages support the following macros:<br />&nbsp;<br /><img src="attachments/download/11203/macro.jpg" alt="" /></td>
+		</tr>
+		<tr>
+			<td><strong>Send messages when state is changed by Channel</strong></td>
+			<td>When selected, sending mailslot messages is not dependent on the button’s state. Instead, the mailslot messages will be sent when there is a change in the state (value) of the database channels associated with the ADT Button.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="ADT-Button-Object-Properties"></a>
+<h2 >ADT Button Object Properties<a href="#ADT-Button-Object-Properties" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>These properties are useful when issuing the following mailslot message:</p>
+
+
+<pre>
+\\.\mailslot\DisplayName&gt;&gt;$SETITEMPROPERTY ControlID PropertyName PropertyValue
+</pre>
+
+	<p>The following are the names of the properties that can be changed by mailslot message to the display.  These property names may or may not be the same as the property names shown on the display object property setup dialogs.  Most of these property names are self-explanatory.  The first column is the data type of the property.</p>
+
+
+	<p>The int or OLE_COLOR for color is the color RGB values.  “BSTR” means the type of the property is string.  “int”, “float”, “long”, “short”, “double” means the type of the property is number.  “Boolean” means the property value should be 1 or 0.</p>
+
+
+	<p>Font property syntax is complicated.<br />&lt;font name&gt;,&lt;bold&gt;,,&lt;italic&gt;,&lt;font size&gt;,,&lt;strikeout&gt;,&lt;underline&gt;, <br />example: Arial,0,0,0,97500,0,0,0,400</p></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>ADT Button Object Properties</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Type</strong></td>
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Notes</strong></td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>OffText</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>OnText</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>OffBkColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>OnBkColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>OffForeColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>OnForeColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>OffMessage</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>OnMessage</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ChannelName</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>RadioIndex</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>Type</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>SendMessagesOnChannelChanged</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>ButtonNum</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>OffBitmapFilePath</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>OnBitmapFilePath</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>BorderType</strong></td>
+			<td>values: 0 raised, 1 bump, 2 etched</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>TooltipText</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ChangesOK</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>RoundedEdges</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>BackColorEnd</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>EnableShading</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+</body>
+</html>

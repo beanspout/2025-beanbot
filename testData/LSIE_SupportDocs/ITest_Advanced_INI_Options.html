@@ -1,0 +1,794 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ITest Advanced INI Options</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="ITest_Advanced_INI_Options.html">ITest Advanced INI Options</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="iTest-Advanced-INI-Options"></a>
+<h1 >iTest Advanced INI Options<a href="#iTest-Advanced-INI-Options" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>These <em>powertek.ini</em> file options were either designed to overcome very unique customer requirements in the field or for debugging and overcoming unique situations. Unless you know that these options will solve a specific problem you are having, it is best not to use them. Many are retained for backwards compatibility with our existing iTest applications.</p>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#iTest-Advanced-INI-Options">iTest Advanced INI Options</a><ul><li><a href="#Interface-Specific-Options">Interface Specific Options</a></li><li><a href="#Miscellaneous-Options">Miscellaneous Options</a></li><li><a href="#eGate-Systems">eGate Systems</a></li><li><a href="#INtime-Options">INtime Options</a></li><li><a href="#Real-time-Options">Real-time Options</a></li><li><a href="#Debugging">Debugging</a></li><li><a href="#RDBClientRCRDBServerRC">RDBClientRC/RDBServerRC</a></li></ul></li></ul>
+
+
+	<a name="Interface-Specific-Options"></a>
+<h2 >Interface Specific Options<a href="#Interface-Specific-Options" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Interface Specific Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1200px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Version</strong> </td>
+			<td style="text-align:left;"><strong>Interface</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong></td>
+		</tr>
+		<tr>
+			<td>APClipInputValue</td>
+			<td>4.3</td>
+			<td>AutomationPanel</td>
+			<td> When set to TRUE, input values outside of the channel's EU range are clipped to the closest endpoint value. For example, if the channel EU range is -100 to 100, and a value of 150 is entered, then the value is set to 100. When set to FALSE, input values outside of the channel's EU range display with a red X ( <img src="attachments/download/117022/43_RedXIcon.png" alt="" /> ) icon, and an error message may display.<br />&nbsp;<br />This setting only affects the Simple Channel, Tile Channel, Channel List, and Bar panels.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>APClipInputValue=TRUE/FALSE</td>
+		</tr>
+		<tr>
+			<td>DefaultTemplatePanelFolderPath</td>
+			<td>3.9</td>
+			<td> AutomationPanel<br />SolutionBuilder </td>
+			<td>This setting saves template panels to <em>$EXECUTEDIR\Panels</em> or <em>$SUPPORTDIR\Panels</em>, as indicated by the setting. The default is set to <em>$EXECUTEDIR\Panels</em>. </td>
+			<td style="text-align:center;">$EXECUTEDIR\Panels</td>
+			<td>DefaultTemplatePanelFolderPath=$SUPPORTDIR<br /> DefaultTemplatePanelFolderPath=$EXECUTEDIR </td>
+		</tr>
+		<tr>
+			<td>DisableUserLogout</td>
+			<td>4.3</td>
+			<td>AutomationPanel<br />iTest Console</td>
+			<td>When this option is set to TRUE, the <strong>File > User Logout</strong> menu option will be disabled.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>DisableUserLogout=TRUE</td>
+		</tr>
+		<tr>
+			<td>DisplayDynamicCalcBuildErrors</td>
+			<td>3.4</td>
+			<td> iTest Console </td>
+			<td>If TRUE, iTest will display a pop-up Dynamic Calculation Errors dialog if any errors are found within the Dynamic Calculations after a $DynamicCalcRebuild Softpanel mailslot message has been sent. </td>
+			<td style="text-align:center;">FALSE</td>
+			<td>DisplayDynamicCalcBuildErrors=FALSE</td>
+		</tr>
+		<tr>
+			<td>HiddenPanels</td>
+			<td>3.6</td>
+			<td> AutomationPanel <br />SolutionBuilder </td>
+			<td>Comma-delimited list of panel names to hide from user in the Add New Panel dialog. To determine the name to use, select a panel from the list on the Add New Panel dialog and press <strong>Ctrl+C</strong> to copy its name to the clipboard.</td>
+			<td style="text-align:center;">-</td>
+			<td>HiddenPanels=GaugePanel,TilePanel</td>
+		</tr>
+		<tr>
+			<td>HomePage</td>
+			<td>3.9</td>
+			<td> SolutionBuilder </td>
+			<td>Changes the <em>.html</em> file used as the home page in SolutionBuilder. If not set, <em>$SystemDir\Execute\WWW\Home\home.html</em> will be used. </td>
+			<td style="text-align:center;">None</td>
+			<td> HomePage=home.html </td>
+		</tr>
+		<tr>
+			<td>MessagesPanelEvents</td>
+			<td>3.8</td>
+			<td> AutomationPanel </td>
+			<td>This setting modifies how users view event messages in AutomationPanel. When set to FALSE, the Events tab is hidden on the Messages panel and <em>EventViewer.exe</em> is visible on startup. By default, this setting is TRUE.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>MessagesPanelEvents=TRUE</td>
+		</tr>
+		<tr>
+			<td>NonLimitsColor</td>
+			<td>3.6</td>
+			<td> AutomationPanel </td>
+			<td>When this option is set to Normal, it prevents the Channel List panel, Tile panel, and Chart panel from displaying as green when a channel is within limits. The supported values are <strong>Green</strong> or <strong>Normal</strong>.</td>
+			<td style="text-align:center;">&lt;Empty String&gt;</td>
+			<td>NonLimitsColor=Normal</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Miscellaneous-Options"></a>
+<h2 >Miscellaneous Options<a href="#Miscellaneous-Options" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Miscellaneous Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1200px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Version</strong> </td>
+			<td style="text-align:left;"><strong>GUI</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong></td>
+		</tr>
+		<tr style="background: #ededed;">
+			<th colspan="6">Misc. Options</th>
+		</tr>
+		<tr>
+			<td>AllowMultipleProcInstances    </td>
+			<td>3.0</td>
+			<td style="text-align:center;">X</td>
+			<td>Allows multiple instances of a VCL procedure to be simultaneously started using the SPAWN VCL command or using the SEQUENCE START data_engine mailslot. Does not affect EXECUTE, limit actions, other handler triggered actions, or procedures that accept arguments and are started using SEQUENCE START.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>AllowMultipleProcInstances=TRUE</td>
+		</tr>
+		<tr>
+			<td>AllowQuickExit</td>
+			<td>3.5</td>
+			<td style="text-align:center;">-</td>
+			<td>Set to FALSE to remove <strong>Quick Exit</strong> menu item from the console.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>AllowQuickExit=TRUE</td>
+		</tr>
+		<tr>
+			<td>Asapdefaultmap</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Lists the default ASAP map, ASAP3Engine.</td>
+			<td style="text-align:center;">-</td>
+			<td>Asapdefaultmap=&lt;ASAP map&gt;</td>
+		</tr>
+		<tr>
+			<td>AutomationPanel</td>
+			<td>3.5</td>
+			<td style="text-align:center;">-</td>
+			<td>Identifies whether AutomationPanel or iTest Console is the primary user interface for the solution. If TRUE, <em>iTest.exe</em> and <strong>Save All and Restart</strong> in Test Manager will launch <em>AutomationPanel.exe</em> for the selected solution. If FALSE, <em>iTestConsole.exe</em> will be launched for the selected solution.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>AutomationPanel=FALSE</td>
+		</tr>
+		<tr>
+			<td>AutoMessage</td>
+			<td>3.4</td>
+			<td style="text-align:center;">-</td>
+			<td>If TRUE, the vxin_exec sends a Softpanel message when a procedure starts and every time it exits from a normal exit, EXIT, or RETURN. Existing begin/end messages from the procedure are ignored unless the procedure is listed in the <em>ExcludeAutoMessage</em> folder.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>AutoMessage=FALSE</td>
+		</tr>
+		<tr>
+			<td>ChanAssignValidityCheck</td>
+			<td>3.7</td>
+			<td style="text-align:center;">-</td>
+			<td>If FALSE, the Channel Assignment dialog will not validate channel units or EU range when assigning a system channel to a module channel.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>ChanAssignValidityCheck=TRUE</td>
+		</tr>
+		<tr>
+			<td>CircleBuffer</td>
+			<td> 3.5 </td>
+			<td style="text-align:center;">-</td>
+			<td>Data buffer that continuously receives update packets directly from vxin_exec to prevent susceptibility to data loss.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td> CircleBuffer=TRUE</td>
+		</tr>
+		<tr>
+			<td>EnableVXBuffer</td>
+			<td> 3.5</td>
+			<td style="text-align:center;">-</td>
+			<td>Re-enables the plot buffer for iTest Console displays. </td>
+			<td style="text-align:center;">FALSE</td>
+			<td>EnableVXBuffer=FALSE</td>
+		</tr>
+		<tr>
+			<td>ExecuteWaitTimeOutSecs</td>
+			<td>3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Time out in seconds for the $ExecuteWait command in FileServices</td>
+			<td style="text-align:center;">120</td>
+			<td>ExecuteWaitTimeOutSecs=120</td>
+		</tr>
+		<tr>
+			<td>ExternalCommandLine</td>
+			<td>3.7</td>
+			<td style="text-align:center;">-</td>
+			<td>Enables command-line and command-line parameters to run when the <strong>Save All</strong> or <strong>Close</strong> actions occur in Test Manager.</td>
+			<td style="text-align:center;">&lt;Empty String&gt;</td>
+			<td>ExternalCommandLine=notepad.exe</td>
+		</tr>
+		<tr>
+			<td>GUI</td>
+			<td>3.8</td>
+			<td style="text-align:center;">-</td>
+			<td>Specifies the GUI that <em>iTest.exe</em> initializes. If this setting is not specified, <em>iTest.exe</em> will use the <code>AutomationPanel=True/False</code> setting. </td>
+			<td style="text-align:center;">None</td>
+			<td>GUI=AutomationPanel.exe, <br />&nbsp;<br />GUI=dspdrv.exe $SUPPORTDIR\EXECUTE\DISPLAY\Ecc1.dsp,<br />&nbsp;<br />GUI=dspdrv_AP.exe "$SupportDir\Layouts\Master Schedules.layout" /MainGui /location 500,500 /size 900,500</td>
+		</tr>
+		<tr>
+			<td>LogDQSigma    </td>
+			<td>3.0    </td>
+			<td style="text-align:center;">-</td>
+			<td>Decide if DQ channel in LOL will also log sigma value of the channel.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>LogDQSigma=FALSE</td>
+		</tr>
+		<tr>
+			<td>LOLEditorAllowSort</td>
+			<td>3.6</td>
+			<td style="text-align:center;">-</td>
+			<td>Allows the LOL editor to enable/disable sorting by clicking the column headers. If this setting is FALSE, the <strong>Sort by Process Order</strong> menu option is not available. </td>
+			<td style="text-align:center;">TRUE</td>
+			<td>LOLEditorAllowSort=TRUE</td>
+		</tr>
+		<tr>
+			<td>LookupTableExtrapolate</td>
+			<td>4.1</td>
+			<td style="text-align:center;">-</td>
+			<td>Extrapolate out of range values for Lookup Tables instead of setting to RMISS. </td>
+			<td style="text-align:center;">FALSE</td>
+			<td>LookupTableExtrapolate=FALSE</td>
+		</tr>
+		<tr>
+			<td>MaxCalcs</td>
+			<td>4.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Changes the maximum number of instructions in the System Rate, 100Hz, and 1000Hz calculations that can be run at the full scan rate before they are throttled back to run at a slower rate.</td>
+			<td style="text-align:center;">2500</td>
+			<td>MaxCalcs=2500</td>
+		</tr>
+		<tr>
+			<td>MaxCalcs_1Hz</td>
+			<td>4.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Changes the maximum number of instructions in the 1Hz calculations that can be run at the full 1Hz scan rate before they are throttled back to run at a slower rate.</td>
+			<td style="text-align:center;">15000</td>
+			<td>MaxCalcs_1Hz=15000</td>
+		</tr>
+		<tr>
+			<td>MaxCalcs_10Hz</td>
+			<td>4.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Changes the maximum number of instructions in the 10Hz calculations that can be run at the full 10 Hz scan rate before they are throttled back to run at a slower rate.</td>
+			<td style="text-align:center;">10000</td>
+			<td>MaxCalcs_10Hz=10000</td>
+		</tr>
+		<tr>
+			<td>NoCalDB</td>
+			<td>3.7</td>
+			<td style="text-align:center;">-</td>
+			<td>If TRUE, <em>Calibrate.exe</em> writes the calibration coefficients back to the channel database file in addition to <em>calceoffs.txt</em>. During runtime, iTest  will load the coefficients from database file, not <em>calcoeffs.txt</em>.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>NoCalDB=TRUE</td>
+		</tr>
+		<tr>
+			<td>PreloadExitTimeout</td>
+			<td>4.1</td>
+			<td style="text-align:center;">-</td>
+			<td>Number of seconds <em>iTest.exe</em> waits for preloads to exit when iTest is shutting down.</td>
+			<td style="text-align:center;">10</td>
+			<td>PreloadExitTimeout=10</td>
+		</tr>
+		<tr>
+			<td>ReadOnly</td>
+			<td>4.1</td>
+			<td style="text-align:center;">-</td>
+			<td>Setting this to TRUE causes <em>AutomationPanel.exe</em> to run in read-only mode similar to how it runs with the /readonly command line flag. Use of the command line flag takes precedence over this setting. </td>
+			<td style="text-align:center;">FALSE</td>
+			<td>ReadOnly=FALSE</td>
+		</tr>
+		<tr>
+			<td>ScheduleRunnerMessages</td>
+			<td>3.4</td>
+			<td style="text-align:center;">-</td>
+			<td>This setting controls the amount of messages that are sent from Schedule Runner to Softpanel and <em>vxin_exec.log</em>. Values: 1 = Errors, 2 = Schedule Prepare Errors, 4 = Warnings, 8 = Step Tasks, 16 = Schedule Progress, 256=BTS setpoint commands. Add the values together to define the amount of messages sent. Decimal or hexadecimal preceded by 0x is OK.</td>
+			<td style="text-align:center;">0xF</td>
+			<td>ScheduleRunnerMessages=0xF</td>
+		</tr>
+		<tr>
+			<td>SetUserLimitsByGroup</td>
+			<td>3.4</td>
+			<td style="text-align:center;">-</td>
+			<td>Only applicable if <code>LimitsVer=3.2</code>. If TRUE, adding limits to a channel using FlexEdit or AlarmStatus sets the channel's Limit Status value to INACTIVE in all limits groups other than the one that is currently active.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>SetUserLimitsByGroup=FALSE</td>
+		</tr>
+		<tr>
+			<td>SysLogEncrypted</td>
+			<td> 4.4</td>
+			<td style="text-align:center;">-</td>
+			<td> When set to TRUE, the <em>SystemLog.slg</em> file is encrypted.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td> SysLogEncrypted=TRUE</td>
+		</tr>
+		<tr>
+			<td>WriteSysIniChannel</td>
+			<td> 3.4 </td>
+			<td style="text-align:center;">-</td>
+			<td> When <code>WriteSysIniChannel=&lt;voChannelName&gt;</code> and <code>&lt;voChannelName&gt;=0</code>, the <strong>Stop</strong> or <strong>Exit</strong> system action functions do not update <em>sys.ini</em> or module INI files. If this value is set to 1 and the <strong>Stop</strong> or <strong>Exit</strong> system actions are sent, the <em>sys.ini</em> values and module INI files will be updated.<br />&nbsp;<br /><ins><strong>Note</strong></ins>: If a module is disabled, its module INI file is not updated.</td>
+			<td style="text-align:center;">-</td>
+			<td> WriteSysIniChannel=voStopChannelWrite<br />&nbsp;<br />When <code>voStopChannelWrite=1</code>, the <em>sys.ini</em> and Module INI files are updated.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="eGate-Systems"></a>
+<h2 >eGate Systems<a href="#eGate-Systems" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>eGate Systems</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1200px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Version</strong> </td>
+			<td style="text-align:left;"><strong>GUI</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong></td>
+		</tr>
+		<tr style="background: #ededed;">
+			<th colspan="6">eGate Systems</th>
+		</tr>
+		<tr>
+			<td>eGateReadyWaitSecs</td>
+			<td>2.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Data_Engine waits that number of seconds before prompting to continue or exit. If the driver sets <br />the <code>voSyseGateReady</code> channel to -1 before the time-out, then the user is notified and the only option is to exit like a VXI system.</td>
+			<td style="text-align:center;">0</td>
+			<td>eGateReadyWaitSecs=0</td>
+		</tr>
+		<tr>
+			<td>eGateWriteUseSleep</td>
+			<td>2.3</td>
+			<td style="text-align:center;">-</td>
+			<td>Maybe needed when running PC version of the driver. This tells the WriteThread of the driver to use Sleep instead of being signaled by vxin_exec to run. This prevents the problem of bunching UDP packets to the eGate.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>eGateWriteUseSleep=FALSE</td>
+		</tr>
+		<tr>
+			<td>eGateWriteSleepTimeMs</td>
+			<td>2.3</td>
+			<td style="text-align:center;">-</td>
+			<td>Amount of time (in ms) the eGate drivers WriteThread should Sleep between eGate writes. Applicable when eGateWriteUseSleep=TRUE    </td>
+			<td style="text-align:center;">100</td>
+			<td>eGateWriteSleepTimeMs=100</td>
+		</tr>
+		<tr>
+			<td>eGateWriteThresholdMs</td>
+			<td>2.3</td>
+			<td style="text-align:center;">-</td>
+			<td>Minimum amount of time (in ms) that must pass before writing a new packet to the eGate. Applicable when <code>eGateWriteUseSleep=FALSE</code>.</td>
+			<td style="text-align:center;">1</td>
+			<td>eGateWriteThreshold=1</td>
+		</tr>
+		<tr>
+			<td>eGateUseWD</td>
+			<td>2.3</td>
+			<td style="text-align:center;">-</td>
+			<td>Use the eGate watchdog feature. This requires eGate FW V1.19 or later.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>eGateUseWD=TRUE</td>
+		</tr>
+		<tr>
+			<td>eGateWDTriggerSecs</td>
+			<td>2.3</td>
+			<td style="text-align:center;">-</td>
+			<td>The period of time (in seconds) between watchdog resets by the driver.</td>
+			<td style="text-align:center;">30</td>
+			<td>eGateWDTriggerSecs=30</td>
+		</tr>
+		<tr>
+			<td>DetectTachLoss</td>
+			<td>3.0</td>
+			<td style="text-align:center;">-</td>
+			<td>Controls tach loss detection for the CellMinder D1 modules.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>DetectTachLoss=TRUE</td>
+		</tr>
+		<tr>
+			<td>FEMSUPPORT</td>
+			<td>2.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Enables FEM support for Gantner A1 modules if set to TRUE.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>FEMSUPPORT=FALSE</td>
+		</tr>
+		<tr>
+			<td>A4FilterFrequency</td>
+			<td>3.0</td>
+			<td style="text-align:center;">-</td>
+			<td>Sets the module level filter frequency on the A4 modules. Valid entries are 0; 50; 60.</td>
+			<td style="text-align:center;">60</td>
+			<td>A4FilterFrequency=60</td>
+		</tr>
+		<tr>
+			<td>A5FilterFrequency</td>
+			<td>3.0</td>
+			<td style="text-align:center;">-</td>
+			<td>Sets the module level filter frequency on the A5 modules. Valid entries are 0; 50; 60.</td>
+			<td style="text-align:center;">0</td>
+			<td>A5FilterFrequency=0</td>
+		</tr>
+		<tr>
+			<td>eGateNumForBufferedDataClock</td>
+			<td>3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>To be used with the egatedatalogger; this specifies which egate/qpac that will be used. This is needed for timestamp synchronization with iTest data.</td>
+			<td style="text-align:center;">0</td>
+			<td>eGateNumForBufferedDataClock=0</td>
+		</tr>
+		<tr>
+			<td>A3RangeLo</td>
+			<td>3.0</td>
+			<td style="text-align:center;">-</td>
+			<td>Overrides the default low rail voltage setting for AI channels on the A3 module. This is globally applied to all A3 modules in the system.    </td>
+			<td style="text-align:center;">-10.0 V</td>
+			<td>A3RangeLo=10.0 V</td>
+		</tr>
+		<tr>
+			<td>A3RangeHi</td>
+			<td>3.0</td>
+			<td style="text-align:center;">-</td>
+			<td>Overrides the default high rail voltage setting for AI channels on the A3 module. This is globally applied to all A3 modules in the system.    </td>
+			<td style="text-align:center;">10.0 V</td>
+			<td>A3RangeHi=10.0 V</td>
+		</tr>
+		<tr>
+			<td>A4RangeLo</td>
+			<td>3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Overrides the default low rail voltage setting for AI channels on the A4 module. This is globally applied to all A4 modules in the system.    </td>
+			<td style="text-align:center;">-0.080 V</td>
+			<td>A4RangeLo=-0.080 V</td>
+		</tr>
+		<tr>
+			<td>A4RangeHi</td>
+			<td>3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Overrides the default high rail voltage setting for AI channels on the A4 module. This is globally applied to all A4 modules in the system.    </td>
+			<td style="text-align:center;">0.080 V</td>
+			<td>A4RangeHi=0.080 V</td>
+		</tr>
+		<tr>
+			<td>A9RangeLo_V</td>
+			<td>3.0</td>
+			<td style="text-align:center;">-</td>
+			<td>Overrides the default low rail voltage setting for AI channels on the A9 module. This is globally applied to all A9 modules in the system.    </td>
+			<td style="text-align:center;">-10.0 V</td>
+			<td>A9RangeLo_V=-10.0 V</td>
+		</tr>
+		<tr>
+			<td>A9RangeHi_V</td>
+			<td>3.0</td>
+			<td style="text-align:center;">-</td>
+			<td>Overrides the default high rail voltage setting for AI channels on the A9 module. This is globally applied to all A9 modules in the system.    </td>
+			<td style="text-align:center;">10.0 V</td>
+			<td>A9RangeHi_V=10.0 V</td>
+		</tr>
+		<tr>
+			<td>A9RangeLo_mA</td>
+			<td>3.0</td>
+			<td style="text-align:center;">-</td>
+			<td>Overrides the default low rail current setting (in mA) for AI channels on the A9 module. This is globally applied to all A9 modules in the system.</td>
+			<td style="text-align:center;">4.0 mA</td>
+			<td>A9RangeLo_mA=4.0 mA</td>
+		</tr>
+		<tr>
+			<td>A9RangeHi_mA</td>
+			<td>3.0</td>
+			<td style="text-align:center;">-</td>
+			<td>Overrides the default high rail current setting (in mA) for AI channels on the A9 module. This is globally applied to all A9 modules in the system.</td>
+			<td style="text-align:center;">20.0 mA</td>
+			<td>A9RangeHi_mA=20.0 mA</td>
+		</tr>
+		<tr>
+			<td>eGateUseTCFullRange </td>
+			<td>3.6</td>
+			<td style="text-align:center;">-</td>
+			<td>By default, thermocouple channels are configured with a narrow range. This setting causes the full range to be used when set to TRUE.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>eGateUseTCFullRange=FALSE</td>
+		</tr>
+		<tr>
+			<td>D101Threshold10V_1(2)</td>
+			<td>3.4</td>
+			<td style="text-align:center;">-</td>
+			<td>By default, the switching threshold for each connector (1 or 2) on the D101 is set for TTL. This setting allows that to be changed to the 10V threshold. This INI setting is a list of D101 device IDs as defined in Test Manager.</td>
+			<td style="text-align:center;">-</td>
+			<td>D101Threshold10V_2=12004,11004 will set the second connector to 10V threshold on the listed device IDs.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="INtime-Options"></a>
+<h2 >INtime Options<a href="#INtime-Options" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>INtime Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1200px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Version</strong> </td>
+			<td style="text-align:left;"><strong>GUI</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong></td>
+		</tr>
+		<tr style="background: #ededed;">
+			<th colspan="6">INtime Options</th>
+		</tr>
+		<tr>
+			<td>ClockAutoSyncDebug    </td>
+			<td>3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Prints diagnostic messages.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>ClockAutoSyncDebug=FALSE</td>
+		</tr>
+		<tr>
+			<td>RefCheckInLimitGroups</td>
+			<td>3.1</td>
+			<td style="text-align:center;">-</td>
+			<td>Controls whether to do the VCL reference check in Limit Groups.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>RefCheckInLimitGroups=TRUE</td>
+		</tr>
+		<tr>
+			<td>RestartRTXKernel</td>
+			<td>2.1</td>
+			<td style="text-align:center;">-</td>
+			<td>Restarts the INtime kernel when shutting down iTest.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>RestartRTXKernel=FALSE</td>
+		</tr>
+		<tr>
+			<td>RTXSegSizeMB</td>
+			<td>2.3</td>
+			<td style="text-align:center;">-</td>
+			<td>Specifies the VSEG size in MB to reserve for <em>vxin_exec_rt.rta</em> when loading on a RTX system. This setting is no longer used.</td>
+			<td style="text-align:center;">120</td>
+			<td>RTXSegSizeMB=120</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Real-time-Options"></a>
+<h2 >Real-time Options<a href="#Real-time-Options" class="wiki-anchor">&para;</a></h2>
+
+
+	<table style="margin-left: 2.5em;width: 1200px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Version</strong> </td>
+			<td style="text-align:left;"><strong>GUI</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong></td>
+		</tr>
+		<tr style="background: #ededed;">
+			<th colspan="6">INtime Options</th>
+		</tr>
+		<tr>
+			<td>ClockAutoSyncEnable    </td>
+			<td>3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Enables auto synchronization of <code>CLOCK_TIME</code> to the <code>CLOCK_TIME_HOST</code> channel on the GUI PC.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>ClockAutoSyncEnable=TRUE</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Debugging"></a>
+<h2 >Debugging<a href="#Debugging" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Debugging</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1200px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Version</strong> </td>
+			<td style="text-align:left;"><strong>GUI</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+			<td>, <strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong></td>
+		</tr>
+		<tr style="background: #ededed;">
+			<th colspan="6">Debugging</th>
+		</tr>
+		<tr>
+			<td>AllowRuntimePrintfs</td>
+			<td>2.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Controls printf output from vxin_exec which goes to the console window or dspterm.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>AllowRuntimePrintfs=TRUE</td>
+		</tr>
+		<tr>
+			<td>DbgDataRed</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Add details to datared log file.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>DdgDataRed=FALSE</td>
+		</tr>
+		<tr>
+			<td>DebugLimits</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Enable verbose information about limit violations.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>DebugLimits=FALSE</td>
+		</tr>
+		<tr>
+			<td>EnableScanViolationDetection</td>
+			<td>2.1</td>
+			<td style="text-align:center;">-</td>
+			<td>Turns on scan violation detection.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td> EnableScanViolationDetection=TRUE</td>
+		</tr>
+		<tr>
+			<td>LogAutoTestMessages</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Log all commands sent to data_engine. Log entries are prepended with:<br /><pre>ProcessAutotestMessage: Received ...</pre></td>
+			<td style="text-align:center;">FALSE</td>
+			<td>LogAutoTestMessages=FALSE</td>
+		</tr>
+		<tr>
+			<td>TestMgrVer</td>
+			<td>2.3</td>
+			<td style="text-align:center;">-</td>
+			<td>Version of Test Manager that opened the last solution.</td>
+			<td style="text-align:center;">-</td>
+			<td>TestMgrVer=4.3</td>
+		</tr>
+		<tr>
+			<td>VmVersion</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Written by vxin_exec; should not be edited.</td>
+			<td style="text-align:center;">2</td>
+			<td>VmVersion=2</td>
+		</tr>
+		<tr>
+			<td>VXinExecArgs</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>"-noudp for some debug scenario"    " -kernel simulation_engine -logbuffermb 0.2 -codebuffermb 0.5<br />(see vxin_exec arguments tab for more information)"</td>
+			<td style="text-align:center;">-</td>
+			<td>VXinExecArgs=MaxCalcs 11000 -codebuffermb 16</td>
+		</tr>
+		<tr>
+			<td>vxinftpcopylog</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Creates a log during the FTP copy. The supported values are 0 and 1.</td>
+			<td style="text-align:center;">-</td>
+			<td>vxinftpcopylog=0</td>
+		</tr>
+		<tr>
+			<td>VXISystemname</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>IP name or address of the VXI system controller.</td>
+			<td style="text-align:center;">radi1</td>
+			<td>VXISystemname=radi1</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="RDBClientRCRDBServerRC"></a>
+<h2 >RDBClientRC/RDBServerRC<a href="#RDBClientRCRDBServerRC" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>RDBClientRC/RDBServerRC</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1200px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Version</strong> </td>
+			<td style="text-align:left;"><strong>GUI</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong></td>
+		</tr>
+		<tr style="background: #ededed;">
+			<th colspan="6">RDBClientRC/RDBServerRC</th>
+		</tr>
+		<tr>
+			<td>RemoteConnectionPort</td>
+			<td>2.3</td>
+			<td style="text-align:center;">-</td>
+			<td>Ethernet socket port to connect on.</td>
+			<td style="text-align:center;">-</td>
+			<td>RemoteConnectionPort=9001</td>
+		</tr>
+		<tr>
+			<td>RemoteReconnectTimeMS</td>
+			<td>2.3</td>
+			<td style="text-align:center;">-</td>
+			<td>Amount of time in milliseconds to wait before retrying failed remote connections.</td>
+			<td style="text-align:center;">-</td>
+			<td>RemoteReconnectTimeMS=30000</td>
+		</tr>
+		<tr>
+			<td>RemoteScanRateMS</td>
+			<td>2.3</td>
+			<td style="text-align:center;">-</td>
+			<td>Amount of time in milliseconds to wait between data requests.</td>
+			<td style="text-align:center;">-</td>
+			<td>RemoveScanRateMS=200</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+</body>
+</html>

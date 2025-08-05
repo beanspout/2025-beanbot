@@ -1,0 +1,493 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>VCL Function List</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="VCL_Function_List.html">VCL Function List</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="VCL-String-Functions"></a>
+<h1 >VCL String Functions<a href="#VCL-String-Functions" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#VCL-String-Functions">VCL String Functions</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#ascii2hex">ascii2hex</a></li><li><a href="#atof">atof</a></li><li><a href="#byteswap">byteswap</a></li><li><a href="#compare">compare</a></li><li><a href="#comparenocase">comparenocase</a></li><li><a href="#concat">concat</a></li><li><a href="#getfromstring">getfromstring</a></li><li><a href="#hex2ascii">hex2ascii</a></li><li><a href="#hex2int">hex2int</a></li><li><a href="#int2hex">int2hex</a></li><li><a href="#lowercase">lowercase</a></li><li><a href="#picklist">picklist</a></li><li><a href="#SETFROMSTRING">SETFROMSTRING</a></li><li><a href="#strlen">strlen</a></li><li><a href="#strsplit">strsplit</a></li><li><a href="#strsrch">strsrch</a></li><li><a href="#substring">substring</a></li><li><a href="#uppercase">uppercase</a></li><li><a href="#val2string">val2string</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following document lists VCL string functions.</p>
+
+
+	<a name="ascii2hex"></a>
+<h2 >ascii2hex<a href="#ascii2hex" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Returns the hexadecimal representation of a single ASCII character. Only the first character of a multi-character string is resolved.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+ascii2hex(&lt;character&gt;)
+</pre></p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET strChannel ascii2hex("A")
+SET strChannel ascii2hex("Abc")
+
+* In both examples, strChannel is set to the string 41.
+</pre><br />&nbsp;</p>
+
+
+	<a name="atof"></a>
+<h2 >atof<a href="#atof" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Converts the string argument to a floating-point number.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+atof(&lt;string&gt;)
+</pre></p>
+
+
+	<p><strong>Example</strong><br /><pre>
+VCLSTR str
+SET str "77.99" 
+VCLNUM num
+SET num atof(str)
+</pre><br />&nbsp;</p>
+
+
+	<a name="byteswap"></a>
+<h2 >byteswap<a href="#byteswap" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Reverses the order of bytes in a string, where a byte is considered to be two characters long. This function requires an even number of characters in the supplied string or it returns an empty string. This function is useful for swapping adjacent bytes in a string of hex bytes.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+byteswap(&lt;string&gt;)
+</pre></p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET vsStr byteswap("007B")
+SET vsStr byteswap("ABCDEFGH")
+
+In the first example, vsStr is set to the string "7B00".
+In the second example, vsStr is set to the string "GHEFCDAB".
+</pre><br />&nbsp;</p>
+
+
+	<a name="compare"></a>
+<h2 >compare<a href="#compare" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Compares the values of two strings, up to and including the last character of the second parameter. A "1" is returned if the strings are equal. A "0" is returned if the strings are not equal. This comparison is case sensitive.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+compare(&lt;string1&gt;,&lt;string2&gt;)
+</pre></p>
+
+
+	<p><strong>Example 1</strong><br /><pre>
+SET voNumber compare(vsString1,vsString2)
+
+* Where vsString1 contains the string "True" and vsString2 contains the string "true". 
+* In this example, the two strings are not exactly the same, so voNumber would be set to 0.
+</pre></p>
+
+
+	<p><strong>Example 2</strong><br /><pre>
+#if compare(vsString1,"Yes")
+    SET voNumber 99
+#endif
+
+* Where vsString1 contains the string "Yes". 
+* In this example, the condition would be true, so voNumber would be set to 99.
+</pre><br />&nbsp;</p>
+
+
+	<a name="comparenocase"></a>
+<h2 >comparenocase<a href="#comparenocase" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Same as compare except it ignores the case.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+comparenocase(&lt;string1&gt;,&lt;string2&gt;)
+</pre></p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET voNumber comparenocase(vsString1,vsString2)
+
+* Where vsString1 contains the string "True" and vsString2 contains the string "true". 
+* In this example, the two strings are considered the same, so voNumber would be set to 1.
+</pre><br />&nbsp;</p>
+
+
+	<a name="concat"></a>
+<h2 >concat<a href="#concat" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Concatenates two strings to form a new string and returns the value of the new string.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+concat(&lt;string1&gt;,&lt;string2&gt;)
+</pre></p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET vsString1 concat(vsString2,vsString3)
+
+* Where vsString2 contains the string "System" and vsString3 contains the string "Busy". 
+* In this example, the two strings are put together into vsString1 as "SystemBusy".
+</pre><br />&nbsp;</p>
+
+
+	<a name="getfromstring"></a>
+<h2 >getfromstring<a href="#getfromstring" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Returns the value of a numeric or string channel whose name is stored in the given string channel.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+getfromstring(&lt;channel&gt;)
+</pre></p>
+
+
+	<p><strong>Example 1</strong><br /><pre>
+SET voNumber getfromstring(vsString)
+
+* Where vsString contains the string "voSource" which is the name of a channel containing a numeric value (e.g., 1).
+* In this example, voNumber would be set to the current numeric value of the channel voSource.
+</pre></p>
+
+
+	<p><strong>Example 2</strong><br /><pre>
+SET vsResult getfromstring(vsString)
+
+* Where vsString contains the string "vsSource" which is the name of a channel containing a string value (e.g., "ItWorks!").
+* In this example, vsResult would be set to the current string value of the channel vsSource.
+</pre><br />&nbsp;</p>
+
+
+	<a name="hex2ascii"></a>
+<h2 >hex2ascii<a href="#hex2ascii" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Returns the ASCII representation of the character string, assuming that string returns a hexadecimal value.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+hex2ascii(&lt;string&gt;)
+</pre></p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET vsStr hex2ascii("41")
+
+* In this example, vsStr is set to "A".
+</pre><br />&nbsp;</p>
+
+
+	<a name="hex2int"></a>
+<h2 >hex2int<a href="#hex2int" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Returns the numeric value of a string assuming that string represents a hexadecimal value.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+hex2int(&lt;string&gt;)
+</pre></p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET voNumber hex2int("007B")
+
+* In this example, voNumber is set to 123.
+</pre> <br />&nbsp;</p>
+
+
+	<a name="int2hex"></a>
+<h2 >int2hex<a href="#int2hex" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Returns a hexadecimal string representation of the given numeric value.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+int2hex(&lt;number&gt;)
+</pre></p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET vsStr int2hex(123)
+
+* In this example, vsStr is set to "007B".
+</pre><br />&nbsp;</p>
+
+
+	<a name="lowercase"></a>
+<h2 >lowercase<a href="#lowercase" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Returns the specified string in lowercase letters.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+lowercase(&lt;string&gt;)
+</pre></p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET vsString1 lowercase(vsString2)
+
+* Where vsString2 contains the string "DeVeLoPeR".
+* In this example, vsString1 would be set to "developer".
+</pre><br />&nbsp;</p>
+
+
+	<a name="picklist"></a>
+<h2 >picklist<a href="#picklist" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Is used to return entries from an iTest picklist (<em>.pkl</em>) file. It returns the row data associated with the index for that picklist in Label, Value, and Message form (index starts at 0). Do not include the <em>.pkl</em> extension in the picklist name.</p>
+
+
+	<p>Label, value, and message are returned with commas separating the field values. The function returns the string "Undefined" if the picklist file cannot be found or if the index parameter exceeds the number of rows in the picklist.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+picklist(&lt;picklist-name&gt;,&lt;index&gt;)
+</pre></p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET vsPick picklist("NewPicklist”,1)
+
+* In this example, vsPick would be set to Eng1,Eng1,\\.\mailslot\Softpanel&gt;&gt;$UPPERDISPLAY;Eng1.
+* Refer to the image below to see what NewPicklist.pkl looks like in the Test Manager editor.
+</pre></p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Picklist Example</strong></em></span><br /><img src="attachments/download/9242/picklistExample.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="SETFROMSTRING"></a>
+<h2 >SETFROMSTRING<a href="#SETFROMSTRING" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Sets the value of the channel, whose name is stored in the string channel or local variable given as the first parameter, to the current value of the channel given as the second parameter.</p>
+
+
+	<p>This command must be in uppercase letters. Literal strings can not be used as parameters to this command. Technically, this is a VCL command, not a function since it does not return a value. So, unlike the other functions listed in this reference, it will not be preceded by a SET VCL command.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+SETFROMSTRING &lt;channel1&gt; &lt;channel2&gt;
+</pre></p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SETFROMSTRING vsChannel voChannel1
+
+* given that the current value of vsChannel is the string "voChannel2".
+* In this example, voChannel2 is set to the current value of the voChannel1 channel.
+</pre><br />&nbsp;</p>
+
+
+	<a name="strlen"></a>
+<h2 >strlen<a href="#strlen" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Returns the number of characters in a string.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+strlen(&lt;string&gt;)
+</pre></p>
+
+
+	<p><strong>Example 1</strong><br /><pre>
+SET voNumber strlen(vsString1)
+
+* Where vsString1 contains the string "Developer". 
+* In this example, voNumber would be set to 9.
+</pre></p>
+
+
+	<p><strong>Example 2</strong><br /><pre>
+#if strlen(vsString1) &gt; 0
+    SET voNumber 99
+#endif
+
+* Where vsString1 contains an empty string "". 
+* In this example, voNumber would not be changed because there is no length to the string held in vsString1.
+</pre><br />&nbsp;</p>
+
+
+	<a name="strsplit"></a>
+<h2 >strsplit<a href="#strsplit" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Splits a string into an array of substrings using a delimiter and returns the substring at the specified index. The index is a number and is zero based. If index is less than zero, then the substring is returned starting from the right instead of the left. If the given index is out of range, then an empty string is returned. If no instances of the delimiter are found, then the first element of the array will contain the entire string.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+strsplit(&lt;string&gt;,&lt;delimiter&gt;,&lt;index&gt;)
+</pre></p>
+
+
+	<p><strong>Example 1</strong><br /><pre>
+SET vsTest strsplit("0,11,222,3333", ",", 2)
+
+* In this example, vsTest would be set to "222".
+</pre></p>
+
+
+	<p><strong>Example 2</strong><br /><pre>
+SET vsTest strsplit("0,11,222,3333", ",", -1)
+
+* In this example, vsTest would be set to "3333".
+</pre></p>
+
+
+	<p><strong>Example 3</strong><br /><pre>
+SET vsTest strsplit("0,11,222,3333", "9", 0)
+
+* In this example, vsTest would be set to "0,11,222,3333". If the index had been 1, then vsTest would be set to "".
+</pre></p>
+
+
+<strong>Limitations</strong>
+	<ul>
+	<li>Use of a multi-character delimiter, such as "@@", and a negative value for the index is not supported.  It will return a substring that begins with the last character from the delimiter.<br />&nbsp;</li>
+	</ul>
+
+
+	<a name="strsrch"></a>
+<h2 >strsrch<a href="#strsrch" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Searches a string to determine if a substring is found within it.  This function returns 0 (false) if the substring can not be found; otherwise, it returns the starting position of the substring in the main string, assuming the first character is at position 1.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+strsrch(&lt;string&gt;,&lt;sub-string&gt;)
+</pre></p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET voPosition strsrch("HiDischg" "Dis")
+
+* In this example, voPosition is set to 3. 
+</pre><br />&nbsp;</p>
+
+
+	<a name="substring"></a>
+<h2 >substring<a href="#substring" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Returns a section of the given string based on a start position and length. The position starts at 1. If the start position is greater than the length of the string <em>or</em> if the length is less than 1, null is returned. If the length is greater than the string, the whole string is returned.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>substring(&lt;string&gt;,&lt;position&gt;,&lt;length&gt;)</pre></p>
+
+
+	<p><strong>Example 1</strong><br /><pre>SET vsStr substring("ABCDEFGH",3,4)</pre></p>
+
+
+	<p>In this example, <code>vsStr</code> would be set to the string "CDEF".</p>
+
+
+	<p><strong>Example 2</strong></p>
+
+
+<pre>SET vsStr substring("ABCDEFGH",1,1)</pre>
+
+	<p>In this example, <code>vsStr</code> would be set to the string "A".</p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="uppercase"></a>
+<h2 >uppercase<a href="#uppercase" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Returns the specified string in uppercase letters.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+uppercase(&lt;string&gt;)
+</pre></p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET vsString1 uppercase(vsString2)
+
+* Where vsString2 contains the string "Developer".
+* In this example, vsString1 would be set to "DEVELOPER".
+</pre><br />&nbsp;</p>
+
+
+	<a name="val2string"></a>
+<h2 >val2string<a href="#val2string" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Returns the string representation of a numeric value. The &lt;left&gt;.&lt;right&gt; parameter defines the string value, where the left and right numbers are the number of digits to the left and right of the decimal point. The left side of the string is padded with nulls and the right side of the string is padded with zeros. If the digits to the left of the decimal point exceed the number in the parameter, then all the digits to the left of the decimal point are returned. If the digits to the right of the decimal point exceed the number in the parameter, then the digits to the right of the decimal place are rounded. The &lt;left&gt; and &lt;right&gt; parameters must not exceed 32, or you will get a compile error.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+val2string(&lt;number&gt;,&lt;left&gt;.&lt;right&gt;)
+</pre></p>
+
+
+	<p><strong>Example 1</strong><br /><pre>
+SET vsString1 val2string(123.4567,2.6)
+
+* In this example, vsString1 is set to the string "123.456700".
+</pre></p>
+
+
+	<p><strong>Example 2</strong><br /><pre>
+SET vsString1 val2string(123.4567,2.2)
+
+* In this example, vsString1 is set to the string "123.46".
+</pre></p>
+</body>
+</html>

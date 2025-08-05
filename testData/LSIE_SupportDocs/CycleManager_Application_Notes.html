@@ -1,0 +1,662 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>CycleManager Application Notes</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="CycleManager_Application_Notes.html">CycleManager Application Notes</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+ <span style="display: none;">
+
+
+	<p><img src="attachments/download/93003/ADT_LOGO_OUTLINE.png" style="width: 100px;" alt="" /></p>
+
+
+	 </span>
+
+
+	 <div class="CoverPage" class="body">
+
+
+	 <div class="Title">
+
+
+	<p style="text-align:center;"><br /><strong><span style="font-size:30pt;color: #005CAA;">CycleManager Application Notes</span></strong></p>
+
+
+	 </div>
+
+
+	<p style="text-align:center;"><br /><em><span style="font-size:12pt;font-style: italic;">Product Version 4.5</span></em></p>
+
+
+	<p style="text-align:center;"><br /><strong><span style="font-size:16pt;">Prepared By</span></strong><br />ADT Software Engineering</p>
+
+
+	<p style="text-align:center;"><br /><span style="font-size: 10pt;color:red;">A&#38;D Confidential Document Distributable only to A&#38;D Customers</span><br /><span style="font-size: 10pt;color:black;">Copyright A&#38;D Company, Limited<br />A&#38;D Technology Inc.</span></p>
+
+
+	 </div>
+
+
+	 <h1>Table of Contents</h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Overview">Overview</a></li><li><a href="#Executable-Command-Line-Arguments">Executable Command Line Arguments</a><ul><li><a href="#autosc2">/autosc2</a></li><li><a href="#autosc2statuschan-ltstatuschangt">/autosc2statuschan &lt;statuschan&gt;</a></li></ul>
+</li><li><a href="#Application-Settings">Application Settings</a></li><li><a href="#Channel-Configuration">Channel Configuration</a></li><li><a href="#Power-Map-Analysis">Power Map Analysis</a></li><li><a href="#Powermap-File-Requirements">Powermap File Requirements</a><ul><li><a href="#Header-Items">Header Items</a><ul><li><a href="#Required">Required</a></li><li><a href="#Optional">Optional</a></li></ul>
+</li><li><a href="#Logged-Items">Logged Items</a><ul><li><a href="#Required-2">Required:</a></li><li><a href="#Optional-2">Optional:</a></li></ul>
+</li><li><a href="#Load-Power-Map-button">Load Power Map button</a></li></ul>
+</li><li><a href="#Output-File-Options">Output File Options</a><ul><li><a href="#Previous-Cycle-File-Required-Items">Previous Cycle File Required Items</a></li><li><a href="#Output-File-Options-2">Output File Options</a><ul><li><a href="#Learn-Settings">Learn Settings</a><ul><li><a href="#Note">Note</a></li></ul>
+</li></ul>
+</li></ul>
+</li><li><a href="#Analyze-Previous-Cycle-Options">Analyze Previous Cycle Options</a><ul><li><a href="#Options">Options</a></li><li><a href="#Report">Report</a><ul><li><a href="#Speed-Regression-Criteria">Speed Regression Criteria</a></li><li><a href="#Torque-Regression-Criteria">Torque Regression Criteria</a></li><li><a href="#Power-Regression-Criteria">Power Regression Criteria</a></li></ul>
+</li><li><a href="#Regression-Formulas">Regression Formulas</a><ul><li><a href="#Slope">Slope</a></li><li><a href="#Intercept">Intercept</a></li><li><a href="#Standard-Estimate-of-Error">Standard Estimate of Error</a></li><li><a href="#Coefficient-of-Determination">Coefficient of Determination</a></li><li><a href="#Denormalization-of-Engine-Speed">Denormalization of Engine Speed</a><ul><li><a href="#Replacement-Process">Replacement Process</a></li></ul></li></ul></li></ul></li></ul></p>
+
+
+	<a name="Overview"></a>
+<h1 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>This document contains Cycle Manager application notes for the Universal Transient Test. Regression formulas are obtained from the Electronic Code of Federal Regulations. In January of 2015, the Cycle Manager code was updated to reflect the new Maximum Test Speed calculations under CFR 1065.610 - 2014.</p>
+
+
+	<a name="Executable-Command-Line-Arguments"></a>
+<h1 >Executable Command Line Arguments<a href="#Executable-Command-Line-Arguments" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>Passing “DEBUG” on the command line enables the output of the arrays used during calculations.</p>
+
+
+	<a name="autosc2"></a>
+<h2 >/autosc2<a href="#autosc2" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Run CycleManager in background to generate <em>.sc2</em> output file.</p>
+
+
+	<a name="autosc2statuschan-ltstatuschangt"></a>
+<h2 >/autosc2statuschan &lt;statuschan&gt;<a href="#autosc2statuschan-ltstatuschangt" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>This command is optional, but must be used with the /autosc2. It puts the status of file generation into the status channel:</p>
+
+
+	<p><strong>Where</strong>:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>File Generation Status Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Value</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>0</td>
+			<td>Success</td>
+		</tr>
+		<tr>
+			<td>-1</td>
+			<td>Failed to generate the <em>.sc2</em> output file.</td>
+		</tr>
+		<tr>
+			<td>-2</td>
+			<td>The <em>.sc2</em> was generated, however, only one peak can be found in the power curve, indicating that the data in the <em>.sc2</em> file may be incorrect.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Application-Settings"></a>
+<h1 >Application Settings<a href="#Application-Settings" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>Cycle Manager uses the <em>CycleManager.ini</em> file to maintain user options and allow programmatic initialization of the interface. Selected sections of the <em>.ini</em> file entries are described in the table below.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>CycleManager.ini File Values and Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>First Column</strong> </td>
+			<td style="text-align:left;"><strong>Second Column</strong> </td>
+		</tr>
+		<tr style="background:#ededed;">
+			<td style="text-align:center;" colspan="2"><strong>Cycle Manager Section</strong></td>
+		</tr>
+		<tr>
+			<td>ActiveMode</td>
+			<td> For future use, this enables programmatic control of which interface to load upon startup.</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<td style="text-align:center;" colspan="2"><strong>Channel Configuration Section</strong></td>
+		</tr>
+		<tr>
+			<td style="text-align:center;" colspan="2">Contain the form entered channel name mapping variables.</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<td style="text-align:center;" colspan="2"><strong>UniversalTransientTest</strong></td>
+		</tr>
+		<tr>
+			<td>txtReportFilename</td>
+			<td>Update this entry with the name of the desired report filename.</td>
+		</tr>
+		<tr>
+			<td>txtNormalizedFilename</td>
+			<td>Update this entry with the name of the desired Normalized file before running the application.</td>
+		</tr>
+		<tr>
+			<td>txtOutputFilename</td>
+			<td>Update this entry with the desired output filename before running the application.</td>
+		</tr>
+		<tr>
+			<td>txtPreviousFilename</td>
+			<td>Update this entry with the appropriate data file before running the application.</td>
+		</tr>
+		<tr>
+			<td>txtMapFilename</td>
+			<td>Update this entry with the appropriate powermap file before running the application.</td>
+		</tr>
+		<tr>
+			<td>FileDelimiter</td>
+			<td>Comma/Tab - this setting defines the format of the ouput file.</td>
+		</tr>
+		<tr>
+			<td>OutputFileHeader</td>
+			<td>Setting used to determine if the header should be included the output data or saved separately.</td>
+		</tr>
+		<tr>
+			<td>Baro</td>
+			<td>Update this entry with the current barometer value before running the application.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Channel-Configuration"></a>
+<h1 >Channel Configuration<a href="#Channel-Configuration" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>The Channel Configuration Editor enables you to configure the application's channel mapping. Channel names entered are used to obtain information from the supplied files. You can access the Channel Configuration dialog via the configuration menu item.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Channel Configuration Dialog</strong></em></span><br /><img src="attachments/download/581/cycle4.JPG" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Power-Map-Analysis"></a>
+<h1 >Power Map Analysis<a href="#Power-Map-Analysis" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Power Map Analysis</strong></em></span><br /><img src="attachments/download/578/cycle1.JPG" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Powermap-File-Requirements"></a>
+<h1 >Powermap File Requirements<a href="#Powermap-File-Requirements" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>To denormalize a normalized curve, a TCG power map file must be created. The following sections detail the optional and required items used to map this file:</p>
+
+
+	<a name="Header-Items"></a>
+<h2 >Header Items<a href="#Header-Items" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>These items are located in the header and use the following format:</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+	<p>ParameterName=ParameterValue</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>IdleSpeedSpec=600</pre>
+
+	<a name="Required"></a>
+<h3 >Required<a href="#Required" class="wiki-anchor">&para;</a></h3>
+
+
+	<ul>
+	<li>Engine’s Specified Idle Speed</li>
+		<li>Engine’s Specified Rated Speed</li>
+		<li>File Rate (Hz)</li>
+	</ul>
+
+
+	<a name="Optional"></a>
+<h3 >Optional<a href="#Optional" class="wiki-anchor">&para;</a></h3>
+
+
+	<ul>
+	<li>The curb idle torque for the engine.</li>
+		<li>The time the TCG Map was created.</li>
+		<li>The date the TCG Map was created.</li>
+		<li>The test cell name where the TCG Map was created.</li>
+		<li>A data set identifier and can also be used as a description.</li>
+	</ul>
+
+
+	<a name="Logged-Items"></a>
+<h2 >Logged Items<a href="#Logged-Items" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Required-2"></a>
+<h3 >Required:<a href="#Required-2" class="wiki-anchor">&para;</a></h3>
+
+
+	<ul>
+	<li>Speed Feedback</li>
+		<li>Torque Feedback</li>
+	</ul>
+
+
+	<a name="Optional-2"></a>
+<h3 >Optional:<a href="#Optional-2" class="wiki-anchor">&para;</a></h3>
+
+
+	<ul>
+	<li>Ambient Air Intake Temperature</li>
+		<li>Barometer</li>
+		<li>Dewpoint</li>
+	</ul>
+
+
+	<a name="Load-Power-Map-button"></a>
+<h2 >Load Power Map button<a href="#Load-Power-Map-button" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>This button loads the selected powermap file.</p>
+
+
+	<a name="Output-File-Options"></a>
+<h1 >Output File Options<a href="#Output-File-Options" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Output File Options</strong></em></span><br /><img src="attachments/download/580/cycle3.JPG" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Previous-Cycle-File-Required-Items"></a>
+<h2 >Previous Cycle File Required Items<a href="#Previous-Cycle-File-Required-Items" class="wiki-anchor">&para;</a></h2>
+
+
+	<pre><code>HEADER ITEMS (Required)<br />        File Rate (Hz)<br />Cold Cycle (True / False): analysis routine uses this to determine which criteria to apply.</code></pre>
+
+
+	<pre><code>LOGGED ITEMS (Required)<br />Reference Speed – This is the reference speed used to compare the feedback to<br />Reference Torque – This is the reference torque used to compare the feedback to</code></pre>
+
+
+	<p>Speed Feedback<br />Torque Feedback<br />Throttle Feedback<br />Previous Speed Learn – Speed learn value from the last learning cycle<br />Previous Torque Learn – Torque learn value from the last learning cycle</p>
+
+
+	<a name="Output-File-Options-2"></a>
+<h2 >Output File Options<a href="#Output-File-Options-2" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following table describes the output file options and their descriptions.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Output File Description</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>File Delimiter</td>
+			<td>Cycle Manager reads this setting from the INI file and will either output the file in a comma separated or tab separated format.</td>
+		</tr>
+		<tr>
+			<td>Output File Header</td>
+			<td>Cycle Manager reads this setting from the INI file. A setting of FALSE will generate two output files, one file for the header information with an <em>.ini</em> extension and the other file contains the table information.</td>
+		</tr>
+		<tr>
+			<td>Normalized File Format</td>
+			<td>The Normalized file must contain a table of percent speeds and loads. The first line of the file contains the Column Titles and must have “Time”, “Speed” &#38; “Torque” as the column title names. The second line of the file contains the Column Units, this line is not used by Cycle Manager. The remaining lines in the file contain the data for denormalization. Refer to the example below.</td>
+		</tr>
+		<tr>
+			<td>Curb Idle Transmission Torque</td>
+			<td>This section is for Curb Idle Transmission Torque. It is used to simulate engine loading in a vehicle equipped with an automatic transmission. If enabled, the value of torque in the window below is applied to the engine at idle points.</td>
+		</tr>
+		<tr>
+			<td>Torque Delay/Speed Delay</td>
+			<td>If enabled, this setting applies a time shift during generation of the denormalized arrays.  Positive entries cause a “backwards in time” shift, resulting in setpoints issued earlier.</td>
+		</tr>
+		<tr>
+			<td>Torque Shift Adjust</td>
+			<td>Torque Shift Adjust increases or decreases the torque setpoint by a fixed percentage when the Setpoint arrays are generated. This is useful when feedback tracks the setpoint in time but not in magnitude.</td>
+		</tr>
+		<tr>
+			<td>Mode Switch</td>
+			<td>For most of the test the dyno runs in speed control. At idle points, it is better to run the dyno in torque control. The entry here specifies how long an idle state must be before mode switching will occur. This balanced idle state results in run-time overhead.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>
+Time,Speed,Torque
+s,%,%
+1,0,0
+2,0,0
+3,0,0
+4,0,0
+5,0,0
+6,0,0
+</pre>
+
+	<a name="Learn-Settings"></a>
+<h3 >Learn Settings<a href="#Learn-Settings" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Learn Options and Description</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Learn</td>
+			<td>The amount of learning is selected by choosing ‘Apply % Learn’ and entering a percentage value. If a previous learn was used and you want to keep it the same, select <strong>Hold</strong>. If you want to reset the learn to zero, select <strong>Reset</strong>.</td>
+		</tr>
+		<tr>
+			<td>Reset</td>
+			<td>Resets the Learn arrays to zero; no Learn is applied when arrays are generated. This is the default setting when Cycle Manager is loaded. Update the screen if Learn was previously applied.</td>
+		</tr>
+		<tr>
+			<td>Hold</td>
+			<td>Maintains the previous percentage of Learn, regardless of the entries in the % entry fields.</td>
+		</tr>
+		<tr>
+			<td>Apply &#38; Learn</td>
+			<td> Causes the value in the % boxes to be applied to the error between reference and feedback. The resulting values are saved to the Learn arrays and added to the setpoint when those arrays are generated.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Note"></a>
+<h4 >Note<a href="#Note" class="wiki-anchor">&para;</a></h4>
+
+
+	<ul>
+	<li>The Hold option maintains the previous percentage of Learn regardless of the entries in the % entry fields.</li>
+		<li>Learn is an additive process. For example, assume arrays were generated using 50% Learn. If the UTT cycle is run but still does not pass statistical analysis, running Cycle Manager again and applying a 25% learn will result in a final setpoint value of the previous setpoint (which included 50% Learn) plus 25% of the currently observed error.</li>
+		<li>Learn arrays are re-created from logged data.</li>
+		<li>In order for Learn to work correctly, shift must remain constant.</li>
+		<li>The learning amounts are added to the denormalized speed and torque before the speed and torque setpoints are written        </li>
+		<li>Learn values are NOT applied to idle points.</li>
+	</ul>
+
+
+	<table>
+		<tr>
+			<td style="background:#cc061c;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3741/Warning3.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>WARNING:</b></td>
+			<td style="vertical-align:top;">In order for the learning function to work correctly, the newly created arrays must have the same shift as the previous arrays. This ensures the learning is applied to the correct values.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Analyze-Previous-Cycle-Options"></a>
+<h1 >Analyze Previous Cycle Options<a href="#Analyze-Previous-Cycle-Options" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Previous Cycle Analysis</strong></em></span><br /><img src="attachments/download/579/cycle2.JPG" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Options"></a>
+<h2 >Options<a href="#Options" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li>Previous cycle filename: Data file from DAC system.</li>
+		<li>Cycle Analysis Options:
+	<ul>
+	<li><ins><strong>All Points</strong></ins>: All points evaluated (default).</li>
+		<li><ins><strong>No Idle Points</strong></ins>: No idle points evaluated.</li>
+		<li><ins><strong>Standard Point Deletion</strong></ins>: Eliminates points if the torque setpoint is less than actual and the throttle is at 0% <strong>or</strong> the torque setpoint is greater than actual and the throttle is at 100%.</li>
+	</ul></li>
+	</ul>
+
+
+	<a name="Report"></a>
+<h2 >Report<a href="#Report" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Report components:</p>
+
+
+	<ul>
+	<li>R2: Regression Line Analysis R2 value</li>
+		<li>SLOPE: Regression Line Analysis slope value.</li>
+		<li>INTERCEPT: Regression Line Analysis intercept value.</li>
+		<li>ERROR: Regression Line Analysis error of estimation value.</li>
+	</ul>
+
+
+	<a name="Speed-Regression-Criteria"></a>
+<h3 >Speed Regression Criteria<a href="#Speed-Regression-Criteria" class="wiki-anchor">&para;</a></h3>
+
+
+<pre>
+ABSOLUTE (Intercept) &gt; 50 = FAIL
+Slope &lt; 0.97 –or- Slope &gt; 1.03 = FAIL
+R2 &gt; 0.97 = FAIL
+Error &gt; 100 = FAIL
+</pre>
+
+	<a name="Torque-Regression-Criteria"></a>
+<h3 >Torque Regression Criteria<a href="#Torque-Regression-Criteria" class="wiki-anchor">&para;</a></h3>
+
+
+<pre>
+ABSOLUTE (Intercept) &gt; 20.33 = FAIL
+Error &gt; Previous Cycle Max Torque * 0.13 = FAIL 
+COLD:
+Slope &lt; 0.77 –or- Slope &gt; 1.03 = FAIL
+R2 &gt; 0.85 = FAIL
+HOT:
+Slope &lt; 0.83 –or- Slope &gt; 1.03 = FAIL
+R2 &gt; 0.88 = FAIL
+</pre>
+
+	<a name="Power-Regression-Criteria"></a>
+<h3 >Power Regression Criteria<a href="#Power-Regression-Criteria" class="wiki-anchor">&para;</a></h3>
+
+
+<pre>
+ABSOLUTE (Intercept) &gt; 3.728 = FAIL
+Error &gt; Previous Cycle Max Power * 0.08 = FAIL 
+COLD:
+Slope &lt; 0.87 –or- Slope &gt; 1.03 = FAIL
+R2 &gt; 0.91 = FAIL
+HOT:
+Slope &lt; 0.89 –or- Slope &gt; 1.03 = FAIL
+R2 &gt; 0.91 = FAIL
+</pre>
+
+	<a name="Regression-Formulas"></a>
+<h2 >Regression Formulas<a href="#Regression-Formulas" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The algorithm implemented in CycleManager is the least square linear regression.</p>
+
+
+	<a name="Slope"></a>
+<h3 >Slope<a href="#Slope" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>A least-squares regression slope, <img src="attachments/download/30084/AY1.png" alt="" />, is calculated as follows:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Slope Formula</strong></em></span><br /><img src="attachments/download/30085/Slope.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p><ins><strong>Example:</strong></ins></p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Slope Example</strong></em></span><br /><img src="attachments/download/30090/SlopeExample.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Intercept"></a>
+<h3 >Intercept<a href="#Intercept" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>A least-squares regression intercept, <img src="attachments/download/30088/A0Y.png" alt="" />, is calculated as follows:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Intercept Formula</strong></em></span><br /><img src="attachments/download/30091/Intercept.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p><ins><strong>Example:</strong></ins></p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Intercept Formula</strong></em></span><br /><img src="attachments/download/30092/InterceptExample.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Standard-Estimate-of-Error"></a>
+<h3 >Standard Estimate of Error<a href="#Standard-Estimate-of-Error" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The standard estimate of error, <em>SEE</em>, is calculated as follows:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Standard Estimate of Error Formula</strong></em></span><br /><img src="attachments/download/30093/SEE.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p><ins><strong>Example:</strong></ins></p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Standard Estimate of Error Example</strong></em></span><br /><img src="attachments/download/30094/SEEExample.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Coefficient-of-Determination"></a>
+<h3 >Coefficient of Determination<a href="#Coefficient-of-Determination" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The coefficient of determination, <img src="attachments/download/30100/R2Y.png" alt="" />, as follows:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Coefficient of Determination Formula</strong></em></span><br /><img src="attachments/download/30095/R2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p><ins><strong>Examples:</strong></ins></p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Example 1</strong></em></span><br /><img src="attachments/download/30099/r2Example1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Example 2</strong></em></span><br /><img src="attachments/download/30098/r2Example2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Denormalization-of-Engine-Speed"></a>
+<h3 >Denormalization of Engine Speed<a href="#Denormalization-of-Engine-Speed" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The denormalization of engine speed is calculated through the following formula:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Denormalization of Engine Speed Formula</strong></em></span><br /><img src="attachments/download/133657/45_DenormalizationEngineSpeedFormula.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Variable Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Variable</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td> nnorm</td>
+			<td> The normalized speed divided by 100.</td>
+		</tr>
+		<tr>
+			<td> nlo</td>
+			<td> The lowest speed where the power is 55% of the maximum power.</td>
+		</tr>
+		<tr>
+			<td> npref</td>
+			<td> The engine speed where the integral of the maximum mapped torque is 51% of the whole integral between nidle and n95h.</td>
+		</tr>
+		<tr>
+			<td> nhi</td>
+			<td> The highest speed where the power is 70% of the maximum power.</td>
+		</tr>
+		<tr>
+			<td> n95idle</td>
+			<td> The idle speed.</td>
+		</tr>
+		<tr>
+			<td> n95h</td>
+			<td> The highest speed where the power is 95% of the maximum power.</td>
+		</tr>
+		<tr>
+			<td> nPmax</td>
+			<td> The max power speed. Refer to the <a class="wiki-page" href="#Replacement-Process">Replacement Process</a> section for more information. </td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Replacement-Process"></a>
+<h4 >Replacement Process<a href="#Replacement-Process" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>In the events where the nhi and n95h values are not available, the following provisions apply:</p>
+
+
+	<ul>
+	<li>nhi in the above formula is replaced with nPmax x 1.02.</li>
+		<li>n95h is replaced with nPmax x 1.02.</li>
+	</ul>
+</body>
+</html>

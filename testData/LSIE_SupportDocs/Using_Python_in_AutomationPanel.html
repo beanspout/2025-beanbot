@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Using Python in AutomationPanel</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Automating_iTest_with_Python.html">Automating iTest with Python</a></li>
+<li><a href="Using_Python_in_AutomationPanel.html">Using Python in AutomationPanel</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Using-Python-in-AutomationPanel"></a>
+<h1 >Using Python in AutomationPanel<a href="#Using-Python-in-AutomationPanel" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Using-Python-in-AutomationPanel">Using Python in AutomationPanel</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Editing-Python-Scripts">Editing Python Scripts</a></li><li><a href="#Adding-Python-Script-Directly-to-Buttons">Adding Python Script Directly to Buttons</a></li><li><a href="#Setting-Python-Script-Arguments-Directly-in-Buttons">Setting Python Script Arguments Directly in Buttons</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Python scripts can be executed and edited in AutomationPanel. These scripts can be created in Test Manager or SolutionBuilder. For more information, refer to the following documents:</p>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Integrating_and_Using_Python_with_Test_Manager.html">Integrating and Using Python with Test Manager</a> </li>
+		<li><a class="wiki-page" href="Managing_Scripts.html">Managing Scripts</a></li>
+	</ul>
+
+
+	<a name="Editing-Python-Scripts"></a>
+<h2 >Editing Python Scripts<a href="#Editing-Python-Scripts" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To edit a python script in AutomationPanel, do the following:</p>
+
+
+	<ol>
+	<li>Select the <strong>File > Edit > Script</strong> menu option. Alternatively, send the following command-line argument: <code>$EXECUTE;SolutionBuilder.exe $SUPPORTDIR\PythonScripts\%&lt;FileName&gt;%</code>, where <span>&lt;FileName&gt;</span> is the name of the python script.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Menu Option</strong></em></span><br /><img src="attachments/download/112705/43_EditScriptMenuOption.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select one of the available python scripts. Note that available Python scripts can be filtered based on the <code>PythonScriptExcludeFilter</code> <em>powertek.ini</em> setting; refer to the <a class="wiki-page" href="ITest_INI_Options.html#Miscellaneous">iTest INI Options</a> documentation for more information. If this setting is present, then the Select Python Script dialog will be limited to list only the scripts that do not match the filter setting.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select Python Script - No Filter</strong></em></span><br /><img src="attachments/download/115750/43_SelectPythonScript.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select Python Script - Filtered Scripts</strong></em></span><br /><img src="attachments/download/124891/44_SelectPythonScriptDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>The python script opens in SolutionBuilder's Scripts editor. Refer to the <a class="wiki-page" href="Managing_Scripts.html">Managing Scripts</a> documentation for more information.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>SolutionBuilder - Scripts Editor</strong></em></span><br /><img src="attachments/download/115751/43_ScriptsEditorSolutionBuilder.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<a name="Adding-Python-Script-Directly-to-Buttons"></a>
+<h2 >Adding Python Script Directly to Buttons<a href="#Adding-Python-Script-Directly-to-Buttons" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Python scripts can be quickly added and executed through the use of buttons by configuring the <strong>Python Script</strong> and the <strong>Message Off/On</strong> properties. These properties can be edited through the button panel's Property Manager.</p>
+
+
+	<p>The <strong>Python Script</strong> property allows you to open the Edit Python Script dialog, where you can create and modify Python scripts, as needed. After configuration, the Python script will be executed once the button transitions to the ON state.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Edit Python Script Dialog</strong></em></span><br /><img src="attachments/download/115752/43_PythonScriptDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Setting-Python-Script-Arguments-Directly-in-Buttons"></a>
+<h2 >Setting Python Script Arguments Directly in Buttons<a href="#Setting-Python-Script-Arguments-Directly-in-Buttons" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The <strong>Message Off/On</strong> properties allow you to set Python script arguments via the Python Script Message dialog; this dialog is only available if the <strong>Message Type</strong> property is set to <strong>Python Script</strong>. For more information, refer to the table below.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#cc061c;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3741/Warning3.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>WARNING:</b></td>
+			<td style="vertical-align:top;">PythonEngine only supports up to 10 arguments; however, the Python Script Message dialog may list more arguments than this limit.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Python Script Message Dialog</strong></em></span><br /><img src="attachments/download/132794/44_PythonScriptMessageDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Python Script Message Field Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Field</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Script File</td>
+			<td> A drop-down list of script files available in the $SYSTEMDIR and $SUPPORTDIR. If a script with the same name exists in both folders, then the script from the $SUPPORTDIR will be used.</td>
+		</tr>
+		<tr>
+			<td>Function</td>
+			<td> A drop-down list of available Python functions found in the selected script file.</td>
+		</tr>
+		<tr>
+			<td>Description</td>
+			<td> The commented lines (i.e., lines that start with the pound sign) provided from the selected script file.</td>
+		</tr>
+		<tr>
+			<td>Argument Grid</td>
+			<td> A list of available arguments provided from the selected Python function. If the selected function does not have any arguments, then this grid will be empty and read-only.<br />&nbsp;<br />Each argument will display in the <strong>Name</strong> column, and the argument's value can be set via the <strong>Value</strong> column.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+</body>
+</html>

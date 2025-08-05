@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Large Channel Counts</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Large_Channel_Counts.html">Large Channel Counts</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Large-Channel-Counts"></a>
+<h1 >Large Channel Counts<a href="#Large-Channel-Counts" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Large-Channel-Counts">Large Channel Counts</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Requirements">Requirements</a></li><li><a href="#Restrictions">Restrictions</a></li><li><a href="#Supported-Applications">Supported Applications</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest systems with the iTest.XILS license support large channel counts. A solution is considered to have a large channel count when it has between 12,000 and 50,000 channels. If you are using this feature, you must monitor the performance channel counters to ensure channels remain within an acceptable performance range. If the performance of the system decreases or doesn't meet system scan rate, you must decrease the system scan rate or channel count as necessary for acceptable performance.</p>
+
+
+	<p>It is highly suggested that you set <code>EnableScanViolationDetection=TRUE</code> in the <em>powertek.ini</em> file to ensure that you receive a maximum scan time violation message in AutomationPanel's Messages Panel when violations occur. If the <code>voSysExecScanTime</code> performance channel exceeds the scan rate as defined by the <code>SystemScanRateHz</code> <em>powertek.ini</em> setting, you will receive the warning. To improve performance, you must reduce the system scan rate in <em>powertek.ini</em> or reduce the channel count.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Max Scan Time Violation Message</strong></em></span><br /><img src="attachments/download/48647/MessagePanel.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Requirements"></a>
+<h2 >Requirements<a href="#Requirements" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li>An iTest.XILS license is required to use this feature.</li>
+		<li>The <code>LimitsVer</code> <em>powertek.ini</em> setting must be set to 3.2 or greater.</li>
+	</ul>
+
+
+	<a name="Restrictions"></a>
+<h2 >Restrictions<a href="#Restrictions" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li>Maximum number of supported channels is 50,000.</li>
+		<li>Only 10 virtual string array and 10 virtual output array channels are supported with iTest.XILS solutions greater than 12,000 channels.</li>
+	</ul>
+
+
+	<a name="Supported-Applications"></a>
+<h2 >Supported Applications<a href="#Supported-Applications" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Only the following applications support large channel counts:</p>
+
+
+	<ul>
+	<li><em>AutomationPanel.exe</em></li>
+		<li><em>ADXPRTSCOMM.exe</em></li>
+		<li><em>CalcEngine.exe</em></li>
+		<li><em>Calibrate.exe</em></li>
+		<li><em>ConfigReport.exe</em></li>
+		<li><em>Data_Engine.exe</em></li>
+		<li><em>datared.exe</em></li>
+		<li><em>FileServices.exe</em></li>
+		<li><em>FlexEdit.exe</em></li>
+		<li><em>iTest.exe</em></li>
+		<li><em>RDBEdit.exe</em></li>
+		<li><em>SolutionBuilder.exe</em></li>
+		<li><em>TestBuilder.exe</em></li>
+		<li><em>TestMgr.exe</em></li>
+		<li><em>TestStatusDisplay.exe</em></li>
+		<li><em>vxin_exec.exe</em></li>
+		<li><em>UDPEng.exe</em></li>
+	</ul>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="ITest_System_Channels.html#Performance-Channels">Performance Channels</a></li>
+		<li><a class="wiki-page" href="ITest_INI_Options.html">iTest INI Options</a></li>
+		<li><a class="wiki-page" href="ITest_Advanced_INI_Options.html">iTest Advanced INI Options</a></li>
+	</ul>
+</body>
+</html>

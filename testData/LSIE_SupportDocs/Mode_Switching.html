@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Mode Switching</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Managing_Proportional_Integral_Derivative_Controls.html">Managing Proportional Integral Derivative Controls</a></li>
+<li><a href="Mode_Switching.html">Mode Switching</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Mode-Switching"></a>
+<h1 >Mode Switching<a href="#Mode-Switching" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Mode-Switching">Mode Switching</a><ul><li><a href="#Sample-VCL-Code">Sample VCL Code</a></li><li><a href="#Sample-Message-Log">Sample Message Log</a></li></ul></li></ul>
+
+
+	<p>Control modes are logically combined pairs of PID control loops used to effectively control a test system (e.g., an engine dynamometer system). Control modes can be switched at runtime using a procedure known as a mode-switch procedure. For example, the <code>SpdPos</code> mode-switch procedure (see below) refers to the Speed/Position mode pair.</p>
+
+
+	<a name="Sample-VCL-Code"></a>
+<h2 >Sample VCL Code<a href="#Sample-VCL-Code" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Example code for mode change - SpdPos</p>
+
+
+<pre>
+    * Check whether this mode is active
+    #if MODENUM=1
+       +0.00 EXIT
+    #endif
+
+    * Clear the mode switch flag - will be set by the PID handler
+    +0.00 SET DSWITCHED 0
+    +0.00 SET TSWITCHED 0
+
+    * Change the control modes
+    +0.00 MESSAGE "MODIFYPID HS1 Speed.HS1 DSWITCHED" 
+    +0.00 MESSAGE "MODIFYPID HS2 Position.HS2 TSWITCHED" 
+
+    * Wait until the PID handler sets the mode switch flags
+    +0.00 SUSPEND controlparam=DSWITCHED
+    +0.00 SUSPEND controlparam=TSWITCHED
+
+    * Update the mode indicator text and mode number
+    +0.00 SET MODETEXT "SpdPos" 
+    +0.00 SET MODENUM 1
+
+    * Update the PID Control
+    +0.00 MESSAGE"\\.\mailslot\Softpanel&gt;&gt;MODIFYPID; HS1 Speed.HS1 DSWITCHED" 
+    +0.00 MESSAGE"\\.\mailslot\Softpanel&gt;&gt;MODIFYPID; HS2 Position.HS2 TSWITCHED" 
+</pre>
+
+	<a name="Sample-Message-Log"></a>
+<h2 >Sample Message Log<a href="#Sample-Message-Log" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Sample System Message log entries:</p>
+
+
+<pre>
+22:15:15  autotest:Begin procedure SpdTrq
+22:15:15  \\.\mailslot\data_engine:StopControlLoop: HS1 terminated
+22:15:15  \\.\mailslot\data_engine:StartControlLoop: Control loop HS1 started
+22:15:15  \\.\mailslot\data_engine:TuneControlLoop: control mode change for HS1 completed
+22:15:15  \\.\mailslot\data_engine:ModifyControlLoop: modify HS1 complete
+22:15:15  \\.\mailslot\data_engine:StopControlLoop: HS2 terminated
+22:15:15  \\.\mailslot\data_engine:StartControlLoop: Control loop HS2 started
+22:15:15  \\.\mailslot\data_engine:TuneControlLoop: control mode change for HS2 completed
+22:15:15  \\.\mailslot\data_engine:ModifyControlLoop: modify HS2 complete
+22:15:15  autotest:MODIFYPID; HS1 Speed.HS1 DSWITCHED
+22:15:15  autotest:MODIFYPID; HS2 Torque.HS2 TSWITCHED
+22:15:15  autotest:End procedure SpdTrq
+22:15:29  autotest:Begin procedure TrqSpd
+22:15:29  \\.\mailslot\data_engine:StopControlLoop: HS1 terminated
+22:15:29  \\.\mailslot\data_engine:StartControlLoop: Control loop HS1 started
+22:15:29  \\.\mailslot\data_engine:TuneControlLoop: control mode change for HS1 completed
+22:15:29  \\.\mailslot\data_engine:ModifyControlLoop: modify HS1 complete
+22:15:29  \\.\mailslot\data_engine:StopControlLoop: HS2 terminated
+22:15:29  \\.\mailslot\data_engine:StartControlLoop: Control loop HS2 started
+22:15:29  \\.\mailslot\data_engine:TuneControlLoop: control mode change for HS2 completed
+22:15:29  \\.\mailslot\data_engine:ModifyControlLoop: modify HS2 complete
+22:15:29  autotest:MODIFYPID; HS1 Torque.HS1 DSWITCHED
+22:15:29  autotest:MODIFYPID; HS2 Speed.HS2 TSWITCHED
+22:15:29  autotest:End procedure TrqSpd
+22:15:32  autotest:Begin procedure SpdPos
+22:15:32  \\.\mailslot\data_engine:StopControlLoop: HS1 terminated
+22:15:32  \\.\mailslot\data_engine:StartControlLoop: Control loop HS1 started
+22:15:32  \\.\mailslot\data_engine:TuneControlLoop: control mode change for HS1 completed
+22:15:32  \\.\mailslot\data_engine:ModifyControlLoop: modify HS1 complete
+22:15:32  \\.\mailslot\data_engine:StopControlLoop: HS2 terminated
+22:15:32  \\.\mailslot\data_engine:StartControlLoop: Control loop HS2 started
+22:15:32  \\.\mailslot\data_engine:TuneControlLoop: control mode change for HS2 completed
+22:15:32  \\.\mailslot\data_engine:ModifyControlLoop: modify HS2 complete
+22:15:32  autotest:MODIFYPID; HS1 Speed.HS1 DSWITCHED
+22:15:32  autotest:MODIFYPID; HS2 Position.HS2 TSWITCHED
+22:15:32  autotest:End procedure SpdPos
+</pre>
+</body>
+</html>

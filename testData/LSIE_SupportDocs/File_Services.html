@@ -1,0 +1,1439 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>File Services</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="File_Services.html">File Services</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="FileServices"></a>
+<h1 >FileServices<a href="#FileServices" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#FileServices">FileServices</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Command-Line">Command Line</a></li><li><a href="#Clarifications-and-Limitations">Clarifications and Limitations</a></li><li><a href="#FileServicesexe-Interface">FileServices.exe Interface</a></li></ul>
+</li><li><a href="#Mailslot-Commands">Mailslot Commands</a><ul><li><a href="#DIE">DIE</a></li><li><a href="#AppendFile">$AppendFile</a></li><li><a href="#ChangeHeaderValue">$ChangeHeaderValue</a></li><li><a href="#ChangeLoggedValue">$ChangeLoggedValue</a></li><li><a href="#ChangeLoggedValueMany">$ChangeLoggedValueMany</a></li><li><a href="#CheckDisplayRunning">$CheckDisplayRunning</a></li><li><a href="#CheckFileName">$CheckFileName</a></li><li><a href="#CheckProgramRunning">$CheckProgramRunning</a></li><li><a href="#CopyFile">$CopyFile</a></li><li><a href="#CopyFolder">$CopyFolder</a></li><li><a href="#CreateFolder">$CreateFolder</a></li><li><a href="#DeleteFile">$DeleteFile</a></li><li><a href="#DeleteFolder">$DeleteFolder</a></li><li><a href="#DeleteRecord">$DeleteRecord</a></li><li><a href="#Execute">$Execute</a></li><li><a href="#ExecuteWait">$ExecuteWait</a></li><li><a href="#ExtractFilename">$ExtractFilename</a></li><li><a href="#FileExists">$FileExists</a></li><li><a href="#FolderExists">$FolderExists</a></li><li><a href="#GetDriveFreeSpace">$GetDriveFreeSpace</a></li><li><a href="#GetFileInfo">$GetFileInfo</a></li><li><a href="#GetFileTime">$GetFileTime</a></li><li><a href="#GetHeaderValue">$GetHeaderValue</a></li><li><a href="#GetLoggedValue">$GetLoggedValue</a></li><li><a href="#GetRecordNum">$GetRecordNum</a></li><li><a href="#LockDataFile">$LockDataFile</a></li><li><a href="#MoveFile">$MoveFile</a></li><li><a href="#NewestFile">$NewestFile</a></li><li><a href="#Poly">$Poly</a></li><li><a href="#ReleaseDataFile">$ReleaseDataFile</a></li><li><a href="#RenameFile">$RenameFile</a></li><li><a href="#WriteToLogFile">$WriteToLogFile</a></li><li><a href="#WriteToTextFile">$WriteToTextFile</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The FileServices executable, <em>FileServices.exe</em>, is a standalone iTest application that provides certain file services. This executable uses traditional mailslot messages that are sent to the FileServices mailslot address. You can add this driver to your solution by adding it to the preload list.</p>
+
+
+	<a name="Command-Line"></a>
+<h2 >Command Line<a href="#Command-Line" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Use the <em>/h</em> command switch to run FileServices in hidden mode.  Alternatively, FileServices runs in hidden mode without the switch if launched using the <em>powertek.ini</em> preload string and <code>DisplayPreloads=FALSE</code>.</p>
+
+
+	<a name="Clarifications-and-Limitations"></a>
+<h2 >Clarifications and Limitations<a href="#Clarifications-and-Limitations" class="wiki-anchor">&para;</a></h2>
+
+
+	<ol>
+	<li>Double-quotations must be used for any argument that has spaces.</li>
+		<li>VCL (local) variables, such as <code>VCLNUM</code> and <code>VCLSTR</code>, cannot be used for &lt;ResultChan&gt; or [StatusChan].</li>
+		<li>The [StatusChan] argument is optional. It can be the last argument or explicitly defined as <em>/s [StatusChan]</em> at the end of the mailslot string.</li>
+		<li>The following FileServices mailslot commands have a file size limited to 512MB:
+	<ul>
+	<li>$AppendFile</li>
+		<li>$ChangeHeaderValue</li>
+		<li>$ChangeLoggedValue</li>
+		<li>$ChangeLoggedValueMany</li>
+		<li>$DeleteRecord</li>
+		<li>$GetHeaderValue</li>
+		<li>$GetLoggedValue</li>
+		<li>$GetRecordNum</li>
+		<li>$Poly</li>
+		<li>$WriteToLogFile</li>
+		<li>$WriteToTextFile</li>
+	</ul>
+	</li>
+		<li>The tilde ( <img src="attachments/download/45867/tilde.png" alt="" /> ) is used to escape characters.</li>
+	</ol>
+
+
+	<a name="FileServicesexe-Interface"></a>
+<h2 >FileServices.exe Interface<a href="#FileServicesexe-Interface" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can use the <em>FileServices.exe</em> interface to view whether the FileService command succeeded or failed. The application is accessible in the <em>$SYSTEMDIR\Execute</em> folder.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>FileServices.exe Interface</strong></em></span><br /><img src="attachments/download/35158/FileServices.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>The <strong>Time</strong> column uses the <strong>MsgTimeStampFmt</strong> format setting and defaults to the Hour:Minute:Second (%H:%M:%S) format.</p>
+
+
+	<p>To add the date timestamp to the <em>powertek.ini</em>: <br /><pre><code class="C syntaxhl" data-language="C"><span class="n">MsgTimeStampFmt</span> <span class="o">=</span> <span class="o">%</span><span class="n">m</span><span class="o">/%</span><span class="n">d</span><span class="o">/%</span><span class="n">y</span> <span class="o">%</span><span class="n">I</span><span class="o">:%</span><span class="n">M</span><span class="o">:%</span><span class="n">S</span> <span class="o">%</span><span class="n">p</span>    <span class="p">(</span><span class="mi">0</span><span class="o">-</span><span class="mi">12</span> <span class="n">hour</span> <span class="n">plus</span> <span class="n">AM</span><span class="p">,</span> <span class="n">PM</span><span class="p">)</span>
+<span class="n">MsgTimeStampFmt</span> <span class="o">=</span> <span class="o">%</span><span class="n">m</span><span class="o">/%</span><span class="n">d</span><span class="o">/%</span><span class="n">y</span> <span class="o">%</span><span class="n">H</span><span class="o">:%</span><span class="n">M</span><span class="o">:%</span><span class="n">S</span>         <span class="p">(</span><span class="mi">0</span><span class="o">-</span><span class="mi">23</span> <span class="n">hour</span><span class="p">)</span>
+</code></pre></p>
+
+
+	<a name="Mailslot-Commands"></a>
+<h1 >Mailslot Commands<a href="#Mailslot-Commands" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="DIE"></a>
+<h2 ><strong>DIE</strong><a href="#DIE" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Terminates execution of <em>FileServices.exe</em>.</p>
+
+
+	<a name="AppendFile"></a>
+<h2 >$AppendFile<a href="#AppendFile" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Appends the contents of the source file, &lt;SrcFile&gt;, to the destination file, &lt;DestFile&gt;.  If the destination file does not exist, FileServices creates it in the specified file path location. These files are assumed to be text files.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$AppendFile &lt;SrcFile&gt; &lt;DestFile&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><em>&lt;SrcFile&gt;:</em> The source file and its fully qualified file path. The contents of the source file are added to the content of the destination file.</p>
+
+
+	<p><em>&lt;DestFile&gt;:</em> The destination file and its fully qualified file path.</p>
+
+
+	<p><em>[StatusChan]:</em> Return values: 1 = busy, 0 = no error reported, -1 = error reported.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$AppendFile C:\ADT\Test\Example1.txt C:\ADT\Test\Example2.txt</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="ChangeHeaderValue"></a>
+<h2 >$ChangeHeaderValue<a href="#ChangeHeaderValue" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Changes the header field values in a data file. If the header is not found or specified, a new header line with the field name and value is added.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$ChangeHeaderValue &lt;File&gt; &lt;HeaderFieldName&gt; &lt;NewValue&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><em>&lt;File&gt;:</em> The name of the <em>.dat</em> file for which to modify the header value. If only the filename is provided, the file path is determined by reading the <code>DrHoldForReviewDir</code> setting from the solution's <em>powertek.ini</em> file.  If this setting is not defined, then <em>$SUPPORTDIR\Data</em> of the active solution is used.</p>
+
+
+	<p><em>&lt;HeaderFieldName&gt;:</em> The name of the header field to be modified.</p>
+
+
+	<p><em>&lt;NewValue&gt;:</em> The new value to be entered in the header field.</p>
+
+
+	<p><em>[StatusChan]:</em> Return values: 1 = busy, 0 = no error reported, -1 = error reported.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$ChangeHeaderValue Dmo1TransF2_4Trans.dat UserName Operator voStatusChannel</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="ChangeLoggedValue"></a>
+<h2 >$ChangeLoggedValue<a href="#ChangeLoggedValue" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Modifies an entry within the specified log file.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$ChangeLoggedValue &lt;File&gt; &lt;ChanName&gt; &lt;Row&gt; &lt;NewValue&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;File&gt;:</em></ins> The name of the <em>.dat</em> file for which to modify the logged value. If only the filename is provided, the file path is determined by reading the <code>DrHoldForReviewDir</code> setting from the solution's <em>powertek.ini</em> file. If this setting is not defined, then <em>$SUPPORTDIR\Data</em> of the active solution is used. If the data file is locked by the <a class="wiki-page" href="#LockDataFile">$LockDataFile</a> mailslot, then $ChangeLoggedValue modifies the row of data stored in memory, thereby greatly improving the performance of this mailslot. In this case, any changes made will not be written to the file until the <a class="wiki-page" href="#ReleaseDataFile">$ReleaseDataFile</a> mailslot is sent.</p>
+
+
+	<p><ins><em>&lt;ChanName&gt;:</em></ins> The channel name in the logged file to modify.</p>
+
+
+	<p><ins><em>&lt;Row&gt;:</em></ins> 1-based numeric or virtual output channel of the row number in the data section. It can also be “LAST”, or "LAST-&lt;numeric offset&gt;". Negative values and zeroes are handled in relation to LAST (e.g., 0 = LAST, -1 = LAST-1, etc.).</p>
+
+
+	<p><ins><em>&lt;NewValue&gt;:</em></ins> The new value written to the data file. No type checking is performed when the mailslot is sent, so a numeric value in the &lt;File&gt; argument can be replaced with a string value.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Return values: 1 = busy, 0 = no error reported, -1 = error reported.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$ChangeLoggedValue Dmo1TransF2_3Trans.dat Variance 26 1.15 voStatusChannel</pre>
+
+	<p>In this example, the channel, <code>Variance</code>, is modified on data line 26 to the value <strong>1.15</strong>.</p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="ChangeLoggedValueMany"></a>
+<h2 >$ChangeLoggedValueMany<a href="#ChangeLoggedValueMany" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Changes many values within the specified log file.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$ChangeLoggedValueMany &lt;File&gt; &lt;Channel List File&gt; &lt;Row&gt; &lt;New Value&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;File&gt;:</em></ins> The data file to change. If only the filename is provided, the file path is determined by reading the <code>DrHoldForReviewDir</code> setting from the <em>powertek.ini</em> file. If that setting is missing, then <em>$SUPPORTDIR\Data\HoldForReview</em> is used. If the data file is locked by the <a class="wiki-page" href="#LockDataFile">$LockDataFile</a> mailslot, then $ChangeLoggedValueMany modifies the row of data stored in memory, thereby greatly improving the performance of this mailslot. In this case, any changes made will not be written to the file until the <a class="wiki-page" href="#ReleaseDataFile">$ReleaseDataFile</a> mailslot is sent.</p>
+
+
+	<p><ins><em>&lt;Channel List File&gt;:</em></ins> The single column text file, with one channel listed per line, or a Log Order List <em>(*.lol)</em> file. A file path must be provided.</p>
+
+
+	<p><ins><em>&lt;Row&gt;:</em></ins> 1-based numeric or virtual output channel of the row number in the data section. It can also be “LAST”, or "LAST-&lt;numeric offset&gt;". Negative values and zeroes are handled in relation to LAST (e.g., 0 = LAST, -1 = LAST-1, etc.).</p>
+
+
+	<p><ins><em>&lt;New Value&gt;:</em></ins> The value to be written to the file. No type checking is performed, so a numeric value in the &lt;File&gt; can be replaced with a string value.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Return values: 1 = busy, 0 = no error reported, -1 = error reported, -2 = one or more channels in the &lt;Channel List File&gt; cannot be found in &lt;File&gt;. Channels present in both files are to the &lt;NewValue&gt;.</p>
+
+
+	<p><strong>Limitations</strong></p>
+
+
+	<ol>
+	<li>Data files with multiple test runs (e.g., multiple PARAMS lines) are not supported.</li>
+		<li>If customer names are used, customer names must also be used on both &lt;File&gt; and &lt;Channel List File&gt;.</li>
+		<li>Large numbers of channels (~1500) cannot be modified.</li>
+	</ol>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>+0 MESSAGE "\\.\mailslot\FileServices&gt;&gt;$ChangeLoggedValueMany syssnap.dat $SUPPORTDIR\Data\FSlist.lol  LAST -999 Cntr1"</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="CheckDisplayRunning"></a>
+<h2 >$CheckDisplayRunning<a href="#CheckDisplayRunning" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Checks if a display is running.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$CheckDisplayRunning &lt;DisplayName&gt; &lt;ResultChan&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;DisplayName&gt;:</em></ins> The name of the display to determine whether or not it is running.</p>
+
+
+	<p><ins><em>&lt;ResultChan&gt;:</em></ins> The channel used to hold the return value. Return values: 0 = display is not running; 1 = display is running.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Return values: 1 = busy, 0 = no error reported, -1 = error reported.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$CheckDisplayRunning SignalList voResultChannel voStatusChannel</pre>
+
+	<p>If the specified display is running, the return value of the channel, <code>voResultChannel</code>, is 1; if the display is not running, the return value of the channel is 0.</p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="CheckFileName"></a>
+<h2 >$CheckFileName<a href="#CheckFileName" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Checks if a string is a valid file name. If the string is a valid file name, the channel returns the value 0. If the string is invalid, the channel returns -1.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$CheckFileName &lt;FileName&gt; &lt;ResultChan&gt;</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;FileName&gt;:</em></ins> The file name checked for validity. The following characters will cause an invalid file name: <pre> ,{};\/:@#$&#38;*|?&gt;&lt; and space</pre></p>
+
+
+	<p><ins><em>&lt;ResultChan&gt;:</em></ins> The channel used to hold the return value. Return values: 1 = busy, 0 = file name is valid, -1 = file name is invalid.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$CheckFileName Data_04_22.txt voResultChannel</pre>
+
+	<p>Return value:</p>
+
+
+<pre>voResultChannel = 0</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="CheckProgramRunning"></a>
+<h2 >$CheckProgramRunning<a href="#CheckProgramRunning" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Checks if a program is running. This feature does not verify scripts or batch files—only programs.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$CheckProgramRunning &lt;File&gt; &lt;ResultChan&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;File&gt;:</em></ins> The name of the application file checked in Task Manager.</p>
+
+
+	<p><ins><em>&lt;ResultChan&gt;:</em></ins> The channel used to hold the return value. Return values: 1 = running; 0 = not running.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Return values: 1 = busy, 0 = no error reported, -1 = error reported.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$CheckProgramRunning AutomationPanel.exe voResultChannel voStatusChannel</pre>
+
+	<p>If running,<br /><pre>voResultChannel = 1
+voStatusChannel = 0</pre></p>
+
+
+	<p>If not running,<br /><pre>voResultChannel = 0
+voStatusChannel = 0 </pre></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="CopyFile"></a>
+<h2 >$CopyFile<a href="#CopyFile" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Copies the contents of the source file to the contents of the destination file.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$CopyFile &lt;SrcFile&gt; &lt;DestFile&gt; [FailIfDestExist] [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;SrcFile&gt;:</em></ins> The file copied. The file name can include the use of one or more asterisks (*) as wildcard in the filename. However, if wildcards are used, the &lt;DestFile&gt; must be a folder location.</p>
+
+
+	<p><ins><em>&lt;DestFile&gt;:</em></ins> The contents of the source file are copied to the destination file. If a file path is not provided, the file path from the &lt;SrcFile&gt; argument is used. If the destination file does not exist, it is created when the mailslot is sent.</p>
+
+
+	<p><ins><em>[FailIfDestExist]:</em></ins> True/False. This is an optional setting; by default, it is set to TRUE. If TRUE, then the mailslot will fail if the destination file exists.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Requires the [FailIfDestExist] argument to be in the mailslot message. Return values: 1 = busy, 0 = no error reported, -1 = error reported.</p>
+
+
+	<p><strong>Limitations:</strong></p>
+
+
+	<ol>
+	<li>An error is not reported if a wildcard is used in &lt;SrcFile&gt; and &lt;SrcFile&gt; does not exist.</li>
+		<li>An error is reported if a wildcard is used in &lt;SrcFile&gt;, [FailIfDestExist]=TRUE, and some files are already present in the &lt;DestFile&gt; location. In this case, all matching files that do not exist are copied to the &lt;DestFile&gt; location.</li>
+	</ol>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$CopyFile  $SYSTEMDIR\TestDataFile.txt $SUPPORTDIR\TestDataFile2.txt TRUE voStatusChannel</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="CopyFolder"></a>
+<h2 >$CopyFolder<a href="#CopyFolder" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Copies the folder specified as the source folder and pastes it into the destination folder.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$CopyFolder &lt;SrcFolder&gt; &lt;DestFolder&gt; &lt;ResultChan&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;SrcFolder&gt;:</em></ins> Source folder.</p>
+
+
+	<p><ins><em>&lt;DestFolder&gt;:</em></ins> Destination folder.</p>
+
+
+	<p><ins><em>&lt;ResultChan&gt;:</em></ins> The channel used to hold the return value. Return values: 1 = folder copied; 0 = folder not copied.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Return values: 1 = busy, 0 = no error reported, -1 = error reported.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$CopyFolder $SUPPORTDIR\Folder1 $SUPPORTDIR\Folder2 voResultChannel voStatusChannel</pre>
+
+	<p>In the example above, a copy of <em>Folder1</em> becomes a sub-folder of <em>Folder2</em>.</p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="CreateFolder"></a>
+<h2 >$CreateFolder<a href="#CreateFolder" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Creates a new folder in the location of the file path specified.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$CreateFolder &lt;Folder&gt; &lt;ResultChan&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;Folder&gt;:</em></ins> Folder created in the specified file path.</p>
+
+
+	<p><ins><em>&lt;ResultChan&gt;:</em></ins> The channel used to hold the return value. Return values: 1 = folder created or already exists; 0 = folder not created.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Return values: 1 = busy, 0 = no error reported, -1 = error reported.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$CreateFolder $SUPPORTDIR\MyNewFolder voResultChannel voStatusChannel</pre>
+
+	<p>In this example, a new folder named <em>MyNewFolder</em> is added to the current active solution.</p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="DeleteFile"></a>
+<h2 >$DeleteFile<a href="#DeleteFile" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Deletes the file specified in the mailslot message. You can also use the asterisk (*) wildcard character to delete all files of a specified type in a folder.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$DeleteFile &lt;File&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>File:</em></ins> The name of the file (or file types) that will be deleted. You must specify the fully qualified file path.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Return values: 1 = busy, 0 = no error reported, -1 = error reported.</p>
+
+
+	<p><strong>Examples</strong>:</p>
+
+
+	<p><strong>Delete an individual file</strong>:</p>
+
+
+<pre>$DeleteFile $SYSTEMDIR\Data\PR-001\Dmo1Step_6Trans.dat voStatusChannel</pre>
+
+	<p>When this command is sent, <em>Dmo1Step_6Trans.dat</em> is deleted from the iTest install folder (<em>PR-001</em>).</p>
+
+
+	<p><strong>Delete all files of a specific file type</strong>:</p>
+
+
+<pre>$SYSTEMDIR\Data\PR-001\*.dat voStatusChannel</pre>
+
+	<p>When this command is sent, all <em>.dat</em> files in the <em>PR-001</em> folder are deleted.</p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="DeleteFolder"></a>
+<h2 >$DeleteFolder<a href="#DeleteFolder" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Deletes the folder specified in the mailslot message.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$DeleteFolder &lt;Folder&gt; &lt;ResultChan&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;Folder&gt;:</em></ins> Full folder path to delete.</p>
+
+
+	<p><ins><em>&lt;ResultChan&gt;:</em></ins> The channel use to hold the return value. Return values: 1 = folder deleted or does not exist; 0 = folder not deleted.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Return values: 1 = busy, 0 = no error reported, -1 = error reported.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$DeleteFolder $SYSTEMDIR\Notes voResultChannel voStatusChannel</pre>
+
+	<p>In the example above, the <em>Notes</em> folder located in the iTest system directory is deleted.</p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="DeleteRecord"></a>
+<h2 >$DeleteRecord<a href="#DeleteRecord" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Deletes a row in a <em>.dat</em> file.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$DeleteRecord &lt;File&gt; &lt;Row&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;File&gt;:</em></ins> The name of the <em>.dat</em> file to be modified.</p>
+
+
+	<p><ins><em>&lt;Row&gt;:</em></ins> 1 - based numeric row number in the data section of the <em>.dat</em> file.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Return values: 1 = busy, 0 = no error reported, -1 error reported.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$DeleteRecord $SUPPORTDIR\TestDataFile.dat 1 voStatusChannel</pre>
+
+	<p>In this example, the first row of the data section is deleted from the <em>.dat</em> file.</p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Execute"></a>
+<h2 >$Execute<a href="#Execute" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Launches a specified application.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$Execute &lt;File;Silent&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;File&gt;:</em></ins> The full path of the file. If there are spaces in the file name or accompanying space-delimited arguments, double quotes must surround the entire &lt;File;Silent&gt; argument.</p>
+
+
+	<p><ins><em><;Silent>:</em></ins> Optional feature that launches the executable in hidden mode. It follows the entire &lt;File&gt; string, including any arguments to be sent to the launched executable.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Return values: 1 = busy, 0 = file started successfully, -1 error starting the file.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The ;Silent flag is supported by non-GUI applications but will vary with GUI applications depending on their internal startup processes.</td>
+		</tr>
+	</table></p>
+
+
+	<p><strong>Examples</strong>:</p>
+
+
+<pre>$Execute $SYSTEMDIR\Execute\EventViewer.exe;Silent voStatusChannel
+
+$Execute ~"FileDialog.exe $SUPPORTDIR;iTest.txt;vsFsvc1FlexString1;vsFsvc1FlexString2 -ontop -noext~" voStatusChannel</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="ExecuteWait"></a>
+<h2 >$ExecuteWait<a href="#ExecuteWait" class="wiki-anchor">&para;</a></h2>
+
+
+	<p><code>$ExecuteWait</code> is similar to the <code>$Execute</code> mailslot command except it waits until the launched program exits. By default, this period is 120 seconds. You can modify the duration of time by defining the <code>ExecuteWaitTimeOutSecs</code> <em>powertek.ini</em> setting.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$ExecuteWait &lt;File;Silent&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;File&gt;:</em></ins> The full path of the file.</p>
+
+
+	<p><ins><em><;Silent>:</em></ins> Optional feature that launches the executable in hidden mode. It follows the entire <em>&lt;File&gt;</em> string, including any arguments to be sent to the launched executable.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Return values: 1 = busy, 0 = no error reported, -1 = error reported, -2 = timeout occurred waiting for program to exit.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The ;Silent flag is supported by non-GUI applications but will vary with GUI applications depending on their internal startup processes.</td>
+		</tr>
+	</table></p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$ExecuteWait $SYSTEMDIR\Execute\DriverActivator.exe;Silent voStatusChannel</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="ExtractFilename"></a>
+<h2 >$ExtractFilename<a href="#ExtractFilename" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Extracts and displays a specified file name.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$ExtractFilename &lt;PathContainingFilename&gt; &lt;ResultChan&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;PathContainingFilename&gt;:</em></ins> Virtual string containing full path of filename.</p>
+
+
+	<p><ins><em>&lt;ResultChan&gt;:</em></ins> The virtual string channel used to hold the return value – the filename.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Return values: 1 = busy, 0 = no error reported, -1 = error reported.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$ExtractFileName $SUPPORTDIR\Picklist\SysTestType.pkl vsResultChannel voStatusChannel</pre>
+
+	<p>Return values:</p>
+
+
+<pre>vsResultChannel = SysTestType.pkl
+voStatusChannel = 0</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="FileExists"></a>
+<h2 >$FileExists<a href="#FileExists" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Checks if a file exists.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$FileExists &lt;File&gt; &lt;ResultChan&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;File&gt;:</em></ins> The file path and the filename of the file to verify whether it exists.</p>
+
+
+	<p><ins><em>&lt;ResultChan&gt;:</em></ins> The channel used to hold the return value. Return values: 1 = file exists; 0 = file does not exist.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Return values: 1 = busy, 0 = no error reported, -1 = error reported.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$FileExists $SUPPORTDIR\PythonScripts\pyExample1.py voResultChannel voStatusChannel</pre>
+
+	<p>If file exists,</p>
+
+
+<pre>voResultChannel = 1
+voStatusChannel = 0</pre>
+
+	<p>If file does not exist,</p>
+
+
+<pre>voResultChannel = 0
+voStatusChannel = 0</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="FolderExists"></a>
+<h2 >$FolderExists<a href="#FolderExists" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Checks if a folder exists.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$FolderExists &lt;Folder&gt; &lt;ResultChan&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;Folder&gt;:</em></ins> The full path of the folder to verify if it exists.</p>
+
+
+	<p><ins><em>&lt;ResultChan&gt;:</em></ins> The channel used to hold the return value. Return values:  1 = folder exists; 0 = folder does not exist.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Return values: 1 = busy, 0 = no error reported, -1 = error reported.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$FolderExists $SUPPORTDIR\PythonScripts voResultChannel voStatusChannel</pre>
+
+	<p>If found,</p>
+
+
+<pre>voResultChannel = 1
+voStatusChannel = 0</pre>
+
+	<p>If not found,</p>
+
+
+<pre>voResultChannel = 0
+voStatusChannel = 0</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="GetDriveFreeSpace"></a>
+<h2 >$GetDriveFreeSpace<a href="#GetDriveFreeSpace" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Gets and displays the amount of free space (in GB) available on the drive.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$GetDriveFreeSpace &lt;Drive&gt; &lt;ResultChan&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;Drive&gt;:</em></ins> The drive for which to report the amount of free space. This argument must contain a trailing colon (e.g., C:).</p>
+
+
+	<p><ins><em>&lt;ResultChan&gt;:</em></ins>  The channel used to hold the return value. The return value represents the amount of available space in GB.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Return values: 1 = busy, 0 = no error reported, -1 = error reported.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$GetDriveFreeSpace C:\ voResultChannel voStatusChannel</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="GetFileInfo"></a>
+<h2 >$GetFileInfo<a href="#GetFileInfo" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Returns information for the specified file such as its size (in bytes), its creation date, and its last modified date.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$GetFileInfo &lt;File&gt; &lt;CreationResultChan&gt; &lt;ModifiedResultChan&gt; &lt;SizeResultChan&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;File&gt;:</em></ins> The name of the file.</p>
+
+
+	<p><ins><em>&lt;CreationResultChan&gt;:</em></ins> The channel used to hold the return value. This is a virtual string channel used for storing the file creation string.</p>
+
+
+	<p><ins><em>&lt;ModifiedResultChan&gt;:</em></ins> The channel used to hold the return value. In this case, the channel is a virtual string channel for the file last modified string.</p>
+
+
+	<p><ins><em>&lt;SizeResultChan&gt;:</em></ins> The size of the file in bytes.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Return values: 1 = busy, 0 = no error reported, -1 = error reported.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$GetFileInfo "$SYSTEMDIR\Help\Release Notes 3.7.pdf" vsCreationResultChannel vsModifiedResultChannel voSizeResultChan voStatusChannel</pre>
+
+	<p>Return values:</p>
+
+
+<pre>vsCreationResultChannel = 04/11/2017 9:11:07 AM
+vsModifiedResultChannel = 04/14/2017 12:28:19 PM
+voSizeResultChan = 1592951
+voStatusChannel = 0</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="GetFileTime"></a>
+<h2 >$GetFileTime<a href="#GetFileTime" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Returns the file's last modified time-stamp, formatted in epoch time.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$GetFileTime &lt;File&gt; &lt;ResultChan&gt; [Status Channel]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;File&gt;:</em></ins> The full path of the file.</p>
+
+
+	<p><ins><em>&lt;ResultChan&gt;:</em></ins> The channel used to hold the return value, the file's time-stamp.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Return values: 1 = busy, 0 = no error reported, -1 = error reported.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$GetFileTime SYSTEMDIR\Data\PR-001\Data_04_22.txt voResultChannel voStatusChannel</pre>
+
+	<p>Return value:</p>
+
+
+<pre>voResultChannel = 1492002878</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="GetHeaderValue"></a>
+<h2 >$GetHeaderValue<a href="#GetHeaderValue" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Reads the header field and returns the value in the &lt;ReturnChan&gt; channel.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$GetHeaderValue &lt;File&gt; &lt;HeaderFieldName&gt; &lt;ReturnChan&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;File&gt;:</em></ins> The name of the <em>.dat</em> file for which to return a header value. If only the filename is provided, the file path is determined by reading the <code>DrHoldForReviewDir</code> setting from the solution's <em>powertek.ini</em> file. If this setting is not defined, then <em>$SUPPORTDIR\Data</em> of the active solution is used.</p>
+
+
+	<p><ins><em>&lt;ReturnChan&gt;:</em></ins> The channel used to hold the return value. No type checking is performed, so a virtual output channel could be written with a string value.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Return values: 1 = busy, 0 = no error reported, -1 = error reported.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$GetHeaderValue $SUPPORTDIR\TestDataFile.dat vsSysTestName voResultChannel voStatusChannel</pre>
+
+	<p>Return value:</p>
+
+
+<pre>vsSysTestName = Dmo1TransF2</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="GetLoggedValue"></a>
+<h2 >$GetLoggedValue<a href="#GetLoggedValue" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Returns a logged value for the specified channel.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$GetLoggedValue &lt;File&gt; &lt;ChanName&gt; &lt;Row&gt; &lt;ReturnChan&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;File&gt;:</em></ins> The data file from which to obtain the logged value. If only the filename is provided, the file path is determined by reading the <code>DrHoldForReviewDir</code> setting from the <em>powertek.ini</em> file. If that setting is missing, then <em>$SUPPORTDIR\Data\HoldForReview</em> is used.</p>
+
+
+	<p><ins><em>&lt;ChanName&gt;:</em></ins> The channel name that is read from the logged file.</p>
+
+
+	<p><ins><em>&lt;Row&gt;:</em></ins> 1 - based numeric or virtual output channel of the row number in the data section. It can also be “LAST”, or "LAST-&lt;numeric offset&gt;". Negative values and zeroes are handled in relation to LAST (e.g., 0 = LAST, -1 = LAST-1, etc.).</p>
+
+
+	<p><ins><em>&lt;ReturnChan&gt;:</em></ins> The channel used to hold the return value. In this case, the return value is the value of the channel specified in the command.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Return values: 1 = busy, 0 = no error reported, -1 = error reported.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$GetLoggedValue $SUPPORTDIR\TestDataFile.dat MasterScheduleRunningTime 55 voResultChannel voStatusChannel</pre>
+
+	<p>Return value:</p>
+
+
+<pre>voResultChannel = 55.740000</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="GetRecordNum"></a>
+<h2 >$GetRecordNum<a href="#GetRecordNum" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Returns the number of data rows in a file.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$GetRecordNum &lt;File&gt; &lt;ReturnChan&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;File&gt;:</em></ins> The data file. This argument must be a complete file path and must include the <em>.dat</em> file extension.</p>
+
+
+	<p><ins><em>&lt;ReturnChan&gt;:</em></ins>  The channel used to hold the return value. It is set with the number of data lines in the file.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Return values: 1 = busy, 0 = no error reported, -1 = error reported.</p>
+
+
+	<p><strong>Limitations:</strong></p>
+
+
+	<p>Data files with multiple test runs (e.g., multiple PARAMS lines) are not supported.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$GetRecordNum $DATADIR\PR-001\Dmo1TransF2_5Trans.dat voResultChannel voStatusChannel</pre>
+
+	<p>Return values:</p>
+
+
+<pre>voResultChannel=60
+voStatusChannel=0</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="LockDataFile"></a>
+<h2 >$LockDataFile<a href="#LockDataFile" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Locks a data file and and saves its channels and last line of data to dynamic memory. Locking a data file restricts behavior of the <a class="wiki-page" href="#ChangeLoggedValue">ChangeLoggedValue</a> and <a class="wiki-page" href="#ChangeLoggedValueMany">ChangeLoggedValueMany</a> in order to improve performance. After locking the data file, <code>ChangeLoggedValue</code> and <code>ChangeLoggedValueMany</code> can be used to quickly modify the line of data stored in memory. Changes to the line are not saved to the data file until the <a class="wiki-page" href="#ReleaseDataFile">$ReleaseDataFile</a> mailslot message is sent, which unlocks the data file and saves the changes to the last line.</p>
+
+
+	<p>If a file path isn't specified in the mailslot message, it will read the file path from the <code>DRHoldForReviewDir</code> <em>powertek.ini</em> setting.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Only one data file can be locked at a time.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$LockDataFile &lt;FileName&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments</strong>:</p>
+
+
+	<p><ins><em>&lt;FileName&gt;:</em></ins> The name of the file to lock.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> The status channel used to store the result of the mailslot message.</p>
+
+
+	<p><strong>Status Values</strong>:</p>
+
+
+	<table style="margin-left: 2.5em;width:500px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width: 50px;text-align:left;"><strong>Value</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Busy</td>
+		</tr>
+		<tr>
+			<td>0</td>
+			<td>File locked successfully</td>
+		</tr>
+		<tr>
+			<td>-1</td>
+			<td>File lock failed, i.e., file does not exist</td>
+		</tr>
+		<tr>
+			<td>-2</td>
+			<td>File is already locked</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$LockDataFile Ramp_1Trans.dat voStatusChannel</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="MoveFile"></a>
+<h2 >$MoveFile<a href="#MoveFile" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Moves a file from one location to another location.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$MoveFile &lt;SrcFile&gt; &lt;DestFile&gt; [FailIfDestExist] [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;SrcFile&gt;:</em></ins> The file path and the file name of the file to be moved.</p>
+
+
+	<p><ins><em>&lt;DestFile&gt;:</em></ins> The new file path and the original file name of the file that is being moved. If a file path is not provided, then the file path from the &lt;SrcFile&gt; argument is used.</p>
+
+
+	<p><ins><em>[FailIfDestExist]:</em></ins> True/False. This is an optional setting; by default, it is set to TRUE. If TRUE, then the mailslot will fail if the destination file exists.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Requires the [FailIfDestExist] argument to be in the mailslot. Returns value: 1 = busy, 0 = no error reported, -1 = error reported.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$MoveFile $SUPPORTDIR\TestDataFile.txt $SYSTEMDIR\TestDataFile.txt TRUE voStatusChannel</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="NewestFile"></a>
+<h2 >$NewestFile<a href="#NewestFile" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Uses file name patterns to return the newest file in a specified location.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$NewestFile &lt;FileNamePattern&gt; &lt;ResultChan&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;FileNamePattern&gt;:</em></ins> The FileNamePattern is the path used to locate the most recent file in a specified location. The asterisk (*) wildcard is supported (e.g., <em>$SUPPORTDIR\Schedules\*.sc2</em>).</p>
+
+
+	<p><ins><em>&lt;ResultChan&gt;:</em></ins> The channel used to hold the return value. This channel is a virtual string that stores the most recent file that matches the specified pattern.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Return values: 1 = busy, 0 = no error reported, -1 = error reported.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$NewestFile $SUPPORTDIR\MasterSchedules\*.msf vsResultChannel voStatusChannel</pre>
+
+	<p>Returns value:</p>
+
+
+<pre>vsResultChannel = Ramp_TransF2_Loop</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="Poly"></a>
+<h2 >$Poly<a href="#Poly" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Performs a polynomial curve fit on two columns of data from a <em>.dat</em> file. The results are written to an array file.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$Poly &lt;DatFile&gt; &lt;XChan&gt; &lt;YChan&gt; &lt;Order&gt; &lt;AryFile&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;DatFile&gt;:</em></ins> Source file containing the data. Located in the path specified by the <code>DRHoldForReviewDir</code> <em>powertek.ini</em> setting.</p>
+
+
+	<p><ins><em>&lt;XChan&gt;:</em></ins> Name of the channel for the X column of data.</p>
+
+
+	<p><ins><em>&lt;YChan&gt;:</em></ins> Name of the channel for the Y column of data.</p>
+
+
+	<p><ins><em>&lt;Order&gt;:</em></ins> Requested order of fit (1 - 6). May be adjusted lower if not enough points.</p>
+
+
+	<p><ins><em>&lt;AryFile&gt;:</em></ins> Array file to contain the results. Located in the <em>VXI</em> folder of the Support directory. The format of the file is as follows:</p>
+
+
+	<p style="padding-left:1em;">&lt;points&gt; : Number of points fitted<br />&lt;order&gt;  : Order of fit<br />&lt;r2&gt;     : Statistical fit value<br />&lt;c0&gt;     : Coefficient 0<br />&lt;c1&gt;     : Coefficient 1<br />&lt;c2&gt;     : Coefficient 2<br />&lt;c3&gt;     : Coefficient 3<br />&lt;c4&gt;     : Coefficient 4<br />&lt;c5&gt;     : Coefficient 5<br />&lt;c6&gt;     : Coefficient 6</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> The channel used to display the results of the mailslot message.</p>
+
+
+	<p><strong>Status Values</strong>:</p>
+
+
+	<table style="margin-left: 2.5em;width:500px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width: 50px;text-align:left;"><strong>Value</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>0</td>
+			<td>No error reported</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Busy</td>
+		</tr>
+		<tr>
+			<td>-1</td>
+			<td>Input file error (could not be opened, not found, or no data)</td>
+		</tr>
+		<tr>
+			<td>-2</td>
+			<td>XChan not found in input file</td>
+		</tr>
+		<tr>
+			<td>-3</td>
+			<td>YChan not found in input file</td>
+		</tr>
+		<tr>
+			<td>-4</td>
+			<td>Requested order not in range (1-6)</td>
+		</tr>
+		<tr>
+			<td>-5</td>
+			<td>Could not open output file</td>
+		</tr>
+		<tr>
+			<td>-6</td>
+			<td>Curve fit error</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$Poly $DATADIR\PR-001\Dmo1Trans.dat voDmo1Variance voDmo1Feedback 4 $SUPPORTDIR\VXI\New.ary voStatusChannel</pre>
+
+	<p>Contents of <em>New.ary</em>:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>.ary File</strong></em></span><br /><img src="attachments/download/35159/NewARY.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="ReleaseDataFile"></a>
+<h2 >$ReleaseDataFile<a href="#ReleaseDataFile" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Saves the last line of the data file, if it was changed, and releases (unlocks) the file. See <a class="wiki-page" href="#LockDataFile">$LockDataFile</a> mailslot message.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$ReleaseDataFile [StatusChan]</pre>
+
+	<p><strong>Argument</strong>:</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> The status channel used to display the result of the mailslot message.</p>
+
+
+	<p><strong>Status Values</strong>:</p>
+
+
+	<table style="margin-left: 2.5em;width:500px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width: 50px;text-align:left;"><strong>Value</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Busy</td>
+		</tr>
+		<tr>
+			<td>0</td>
+			<td>File unlocked successfully</td>
+		</tr>
+		<tr>
+			<td>-1</td>
+			<td>File unlock failed, i.e., file does not exist</td>
+		</tr>
+		<tr>
+			<td>-2</td>
+			<td>No file was locked</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$ReleaseDataFile voStatusChannel</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="RenameFile"></a>
+<h2 >$RenameFile<a href="#RenameFile" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The <code>$RenameFile</code> command modifies the name of a specified file.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$RenameFile &lt;SrcFile&gt; &lt;DestFile&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;SrcFile&gt;:</em></ins> The file that is to be renamed.</p>
+
+
+	<p><ins><em>&lt;DestFile&gt;:</em></ins> The new name for the file. If a file path is not provided, then the file path from the &lt;SrcFile&gt; argument is used.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Return values: 1 = busy, 0 = no error reported, -1 = error reported.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$RenameFile $SUPPORTDIR\TestDataFile.txt $SUPPORTDIR\TestDataFile_Old.txt voStatusChannel</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="WriteToLogFile"></a>
+<h2 >$WriteToLogFile<a href="#WriteToLogFile" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>This command appends a time-stamped message to the bottom of the log file.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$WriteToLogFile &lt;File&gt; &lt;Text&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;File&gt;:</em></ins> The name of the log file to which a time-stamp is appended.</p>
+
+
+	<p><ins><em>&lt;Text&gt;:</em></ins> The message to be written to the log file. Double quotes must surround the entire argument if it contains any spaces. All text to the right of a semi-colon is lost.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Return values: 1 = busy, 0 = no error reported, -1 = error reported.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>$WriteToLogFile $SYSTEMDIR\Help\MyTestFile.txt ~"Add this message.~" voStatusChannel</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="WriteToTextFile"></a>
+<h2 >$WriteToTextFile<a href="#WriteToTextFile" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>This mailslot command appends a message to the bottom of a text file.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>$WriteToTextFile &lt;File&gt; &lt;Text&gt; [StatusChan]</pre>
+
+	<p><strong>Arguments:</strong></p>
+
+
+	<p><ins><em>&lt;File&gt;:</em></ins> The fully qualified file path of the text file.</p>
+
+
+	<p><ins><em>&lt;Text&gt;:</em></ins> This field contains the message that is appended to the bottom of the file. Double quotes must surround the entire argument if it contains any spaces. All text to the right of a semi-colon will be lost.</p>
+
+
+	<p><ins><em>[StatusChan]:</em></ins> Return values: 1 = busy, 0 = no error reported, -1 = error reported.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>MESSAGE "\\.\mailslot\FileServices&gt;&gt;$WriteToTextFile C:\ADT\iTest3.7\Data\PR-001\MyTextFile.txt ~"Add this message.~""</pre>
+
+	<p>&nbsp;</p>
+</body>
+</html>

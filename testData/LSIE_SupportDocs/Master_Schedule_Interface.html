@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Master Schedule Interface</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="Master_Schedule_Interface.html">Master Schedule Interface</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Master-Schedule-Interface"></a>
+<h1 >Master Schedule Interface<a href="#Master-Schedule-Interface" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Master-Schedule-Interface">Master Schedule Interface</a><ul><li><a href="#Channels">Channels</a></li><li><a href="#Mailslot-Messages">Mailslot Messages</a></li><li><a href="#Procedures">Procedures</a><ul><li><a href="#SysSchRun">SysSchRun</a></li><li><a href="#Menu-Bar-Items">Menu Bar Items</a></li></ul></li></ul></li></ul>
+
+
+	<a name="Channels"></a>
+<h2 >Channels<a href="#Channels" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following channels are created automatically and do not need to be added manually. They are all Virtual Outputs except the ones ending in "Name" which are Virtual Strings. On a BTS system, they will be Array channels.</p>
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Channels and Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Channels</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>MasterScheduleStatus</td>
+			<td> 0 = Loading. Reading <em>.msf</em> files.<br />1 = Loaded. Finished reading <em>.msf</em> files.<br />2 = Running. Currently executing a master schedule.<br />3 = Paused.<br />4 = Stopping. Saving state to <em>.ini</em> file.<br />5 = Stopped. Finished saving state to <em>.ini</em> file; master schedule is no longer running.<br />6 = Finished. Master schedule has run to completion.<br />7 = Starting. Master schedule is started, prompts user to load previous state from an <em>.ini</em> file.<br />8 = Failed. Unable to start a master schedule due to validation errors.<br />9 = WaitingForStartProc. Master schedule is waiting for the start or continue script to finish running</td>
+		</tr>
+		<tr>
+			<td>MasterScheduleRebuildStatus</td>
+			<td>0 = Last rebuild was successful.<br />1 = Last rebuild failed.</td>
+		</tr>
+		<tr>
+			<td>MasterScheduleName</td>
+			<td> Name of the master schedule (in the <em>.xml</em> file) currently running. This is either the name of the running master schedule or the name of the last run master schedule in the event that it has stopped.</td>
+		</tr>
+		<tr>
+			<td>MasterScheduleFileName</td>
+			<td> Name of the <em>.xml</em> file matching the same conditions as detailed in MasterScheduleName.</td>
+		</tr>
+		<tr>
+			<td>MasterScheduleStepNumber</td>
+			<td> The current step in the master schedule.</td>
+		</tr>
+		<tr>
+			<td>MasterScheduleRunningTime</td>
+			<td> Indicates the running time (in seconds) that the schedule has been running and any paused time.</td>
+		</tr>
+		<tr>
+			<td>MasterScheduleLoopNumber</td>
+			<td> The number of the current iteration of a loop. The number is one based.</td>
+		</tr>
+		<tr>
+			<td>MasterSubScheduleName</td>
+			<td> Name of the master sub-schedule (in the <em>.xml</em> file) currently running. This is either the name of the running master schedule or the name of the last run master schedule in the event that it has stopped.</td>
+		</tr>
+		<tr>
+			<td>MasterSubScheduleFileName</td>
+			<td> Name of the <em>.xml</em> file matching the same conditions as detailed in MasterSubScheduleName.</td>
+		</tr>
+		<tr>
+			<td>MasterSubScheduleStepNumber</td>
+			<td>The current step of a sub-schedule. </td>
+		</tr>
+		<tr>
+			<td>MasterSubScheduleRunningTime</td>
+			<td>Indicates the running time (in seconds) that the sub-schedule has been running and any paused time.</td>
+		</tr>
+		<tr>
+			<td>MasterSubScheduleLoopNumber</td>
+			<td>The number of the current iteration of a loop. The number is one based. </td>
+		</tr>
+		<tr>
+			<td>MasterSchedulePromptChoice</td>
+			<td>Indicates the user's choice in the Restart dialog. Can be used by application to avoid multiple restart prompts.<br />Master Schedule started without restart file = 4 (prompt does not appear in this case)<br />Restart = 3<br />Continue = 2<br />Cancel/Close Box = 1</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Mailslot-Messages"></a>
+<h2 >Mailslot Messages<a href="#Mailslot-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Mailslot Messages and Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Mailslot Message</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>GenericMsg MasterSchedule Rebuild All</td>
+			<td>Initiates a rebuild of a master schedule. </td>
+		</tr>
+		<tr>
+			<td>GenericMsg MasterSchedule Pause </td>
+			<td>Pauses the currently running master schedule. </td>
+		</tr>
+		<tr>
+			<td>GenericMsg MasterSchedule Stop </td>
+			<td>Stops the currently running master schedule.</td>
+		</tr>
+		<tr>
+			<td>GenericMsg MasterSchedule Resume </td>
+			<td>Resumes a paused master schedule. </td>
+		</tr>
+		<tr>
+			<td>GenericMsg MasterSchedule Next </td>
+			<td>Causes the master schedule to proceed to the next step. The message only works if the master schedule is currently paused. </td>
+		</tr>
+		<tr>
+			<td>GenericMsg MasterSchedule NotifyEvents &lt;Text&gt; </td>
+			<td>This feature enables user comments to be added to the Master Schedule Event Log. The mailslot message adds the text indicated after NotifyEvents to the event log with the current step name. If there is no current step, the log will display ???. Any messages that are longer than 255 bytes are truncated to 255. To use this feature, the following <em>powertek.ini</em> setting must be present: <code>MasterScheduleLogEvents=TRUE</code>. <br /><strong>Example</strong><br /><pre>
+MESSAGE "\\.\mailslot\Data_Engine&gt;&gt;GenericMsg MasterSchedule NotifyEvents Test Result Failed" 
+</pre></td>
+		</tr>
+		<tr>
+			<td>MasterSchedule Continue &lt;MS Name&gt;</td>
+			<td>Updates <em>MasterSchedules.lst</em>, copies necessary files to remote PC, and then attempts to continue the specified schedule. If it cannot be continued, then it is started from the beginning.<br />&nbsp;<br /><ins><strong>Note:</strong></ins> <em>MasterSchedules.lst</em> is an auto-generated file created the first time a master schedule is run.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Procedures"></a>
+<h2 >Procedures<a href="#Procedures" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="SysSchRun"></a>
+<h3 >SysSchRun<a href="#SysSchRun" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>SysSchRun is the default procedure that is required to run a master schedule; it causes the master schedule to remain on its current step until the schedule has completed, ensuring that the schedule steps are executed properly. The procedure must remain running until the schedule is complete. The procedure to run can be switched through use of the <code>ScheduleRunScript</code> <em>powertek.ini</em> setting.</p>
+
+
+	<a name="Menu-Bar-Items"></a>
+<h3 >Menu Bar Items<a href="#Menu-Bar-Items" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <strong>Start</strong> and <strong>Stop</strong> items are tied to VCL procedures, where each procedure name is stored in the <em>powertek.ini</em> file and is executed when one of these <a class="wiki-page" href="AutomationPanel_Operators_Guide.html#Menu-Bar">Master Schedule panel menu bar buttons</a> are clicked. Refer to the <a class="wiki-page" href="ITest_INI_Options.html#Master-Schedules">Master Schedules INI Options</a> documentation for more information.</p>
+
+
+	<p>Other master schedule items are optional and use <em>powertek.ini</em> settings.</p>
+</body>
+</html>

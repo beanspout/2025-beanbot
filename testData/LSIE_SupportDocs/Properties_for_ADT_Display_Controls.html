@@ -1,0 +1,1877 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Properties for ADT Display Controls</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="Properties_for_ADT_Display_Controls.html">Properties for ADT Display Controls</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Properties-for-ADT-Display-Controls"></a>
+<h1 >Properties for ADT Display Controls<a href="#Properties-for-ADT-Display-Controls" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Properties-for-ADT-Display-Controls">Properties for ADT Display Controls</a><ul><li><a href="#Overview">Overview</a></li></ul>
+</li><li><a href="#ADTBar">ADTBar</a></li><li><a href="#ADTButton">ADTButton</a></li><li><a href="#ADTChartPlus">ADTChartPlus</a></li><li><a href="#ADTCombo">ADTCombo</a></li><li><a href="#ADTDataEntry">ADTDataEntry</a></li><li><a href="#ADTDigital">ADTDigital</a></li><li><a href="#ADTGauge">ADTGauge</a></li><li><a href="#ADTImage">ADTImage</a></li><li><a href="#ADTIndicator">ADTIndicator</a></li><li><a href="#ADTSeparator">ADTSeparator</a></li><li><a href="#ADTStripChart">ADTStripChart</a></li><li><a href="#ADTTitle">ADTTitle</a></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>These properties are useful when issuing the following mailslot message: <br /><pre>
+\\.\mailslot\DisplayName&gt;&gt;$SETITEMPROPERTY ControlID PropertyName PropertyValue
+</pre></p>
+
+
+	<p>The following are the names of the properties of the ADT controls that can be changed by mailslot message to the display. These property names may or may not be the same as the property names shown on the control property setup dialogs. Most of these property names are self-explanatory.  The first column is the data type of the property.</p>
+
+
+	<p>The int or OLE_COLOR for color is the color RGB values. “BSTR” means the type of the property is string. “int”, “float”, “long”, “short”, “double” means the type of the property is number. “Boolean” means the property value should be 1 or 0.</p>
+
+
+	<p>Font property syntax is complicated.<br />&lt;font name&gt;,&lt;bold&gt;,,&lt;italic&gt;,&lt;font size&gt;,,&lt;strikeout&gt;,&lt;underline&gt;, <br />example: Arial,0,0,0,97500,0,0,0,400</p>
+
+
+	<a name="ADTBar"></a>
+<h1 >ADTBar<a href="#ADTBar" class="wiki-anchor">&para;</a></h1>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>ADTBar Properties</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Type</strong></td>
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Notes</strong></td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>MinValue</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>MaxValue</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>TicInterval</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>TicsPerLabel</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>NumMajorIntervals</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>NumSubIntervals</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ShowLimitsBar</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ChannelName</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>MinorTicStyle</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>MajorTicStyle</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>MinorTicColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>MajorTicColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>MinorTicLength</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>MajorTicLength</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>GrabHandleStyle</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>ReleaseChangeRate</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>SliderStepSize</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ShowArrowButtons</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>DisableSlider</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>BarBackColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>font</td>
+			<td><strong>RangeFont</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>font</td>
+			<td><strong>BarFont</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>LimitColorsActive</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>BarStyle</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>Orientation</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>UpdateMode</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>LabelField</strong>*</td>
+			<td>values are case-sensitive</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>BackColor1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>BackColor2</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>ArrowColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>ArrowBackColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>BarColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>BarBackColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>PointerColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>SliderColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>TextColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>TargetStyle</strong></td>
+			<td>values: 600,601,602</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>HighStyle</strong></td>
+			<td>values: 600,601,602</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LowStyle</strong></td>
+			<td>values: 600,601,602</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>TargetColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>HighColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LowColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>ResetIndicators</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>TargetChannelName</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>Orientation</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ChangesOk</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ShowDQRange</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>DQArcColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ShowBorder</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ChanDisplayUnit</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>TargetDisplayUnit</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ValuePrecision</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;">values: Automatic, Channel Name, Customer Name, Module Name, Alias, Description</span>
+
+	<p>&nbsp;</p>
+
+
+	<a name="ADTButton"></a>
+<h1 >ADTButton<a href="#ADTButton" class="wiki-anchor">&para;</a></h1>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>ADTButton Properties</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Type</strong></td>
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Notes</strong></td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>OffText</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>OnText</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>OffBkColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>OnBkColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>OffForeColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>OnForeColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>OffMessage</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>OnMessage</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ChannelName</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>RadioIndex</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>Type</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>SendMessagesOnChannelChanged</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>ButtonNum</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>OffBitmapFilePath</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>OnBitmapFilePath</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>BorderType</strong></td>
+			<td>values: 0 raised, 1 bump, 2 etched</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>TooltipText</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ChangesOK</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>RoundedEdges</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>BackColorEnd</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>EnableShading</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="ADTChartPlus"></a>
+<h1 >ADTChartPlus<a href="#ADTChartPlus" class="wiki-anchor">&para;</a></h1>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>ADTChartPlus</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Type</strong></td>
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Notes</strong></td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ChannelName</strong>*</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>LabelField</strong>**</td>
+			<td>values are case-sensitive</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ChartType</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>Rate</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ChangesOK</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>Points</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>GridLineControl</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>NumBufPages</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>ChartWidthSeconds</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ManualMinX1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ManualMaxX1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ManualMinY1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ManualMaxY1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ManualMinY2</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ManualMaxY2</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ManualMinY3</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ManualMaxY3</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ManualMinY4</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ManualMaxY4</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>NumberGridLinesX1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>NumberGridLinesY1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>NumberGridLinesY2</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>NumberGridLinesY3</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>NumberGridLinesY4</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LabelIntervalX1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LabelIntervalY1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LabelIntervalY2</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LabelIntervalY3</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LabelIntervalY4</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AxisChannel1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AxisChannel2</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AxisChannel3</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AxisChannel4</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AxisChannel5</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AxisChannel6</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AxisChannel7</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AxisChannel8</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AxisChannel9</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AxisChannel10</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AxisChannel11</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AxisChannel12</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ShowDigitalValues</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>GraphBackColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>GraphForeColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>DeskColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>ShadowColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>TextColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>XAxisColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>YAxisColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>font</td>
+			<td><strong>LegendFont</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>font</td>
+			<td><strong>LabelFont</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>LabelX1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>LabelY1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>LabelY2</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>LabelY3</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>LabelY4</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ShowTopBar</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>MaximumNumPoints</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>XChannelName</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>BorderType</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ShowLegend</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ShowLegendUnits</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LegendLocation</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>TimeFormat</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;">syntax: &lt;channel name&gt;|&lt;axis&gt; Axis|&lt;line thickness&gt;|&lt;line color (RGB decimal)&gt;|&lt;line type&gt;|&lt;point type&gt;|&lt;units&gt;| &lt;loaded file (shadow) line color (RGB decimal)&gt;|&lt;pointsize&gt; Multiple channels are defined as a comma separated list.</span><br />** <span style="font-size:0.90em;">values: Automatic, Channel Name, Customer Name, Module Name, Alias, Description</span>
+
+	<p>&nbsp;</p>
+
+
+	<a name="ADTCombo"></a>
+<h1 >ADTCombo<a href="#ADTCombo" class="wiki-anchor">&para;</a></h1>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>ADTCombo Properties</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Type</strong></td>
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Notes</strong></td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>Picklist</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ChannelName</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>DisabledChannelName</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>SendMessagesOnChannelChanged</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>HideSelector</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ChangesOK</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>BackColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ForeColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="ADTDataEntry"></a>
+<h1 >ADTDataEntry<a href="#ADTDataEntry" class="wiki-anchor">&para;</a></h1>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>ADTDataEntry Properties</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Type</strong></td>
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Notes</strong></td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>EditText</strong></td>
+			<td>initial text field value</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>PromptString</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ChannelName</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>InputType</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>DataType</strong></td>
+			<td>data destination</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>InputLength</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>DisplayBorder</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ChangesOK</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>InputPrecision</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>BackColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ForeColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="ADTDigital"></a>
+<h1 >ADTDigital<a href="#ADTDigital" class="wiki-anchor">&para;</a></h1>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>ADTDigital</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Type</strong></td>
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Notes</strong></td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>BackColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ForeColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ChannelName</strong></td>
+			<td>delimiters: \r\n, semicolon, \n, comma</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>DataSource</strong></td>
+			<td>not implemented</td>
+		</tr>
+		<tr>
+			<td>var</td>
+			<td><strong>Variant</strong></td>
+			<td>not implemented</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>Enabled</strong></td>
+			<td>not implemented</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>LimitColorsActive</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LabelWidth</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>ValueWidth</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>UnitsWidth</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>DisplayFormat</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>LabelField</strong>*</td>
+			<td>values are case-sensitive</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>DrawBorders</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>Editable</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>BackColor1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>DisplayUnits</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>font</td>
+			<td><strong>Font</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>DisplayPrecisions</strong>**</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.80em;">values: Automatic, Channel Name, Customer Name, Module Name, Alias, Description, Customer Name/Alias, Alias/Customer Name</span>
+
+** <span style="font-size:0.80em;">syntax: set each channel separately using a comma delimited list</span>
+
+	<p>&nbsp;</p>
+
+
+	<a name="ADTGauge"></a>
+<h1 >ADTGauge<a href="#ADTGauge" class="wiki-anchor">&para;</a></h1>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>ADTGauge</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Type</strong></td>
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Notes</strong></td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ShowDQRange</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>DQArcColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>DisplayUnit</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>TargetDisplayUnit</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ChannelName</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>TargetChannelName</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>LabelField</strong>*</td>
+			<td>values are case-sensitive</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>GaugeStyle</strong></td>
+			<td>values: 11 or 12</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ChangesOK</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>MinVal</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>MaxVal</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>value</strong></td>
+			<td>not implemented</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>CtrlAddr</strong></td>
+			<td>not implemented</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>TicInterval</strong></td>
+			<td>not implemented</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>FontSize</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>NumSubIntervals</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>NumMajorIntervals</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>TicsPerLabel</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>StartAngle</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>EndAngle</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>font</td>
+			<td><strong>ValueFont</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>font</td>
+			<td><strong>LabelFont</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>GaugeColor</strong></td>
+			<td>not implemented</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>CurrentStyle</strong>**</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>TargetStyle</strong>**</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>HighStyle</strong>**</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LowStyle</strong>**</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>CurrentWidth</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>TargetWidth</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>HighWidth</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LowWidth</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>CurrentLength</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>TargetLength</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>HighLength</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LowLength</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>CurrentColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>TargetColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>HighColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LowColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>DialTextColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>RimTopColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>RimBottomColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>FaceTopColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>FaceBottomColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LargeTicColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>SmallTicColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LargeTicStyle</strong>***</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>SmallTicStyle</strong>***</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>ChannelNameTextColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>CurrentValueTextColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>WindowBkndColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ResetIndicators</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>OuterFraction</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>InnerFraction1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>InnerFraction2</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>LimitFraction</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>TicFraction</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>DialFraction</strong></td>
+			<td>not implemented</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ShowBorder</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>DisplayUnit</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>TargetDisplayUnit</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>DisplayPrecision</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;">values: Automatic, Channel Name, Customer Name, Module Name, Alias, Description</span><br />** <span style="font-size:0.90em;">values: 100 - none, 101 - line style, 102 - pointer style</span><br />*** <span style="font-size:0.90em;">values: 1001 - circle, 1002 - line, 1003 - square, 1005 - none</span>
+
+	<p>&nbsp;</p>
+
+
+	<a name="ADTImage"></a>
+<h1 >ADTImage<a href="#ADTImage" class="wiki-anchor">&para;</a></h1>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>ADTImage</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Type</strong></td>
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Notes</strong></td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ImageFilePath</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>short</td>
+			<td><strong>BorderType</strong></td>
+			<td>values: 0 - none, 1 - etched, 2 - raised, 3 - sunken</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="ADTIndicator"></a>
+<h1 >ADTIndicator<a href="#ADTIndicator" class="wiki-anchor">&para;</a></h1>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>ADTIndicator</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Type</strong></td>
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Notes</strong></td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ChannelName</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>Edge</strong></td>
+			<td>values: 5 - raised, 6 - etched, 9 - bump, 10 - sunken</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>CenterPercent</strong></td>
+			<td>center bar placement</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>EnumString</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>IndicatorType</strong></td>
+			<td>values: 0 - string, 1 - color, 2 - both, 3 - image</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>LabelField</strong>*</td>
+			<td>values are case-sensitive</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ShowBorder</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ValueStrings</strong></td>
+			<td>syntax: value, string, color, image filepath</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ChangesOK</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>BackColorEnd</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>EnableShading</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>BackColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ForeColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;">values: Automatic, Channel Name, Customer Name, Module Name, Alias, Description</span>
+
+	<p>&nbsp;</p>
+
+
+	<a name="ADTSeparator"></a>
+<h1 >ADTSeparator<a href="#ADTSeparator" class="wiki-anchor">&para;</a></h1>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>ADTSeparator</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Type</strong></td>
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Notes</strong></td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ForeColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>BackColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>Orientation</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>Thickness</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>Depth</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ChangesOK</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="ADTStripChart"></a>
+<h1 >ADTStripChart<a href="#ADTStripChart" class="wiki-anchor">&para;</a></h1>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>ADTStripChart</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Type</strong></td>
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Notes</strong></td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ChannelName</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>LabelField</strong>*</td>
+			<td>values are case-sensitive</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>Rate</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ChangesOK</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>Points</strong></td>
+			<td>not implemented</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>AproxMemSize</strong></td>
+			<td>not implemented</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>NumBufPages</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>ChartWidthSeconds</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMinY1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMaxY1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMinY2</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMaxY2</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMinY3</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMaxY3</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMinY4</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMaxY4</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMinY5</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMaxY5</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMinY6</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMaxY6</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMinY7</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMaxY7</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMinY8</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMaxY8</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMinY9</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMaxY9</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMinY10</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMaxY10</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMinY11</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMaxY11</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMinY12</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>double</td>
+			<td><strong>ManualMaxY12</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ShowDigitalValues</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>GraphBackColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>GraphForeColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>DeskColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>ShadowColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>TextColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>XAxisColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>YAxisColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>font</td>
+			<td><strong>SubtitleFont</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>font</td>
+			<td><strong>MaintitleFont</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>font</td>
+			<td><strong>LabelFont</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>MainTitle</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>SubTitle</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>GridLineControl</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;">values: Automatic, Channel Name, Customer Name, Module Name, Alias, Description</span>
+
+	<p>&nbsp;</p>
+
+
+	<a name="ADTTitle"></a>
+<h1 >ADTTitle<a href="#ADTTitle" class="wiki-anchor">&para;</a></h1>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>ADTTitle</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Type</strong></td>
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Notes</strong></td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>BackColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>ForeColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bstr</td>
+			<td><strong>Text</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>short</td>
+			<td><strong>BorderType</strong></td>
+			<td>values: 0 - none, 1 - etched, 2 - raised, 3 - sunken</td>
+		</tr>
+		<tr>
+			<td>short</td>
+			<td><strong>Alignment</strong>*</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>short</td>
+			<td><strong>Orientation</strong></td>
+			<td>values: 0 - horizontal, 1 - bottom-to-top, 2 - top-to-bottom</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ChangesOK</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;">values: 0 - Top Left, 1 - Middle Left, 2 - Bottom Left, 3 - Top Middle, 4 - Middle Middle, 5 - Bottom Middle, 6 - Top Right, 7 - Middle Right, 8 - Bottom Right</span>
+
+	<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,549 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>SystemAction VCL Function</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="SystemAction_VCL_Function.html">SystemAction VCL Function</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="SystemAction-and-ModuleAction"></a>
+<h1 >SystemAction and ModuleAction<a href="#SystemAction-and-ModuleAction" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#SystemAction-and-ModuleAction">SystemAction and ModuleAction</a><ul><li><a href="#Overview">Overview</a></li></ul>
+</li><li><a href="#Built-In-Actions-and-States">Built-In Actions and States</a></li><li><a href="#Custom-Actions-and-the-XML-Configuration-File">Custom Actions and the XML Configuration File</a></li><li><a href="#SystemAction-VCL-Function">SystemAction VCL Function</a><ul><li><a href="#Syntax">Syntax</a></li><li><a href="#Logic">Logic</a></li></ul>
+</li><li><a href="#System-Channels">System Channels</a></li><li><a href="#Constraints">Constraints</a></li><li><a href="#ModuleAction">ModuleAction</a><ul><li><a href="#Differences-Between-ModuleAction-and-SystemAction">Differences Between ModuleAction and SystemAction</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>SystemAction and ModuleAction are built-in functions that can be triggered to perform additional module actions within Solution.Demo. Using these functions avoids the necessity of working with module management code.</p>
+
+
+	<p>Replacing VCL with these functions helps to reduce duplicate code throughout your solution. Because SystemAction and ModuleAction are built-in and do not require any VCL construction, it is not possible to break a module when upgrading your solution. Solutions working in iTest 3.4 are usable by future versions of iTest without having to make any additional module changes.</p>
+
+
+	<a name="Built-In-Actions-and-States"></a>
+<h1 >Built-In Actions and States<a href="#Built-In-Actions-and-States" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>The SystemAction VCL function (described in detail further down the page) takes the following three arguments:</p>
+
+
+<pre>
++0.0 SET retval SystemAction("INIT", flgActionComplete, "ALL")
+</pre>
+
+	<p>The first argument is a string constant or string channel, and it defines the action that you wish to trigger. In this case, the action to trigger is INIT or "Initialize." The second argument is the virtual output channel that will get set to "1" by the SystemAction function when the action is complete. The third argument is a string that represents which modules the SystemAction function will send this action to. In this case, all modules are to be sent the INIT action, no matter what their current state.</p>
+
+
+	<p>Each built-in action has a start state and an end state. These start and end states have both a channel value (<code>NumSysStatus</code>) and a string channel label (<code>VsSysStatus</code>) that gets set by the SystemAction function when an action is triggered. For example, the start state for the INIT action has a <code>NumSysStatus</code> value of 3 and a <code>VsSysStatus</code> label of "Initializing."</p>
+
+
+	<p>Using the example above, SystemAction will trigger the INIT action for all modules. Next, it will update the <code>NumSysStatus</code> system channel for every module to "3" and the <code>VsSysStatus</code> system channel to "Initializing" for the start state, and then to "4" and "Initialized" when the INIT action is complete.</p>
+
+
+	<p>The default built-in actions, along with their start and end state values, are summarized in the following table:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Built-in Action Details</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Action</strong> </td>
+			<td style="text-align:left;"><strong>Start State</strong> </td>
+			<td style="text-align:left;"><strong>End State</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> INIT </td>
+			<td> 3 = Initializing </td>
+			<td> 4 = Initialized </td>
+			<td>Started on launch and after test builder completes.</td>
+		</tr>
+		<tr>
+			<td> STOP </td>
+			<td> 5 = Stopping </td>
+			<td> 6 = Stopped </td>
+			<td>Test cell stop.</td>
+		</tr>
+		<tr>
+			<td> READY </td>
+			<td> 7 = Getting ready </td>
+			<td> 8 = Ready </td>
+			<td>Prepare test cell and equipment for test.</td>
+		</tr>
+		<tr>
+			<td> RESET </td>
+			<td> 9 = Resetting </td>
+			<td> 10 = Reset </td>
+			<td>Reset safeties.</td>
+		</tr>
+		<tr>
+			<td> START </td>
+			<td> 11 = Starting </td>
+			<td> 12 = Started </td>
+			<td>Start the engine (or UUT).</td>
+		</tr>
+		<tr>
+			<td> IDLE </td>
+			<td> 13 = Idling </td>
+			<td> 14 = Idle </td>
+			<td>Idle the engine (or UUT idle).</td>
+		</tr>
+		<tr>
+			<td> EXIT </td>
+			<td> 15 = Exiting</td>
+			<td> 16 = Exit </td>
+			<td>iTest is exiting; shutdown the module.</td>
+		</tr>
+		<tr>
+			<td> ENGINESTOP </td>
+			<td> 17 = Stopping </td>
+			<td> 8 = Ready </td>
+			<td>Stopping the engine (or UUT).</td>
+		</tr>
+		<tr>
+			<td> RESETFAULTS </td>
+			<td> None </td>
+			<td> None </td>
+			<td>Acknowledge or clear faults.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p>Most of the built-in actions also have conditional checks, or state checks, that need to be met before the SystemAction function can execute the action. The INIT action has no required check. It does not matter what state the module was in before the action was sent; it automatically sets the <code>NumSysStatus</code> channel value to 3 and starts initializing. For the READY action, however, the requirement is that the <code>NumSysStatus</code> channel value must be set at less than 4 first, which means that the INIT action must first be run to completion (3 then 4) before READY can be triggered.</p>
+
+
+	<p>If an action is sent and a module's channel value is not in the required state, you will be notified by a system fault (triggered by the application code).</p>
+
+
+	<p>The table below summarizes the required state checks for the default actions:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>State Checks</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Action</strong> </td>
+			<td style="text-align:left;"><strong>State Check</strong> </td>
+		</tr>
+		<tr>
+			<td>INIT </td>
+			<td>None</td>
+		</tr>
+		<tr>
+			<td>STOP</td>
+			<td>None</td>
+		</tr>
+		<tr>
+			<td>READY</td>
+			<td>numSysStatus < 4</td>
+		</tr>
+		<tr>
+			<td>RESET</td>
+			<td>numSysStatus >= 10</td>
+		</tr>
+		<tr>
+			<td>START</td>
+			<td>numSysStatus >= 12</td>
+		</tr>
+		<tr>
+			<td>IDLE</td>
+			<td>numSysStatus < 12<br />numSysStatus >= 14</td>
+		</tr>
+		<tr>
+			<td>EXIT</td>
+			<td>numSysStatus > 6</td>
+		</tr>
+		<tr>
+			<td>ENGINESTOP</td>
+			<td>numSysStatus < 9</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p>These actions are guaranteed to be supported by iTest. The numeric values of the actions and the state transitions are consistent, and the configurability of these actions is minimal.</p>
+
+
+	<a name="Custom-Actions-and-the-XML-Configuration-File"></a>
+<h1 >Custom Actions and the XML Configuration File<a href="#Custom-Actions-and-the-XML-Configuration-File" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul>
+	<li>The name of the file is <em>SystemActions.xml</em>, and it should be in the solution folder. No GUI editor exists. </li>
+		<li>It is used to customize the behavior of the built-in actions or add new actions and states. </li>
+		<li>Custom actions are defined in the XML file. </li>
+		<li>The XML file has the following sections:</li>
+	</ul>
+
+
+<pre><code class="XML syntaxhl" data-language="XML"><span class="nt">&lt;Actions&gt;</span>
+    <span class="nt">&lt;Action&gt;</span>
+        <span class="nt">&lt;Name&gt;</span>MyCustomAction1<span class="nt">&lt;/Name&gt;</span>
+        <span class="nt">&lt;Timeout&gt;</span>60<span class="nt">&lt;/Timeout&gt;</span>
+        <span class="nt">&lt;StartState&gt;</span>18<span class="nt">&lt;/StartState&gt;</span>
+        <span class="nt">&lt;Logging&gt;</span>Verbose<span class="nt">&lt;/Logging&gt;</span>
+        <span class="nt">&lt;StartStateText&gt;</span>Custom1Starting<span class="nt">&lt;/StartStateText&gt;</span>
+        <span class="nt">&lt;EndState&gt;</span>19<span class="nt">&lt;/EndState&gt;</span>
+        <span class="nt">&lt;EndStateText&gt;</span>Custom1Started<span class="nt">&lt;/EndStateText&gt;</span>
+                <span class="nt">&lt;CheckBusyFlag&gt;</span>FALSE<span class="nt">&lt;/CheckBusyFlag&gt;</span>
+        <span class="nt">&lt;StateChecks&gt;</span>
+            <span class="nt">&lt;StateCheck&gt;</span>
+                <span class="nt">&lt;Equation&gt;</span><span class="cp">&lt;![CDATA[numSysStatus &lt; 4]]&gt;</span><span class="nt">&lt;/Equation&gt;</span>
+                <span class="nt">&lt;Text&gt;</span>Must not be less than 4<span class="nt">&lt;/Text&gt;</span>
+            <span class="nt">&lt;/StateCheck&gt;</span>
+                <span class="nt">&lt;StateCheck&gt;</span>
+                       <span class="nt">&lt;Equation&gt;</span>numSysStatus <span class="ni">&amp;gt;</span>= 8<span class="nt">&lt;/Equation&gt;</span>
+               <span class="nt">&lt;/StateCheck&gt;</span>
+           <span class="nt">&lt;/StateChecks&gt;</span>
+    <span class="nt">&lt;/Action&gt;</span>
+    <span class="nt">&lt;Action&gt;</span>
+        <span class="nt">&lt;Name&gt;</span>MyCustomAction2<span class="nt">&lt;/Name&gt;</span>
+            .
+            .
+            .
+    <span class="nt">&lt;/Action&gt;</span>
+<span class="nt">&lt;/Actions&gt;</span>
+</code></pre>
+
+	<ul>
+	<li>Due to XML syntax, the characters <, >, ', ", and &#38; cannot be used directly in the text sections. They must be escaped by one of two methods. See the above sample for examples.</li>
+		<li>The following table lists the escape codes for the characters:</li>
+	</ul>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Character Escape Codes</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="background:#cccaca;">
+			<td style="text-align:left;"><strong>Character</strong> </td>
+			<td style="text-align:left;"><strong>Escape Code</strong> </td>
+		</tr>
+		<tr>
+			<td> < </td>
+			<td> &amp;lt; </td>
+		</tr>
+		<tr>
+			<td> > </td>
+			<td> &amp;gt; </td>
+		</tr>
+		<tr>
+			<td> &#38; </td>
+			<td> &amp;amp; </td>
+		</tr>
+		<tr>
+			<td> ' </td>
+			<td> &amp;apos; </td>
+		</tr>
+		<tr>
+			<td> " </td>
+			<td> &amp;quot; </td>
+		</tr>
+	</table>
+
+
+
+
+	<ul>
+	<li>The name can be one of INIT, READY, RESET, START, STOP, IDLE, or EXIT to override the behavior of one of the built-ins, or it can be the name of a custom state. A custom state cannot have any spaces. </li>
+		<li>The timeout value is the number of seconds SystemAction waits before continuing. The minimum timeout value for SystemAction is 1.</li>
+		<li>The Start State is set when the action begins (it sets the <code>vsSysStatus</code> and <code>numSysStatus</code> channels).</li>
+		<li>The End State is set if the action finishes correctly. </li>
+		<li>Setting logging to Verbose gets more Softpanel messages. Leaving this setting out results in a minimum of Softpanel messages during execution of an action. </li>
+		<li>New Start State and New End State values and strings cannot overlap with another action.</li>
+		<li>Start State and End State must be consecutive numerically.</li>
+		<li>Start State and End State text labels can use the language macros from the language file. See <a class="wiki-page" href="ITest_Language_File.html">iTest Language File</a>.</li>
+		<li><code>CheckBusyFlag</code> is used to turn off checking the busy flag for that custom action. This means that this action can run in parallel with other actions. Built-in actions are mutually exclusive. However, you can design custom actions to execute independently. It is recommended that custom actions (which do not check the busy flag) also not include Start State and End State numbers or text because they could then overwrite the Start State and End State values being written by a built-in action. </li>
+		<li>Start State and End State cannot overlap with a built-in action; therefore, the first number that can be used is 18.</li>
+		<li>Custom actions do not need to provide state values and state text. If it does not provide these, then <code>vsSysStatus</code> and <code>numSysStatus</code> are not updated during those actions. </li>
+		<li>StateCheck is a series of equations that is checked for true before the action occurs. If any are true, the action aborts. The StateCheck syntax is operand operator operand. <br /><pre><code class="C syntaxhl" data-language="C"> <span class="n">numSystatus</span> <span class="o">&gt;</span> <span class="mi">4</span>
+</code></pre></li>
+		<li>The 7 built-in actions can only have StateText, Logging, Timeout, and StateChecks configured from the XML. All other settings will be ignored for built-ins. </li>
+		<li>The advantage of using custom actions instead of writing new actions in VCL is that you do not have to worry about module communication and handling. All of that is already managed.</li>
+	</ul>
+
+
+	<a name="SystemAction-VCL-Function"></a>
+<h1 >SystemAction VCL Function<a href="#SystemAction-VCL-Function" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Syntax"></a>
+<h2 >Syntax<a href="#Syntax" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The SystemAction VCL function uses the following syntax:</p>
+
+
+<pre>
++0.0 SET retval SystemAction(&lt;Action&gt;,&lt;VirtualOutputChannel&gt;,&lt;Module&gt;)
+</pre>
+
+	<p><strong>Argument Details:</strong></p>
+
+
+	<p><em>&lt;Action&gt;:</em> The first argument can be a string constant or a string channel. The value of this channel should be a built-in action such as, "INIT", "READY", "RESET", "START", "STOP", "IDLE", or "EXIT". It can also be the name of a custom action defined in <em>SystemActions.xml</em>.</p>
+
+
+	<p><em>&lt;VirtualOutputChannel&gt;:</em> The second argument is a virtual output channel that is set to 1 when the action is complete.</p>
+
+
+	<p><em>&lt;Module&gt;:</em> The third argument is a string that represents the module that the action is sent to. If the module string is "ALL" or empty (""), then all modules receive the action. This string can also represent multiple module IDs by specifying a substring (e.g., "Eb"), which would call all modules with "Eb" in the module ID.</p>
+
+
+	<p><strong>Example</strong>:</p>
+
+
+<pre>
++0.0 SET retval SystemAction("INIT",flgActionComplete,"ALL")
+</pre>
+
+	<p><strong>Return Values:</strong></p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>System Action Return Values</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Value</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">0</td>
+			<td>Action executed successfully.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-1</td>
+			<td><em>SystemActions.xml</em> &lt;statecheck&gt; evaluates to true.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-2</td>
+			<td>Action name not found in <em>SystemActions.xml</em>.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-3</td>
+			<td>System busy (channel: <code>flgSysBusy=1</code>).</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-4</td>
+			<td>Action already requested and currently in-progress.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Logic"></a>
+<h2 >Logic<a href="#Logic" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>SystemAction Logic is as follows:</p>
+
+
+	<ul>
+	<li>Check the <code>flgSysBusy</code> flag. If it is not zero, then exit. The STOP, ENGINESTOP, and RESETFAULTS actions do not check <code>flgSysBusy</code>. </li>
+		<li>Check the StateChecks to see if you can execute this action. StateChecks comes from the XML file, but include the following:
+	<ul>
+	<li>EXIT will not start if <code>flgSysRunning = 1</code>.  </li>
+	</ul>
+	</li>
+		<li>Set <code>flgSysBusy = 1</code>.</li>
+		<li>Set Begin State channels (<code>vsSysStatus</code> and <code>numSysStatus</code>). </li>
+		<li>For READY, RESET, and INIT states, module fault flags and <code>flgSysFault</code> will be reset to 0.</li>
+		<li>Call the SysPre <em>Action</em> VCL function, where the action is Idle, Reset, Stop, etc. (if it exists).</li>
+	</ul>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">If the <code>vsSysSafetyModule</code> virtual string channel is not empty for the RESET built-in action and contains a valid module ID, then that module's reset action is called before calling all of the other module reset actions.</td>
+		</tr>
+	</table>
+
+
+
+
+	<ul>
+	<li>For each module that is not disabled (<code>flgMIDDisabled = 1</code>), call the MID <em>Action</em> module function (where <em>Action</em> is Init, Ready, etc.) if it exists. If the module does not have that function defined (and it is a built-in action), then call the MID <em>Action</em> module function with the <code>numSysAction</code> channel set to:
+	<ul>
+	<li> 1 (INIT)</li>
+		<li> 2 (READY)</li>
+		<li> 3 (RESET)</li>
+		<li> 4 (START)</li>
+		<li> 5 (IDLE)</li>
+		<li> 6 (STOP)</li>
+		<li> 7 (EXIT)</li>
+		<li>11 (ENGINESTOP)</li>
+	</ul>
+	</li>
+		<li>Check for faults (<code>vsSysStatus=Fault</code>); exit action on fault unless the action is Init.
+	<ul>
+	<li>On exit, final values for <code>numSysStatus</code> or <code>vsSysStatus</code> are not set.</li>
+		<li>The "Fault" setting for <code>vsSysStatus</code> is not case sensitive.</li>
+	</ul>
+	</li>
+		<li>If there is no fault or if the action is Init, call the SysPost <em>Action</em> VCL function, where the action is Idle, Reset, Stop, etc. (if it exists).</li>
+		<li>For STOP and EXIT states, mailslot messages are sent to Data_Engine to save module INI files and <em>Sys.ini</em>. Saving the INI files has a hard-coded timeout of 5 seconds. This event can be turned on and off via the <code>WriteSysIniChannel</code> <em>powertek.ini</em> setting.</li>
+		<li>Set End State if successful. </li>
+		<li>Set <code>flgSysBusy = 0</code> before exiting.</li>
+	</ul>
+
+
+	<a name="System-Channels"></a>
+<h1 >System Channels<a href="#System-Channels" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>The SystemAction function makes sure that certain channels are available in every solution. If they are not there, they are added. SystemAction is responsible for updating or reading the following channel values during the execution of a system action:</p>
+
+
+	<ul>
+	<li><code>flgSysBusy</code> - Set to 1 when an action begins and 0 when it is complete.</li>
+		<li><code>flgSysRunning</code> - This is an indication that the system is running. It is used as a built-in StateCheck for the EXIT Action.  </li>
+		<li><code>numSysModules</code> - Total number of modules in the system. </li>
+		<li><code>vsSysStatus</code> - String state value set at the start and end of each action.</li>
+		<li><code>numSysStatus</code> - Numeric state value set at the start and end of each action.</li>
+		<li><code>tmrSysStatus</code> - Timer that shows how long you have been in each action. </li>
+		<li><code>vsSysSafetyModule</code> - Set to the Module ID of the safety module. </li>
+		<li><code>flgSysIniWrite</code> - Used by SystemAction() to determine when module INI write commands have finished.</li>
+		<li><code>flgSysFault</code> - Overall fault flag for the system.</li>
+	</ul>
+
+
+	<p>From the modules, SystemAction is looking for the following channels. Note that it does not add them automatically if they are not present.</p>
+
+
+	<ul>
+	<li><code>flgMIDFault</code> - Did this module cause a fault? </li>
+		<li><code>flgMIDDisabled</code> - Is this module disabled? </li>
+		<li><code>flgMIDBusy</code> - Busy channel from each module. Initially set to 1 by the system; set to 0 by module when the action is complete. If this channel is not present, then SystemAction will be unable to monitor for the completion of the action from that module. The module will be assumed to be complete with the action immediately.</li>
+	</ul>
+
+
+	<p>The following channels and VCL procedures have been removed from A&#38;D standard solutions as this framework makes them obsolete:</p>
+
+
+	<ul>
+	<li><code>flgSysModuleStatus</code></li>
+		<li><code>vsSysModuleStatusChannel</code></li>
+		<li><code>vsSysProcedureName</code></li>
+		<li><em>SysAction.TSC</em></li>
+		<li><em>SysSchModuleAction.TSC</em></li>
+		<li><code>numSysModule</code> - This should be moved to a local variable in the places where it is still needed. It is only used as a loop counter.</li>
+	</ul>
+
+
+	<a name="Constraints"></a>
+<h1 >Constraints<a href="#Constraints" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>There are a maximum of 50 actions that can be defined in a solution. This number includes the built-ins, so a maximum of 42 custom actions can be supported.</p>
+
+
+	<a name="ModuleAction"></a>
+<h1 >ModuleAction<a href="#ModuleAction" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>There is an occasional requirement that a module be able to call a function in another module without having an explicit reference to a specific module's function name. To do this, use the ModuleAction function.</p>
+
+
+	<p>ModuleAction has the exact same syntax and nearly the same functionality as SystemAction. The syntax is as follows:</p>
+
+
+	<ul>
+	<li>It takes 3 arguments - ModuleAction(“action”, flgCompletionFlag, "modules")<br /><pre>
++0.0 SET retval ModuleAction("Purge", flgActionComplete, "Eb")
+</pre></li>
+		<li>The first argument will be either a string constant or string channel. The value should be a string that will evaluate to a procedure when the module ID is prepended to the string. For example, "Purge" in the example above would become <code>Eb1Purge</code> or <code>Eb2Purge</code>. At runtime, iTest will try to call those procedure names. </li>
+		<li>The second argument is a VO channel which will get set 0 when the action is started and to 1 when the action is complete.</li>
+		<li>The third argument is a string that represents the modules to send the action to. If the string is "ALL" or empty (""), then all modules receive the action. If the string is a specific module ID, then only that module will receive the action. Alternatively, the string could represent multiple module IDs by specifying a substring like "Eb" which would call all modules having "Eb" in their module ID.</li>
+		<li>The return value will be set to -1 if the action is already in process or if the maximum number (10) of actions that are already "in process" has been reached. A positive return value indicates the number of modules that had a matching VCL function for the given action string. A 0 indicates that no functions were found that matched.</li>
+	</ul>
+
+
+	<p>If an action is blocked from running, an error will occur stating that the requested action is blocked; this error can be viewed via the System Messages tab in the Messages panel.</p>
+
+
+A requested action will be blocked from running under the following conditions:
+	<ul>
+	<li>The maximum number (10) of actions are already running.</li>
+		<li>The requested module(s) exactly match a running action's module(s).
+	<ul>
+	<li>E.g., the "Eb1" module is requested, but there is already a running action for the "Eb1" module.</li>
+		<li>E.g., the "Eb" modules are requested, but there is already a running action for the "Eb" modules.</li>
+		<li>E.g., all modules are requested, but there is already a running action for all modules.</li>
+	</ul>
+	</li>
+		<li>The requested module(s) would be a subset of the running actions' module(s).
+	<ul>
+	<li>E.g., the "Eb1" module is requested and there is already a running action for all modules or for the "Eb" modules.</li>
+	</ul>
+	</li>
+		<li>The requested module(s) would include a running action's module(s) as a subset.
+	<ul>
+	<li>E.g., all modules or the "Eb" modules are requested when there is already an action running for the "Eb1" module.</li>
+	</ul></li>
+	</ul>
+
+
+	<a name="Differences-Between-ModuleAction-and-SystemAction"></a>
+<h2 >Differences Between ModuleAction and SystemAction<a href="#Differences-Between-ModuleAction-and-SystemAction" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li>SystemAction will only accept pre-built action names or names that were predefined in the XML file. </li>
+		<li>SystemAction does not set the <code>flgActionComplete</code> channel to 0 when the action is started.</li>
+		<li>ModuleAction will accept any ad-hoc string.</li>
+		<li>ModuleAction does not set the <code>flgSysBusy</code> flag.</li>
+		<li>ModuleAction does not set the value of <code>numSysStatus</code> or <code>vsSysStatus</code>.</li>
+		<li>ModuleAction does not check the value of <code>flgSysFault</code> after each module completes its action.</li>
+		<li>ModuleAction always uses a 60 second timeout.</li>
+	</ul>
+</body>
+</html>

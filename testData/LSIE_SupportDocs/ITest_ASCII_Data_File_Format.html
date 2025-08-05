@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ITest ASCII Data File Format</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Data_Logging_.html">Data Logging</a></li>
+<li><a href="ITest_ASCII_Data_File_Format.html">ITest ASCII Data File Format</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="iTest-ASCII-Data-File-Format"></a>
+<h1 >iTest ASCII Data File Format<a href="#iTest-ASCII-Data-File-Format" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#iTest-ASCII-Data-File-Format">iTest ASCII Data File Format</a><ul><li><a href="#File-Header">File Header</a></li><li><a href="#Data-Sets">Data Sets</a></li><li><a href="#Data-Rows">Data Rows</a></li><li><a href="#INI-options">INI options</a><ul><li><a href="#DRDateFormatYmd">DRDateFormat=%Y/%m/%d</a></li><li><a href="#DataRedIgnoreDBDecimalPointTRUE">DataRedIgnoreDBDecimalPoint=TRUE</a></li><li><a href="#DataRedTimeStampSecondsFALSE">DataRedTimeStampSeconds=FALSE</a></li><li><a href="#DRTimeFormatHMSf">DRTimeFormat=%H:%M:%S%%f</a></li><li><a href="#DRWriteUserVarControlsTRUE">DRWriteUserVarControls=TRUE</a></li><li><a href="#LastUserVariableList">LastUserVariableList</a></li></ul>
+</li><li><a href="#File-Examples">File Examples</a><ul><li><a href="#Example-1">Example 1</a><ul><li><a href="#DataRedTimeStampSecondsFALSE-2">DataRedTimeStampSeconds=FALSE</a></li></ul>
+</li><li><a href="#Example-2">Example 2</a><ul><li><a href="#DataRedTimeStampSecondsTRUE">DataRedTimeStampSeconds=TRUE</a></li></ul></li></ul></li></ul></li></ul>
+
+
+	<a name="File-Header"></a>
+<h2 >File Header<a href="#File-Header" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest data is stored in ASCII file format. The data file headers contain a set of NAME=VALUE pairs, where the name is an iTest channel and the value is the RDB value of the channel derived when the iTest data file was first created.</p>
+
+
+	<p>The value in the header is never updated. If a file has data appended to it every 5 minutes via a snapshot data log, the value in the header will always be the original value when the file was first created. The list of channels that are included in the header can be derived from three locations, depending on the following circumstances:</p>
+
+
+	<p style="padding-left:3em;">1. If the Data Log has a UVL file defined in its configuration, then the channels from the UVL file are written to the header first.</p>
+
+
+	<p style="padding-left:3em;">2. If the UVL file specified in the data log is &lt;default&gt;, then the channels from the header are taken from the UVL file defined by the <em>powertek.ini</em> setting, <em>LastUserVariableList</em>. This option is generally updated by the <strong>Form</strong> program, which presents the user with an interface used to obtain the channels specified in a UVL file and then update the <em>powertek.ini</em> option.</p>
+
+
+	<p style="padding-left:3em;">3. For systems setup with LabCentral, channels designated as searchable are automatically added to the header after the channels indicated in the previous options above are written. Channel searchability is defined by the search setting on the Master Names List page in LabCentral. For more information, refer to the LabCentral <em><ins>Master Names List</ins></em> document. These searchable channel names are downloaded to iTest and stored using the <em>iCentralParams.xml</em> file. This file is located in the <em>Execute</em> folder.</p>
+
+
+	<p>When datareduction writes the header of a data file, it verifies that the value is stored in the <em>Master.ini</em> file prior to checking the RDB. If the channel exists in <em>Master.ini</em> file, datareduction uses that value. if not, it uses the value from the RDB.</p>
+
+
+	<p>The UVL file contains 4 types of variables that can appear on a form – Header, Control, Hidden or Read Only variables. Read Only and Header variables are always written to the header of a data file. Hidden Values and Control type are only written to the file if the <em>Powertek.ini</em> option, <em>DRWriteUserVarControls</em> is set to TRUE.</p>
+
+
+	<p>The following example represents an iTest data file header:</p>
+
+
+<pre>
+vsSysTestStartDate=10-27-2017
+vsSysTestStartTime=4:07:49 PM
+Username=Administrator
+numSysTestRun=7
+vsSysDataFile=StepPowerCurve_7
+vsSysTestName=StepPowerCurve
+vsSysProjectFolder=MyProject
+vsSysSpec1ID=D6CA
+vsSysSpec1Desc=DI/DT
+vsSysSpec1Owner=ADT
+vsSysID=ADT
+</pre>
+
+	<a name="Data-Sets"></a>
+<h2 >Data Sets<a href="#Data-Sets" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>An iTest data file can contain one or more data sets. A data set contains a data header followed by one or more rows of test data. The header contains at least two rows that identify channel names and units.</p>
+
+
+	<p>Optionally, these rows can be preceded rows that provide additional RDB field values for each channel being logged. These additional rows are defined using the <em>powertek.ini</em> option <em>RDBHeaderAdditions</em>. The RDB fields that you want to add should be listed as a comma separated list. For example, <code>RDBHEADERADDITIONS=Alias, Customer name</code>.</p>
+
+
+	<p>The example below represents a case where the Alias value for a channel is logged in the data set header:</p>
+
+
+<pre>
+1                Alias    NA    NA    NA sandy SineWave2 CLOCK_TIME    Amplitude    Rad    DQAcceptReject    DQComment    NewSin
+1                PARAMS    Date    Time sin aiDynoTorque SineWave2    SineWave2_DQLow    SineWave2_DQHigh    CLOCK_TIME    Amplitude    Rad    Rad_DQLow    Rad_DQHigh    DQAcceptReject    DQComment    SineWave
+1                UNITS    YYYY/MM/DD HH:MM:SS.SSS  lb-ft
+</pre>
+
+	<p>The Data Set header uses the following column definitions; all fields are tab delimited:</p>
+
+
+	<ul>
+	<li>Column 1 – Data Set #, defined below </li>
+		<li>Column 2 – Tab</li>
+		<li>Column 3 – Tab</li>
+		<li>Column 4 – Tab</li>
+		<li>Column 5 – Row Type, If this is an RDBHeaderAdditions it should be the RDB field name. (Channel name will always be PARAMS and units will always be UNITS.)</li>
+		<li>Column 6 – Date field</li>
+		<li>Column 7 – Time field</li>
+		<li>Column 8 – Start channels from the Log Order List channel defined for that data log.</li>
+	</ul>
+
+
+	<p>The data set header is written the first time a data log is taken for a specific LOL file. A new data set header is only written when the contents of an LOL file are changed. This means that for a channel to be logged, an item must be added, removed or changed. If an LOL file is changed, then the next time a new log is taken, the a new data set header will be added to the <em>.dat</em> file. The data set index (1st column) will be incremented by one.</p>
+
+
+	<a name="Data-Rows"></a>
+<h2 >Data Rows<a href="#Data-Rows" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Data rows are added to represent each data point taken. These rows are comprised of values from snapshot logs, average logs or transient logs. The format of each row is as follows. Columns are tab delimited.</p>
+
+
+	<ul>
+	<li>Column 1 – Data Set Number</li>
+		<li>Column 2 – Epoch Time – number of seconds since January 1, 1970, followed by time in usecs. Example: 1284407951.420000</li>
+		<li>Column 3 – Log Name</li>
+		<li>Column 4 – Log Type A=Average, S=Snapshot, T=Transient</li>
+		<li>Column 5 – Row Type, For data rows, this is always DATA. </li>
+		<li>Column 6 – Date field</li>
+		<li>Column 7 – Time field</li>
+		<li>Column 8 – Start channels from the Log Order List channel defined for that data log.</li>
+	</ul>
+
+
+	<a name="INI-options"></a>
+<h2 >INI options<a href="#INI-options" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>There a a number of INI options from Powertek.ini that affect data logging. The following list of options indicate the settings that can be used to modify data files:</p>
+
+
+	<a name="DRDateFormatYmd"></a>
+<h3 >DRDateFormat=%Y/%m/%d<a href="#DRDateFormatYmd" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Defines the format of the Date column if it is included in the <em>.dat</em> file.</p>
+
+
+	<a name="DataRedIgnoreDBDecimalPointTRUE"></a>
+<h3 >DataRedIgnoreDBDecimalPoint=TRUE<a href="#DataRedIgnoreDBDecimalPointTRUE" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This option will log with full precision regardless of how many decimal points are designated for each channel. If this option is false, then all channels are logged with the precision designated in the RDB.</p>
+
+
+	<a name="DataRedTimeStampSecondsFALSE"></a>
+<h3 >DataRedTimeStampSeconds=FALSE<a href="#DataRedTimeStampSecondsFALSE" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>This is not a common option and for most solutions it is set to TRUE. However, if it is set to FALSE, the time-stamp column is not provided in seconds but is provided in human readable format in the following form:</p>
+
+
+	<p>YY_MM_DD_HH:MM:SS.mmm such as 11_07_13_14:00:26.960 where, the mmm is msecs.</p>
+
+
+	<p>If this setting is FALSE, then the Date and Time parameter columns are excluded from the output file.</p>
+
+
+	<a name="DRTimeFormatHMSf"></a>
+<h3 >DRTimeFormat=%H:%M:%S%%f<a href="#DRTimeFormatHMSf" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Defines the format of the Time column if it is included in the <em>.dat</em> file.</p>
+
+
+	<a name="DRWriteUserVarControlsTRUE"></a>
+<h3 >DRWriteUserVarControls=TRUE<a href="#DRWriteUserVarControlsTRUE" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Determines whether hidden values and control type are written to the file.</p>
+
+
+	<a name="LastUserVariableList"></a>
+<h3 >LastUserVariableList<a href="#LastUserVariableList" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Indicates the header file to write to the top of each logged file.</p>
+
+
+	<a name="File-Examples"></a>
+<h2 >File Examples<a href="#File-Examples" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Example-1"></a>
+<h3 >Example 1<a href="#Example-1" class="wiki-anchor">&para;</a></h3>
+
+
+	<a name="DataRedTimeStampSecondsFALSE-2"></a>
+<h4 >DataRedTimeStampSeconds=FALSE<a href="#DataRedTimeStampSecondsFALSE-2" class="wiki-anchor">&para;</a></h4>
+
+
+<pre>
+vsSysTestStartDate=03-10-2011                        
+vsSysTestStartTime=7:57:27 AM                        
+Username=Administrator                        
+numSysTestRun=1                            
+vsSysDataFile=RampPowerCurve_2                        
+vsSysTestName=RampPowerCurve                        
+vsSysProjectFolder=MyProject                        
+vsSysSpec1ID=D6CA                            
+vsSysSpec1Desc=DI/DT                        
+vsSysSpec1Owner=ADT                        
+vsSysID=ADT                            
+1                PARAMS    valDt1Mode    spdDt1Dyno    tqDt1Dyno
+1                UNITS        RPM    Nm
+1    11_07_13_14:14:45.330    SysTestSnap    S    DATA    0    0    0
+</pre>
+
+	<a name="Example-2"></a>
+<h3 >Example 2<a href="#Example-2" class="wiki-anchor">&para;</a></h3>
+
+
+	<a name="DataRedTimeStampSecondsTRUE"></a>
+<h4 >DataRedTimeStampSeconds=TRUE<a href="#DataRedTimeStampSecondsTRUE" class="wiki-anchor">&para;</a></h4>
+
+
+<pre>
+vsSysTestStartDate=03-10-2011                        
+vsSysTestStartTime=7:57:27 AM                        
+Username=Administrator                            
+numSysTestRun=1                            
+vsSysDataFile=RampPowerCurve_2                        
+vsSysTestName=RampPowerCurve                        
+vsSysProjectFolder=MyProject                        
+vsSysSpec1ID=D6CA                            
+vsSysSpec1Desc=DI/DT                            
+vsSysSpec1Owner=ADT                            
+vsSysID=ADT                            
+1                PARAMS    Date    Time    valDt1Mode    spdDt1Dyno
+1                UNITS    YYYY/MM/DD    HH:MM:SS.SSS    RPM
+1    1310581529.650000    SysTestSnap    S    DATA    7/13/2011    14:25:29.650    0    0
+</pre>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>FileSelect and FileDialog</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="FileSelect_and_FileDialog.html">FileSelect and FileDialog</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="FileDialogexe-Overview"></a>
+<h1 ><em>FileDialog.exe</em> Overview<a href="#FileDialogexe-Overview" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#FileDialogexe-Overview">FileDialog.exe Overview</a><ul><li><a href="#Purpose">Purpose</a></li><li><a href="#Command-Line">Command Line</a></li></ul>
+</li><li><a href="#FileSelectexe-Overview">FileSelect.exe Overview</a><ul><li><a href="#Purpose-2">Purpose</a></li><li><a href="#Command-Line-2">Command Line</a></li></ul></li></ul>
+
+
+	<a name="Purpose"></a>
+<h2 >Purpose<a href="#Purpose" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>A utility that opens a Windows dialog entitled <code>FileDialog</code>. This dialog is used to browse for and select a file. The selected file’s name and file-path are then populated to designated virtual string channels in the RDB.</p>
+
+
+	<a name="Command-Line"></a>
+<h2 >Command Line<a href="#Command-Line" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Command Line 1:  (string1 represents a file)<br /><pre>
+FileDialog.exe &lt;string1&gt;;&lt;channel1&gt;;&lt;channel2&gt; [-noext,/noext] [-ontop,/ontop]
+</pre></p>
+
+
+	<p>Command Line 2: (string1 represents a folder)<br /><pre>
+FileDialog.exe &lt;string1&gt;;&lt;string2&gt;;&lt;channel1&gt;;&lt;channel2&gt; [-noext,/noext] [-ontop,/ontop]
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<ul>
+	<li><em>&lt;string1&gt;:</em>  Literal string, fully qualified file-path. If it includes a filename, then the text following the last backslash is populated to the <strong>File name</strong> field and acts as a filter on the displayed folder contents.</li>
+		<li><em>&lt;string2&gt;:</em> Literal string, filename complete with extension. This literal string populates the <strong>File name</strong> field and acts as a filter on the displayed folder contents.</li>
+		<li><em>&lt;channel1&gt;:</em> Virtual string channel name. The channel is populated with the selected file’s name if the <strong>Open</strong> button is clicked in the FileDialog dialog.</li>
+		<li><em>&lt;channel2&gt;:</em> Virtual string channel name. The channel is populated with the selected file’s file-path, including the filename, if the <strong>Open</strong> button is clicked in the FileDialog dialog.</li>
+		<li><em>[-noext,/noext]:</em> (Optional argument). If ‘-noext’ or ‘/noext’ is added to the end of the command line entry, then the file name stored in &lt;channel1&gt; will not include the file extension.</li>
+		<li><em>[-ontop,/ontop]:</em> (Optional argument). If ‘-ontop’ or ‘/ontop’ is added to the end of the command line entry, then the FileDialog window will always be "on top."</li>
+	</ul>
+
+
+	<p><strong>Button Events:</strong></p>
+
+
+	<ul>
+	<li>[OPEN] = &lt;channel1&gt; and &lt;channel2&gt; are populated.</li>
+		<li>[CANCEL] = &lt;channel1&gt; and &lt;channel2&gt; are populated with the <code>FileDialogCancelString</code> <em>powertek.ini</em> setting value or <strong>Cancel</strong> if the setting isn’t present.</li>
+	</ul>
+
+
+	<p><strong>Example Command Line entry:</strong></p>
+
+
+<pre>
+FileDialog.exe C:\ADT\iTest3.2\iTest.Demo\Schedules;*.sc2;vsStoreFileName;vsStoreFilePath –noext -ontop
+</pre>
+
+	<a name="FileSelectexe-Overview"></a>
+<h1 ><em>FileSelect.exe</em> Overview<a href="#FileSelectexe-Overview" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Purpose-2"></a>
+<h2 >Purpose<a href="#Purpose-2" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>A utility that opens a Windows dialog entitled <code>FileSelect</code>. This dialog is used to browse for and select a file. The selected file’s name and file-path are then populated to designated virtual string channels in the RDB. An iTest procedure is run depending on which button is used to close the FileSelect dialog.</p>
+
+
+	<a name="Command-Line-2"></a>
+<h2 >Command Line<a href="#Command-Line-2" class="wiki-anchor">&para;</a></h2>
+
+
+<pre>
+FileSelect.exe &lt;channel1&gt;,&lt;string1&gt;,&lt;channel2&gt;,&lt;channel3&gt;,&lt;string2&gt;,&lt;string3&gt;,[-f or nofilename][ -e or noext]
+</pre>
+
+	<p><strong>Parameters:</strong></p>
+
+
+	<ul>
+	<li><em>&lt;channel1&gt;:</em> Virtual string channel name populated with the folder location to be opened. Populates the <strong>Look in</strong> field in the FileSelect dialog.</li>
+		<li><em>&lt;string1&gt;:</em> Literal string, filename filter including extension. This is populated to the <strong>File name</strong> and <strong>Files of type</strong> fields and acts as a filter on the displayed folder contents.</li>
+		<li><em>&lt;channel2&gt;:</em> Virtual string channel name. The channel is populated with the selected file’s file-path, including the filename, if the <strong>Open</strong> button is clicked in the FileSelect dialog.</li>
+		<li><em>&lt;channel3&gt;:</em> Virtual string channel name. The channel is populated with the selected file’s name if the <strong>Open</strong> button is clicked in the FileSelect dialog.</li>
+		<li><em>&lt;string2&gt;:</em> Literal string. This is the name of a procedure to run if the <strong>Open</strong> button is clicked in the FileSelect dialog. The procedure is initiated using a SEQUENCE START mailslot message to data_engine. This argument can be left empty and a procedure will not be run.</li>
+		<li><em>&lt;string3&gt;:</em> Literal string. This is the name of a procedure to run if FileSelect dialog is exited without clicking the <strong>Open</strong> button (i.e., <strong>Cancel</strong> or windows close). The procedure is initiated using a SEQUENCE START mailslot message to data_engine. This argument can be left empty and a procedure will not be run.</li>
+		<li><em>[-f,nofilename]:</em> (Optional argument). If ‘-f’ or ‘nofilename’ is added to the end of the command line entry, then the file path stored in &lt;channel2&gt; will not include the file name.</li>
+		<li><em>[-e,noext]:</em> (Optional argument). If ‘-e’ or ‘noext’ is added to the end of the command line entry, then the filename stored in &lt;channel3&gt; will not include the file extension.</li>
+	</ul>
+
+
+	<p><strong>Button Events:</strong></p>
+
+
+	<ul>
+	<li>[OPEN] = &lt;channel2&gt; and &lt;channel3&gt; are populated. The procedure designated in &lt;string2&gt; is run.</li>
+		<li>[CANCEL] = The procedure designated in &lt;string3&gt; is run.</li>
+	</ul>
+
+
+	<p><strong>Example Command Line entries:</strong></p>
+
+
+<pre>
+FileSelect.exe vsDirectory,*.ini,vsStoreFilePath,vsStoreFileName,procOKButton,procCancelButton,-e -f
+
+FileSelect.exe vsDirectory,*.ini,vsStoreFilePath,vsStoreFileName,,,
+</pre>
+</body>
+</html>

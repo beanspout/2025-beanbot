@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Excelread Excelwrite</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="Excelread_Excelwrite.html">Excelread Excelwrite</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="ExcelRead-and-ExcelWrite"></a>
+<h1 >ExcelRead and ExcelWrite<a href="#ExcelRead-and-ExcelWrite" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#ExcelRead-and-ExcelWrite">ExcelRead and ExcelWrite</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#ExcelRead">ExcelRead</a></li><li><a href="#ExcelWrite">ExcelWrite</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Excel Reader utility was designed to access an Excel spreadsheet, discover values based on given cell coordinates, and write the discovered values to iTest channels in the RDB. The Excel Writer utility was designed to access an Excel spreadsheet and populate one or more cells in a worksheet with iTest channel values from the RDB.</p>
+
+
+	<p>iTest includes the <em>iTestExcel.py</em> Python script to execute the read and write functions for a single cell similar to the Excel Reader and Excel Writer utilities. For more information, refer to the <a class="wiki-page" href="Reading_and_Writing_to_Files.html">Reading and Writing to Files</a> documentation.</p>
+
+
+	<a name="ExcelRead"></a>
+<h2 >ExcelRead<a href="#ExcelRead" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Excel Reader utility can either be used by accessing its GUI or from a command line entry. The GUI will display the read Excel value. Both Excel files with the <em>.xls</em> and <em>.xlsx</em> file extensions are supported.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>A&#38;D Excel Reader GUI</strong></em></span><br /><img src="attachments/download/96404/42_ExcelRead_GUI.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p><strong>Command Line</strong><br /><pre>
+excelread -f &lt;file&gt; -s &lt;sheet&gt; -c &lt;coordinate(s)&gt; &lt;channel(s)&gt;
+</pre></p>
+
+
+	<p style="padding-left:1em;"><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:2em;"><em>-f file</em>: The fully qualified filepath and filename of the Excel spreadsheet to be accessed. Accessing read-only files and folder locations is supported.</p>
+
+
+	<p style="padding-left:2em;"><em>-s sheet</em>: The name of a single worksheet found in the Excel file.</p>
+
+
+	<p style="padding-left:2em;"><em>-c coordinate(s)</em>: One or more cell coordinates in a comma-separated list to draw values from. The cell coordinates are specified in A1 notation (e.g. A1, B2, etc...). The use of R1C1 notation is not supported.</p>
+
+
+	<p style="padding-left:2em;"><em>channel(s)</em>: One or more iTest channels, in a comma-separated list, to store the retrieved values from the Excel spreadsheet.</p>
+
+
+	<p style="padding-left:1em;"><strong>Example</strong><br /><pre>
+ExcelRead -f C:\Spreadsheet.xls -s Sheet1 -c A1,A2,A3,B1,B2 voTest1,voTest2,voTest3,voTest4,voTest5
+</pre></p>
+
+
+<strong>Limitations</strong>
+	<ul>
+	<li>This utility does not support searching for a specific occurrence of a keyword to determine a target cell.</li>
+		<li>Excel must be installed on the PC to use this utility.</li>
+	</ul>
+
+
+	<a name="ExcelWrite"></a>
+<h2 >ExcelWrite<a href="#ExcelWrite" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Excel Writer utility can either be used by accessing its GUI or from a command line entry.  Both Excel files with the <em>.xls</em> and <em>.xlsx</em> file extensions are supported.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>A&#38;D Excel Writer GUI</strong></em></span><br /><img src="attachments/download/96405/42_ExcelWriter_GUI.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p><strong>Command Line</strong><br /><pre>
+excelwrite -f &lt;file&gt; -s &lt;sheet&gt; -c &lt;coordinate(s)&gt; &lt;channel(s)&gt;
+</pre></p>
+
+
+	<p style="padding-left:1em;"><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:2em;"><em>-f file</em>: The fully qualified filepath and filename of the Excel spreadsheet to be updated.</p>
+
+
+	<p style="padding-left:2em;"><em>-s sheet</em>: The name of a single worksheet found in the Excel file.</p>
+
+
+	<p style="padding-left:2em;"><em>-c coordinate(s)</em>: One or more cell coordinates in a comma-separated list to write values to. The cell coordinates are specified in A1 notation (e.g. A1, B2, etc...). The use of R1C1 notation is not supported.</p>
+
+
+	<p style="padding-left:2em;"><em>channel(s)</em>: One or more iTest channels, in a comma-separated list, to retrieve values from and then write to the Excel spreadsheet.</p>
+
+
+	<p style="padding-left:1em;"><strong>Example</strong><br /><pre>
+ExcelWrite -f C:\Spreadsheet.xls -s Sheet1 -c A1,A2,A3,B1,B2 voTest1,voTest2,voTest3,voTest4,voTest5
+</pre></p>
+
+
+<strong>Limitations</strong>
+	<ul>
+	<li>This utility does not support searching for a specific occurrence of a keyword to determine a target cell.</li>
+		<li>The operator must have permission to edit the accessed Excel file.  </li>
+		<li>Excel must be installed on the PC to use this utility.  During operation this utility will launch, save, and close an instance of Excel.</li>
+	</ul>
+</body>
+</html>

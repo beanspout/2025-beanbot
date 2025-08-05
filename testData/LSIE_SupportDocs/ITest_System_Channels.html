@@ -1,0 +1,924 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ITest System Channels</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="ITest_System_Channels.html">ITest System Channels</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="iTest-System-Channels"></a>
+<h1 >iTest System Channels<a href="#iTest-System-Channels" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#iTest-System-Channels">iTest System Channels</a></li><li><a href="#Legacy-Channels">Legacy Channels</a></li><li><a href="#Newer-Channels">Newer Channels</a></li><li><a href="#BTS-Channels">BTS Channels</a></li><li><a href="#Performance-Channels">Performance Channels</a></li></ul>
+
+
+	<p>System channels are added to the RDB automatically by iTest upon system start-up, unless otherwise noted in the channel's description. These channels can be referenced by VCL and display objects, for example, and are, in some cases, used by internal iTest processes.</p>
+
+
+	<a name="Legacy-Channels"></a>
+<h1 >Legacy Channels<a href="#Legacy-Channels" class="wiki-anchor">&para;</a></h1>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Legacy Channels and Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Name</strong> </td>
+			<td style="text-align:left;"><strong>Release</strong> </td>
+			<td style="text-align:left;"><strong>Type</strong> </td>
+			<td style="text-align:left;"><strong>Purpose</strong> </td>
+		</tr>
+		<tr>
+			<td>BITS_SEC</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Throughput of the link between Data_Engine and vxin_exec.</td>
+		</tr>
+		<tr>
+			<td>LimitStatus</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Set to 1 when limits are being processed.</td>
+		</tr>
+		<tr>
+			<td>CLOCK_TIME</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Wall time/date in tics. It is the number of seconds since midnight. It gets created as follows:<br /><pre>CLOCK_TIME = (hour * 3600) + (minute * 60) + seconds + (milliseconds * 0.001)</pre><br /><ins><strong>Example for 9:10:58AM below:</strong></ins><br /><img src="attachments/download/99498/clock_time.png" alt="" /><br />&nbsp;<br />CLOCK_TIME = 33058 =  (9 *3600) + (10) *60) + 58</td>
+		</tr>
+		<tr>
+			<td>CLOCK_TIME_HOST</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>This is the number of seconds since midnight on the GUI PC. Data_Engine reads the GUI PC's clock to send this value to vxin_exec.</td>
+		</tr>
+		<tr>
+			<td>CLOCK_TIME_RT</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>This is the number of seconds since midnight on the real-time PC. There exists an internal time keeper that is maintained by vxin_exec and vxin_exec sets CLOCK_TIME_RT based on this clock. vxin_exec also sends this internal clock time information to data_engine, and data_engine subsequently sends a message back down to vxin_exec to set the <code>CLOCK_TIME</code> channel. An application may monitor the difference between CLOCK_TIME and CLOCK_TIME_RT to determine the length of time of a GUI to real-time PC network interruption.</td>
+		</tr>
+		<tr>
+			<td>CRS_BLOCK_CONTROL</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Contains the time in seconds and microseconds.</td>
+		</tr>
+		<tr>
+			<td>SAVELIMGROUP</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Used by the SAVELIMITS and RESTORELIMITS procedures that are automatically created by TestBuilder.</td>
+		</tr>
+		<tr>
+			<td>LIMGROUP</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Used by the SAVELIMITS and RESTORELIMITS procedures that are automatically created by TestBuilder.</td>
+		</tr>
+		<tr>
+			<td>CRS_CONTROL</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Set to 1 to start Blackbox.</td>
+		</tr>
+		<tr>
+			<td>DAYS_TIME</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Days since start of year 2000.</td>
+		</tr>
+		<tr>
+			<td>EXEC_LOOP_TIME</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>vxin_exec's loop time (s).</td>
+		</tr>
+		<tr>
+			<td>KERNEL_LOOP_TIME</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>vxin_kernel's loop time (s).</td>
+		</tr>
+		<tr>
+			<td>ShutDownSystem</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Set to 1 to shutdown all driver processes.</td>
+		</tr>
+		<tr>
+			<td>sys_CHECK_OUTPUTS_PERF</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Amount of time Data_Engine uses to process outputs and send to Vxin_exec.</td>
+		</tr>
+		<tr>
+			<td>sys_OUTS_PER_SCAN</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Current number of outputs needing to be set (for internal system diagnostics only).</td>
+		</tr>
+		<tr>
+			<td>sys_OUTS_PER_SCAN_MAX</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Maximum number of outputs needing to be set (for internal system diagnostics only).</td>
+		</tr>
+		<tr>
+			<td>sys_UDP_DROPS    </td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>UDP packets lost (for internal system diagnostics only).</td>
+		</tr>
+		<tr>
+			<td>sys_VS_QUEUE</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Current number of strings needing to be set (for internal system diagnostics only).</td>
+		</tr>
+		<tr>
+			<td>sys_VS_QUEUE_MAX</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Maximum number of strings needing to be set (for internal system diagnostics only).</td>
+		</tr>
+		<tr>
+			<td>AUTO_MODE</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">VO</td>
+			<td>Is the PID Control dialog in manual (0) or Auto (1) Mode.</td>
+		</tr>
+		<tr>
+			<td>VS_SYSFaultStatus</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">VS</td>
+			<td>System string value for fault reason reported from the 2916 card.</td>
+		</tr>
+		<tr>
+			<td>VO_SYSFaultStatus</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">VO</td>
+			<td>System numeric value for fault reason reported from the 2916 card.</td>
+		</tr>
+		<tr>
+			<td>VO_SYSSafetyReset</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">VO</td>
+			<td>The user must set this channel to 1 to reset the 2916 faults.</td>
+		</tr>
+		<tr>
+			<td>PENDANT_ESTOP</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">VO</td>
+			<td>This channel is set to 1 when the <em>pendant.exe</em> driver detects that the <strong>ESTOP</strong> button is depressed.</td>
+		</tr>
+		<tr>
+			<td>VO_SYSTachloss</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">VO</td>
+			<td>This channel is set to 1 when the 2916 has detected a tachometer signal lost fault.</td>
+		</tr>
+		<tr>
+			<td>VO_SYSBoardTemperature</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">VO</td>
+			<td>This channel is set to the temperature of the CPU for a 4500 RTP.</td>
+		</tr>
+		<tr>
+			<td>VO_SYSPulsesPerRev</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">VO</td>
+			<td>The user must set this channel to the number of pulses per revolution (used in the 2916 safety circuit).</td>
+		</tr>
+		<tr>
+			<td>VO_SYSOverspeed</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">VO</td>
+			<td>This channel is set to 1 when the 2916 detects an overspeed fault.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Newer-Channels"></a>
+<h1 >Newer Channels<a href="#Newer-Channels" class="wiki-anchor">&para;</a></h1>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Recently Added Channels and Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1200px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Name</strong>    </td>
+			<td style="text-align:left;"><strong>Release</strong>    </td>
+			<td style="width:180px;"><strong>Type</strong>    </td>
+			<td style="text-align:left;"><strong>Purpose</strong></td>
+		</tr>
+		<tr>
+			<td>vsSysActiveLimitGroup</td>
+			<td style="text-align:center;">-</td>
+			<td>Virtual String</td>
+			<td>Name of the active limit group.</td>
+		</tr>
+		<tr>
+			<td>voSyseGateReady </td>
+			<td style="text-align:center;">-</td>
+			<td>Virtual Output </td>
+			<td>Set to 1 when the eGate is ready.</td>
+		</tr>
+		<tr>
+			<td>voSysLogCount</td>
+			<td style="text-align:center;">-</td>
+			<td>Virtual Output </td>
+			<td>Number of currently active data logs.</td>
+		</tr>
+		<tr>
+			<td>voSysLimitState</td>
+			<td style="text-align:center;">-</td>
+			<td>Virtual Output </td>
+			<td>Numeric indicator of the current Limit Condition (Red=2, Yellow=1, Green=0, Inactive/Gray=-1).</td>
+		</tr>
+		<tr>
+			<td>vsSysLimitFault</td>
+			<td style="text-align:center;">2.1</td>
+			<td>Virtual String</td>
+			<td>Contains most recent channel and procedure called due to a limit violation. This channel will not reference the channel by its Alias even if the System Option type is "Alias". </td>
+		</tr>
+		<tr>
+			<td>vsSysLimitFaultAlias</td>
+			<td style="text-align:center;">2.1</td>
+			<td>Virtual String</td>
+			<td>Shows the Alias name and value of the last limit that caused an action to occur. If an Alias has not been defined, then it will list the channel by either its module, customer, or channel name. </td>
+		</tr>
+		<tr>
+			<td>vsSysLimitFaultMID</td>
+			<td style="text-align:center;">3.2</td>
+			<td>Virtual String</td>
+			<td>Module ID of the channel that last triggered a limit action. </td>
+		</tr>
+		<tr>
+			<td>voSysDQStatus</td>
+			<td style="text-align:center;">2.1</td>
+			<td>Virtual Output </td>
+			<td>Numeric indicator of how many channels are violating their Data Quality Condition. </td>
+		</tr>
+		<tr>
+			<td>vsSysTestStartDate</td>
+			<td style="text-align:center;">2.1</td>
+			<td>Virtual String</td>
+			<td>Date when a header form with a field of this channel is loaded and the form is saved. The header form can be loaded using a $FORM, $NEWFORM, or $FLEXEDIT mailslot to Softpanel. </td>
+		</tr>
+		<tr>
+			<td>vsSysTestStartTime</td>
+			<td style="text-align:center;">2.1</td>
+			<td>Virtual String</td>
+			<td>Time when a header form with a field of this channel is loaded and the form is saved. The header form can be loaded using a $FORM, $NEWFORM, or $FLEXEDIT mailslot to Softpanel.</td>
+		</tr>
+		<tr>
+			<td>vsSysTestName</td>
+			<td style="text-align:center;">2.1</td>
+			<td>Virtual String</td>
+			<td>Name of the running test as selected on the test control bar.</td>
+		</tr>
+		<tr>
+			<td>vsSysStopReason    </td>
+			<td style="text-align:center;">2.1</td>
+			<td>Virtual String    </td>
+			<td>Why the system is idle or not running as selected in the Not Running dialog. </td>
+		</tr>
+		<tr>
+			<td>voSysDisplayLabelType</td>
+			<td style="text-align:center;">2.1</td>
+			<td>Virtual Output</td>
+			<td>Display channel label type for those labelled in "Automatic" mode. Values reflect the current implementation. 0-Channel Name, 1-Alias, 2-CustomerName, 3-ModuleName</td>
+		</tr>
+		<tr>
+			<td>voSysInTest</td>
+			<td style="text-align:center;">2.2</td>
+			<td>Virtual Output    </td>
+			<td>Set to 1 when the test is started or resumed by the Test Control Toolbar. It is set to 0 when stopped or paused.</td>
+		</tr>
+		<tr>
+			<td>voSysScheduleDirty</td>
+			<td style="text-align:center;">2.2</td>
+			<td>Virtual Output</td>
+			<td>Indicates that a schedule has been edited and not yet saved in iTest Console.</td>
+		</tr>
+		<tr>
+			<td>voSysStateTime</td>
+			<td style="text-align:center;">2.2</td>
+			<td>Virtual Output</td>
+			<td>Time in current state.</td>
+		</tr>
+		<tr>
+			<td>voSysStateTimeLeft</td>
+			<td style="text-align:center;">2.2</td>
+			<td>Virtual Output</td>
+			<td>Time left in current state.</td>
+		</tr>
+		<tr>
+			<td>tmrSysAccumTestTime</td>
+			<td style="text-align:center;">2.2</td>
+			<td>Virtual Timer    </td>
+			<td>Support channel to accurately measure accumulated test time (<code>voSysTotalTestTime</code>).</td>
+		</tr>
+		<tr>
+			<td>voSysErrorSet1</td>
+			<td style="text-align:center;">2.3</td>
+			<td>Virtual Output</td>
+			<td>Contains 30 (1-30) bits of error/status information.<br />Bit:<br /><span style="padding-left:2em;">1 : Logging buffer overflow. This is a latched setting.</span><br /><span style="padding-left:2em;">2 : 0 length data log file detected. This is a latched setting.</span><br /><span style="padding-left:2em;">3-30: undefined</span></td>
+		</tr>
+		<tr>
+			<td>voSysMailslotsQueued </td>
+			<td style="text-align:center;">2.3</td>
+			<td>Virtual Output</td>
+			<td>Contains current number of mailslot messages queued up that are destined for remote PCs.</td>
+		</tr>
+		<tr>
+			<td>voSysMailslotSendTimeMaxSec    </td>
+			<td style="text-align:center;">2.3</td>
+			<td>Virtual Output</td>
+			<td>Contains the maximum time (in seconds) that was taken to send a mailslot message to a remote PC. This can be used to detect problems with remote connections.</td>
+		</tr>
+		<tr>
+			<td>vsSysTime </td>
+			<td style="text-align:center;">2.3 </td>
+			<td>Virtual String </td>
+			<td>Time in format of hh_mm_ss. Updated by iTest Console at 1 Hz.</td>
+		</tr>
+		<tr>
+			<td>voSysDay</td>
+			<td style="text-align:center;">2.3</td>
+			<td>Virtual Output</td>
+			<td>Day of a month. Updated by iTest Console at 1 Hz.</td>
+		</tr>
+		<tr>
+			<td>voSysMonth</td>
+			<td style="text-align:center;">2.3</td>
+			<td>Virtual Output</td>
+			<td>Month of a year. Updated by iTest Console at 1 Hz.</td>
+		</tr>
+		<tr>
+			<td>voSysYear</td>
+			<td style="text-align:center;">2.3</td>
+			<td>Virtual Output</td>
+			<td>Year. Updated by iTest Console at 1Hz.</td>
+		</tr>
+		<tr>
+			<td>vsSysDate</td>
+			<td style="text-align:center;">3.7</td>
+			<td>Virtual String</td>
+			<td> This channel stores a concatenated string containing the date as the current Gregorian calendar date. The date is formatted based on the <code>DRDateFormat</code> <em>powertek.ini</em> setting and is updated using the current PC date.</td>
+		</tr>
+		<tr>
+			<td>vsSysDateTime</td>
+			<td style="text-align:center;">3.5</td>
+			<td>Virtual String</td>
+			<td>This channel stores a concatenated string containing both the current date and the time. The date is formatted based on the <code>DRDateFormat</code> <em>powertek.ini</em> setting. Time format is hard-coded to hh:mm:ss.</td>
+		</tr>
+		<tr>
+			<td>vsSysDateTimeUTC</td>
+			<td style="text-align:center;">4.0</td>
+			<td>Virtual String</td>
+			<td>This channel stores a concatenated string containing both the current coordinated universal date and time. The date is formatted based on the <code>DRDateFormat</code> <em>powertek.ini</em> setting. Time format is hard coded to hh:mm:ss. This channel is not automatically created.</td>
+		</tr>
+		<tr>
+			<td>voSysDisplayUnitsType </td>
+			<td style="text-align:center;">2.3 </td>
+			<td>Virtual Output</td>
+			<td>System units type for units displayed in "Automatic" mode. 0-SI, 1- Metric, 2-English, 3-Original</td>
+		</tr>
+		<tr>
+			<td>vsSysSeqName </td>
+			<td style="text-align:center;">2.3</td>
+			<td>Virtual String </td>
+			<td>Last executed sequence name.</td>
+		</tr>
+		<tr>
+			<td>voSysSeqBlockTerminate </td>
+			<td style="text-align:center;">2.3</td>
+			<td>Virtual Output    </td>
+			<td>If 1, then OK to exit custom block exit condition loop.</td>
+		</tr>
+		<tr>
+			<td>Seq&lt;SeqName&gt;StartLine</td>
+			<td style="text-align:center;">2.3 </td>
+			<td>Virtual Output </td>
+			<td>Line number at which the sequence execute starts at for sequence restart.</td>
+		</tr>
+		<tr>
+			<td>Seq&lt;SeqName&gt;StartCount </td>
+			<td style="text-align:center;">2.3</td>
+			<td>Virtual Output</td>
+			<td>Loop count to sequence loop to start with, for sequence restart.</td>
+		</tr>
+		<tr>
+			<td>Seq&lt;SeqName&gt;CountName</td>
+			<td style="text-align:center;">2.3</td>
+			<td>Virtual String</td>
+			<td>Channel or local variable name the sequence loop uses for loop count, for sequence restart.</td>
+		</tr>
+		<tr>
+			<td>voSysLoadTableStatus    </td>
+			<td style="text-align:center;">2.3</td>
+			<td>Virtual Output</td>
+			<td>Used by state generated code to indicate if a ramp table file is loaded.</td>
+		</tr>
+		<tr>
+			<td>voSysRampTableName    </td>
+			<td style="text-align:center;">2.3</td>
+			<td>Virtual String</td>
+			<td>Used by state generated code for ramp from file.</td>
+		</tr>
+		<tr>
+			<td>CLOCK_TIME_EPOCH    </td>
+			<td style="text-align:center;">3.2</td>
+			<td>Virtual Output</td>
+			<td>Number of seconds since Jan 1, 1970.</td>
+		</tr>
+		<tr>
+			<td>voSysConsoleWatchdog</td>
+			<td style="text-align:center;">3.4</td>
+			<td> Virtual Output</td>
+			<td> Incremented by one in 10 Hz calculations. This is reset to zero by iTest Console and AutomationPanel at 1 Hz. If the value exceeds 10, the GUI is not available or not updating.</td>
+		</tr>
+		<tr>
+			<td>voSysDynamicCalcBuildErrors</td>
+			<td style="text-align:center;">3.4</td>
+			<td>Virtual Output</td>
+			<td>Set to the number of errors detected during the building of dynamic calculations. Zero equals no errors; any value greater than zero indicates errors.</td>
+		</tr>
+		<tr>
+			<td>voSysFlexEditFileSaveDisable </td>
+			<td style="text-align:center;">3.4</td>
+			<td>Virtual Output</td>
+			<td>Flag to enable/disable the <strong>File > Save</strong> option in FlexEdit.</td>
+		</tr>
+		<tr>
+			<td>voSysHSTime</td>
+			<td style="text-align:center;">3.4</td>
+			<td> Virtual Output </td>
+			<td> Duration of time from which HS semaphore is given until HS scan thread is complete.</td>
+		</tr>
+		<tr>
+			<td>voSysInOurRTCnt</td>
+			<td style="text-align:center;">3.4</td>
+			<td> Virtual Output</td>
+			<td> Number of times the System rate thread was signaled while the thread was still working on the previous signal.</td>
+		</tr>
+		<tr>
+			<td>voSysNetSendTime</td>
+			<td style="text-align:center;">3.4</td>
+			<td> Virtual Output</td>
+			<td> Duration of time from which HS semaphore is given until the NetSend thread is complete.</td>
+		</tr>
+		<tr>
+			<td>voSysNumProcs</td>
+			<td style="text-align:center;">3.4</td>
+			<td> Virtual Output</td>
+			<td> The number of VCL procedures running.</td>
+		</tr>
+		<tr>
+			<td>voSysNumExceptions</td>
+			<td style="text-align:center;">3.4</td>
+			<td> Virtual Output</td>
+			<td> Number of times the program exception window, "A program error has occurred, would you like to save a <em>.dmp</em> file?", has appeared during this running instance of iTest.</td>
+		</tr>
+		<tr>
+			<td>voSysSSTime</td>
+			<td style="text-align:center;">3.4</td>
+			<td> Virtual Output</td>
+			<td> Duration of time from which HS semaphore is given until LS scan thread is complete.</td>
+		</tr>
+		<tr>
+			<td>voSysSV2Time</td>
+			<td style="text-align:center;">3.4</td>
+			<td> Virtual Output</td>
+			<td> Duration of time between calls to OnSendValues2. (This function fills the buffer for NetSendThread.)</td>
+		</tr>
+		<tr>
+			<td>voSys1HzCalcTime</td>
+			<td style="text-align:center;">3.4</td>
+			<td> Virtual Output</td>
+			<td> Duration of time from which HS semaphore is given until 1 Hz scan thread is complete.</td>
+		</tr>
+		<tr>
+			<td>voSys10HzCalcTime</td>
+			<td style="text-align:center;">3.4</td>
+			<td> Virtual Output</td>
+			<td> Duration of time from which HS semaphore is given until 10 Hz scan thread is complete.</td>
+		</tr>
+		<tr>
+			<td>voSys100HzCalcTime</td>
+			<td style="text-align:center;">3.4</td>
+			<td> Virtual Output</td>
+			<td> Duration of time from which HS semaphore is given until 100 Hz scan thread is complete.</td>
+		</tr>
+		<tr>
+			<td>voSys1000HzCalcTime</td>
+			<td style="text-align:center;">3.4</td>
+			<td> Virtual Output</td>
+			<td> Duration of time from which HS semaphore is given until 1000 Hz scan thread is complete.</td>
+		</tr>
+		<tr>
+			<td>voSys1kHzNumOverRuns</td>
+			<td style="text-align:center;">3.4</td>
+			<td> Virtual Output</td>
+			<td> Number of times the 1 kHz thread has no waiting time between being signaled.</td>
+		</tr>
+		<tr>
+			<td>voSys1kHzTotalCounts</td>
+			<td style="text-align:center;">3.4 </td>
+			<td> Virtual Output</td>
+			<td> Number of times the 1 kHz thread was signaled.</td>
+		</tr>
+		<tr>
+			<td>numSysSchStep</td>
+			<td style="text-align:center;">3.4</td>
+			<td>Virtual Output    </td>
+			<td>Step the schedule runner is on.<br /><span style="padding-left:2em;">&nbsp;0 - nothing has run yet.</span><br /><span style="padding-left:2em;">-1 - finished.</span></td>
+		</tr>
+		<tr>
+			<td>timSysTestOnStep    </td>
+			<td style="text-align:center;">3.4</td>
+			<td>Virtual Output</td>
+			<td>Set by schedule runner for time on current step.</td>
+		</tr>
+		<tr>
+			<td>timSysStepLeft</td>
+			<td style="text-align:center;">3.4</td>
+			<td>Virtual Output</td>
+			<td>Set by schedule runner for time left on current step.</td>
+		</tr>
+		<tr>
+			<td>numSysSchState</td>
+			<td style="text-align:center;">3.4</td>
+			<td>Virtual Output</td>
+			<td>Value set by schedule runner for status:<br /><span style="padding-left:2em;">"0" - Not Prepared</span><br /><span style="padding-left:2em;">"1" - Prepared</span><br /><span style="padding-left:2em;">"2" - Running</span><br /><span style="padding-left:2em;">"3" - Paused</span><br /><span style="padding-left:2em;">"4" - Aborted</span><br /><span style="padding-left:2em;">"5" - Stopped</span><br /><span style="padding-left:2em;">"6" - Finished</span><br />This channel also controls the state of the ScheduleViewer panel's Control Bar buttons.</td>
+		</tr>
+		<tr>
+			<td>vsSysSchState</td>
+			<td style="text-align:center;">3.4</td>
+			<td>Virtual String</td>
+			<td>String set by schedule runner for status:<br /><span style="padding-left:2em;">0 - "Not Prepared"</span><br /><span style="padding-left:2em;">1 - "Prepared"</span><br /><span style="padding-left:2em;">2 - "Running"</span><br /><span style="padding-left:2em;">3 - "Paused"</span><br /><span style="padding-left:2em;">4 - "Aborted"</span><br /><span style="padding-left:2em;">5 - "Stopped"</span><br /><span style="padding-left:2em;">6 - "Finished"</span></td>
+		</tr>
+		<tr>
+			<td>timSysTest</td>
+			<td style="text-align:center;">3.4</td>
+			<td>Virtual Output</td>
+			<td>Numeric set by schedule runner for total elapsed time in test.</td>
+		</tr>
+		<tr>
+			<td>voSysAkaChangeCounter</td>
+			<td style="text-align:center;">3.4</td>
+			<td>Virtual Output</td>
+			<td><code>voSysAkaChangeCounter</code> will get set to the current value plus 1 each time a LOADAKAFile or LoadAliasFile mailslot message is processed by Data_Engine. If the <code>voSysAkaChangeCounter</code> value is 1, and a LOADAKAFile or LoadAliasFile mailslot message is received, then the <code>voSysAkaChangeCounter</code> value will change to 2 when the message is finished being processed. Panels and display objects monitor this counter to determine when an RDB change has been made so they can refresh some dynamically changeable fields such as customer name and units.</td>
+		</tr>
+		<tr>
+			<td>voSysiTestBuildErrors</td>
+			<td style="text-align:center;">3.4</td>
+			<td>Virtual Output</td>
+			<td>This channel is set to number of errors found at iTest build and rebuild.</td>
+		</tr>
+		<tr>
+			<td>voSysStartTime</td>
+			<td style="text-align:center;">3.5</td>
+			<td>Virtual Output</td>
+			<td>This channel contains the epoch time for when iTest was started. This may be useful in conjunction with the $GetFileTime mailslot message to fileservices. It is possible to check the date of a file to see if it has changed since iTest started up.</td>
+		</tr>
+		<tr>
+			<td>voSysServerStatus</td>
+			<td style="text-align:center;">3.5 </td>
+			<td>Virtual Output</td>
+			<td>Default channel used to store the status of a connected LabCentral server. This channel can be superseded by the <code>StatusCodeChannel</code> <em>config.ini</em> setting.</td>
+		</tr>
+		<tr>
+			<td>voCalcOverloadError</td>
+			<td style="text-align:center;">3.7</td>
+			<td> Virtual Output</td>
+			<td>This value is set to 1 if any calculations (system rate, 1Hz, 10Hz, 100Hz, 1000Hz) exceeds the maximum number of operations for that set of calculations. iTest must be restarted to reset the channel to zero; rebuilds are not sufficient.</td>
+		</tr>
+		<tr>
+			<td>voSysStrTruncCnt</td>
+			<td style="text-align:center;">4.0</td>
+			<td>Virtual Output</td>
+			<td>This channel will get incremented each time vxin_exec has to automatically truncate a large string in VCL so it will not exceed the maximum allowed string length. User must add this channel to their solution if they wish to use it.<br />Examples of when the <code>voSysStrTruncCnt</code> channel would be incremented:<br /><span style="padding-left:2em;">- SET command sets a string channel to to a string that is larger than 127 bytes.</span><br /><span style="padding-left:2em;">- The length of the string, after macro and channel substitution, sent using the MESSAGE command exceeds 1011 bytes.</span><br />Examples of when the <code>voSysStrTruncCnt</code> channel would not be incremented:<br /><span style="padding-left:2em;">- The INIRead mailslot message to Data_Engine reads a string that exceeds 127 bytes.</span><br /><span style="padding-left:2em;">- The SET VS mailslot message to Data_Engine sets a string channel to a string that exceeds 127 bytes.</span></td>
+		</tr>
+		<tr>
+			<td>vsSysStrTruncMsg</td>
+			<td style="text-align:center;">4.0</td>
+			<td>Virtual String</td>
+			<td> Message indicating what caused the most recent automatic string truncation. User must add this channel to their solution if they wish to use it. See the description for the <code>voSysStrTruncCnt</code> system channel for examples of when this channel will be updated.</td>
+		</tr>
+		<tr>
+			<td>voSysReadonly</td>
+			<td style="text-align:center;">4.1</td>
+			<td>Virtual Output</td>
+			<td>If this channel exists, then on system startup it will be set to the ReadOnly status of AutomationPanel. 1 for read only, 0 for not read only.</td>
+		</tr>
+		<tr>
+			<td>MasterScheduleStepTime</td>
+			<td style="text-align:center;">4.4</td>
+			<td>- Virtual Output (non-BTS)<br />- Virtual Output Array (BTS)</td>
+			<td> (Optional) The step time for the active master schedule step. This channel must be manually added to a channel definition file.</td>
+		</tr>
+		<tr>
+			<td>MasterScheduleStepParameterName</td>
+			<td style="text-align:center;">4.4</td>
+			<td>- Virtual String (non-BTS)<br />- Virtual String Array (BTS)</td>
+			<td> (Optional) The name of the step parameter (i.e., active schedule or procedure name). This channel must be manually added to a channel definition file.</td>
+		</tr>
+		<tr>
+			<td>MasterSubScheduleStepTime</td>
+			<td style="text-align:center;">4.4</td>
+			<td>- Virtual Output (non-BTS)<br />- Virtual Output Array (BTS)</td>
+			<td> (Optional) The step time for the active, nested master schedule step. This channel must be manually added to a channel definition file.</td>
+		</tr>
+		<tr>
+			<td>MasterSubScheduleStepParameterName</td>
+			<td style="text-align:center;">4.4</td>
+			<td>- Virtual String (non-BTS)<br />- Virtual String Array (BTS)</td>
+			<td> (Optional) The name of the nested step parameter (i.e., active schedule or procedure name). This channel must be manually added to a channel definition file.</td>
+		</tr>
+		<tr>
+			<td>voSysPatchStatus</td>
+			<td style="text-align:center;">4.4</td>
+			<td> Virtual Output</td>
+			<td> This channel compares the running software versions against the <code>TargetPatchVerDAC</code> and <code>TargetPatchVerLabAgent</code> <em>config.ini</em> settings to determine the patch level status. The channel is updated with one of the following values once every 30 seconds:<br /><span style="padding-left:2em;">"-1" - Unknown</span><br /><span style="padding-left:2em;">"0" - OK</span><br /><span style="padding-left:2em;">"1" - Test Software Outdated</span><br /><span style="padding-left:2em;">"2" - LabAgent Outdated</span><br /><span style="padding-left:2em;">"3" - All Outdated</span></td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="BTS-Channels"></a>
+<h1 >BTS Channels<a href="#BTS-Channels" class="wiki-anchor">&para;</a></h1>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>BTS Channels and Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Name</strong>    </td>
+			<td style="text-align:left;"><strong>Release</strong>    </td>
+			<td style="text-align:left;"><strong>Type</strong>    </td>
+			<td style="text-align:left;"><strong>Purpose</strong></td>
+		</tr>
+		<tr>
+			<td>voSysNumOfCircuits </td>
+			<td style="text-align:center;">3.0</td>
+			<td>Virtual Output    </td>
+			<td>Total number of circuits.</td>
+		</tr>
+		<tr>
+			<td>voSysNumOfCirRunning</td>
+			<td style="text-align:center;">3.0</td>
+			<td>Virtual Output</td>
+			<td>Total number of circuits running.</td>
+		</tr>
+		<tr>
+			<td>voSysNumOfCirPaused</td>
+			<td style="text-align:center;">3.0 </td>
+			<td>Virtual Output</td>
+			<td>Total number of circuits paused.</td>
+		</tr>
+		<tr>
+			<td>voSysNumOfCirIdle</td>
+			<td style="text-align:center;">3.0</td>
+			<td>Virtual Output</td>
+			<td>Total number of circuits at idle.</td>
+		</tr>
+		<tr>
+			<td>voSysNumOfCirComplete</td>
+			<td style="text-align:center;">3.0</td>
+			<td>Virtual Output</td>
+			<td>Total number circuits completed.</td>
+		</tr>
+		<tr>
+			<td>voSysNumOfCirFaulted</td>
+			<td style="text-align:center;">3.0</td>
+			<td>Virtual Output</td>
+			<td>Total number of circuits faulted.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Performance-Channels"></a>
+<h1 >Performance Channels<a href="#Performance-Channels" class="wiki-anchor">&para;</a></h1>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Performance Channels and Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Name</strong>    </td>
+			<td style="text-align:left;"><strong>Release</strong>    </td>
+			<td style="text-align:left;"><strong>Type</strong>    </td>
+			<td style="text-align:left;"><strong>Purpose</strong></td>
+		</tr>
+		<tr>
+			<td>voSysExecCycleTime </td>
+			<td style="text-align:center;">2.1</td>
+			<td>Virtual Output</td>
+			<td>Start to start time of the system exec thread.</td>
+		</tr>
+		<tr>
+			<td>voSysExecIdleTime</td>
+			<td style="text-align:center;">2.1</td>
+			<td>Virtual Output</td>
+			<td>Idle time of the system exec thread.</td>
+		</tr>
+		<tr>
+			<td>voSysExecScanTime</td>
+			<td style="text-align:center;">2.1</td>
+			<td>Virtual Output</td>
+			<td>Scan time of the system exec thread.</td>
+		</tr>
+		<tr>
+			<td>voSysInputsTime</td>
+			<td style="text-align:center;">2.1</td>
+			<td>Virtual Output</td>
+			<td>Time for reading inputs from RDB; calibrate; timers during the system exec scan.</td>
+		</tr>
+		<tr>
+			<td>voSysPIDsTime</td>
+			<td style="text-align:center;">2.1</td>
+			<td>Virtual Output</td>
+			<td>Time to execute PIDs.</td>
+		</tr>
+		<tr>
+			<td>voSysCalcsTime</td>
+			<td style="text-align:center;">2.1</td>
+			<td>Virtual Output</td>
+			<td>Time to execute system rate calculations.</td>
+		</tr>
+		<tr>
+			<td>voSysTestTime</td>
+			<td style="text-align:center;">2.1</td>
+			<td>Virtual Output</td>
+			<td>Time to execute VCL code.</td>
+		</tr>
+		<tr>
+			<td>voSysOutputsTime</td>
+			<td style="text-align:center;">2.1</td>
+			<td>Virtual Output</td>
+			<td>Time to convert outputs to raw, stability checking, and send to changes to Data_Engine.</td>
+		</tr>
+		<tr>
+			<td>voSysLogTime</td>
+			<td style="text-align:center;">2.1</td>
+			<td>Virtual Output</td>
+			<td>Time to add current values to the logging buffer.</td>
+		</tr>
+		<tr>
+			<td>voSysLoggingThreadTime</td>
+			<td style="text-align:center;">2.1</td>
+			<td>Virtual Output</td>
+			<td>Scan time of the lower priority logging thread.</td>
+		</tr>
+		<tr>
+			<td>voSysMessageThreadTime</td>
+			<td style="text-align:center;">2.1</td>
+			<td>Virtual Output</td>
+			<td>Scan time of the lower priority message thread.</td>
+		</tr>
+		<tr>
+			<td>voSysFormulaCompIdx</td>
+			<td style="text-align:center;">3.0</td>
+			<td>Virtual Output</td>
+			<td>Used by Test Formula to indicate current active component index.</td>
+		</tr>
+		<tr>
+			<td>vsSysFormulaLoopCount</td>
+			<td style="text-align:center;">3.0</td>
+			<td>Virtual String</td>
+			<td>Used by Test Formula to indicate current loop information.</td>
+		</tr>
+		<tr>
+			<td>voSysFormulaStartCompIdx</td>
+			<td style="text-align:center;">3.0</td>
+			<td>Virtual Output</td>
+			<td>Used by Test Formula to indicate which component to start with.</td>
+		</tr>
+		<tr>
+			<td>voSysFormulaStartLoopValue</td>
+			<td style="text-align:center;">3.0</td>
+			<td>Virtual Output</td>
+			<td>Used by Test Formula generated <em>.tsc</em> file used INIRead to read in loop restart counts.</td>
+		</tr>
+		<tr>
+			<td>cntSysDRConversion</td>
+			<td style="text-align:center;">3.0</td>
+			<td>Virtual Output    </td>
+			<td>Incremented by one every time data reduction converts a binary file to ASCII.</td>
+		</tr>
+		<tr>
+			<td>numSysUnpatchedCount</td>
+			<td style="text-align:center;">3.0</td>
+			<td>Virtual Output</td>
+			<td>Number of files that remain unpatched after a manual or prompt based patch from LabCentral.</td>
+		</tr>
+		<tr>
+			<td>voSysNumCalOverDue</td>
+			<td style="text-align:center;">3.0</td>
+			<td>Virtual Output</td>
+			<td>Number of channels with calibration overdue. Set by <em>Calibrate.exe</em>.</td>
+		</tr>
+		<tr>
+			<td>voSysMaxTransportDelay</td>
+			<td style="text-align:center;">3.0</td>
+			<td>Virtual Output</td>
+			<td>Maximum time in seconds of any transport delayed channel.</td>
+		</tr>
+		<tr>
+			<td>voSysFileIOError</td>
+			<td style="text-align:center;">3.1</td>
+			<td>Virtual Output</td>
+			<td>Incremented with 1 each time there is error open log file to modify with "ChangeLoggedValue" mailslot or iTestReport.</td>
+		</tr>
+		<tr>
+			<td>voSysConsoleWatchDog</td>
+			<td style="text-align:center;">3.2</td>
+			<td>Virtual Output</td>
+			<td>Incremented with 1 in 10 Hz Calc and set by iTest Console to 0 at 1 Hz.</td>
+		</tr>
+		<tr>
+			<td>voSysDRErrorCnt </td>
+			<td style="text-align:center;">3.4</td>
+			<td>Virtual Output</td>
+			<td>Incremented each time there is a problem appending or updating the <em>.dat</em> file.</td>
+		</tr>
+		<tr>
+			<td>vsaSysStartedLoops</td>
+			<td style="text-align:center;">3.4</td>
+			<td>Virtual String Array</td>
+			<td>Contains the name of started PID loops.</td>
+		</tr>
+		<tr>
+			<td>voSysMessageAlert</td>
+			<td style="text-align:center;">4.0</td>
+			<td>Virtual Output</td>
+			<td>Indicates if there are any error or warning system messages. 0 - cleared. 1 - warning message found. 2 - error message found</td>
+		</tr>
+		<tr>
+			<td>voSysPerfAP.f </td>
+			<td style="text-align:center;">4.0 </td>
+			<td>Virtual Output</td>
+			<td>This channel records the current refresh rate in Hz for the AutomationPanel GUI (i.e., the instantaneous frequency [1/time since the last update]). The channel value updates at a 10Hz rate. For example, if the current channel value is 1, then it took 1 second to refresh the AP GUI.</td>
+		</tr>
+		<tr>
+			<td>voSysLogLagTime</td>
+			<td style="text-align:center;">4.1</td>
+			<td>Virtual Output</td>
+			<td>This channel is set to the amount of time that the logging thread is behind in processing the data log buffer.</td>
+		</tr>
+		<tr>
+			<td>voSysLogLagTimeMax</td>
+			<td style="text-align:center;">4.1</td>
+			<td>Virtual Output</td>
+			<td>This channel is set to the maximum observed value of <code>voSysLogLagTime</code>. At any time, you can set it to 0.</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>PWM IO Support</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+ <span style="display: none;">
+
+
+	<p><img src="attachments/download/92999/ADT_LOGO_OUTLINE.png" style="width: 100px;" alt="" /></p>
+
+
+	 </span>
+
+
+	 <div class="CoverPage" class="body">
+
+
+	 <div class="Title">
+
+
+	<p style="text-align:center;"><br /><strong><span style="font-size:30pt;color: #005CAA;">PWM IO Support</span></strong></p>
+
+
+	 </div>
+
+
+	<p style="text-align:center;"><br /><em><span style="font-size:12pt;font-style: italic;">Document Revision 3</span></em></p>
+
+
+	<p style="text-align:center;"><br /><strong><span style="font-size:16pt;">Prepared By</span></strong><br />ADT Software Engineering</p>
+
+
+	<p style="text-align:center;"><br /><span style="font-size: 10pt;color:red;">A&#38;D Confidential Document Distributable only to A&#38;D Customers</span><br /><span style="font-size: 10pt;color:black;">Copyright A&#38;D Company, Limited<br />A&#38;D Technology Inc.</span></p>
+
+
+	 </div>
+
+
+	 <h1>Table of Contents</h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#PWM-IO-Support-with-the-D1">PWM IO Support with the D1</a><ul><li><a href="#Configuration">Configuration</a></li></ul>
+</li><li><a href="#PWM-IO-Support-with-the-D101">PWM IO Support with the D101</a><ul><li><a href="#PWM-Inputs">PWM Inputs</a></li><li><a href="#PWM-Outputs">PWM Outputs</a></li><li><a href="#Active-OutputInput">Active Output/Input</a></li><li><a href="#Configuration-2">Configuration</a></li></ul></li></ul></p>
+
+
+	<a name="PWM-IO-Support-with-the-D1"></a>
+<h1 >PWM IO Support with the D1<a href="#PWM-IO-Support-with-the-D1" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>The functionality of the D1 e.bloxx module is dependent on the firmware loaded on it. This module is normally shipped with firmware functionality called FastChronos to support frequency, counter inputs, and digital inputs/outputs. To support PWM output operation, the ChronosPWM firmware must be loaded. This operation is done with the Test.Commander tool which can be found on the Gantner Instruments website.</p>
+
+
+	<a name="Configuration"></a>
+<h2 >Configuration<a href="#Configuration" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>When Digital Output is selected as the iTest channel type, the channel will control the duty cycle of the output if the Pulse-Width Modulated checkbox is checked. There will be a second edit box where the fixed frequency of the PWM is entered.</p>
+
+
+	<p>The Active Output setting is used to control the logic of the signal during the duty cycle. If the Active Output is checked, then the signal will be in an energized state during the duty cycle.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>New Channel</strong></em></span><br /><img src="attachments/download/16224/pwm_d1.JPG" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="PWM-IO-Support-with-the-D101"></a>
+<h1 >PWM IO Support with the D101<a href="#PWM-IO-Support-with-the-D101" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>A new device type qBloxx_D101_PWM has been introduced. When the QBloxx D101 is configured this way on PWM input and output are allowed on the module. PWM inputs will measure the duty cycle and frequency of a signal an place the measured values in to 2 iTest channels. PWM outputs use 2 iTest channels to control the duty cycle and frequency of a PWM output signal. Duty cycle ranges from 0 to 100 percent. Frequency from 0 to 10,000 Hertz.</p>
+
+
+	<p>New channel types of "PWM Input" and "PWM Ouput" are added to DATA.DEF. When the D101 is configured for PWM, Test Manager will allow PWM type channels to be configured.</p>
+
+
+	<p>The eGate driver is enhanced support PWM channels on the D101 module. The driver will generate PWM configurations and load them to the qBloxx controller.</p>
+
+
+	<p>The iTest Console Signal Bar and Channel control dialog now allow PWM outputs to be modified.</p>
+
+
+	<a name="PWM-Inputs"></a>
+<h2 >PWM Inputs<a href="#PWM-Inputs" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Each PWM input requires two inputs in the D101 module. One input is used to measure the frequency, the other to measure the duty cycle.  The signal must be physically wired to both inputs.</p>
+
+
+	<a name="PWM-Outputs"></a>
+<h2 >PWM Outputs<a href="#PWM-Outputs" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>PWM outputs are controlled by two variables in the D101 module: one for frequency and one for PWM percent. Pins 2 and 4 will be the physical outputs for the signal. The variables for pins 3 and 5 will be used as set point variables to control the frequency. The variables for pins 2 and 4 will control the duty cycle.</p>
+
+
+	<a name="Active-OutputInput"></a>
+<h2 >Active Output/Input<a href="#Active-OutputInput" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The <strong>Active Input</strong> or <strong>Active Output</strong> checkbox is used to indicate the percentage of time that the digital is energized within the frequency (duty cycle).</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Active Output</strong></em></span><br /><img src="attachments/download/99413/activeOutput.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>For example, let's say you have a PWM signal with a 10Hz (100 ms) frequency and a duty cycle of 25%. This means that for every 100 ms, the signal will be logically "ON" for 25 ms then "OFF" for 75 ms. So if the <strong>Active Input</strong> or <strong>Active Output</strong> setting is checked, this means that the logical "ON" is energized during the duty cycle (in this case for 25 ms), and then de-energized for 75 ms. The unchecked setting is just the opposite.</p>
+
+
+	<p>While <strong>Active Output</strong> or <strong>Active Input</strong> usually represents the duty cycle (percent of time logically "ON"), it can also represent the frequency in some configurations.</p>
+
+
+	<a name="Configuration-2"></a>
+<h2 >Configuration<a href="#Configuration-2" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>A new device is introduced for PWM: qbloxx_D101_PWM.  It will display a description of "2 PWM input, 4 PWM output".</p>
+
+
+	<p>PWM channels require a device  of qbloxx_D101_PWM to be selected for Device ID. This will display PWM Input and PWM Output in the Channel Type list.</p>
+
+
+	<p>When PWM Output is selected, the channel will control the duty cycle of the output. There will be a second edit box where the frequency channel name is entered. When OK is pressed, two iTest channels are created. One will be a PWM Output channel to control duty cycle. The other will be a PWM Output channel to control frequency.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>PWM Output</strong></em></span><br /><img src="attachments/download/99412/pwm1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>When PWM Input is selected, the channel will receive the duty cycle measurement. The second edit box will contain the name of another PWM Input channel that will receive the frequency measurement.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>PWM Input</strong></em></span><br /><img src="attachments/download/99414/pwm2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The Channel Definitions will display the PWM channels. Hardware Configuration will display qBloxx_D101_PWM. Device Options will show the name of the other channel in the pair of channels.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>PWM Channels</strong></em></span><br /><img src="attachments/download/99415/D101_PWM.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Creating a Right Display</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Building_Displays.html">Building Displays</a></li>
+<li><a href="Creating_a_Right_Display.html">Creating a Right Display</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Creating-a-Right-Display"></a>
+<h1 >Creating a Right Display<a href="#Creating-a-Right-Display" class="wiki-anchor">&para;</a></h1>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/2431/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">This section is only applicable when employing a multi-monitor configuration.</td>
+		</tr>
+	</table>
+
+
+
+
+	<ol>
+	<li>Expand the <strong>Presentation</strong> folder in the Test Manager Tree, followed by the <strong>Displays</strong> folder.</li>
+		<li>Expand the <strong>Right</strong> folder below the <strong>Displays</strong> folder.
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/2431/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">If the <strong>Right</strong> folder does not exist, set the number of monitors in the <strong>Displays</strong> section under <strong>Global Settings</strong> to 2 or 3. You may need to restart Test Manager for the change to take effect.</td>
+		</tr>
+	</table>
+
+
+</li>
+		<li>Right-click on <strong>Right</strong>, and then select <strong>New Right Display</strong>. A new display named "Right1" displays in the Tree Bar.</li>
+		<li>Click to select the new display in the Tree Bar, type a new name, and then press <strong>Enter</strong>.</li>
+		<li>Double-click on the new display in the Tree Bar to open it in the Test Manager Display Area.</li>
+		<li>Right-click on the Test Manager Display Area, and select <strong>Display Properties</strong> to open the Display Properties dialog box.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Display Properties</strong></em></span><br /><img src="attachments/download/108175/42_DisplayProperties.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>The <strong>Size &#38; Position</strong> tab displays the default display size (800x600). To change the display size, enter the new height and width values in the <strong>Size</strong> fields.</li>
+		<li>To change the default position of the display on the iTest Console, enter the new X and Y coordinate values in the <strong>Position</strong> fields.</li>
+		<li>Click on the <strong>Color</strong> tab.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Color Tab</strong></em></span><br /><img src="attachments/download/108176/42_ColorTab.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>Select</strong> to open the Color dialog box in which you can select a predefined background color or create a custom background color for the display.</li>
+		<li>Click <strong>Browse</strong> to display the Open dialog box in which you can select a bitmap to use for the display’s background. Bitmaps are imported at the size they were created and cannot be resized on the display. Bitmaps smaller than the display will be tiled to fill the display. </li>
+		<li>Click on the <strong>Style</strong> tab.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Style Tab</strong></em></span><br /><img src="attachments/download/108177/42_StyleTab.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select <strong>Title Bar</strong>, <strong>Minimize Box</strong>, and <strong>Close Button</strong> if you want these items to appear on the display.</li>
+		<li>Click on the <strong>Grid</strong> tab. The options on this tab allow you to create a grid of dots that displays on the Display Area to help you align controls. The grid does not display on the iTest Console.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Grid Tab</strong></em></span><br /><img src="attachments/download/108178/42_GridTab.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li><strong>Show Grid</strong> is selected by default. To change the size of the grid, enter new values (in pixels) in the <strong>Width</strong> and <strong>Height</strong> fields. Controls will <strong>Snap to Grid</strong> marks by default. If you don’t want controls to snap to the grid, deselect this option.</li>
+		<li>Click <strong>Apply</strong> to save changes without closing the Display Properties dialog box. Click <strong>OK</strong> to save changes and close the Display Properties dialog box.</li>
+		<li>Select an object from the Object Bar list and click <strong>Insert</strong>, or click on one of the controls on the Display toolbar to insert a control on the display.</li>
+		<li>Right-click on the control to open its properties dialog box, and specify the appropriate settings.</li>
+		<li>Repeat steps 17 and 18 for each object you want to add to the display.</li>
+		<li><strong>Save</strong> the display.</li>
+	</ol>
+
+
+	<a name="Editing-a-Right-Display-During-Runtime"></a>
+<h2 >Editing a Right Display During Runtime<a href="#Editing-a-Right-Display-During-Runtime" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can edit a running right display by right-clicking on a specific display in the Right Display tab and selecting the Edit option. This will bring up the display in the main display area, at which point you may edit it as needed.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Edit Display</strong></em></span><br /><img src="attachments/download/108179/42_EditDisplay.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>You can also directly edit a right display by right-clicking on the display itself:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Edit Display</strong></em></span><br /><img src="attachments/download/108180/42_EditDisplay2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+</body>
+</html>

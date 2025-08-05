@@ -1,0 +1,319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Managing Proportional Integral Derivative Controls</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Managing_Proportional_Integral_Derivative_Controls.html">Managing Proportional Integral Derivative Controls</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Managing-Proportional-Integral-Derivative-Controls"></a>
+<h1 >Managing Proportional Integral Derivative Controls<a href="#Managing-Proportional-Integral-Derivative-Controls" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Managing-Proportional-Integral-Derivative-Controls">Managing Proportional Integral Derivative Controls</a><ul><li><a href="#Powertekini-Settings">Powertek.ini Settings</a></li><li><a href="#Configuring-PIDs">Configuring PIDs</a></li><li><a href="#Using-PIDs">Using PIDs</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<p>Proportional Integral Derivative controls (PIDs), also known as control loops, stabilize a process or device at a commanded setpoint by measuring an input value and adjusting an output value based on the derived error. These controls are also used to track a setpoint. PID coefficients are set according to the response characteristics of a control system. You can create PIDs which can be managed at runtime by starting, stopping, pausing, and modifying the control loops as they are running.</p>
+
+
+	<p>A control can be defined as a process regulator, which regulates engine speed and load with a dynamometer or throttle actuator. For more information, refer to the <a class="wiki-page" href="Control_Theory.html">Control Theory</a> documentation.</p>
+
+
+	<p>The following table describes general terms used when defining PID controls:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>PID Control Terminology</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Term</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Setpoint</td>
+			<td> The desired value of what is being controlled (e.g., speed, load, temperature, or pressure).</td>
+		</tr>
+		<tr>
+			<td>Feedback</td>
+			<td> The measured value of the controlled variable.</td>
+		</tr>
+		<tr>
+			<td>Error</td>
+			<td> The signal derived from the difference between the setpoint and feedback.</td>
+		</tr>
+		<tr>
+			<td>Control</td>
+			<td> The output derived from error. Control minimizes the difference between setpoint and feedback.</td>
+		</tr>
+		<tr>
+			<td>Closed loop control</td>
+			<td> In this mode, the control system continually calculates error and adjusts the control channel to reduce error to zero. Tuning settings affect the adjustment amount applied to the control channel.<br />&nbsp;<br />Tuning takes into account the magnitude of external disturbances to the process as well as the sensitivity of the process to the control element (e.g., the effect of valve position on pressure).</td>
+		</tr>
+		<tr>
+			<td>Open loop control</td>
+			<td> In this mode, the control system no longer adjusts the control channel to correct for error. This allows for manual control, which is recommended only for slow processes.<br />&nbsp;<br />When the system is not running, this mode lets you modulate a valve or actuator to check its performance. In certain cases, a PID loop is switched from closed to open loop control to lock a valve or actuator in place for the remainder of a test.</td>
+		</tr>
+		<tr>
+			<td>Windup Clamping</td>
+			<td> In this mode, the control system detects when there is excess overshooting (windup) due to a large change in the setpoint. Additional feedback is added to negate the overshoot.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Powertekini-Settings"></a>
+<h2 >Powertek.ini Settings<a href="#Powertekini-Settings" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following <em>powertek.ini</em> settings are used to configure the behavior of PIDs in the test system:</p>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>PID INI Settings</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Version</strong> </td>
+			<td style="text-align:left;"><strong>GUI</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+			<td style="text-align:left;"><strong>Default Value</strong></td>
+			<td style="text-align:left;"><strong>Example</strong> </td>
+		</tr>
+		<tr>
+			<td>DefaultPIDGroup</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Name of the PID group from <em>pidgroups.cfg</em> to apply at startup.</td>
+			<td style="text-align:center;">-</td>
+			<td>DefaultPIDGroup=PIDGroup</td>
+		</tr>
+		<tr>
+			<td>DETACHPIDCONTROL</td>
+			<td style="text-align:center;">2.1</td>
+			<td style="text-align:center;">X</td>
+			<td>Shows the PID Control dialog as a separate window when set to TRUE. This option does not affect AutomationPanel's Mode Control dialog.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>DETACHPIDCONTROL=TRUE</td>
+		</tr>
+		<tr>
+			<td>EnablePIDTuneSliders</td>
+			<td style="text-align:center;">4.0</td>
+			<td style="text-align:center;">X</td>
+			<td>Enables slider controls for the PIDTune tool.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>EnablePIDTuneSliders=FALSE</td>
+		</tr>
+		<tr>
+			<td>HS1Label</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>Label for the left PID mode control in the Mode Control and PID Control dialogs.</td>
+			<td style="text-align:center;">-</td>
+			<td>HS1Label=DYNO_COMMAND </td>
+		</tr>
+		<tr>
+			<td>HS2Label</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>Label for the right PID mode control in the Mode Control and PID Control dialogs.</td>
+			<td style="text-align:center;">-</td>
+			<td>HS2Label=THROTTLE_COMMAND </td>
+		</tr>
+		<tr>
+			<td>InternalPids</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>When set to FALSE, the Mode Control combo box is disabled.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>InternalPids=TRUE</td>
+		</tr>
+		<tr>
+			<td>LastModeHS1</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>Initial PID to start for HS1.</td>
+			<td style="text-align:center;">-</td>
+			<td>LastModeHS1=Speed.HS1</td>
+		</tr>
+		<tr>
+			<td>LastModeHS2</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>Initial PID to start for HS2.</td>
+			<td style="text-align:center;">-</td>
+			<td>LastModeHS2=Position.HS2</td>
+		</tr>
+		<tr>
+			<td>PidControlLoopGroup1Name</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Control loop to act as HS1. Affects iTest Console's PID Control dialog, AutomationPanel's Mode Control dialog, and Test Manager's Control Modes.</td>
+			<td style="text-align:center;">HS1 or dyno_ref </td>
+			<td>PidControlLoopGroup1Name=Dt1Dyno</td>
+		</tr>
+		<tr>
+			<td>PidControlLoopGroup2Name</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Control loop to act as HS2. Affects iTest Console's PID Control dialog, AutomationPanel's Mode Control dialog, and Test Manager's Control Modes.</td>
+			<td style="text-align:center;">HS2</td>
+			<td>PidControlLoopGroup2Name=Dt1Throt</td>
+		</tr>
+		<tr>
+			<td>PIDsUseFltFdBck</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td>Determines whether feedbacks are filtered using database settings. When set to FALSE, unfiltered values are used.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>PIDsUseFltFdBck=FALSE</td>
+		</tr>
+		<tr>
+			<td>PidXMode</td>
+			<td style="text-align:center;">3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Name of PID file to use for Xmode functionality.</td>
+			<td style="text-align:center;">-</td>
+			<td>PidXMode=Xmode.HS1</td>
+		</tr>
+		<tr>
+			<td>PidXModeDefaultD</td>
+			<td style="text-align:center;">3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Default value used for D setting when selecting new Xmode feedback channel. </td>
+			<td style="text-align:center;">0</td>
+			<td>PidXModeDefaultD=0</td>
+		</tr>
+		<tr>
+			<td>PidXModeDefaultI</td>
+			<td style="text-align:center;">3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Default value used for I setting when selecting new Xmode feedback channel.</td>
+			<td style="text-align:center;">0.0001</td>
+			<td>PidXModeDefaultI=0.0001</td>
+		</tr>
+		<tr>
+			<td>PidXModeDefaultP</td>
+			<td style="text-align:center;">3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Default value used for P setting when selecting new Xmode feedback channel.</td>
+			<td style="text-align:center;">50</td>
+			<td>PidXModeDefaultP=50</td>
+		</tr>
+		<tr>
+			<td>PidXModeDefaultReverse</td>
+			<td style="text-align:center;">3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Default value used for Reverse setting when selecting new Xmode feedback channel.</td>
+			<td style="text-align:center;">0</td>
+			<td>PidXModeDefaultReverse=0</td>
+		</tr>
+		<tr>
+			<td>PidXModeSaveProcedure</td>
+			<td style="text-align:center;">3.2</td>
+			<td style="text-align:center;">-</td>
+			<td>Name of procedure to run when Xmode settings are saved.</td>
+			<td style="text-align:center;">-</td>
+			<td>PidXModeSaveProcedure=XModeSaved </td>
+		</tr>
+		<tr>
+			<td>ReportPidModeSwitchErrors</td>
+			<td style="text-align:center;">2.2.1</td>
+			<td style="text-align:center;">X</td>
+			<td>Report Invalid Mode Pair Messages.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>ReportPidModeSwitchErrors=TRUE</td>
+		</tr>
+		<tr>
+			<td>StartPids</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>When set to TRUE, PIDs are enabled upon startup.</td>
+			<td style="text-align:center;">TRUE</td>
+			<td>StartPids=TRUE</td>
+		</tr>
+		<tr>
+			<td>TemplateCommandVisibility</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">X</td>
+			<td>When set to TRUE, iTest Console's PID Control or AutomationPanel's Mode Control dialogs are shown.</td>
+			<td style="text-align:center;">FALSE</td>
+			<td>TemplateCommandVisibility=FALSE</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+	<a name="Configuring-PIDs"></a>
+<h2 >Configuring PIDs<a href="#Configuring-PIDs" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>PIDs (control loops) can be configured using Test Manager or SolutionBuilder. Refer to the following documents for more information:</p>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Control_Loops.html">Control Loops in Test Manager</a></li>
+		<li><a class="wiki-page" href="Control_Loops_in_SolutionBuilder.html">Control Loops in SolutionBuilder</a></li>
+	</ul>
+
+
+	<a name="Using-PIDs"></a>
+<h2 >Using PIDs<a href="#Using-PIDs" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following documents describe the various ways PIDs are used in testing:</p>
+
+
+	<ul>
+	<li>Control Dialogs
+	<ul>
+	<li><a class="wiki-page" href="Mode_Control_Dialog.html">Mode Control in AutomationPanel</a></li>
+		<li><a class="wiki-page" href="PID_Control_Box.html">PID Control in iTest Console</a></li>
+	</ul>
+	</li>
+		<li><a class="wiki-page" href="Mode_Switching.html">Mode Switching using VCL</a></li>
+		<li><a class="wiki-page" href="PIDTune.html">PIDTune</a></li>
+		<li><a class="wiki-page" href="Mode_Control_Dialog.html#Using-X-Mode">X-Mode</a></li>
+	</ul>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Control_Theory.html">Control Theory</a></li>
+	</ul>
+</body>
+</html>

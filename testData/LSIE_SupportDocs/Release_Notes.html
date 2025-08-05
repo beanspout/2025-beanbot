@@ -1,0 +1,1327 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Release Notes</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Release_Notes.html">Release Notes</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<p> <span style="display: none;">
+
+
+	<p><img src="attachments/download/93000/ADT_LOGO_OUTLINE.png" style="width: 100px;" alt="" /></p>
+
+
+	 </span>
+
+
+	 <div class="CoverPage" class="body">
+
+
+	 <div class="Title">
+
+
+	<p style="text-align:center;"><br /><strong><span style="font-size:30pt;color: #005CAA;">iTest 4.5 Release Notes</span></strong></p>
+
+
+	 </div>
+
+
+	<p style="text-align:center;"><br /><strong><span style="font-size:16pt;">Date</span></strong><br />April 2025</p>
+
+
+	<p style="text-align:center;"><br /><strong><span style="font-size:16pt;">Prepared By</span></strong><br />ADT Software Engineering</p>
+
+
+	<p style="text-align:center;"><br /><span style="font-size: 10pt;color:red;">A&#38;D Confidential Document Distributable only to A&#38;D Customers</span><br /><span style="font-size: 10pt;color:black;">Copyright A&#38;D Company, Limited<br />A&#38;D Technology Inc.</span></p>
+
+
+	 </div>
+
+
+	 <h1>Table of Contents</h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Overview">Overview</a></li><li><a href="#Major-Features">Major Features</a><ul><li><a href="#Patching-Process">Patching Process</a><ul><li><a href="#voSysPatchStatus">voSysPatchStatus</a></li></ul>
+</li><li><a href="#Headless-iTest">Headless iTest</a></li><li><a href="#AutomationPanel">AutomationPanel</a><ul><li><a href="#Custom-Saved-Configurations">Custom Saved Configurations</a></li><li><a href="#Data-Log-Viewer-Panel">Data Log Viewer Panel</a></li><li><a href="#Gauge-Panel">Gauge Panel</a></li><li><a href="#Process-Indicators">Process Indicators</a></li><li><a href="#Python-Script-Message-Dialog">Python Script Message Dialog</a></li><li><a href="#Schedule-Viewer-Panel">Schedule Viewer Panel</a></li><li><a href="#System-Resource-Indicators">System Resource Indicators</a></li></ul>
+</li><li><a href="#SolutionBuilder">SolutionBuilder</a><ul><li><a href="#Build-Output-Bar">Build Output Bar</a></li><li><a href="#Editable-Channel-Picklist">Editable Channel Picklist</a></li><li><a href="#Layouts-Editor">Layouts Editor</a></li><li><a href="#Limit-Groups-Property-Sheet-Editor">Limit Groups Property Sheet Editor</a></li><li><a href="#Log-Order-Lists-Editor">Log Order Lists Editor</a></li><li><a href="#Lookup-Tables-Editor">Lookup Tables Editor</a></li><li><a href="#Reordering-Tiles">Reordering Tiles</a></li><li><a href="#Scratchpad">Scratchpad</a></li></ul>
+</li><li><a href="#Driver-Updates">Driver Updates</a><ul><li><a href="#AC2000Cycler">AC2000Cycler</a></li><li><a href="#AKEngine">AKEngine</a></li><li><a href="#AndBalance">AndBalance</a></li><li><a href="#AvlIndicomAutomation">AvlIndicomAutomation</a></li><li><a href="#Chamber-Driver">Chamber Driver</a></li><li><a href="#ChromaCycler">ChromaCycler</a></li><li><a href="#ElektroCycler">ElektroCycler</a></li><li><a href="#EtherCAT-Driver">EtherCAT Driver</a></li><li><a href="#Melsec-Driver">Melsec Driver</a></li><li><a href="#Modbus-Driver">Modbus Driver</a></li><li><a href="#OPC-Driver">OPC Driver</a></li><li><a href="#OPC-UA-Driver">OPC UA Driver</a></li><li><a href="#Rototest-Driver">Rototest Driver</a></li><li><a href="#VideoCapture-Driver">VideoCapture Driver</a></li><li><a href="#XCPMaster-Driver">XCPMaster Driver</a></li></ul>
+</li><li><a href="#INI-Settings">INI Settings</a></li><li><a href="#Python-Updates">Python Updates</a><ul><li><a href="#Checking-for-Python-Packages">Checking for Python Packages</a></li><li><a href="#New-Python-Packages">New Python Packages</a></li></ul>
+</li><li><a href="#VCL-Updates">VCL Updates</a><ul><li><a href="#ArraySum">ArraySum</a></li></ul>
+</li><li><a href="#BTS">BTS</a><ul><li><a href="#Parameters-Editor">Parameters Editor</a></li><li><a href="#RecoveredDataTool">RecoveredDataTool</a></li></ul>
+</li><li><a href="#Deprecated-Features">Deprecated Features</a><ul><li><a href="#DLBAxisMixEmptyUnits">DLBAxisMixEmptyUnits</a></li><li><a href="#Visual-Studio-Code-Debugger-VCL">Visual Studio Code Debugger: VCL</a></li></ul>
+</li></ul>
+</li><li><a href="#Compatibility-and-Product-Life-Cycle-Matrixes">Compatibility and Product Life Cycle Matrixes</a><ul><li><a href="#Compatibility-Matrixes">Compatibility Matrixes</a></li><li><a href="#Product-Life-Cycle-Matrixes">Product Life Cycle Matrixes</a></li></ul></li></ul></p>
+
+
+	<a name="Overview"></a>
+<h1 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>The iTest 4.5 release includes multiple performance and cosmetic updates, feature enhancements, and bug fixes.</p>
+
+
+	<a name="Major-Features"></a>
+<h1 >Major Features<a href="#Major-Features" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Patching-Process"></a>
+<h2 >Patching Process<a href="#Patching-Process" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>A&#38;D Technology relies on a series of patches to add new features and address issues between version releases. Previously, the patching process utilized <em>PatchUpdate.exe</em> in order to apply patches; this tool has been deprecated.</p>
+
+
+	<p>To patch iTest, run <em>iTestXXSetup.exe</em> for the version you would like to patch, where XX is the product version (e.g., <em>iTest45Setup.exe</em>).</p>
+
+
+	<a name="voSysPatchStatus"></a>
+<h3 >voSysPatchStatus<a href="#voSysPatchStatus" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>iTest now includes the <code>voSysPatchStatus</code> channel in order to determine the patch level status. This channel allows you to quickly identify if the running software versions for iTest and LabAgent are outdated.</p>
+
+
+	<a name="Headless-iTest"></a>
+<h2 >Headless iTest<a href="#Headless-iTest" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest can now run in "headless" mode, where a GUI application (e.g., AutomationPanel) is not launched on startup. This allows for operators to perform testing on stations within a lab via LabCentral's <strong>Free-form Dashboards</strong> feature. While iTest is running in headless mode, an iTest icon will display in the Windows system tray.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>iTest Icon</strong></em></span><br /><img src="attachments/download/134652/45_iTestIconSystemTray.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="AutomationPanel"></a>
+<h2 >AutomationPanel<a href="#AutomationPanel" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Custom-Saved-Configurations"></a>
+<h3 >Custom Saved Configurations<a href="#Custom-Saved-Configurations" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Chart panel's configurations can be saved to a template, and then loaded in DspDrv_AP for users with the proper security permissions. This feature replicates the custom saved configurations from LivePlot.</p>
+
+
+	<a name="Data-Log-Viewer-Panel"></a>
+<h3 >Data Log Viewer Panel<a href="#Data-Log-Viewer-Panel" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Data Log Viewer Panel now supports the following properties:</p>
+
+
+	<ul>
+	<li>Checkboxes</li>
+		<li>CheckedRows</li>
+		<li>Column Header Fields</li>
+		<li>Controls Font</li>
+		<li>Header Field</li>
+		<li>Header Filter</li>
+		<li>Invalid Color</li>
+		<li>Invalid Column</li>
+		<li>Show Headers</li>
+		<li>Show Last Row Default</li>
+		<li>Show Select File</li>
+	</ul>
+
+
+	<a name="Gauge-Panel"></a>
+<h3 >Gauge Panel<a href="#Gauge-Panel" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Gauge panel now includes the <strong>Error Color</strong> property. This property allows you to specify the translucent color of the arc between the target and current values.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Gauge Panel - Error Color</strong></em></span><br /><img src="attachments/download/134406/45_GaugeErrorColor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Process-Indicators"></a>
+<h3 >Process Indicators<a href="#Process-Indicators" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>AutomationPanel will display the running state of important processes, such as data_engine and rdbserv, in the Process Indicator. This indicator is located in the status bar, where it will either be green or red based on the running state of each process. Hovering over the Process Indicator will display which processes are being reported.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Process Indicator</strong></em></span><br /><img src="attachments/download/134653/45_ProcessIndicator.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Python-Script-Message-Dialog"></a>
+<h3 >Python Script Message Dialog<a href="#Python-Script-Message-Dialog" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Python script arguments can now be set via the Python Script Message dialog. This dialog is available for Button panels that have the <strong>Message Type</strong> property set to <strong>Python Script</strong>.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Python Script Message Dialog</strong></em></span><br /><img src="attachments/download/134822/44_PythonScriptMessageDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Schedule-Viewer-Panel"></a>
+<h3 >Schedule Viewer Panel<a href="#Schedule-Viewer-Panel" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Schedule Viewer panel now includes the <strong>Schedule File Filter</strong> property. This property allows you to filter the schedule files that will display in the panel's drop-down list.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Schedule File Filter</strong></em></span><br /><img src="attachments/download/134654/45_ScheduleFileFilter.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="System-Resource-Indicators"></a>
+<h3 >System Resource Indicators<a href="#System-Resource-Indicators" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <strong>Show Resource Indicators</strong> property has been added to AutomationPanel's Global Property Manager. This property allows you to view/hide the system CPU, memory utilization, and other resource indicators in the status bar.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Resource Indicators</strong></em></span><br /><img src="attachments/download/134823/45_ResourceIndicators.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="SolutionBuilder"></a>
+<h2 >SolutionBuilder<a href="#SolutionBuilder" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Build-Output-Bar"></a>
+<h3 >Build Output Bar<a href="#Build-Output-Bar" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>SolutionBuilder's Procedures, Calculations, and Circuit Calculations editors now include the Build Output Bar. Any test build errors that occur after performing a build will be listed in the Build Output Bar, and the applicable filename will display in red font in the left pane of the editor.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Example: Procedure with Errors</strong></em></span><br /><img src="attachments/download/134824/45_ProcedureWithErrors.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Editable-Channel-Picklist"></a>
+<h3 >Editable Channel Picklist<a href="#Editable-Channel-Picklist" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <strong>Editable Channel Picklist</strong> column type has been added as an available option for schedule columns. This column type allows you to select a channel from a pre-defined list of active channel definition files.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Editable Channel Picklist</strong></em></span><br /><img src="attachments/download/134657/45_EditableChannelPicklist.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Layouts-Editor"></a>
+<h3 >Layouts Editor<a href="#Layouts-Editor" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>SolutionBuilder's Layouts editor now displays a gray brick background to indicate which panels in a layout will not fully display in AutomationPanel.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Viewing Displayable Area</strong></em></span><br /><img src="attachments/download/134794/45_ViewingDisplayableArea.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Limit-Groups-Property-Sheet-Editor"></a>
+<h3 >Limit Groups Property Sheet Editor<a href="#Limit-Groups-Property-Sheet-Editor" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Limit Groups editor now includes a property sheet editor, allowing you to quickly update the limit settings for multiple channels simultaneously.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Limit Groups - Property Sheet Editor</strong></em></span><br /><img src="attachments/download/134658/45_LimitGroupsPropertySheetEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Log-Order-Lists-Editor"></a>
+<h3 >Log Order Lists Editor<a href="#Log-Order-Lists-Editor" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Log Order Lists editor now includes the <strong>Find</strong> right-click option, allowing you to quickly search for specific text within the log order list.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Find Dialog</strong>*</em></span><br /><img src="attachments/download/134825/45_FindDialogLOL.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+* <span style="font-size:0.90em;font-style: italic;">This GIF is only available in the Online Help, not in PDFs.</span>
+
+	<p>&nbsp;</p>
+
+
+	<a name="Lookup-Tables-Editor"></a>
+<h3 >Lookup Tables Editor<a href="#Lookup-Tables-Editor" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>SolutionBuilder now includes the Lookup Tables editor, allowing you to manage and configure lookup tables.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Lookup Tables</strong></em></span><br /><img src="attachments/download/134659/45_LookupTablesEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Reordering-Tiles"></a>
+<h3 >Reordering Tiles<a href="#Reordering-Tiles" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>SolutionBuilder's Layouts editor now allows you to reorder tiles directly in a Tile panel via keyboard shortcuts and drag-and-drop. This feature is only available if the <strong>Layout Type</strong> is set to Table for the Tile panel.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Rearrange with Drag-and-Drop</strong>*</em></span><br /><img src="attachments/download/134660/44_MoveTilesDragDrop.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+* <span style="font-size:0.90em;font-style: italic;">This GIF is only available in the Online Help, not in PDFs.</span>
+
+	<p>&nbsp;</p>
+
+
+	<a name="Scratchpad"></a>
+<h3 >Scratchpad<a href="#Scratchpad" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>SolutionBuilder's Layouts and Toolbars editors now include the <strong>Show Scratchpad</strong> right-click option. The Scratchpad provides a floating layout, where you can copy/paste panels from various layouts to temporarily store before using the panels in another layout or toolbar.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Scratchpad</strong></em></span><br /><img src="attachments/download/134661/45_Scratchpad.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Driver-Updates"></a>
+<h2 >Driver Updates<a href="#Driver-Updates" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="AC2000Cycler"></a>
+<h3 >AC2000Cycler<a href="#AC2000Cycler" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>iTest.BTS now supports the AC2000Cycler driver. This driver allows iTest.BTS to control Anderson Electric 2000 series electronic controllers via the EtherCAT interface.</p>
+
+
+	<a name="AKEngine"></a>
+<h3 >AKEngine<a href="#AKEngine" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The max polling rate for the AKEngine driver has been increased for smoother high-speed updates.</p>
+
+
+	<a name="AndBalance"></a>
+<h3 >AndBalance<a href="#AndBalance" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The AndBalance driver now includes the <strong>Overload Monitor Channel</strong>, which allows you to monitor the overload condition.</p>
+
+
+	<a name="AvlIndicomAutomation"></a>
+<h3 >AvlIndicomAutomation<a href="#AvlIndicomAutomation" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The AvlIndicomAutomation driver log is now recreated on every launch in order to avoid multi-GB file growth.</p>
+
+
+	<a name="Chamber-Driver"></a>
+<h3 >Chamber Driver<a href="#Chamber-Driver" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Chamber driver now supports the <strong>Weiss ASCII 2</strong> chamber type.</p>
+
+
+	<a name="ChromaCycler"></a>
+<h3 >ChromaCycler<a href="#ChromaCycler" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The ChromaCycler now supports Chroma 17010H battery cyclers.</p>
+
+
+	<a name="ElektroCycler"></a>
+<h3 >ElektroCycler<a href="#ElektroCycler" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The ElektroCycler now supports ElektroAutomatik BT20000 cyclers. In addition, Wireshark captures will stop on the first timeout error, and timeout errors will be recorded to the blackbox log file.</p>
+
+
+	<a name="EtherCAT-Driver"></a>
+<h3 >EtherCAT Driver<a href="#EtherCAT-Driver" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The EtherCAT driver now supports up to 6 instances and 2000 Hz mode on INtime systems. In addition, the <strong>Process Priority</strong> and <strong>IP Address</strong> settings are now included in the driver log. The process priority setting now defaults to Realtime.</p>
+
+
+	<a name="Melsec-Driver"></a>
+<h3 >Melsec Driver<a href="#Melsec-Driver" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The MelsecDriver has been added to iTest. This driver interfaces with Mitsubishi PLC devices that support the SLMP on Ethernet or the Data Link Library interface. In addition, it can be configured to use a CC-Link communication board.</p>
+
+
+	<a name="Modbus-Driver"></a>
+<h3 >Modbus Driver<a href="#Modbus-Driver" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Modbus driver now supports up to 8 instances.</p>
+
+
+	<a name="OPC-Driver"></a>
+<h3 >OPC Driver<a href="#OPC-Driver" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The OPC driver now supports the following mailslot messages: <strong>CreateViewTagsFile</strong>, <strong>SetChan</strong>, <strong>SetTag</strong>, <strong>SetTagStr</strong>, and <strong>ReadFromCache</strong>.</p>
+
+
+	<a name="OPC-UA-Driver"></a>
+<h3 >OPC UA Driver<a href="#OPC-UA-Driver" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>iTest now supports the OPC UA driver.</p>
+
+
+	<a name="Rototest-Driver"></a>
+<h3 >Rototest Driver<a href="#Rototest-Driver" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>iTest now supports the RotoTest driver.</p>
+
+
+	<a name="VideoCapture-Driver"></a>
+<h3 >VideoCapture Driver<a href="#VideoCapture-Driver" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The VideoCapture driver now supports up to 8 instances.</p>
+
+
+	<a name="XCPMaster-Driver"></a>
+<h3 >XCPMaster Driver<a href="#XCPMaster-Driver" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The XCPMaster now includes CCP download support, big-endian ECUs, robust DTO decode without processor-info calls, and ValueCAN4-Industrial on HS2 bus support.</p>
+
+
+	<a name="INI-Settings"></a>
+<h2 >INI Settings<a href="#INI-Settings" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following INI settings have been added:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>INI Settings</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Setting</strong></td>
+			<td style="text-align:left;"><strong>Location</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td> MaxPanelsPerLayout</td>
+			<td> Powertek.ini</td>
+			<td> This setting specifies the maximum number of panels that can be in a layout.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Python-Updates"></a>
+<h2 >Python Updates<a href="#Python-Updates" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Checking-for-Python-Packages"></a>
+<h3 >Checking for Python Packages<a href="#Checking-for-Python-Packages" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>When launching iTest, iTest will now check if there are any Python packages in the <em>$SUPPORTDIR\PythonPackages</em> folder that do not currently exist in the <em>$SYSTEMDIR\PythonPackages</em> folder. If iTest finds any of these "missing" packages, then it will automatically run PythonEngine to install these packages before continuing to launch.</p>
+
+
+	<a name="New-Python-Packages"></a>
+<h3 >New Python Packages<a href="#New-Python-Packages" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following Python packages have been added:</p>
+
+
+	<ul>
+	<li>pynput-1.7.7-py2.py3-none-any.whl</li>
+		<li>pikepdf-9.1.1-cp311-cp311-win_amd64.whl</li>
+		<li>lxml-5.2.2-cp311-cp311-win_amd64.whl</li>
+		<li>Deprecated-1.2.14-py2.py3-none-any.whl</li>
+		<li>wrapt-1.16.0-cp311-cp311-win_amd64.whl</li>
+		<li>packaging-24.1-py3-none-any.whl</li>
+		<li>pillow-10.4.0-cp311-cp311-win_amd64.whl</li>
+		<li>pypdf-4.3.0-py3-none-any.whl</li>
+		<li>pdfkit-1.0.0-py3-none-any.whl</li>
+	</ul>
+
+
+	<a name="VCL-Updates"></a>
+<h2 >VCL Updates<a href="#VCL-Updates" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="ArraySum"></a>
+<h3 >ArraySum<a href="#ArraySum" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The ArraySum VCL function has been added. This function can be used to calculate the sum for a subset of values located between two indexes in an array.</p>
+
+
+	<a name="BTS"></a>
+<h2 >BTS<a href="#BTS" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Parameters-Editor"></a>
+<h3 >Parameters Editor<a href="#Parameters-Editor" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>SolutionBuilder's Parameters editor now includes the <strong>LL Ignore Time</strong> and <strong>HL Ignore Time</strong> columns. These columns can be used to configure the ignore times for user-defined parameters.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Ignore Time Columns</strong></em></span><br /><img src="attachments/download/134662/45_BTSIgnoreTimeColumns.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="RecoveredDataTool"></a>
+<h3 >RecoveredDataTool<a href="#RecoveredDataTool" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The RecoveredDataTool has been created to help process data files found in <em>RecoveredData</em> folders and merge those files into the project data log.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>RecoveredDataTool Interface</strong></em></span><br /><img src="attachments/download/134821/44_RecoveredDataTool.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Deprecated-Features"></a>
+<h2 >Deprecated Features<a href="#Deprecated-Features" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="DLBAxisMixEmptyUnits"></a>
+<h3 >DLBAxisMixEmptyUnits<a href="#DLBAxisMixEmptyUnits" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <code>DLBAxisMixEmpty</code> <em>config.ini</em> setting has been deprecated. The Data Log Browser now utilizes the <strong>Axis Mix Empty Units</strong> property in order to determine if channels with the same units can be moved onto the same Y-axis.</p>
+
+
+	<a name="Visual-Studio-Code-Debugger-VCL"></a>
+<h3 >Visual Studio Code Debugger: VCL<a href="#Visual-Studio-Code-Debugger-VCL" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The extension for Visual Studio Code that allows for editing and debugging VCL procedures has been deprecated.</p>
+
+
+	<p><a name="Compatibility-and-Product-Life-Cycle-Matrixes"></a>
+<h1 >Compatibility and Product Life Cycle Matrixes<a href="#Compatibility-and-Product-Life-Cycle-Matrixes" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>The following matrixes detail the iTest to OS Compatibility, OS to RTOS Compatibility, RTOS to PC Compatibility, and the iTest Product Life cycle.</p>
+
+
+	<a name="Compatibility-Matrixes"></a>
+<h2 >Compatibility Matrixes<a href="#Compatibility-Matrixes" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>iTest to OS Compatibility Matrix</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td rowspan="2"><strong>iTest to OS Compatibility</strong></td>
+			<td rowspan="2"><strong>Windows</strong></td>
+			<th style="text-align:center;" colspan="14"><strong>Test Automation</strong></th>
+		</tr>
+		<tr style="background:#ededed;">
+			<td><strong>iTest 4.5</strong></td>
+			<td><strong>iTest 4.4</strong></td>
+			<td><strong>iTest 4.3</strong></td>
+			<td><strong>iTest 4.2</strong></td>
+			<td><strong>iTest 4.1</strong></td>
+			<td><strong>iTest 4.0</strong></td>
+			<td><strong>iTest 3.9</strong></td>
+			<td><strong>iTest 3.8</strong></td>
+			<td><strong>iTest 3.7</strong></td>
+			<td><strong>iTest 3.6</strong></td>
+			<td><strong>iTest 3.5</strong></td>
+			<td><strong>iTest 3.4</strong></td>
+			<td><strong>iTest 3.2</strong></td>
+			<td><strong>iTest pre 3.2</strong></td>
+		</tr>
+		<tr>
+			<td rowspan="4">GUI OS</td>
+			<td>Windows 11 Pro</td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>Windows 10 Pro</td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>Win 7 Pro 64bit</td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>Windows XP</td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="16"></th>
+		</tr>
+		<tr>
+			<td rowspan="7">RTOS</td>
+			<td>Xenomai</td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>INtime 7.X</td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>INtime 6.3</td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>INtime 5.2</td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>INtime 4.2</td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>INtime 3.13</td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>VxWorks (VM4500)</td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="16">Legend</th>
+		</tr>
+		<tr>
+			<th style="text-align:center;" colspan="8">Supported</th>
+			<th style="text-align:center;" colspan="8"><img src="attachments/download/102933/checkmark.png" alt="" /></th>
+		</tr>
+		<tr>
+			<th style="text-align:center;" colspan="8">Not Compatible</th>
+			<th style="text-align:center;" colspan="8"><strong>X</strong></th>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>OS to RTOS Compatibility Matrix</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td rowspan="2"><strong>OS to RTOS Compatibility</strong></td>
+			<td rowspan="2"><strong>Windows</strong></td>
+			<th style="text-align:center;" colspan="5"><strong>RTOS</strong></th>
+		</tr>
+		<tr style="background:#ededed;">
+			<td><strong>INtime 7.X</strong> </td>
+			<td><strong>INtime 6.X</strong></td>
+			<td><strong>INtime 5.2</strong></td>
+			<td><strong>INtime 4.2</strong></td>
+			<td><strong>INtime 3.13</strong></td>
+		</tr>
+		<tr>
+			<td rowspan="4">Host OS</td>
+			<td>Windows 11 Pro</td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>Windows 10 Pro</td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>Win 7 Pro 64bit</td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>Windows XP</td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="7">Legend</th>
+		</tr>
+		<tr>
+			<th style="text-align:center;" colspan="4">Supported</th>
+			<th style="text-align:center;" colspan="3"><img src="attachments/download/102933/checkmark.png" alt="" /></th>
+		</tr>
+		<tr>
+			<th style="text-align:center;" colspan="4">Not Compatible</th>
+			<th style="text-align:center;" colspan="3"><strong>X</strong></th>
+		</tr>
+		<tr>
+			<th style="text-align:center;" colspan="4">Unsupported but should work</th>
+			<th style="text-align:center;" colspan="3"><strong>O</strong></th>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>RTOS to PC Compatibility Matrix</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td rowspan="2"><strong>RTOS to PC Compatibility</strong></td>
+			<td rowspan="2"><strong>Windows</strong></td>
+			<th style="text-align:center;" colspan="5"><strong>RTOS</strong></th>
+		</tr>
+		<tr style="background:#ededed;">
+			<td><strong>INtime 7.X</strong></td>
+			<td><strong>INtime 6.X</strong></td>
+			<td><strong>INtime 5.2</strong></td>
+			<td><strong>INtime 4.2</strong></td>
+			<td><strong>INtime 3.13</strong></td>
+		</tr>
+		<tr>
+			<td rowspan="7">PC</td>
+			<td>HP 1HU (Quad core)</td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>Dell 1HU</td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+		</tr>
+		<tr>
+			<td>Lite RT (Quad Core)</td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+		</tr>
+		<tr>
+			<td>Advantec i7 (6th gen Quad core)</td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>Advantec i7 (3rd gen Quad core)</td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>Advantec Core Duo (Dual Core)</td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>SuperLogics 2U i7 (12th gen 12 Core)</td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="7">Legend</th>
+		</tr>
+		<tr>
+			<th style="text-align:center;" colspan="4">Supported</th>
+			<th style="text-align:center;" colspan="3"><img src="attachments/download/102933/checkmark.png" alt="" /></th>
+		</tr>
+		<tr>
+			<th style="text-align:center;" colspan="4">Not Compatible</th>
+			<th style="text-align:center;" colspan="3"><strong>X</strong></th>
+		</tr>
+		<tr>
+			<th style="text-align:center;" colspan="4">Unsupported but should work</th>
+			<th style="text-align:center;" colspan="3"><strong>O</strong></th>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Product-Life-Cycle-Matrixes"></a>
+<h2 >Product Life Cycle Matrixes<a href="#Product-Life-Cycle-Matrixes" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>iTest Product Life Cycle</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td rowspan="2"><strong>Product Version</strong></td>
+			<th style="text-align:center;" colspan="18"><strong>Year</strong></th>
+		</tr>
+		<tr style="background:#ededed;">
+			<td><strong>2008</strong></td>
+			<td><strong>2009</strong></td>
+			<td><strong>2010</strong></td>
+			<td><strong>2011</strong></td>
+			<td><strong>2012</strong></td>
+			<td><strong>2013</strong></td>
+			<td><strong>2014</strong></td>
+			<td><strong>2015</strong></td>
+			<td><strong>2016</strong></td>
+			<td><strong>2017</strong></td>
+			<td><strong>2018</strong></td>
+			<td><strong>2019</strong></td>
+			<td><strong>2020</strong></td>
+			<td><strong>2021</strong></td>
+			<td><strong>2022</strong></td>
+			<td><strong>2023</strong></td>
+			<td><strong>2024</strong></td>
+			<td><strong>2025</strong></td>
+		</tr>
+		<tr>
+			<td>iTest 2.3</td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>iTest 3.0</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>iTest 3.1</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>iTest 3.2</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>iTest 3.4</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>iTest 3.5</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>iTest 3.6</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>iTest 3.7</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>iTest 3.8</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>iTest 3.9</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>iTest 4.0</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>X</strong></td>
+		</tr>
+		<tr>
+			<td>iTest 4.1</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+		</tr>
+		<tr>
+			<td>iTest 4.2</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+		</tr>
+		<tr>
+			<td>iTest 4.3</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><strong>O</strong></td>
+		</tr>
+		<tr>
+			<td>iTest 4.4</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>iTest 4.5</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;">-</td>
+			<td style="text-align:center;"><img src="attachments/download/102933/checkmark.png" alt="" /></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="19">Legend</th>
+		</tr>
+		<tr>
+			<th style="text-align:center;" colspan="9">Current Version</th>
+			<th style="text-align:center;" colspan="10"><img src="attachments/download/102933/checkmark.png" alt="" /></th>
+		</tr>
+		<tr>
+			<th style="text-align:center;" colspan="9">Bugfix Only</th>
+			<th style="text-align:center;" colspan="10"><strong>O</strong></th>
+		</tr>
+		<tr>
+			<th style="text-align:center;" colspan="9">Not Supported</th>
+			<th style="text-align:center;" colspan="10"><strong>X</strong></th>
+		</tr>
+		<tr>
+			<th style="text-align:center;" colspan="9">Not Available</th>
+			<th style="text-align:center;" colspan="10">-</th>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p></p>
+</body>
+</html>

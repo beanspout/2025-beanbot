@@ -1,0 +1,450 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Debugging Procedures</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="VCL.html">VCL</a></li>
+<li><a href="Debugging_Procedures.html">Debugging Procedures</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Debugging-Feature"></a>
+<h1 >Debugging Feature<a href="#Debugging-Feature" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Debugging-Feature">Debugging Feature</a><ul><li><a href="#Breakpoints">Breakpoints</a><ul><li><a href="#Disabling-Breakpoints">Disabling Breakpoints</a></li><li><a href="#Clearing-Breakpoints">Clearing Breakpoints</a></li><li><a href="#Applying-Breakpoints">Applying Breakpoints</a></li></ul>
+</li><li><a href="#Debugging-Toolbar">Debugging Toolbar</a></li><li><a href="#Debugging-Tabs-on-the-Output-Bar">Debugging Tabs on the Output Bar</a><ul><li><a href="#Debug-Tab">Debug Tab</a></li><li><a href="#Channel-and-Internal-Variable-Updates">Channel and Internal Variable Updates</a></li><li><a href="#Active-Tests-Tab">Active Tests Tab</a></li><li><a href="#Breakpoints-Tab">Breakpoints Tab</a></li></ul>
+</li><li><a href="#Debugging-a-Procedure">Debugging a Procedure</a></li><li><a href="#Viewing-Channel-or-Internal-Variable-Properties-on-the-Debug-Tab">Viewing Channel or Internal Variable Properties on the Debug Tab</a></li><li><a href="#Modifying-Channel-or-Variable-Values-on-the-Debug-Tab">Modifying Channel or Variable Values on the Debug Tab</a></li><li><a href="#Stopping-Debug-Procedures">Stopping Debug Procedures</a></li><li><a href="#Disabling-Breakpoints-2">Disabling Breakpoints</a></li><li><a href="#Enabling-Breakpoints">Enabling Breakpoints</a></li><li><a href="#Removing-Breakpoints">Removing Breakpoints</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<p>Test Manager provides a debugging tool that allows you to step through a procedure and analyze the effect of each line, when the test is being executed in iTest. Debug mode is available in Test Manager, when the Console is active.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The debugger is not automatically activated when Test Manager is in debug mode. You must click on the Toggle Debugger button on the Debugging toolbar to activate it. The debugger tool can not be activated if there have been any changes made to the procedure since iTest started or the last rebuild.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Breakpoints"></a>
+<h2 >Breakpoints<a href="#Breakpoints" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The debugger uses breakpoints to walk through a procedure. A breakpoint is a marker on a line of code within a procedure. The Console stops a procedure prior to executing a line of code that contains an enabled breakpoint.</p>
+
+
+	<a name="Disabling-Breakpoints"></a>
+<h3 >Disabling Breakpoints<a href="#Disabling-Breakpoints" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>You can also disable breakpoints in a procedure. When the Console encounters disabled breakpoints in a procedure, it ignores them and continues to execute the code. This allows you to run a procedure without deleting the breakpoints in case you need to use them again.</p>
+
+
+	<a name="Clearing-Breakpoints"></a>
+<h3 >Clearing Breakpoints<a href="#Clearing-Breakpoints" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>You can clear breakpoints if you want to permanently remove them from a procedure. It is recommended that you remove breakpoints before running a procedure in a production environment. For more information, see the <strong>Removing Breakpoints</strong> section towards the end of this page.</p>
+
+
+	<a name="Applying-Breakpoints"></a>
+<h3 >Applying Breakpoints<a href="#Applying-Breakpoints" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>You cannot apply breakpoints to the following lines in a procedure:</p>
+
+
+	<ul>
+	<li>Comments</li>
+		<li>Blank lines</li>
+		<li><code>#endif</code>, <code>#endwhile</code>, and <code>#else</code> statements</li>
+	</ul>
+
+
+	<p>When active, the debugger displays a left margin in the active window and uses icons next to the lines of code to indicate its debug state. This involves adding or changing an icon in the left margin based on the current activity that is taking place.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Apply Breakpoints</strong></em></span><br /><img src="attachments/download/99419/breakpoints.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The following table describes the icons applied to code when debugging a procedure:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Debugging Procedure Icons</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Color</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/10970/active_breakpt.png" alt="" /> </td>
+			<td> A breakpoint has been enabled for the line of code.</td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/10971/inactive_breakpt.png" alt="" /> </td>
+			<td> A disabled breakpoint.</td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/10969/procArrow_nobreakpt.png" alt="" /> </td>
+			<td> Current line of execution that either does not contain a breakpoint or contains a disabled breakpoint.</td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/10968/procArrow_breakpt.png" alt="" /> </td>
+			<td> Current line of execution contains a breakpoint.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Debugging-Toolbar"></a>
+<h2 >Debugging Toolbar<a href="#Debugging-Toolbar" class="wiki-anchor">&para;</a></h2>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Debugging Toolbar Buttons</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1200px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Button</b> </td>
+			<td style="text-align:left;"><b>Tooltip</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/3682/debugIcon1.jpg" alt="" /> </td>
+			<td> <strong>Build Tests</strong> </td>
+			<td> Issues a $REBUILD to rebuild VCL. Use this button to rebuild procedures after you make modifications. If you experience problems with stepping behavior when debugging, such as stepping onto comments or blank lines, rebuild the test to resolve the problems. </td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/3683/debugIcon2.jpg" alt="" /> </td>
+			<td> <strong>Toggle Debugger</strong> </td>
+			<td> Deactivates the debugger if active; activates the debugger if inactive. This button is enabled only when Test Manager is in debug mode. </td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/3684/debugIcon3.jpg" alt="" /> </td>
+			<td> <strong>Run Current Test</strong> </td>
+			<td> Executes the current test if it is not already running. If the current test is already running, it continues running until its completion or until the next breakpoint, if one is defined. This button is enabled when a procedure is open and the procedure is the active window. </td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/3685/debugIcon4.jpg" alt="" /> </td>
+			<td> <strong>Stop Debugging</strong> </td>
+			<td>Terminates the running procedure in the active window and any child procedures launched from this procedure using the EXECUTE VCL Command. This button is enabled when a procedure is open and the procedure is the active window. </td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/3686/debugIcon5.jpg" alt="" /> </td>
+			<td> <strong>Step Into</strong> </td>
+			<td> Steps into a called procedure. If the called procedure is already open in Test Manager, click the <strong>Step Into</strong> button to bring it to the top of all open documents. If the called procedure is not open, click the <strong>Step Into</strong> button to open the called procedure and bring it to the top of all open documents in Test Manager. This button is enabled when a procedure is open and being debugged, and the current line of code starts (calls) another VCL function or procedure using the EXECUTE VCL command (<strong>Note:</strong> This only occurs if a breakpoint has been toggled on this line or if using the <strong>Step Over</strong> button to step through the procedure from a previous breakpoint). </td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/3687/debugIcon6.jpg" alt="" /> </td>
+			<td> <strong>Step Over</strong> </td>
+			<td> Advances to the next valid line of code. This button is enabled when a procedure is being debugged. </td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/3689/debugIcon7.jpg" alt="" /> </td>
+			<td> <strong>Step Out</strong> </td>
+			<td> Exits the current procedure and returns to the calling procedure. If there is no calling procedure, the current procedure executes until it is complete. iTest ignores any breakpoints that are past the current point of execution. When stepping out of a called procedure, the calling procedure is brought to the top of all open documents. This button is enabled when a procedure is being debugged (Note: This only occurs upon reaching a breakpoint). </td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/3688/debugIcon8.jpg" alt="" /> </td>
+			<td> <strong>Toggle Breakpoint</strong> </td>
+			<td> Adds a breakpoint to the selected line of code if it doesn’t already contain one or removes a breakpoint if the selected line of code contains one. This button is enabled when a procedure is open and the procedure is the active window. </td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/3690/debugIcon9.jpg" alt="" /> </td>
+			<td> <strong>Clear All Breakpoints</strong> </td>
+			<td> Removes all breakpoints. This button is enabled when at least one breakpoint is configured. </td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/3693/debugIcon10.jpg" alt="" /> </td>
+			<td> <strong>Enable All Breakpoints</strong> </td>
+			<td> Enables all breakpoints if they were previously disabled. By default, all breakpoints are enabled. This button is enabled when at least one breakpoint is configured. </td>
+		</tr>
+		<tr>
+			<td> <img src="attachments/download/3692/debugIcon11.jpg" alt="" /> </td>
+			<td> <strong>Disable All Breakpoints</strong> </td>
+			<td> Disables all breakpoints defined in iTest, regardless of whether they are open for viewing in Test Manager. When iTest encounters disabled breakpoints in a procedure, it ignores them and continues to execute the code. This button is enabled when at least one breakpoint is configured. </td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Debugging-Tabs-on-the-Output-Bar"></a>
+<h2 >Debugging Tabs on the Output Bar<a href="#Debugging-Tabs-on-the-Output-Bar" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Output Bar has three additional tabs when the debugger is active:</p>
+
+
+	<ul>
+	<li>Debug</li>
+		<li>Active Tests</li>
+		<li>Breakpoints</li>
+	</ul>
+
+
+	<a name="Debug-Tab"></a>
+<h3 >Debug Tab<a href="#Debug-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <strong>Debug</strong> tab displays the current values of all local variables, global database channels, and internal variables contained within the active procedure.</p>
+
+
+	<p>Switching from one procedure to another updates the list on this tab. Selecting a Test Manager component other than a procedure clears this tab.</p>
+
+
+	<a name="Channel-and-Internal-Variable-Updates"></a>
+<h3 >Channel and Internal Variable Updates<a href="#Channel-and-Internal-Variable-Updates" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Database channels are continuously updated on the <strong>Debug</strong> tab. A channel value will also be updated when its value is modified by a procedure other than the procedure being debugged.</p>
+
+
+	<p>Internal variables are only updated by events. Typically, stepping through a procedure triggers an internal variable update. If an internal variable’s value is modified by a procedure other than the one being debugged, its value is not updated unless an event occurs during debugging.</p>
+
+
+	<p>Local variables are valid only within the scope of the procedure in which they are declared. When you open a procedure in Test Manager that contains local variables, the names of the local variables display on the <strong>Debug</strong> tab. Initially, these local variables have no value. As you step through a procedure, local variable values are initialized as the code that declares them is executed. VCLNUMs initialize to zero and VCLSTRs initialize to an empty string. After a line is executed that changes a local variable’s value, its value is updated on the <strong>Debug</strong> tab to reflect the expected value. Due to the way debugging information for local variables is obtained from iTest, there can be a slight "lag" where the values of the local variables don't sync up with the values of database channels.</p>
+
+
+	<a name="Active-Tests-Tab"></a>
+<h3 >Active Tests Tab<a href="#Active-Tests-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <strong>Active Tests</strong> tab contains a list of procedures currently running on the Console.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Active Tests</strong></em></span><br /><img src="attachments/download/3700/activeTests.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>This tab also displays the following information about active tests:</p>
+
+
+	<ul>
+	<li>Length of time the test has been running</li>
+		<li>Start mode</li>
+		<li>Number of lines in the test</li>
+		<li>Current line of execution</li>
+		<li>Status</li>
+		<li>Parent procedure (if applicable)</li>
+	</ul>
+
+
+	<p>Double-click a procedure in this list to open it in the Test Manager Display Area.</p>
+
+
+	<a name="Breakpoints-Tab"></a>
+<h3 >Breakpoints Tab<a href="#Breakpoints-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <strong>Breakpoints</strong> tab displays a list of breakpoints defined in iTest procedures that are open.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Breakpoints Tab</strong></em></span><br /><img src="attachments/download/3701/breakpointsTab.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The line number and the breakpoint’s current status display on the <strong>Breakpoints</strong> tab. A colored dot displays to the left of the breakpoint. The color of the dot indicates the state of the breakpoint, as described in the following table:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Breakpoint Status Color</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Color</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td> Green </td>
+			<td> Current line of execution is a breakpoint. </td>
+		</tr>
+		<tr>
+			<td> Red </td>
+			<td> Enabled breakpoint. </td>
+		</tr>
+		<tr>
+			<td> Unfilled </td>
+			<td> Disabled breakpoint. </td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Debugging-a-Procedure"></a>
+<h2 >Debugging a Procedure<a href="#Debugging-a-Procedure" class="wiki-anchor">&para;</a></h2>
+
+
+	<table>
+		<tr>
+			<td style="background:#ebd700;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3740/caution.gif" alt="" /></td>
+			<td style="vertical-align:top;"><b>CAUTION:</b></td>
+			<td style="vertical-align:top;">If a procedure was modified since its last build, you cannot toggle on the debugger without a re-build. If the debugger is on you cannot modify the procedure.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>To debug a procedure, perform the following:</p>
+
+
+	<ol>
+	<li>Start iTest.</li>
+		<li>Open Test Manager.</li>
+		<li>Expand the <strong>Test Development</strong> folder in the Test Manager Tree, followed by the <strong>Procedures</strong> folder. </li>
+		<li>Double-click the procedure you want to debug.</li>
+		<li>Click the <strong>Toggle Debugger</strong> button.</li>
+		<li>Select a line of code to add a breakpoint, and then click the <strong>Toggle Breakpoint</strong> button. A red dot is displayed in the left margin of the code to indicate that a breakpoint has been enabled.<br />&nbsp;
+ <table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">You can select multiple lines of code at one time. However a breakpoint is only applied to the first line in the selection.</td>
+		</tr>
+	</table></li>
+		<li>Repeat the previous step for each line of code to which you want to apply a breakpoint.</li>
+		<li>Click the <strong>Run Current Test</strong> button to begin debugging.</li>
+		<li>Click the <strong>Step Over</strong> button to move from one line of code to another in the procedure (only applicable when you hit a breakpoint).</li>
+		<li>If the procedure calls another procedure, click the <strong>Step Into</strong> button to debug the called procedure.</li>
+		<li>Once you have finished debugging the called procedure, click the <strong>Step Out</strong> button to return to the calling procedure.</li>
+		<li>To display information about the procedure during the debugging process, click on the <strong>Active Tests</strong>, <strong>Debug</strong>, and <strong>Breakpoints</strong> tabs on the Output Bar.</li>
+		<li>When you have finished debugging procedures, click the <strong>Toggle Debugger</strong> button to turn off the debugger.</li>
+	</ol>
+
+
+	<a name="Viewing-Channel-or-Internal-Variable-Properties-on-the-Debug-Tab"></a>
+<h2 >Viewing Channel or Internal Variable Properties on the Debug Tab<a href="#Viewing-Channel-or-Internal-Variable-Properties-on-the-Debug-Tab" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Highlight a channel or internal variable in the <strong>Debug</strong> tab by left-clicking on it. Right-click on it and select <strong>Properties</strong>. A window opens that displays a list of properties associated with the selected channel or internal variable.</p>
+
+
+	<p>You can only view properties in this window; you cannot edit them.</p>
+
+
+	<a name="Modifying-Channel-or-Variable-Values-on-the-Debug-Tab"></a>
+<h2 >Modifying Channel or Variable Values on the Debug Tab<a href="#Modifying-Channel-or-Variable-Values-on-the-Debug-Tab" class="wiki-anchor">&para;</a></h2>
+
+
+	<ol>
+	<li>Highlight a channel or internal variable in the <strong>Debug</strong> tab by left-clicking on it.</li>
+		<li>Now right-click on it and select <strong>Modify Value</strong>.<br />&nbsp;
+<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">A local variable’s value can be modified only if the procedure within which it is declared is running and the variable has already been declared. The Modify Value option is not available if these conditions have not been met.</td>
+		</tr>
+	</table></li>
+		<li>Enter a new value in the dialog box, and then click OK. The new value displays in the channel’s Value column on the Debug tab and also changes the channel’s value in the RDB.
+<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">If you write a string to a numeric channel the value of the numeric channel changes to zero. If you write a numeric value to a string channel the value of the string channel will contain the string representation of the numeric value.</td>
+		</tr>
+	</table></li>
+	</ol>
+
+
+	<a name="Stopping-Debug-Procedures"></a>
+<h2 >Stopping Debug Procedures<a href="#Stopping-Debug-Procedures" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>There are two ways in which you can stop procedures that are currently being debugged:</p>
+
+
+	<ul>
+	<li>To stop all procedures currently being debugged, click on the <strong>Stop Debugging</strong> button.</li>
+		<li>To stop individual procedures, click on the <strong>Active Test</strong> tab on the Output bar, right-click on a procedure, and then select <strong>Abort Test</strong>. You will be asked if you want to abort the procedure. Click <strong>OK</strong> to stop debugging the procedure or click <strong>Cancel</strong> to continue debugging.</li>
+	</ul>
+
+
+	<a name="Disabling-Breakpoints-2"></a>
+<h2 >Disabling Breakpoints<a href="#Disabling-Breakpoints-2" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>There are two ways in which you can disable breakpoints that have been enabled:</p>
+
+
+	<ul>
+	<li>To disable all breakpoints in all procedures, click on the <strong>Disable All Breakpoints</strong> button. </li>
+		<li>To disable individual breakpoints, click on the <strong>Breakpoints</strong> tab on the Output bar, right-click on an enabled breakpoint, and then select <strong>Disable</strong>.</li>
+	</ul>
+
+
+	<a name="Enabling-Breakpoints"></a>
+<h2 >Enabling Breakpoints<a href="#Enabling-Breakpoints" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>There are two ways in which you can enable breakpoints that have been disabled:</p>
+
+
+	<ul>
+	<li>To enable all breakpoints that have been disabled in all procedures, click on the <strong>Enable All Breakpoints</strong> button. </li>
+		<li>To enable individual breakpoints, click on the <strong>Breakpoints</strong> tab on the Output bar, right-click on a disabled breakpoint, and then select <strong>Enable</strong>.</li>
+	</ul>
+
+
+	<a name="Removing-Breakpoints"></a>
+<h2 >Removing Breakpoints<a href="#Removing-Breakpoints" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>If you do not remove breakpoints from a procedure after debugging, the breakpoints will still exist after you exit Test Manager. This may result in operators experiencing what they believe is a system failure during runtime because iTest Console will stop executing when it encounters code that has an enabled breakpoint.</p>
+
+
+	<p>To remove breakpoints, perform one of the following actions:</p>
+
+
+	<ol>
+	<li>To delete individual breakpoints, click on the <strong>Breakpoints</strong> tab on the Output bar, right-click on a breakpoint, and then select <strong>Delete</strong>.</li>
+		<li>Click on the <strong>Clear All Breakpoints</strong> button to clear all breakpoints in all procedures. The procedures do not have to be open in the Test Manager for breakpoints to be removed.</li>
+		<li>Click within a line of code that has a breakpoint and click on the <strong>Toggle Breakpoint</strong> button. This removes the breakpoint from the selected line. If you do not remove breakpoints before exiting Test Manager, you will receive the following message:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Delete Breakpoints</strong></em></span><br /><img src="attachments/download/3714/deleteBreakpoints.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>Yes</strong> to delete all breakpoints, <strong>No</strong> to leave breakpoints in procedures, or <strong>Cancel</strong> to cancel the exit process.</li>
+	</ol>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Visual_Studio_Code_Debugger.html">Visual Studio Code Debugger</a></li>
+	</ul>
+</body>
+</html>

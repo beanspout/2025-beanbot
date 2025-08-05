@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Solution Folder Requirements</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Solution_Folder_Requirements.html">Solution Folder Requirements</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Solution-Folder-Requirements"></a>
+<h1 >Solution Folder Requirements<a href="#Solution-Folder-Requirements" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>In order for a solution to appear in the <strong>Select Solution</strong> dialog upon startup, the solution folder must have the following items:</p>
+
+
+	<ul>
+	<li>The solution folder must exist (e.g., <em>$SYSTEMDIR\New.Solution</em>).</li>
+		<li>The <em>powertek.ini</em> file must exist (e.g., <em>$SYSTEMDIR\New.Solution\powertek.ini</em>).</li>
+		<li>The file path and the solution name do not contain any spaces or invalid characters (i.e., <code>\ / : * ? < > |</code>).<br />Solution names can only consist of alphanumeric characters, periods, and underscores.</li>
+	</ul>
+
+
+	<p>If a solution folder does not adhere to the above requirements, the following error message displays:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Invalid Solution Message</strong></em></span><br /><img src="attachments/download/96545/42_SolutionErrorMessage.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Once a solution folder adheres to the above requirements, then the solution appears in the <strong>Select Solution</strong> dialog.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Select New Solution</strong></em></span><br /><img src="attachments/download/96546/42_SelectNewSolution.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Additional files may be required to successfully open the solution. If a solution is lacking the necessary files to open, then the following dialog displays. Click <strong>Yes</strong> to view the <em>rdbserver.log</em> file in order to determine which files you may need.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Error Message</strong></em></span><br /><img src="attachments/download/96549/42_ViewRDBServerLog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>View rdbserver.log</strong></em></span><br /><img src="attachments/download/96550/42_RDBServerLog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>For more information about the solution folder structure, refer to <a class="wiki-page" href="ITest_Solution_Folder_Structure.html">iTest Solution Folder Structure</a>.</p>
+</body>
+</html>

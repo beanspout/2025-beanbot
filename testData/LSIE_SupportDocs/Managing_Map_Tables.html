@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Managing Map Tables</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Managing_Map_Tables.html">Managing Map Tables</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Managing-Map-Tables"></a>
+<h1 >Managing Map Tables<a href="#Managing-Map-Tables" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Managing-Map-Tables">Managing Map Tables</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Map-Table-Format">Map Table Format</a><ul><li><a href="#Restrictions">Restrictions</a></li><li><a href="#Example">Example</a></li></ul>
+</li><li><a href="#Creating-New-Map-Tables">Creating New Map Tables</a></li><li><a href="#Specifying-Table-Properties">Specifying Table Properties</a></li><li><a href="#Right-Click-Map-Table-List-Options">Right-Click Map Table List Options</a></li><li><a href="#Right-Click-Editor-Options">Right-Click Editor Options</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest supports map tables, which can be used to linearly interpolate values in iTest. These tables can be managed in SolutionBuilder via the Map Tables editor.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Map Tables Editor</strong></em></span><br /><img src="attachments/download/127066/44_MapTablesEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p><a name="Map-Table-Format"></a>
+<h2 >Map Table Format<a href="#Map-Table-Format" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>A map table is an X by Y grid of double precision values. The first row contains the breakpoint values for the X-axis, and the first column contains the breakpoint values for the Y-axis. This is a tab delimited file that uses the <em>.2dt</em> file extension.</p>
+
+
+	<a name="Restrictions"></a>
+<h3 >Restrictions<a href="#Restrictions" class="wiki-anchor">&para;</a></h3>
+
+
+	<ul>
+	<li>Blank lines cannot be present between rows.</li>
+		<li>The use of channel names or string values within the map table is not supported.</li>
+	</ul>
+
+
+	<a name="Example"></a>
+<h3 >Example<a href="#Example" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The first row identifies the X lookups, and the first column identifies the Y lookups.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Example</strong></em></span><br /><img src="attachments/download/109574/43_Example.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Creating-New-Map-Tables"></a>
+<h2 >Creating New Map Tables<a href="#Creating-New-Map-Tables" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To create a new map table, do the following:</p>
+
+
+	<ol>
+	<li>Right-click in the list of map tables and select <strong>Add</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add Map Table</strong></em></span><br /><img src="attachments/download/119213/43_AddNewTable.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>The Table Size dialog displays. Specify the number of columns and rows in this dialog then click <strong>OK</strong>. The maximum amount of rows or columns a table can have is 100.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Table Size Dialog</strong></em></span><br /><img src="attachments/download/109576/43_TableSizeDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>The new table is then created. By default, the map table is labeled as <code>NewMap(N).2dt</code>, where (N) is the instance of the table (e.g., <code>NewMap1</code>).<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Table</strong></em></span><br /><img src="attachments/download/112863/43_NewTable.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Enter the X and Y lookup values in the first row and first column.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Enter X and Y Values</strong></em></span><br /><img src="attachments/download/109582/43_EnterXYValues.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Populate the remaining cells with their values.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Populate Table</strong></em></span><br /><img src="attachments/download/109585/43_PopulatedTable.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<a name="Specifying-Table-Properties"></a>
+<h2 >Specifying Table Properties<a href="#Specifying-Table-Properties" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Table properties allow you to automate map table handling. When these properties are enabled, iTest will automatically load the map table into memory at start-up and interpolate table values in the system’s calculations at the rate of your choosing. The result channel stores the interpolated value based on the X and Y channel value lookups. In case of an error, the result channel will be set to -99999.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Enabling/disabling the table properties will be reflected after the next rebuild. Changes to the 2D table contents will be reflected restart of iTest.</td>
+		</tr>
+	</table>
+
+
+
+
+	<table>
+		<tr>
+			<td style="background:#cc061c;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3741/Warning3.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>WARNING:</b></td>
+			<td style="vertical-align:top;">By default, iTest initializes channel values to 0 on startup. This will result in X and Y lookup channel values being initialized to a value of 0. This must be taken into account when designing your application. Channel values can be initialized to some other value by storing channel values in an INI file or using the <strong>Persistent Value</strong> setting for virtual output channels.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>To set table properties, do the following:</p>
+
+
+	<ol>
+	<li>Right-click in the editor and select <strong>Properties...</strong>. This opens the Table Properties dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Table Properties Dialog</strong></em></span><br /><img src="attachments/download/109586/43_TablePropertiesDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the <strong>Enable</strong> checkbox. This enables the table properties and allows you to modify the properties.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Enable Table Properties</strong></em></span><br /><img src="attachments/download/109587/43_EnableTableProperties.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the <img src="attachments/download/109572/dotdotdotbutton.png" alt="" /> button. This opens the Channel Selection dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Channel Selection Dialog</strong></em></span><br /><img src="attachments/download/109588/43_ChannelSelectionDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select a channel from the dialog then click <strong>OK</strong>.</li>
+		<li>Use the drop-down menu in the <strong>Rate (Hz)</strong> field to specify the rate at which the map table is run.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select Rate</strong></em></span><br /><img src="attachments/download/109589/43_SelectRate.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>OK</strong> when finished.</li>
+	</ol>
+
+
+	<a name="Right-Click-Map-Table-List-Options"></a>
+<h2 >Right-Click Map Table List Options<a href="#Right-Click-Map-Table-List-Options" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following options are available when you right-click in the list of map tables:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Add</td>
+			<td>Adds a new map table.</td>
+		</tr>
+		<tr>
+			<td>Remove</td>
+			<td>Removes the selected map table.</td>
+		</tr>
+		<tr>
+			<td>Rename...</td>
+			<td>Launches the Rename dialog to change the name of the selected map table.</td>
+		</tr>
+		<tr>
+			<td>Duplicate</td>
+			<td>Duplicates a selected map table and appends a numeric value to the name of the map table (e.g., <code>NewMap1</code>).</td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td>Removes the selected map table and copies it to the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td>Copies the selected map table to the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td>Pastes the map table from the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td>Undoes the last action.</td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td>Redoes the last undone action.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Right-Click-Editor-Options"></a>
+<h2 >Right-Click Editor Options<a href="#Right-Click-Editor-Options" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following options are available when you right-click in the editor:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Table Size...</td>
+			<td>Opens the Table Size dialog.</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td>Copies the selected cell value to the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td>Pastes the cell value from the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td>Undoes the last action.</td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td>Redoes the last undone action.</td>
+		</tr>
+		<tr>
+			<td>Properties...</td>
+			<td>Launches the Table Properties dialog. For more information, refer to the <a class="wiki-page" href="Managing_Map_Tables.html#Specifying-Table-Properties">Specifying Properties</a> section above.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Advanced_Mapping_Usage.html">Advanced Mapping Usage</a></li>
+	</ul></p>
+</body>
+</html>

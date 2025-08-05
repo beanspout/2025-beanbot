@@ -1,0 +1,621 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Advanced Installations Guide</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Maintenance.html">ITest Maintenance</a></li>
+<li><a href="Advanced_Installations_Guide.html">Advanced Installations Guide</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+ <span style="display: none;">
+
+
+	<p><img src="attachments/download/93003/ADT_LOGO_OUTLINE.png" style="width: 100px;" alt="" /></p>
+
+
+	 </span>
+
+
+	 <div class="CoverPage" class="body">
+
+
+	 <div class="Title">
+
+
+	<p style="text-align:center;"><br /><strong><span style="font-size:30pt;color: #005CAA;">Advanced Installations Guide</span></strong></p>
+
+
+	 </div>
+
+
+	<p style="text-align:center;"><br /><em><span style="font-size:12pt;font-style: italic;">Product Version 4.5</span></em></p>
+
+
+	<p style="text-align:center;"><br /><strong><span style="font-size:16pt;">Prepared By</span></strong><br />ADT Software Engineering</p>
+
+
+	<p style="text-align:center;"><br /><span style="font-size: 10pt;color:red;">A&#38;D Confidential Document Distributable only to A&#38;D Customers</span><br /><span style="font-size: 10pt;color:black;">Copyright A&#38;D Company, Limited<br />A&#38;D Technology Inc.</span></p>
+
+
+	 </div>
+
+
+	 <h1>Table of Contents</h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Advanced-Installations-Guide">Advanced Installations Guide</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Minimum-System-Requirements">Minimum System Requirements</a></li><li><a href="#Quick-Install-Procedure">Quick Install Procedure</a><ul><li><a href="#Installation-on-a-Real-Time-PC">Installation on a Real-Time PC</a></li><li><a href="#Installation-on-a-Windows-GUI-PC">Installation on a Windows GUI PC</a></li></ul>
+</li><li><a href="#Backups">Backups</a></li></ul>
+</li><li><a href="#Real-Time-PC-Installation">Real-Time PC Installation</a></li><li><a href="#SystemConfig">SystemConfig</a></li><li><a href="#Silent-iTest-Installation">Silent iTest Installation</a><ul><li><a href="#Installation-Pre-Checks">Installation Pre-Checks</a><ul><li><a href="#Example">Example:</a></li></ul>
+</li><li><a href="#Perform-the-Silent-Install">Perform the Silent Install</a></li><li><a href="#Enable-LabAgent">Enable LabAgent</a></li></ul>
+</li><li><a href="#Additional-Manual-Configuration">Additional Manual Configuration</a></li><li><a href="#Driver-Licensing-and-Validation-Tool">Driver Licensing and Validation Tool</a></li><li><a href="#Upgrading-an-Existing-Version">Upgrading an Existing Version</a></li><li><a href="#Uninstalling-an-Existing-Version">Uninstalling an Existing Version</a></li><li><a href="#Side-by-Side-Installation-Notes">Side-by-Side Installation Notes</a></li></ul></p>
+
+
+	<a name="Advanced-Installations-Guide"></a>
+<h1 >Advanced Installations Guide<a href="#Advanced-Installations-Guide" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following instructions describe the installation and upgrade process for PC-based iTest systems and will address most situations. For further information or assistance, please submit a support request using our customer portal at <a href="https://support.aanddtech.com/home" class="external">support.aanddtech.com</a>.</p>
+
+
+	<a name="Minimum-System-Requirements"></a>
+<h2 >Minimum System Requirements<a href="#Minimum-System-Requirements" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following configuration is recommended for an iTest Operator PC:</p>
+
+
+	<ul>
+	<li>2.1 GHz Core i7 PC</li>
+		<li>230 Gigabyte Hard Drive</li>
+		<li>16 Gigabytes of RAM </li>
+		<li>Windows 10 Pro version 1903 or higher</li>
+		<li>1920x1080 resolution display is recommended; however, this is application dependent.</li>
+		<li>Discrete GPU with dual monitor support and 1 GB of display memory. Onboard GPUs (like Intel GMA) are NOT supported. Systems that have both discrete and onboard GPUs must be configured to use the discrete GPU exclusively. A&#38;D recommends AMD Radeon 5450 class GPU or higher.</li>
+		<li>Ethernet adapters (minimum of 2 recommended)
+	<ul>
+	<li>Ethernet RJ-45 – Building Network</li>
+		<li>Ethernet RJ-45 – iConnect distributed I/O Network</li>
+	</ul>
+	</li>
+		<li>USB 2.0 ports (4 recommended)</li>
+		<li>UPS (1500 VA recommended)</li>
+	</ul>
+
+
+	<p>For the iTest real-time controller, the following configuration is recommended:</p>
+
+
+	<ul>
+	<li>3.3 GHz Core 2 Duo CPU</li>
+		<li>230 Gigabyte Hard Drive</li>
+		<li>4 Gigabytes of RAM</li>
+		<li>INtime RTOS</li>
+		<li>20X DVD +/- RW drive</li>
+		<li>Ethernet adapters (minimum of 2 recommended)
+	<ul>
+	<li>Ethernet RJ-45 – iTest Operator PC</li>
+		<li>Ethernet RJ-45 – Test Cell Devices</li>
+	</ul></li>
+	</ul>
+
+
+	<p>Additional Windows Requirements:</p>
+
+
+	<ul>
+	<li>You must be logged in as an <strong>Administrator</strong> to install iTest. </li>
+		<li>Ensure non-administrator users have full-control permissions for the iTest installation folder.</li>
+		<li>All users of Windows using version 7 or above must first modify the settings of the <strong>User Account Control</strong> (UAC) before starting installation. The UAC is a Windows service that notifies you before changes are made to your computer that requires administrator-level permission. The default UAC setting notifies you when programs try to make changes to your computer. For iTest, however, this setting needs to be changed to <strong>Never notify</strong> because iTest relies on being able to modify the registry to register its latest version of the display OCXs. Failure to disable this Windows feature can cause iTest to appear to hang or the display to not appear correctly.</li>
+	</ul>
+
+
+	<a name="Quick-Install-Procedure"></a>
+<h2 >Quick Install Procedure<a href="#Quick-Install-Procedure" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Installation-on-a-Real-Time-PC"></a>
+<h3 >Installation on a Real-Time PC<a href="#Installation-on-a-Real-Time-PC" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Two PC systems only:</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Only the GUI PC needs to be updated on upgrades after iTest version 3.2.</td>
+		</tr>
+	</table></p>
+
+
+	<ol>
+	<li>Stop all iTest services on the real-Time PC.</li>
+		<li>Install iTest using the dongle.</li>
+		<li>Confirm that the newly created <em>C:\ADT\iTestRT\</em> directory is shared in Windows.</li>
+	</ol>
+
+
+	<a name="Installation-on-a-Windows-GUI-PC"></a>
+<h3 >Installation on a Windows GUI PC<a href="#Installation-on-a-Windows-GUI-PC" class="wiki-anchor">&para;</a></h3>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The list below is intended as a quick overview. If more detail is required, please refer to the remainder of this document.</td>
+		</tr>
+	</table>
+
+
+
+
+	<ol>
+	<li>Make backups.</li>
+		<li>Install iTest using the dongle.</li>
+		<li>Install the iTest PatchCumulative files (download the latest from the A&#38;D customer portal at <a class="external" href="https://support.aanddtech.com/home">https://support.aanddtech.com/home</a>).</li>
+		<li>Copy the current installed solution to the iTest directory that was created during this iTest installation.</li>
+		<li>Modify <em>config.ini</em> with the previous system's settings if necessary (e.g., if hard-coded paths reference files in a previous version). Contact A&#38;D if you're unsure about how to proceed with this step.</li>
+		<li>For two-PC (real-time) systems, re-map the GUI PC's i: drive to <em>C:\ADT\iTestRT\</em> on the real-time PC. </li>
+		<li>For two-PC (real-time) systems, create the <em>HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanmanWorkStation\Parameters\DirectoryCacheLifetime</em> registry setting as a DWORD (32 bit) type and set the value to 0.</li>
+	</ol>
+
+
+	<a name="Backups"></a>
+<h2 >Backups<a href="#Backups" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>As general good practice, make backups of the entire directory of previous iTest versions (including subdirectories) before installing iTest to the GUI PC.</p>
+
+
+	<p>To save a backup of the iTest folder, do the following:</p>
+
+
+	<ol>
+	<li>Open <strong>Windows Explorer</strong> and navigate to the $SYSTEMDIR.</li>
+		<li>Copy the <em>iTestx.x</em> folder.</li>
+		<li>Paste the folder into a different location.</li>
+		<li>Right-click the copied folder and select <strong>Rename</strong>.</li>
+		<li>Type a new name for the folder that will easily distinguish it as a backup (e.g., <em>C:\ADT_backup\iTestx.x_Backup</em>).</li>
+	</ol>
+
+
+	<a name="Real-Time-PC-Installation"></a>
+<h1 >Real-Time PC Installation<a href="#Real-Time-PC-Installation" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>To install iTest on a real-time PC, do the following:</p>
+
+
+	<ol>
+	<li>Stop all iTest services on the real-Time PC.</li>
+		<li>Create a backup of the existing directory.</li>
+		<li>Locate the <em>iTestx.xSetup.exe</em> setup executable, where <em>x.x</em> is the product version number. </li>
+		<li>Right-click <em>iTestx.xSetup.exe</em> and select <strong>Run as Administrator</strong>.</li>
+		<li>In the User Account Control dialog, click <strong>Yes</strong> to allow changes to your device.</li>
+		<li>Read the license agreement terms and conditions. Click the <strong>I accept the conditions</strong> option, and then click <strong>Next</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>License Agreement</strong></em></span><br /><img src="attachments/download/97681/42_LicenseAgreement.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select the System Type "iTest Services for INtime (2nd PC)".
+
+	<table>
+		<tr style="background:#cccaca;">
+			<td style="text-align:left;"><strong>System Type</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> iTest Services for INtime (2nd PC) </td>
+			<td> This type should be run on the 2nd PC of a 2-PC, INtime system. It essentially sets up a listen service under INtime so that the GUI PC can connect and configure it.</td>
+		</tr>
+	</table>
+
+
+</li>
+		<li>Enter a name for the installation folder or click <strong>Next</strong> to accept the <em>C:\ADT\iTestx.x\.</em> default location.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Destination Location</strong></em></span><br /><img src="attachments/download/97682/42_SelectDestinationLocation.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Enter your User Name and Organization. Leave the <strong>Install Key</strong> field empty; an installation key isn't necessary for iTest Services for InTime (2nd PC). </li>
+		<li>Click <strong>Next</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>User Key</strong></em></span><br /><img src="attachments/download/97683/42_UserOrganizationKey.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>Install</strong> to begin the installation.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Installing</strong></em></span><br /><img src="attachments/download/97684/42_Installation.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Perform any necessary system configurations in SystemConfig. Refer to the <a class="wiki-page" href="#SystemConfig">SystemConfig</a> section below for more information about the settings in this dialog.</li>
+		<li>Click <strong>Finish</strong> to exit the setup.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Exit Setup</strong></em></span><br /><img src="attachments/download/99705/42_FinishSetup.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Verify that the correct version of iTest is running after installation.
+	<ul>
+	<li>In Windows Task Manager, verify that the <em>iTestBackground.exe</em> process that is running is from the proper iTest folder.</li>
+		<li>Using the INtime Explorer, verify that the <em>iTestListen.rta</em> process that is running is from the proper iTest folder.</li>
+	</ul></li>
+	</ol>
+
+
+	<p>&nbsp;</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">iTest installation includes a 7 day trial license for the Offline Developer Suite. For further information, reference <a class="wiki-page" href="How_to_Use_the_Offline_Developer_Suite_Trial_License.html">How to Use the Offline Developer Suite Trial License</a>.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><a name="SystemConfig"></a>
+<h1 >SystemConfig<a href="#SystemConfig" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>This utility is first run after a new installation of most iTest installs. It can then be run manually at any time to change the global settings for the PC. SystemConfig is available in the Windows Start Menu.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>SystemConfig</strong></em></span><br /><img src="attachments/download/97953/42_SystemConfig.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>SystemConfig contains an editor for changing the following system settings. The majority of these settings are written to the <em>Config.ini</em> file which is located in the directory where iTest is installed. You can use SystemConfig to change the following settings:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>SystemConfig Settings</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 900px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Setting</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>iTest GUI Language</td>
+			<td>Use this combo box to change the preferred language for iTest.</td>
+		</tr>
+		<tr>
+			<td>Enable/Disable LabAgent on this machine</td>
+			<td> Enable/disable LabAgent. This setting is changed in the registry. <ins><strong>Note:</strong></ins> Your anti-virus may prohibit <em>SystemConfig.exe</em> from making this change. If it does, you will need to add an exception to your anti-virus for allowing <em>SytemConfig.exe</em> to change the start-up entries in your registry. LabCentral will not be able to communicate with your system if LabAgent is disabled.</td>
+		</tr>
+		<tr>
+			<td>LabAgent Port Number</td>
+			<td> By default, this is 80. It can be changed in this field.</td>
+		</tr>
+		<tr>
+			<td>Automated Patching Mode (and Patch folder)</td>
+			<td>Use these settings to set up a central location for patching iTest binaries (<em>.exe</em>, <em>.dll</em>, <em>.tdaddin</em>, and <em>.ocx</em>). Typically, this would be a LabCentral share name, but it can be any shared drive on your network. This feature allows you to put patches in one location on the network and patch all iTest systems.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>This next group of settings should only be changed if you do not have a LabCentral system. If you have LabCentral, changing these settings will overwrite your LabCentral settings and could possibly break your connection to LabCentral.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>SystemConfig Settings</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 900px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Setting</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>iTest Module file location</td>
+			<td> This gives you a network share to import and export modules to if you do not have LabCentral.</td>
+		</tr>
+		<tr>
+			<td>Enable iTest Security</td>
+			<td> Enables the login prompt for iTest Console and Test Manager.</td>
+		</tr>
+		<tr>
+			<td>Enable Windows Domain Logins</td>
+			<td> You can have iTest send the username and password to the Windows domain server to have the password verified. When using this feature, you still configure groups in the iTest security editor. However, when the user logs in with their domain username and password, the software checks to see what groups they belong to in the domain. If any of these groups match the iTest-configured groups, those groups define their security level.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Silent-iTest-Installation"></a>
+<h1 >Silent iTest Installation<a href="#Silent-iTest-Installation" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Installation-Pre-Checks"></a>
+<h2 >Installation Pre-Checks<a href="#Installation-Pre-Checks" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Prior to executing the silent installation, verify whether iTest is currently installed. This can be done by determining if the uninstall registry key, used by Windows to add and remove programs, exists on your system.</p>
+
+
+	<a name="Example"></a>
+<h3 >Example:<a href="#Example" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>iTest registry key on a 64-bit Windows system:</p>
+
+
+<pre>HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\{XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}}_is1</pre>
+
+	<p>iTest registry key on a 32-bit Windows system:</p>
+
+
+<pre>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}}_is1</pre>
+
+	<a name="Perform-the-Silent-Install"></a>
+<h2 >Perform the Silent Install<a href="#Perform-the-Silent-Install" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The iTest setup executable can be run in silent mode using the following command-line:</p>
+
+
+<pre>iTest38Setup.exe /VERYSILENT /SUPPRESSMSGBOXES</pre>
+
+	<p>An <em>install.ini</em> file must be located in the same folder location in which <em>iTest38Setup.exe</em> is located, where the contents of the <em>install.ini</em> file include:</p>
+
+
+<pre>
+[Install]
+SerialNumber=xxxx-xxxx-xxxx-xxxx
+</pre>
+
+	<p><em>Where xxxx-xxxx-xxxx-xxxx is replaced with the actual iTest installation key (serial number).</em></p>
+
+
+	<p>You may additionally add a command-line parameter to support the deviation from the default directory:</p>
+
+
+<pre>iTest38Setup.exe /VERYSILENT /SUPPRESSMSGBOXES /DIR=x:\dirName</pre>
+
+	<a name="Enable-LabAgent"></a>
+<h2 >Enable LabAgent<a href="#Enable-LabAgent" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Enabling LabAgent is done by running the registry key.</p>
+
+
+	<p><strong>Example:</strong></p>
+
+
+	<p>iTest registry key on a 64-bit Windows system:</p>
+
+
+<pre>HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run\iView.exe</pre>
+
+	<p><strong>Example:</strong></p>
+
+
+	<p>iTest registry key on a 32-bit Windows system:</p>
+
+
+<pre>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\iView.exe</pre>
+
+	<p><strong>Where:</strong></p>
+
+
+	<p>The value is <em>"C:\ADT\iTestx.x\Execute\iView.exe"</em> is displayed in the Registry Editor below:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Registry Editor</strong></em></span><br /><img src="attachments/download/45918/RegistryEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Additional-Manual-Configuration"></a>
+<h1 >Additional Manual Configuration<a href="#Additional-Manual-Configuration" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>The following additional actions need to be taken upon completing any of the GUI PC iTest installations. These instructions do not need to be performed if you have just finished installing iTest on a two-PC (real-time) system.</p>
+
+
+	<ol>
+	<li>Transfer working solution from earlier version of iTest (this step is only necessary if you choose to import <em>config.ini</em> settings from an existing version of iTest):
+	<ul>
+	<li>Copy <em>C:\ADT\iTestx.x\&lt;your solution name&gt;</em> (e.g., <em>Solution.Demo</em>) folder into $SYSTEMDIR (default: <em>C:\ADT\iTestx.x</em>) </li>
+		<li>Copy <em>C:\ADT\iTestx.x\config.ini</em> into the $SYSTEMDIR (default: <em>C:\ADT\iTestx.x</em>).</li>
+	</ul>
+	</li>
+		<li>Select the appropriate file and rename it to <em>data.def</em>. There are multiple <em>C:\ADT\iTestx.x\Installation\data.def</em> files; contact A&#38;D if it is not clear which file to select based on the list below:
+	<ul>
+	<li><em>data.def</em> – standard, default <em>data.def</em> file.</li>
+		<li><em>data.def.1065</em> – required for use with the Calibrate 1065 feature. This must be used if customer is CFR 40 Part 1065 compliant.</li>
+		<li><em>data.def.vclref</em> – required for use with the vclref feature. This feature is part of the dynamic customer name feature.</li>
+	</ul>
+	</li>
+		<li>Update the <em>config.ini</em> file to use the new iTest x.x paths:
+	<ul>
+	<li>Open the <em>config.ini</em> in the <em>C:\ADT\iTestx.x</em> folder using a text editor like Notepad. Change references of previous versions of iTest to your newly installed version of iTest.<br />Example:<br /><pre>
+Original: SystemDir=C:\ADT\iTest3.4\ 
+Updated: SystemDir=C:\ADT\iTest3.8\</pre></li>
+	</ul>
+	</li>
+		<li>Restart the computer.</li>
+	</ol>
+
+
+	<p>You can now begin using the iTest software.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;width: 20px;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">If you are using drivers, insert your iTest dongle into a USB port before executing iTest. The iTest binaries (e.g., <em>iTestConsole.exe</em> and <em>TestMgr.exe</em>) will check for the presence of a dongle for certain drivers when they run. Refer to the <a class="wiki-page" href="#Driver-Licensing-and-Validation-Tool">Driver Licensing and Validation Tool</a> section below for more information.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Driver-Licensing-and-Validation-Tool"></a>
+<h1 >Driver Licensing and Validation Tool<a href="#Driver-Licensing-and-Validation-Tool" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>When you install iTest, all available drivers are also installed. In order to use the drivers, you must have a valid security key enabled. The <em>DongleUtil.exe</em> utility shipped with your iTest software allows you to see which drivers you have valid access to. In addition, it also allows you to purchase additional security keys for drivers you need or will need in the future, as the test cell needs may expand. To see which drivers you have immediate access to, perform the following steps:</p>
+
+
+	<ol>
+	<li>Navigate to the $EXECUTEDIR and double-click <em>DongleUtil.exe</em> to launch the DongleUtil application.</li>
+		<li>Input the dongle you received with the iTest software into the USB port on the computer. Wait a few seconds for the computer to recognize the hardware. Once it's recognized, a dialog populates a list of drivers that you have valid security keys for.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>DongleUtil</strong></em></span><br /><img src="attachments/download/45919/38_DongleUtil.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>DongleUtil Columns</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Column</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Key</td>
+			<td>The identification number assigned to your dongle.</td>
+		</tr>
+		<tr>
+			<td>Product</td>
+			<td>The number assigned to the product.</td>
+		</tr>
+		<tr>
+			<td>Part Number</td>
+			<td>The part number of the product.</td>
+		</tr>
+		<tr>
+			<td>Feature</td>
+			<td>The ID assigned to the part number.</td>
+		</tr>
+		<tr>
+			<td>Driver Name</td>
+			<td>The name of the driver.</td>
+		</tr>
+		<tr>
+			<td>Description</td>
+			<td>The description of the driver.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>DongleUtil Buttons</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Button</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Refresh</td>
+			<td>Refreshes the list of available drivers.</td>
+		</tr>
+		<tr>
+			<td>Exit</td>
+			<td>Closes the application.</td>
+		</tr>
+		<tr>
+			<td>Launch ACC</td>
+			<td>Launches the admin control center in your web browser. From this web page, you can view license keys, products, features, diagnostic information, restrictions, and more. </td>
+		</tr>
+		<tr>
+			<td>Launch RUS</td>
+			<td>Launches the license management tool, which allows you to send key status information (as a <em>.c2v</em> file) and apply license updates (as <em>.v2c</em> and <em>.h2r</em> files) manually. This is used when you would like to purchase new products.</td>
+		</tr>
+		<tr>
+			<td>Blink</td>
+			<td>Causes the light to blink on the dongle.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Upgrading-an-Existing-Version"></a>
+<h1 >Upgrading an Existing Version<a href="#Upgrading-an-Existing-Version" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>Supported users will be able to access an FTP site which may contain product fixes for their version of iTest. When these product fixes are available, they can be installed and their existing version of the application will be upgraded. In addition, the product fix installations are standalone patches, which do not require a full reinstallation of iTest.</p>
+
+
+	<p>Please refer to your Software Maintenance Agreement for more details on licensed software updates.</p>
+
+
+	<a name="Uninstalling-an-Existing-Version"></a>
+<h1 >Uninstalling an Existing Version<a href="#Uninstalling-an-Existing-Version" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>If you are uninstalling a version that you have already done a considerable amount of work on, save a backup copy first. Refer to the <a class="wiki-page" href="#Backups">Backups</a> section above.</p>
+
+
+	<p>To uninstall an existing version, complete the following procedure:</p>
+
+
+	<ol>
+	<li>Navigate to your Control Panel by clicking <strong>Start > Control Panel</strong>.</li>
+		<li>From the Control Panel, click the <strong>Programs and Features</strong> option.</li>
+		<li>At this point, a list will be populated showing all of the applications/services currently installed on your computer. This may take a few seconds as some have more installed than others.</li>
+		<li>Scroll down and highlight the iTest application from the list.</li>
+		<li>Click the <strong>Uninstall</strong> button. The system will then ask you to confirm the removal of iTest, which is initiated by clicking <strong>Yes</strong>.<br />&nbsp;
+<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">You may get a dialog box informing you that there are shared files that may be affected by removing this program. It’s always a good idea to click No to All just in case the files in question are referenced in another module of a program suite.</td>
+		</tr>
+	</table><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Uninstall</strong></em></span><br /><img src="attachments/download/48598/Uninstall.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>The system will then remove all associated program files from your machine.</li>
+	</ol>
+
+
+	<a name="Side-by-Side-Installation-Notes"></a>
+<h1 >Side-by-Side Installation Notes<a href="#Side-by-Side-Installation-Notes" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>When installing a new version of iTest, it is possible to use non-standard settings to retain your iTest installation on the RT PC.</p>
+
+
+	<p>On the GUI PC:</p>
+
+
+	<ul>
+	<li>Drive letter. You may use a drive letter other than <em>I:</em>, but if you do, then you must specify it in the <em>config.ini</em> with the <code>MappedRemoteDrive=X:</code> setting (where X:_ can be any letter not in use).</li>
+		<li>Real-time PC name. If the RT PC name is not "iTestRT" or if the installed iTest folder on the RT PC is not <strong>iTestRT</strong>, you must specify it in the <em>config.ini</em> with the following setting: <pre>RemoteShareName=\\machine_name\share_name</pre></li>
+	</ul>
+
+
+	<p>For example, <code>RemoteShareName=\\iTestPC\iTest3.x</code>.</p>
+
+
+	<p>To switch between versions after installation, you must first perform the following:</p>
+
+
+	<ul>
+	<li>GUI PC: Run <em>registerocx.bat</em> in the <em>iTestX.X\Execute</em> folder you want to start using.</li>
+		<li>RT PC: Stop the <em>iTestListen.rta</em> process in INtime and start the <em>iTestListen.rta</em> process from the iTest folder you want to run from (e.g., <em>iTestRT</em> or <em>iTestx.x</em>).</li>
+		<li>RT PC: Stop the <em>iTestBackground.exe</em> process in Windows and start the <em>iTestBackground.exe</em> process from the iTest folder you want to run from (e.g., <em>iTestRT</em> or <em>iTestx.x</em>).</li>
+	</ul>
+</body>
+</html>

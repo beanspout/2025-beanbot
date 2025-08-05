@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Selecting External Solutions</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Selecting_External_Solutions.html">Selecting External Solutions</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Selecting-External-Solutions"></a>
+<h1 >Selecting External Solutions<a href="#Selecting-External-Solutions" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Selecting-External-Solutions">Selecting External Solutions</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Linking-to-External-Solutions">Linking to External Solutions</a></li><li><a href="#Linking-to-New-External-Solutions">Linking to New External Solutions</a></li><li><a href="#Deleting-the-Junction-Point">Deleting the Junction Point</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Typically, solutions are located in the iTest folder (i.e., <em>C:\ADT\iTestX.X</em>, where X.X is the product version). External solutions, or solutions placed outside the iTest folder, can be opened using the <em>SelectSupport.exe</em> tool. To do this, a junction point is created in the $SYSTEMDIR to the external solution folder. The term "link" is used interchangeably with "junction point" throughout the documentation and the iTest software to refer to these created junction points.</p>
+
+
+	<a name="Linking-to-External-Solutions"></a>
+<h2 >Linking to External Solutions<a href="#Linking-to-External-Solutions" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To link to an external solution, do the following:</p>
+
+
+	<ol>
+	<li>Add <code>SelectSupportExternalSolution=TRUE</code> to the <em>config.ini</em> file.</li>
+		<li>Start iTest. The Select Solution dialog will include the <strong>&lt;Link External Solution...&gt;</strong> option.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Link External Solution</strong></em></span><br /><img src="attachments/download/106663/42_LinkExternalSolution.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the <strong>&lt;Link External Solution...&gt;</strong> option to open the Browse for Folder dialog. Select the location of the external solution in this dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Browse for Folder Dialog</strong></em></span><br /><img src="attachments/download/106664/42_BrowseforFolderDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>The external solution now displays in the Select Solution dialog. In addition, a junction point to the external solution is created in the iTest folder.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>External Solution - Select Solution Dialog</strong></em></span><br /><img src="attachments/download/106665/42_ExternalSolution-SelectSolutionDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>External Solution Folder Junction Point</strong></em></span><br /><img src="attachments/download/106666/42_ExternalSolution-SymbolicLink.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select the external solution and click <strong>OK</strong>.</li>
+	</ol>
+
+
+	<a name="Linking-to-New-External-Solutions"></a>
+<h2 >Linking to New External Solutions<a href="#Linking-to-New-External-Solutions" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>New solutions can be created using an existing solution or a ZIP file by selecting the <strong>&lt;New solution...&gt;</strong> option in the Select Solution dialog. When <code>SelectSupportExternalSolution=TRUE</code>, you can specify the location of the new solution in the <strong>New Solution Folder</strong> field. Click the ( <img src="attachments/download/120448/43_DotDotDot.png" alt="" /> ) button to browse for a folder location.</p>
+
+
+	<p>After specifying the folder and name for the new solution, click <strong>OK</strong>. The new solution is added to the list of available solutions/modules in the Select Solution dialog. In addition, a junction point to the external solution is created in the iTest $SYSTEMDIR folder. For more information about creating solutions, refer to the <a class="wiki-page" href="Select_Support.html#Creating-New-Solutions">Creating New Solutions</a> documentation.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>New Solution Dialog - Using an Existing Solution</strong></em></span><br /><img src="attachments/download/120449/43_NewExternalSolution-ExistingSolution.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>New Solution Dialog - Using a ZIP File</strong></em></span><br /><img src="attachments/download/120450/43_NewExternalSolution-ZIPFile.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Deleting-the-Junction-Point"></a>
+<h2 >Deleting the Junction Point<a href="#Deleting-the-Junction-Point" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To automatically delete the junction point that was created, add the <code>DeleteExternalSolutionLinkWhenDone=TRUE</code> <em>config.ini</em> setting. This setting will cause the junction point to be deleted when all applications using it have exited. The external solution will no longer be available in the Select Solution dialog.</p>
+</body>
+</html>

@@ -1,0 +1,347 @@
+body{
+	background-color: #ffffff;
+	color:#3A3A3A;
+	font-family: Segoe UI, sans-serif;
+	font-size:13px;
+	margin:0px 20px;}
+
+a img{
+	border:none;}
+
+blockquote{ 
+	font-style:italic;
+	font: 14px/20px italic Times, serif;
+	margin:10px auto 10px 20px;
+	padding-left:15px;
+	border-left:3px solid #ccc;}
+	
+blockquote li{
+	font-style:italic;
+	font-size:16px;
+	text-decoration:none;}
+
+h1{
+	font-family: Segoe UI, sans-serif;
+	background-color:#F1F1F1;
+	border-bottom:1px solid #ccc;
+	color:#005CAA;
+	font-size:23px;
+	margin-left:-20px;
+	margin-right:-20px;
+	padding:10px 20px;}
+
+h2{
+	font-family: Segoe UI, sans-serif;
+	border-bottom:1px solid #ccc;
+	color:#005caa;
+	font-size:20px;
+	line-height:1.8em;}
+	
+h3{
+	font-family: Segoe UI, sans-serif;
+	border-bottom:1px solid #ccc;
+	color:#222;
+	font-size:16px;
+	line-height:1.8em;}
+	
+h4{
+	font-family: Segoe UI, sans-serif;
+	border-bottom:1px solid #ccc;
+	color:#444;
+	font-size:13px;
+	line-height:1.8em;}
+	
+hr{
+	border:0;
+	height:1px;
+	background:#666;
+	background-image: -webkit-linear-gradient(left, #eee, #666, #eee);
+	background-image: -moz-linear-gradient(left, #eee, #666, #eee);
+	background-image: -ms-linear-gradient(left, #eee, #666, #eee);
+	background-image: -o-linear-gradient(left, #eee, #666, #eee);
+	margin:20px 0px;}
+
+pre{
+	background-color:#f6f6f6;
+	border:1px solid #d0d0d0;
+	font-family:Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+	font-size:11px;
+	margin:auto 50px 10px;
+	overflow:auto;
+	width:auto;
+	width:650px!ie7;
+	padding:5px;
+	padding-bottom:20px!ie7;}
+
+table, th, td{
+	border:1px solid #999;
+	border-collapse:collapse;
+	padding:4px;
+	font-size: 12px;
+	font-family: Segoe UI, sans-serif;
+	}
+
+.clear{
+	clear:both;}
+
+#header{
+	margin:0;}
+
+#header{
+	background:url(img/header.jpg) top right no-repeat #E3E6EB;
+	height:75px;
+	margin:0px -20px;
+	white-space: nowrap;}
+	
+#header .logo{
+	float:left;
+	margin:15px 0px 0px 15px;}
+	
+#header .name{
+	font-family: Segoe UI, sans-serif;
+	font-weight: bold;
+	color:#2D6A9F;
+	float:left;
+	font-size:21px;
+	margin:23px 0 0 18px;}
+		
+
+.line-blue{
+	background:#2D6A9F;
+	height:7px;
+	margin:0px -20px;}
+
+h1:hover a.wiki-anchor,
+h2:hover a.wiki-anchor,
+h3:hover a.wiki-anchor{
+	color:#ddd;
+	display:inline;}
+
+a.wiki-anchor{
+	display:none;
+	margin-left:6px;
+	text-decoration:none;}
+
+a.wiki-anchor:hover{
+	color:#aaa !important;
+	text-decoration:none;}
+
+a.wiki-page{
+	color:#2d6a9f;
+	font-size:14px;
+	text-decoration:none;}
+	
+a.wiki-page:hover{
+	color:#333;}
+	
+	
+
+/*/////////////////////////////////////////////////////////////////////////////////
+BREADCRUMB Styles
+/////////////////////////////////////////////////////////////////////////////////*/
+
+#breadcrumb{
+	background:#eee;
+	border-bottom:1px solid #ccc;
+	list-style:none;
+	margin:0px -20px;
+	padding-left:0px;
+	overflow: hidden;}
+
+#breadcrumb li{
+	float:left;}
+
+#breadcrumb a{
+	background-color:#ddd;
+	background-image:linear-gradient(to right, #f5f5f5, #ddd);
+	color:#444;
+	float:left;
+	padding:.7em 1em .7em 2em;
+	position:relative;
+	text-decoration:none;
+	text-shadow:0 1px 0 rgba(255,255,255,.5);}
+
+#breadcrumb li:first-child a{
+	padding-left:1em;}
+
+#breadcrumb a:hover{
+	background:#fff;}
+
+#breadcrumb a::after,
+#breadcrumb a::before{
+	border-bottom:1.5em solid transparent;
+	border-left:1em solid;
+	border-top:1.5em solid transparent;
+	content:"";
+	margin-top:-1.5em;
+	position:absolute;
+	right:-1em;
+	top:50%;}
+
+#breadcrumb a::after{
+	border-left-color:#ddd;
+	z-index:2;}
+
+#breadcrumb a::before{
+	border-left-color:#ccc;
+	right:-1.1em;
+	z-index:1;}
+
+#breadcrumb a:hover::after{
+	border-left-color:#fff;}
+
+#breadcrumb .current,
+#breadcrumb .current:hover{
+	background:#fff;
+	font-weight:bold;}
+
+#breadcrumb .current::after{
+	border-left-color:#fff;}
+
+#breadcrumb li:last-child a::before,
+#breadcrumb li:last-child a::after{
+	content:normal;}
+
+ul#breadcrumb li:first-child a::after,
+ul#breadcrumb li:first-child a::before{
+	border-bottom:1.5em solid transparent;
+	border-top:1.5em solid transparent;
+	content:"";
+	margin-top:-1.5em;
+	position:absolute;
+	top:50%;}
+
+
+
+/*/////////////////////////////////////////////////////////////////////////////////
+TOC Styles
+/////////////////////////////////////////////////////////////////////////////////*/
+
+ul.toc{
+	list-style: upper-roman;
+	margin-left:0px;
+	padding:8px 15px 8px 25px;
+	width:35%;}
+	
+ul.toc a{
+	color:#2d6a9f;
+	margin:3px 0px;
+	padding:0px;
+	text-decoration:none;
+	right:0;}
+	
+ul.toc a:hover{
+	color:#333;}
+	
+ul.toc ul{
+	list-style:lower-roman;
+	margin:0em 0 0em 20px;
+	padding:0;
+	display:block;
+	width:95%;}
+
+ul.toc ul ul{
+	list-style:lower-alpha ;
+	margin:0em 0 0em 20px;
+	padding:0;
+	display:block;
+	width:95%;}
+
+ul.toc ul ul ul{
+	list-style:lower-roman ;
+	margin:1em 0 1em 20px;
+	padding:0;
+	display:block;
+	width:95%;}
+	
+ul.toc li{
+	clear:left;
+	margin:6px 0px;
+	position:relative;}
+
+ul.toc li.heading2{
+	margin-left:1em;}
+
+ul.toc li.heading3{
+	margin-left:2em;}
+
+#search-div
+{
+	float: right;
+	height: 32px;
+	background-color: transparent;
+	border: none;
+	margin: 20px 50px 0px 0px;
+}
+
+#search-div	.searchbutton{
+	background:#2D6A9F;
+	border:0;
+	color:#fff;
+	cursor:pointer;
+	margin-top:5px;
+	padding:5px 30px;
+}
+	
+#search-div	.searchbutton:hover{
+	background:#204B73;
+}
+	
+.highlight{
+	 background: #FFFF40;
+}
+
+/*/////////////////////////////////////////////////////////////////////////////////
+OLD STYLES TO BE DELETED
+/////////////////////////////////////////////////////////////////////////////////*/
+
+.line-gray{
+	background:#D5D5D5;
+	height:1px;
+	margin:0px -20px;}
+
+.tftextinput{
+    margin: 0;
+    padding: 5px 15px;
+    font-family: Segoe UI, sans-serif;
+    font-size:14px;
+    border:1px solid #0076a3; border-right:0px;
+    border-top-left-radius: 5px 5px;
+    border-bottom-left-radius: 5px 5px;
+}
+.tfbutton {
+    margin: 0;
+    padding: 5px 15px;
+    font-family: Segoe UI, sans-serif;
+    font-size:14px;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    border: solid 1px #0076a3; border-right:0px;
+    background: #0095cd;
+    background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+    background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+    border-top-right-radius: 5px 5px;
+    border-bottom-right-radius: 5px 5px;
+}
+.tfbutton:hover {
+    text-decoration: none;
+    background: #007ead;
+    background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+    background: -moz-linear-gradient(top,  #0095cc,  #00678e);
+}
+
+/* Fixes submit button height problem in Firefox */
+.tfbutton::-moz-focus-inner {
+  border: 0;
+}
+
+.wrapper{
+	bottom:10px;
+	padding:25px 5px 20px;
+	position:relative;
+}
+
+

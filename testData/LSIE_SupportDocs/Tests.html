@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Tests</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Tests.html">Tests</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Tests"></a>
+<h1 >Tests<a href="#Tests" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Tests">Tests</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Schedules">Schedules</a></li><li><a href="#Master-Schedules">Master Schedules</a></li><li><a href="#Procedures">Procedures</a></li><li><a href="#Scripts">Scripts</a></li><li><a href="#Set-Value-Tables">Set Value Tables</a></li><li><a href="#Step-Conditions">Step Conditions</a></li><li><a href="#Map-Tables">Map Tables</a></li><li><a href="#Calculations">Calculations</a></li><li><a href="#Dynamic-Calculations">Dynamic Calculations</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>In SolutionBuilder, you can set schedules, master schedules, procedures, and more that can be executed at runtime. You can access these editors by selecting <strong>Tests</strong> from SolutionBuilder's main menu.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Menu Options</strong></em></span><br /><img src="attachments/download/127083/SB44_TestsMenuOptions.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Schedules"></a>
+<h2 >Schedules<a href="#Schedules" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Schedules are standard containers for structuring information such as engine specifications and test sequences. They are composed of tables where each row in the schedule is a step in the test. Schedules may contain loops, nested loops, conditional actions, step tasks, and other special behavior. For example, you can set up your schedule so that each step has a mode pair for the engine, a step time, dyno and throttle setpoints, and a number of step tasks. For more information, refer to the <a class="wiki-page" href="Managing_Schedules.html">Managing Schedules</a> documentation.</p>
+
+
+	<p>To access this editor, select <strong>Tests > Schedules</strong> or select the Schedules shortcut on the SolutionBuilder homepage.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Schedules Shortcut</strong></em></span><br /><img src="attachments/download/51954/SchedulesShortcut.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Master-Schedules"></a>
+<h2 >Master Schedules<a href="#Master-Schedules" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Master Schedules editor is used to create high-level sequences composed of schedules, procedures, and step tasks. You can use master schedules to create and run complex tests without using script or other programming methods. Master schedules include:</p>
+
+
+	<ul>
+	<li>Spreadsheet editor and viewer</li>
+		<li>Step task capability</li>
+		<li>Built-in looping</li>
+		<li>Test point tables</li>
+	</ul>
+
+
+	<p>For more information, see the <a class="wiki-page" href="AutomationPanel_Operators_Guide.html#Master-Schedule-Panel">Master Schedule Panel</a> and the <a class="wiki-page" href="Managing_Master_Schedules.html">Managing Master Schedules</a> documentation.</p>
+
+
+	<p>To access this editor in SolutionBuilder, select <strong>Tests > Master Schedules</strong> from the main menu or select the Master Schedules shortcut on the main page.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Master Schedules Shortcut</strong></em></span><br /><img src="attachments/download/51952/MSShortcut.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Procedures"></a>
+<h2 >Procedures<a href="#Procedures" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Procedures are programming code or script used to run iTest applications. They are written in the VCL scripting language and can be executed from numerous sources including other procedures, actions, and virtual controls defined in displays. You can create new procedures and write procedure code in SolutionBuilder's Procedures editor. For more information, refer to the <a class="wiki-page" href="Managing_Procedures.html">Managing Procedures</a> documentation.</p>
+
+
+	<p>To access this editor, select <strong>Tests > Procedures</strong> in the main menu.</p>
+
+
+	<a name="Scripts"></a>
+<h2 >Scripts<a href="#Scripts" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Python scripts can be managed using SolutionBuilder's Scripts editor. These scripts can be stored in the $SUPPORTDIR or the $SYSTEMDIR. For more information about how to manage python scripts in SolutionBuilder, refer to the <a class="wiki-page" href="Managing_Scripts.html">Managing Scripts</a> documentation.</p>
+
+
+	<p>To access this editor, select <strong>Tests > Scripts</strong> in the main menu.</p>
+
+
+	<a name="Set-Value-Tables"></a>
+<h2 >Set Value Tables<a href="#Set-Value-Tables" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Set value tables allow you to create a named sequence of values that change according to specified delay times and can be managed using SolutionBuilder's Set Value Tables editor. For more information, refer to the <a class="wiki-page" href="Managing_Set_Value_Tables.html">Managing Set Value Tables</a> documentation.</p>
+
+
+	<p>To access this editor, select <strong>Tests > Set Value Tables</strong> in the main menu.</p>
+
+
+	<a name="Step-Conditions"></a>
+<h2 >Step Conditions<a href="#Step-Conditions" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Step conditions can be managed using SolutionBuilder's Step Conditions editor. Step conditions created in this editor are reusable and can be referenced from multiple locations. For more information, refer to the <a class="wiki-page" href="Step_Conditions.html">Step Conditions</a> documentation.</p>
+
+
+	<p>To access this editor, select <strong>Tests > Step Conditions</strong> in the main menu.</p>
+
+
+	<a name="Map-Tables"></a>
+<h2 >Map Tables<a href="#Map-Tables" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Map tables can be managed using SolutionBuilder's Map Tables editor. These tables can be used to linearly interpolate values in iTest. For more information, refer to the <a class="wiki-page" href="Managing_Map_Tables.html">Managing Map Tables</a> documentation.</p>
+
+
+	<p>To access this editor, select <strong>Tests > Map Tables</strong> in the main menu.</p>
+
+
+	<a name="Calculations"></a>
+<h2 >Calculations<a href="#Calculations" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Calculations are a series of periodically calculated formulas. The calculated results are stored as channel values that can be logged, displayed, verified for limits and quality, and more. Calculations can be managed using SolutionBuilder’s Calculations editor. For more information, refer to the <a class="wiki-page" href="Managing_Calculations_in_SolutionBuilder.html">Managing Calculations</a> documentation.</p>
+
+
+	<p>To access this editor, select <strong>Tests > Calculations</strong> from the main menu.</p>
+
+
+	<a name="Dynamic-Calculations"></a>
+<h2 >Dynamic Calculations<a href="#Dynamic-Calculations" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Dynamic calculations run independently and asynchronously to the real-time system, allowing you to perform modifications to the calculation file while it is actively running without affecting the test system. Dynamic calculations can be managed using SolutionBuilder's Dynamic Calculations editor. For more information, refer to the <a class="wiki-page" href="Managing_Dynamic_Calculations_in_SolutionBuilder.html">Managing Dynamic Calculations</a> documentation.</p>
+
+
+	<p>To access this editor, select <strong>Tests > Dynamic Calculations</strong> from the main menu.</p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="AutomationPanel_Operators_Guide.html">AutomationPanel Operators Guide</a></li>
+		<li><a class="wiki-page" href="Managing_Master_Schedules.html">Managing Master Schedules</a></li>
+		<li><a class="wiki-page" href="Introduction_to_SolutionBuilder.html">Introduction to SolutionBuilder</a></li>
+		<li><a class="wiki-page" href="AutomationPanel_Operators_Guide.html#Master-Schedule-Panel">Master Schedule Panel</a></li>
+		<li><a class="wiki-page" href="ScheduleRunner.html#Column-Types">Schedule - Column Types</a></li>
+		<li><a class="wiki-page" href="ScheduleRunner.html#Parameters">Schedule - List Page Parameters</a></li>
+		<li><a class="wiki-page" href="AutomationPanel_Operators_Guide.html#Schedule-Viewer-Panel">Schedule Viewer Panel</a></li>
+		<li><a class="wiki-page" href="Step_Tasks.html">Step Tasks</a></li>
+		<li><a class="wiki-page" href="VCL.html">VCL</a></li>
+	</ul>
+</body>
+</html>

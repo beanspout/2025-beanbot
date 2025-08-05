@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Mailerexe</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="Mailerexe.html">Mailerexe</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Mailerexe"></a>
+<h1 >Mailer.exe<a href="#Mailerexe" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The <em>Mailer.exe</em> is an executable used to send and receive commands and procedures in the form of mailslot messages, or it can be used as a debugging tool for testing purposes. Default mailslot messages are available within the executable and can be used to send messages throughout the iTest suite. <em>Mailer.exe</em> also supports the use of user-defined mailslot messages, which are defined within the executable.</p>
+
+
+	<a name="Using-Mailerexe"></a>
+<h2 >Using Mailer.exe<a href="#Using-Mailerexe" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To use the executable, open <em>Mailer.exe</em>, located in your $EXECUTEDIR. <em>Mailer.exe</em> will launch in a new window.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Mailer.exe</strong></em></span><br /><img src="attachments/download/71580/Mailer.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Use the table below to send and receive mailslot messages using <em>Mailer.exe</em>.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Mailer.exe</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Field</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Destination Mailslot</td>
+			<td> Used to determine the location to which the message will be sent.</td>
+		</tr>
+		<tr>
+			<td>Message</td>
+			<td>Used to define the message that will be sent. The Mailer tool does not support channel substitution (e.g., %&lt;&gt;%). It will pass these characters along, but it depends upon the destination to handle them. </td>
+		</tr>
+		<tr>
+			<td>Show User-Defined Messages Only</td>
+			<td>When checked, the default messages will not appear.</td>
+		</tr>
+		<tr>
+			<td>Send</td>
+			<td>Sends the mailslot message.</td>
+		</tr>
+		<tr>
+			<td>Listen Mailslot</td>
+			<td>The name of <em>Mailer.exe</em>'s receiving mailslot.</td>
+		</tr>
+		<tr>
+			<td>Message</td>
+			<td>Lists received mailslot messages.</td>
+		</tr>
+		<tr>
+			<td>Sender</td>
+			<td>Lists the sender of the corresponding mailslot message.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Mailslot-Menu"></a>
+<h2 >Mailslot Menu<a href="#Mailslot-Menu" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Mailslot menu contains action items for managing and defining mailslot messages.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Mailslot Menu</strong></em></span><br /><img src="attachments/download/71619/MailslotMenu.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Mailslot Actions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Action</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Open Listen Mailslot</td>
+			<td>Allows you to define your listen mailslot location.</td>
+		</tr>
+		<tr>
+			<td>Edit User Defined Messages</td>
+			<td>Allows you to add or remove user-defined mailslot messages.</td>
+		</tr>
+		<tr>
+			<td>Close</td>
+			<td>Closes the listen mailslot.</td>
+		</tr>
+		<tr>
+			<td>Clear</td>
+			<td>Clears messages in <em>Mailer.exe</em>.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Mailslot-Reference-Lists"></a>
+<h2 >Mailslot Reference Lists<a href="#Mailslot-Reference-Lists" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Mailslot message reference lists are sorted by destination and can be accessed from the following documents:</p>
+
+
+	<ul>
+	<li><a class="wiki-page" href="DataEngine_Mailslot_Messages_List.html">Data Engine</a></li>
+		<li><a class="wiki-page" href="File_Services.html">File Services</a></li>
+		<li><a class="wiki-page" href="PythonEngine_Mailslot_Messages.html">PythonEngine</a></li>
+		<li><a class="wiki-page" href="Standard_Softpanel_Messages_List.html">Softpanel</a></li>
+	</ul>
+</body>
+</html>

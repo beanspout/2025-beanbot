@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Channel Definitions in SolutionBuilder</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Channel_Definitions_in_SolutionBuilder.html">Channel Definitions in SolutionBuilder</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Channel-Definitions-Editor"></a>
+<h1 >Channel Definitions Editor<a href="#Channel-Definitions-Editor" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Channel-Definitions-Editor">Channel Definitions Editor</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Channel-Definitions-Editor-Interface">Channel Definitions Editor Interface</a><ul><li><a href="#Spreadsheet-Editor">Spreadsheet Editor</a></li><li><a href="#Property-Sheet-Editor">Property Sheet Editor</a></li></ul>
+</li><li><a href="#Creating-New-Channel-Definition-Files">Creating New Channel Definition Files</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Channels are stored in channel definition files. These files are flat, tab delimited ASCII files that use the <em>.fil</em> extension and are displayed in a spreadsheet editor. Each row represents a channel, and each column represents a unique attribute or RDB field for that channel. Column field entries can support numeric values, text, channel names, and simple expressions. Support of these entries is dependent on the column (e.g., the <strong>Physical Channel</strong> column only supports numeric values). For more information about iTest channels, refer to the <a class="wiki-page" href="ITest_Channels.html">iTest Channels</a> documentation. For more information about RDB fields, refer to the <a class="wiki-page" href="RDB_Field_Definitions.html">RDB Field Definitions</a> reference list.</p>
+
+
+	<p>Channels can be managed in SolutionBuilder or Test Manager and are stored in the <em>$SUPPORTDIR\DB</em> folder. This document details how to manage channels in SolutionBuilder. To access the Channel Definitions editor in SolutionBuilder, select <strong>Channels > Definitions</strong> from the main menu.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Definitions Menu Option</strong></em></span><br /><img src="attachments/download/127036/44_DefinitionsMenuOption.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Channel-Definitions-Editor-Interface"></a>
+<h2 >Channel Definitions Editor Interface<a href="#Channel-Definitions-Editor-Interface" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Channel Definitions editor contains three sections: the list of definition files, the spreadsheet editor, and the property sheet editor.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Channel Definitions Editor</strong></em></span><br /><img src="attachments/download/127037/44_ChannelDefinitionsEditorOverview.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The following right-click options are available:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2">List of Definition Files</th>
+		</tr>
+		<tr>
+			<td>Add</td>
+			<td> Adds a new channel definition file to the end of the list.</td>
+		</tr>
+		<tr>
+			<td>Remove</td>
+			<td> Removes the selected channel definition file.</td>
+		</tr>
+		<tr>
+			<td>Channel Assignment</td>
+			<td> Opens the Channel Assignment dialog, allowing you to assign module channels to system I/O channels where appropriate. For more information, refer to the <a class="wiki-page" href="Modules_in_iTest.html#Channel-Assignment">Channel Assignment</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>Rename</td>
+			<td> Enables renaming of the channel definition file. Type the new name then click elsewhere in the editor to save changes.</td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td> Removes the selected channel definition file and copies it to the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td> Pastes the copied channel definition file. If the channel definition file already exists in the solution, then an error message will display, stating that the channel definition file cannot be pasted.</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td> Undoes the previous action.</td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td> Redoes the last undone action.</td>
+		</tr>
+		<tr>
+			<td>Active</td>
+			<td> Activates/deactivates the channel definition file. When deactivated, the channels contained in the channel definition file will not be loaded into the RDB at start-up. Inactive channel definition files will be in gray font in the list of channel definition files.</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2">Spreadsheet Editor</th>
+		</tr>
+		<tr>
+			<td>Insert Before</td>
+			<td> Displays the New Channel dialog, prompting you to create a new channel. After you have configured the channel, the new channel is inserted before the selected channel.</td>
+		</tr>
+		<tr>
+			<td>Add to End</td>
+			<td> Displays the New Channel dialog, prompting you to create a new channel. After you have configured the channel, the new channel is added to the end of the channel list.</td>
+		</tr>
+		<tr>
+			<td>Edit</td>
+			<td> Enables you to edit the selected channel using the Edit Channel dialog.</td>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td> Deletes the selected channel row from the editor.</td>
+		</tr>
+		<tr>
+			<td>Duplicate...</td>
+			<td> Duplicates the selected channel. This displays the New Channel dialog with the configurations kept from the duplicated channel.</td>
+		</tr>
+		<tr>
+			<td>Duplicate Many...</td>
+			<td> Displays the Duplicate Channel Many dialog. You can use this option to create multiple duplicates of the selected channel by indicating a starting index and the number of copies to make. A maximum of 1,000 duplicate channels can be created at a time. This feature is only available for virtual channels (i.e., virtual output, virtual input, virtual string, virtual output array, virtual string array, and virtual timer).</td>
+		</tr>
+		<tr>
+			<td>Copy Channel(s)</td>
+			<td> Copies the selected channel(s).</td>
+		</tr>
+		<tr>
+			<td>Insert Copied Channel(s)</td>
+			<td> Inserts a new version of the copied channel(s) and provides it with a unique name.</td>
+		</tr>
+		<tr>
+			<td>Clear Sorting</td>
+			<td> Restores the column sorting to its original sorting order.</td>
+		</tr>
+		<tr>
+			<td>Restore Column Widths</td>
+			<td> Restores the column widths to their original size.</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td> Undoes the last action.</td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td> Redoes the last undone action.</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2">Property Sheet Editor</th>
+		</tr>
+		<tr>
+			<td>Best Fit</td>
+			<td> Resizes the column widths to best fit the cell values.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Spreadsheet-Editor"></a>
+<h3 >Spreadsheet Editor<a href="#Spreadsheet-Editor" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The spreadsheet editor contains a list of all available channels within the definition file. All RDB fields are displayed in the editor; with each RDB field being represented by a column. Since each channel type (e.g., virtual output, virtual string, etc...) uses a unique set of RDB fields, any columns not applicable to the channel type will have a slash in the cell, indicating that the value cannot be edited, as shown in the image below:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Example: Inapplicable Column Type</strong></em></span><br /><img src="attachments/download/119402/43_InapplicableColumnType.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The channel type can only be changed from the Edit Channel dialog.</td>
+		</tr>
+	</table></p>
+
+
+	<p>Columns can be sorted by clicking on the header. The <strong>Clear Sorting</strong> right-click option can be used to restore the column sorting to its original order.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Sorting Columns</strong></em></span><br /><img src="attachments/download/119404/43_SortingChannelColumns.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Multiple channels can be selected for editing using the <a class="wiki-page" href="#Property-Sheet-Editor">property sheet editor</a>. To select multiple channels, use <strong>Ctrl + Left-click</strong> or <strong>Shift + Left-click</strong>.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Selecting Multiple Channels</strong></em></span><br /><img src="attachments/download/119403/43_SelectingMultipleChannels.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Property-Sheet-Editor"></a>
+<h3 >Property Sheet Editor<a href="#Property-Sheet-Editor" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The property sheet editor provides an overview of a selected channel's properties (i.e., RDB fields), where you can quickly edit the channel's properties and attributes. If multiple channels are selected for editing, then the property sheet editor will only display properties shared between the selected channels.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The channel type can only be changed from the Edit Channel dialog.</td>
+		</tr>
+	</table></p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Property Sheet Editor - Multiple Channels</strong></em></span><br /><img src="attachments/download/119406/43_PropertySheetEditorMultipleChannels.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Creating-New-Channel-Definition-Files"></a>
+<h2 >Creating New Channel Definition Files<a href="#Creating-New-Channel-Definition-Files" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>When you create a new channel definition file, you must also add channels, define channel properties, and assign unique attributes to the channel.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Each channel type has unique column headers. If you have a file with multiple channel types, inapplicable columns will have a slash in their cells, indicating that the cell value cannot be edited.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>To create a new definition file, do the following:</p>
+
+
+	<ol>
+	<li>Right-click in the list of channel definitions and select <strong>Add</strong>. The new channel definition is added to the end of the list.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Channel Definition</strong></em></span><br /><img src="attachments/download/129692/44_NewChannelDefinition.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click on the new channel definition to open its editor. Right-click in the spreadsheet editor and select <strong>Add to End</strong>. The New Channel dialog displays.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add to End</strong></em></span><br /><img src="attachments/download/127039/44_AddtoEnd.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Channel Dialog</strong></em></span><br /><img src="attachments/download/101476/42_NewChannelDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Configure the channel as needed then click <strong>OK</strong>. For more information, refer to the <a class="wiki-page" href="ITest_Channels.html">iTest Channels</a> documentation.</li>
+		<li>The new channel displays in the editor.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Channel Row</strong></em></span><br /><img src="attachments/download/119409/43_NewChannelRow.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>The channel can be edited using the following methods:
+	<ul>
+	<li>Modifying the value in in the spreadsheet editor.</li>
+		<li>Modifying the value in the property sheet editor.</li>
+		<li>In the spreadsheet editor, right-click in the column's cell and select <strong>Edit</strong> to open the Edit Channel dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Edit Cell Value - Spreadsheet Editor</strong></em></span><br /><img src="attachments/download/119410/43_EditCellValue.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Edit Cell Value - Property Sheet Editor</strong></em></span><br /><img src="attachments/download/119411/43_EditCellValuePropertySheet.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Edit Channel Dialog</strong></em></span><br /><img src="attachments/download/101480/42_EditChannelDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ul></li>
+	</ol>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="ITest_Channels.html">iTest Channels</a></li>
+		<li><a class="wiki-page" href="RDB_Field_Definitions.html">RDB Field Definitions</a></li>
+	</ul>
+</body>
+</html>

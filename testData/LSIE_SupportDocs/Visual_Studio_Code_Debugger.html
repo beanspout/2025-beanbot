@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Visual Studio Code Debugger</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+ <span style="display: none;">
+
+
+	<p><img src="attachments/download/93003/ADT_LOGO_OUTLINE.png" style="width: 100px;" alt="" /></p>
+
+
+	 </span>
+
+
+	 <div class="CoverPage" class="body">
+
+
+	 <div class="Title">
+
+
+	<p style="text-align:center;"><br /><strong><span style="font-size:30pt;color: #005CAA;">Visual Studio Code Debugger: VCL</span></strong></p>
+
+
+	 </div>
+
+
+	<p style="text-align:center;"><br /><em><span style="font-size:12pt;font-style: italic;">Product Version 4.5</span></em></p>
+
+
+	<p style="text-align:center;"><br /><strong><span style="font-size:16pt;">Prepared By</span></strong><br />ADT Software Engineering</p>
+
+
+	<p style="text-align:center;"><br /><span style="font-size: 10pt;color:red;">A&#38;D Confidential Document Distributable only to A&#38;D Customers</span><br /><span style="font-size: 10pt;color:black;">Copyright A&#38;D Company, Limited<br />A&#38;D Technology Inc.</span></p>
+
+
+	 </div>
+
+
+	 <h1>Table of Contents</h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Overview">Overview</a></li><li><a href="#Installing-VS-Code-Debugger">Installing VS Code Debugger</a><ul><li><a href="#Debugging-Multiple-iTest-Versions">Debugging Multiple iTest Versions</a></li></ul>
+</li><li><a href="#Basic-Operation">Basic Operation</a><ul><li><a href="#Breakpoints">Breakpoints</a><ul><li><a href="#Adding-a-Breakpoint">Adding a Breakpoint</a></li><li><a href="#Removing-a-Breakpoint">Removing a Breakpoint</a></li><li><a href="#Breakpoint-Right-Click-Options">Breakpoint Right-Click Options</a></li></ul>
+</li><li><a href="#Editing-an-Existing-Procedure">Editing an Existing Procedure</a></li><li><a href="#CopyPaste-an-Existing-File">Copy/Paste an Existing File</a></li><li><a href="#Deleting-a-File">Deleting a File</a></li><li><a href="#Right-Click-Options-within-TSC-Files">Right-Click Options within TSC Files</a></li></ul></li></ul></p>
+
+
+	<a name="Overview"></a>
+<h1 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>iTest.Pro includes an extension for Visual Studio Code (a.k.a. "VS Code") that allows for editing and debugging VCL procedures. This guide outlines the process for downloading and installing Visual Studio Code Debugger and using it to edit and debug iTest procedures.</p>
+
+
+	<p>For information about how to use Visual Studio Code to debug Python scripts, see <a class="wiki-page" href="Visual_Studio_Code_Debugger_Python_Scripts.html">Visual Studio Code Debugger: Python Scripts</a>.</p>
+
+
+	<a name="Installing-VS-Code-Debugger"></a>
+<h1 >Installing VS Code Debugger<a href="#Installing-VS-Code-Debugger" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>To install VS Code Debugger, do the following:</p>
+
+
+	<ol>
+	<li>Download VS Code User 32-bit installer from <a class="external" href="https://code.visualstudio.com/download">https://code.visualstudio.com/download</a>.</li>
+		<li>Restart your PC to complete the installation.<br />&nbsp;
+<table>
+		<tr>
+			<td style="background:#ebd700;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3740/caution.gif" alt="" /></td>
+			<td style="vertical-align:top;"><b>CAUTION:</b></td>
+			<td style="vertical-align:top;">Failing to restart will prevent VS Code from connecting to iTest&#39;s RDB. This prevents proper debugging.</td>
+		</tr>
+	</table></li>
+		<li>Open <strong>File > Preferences > Extensions.</strong><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>VS Code Extensions</strong></em></span><br /><img src="attachments/download/85124/VSCodeExtensions.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click <strong>...</strong> and select <strong>Install from VSIX.</strong><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Install from VSIX</strong></em></span><br /><img src="attachments/download/85125/InstallFromVSIX.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Open the <em>.vsix</em> file in iTest's <em>Execute</em> folder (e.g., <em>$EXECUTE\itest-ext-0.1.0.vsix</em>).</li>
+		<li>Open <strong>Run > Add Configuration...</strong>. This will generate a <em>launch.json</em> file, open it for editing, and populate it with the VCL debug entries.</li>
+		<li>Click <strong>File > Save</strong> with the <em>launch.json</em> file open in the editor. No changes are necessary.</li>
+		<li>Restart the Visual Studio Code Debugger program.</li>
+	</ol>
+
+
+	<a name="Debugging-Multiple-iTest-Versions"></a>
+<h2 >Debugging Multiple iTest Versions<a href="#Debugging-Multiple-iTest-Versions" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest's VS Code plugin is tied to the iTest version it came from. Users with multiple iTest versions installed to the same machine must reinstall the plugin in order to change which iTest version VS Code's debugger attaches to.</p>
+
+
+	<p>To reinstall iTest's VS Code debugger, do the following:</p>
+
+
+	<ol>
+	<li>Launch VS Code and go to <strong>File > Preferences > Extensions</strong>.</li>
+		<li>Select the iTest plugin and click <strong>Uninstall</strong>. Restart VS Code if prompted.</li>
+		<li>Reinstall the <em>.vsix</em> file from your target iTest version. See <a class="wiki-page" href="#Installing-VS-Code-Debugger">Installing VS Code Debugger</a> for details.</li>
+		<li>If VS Code was not restarted as part of step 2, then restart VS Code now.</li>
+	</ol>
+
+
+	<a name="Basic-Operation"></a>
+<h1 >Basic Operation<a href="#Basic-Operation" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>To use VS Code Debugger, do the following:</p>
+
+
+	<ol>
+	<li>Run the iTest solution.</li>
+		<li>Launch VS Code.</li>
+		<li>Select <strong>File > Open Folder</strong>, select the solution folder, and click <strong>Select Folder.</strong><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Open Folder</strong></em></span><br /><img src="attachments/download/85127/OpenFolderVSCode.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select the file you want to debug.</li>
+		<li>Select <strong>Run</strong> from the main menu. There are two options to run the procedure: <strong>Start Debugging</strong> or <strong>Run Without Debugging.</strong><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Start Debugging</strong></em></span><br /><img src="attachments/download/85129/StartDebugging.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select <strong>VCL Debugger</strong> in the <strong>Environment</strong> selection. This will allow you to run your procedure in iTest.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>VCL Debugger</strong></em></span><br /><img src="attachments/download/85139/VCLEnvironment.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>The debug controls will display at the top of the screen. The controls and their descriptions are described in the table below:</li>
+	</ol>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Debug Controls</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Control</strong> </td>
+			<td style="text-align:left;"><strong>Icon</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> Continue/Pause</td>
+			<td style="text-align:center;"><img src="attachments/download/85131/ContinuePause.png" alt="" /></td>
+			<td> Starts and pauses the debugging process.</td>
+		</tr>
+		<tr>
+			<td> Step Over</td>
+			<td style="text-align:center;"><img src="attachments/download/85135/StepOver.png" alt="" /></td>
+			<td> Runs the current line then pauses.</td>
+		</tr>
+		<tr>
+			<td> Step Into</td>
+			<td style="text-align:center;"><img src="attachments/download/85137/StepInto.png" alt="" /></td>
+			<td> Runs the current line then pauses. If the current line launches another procedure via an "EXECUTE" command, then Step Into opens the launched procedure then pauses.</td>
+		</tr>
+		<tr>
+			<td> Step Out</td>
+			<td style="text-align:center;"><img src="attachments/download/85138/StepOut.png" alt="" /></td>
+			<td> Continues to the end of the current procedure then pauses. If debugging a secondary procedure via "Step Into" this "backs out" to show the calling procedure.</td>
+		</tr>
+		<tr>
+			<td> Restart</td>
+			<td style="text-align:center;"><img src="attachments/download/85132/Restart.png" alt="" /></td>
+			<td> Restarts the debugging process.</td>
+		</tr>
+		<tr>
+			<td> Stop</td>
+			<td style="text-align:center;"><img src="attachments/download/85136/Stop.png" alt="" /></td>
+			<td> Stops the debugging process.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Breakpoints"></a>
+<h2 >Breakpoints<a href="#Breakpoints" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Adding-a-Breakpoint"></a>
+<h3 >Adding a Breakpoint<a href="#Adding-a-Breakpoint" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To add a breakpoint, click to the left of the line number you want to add a breakpoint to. A bright red dot will appear next to the line, indicating the breakpoint.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Add a Breakpoint</strong></em></span><br /><img src="attachments/download/86715/IT41-VSCode_Breakpoint.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Removing-a-Breakpoint"></a>
+<h3 >Removing a Breakpoint<a href="#Removing-a-Breakpoint" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>A breakpoint can be removed by clicking it or using the right-click options and selecting <strong>Remove Breakpoint.</strong></p>
+
+
+	<a name="Breakpoint-Right-Click-Options"></a>
+<h3 >Breakpoint Right-Click Options<a href="#Breakpoint-Right-Click-Options" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The right-click options for breakpoints are described in the table below:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Breakpoint Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> Remove Breakpoint</td>
+			<td> Deletes the breakpoint.</td>
+		</tr>
+		<tr>
+			<td> Edit Breakpoint</td>
+			<td> The breakpoint becomes a conditional breakpoint and provides additional configuration options. <ins><strong>Note:</strong></ins> Conditional breakpoints are not supported by iTest's VCL debugger.</td>
+		</tr>
+		<tr>
+			<td> Disable Breakpoint</td>
+			<td> Breakpoint is disabled and changes from red to gray. Disabled breakpoints do not trigger when debugging. Clicking a disabled breakpoint will remove it.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Editing-an-Existing-Procedure"></a>
+<h2 >Editing an Existing Procedure<a href="#Editing-an-Existing-Procedure" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Select a <em>.tsc</em> file in VS Code's <strong>Explorer</strong> pane to edit it. By default, changes must be saved manually, but VS Code also supports saving automatically. To enable/disable this feature, select <strong>File > Autosave</strong>.</p>
+
+
+	<p>iTest must be rebuilt before debugging any changes to a procedure. VS Code will automatically display the prompt below if a rebuild is needed.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Rebuild Prompt</strong></em></span><br /><img src="attachments/download/85190/VSCodeWarning.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /></p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#ebd700;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3740/caution.gif" alt="" /></td>
+			<td style="vertical-align:top;"><b>CAUTION:</b></td>
+			<td style="vertical-align:top;">PROCEDURE and $ENDPROCEDURE lines are automatically added and used internally. These lines should not be edited.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="CopyPaste-an-Existing-File"></a>
+<h2 >Copy/Paste an Existing File<a href="#CopyPaste-an-Existing-File" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>An existing file can be copied and pasted into a new file. To copy and paste a procedure, do the following:</p>
+
+
+	<ol>
+	<li>Right-click the file you wish to copy and select <strong>Copy.</strong><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Copy File</strong></em></span><br /><img src="attachments/download/85191/CopyFile.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Right-click the folder you want to paste the procedure into and select <strong>Paste.</strong> The copied procedure will be labeled as a copy.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Paste File</strong></em></span><br /><img src="attachments/download/85193/PasteFile.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Copied File</strong></em></span><br /><img src="attachments/download/85194/CopiedFile.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Run the procedure. A warning message will appear prompting you to rebuild iTest.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Warning Message</strong></em></span><br /><img src="attachments/download/85190/VSCodeWarning.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<a name="Deleting-a-File"></a>
+<h2 >Deleting a File<a href="#Deleting-a-File" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To delete a file, right-click the file you wish to delete and select <strong>Delete.</strong></p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Delete File</strong></em></span><br /><img src="attachments/download/85196/DeleteFile.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /></p>
+
+
+	<p>A message will appear asking for confirmation. The file will be moved to the Recycle Bin.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Move to Recycle Bin</strong></em></span><br /><img src="attachments/download/85197/RecycleBin.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Right-Click-Options-within-TSC-Files"></a>
+<h2 >Right-Click Options within TSC Files<a href="#Right-Click-Options-within-TSC-Files" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Right-click options within TSC Files are described in the table below:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>VCL: Build</td>
+			<td>Rebuilds iTest. Any tests that are running will be stopped.</td>
+		</tr>
+		<tr>
+			<td>VCL: Validate</td>
+			<td>Notifies you if there are any errors in the procedure.</td>
+		</tr>
+		<tr>
+			<td>Change All Occurrences</td>
+			<td>Finds and replaces the selected term with a new term.</td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td>Deletes the selected term or line.</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td>Copies the selected term or line.</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td>Pastes the selected term or line.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+</body>
+</html>

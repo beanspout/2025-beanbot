@@ -1,0 +1,486 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Calibrate</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="Calibrate.html">Calibrate</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Calibration-Utility"></a>
+<h1 >Calibration Utility<a href="#Calibration-Utility" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Calibration-Utility">Calibration Utility</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#General-Calibration-Configuration">General Calibration Configuration</a></li><li><a href="#Calibration-Data-Reports">Calibration Data Reports</a></li><li><a href="#Converting-Previous-Calibration-Records">Converting Previous Calibration Records</a></li><li><a href="#Calibrating-Database-Channels">Calibrating Database Channels</a><ul><li><a href="#Extending-the-Calibration-Due-Date">Extending the Calibration Due Date</a></li></ul>
+</li><li><a href="#Reviewing-Calibration-History">Reviewing Calibration History</a><ul><li><a href="#Purging-Calibration-Records">Purging Calibration Records</a></li></ul>
+</li><li><a href="#Calibration-Metrics">Calibration Metrics</a></li><li><a href="#Personal-Channel-Column-Configuration">Personal Channel Column Configuration</a></li><li><a href="#Channel-Configuration">Channel Configuration</a></li><li><a href="#Backing-Up-and-Restoring-the-Calibration-Database-File">Backing Up and Restoring the Calibration Database File</a></li><li><a href="#Recovering-Coefficients-from-the-History-File">Recovering Coefficients from the History File</a></li><li><a href="#Calibration-Groups">Calibration Groups</a></li><li><a href="#Automatic-Calibration">Automatic Calibration</a><ul><li><a href="#Performing-an-Automatic-Calibration">Performing an Automatic Calibration</a></li><li><a href="#Required-Channels-for-Automatic-Calibration">Required Channels for Automatic Calibration</a></li></ul></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Many facilities have their own instrumentation laboratories with specialized equipment and reporting requirements. The Calibration utility is flexible and, with minimal training, staff should be able to quickly adapt existing company procedures to the iTest interface. Several report types are included to provide a documented history of all calibrations.</p>
+
+
+	<p>The calibration procedure is an involved, step-by-step process. Once the system is properly calibrated, it should provide consistent and accurate results.</p>
+
+
+	<p>Before recalibrating thermocouple readouts and other measuring devices, it is recommended that you check the existing calibration. This could save both time and effort as it may only be necessary to calibrate the channels which are outside of their tolerance limits. If only one channel is out of limits, then only one channel needs to be recalibrated.</p>
+
+
+	<p>The Calibration utility lets you calibrate one or more channels assuming that all selected channels require the same stimulus to calibrate. The Calibrate dialog box lets you perform a full, multiple-point calibration, or zero/span compensation.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Calibration Utility</strong></em></span><br /><img src="attachments/download/91483/41_Calibrate.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Both procedures involve exciting a transducer with a known stimulus, specifying this value in iTest, and having iTest measure the signal. In the case of a multi-point polynomial fit, the system performs a curve fit between the applied stimulus and measured voltage to determine calibration coefficients. Offset and gain values (for raw value) are calculated for a zero/span compensation.</p>
+
+
+	<p>The Calibration utility can only be used when iTest is connected directly to data acquisition hardware.</p>
+
+
+	<a name="General-Calibration-Configuration"></a>
+<h2 >General Calibration Configuration<a href="#General-Calibration-Configuration" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Calibration procedures must take place under strictly controlled conditions in which highly regulated known values are introduced into the system. Controlled conditions include using certifiable National Instrument Standard (NIST) equipment.</p>
+
+
+	<p>Calibration is needed when:</p>
+
+
+	<ol>
+	<li>A new transducer is installed.</li>
+		<li>A facility requires calibration to meet reporting requirements.</li>
+	</ol>
+
+
+	<p>Calibration procedures may require some of the following NIST-certified equipment:</p>
+
+
+	<ul>
+	<li>Signal generator</li>
+		<li>Millivolt source</li>
+		<li>Weight set</li>
+		<li>Pressure source</li>
+		<li>Ammeter</li>
+		<li>Voltmeter</li>
+		<li>Thermocouple/RTD calibrator</li>
+		<li>Thermocouple/RTD simulator</li>
+	</ul>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#ebd700;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3740/caution.gif" alt="" /></td>
+			<td style="vertical-align:top;"><b>CAUTION:</b></td>
+			<td style="vertical-align:top;">Unexpected conditions may result if the system is not powered up correctly. Be sure power has been applied to the system in the correct sequence.</td>
+		</tr>
+	</table></p>
+
+
+	<p>System hardware should be powered up before calibration and allowed to become stable. Usually 20-30 minutes is adequate; however, there are labs that leave hardware and software running for many weeks before calibration.</p>
+
+
+	<p>A&#38;D recommends checking calibration at prescribed intervals. Calibration frequency will be determined by a number of factors including required accuracy, working environment of equipment, and stability.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#ebd700;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3740/caution.gif" alt="" /></td>
+			<td style="vertical-align:top;"><b>CAUTION:</b></td>
+			<td style="vertical-align:top;">Avoid PC power failure or an improper shutdown sequence. A PC power failure causes the controlling system to lose its connections to the hardware platform. For equipment and cell safety concerns, check the power backup system to protect against inadvertent power failure.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Calibration-Data-Reports"></a>
+<h2 >Calibration Data Reports<a href="#Calibration-Data-Reports" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Calibration utility consists of three files: calibrate.exe, calobj.dll, and calconvert.exe. Calibration results are saved in <em>caltable.csv</em>, a comma-delimited file located in the $SUPPORTDIR directory specified in the <em>Config.ini</em> file. This file can be imported into a database or spreadsheet program for formatting or further review.</p>
+
+
+	<p>Current calibration records are stored in the <em>calcoeffs.txt</em> file, which also resides in the root of the $SUPPORTDIR directory.</p>
+
+
+	<a name="Converting-Previous-Calibration-Records"></a>
+<h2 >Converting Previous Calibration Records<a href="#Converting-Previous-Calibration-Records" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The first time you run the Calibration utility, you must convert calibration records to the new format if you are using pre-existing records to support test activities.</p>
+
+
+	<p>Double-click on <em>calconvert.exe</em>, which is located in the <em>CalDB.mdb</em> file in the $SUPPORTDIR directory specified in the <em>Config.ini</em> file. This imports all previous calibration records in <em>CalDB.mdb</em> into the <em>caltable.csv</em> file.</p>
+
+
+	<a name="Calibrating-Database-Channels"></a>
+<h2 >Calibrating Database Channels<a href="#Calibrating-Database-Channels" class="wiki-anchor">&para;</a></h2>
+
+
+	<ol>
+	<li>Open either the Console or AutomationPanel.</li>
+		<li>Prepare the transducers with a means for providing a known stimulus. In the case of a dynamometer load cell, use calibrated weights to simulate a torque load. For pressure transducers, a calibrated gauge or transducer and a pressure source is required.</li>
+		<li>Click the <img src="attachments/download/3781/calibrateIcon.jpg" alt="" /> button (<strong>Tools</strong> > <strong>Calibrate</strong>) to open the Select Channel(s) for Calibration dialog box in the Console. For AutomationPanel users, access to the <strong>Calibrate</strong> utility depends on how your layout was designed by your administrator (it may be configured as a button, an item on the TopBar, or called via mailslot message). Whatever the case, launch the <strong>Calibrate</strong> utility.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Calibrate Utility</strong></em></span><br /><img src="attachments/download/91483/41_Calibrate.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select the type of channel to display from the <strong>View Type</strong> list. You can also select all channels associated with a device driver.</li>
+		<li>Select the <strong>Show All Calibrations</strong> option to show all recorded calibrations or just those that are present in the currently selected test.</li>
+		<li>Select the database channel to be calibrated from the list of channels. You can calibrate multiple database channels at the same time (for example, thermocouples in a temperature bath or pressure transducers mounted on a common manifold). To select multiple database channels, press <strong>Ctrl</strong> as you click on a selection. In addition, you can also configure a channel by selecting <strong>Calibrate</strong> > <strong>Channel Configuration</strong>. Refer to the <a class="wiki-page" href="#Channel-Configuration">Channel Configuration</a> section for more information.</li>
+		<li>Click <strong>Calibrate</strong> to open the Calibration dialog box. The database channels listed in the Selections window are calibrated simultaneously.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Calibration Dialog Box</strong></em></span><br /><img src="attachments/download/91484/41_CalibrationDialogBox.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>In the <strong>Process</strong> area, choose full <strong>Calibration</strong> or <strong>Zero/Span</strong>. If you select <strong>Zero/Span</strong>, choose <strong>Zero</strong> and <strong>Span</strong> methods.
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Zero/Span is not available when calibrating a channel for the first time.</td>
+		</tr>
+	</table></p>
+</li>
+		<li>If you select <strong>Calibration</strong>, click <strong>Cal Steps</strong> to open the Define Calibration Steps dialog box (this step is optional; you can also type a stimulus value for each calibration point in the <strong>Enter Applied Value</strong> field).<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Define Calibration Steps Dialog</strong></em></span><br /><img src="attachments/download/91485/41_CalSteps.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Use this dialog box to define calibration stimulus values (<strong>Number of Steps</strong>, <strong>First Value</strong>, and <strong>Last Value</strong>). The software automatically defines the appropriate calibration steps based on the values you specify. For example, if you specify 0 as the First Value, 100 as the Last Value, and 5 as the Number of Steps, the system uses the following steps:<br /><pre>Step 1: 0
+Step 2: 25
+Step 3: 50
+Step 4: 75
+Step 5: 100</pre></li>
+		<li>After specifying the appropriate values, click <strong>OK</strong> to close the Define Calibration Steps dialog box. These settings are restored the next time you calibrate the same signals or parameters.</li>
+		<li>Select <strong>Move to Next Point After Taking Data</strong> to move to the next calibration data point automatically after taking the current data point. If <strong>Move to Next Point After Taking Data</strong> is not selected, the cursor remains at the current data point, and repeat measurements will change the value of the current data point.</li>
+		<li>In the <strong>Averaging Period</strong> field, specify the number of seconds over which to average the measured data.</li>
+		<li>For <strong>Applied Value</strong>, the unit type (e.g., pressure or temperature) displays as well as the actual unit used (e.g., PSI or degrees C). Specify the stimulus being used to calibrate the channel in the associated field.</li>
+		<li>Click <strong>Take Data</strong> to record data for the period specified in the <strong>Averaging Period</strong> field. When calibrating, the set time will count down in the <strong>Averaging Period</strong> field. At the end of the time period, the measured channel voltage displays in the <strong>Results</strong> list.</li>
+		<li>To add a new calibration point, click the <strong>New Point</strong> button and enter a target value for the new data point.</li>
+		<li>To delete unwanted data points, select one or more lines in the <strong>Results</strong> list, and then click <strong>Delete Point(s)</strong>.
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Calibration values reside in memory only at this point. These values are not recorded to a data file until the calibration event is accepted as final.</td>
+		</tr>
+	</table></p>
+</li>
+		<li>Click <strong>Plot</strong> to display a graph of the calibration data (optional).<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Plot</strong></em></span><br /><img src="attachments/download/91486/41_PlotCalibrate.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Use the <strong>Graph</strong> menu on Calibration Utility window to turn grid lines on and off, print the graph, select the graph type (data points or error points), or select the data set.</li>
+		<li>Click the <strong>Collect Calibration Data</strong> link from the Channel tree on the left to go back to the Calibration screen.</li>
+		<li>Click <strong>Next</strong> to accept the calibration data, close the Calibration window, and open the Calibration Review dialog box.
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The text for the save button will read &quot;Save All&quot; if calibrating multiple channels and &quot;Save&quot; if calibrating just a single channel.</td>
+		</tr>
+	</table><br />The Calibration Review dialog box displays the current calibration activity prior to final acceptance and requires you to input additional information to complete the calibration record.</p>
+</li>
+		<li>Select a channel from the <strong>Signal</strong> list. This is a list of all the selected database channels.</li>
+		<li>Enter the <strong>Operator</strong> name (or other identification) for the individual conducting the calibration.</li>
+		<li>Enter the serial number (<strong>Ref. Serial #</strong>) and calibration due date (<strong>Ref. Due</strong>) for the reference, or master gauge, used to perform the calibration. You can select the due date by clicking on the calendar icon to the right of the <strong>Ref. Due</strong> field. The calibration due date can be reset by using the <code>resetcaldue &lt;channel name(s)&gt;</code> command-line argument. For more information, refer to the <a class="wiki-page" href="#Extending-the-Calibration-Due-Date">Extending the Calibration Due Date</a> section below.</li>
+		<li>Enter the <strong>Device Serial #</strong> for the transducer being calibrated, and verify the <strong>Min</strong> and <strong>Max</strong> values for the transducer calibration.</li>
+		<li>Enter the name of the <strong>Procedure</strong> followed during the calibration activity, the <strong>Location</strong> of the transducer, and any <strong>Comments</strong> relevant to the calibration.</li>
+		<li>Verify the calibration <strong>Interval</strong> in days and the allowable <strong>Tolerance</strong> for measurements taken with the selected transducer. The calibration interval is always calculated by number of days from the current date. The new calibration coefficients will be displayed along with the calculated values based on these new coefficients for the current data points. If a prior calibration exists for the selected channel, the existing coefficients are shown along with the calculated values based on the existing coefficients for the current data points.
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">This feature allows you to review the effects of calibration activity prior to activating the new coefficients in the system.</td>
+		</tr>
+	</table></p>
+</li>
+		<li>Statistics only display if more than the minimal number of points for a signal has been taken. The minimal number of points is based on the curve fit order of the parameter equation. For a first order polynomial (e.g., p1’loadcell’0,0,0,0,0) equation, three points must be taken for statistics to be meaningful, but only two points are necessary to perform a calibration. The statistics provide information about the quality of the calibration. The perfect value for the r and r 2 values (regression coefficients) is 1. The perfect value for the standard error value is 0. The Max Error value indicates the maximum error between the calculated and stimulus values.</li>
+		<li>To adjust the order of the curve fit, click the up or down arrows to the left of the new coefficients statistics summary.</li>
+		<li>Click <strong>File > Print</strong> from the File Menu to generate a two-page copy of the calibration data sheet. Header information displays on each page with a summary of the calibration data point on the first page and a plot of the calibration curve on the second page.</li>
+		<li>Click <strong>Plot</strong> to display a graph of the calibration data.</li>
+		<li>Use the <strong>Graph</strong> menu on the Calibration Utility window to turn grid lines on and off, print the graph, select the graph type (data points or error points), or select the data set.</li>
+		<li>If you calibrated multiple signals, use the <strong>Data Set</strong> menu to plot results for the individual signals.</li>
+		<li>After reviewing the calibration data, click <strong>Continue</strong> to accept the current calibration data and data sheet information. This action closes the Calibration Review window and opens the <strong>Accept</strong> window. If there are missing values that are considered essential, you are prompted for those values.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Accept Window</strong></em></span><br /><img src="attachments/download/91487/41_Accept.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>To accept the new calibration coefficients, choose <strong>Accept</strong> and save this calibration. This updates the system using the new coefficients.
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">You must accept the first calibration activity performed on any channel.</td>
+		</tr>
+	</table></p>
+</li>
+		<li>To use the calibration for verification purposes only, choose <strong>Save a record of this as a verification only</strong> to keep the existing calibration coefficients active in the system, and generate a verification record in the transducer calibration history file (<em>caltable.csv</em>).</li>
+		<li>Click <strong>OK</strong> to close the Accept dialog box and return to the Calibration Review dialog box. The <strong>Continue</strong> button is now deactivated and the calibration activity for the selected channel is complete.</li>
+		<li>Click <strong>Cancel</strong> to close the Calibration Review dialog box and return to the Calibration dialog box.</li>
+	</ol>
+
+
+	<a name="Extending-the-Calibration-Due-Date"></a>
+<h3 >Extending the Calibration Due Date<a href="#Extending-the-Calibration-Due-Date" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To extend the calibration due date by another calibration interval without requiring a new calibration, use the following command-line argument:</p>
+
+
+	<p><strong>Syntax:</strong><br /><pre>
+resetcaldue &lt;channel name(s)&gt;
+</pre><br /><strong>Parameters:</strong></p>
+
+
+	<ul>
+	<li><code>&lt;channel name(s)&gt;</code> The name(s) of the channel(s) that will have their calibration due date extended. If multiple channel names are listed, then the channel names are separated by spaces.</li>
+	</ul>
+
+
+	<p><strong>Example:</strong></p>
+
+
+	<ul>
+	<li><ins><strong>Command-Line Argument:</strong></ins> <code>resetcaldue tEngineH2OOutlet xspare_tc_02_15</code></li>
+		<li><ins><strong>Mailslot Message:</strong></ins> <code>\\.\mailslot\Softpanel>>$EXECUTE;calibrate.exe resetcaldue tEngineH2OOutlet xspare_tc_02_15</code></li>
+	</ul>
+
+
+	<p>A new calibration record will be created for each channel based on the previous calibration with the following exceptions:</p>
+
+
+	<ul>
+	<li>The record will reference the current time and date. </li>
+		<li>The <strong>Cal Type</strong> is "Due Date Reset".</li>
+		<li>The <strong>Comment</strong> is "Calibration due date reset".</li>
+		<li>The <strong>Cal Due</strong> is recalculated based on the calibration interval to show the next calibration due date.</li>
+	</ul>
+
+
+	<a name="Reviewing-Calibration-History"></a>
+<h2 >Reviewing Calibration History<a href="#Reviewing-Calibration-History" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can review the calibration history for any channel in the <em>caltable.csv</em> file. Individual calibration records can be printed or deleted.</p>
+
+
+	<ol>
+	<li>Click the <strong>Calibrate</strong> button on the iTest Console toolbar to open the Calibration dialog box.</li>
+		<li>Select the name of the channel to review from the Channel tree on the right (not shown in example below).</li>
+		<li>Click the <strong>Review</strong> button at the top to open the Calibration History Review dialog box.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Calibration History Review Dialog</strong></em></span><br /><img src="attachments/download/91488/41_CalibrationHistory.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select a channel from the <strong>Signal</strong> list. This list contains the database channels that have been calibrated.</li>
+		<li>Click <strong>Delete</strong> to remove unwanted calibration records. You are asked to confirm the deletion of a calibration record from the calibration database.</li>
+		<li>Click <strong>File > Print</strong> to generate a one-page copy of the calibration data sheet. All header information is shown along with a summary of the calibration data points and a plot of the calibration curve.</li>
+		<li>Click <strong>Plot</strong> to display a graph of the calibration data. The generated plot shows the fitted curve with 20% beyond the maximum stimulus and 20% below the minimum stimulus.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Plot of Calibration Data</strong></em></span><br /><img src="attachments/download/91489/41_PlotHistory.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /></li>
+		<li>Use the <strong>Graph</strong> menu on the Calibration Utility window to turn grid lines on and off, print the graph, select the graph type (data points or error points), or select the data set.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Graph</strong></em></span><br /><img src="attachments/download/91490/41_Graph.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /></li>
+		<li>Click <strong>Close</strong> to exit the Calibration History Review and return to the Calibration dialog box.</li>
+	</ol>
+
+
+	<a name="Purging-Calibration-Records"></a>
+<h3 >Purging Calibration Records<a href="#Purging-Calibration-Records" class="wiki-anchor">&para;</a></h3>
+
+
+	<ol>
+	<li>Click the <strong>Calibrate</strong> button on the iTest Console toolbar to open the Calibration dialog box.</li>
+		<li>Click <strong>Purge</strong> to clear the database records. You are asked to confirm the deletion. Click <strong>OK</strong> to delete all but the three most recent calibrations for each channel.</li>
+	</ol>
+
+
+	<a name="Calibration-Metrics"></a>
+<h2 >Calibration Metrics<a href="#Calibration-Metrics" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest has metrics that are primarily used for the verification of an existing calibration. These metrics are computed using the method described in EPA Part 1065.307 Linearity Verification.  When cal check is performed, a least squares linear regression compares the newly measured values (computed using the old calibration coefficients) with the reference values.  The resulting metrics reflect the linearity of the calibration and indicate whether the existing calibration is acceptable.</p>
+
+
+	<p>The available metrics are:</p>
+
+
+	<ul>
+	<li>Rsquared</li>
+		<li>Y-Intercept</li>
+		<li>Standard error of estimate</li>
+		<li>Slope</li>
+	</ul>
+
+
+	<p>According to EPA Part 1065.307 Linearity Verification, if these numbers fall within certain bounds, then the channel does not have to be re-calibrated. Part 1065.307 mandates a 10-point measurement over the operating range of the transducer, but the calibrate program allows for any number of points.<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Calibration Metrics</strong></em></span><br /><img src="attachments/download/91491/41_CalibrationMetrics.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Personal-Channel-Column-Configuration"></a>
+<h2 >Personal Channel Column Configuration<a href="#Personal-Channel-Column-Configuration" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The <strong>Calibrate > Select Channel Column Configuration</strong> option in the ADT Calibrate Utility dialog allows you to configure the columns that display on the Calibration main screen. You can add columns to include fields of the RDB that are specific to your facility.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Select Channel Column Configuration</strong></em></span><br /><img src="attachments/download/91492/41_SelectChannelColumnConfiguration.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Channel-Configuration"></a>
+<h2 >Channel Configuration<a href="#Channel-Configuration" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can directly configure a selected channel's calibration by selecting <strong>Calibrate</strong> > <strong>Channel Configuration</strong>. This option opens the <strong>Channel Configuration</strong> dialog.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Channel Configuration Dialog</strong></em></span><br /><img src="attachments/download/93063/41_ChannelConfigurationDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Refer to the table below to configure the selected channel.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Channel Configuration Fields</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 900px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Field</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Channel</td>
+			<td>(Read-only) The name of the selected channel.</td>
+		</tr>
+		<tr>
+			<td>Polynomial Order</td>
+			<td>The order number (0-5) of the polynomial. You can create up to a 5th order polynomial by using the <strong>Polynomial Order</strong> drop-down menu. The polynomial order is used for the curve fit. </td>
+		</tr>
+		<tr>
+			<td>Operator</td>
+			<td>The name of the operator.</td>
+		</tr>
+		<tr>
+			<td>Calibration Interval (Days)</td>
+			<td>The specified interval in days after a calibration is done before the next calibration is due.</td>
+		</tr>
+		<tr>
+			<td>Coefficients (C0 - C5)</td>
+			<td>The number of available fields is dependent on the <strong>Polynomial Order</strong>. Enter any coefficients to be used in the polynomial. Unused coefficients are assumed to be 0. Refer to <a class="wiki-page" href="Calibration_Coefficients.html">Calibration Coefficients</a> for more information.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Backing-Up-and-Restoring-the-Calibration-Database-File"></a>
+<h2 >Backing Up and Restoring the Calibration Database File<a href="#Backing-Up-and-Restoring-the-Calibration-Database-File" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>iTest can backup and restore the <em>caltable.csv</em> from the GUI. Clicking the <strong>File > Backup Calibration Database File</strong> option from the ADT Calibrate Utility menu will back up both the <em>caltable.csv</em> and the <em>calcoeffs.txt</em> file both of which are needed to revert to a previous version of coefficients.</p>
+
+
+	<a name="Recovering-Coefficients-from-the-History-File"></a>
+<h2 >Recovering Coefficients from the History File<a href="#Recovering-Coefficients-from-the-History-File" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>If the <em>calcoeffs.txt</em> file gets lost or corrupted, you can use a menu option to recover the last coefficients for each calibrated channel from the calibration history and write them into the <em>calcoffs.txt</em> file. The menu option is located under <strong>File > Regenerate Coefficient File</strong> as show below:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Regenerate Coefficient File</strong></em></span><br /><img src="attachments/download/91493/41_RegenerateCoefficientFile.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>When you select this option, you will be warned that the <em>calcoeffs.txt</em> file will be overwritten and given the option to not continue:</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Warning Message</strong></em></span><br /><img src="attachments/download/91494/41_CalibrateWarning.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Calibration-Groups"></a>
+<h2 >Calibration Groups<a href="#Calibration-Groups" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Use the <strong>Calibrate > Edit Groups</strong> menu option to launch the group edit dialog where user can create new group, edit existing group or delete a group. The channels in a calibration group are simultaneously calibrated using the same stimulus. Check <strong>Automatic Calibration</strong> if the group is to be used for automated calibration with a Mensor CPC 6000 or Fluke 7526A device.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Calibration Groups</strong></em></span><br /><img src="attachments/download/91495/41_CalibrationGroups.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Defined calibration groups are displayed in the <strong>View Type</strong> list box on the Select Channel window.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Calibration Group Select</strong></em></span><br /><img src="attachments/download/91496/41_CalibrationGroupSelect.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Automatic-Calibration"></a>
+<h2 >Automatic Calibration<a href="#Automatic-Calibration" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Calibrate tool supports automated multi-point calibration of a group of channels in conjunction with either a Fluke 7526A or Mensor CPC 6000 pressure calibration device. These devices are connected to iTest through their respective iTest drivers.</p>
+
+
+	<a name="Performing-an-Automatic-Calibration"></a>
+<h3 >Performing an Automatic Calibration<a href="#Performing-an-Automatic-Calibration" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Set the <code>AutoCalDriverSelection</code> and <code>AutoCalDriverSelectionStr</code> channels to indicate the device to be used.<br />Select an automatic calibration group and click the <strong>Calibrate</strong> button.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>AutoCal Take Data</strong></em></span><br /><img src="attachments/download/91498/41_AutoCalTakeData.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+Click the <strong>Start</strong> button. Then the automatic calibration process will begin:
+	<ol>
+	<li>The Define Calibration Steps dialog will be opened, if no calibration steps have been defined.</li>
+		<li>The user is prompted to confirm the automatic calibration device is ready and in the expected units.</li>
+		<li>The Calibration utility checks the device driver status.</li>
+		<li>The Calibration utility issues the first setpoint to the driver, waits for status from the driver that the device is ready, and then takes the channel raw data.</li>
+		<li>Repeat step 4 until all calibration points are taken.</li>
+		<li>During step 4, driver status and device error are continuously monitored. If the device becomes not ready or if an error happens, it will prompt the user and automatic calibration will stop.</li>
+	</ol>
+
+
+	<p>After all calibration points are taken, you can click the <strong>Solve</strong> button to view the calibration curve fitting results and decide whether to redo the calibration or move to the next step by clicking the <strong>Next>></strong> button to see the calibration data and save the calibration.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>AutoCal Solve</strong></em></span><br /><img src="attachments/download/91499/41_AutoCalSolve.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Required-Channels-for-Automatic-Calibration"></a>
+<h3 >Required Channels for Automatic Calibration<a href="#Required-Channels-for-Automatic-Calibration" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The automatic calibration requires a number of channels to be defined by the user.</p>
+
+
+The following channels are automatically set by iTest or the calibration device:
+	<ul>
+	<li><code>AutoCalSP</code>: Setpoint in engineering units for calibration device.</li>
+		<li><code>AutoCalSync</code>: When changes to 1, send the setpoint to device and set it back to 0.</li>
+		<li><code>AutoCalMeasStatus</code>: 0-busy, 1-ready. Set to 0 before sending new setpoint to device, wait for it to change to 1 to take data. Driver is responsible to set this channel to 1 when device is ready.</li>
+		<li><code>AutoCalMeas</code>: Device reading in engineering units. The user can monitor this value in both the ADT Calibration Utility and the driver window to see if this value stabilizes.</li>
+		<li><code>AutoCalErrorStr</code>: Device error text.</li>
+		<li><code>AutoCalErrorNum</code>: Device error number.</li>
+		<li><code>AutoCalDriverStatus</code>: 3 means driver is ready. Other values mean the driver is not running, not connected, etc.</li>
+	</ul>
+
+
+The following channels must be set by the user:
+	<ul>
+	<li><code>AutoCalDriverSelection</code>: Indicate which driver is currently active for automatic calibration. 1-MensorPressureCal, 2-FlukePressureCal.</li>
+		<li><code>AutoCalDriverSelectionStr</code>: A Virtual String channel to indicate the name of the driver selected.</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ITest Command Line Arguments</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="ITest_Command_Line_Arguments.html">ITest Command Line Arguments</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="iTest-Command-Line-Arguments"></a>
+<h1 >iTest Command Line Arguments<a href="#iTest-Command-Line-Arguments" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#iTest-Command-Line-Arguments">iTest Command Line Arguments</a><ul><li><a href="#Supported-Executables">Supported Executables</a></li><li><a href="#Arguments">Arguments</a><ul><li><a href="#Solution">/Solution</a></li><li><a href="#NoInitErrDlg">/NoInitErrDlg</a></li><li><a href="#skipselectsupport">/skipselectsupport</a></li></ul>
+</li><li><a href="#Error-Messages">Error Messages</a></li></ul></li></ul>
+
+
+	<p>Command line arguments can be used when launching some of the executables included with iTest.</p>
+
+
+	<a name="Supported-Executables"></a>
+<h2 >Supported Executables<a href="#Supported-Executables" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following executables are supported:</p>
+
+
+	<ul>
+	<li><em>AutomationPanel.exe</em></li>
+		<li><em>iTest.exe</em></li>
+		<li><em>iTestConsole.exe</em></li>
+		<li><em>TestMgr.exe</em></li>
+		<li><em>SolutionBuilder.exe</em></li>
+	</ul>
+
+
+	<a name="Arguments"></a>
+<h2 >Arguments<a href="#Arguments" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Solution"></a>
+<h3 >/Solution<a href="#Solution" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To launch a supported executable with a specific solution, use the following syntax:</p>
+
+
+<pre>
+&lt;Executable&gt; /Solution &lt;SolutionDirectoryName&gt;
+</pre>
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The solution must exist under the $SYSTEMDIR in order to use this switch. Reference the solution by its name or a fully-qualified path.</td>
+		</tr>
+	</table></p>
+
+
+	<p><strong>Example</strong></p>
+
+
+<pre>
+iTest.exe /Solution Solution.Demo
+</pre>
+
+	<a name="NoInitErrDlg"></a>
+<h3 >/NoInitErrDlg<a href="#NoInitErrDlg" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To suppress start-up error messages regarding the /Solution command, use the following syntax:<br /><pre>
+&lt;Executable&gt; /Solution &lt;SolutionDirectoryName&gt; /NoInitErrDlg
+</pre></p>
+
+
+	<p><strong>Example</strong><br /><pre>
+iTest.exe /Solution Solution.Demo /NoInitErrDlg
+</pre></p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Other error messages that may appear during runtime are not blocked.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="skipselectsupport"></a>
+<h3 >/skipselectsupport<a href="#skipselectsupport" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To launch the solution specified in the <code>SupportDir</code> <em>config.ini</em> setting without opening the Select Support dialog, use the following syntax:</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#cc061c;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3741/Warning3.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>WARNING:</b></td>
+			<td style="vertical-align:top;">The solution must exist in order to use this switch.</td>
+		</tr>
+	</table></p>
+
+
+<pre>
+iTest.exe /skipselectsupport
+</pre>
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">This switch is not supported for <em>SolutionBuilder.exe</em> and <em>TestMgr.exe</em>.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Error-Messages"></a>
+<h2 >Error Messages<a href="#Error-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The command's exit code is set to -1, 1, 2, or 3 depending on the error that caused the program to close. Error messages include, but are not limited to, the following:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Error Messages</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Error Code</strong></td>
+			<td style="text-align:left;"><strong>Error Message Subject</strong></td>
+		</tr>
+		<tr>
+			<td>-1</td>
+			<td>Another instance of SolutionBuilder is already editing the same solution.</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>SUPPORTDIR did not exist.</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>SUPPORTDIR was not a valid solution.</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Another instance of iTest/AutomationPanel is running. <ins><strong>Note:</strong></ins> If another instance of Test Manager is running, an error dialog will not display.</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,743 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>VCL Schedule Functions</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="VCL_Schedule_Functions.html">VCL Schedule Functions</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="VCL-Schedule-Functions"></a>
+<h1 >VCL Schedule Functions<a href="#VCL-Schedule-Functions" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#VCL-Schedule-Functions">VCL Schedule Functions</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Error-Codes">Error Codes</a></li><li><a href="#Schedule-Functions-List">Schedule Functions List</a><ul><li><a href="#ColumnChannelGet">ColumnChannelGet</a></li><li><a href="#ColumnChannelSet">ColumnChannelSet</a></li><li><a href="#ColumnIndexGet">ColumnIndexGet</a></li><li><a href="#ColumnTitleGet">ColumnTitleGet</a></li><li><a href="#ColumnUnitGet">ColumnUnitGet</a></li><li><a href="#PageTitleGet">PageTitleGet</a></li><li><a href="#TableClose">TableClose</a></li><li><a href="#TableColumnMax">TableColumnMax</a></li><li><a href="#TableColumnMin">TableColumnMin</a></li><li><a href="#TableColumnsGet">TableColumnsGet</a></li><li><a href="#TableLoad">TableLoad</a></li><li><a href="#TablePagesGet">TablePagesGet</a></li><li><a href="#TableRowAdd">TableRowAdd</a></li><li><a href="#TableRowDelete">TableRowDelete</a></li><li><a href="#TableRowInsert">TableRowInsert</a></li><li><a href="#TableRowsGet">TableRowsGet</a></li><li><a href="#TableRowValuesToDB">TableRowValuesToDB</a></li><li><a href="#TableStore">TableStore</a></li><li><a href="#TableValueGet">TableValueGet</a></li><li><a href="#TableValueSet">TableValueSet</a></li></ul></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>VCL Schedule functions are used to read and write schedule <em>(.sc2)</em> files programmatically.</p>
+
+
+	<a name="Error-Codes"></a>
+<h2 >Error Codes<a href="#Error-Codes" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Each VCL Schedule function returns a numeric code or a string when the operation is complete. This is usually captured using the SET VCL command. The channel will be populated with either a 0 (success) or some negative value (failure) if capturing the status using a numeric channel. If using a string channel to capture the function status, then it will be populated with either an empty string (success) or some descriptive text detailing the error. See the following table:</p>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>Return Values and Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:100px;text-align:left;"><strong>Return Value</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">0</td>
+			<td>Table operation successful.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-1</td>
+			<td>Table operation failed.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-2</td>
+			<td>Table error, not loaded.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-3</td>
+			<td>Table error, function not supported.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-4</td>
+			<td>Page error, page not found.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-5</td>
+			<td>Page error, bad index value.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-6</td>
+			<td>Page error, invalid operation.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-7</td>
+			<td>Page error, keyword not found.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-8</td>
+			<td>Page error, data not cellwise.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-9</td>
+			<td>Function error, bad parameter value.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-10</td>
+			<td>Table error, file not found.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-11</td>
+			<td>Function error, bad parameter type.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-12</td>
+			<td>Table warning, exists in memory.</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;">-13</td>
+			<td>Table error, insufficient memory.</td>
+		</tr>
+	</table></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Schedule-Functions-List"></a>
+<h2 >Schedule Functions List<a href="#Schedule-Functions-List" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="ColumnChannelGet"></a>
+<h3 >ColumnChannelGet<a href="#ColumnChannelGet" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sets a string channel to the name of the iTest channel associated with the given column on a schedule's matrix page.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+columnchannelget(&lt;schedulename&gt;, [pagename], &lt;columnindex&gt;, &lt;resultchannel&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>schedulename</em>: Name of the schedule stored in memory. The &lt;schedulename&gt; parameter requires the <em>.sc2</em> file extension and must match the schedule name originally used with the TableLoad VCL function.</p>
+
+
+	<p style="padding-left:1em;"><em>pagename</em>: Optional parameter. The name of the matrix page. If omitted, the function uses the page name from the <code>TableAndScheduleDataPageName</code> <em>powertek.ini</em> setting.</p>
+
+
+	<p style="padding-left:1em;"><em>columnindex</em>: Integer signifying the index of the column in the matrix page. This is a 1-based index.</p>
+
+
+	<p style="padding-left:1em;"><em>resultchannel</em>: String channel or local variable that is set with the name of the channel associated with the given column.</p>
+
+
+	<p><strong>Examples</strong><br /><pre>
+SET lclStatus columnchannelget("NewSchedule1.sc2", "Data", 1, vsColumnChanName)
+SET lclStatus columnchannelget("NewSchedule1.sc2", 2, vsColumnChanName)
+</pre><br />&nbsp;</p>
+
+
+	<a name="ColumnChannelSet"></a>
+<h3 >ColumnChannelSet<a href="#ColumnChannelSet" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Changes a column's associated iTest channel on a schedule's matrix page. This change is made to the copy of the schedule stored in memory and will not modify the schedule (<em>.sc2</em>) file until the TableStore VCL function is called.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+columnchannelset(&lt;schedulename&gt;, [pagename], &lt;columnindex&gt;, &lt;channelname&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>schedulename</em>: Name of the schedule stored in memory. The &lt;schedulename&gt; parameter requires the <em>.sc2</em> file extension and must match the schedule name originally used with the TableLoad VCL function.</p>
+
+
+	<p style="padding-left:1em;"><em>pagename</em>: Optional parameter. The name of the matrix page. If omitted, the function uses the page name from the <code>TableAndScheduleDataPageName</code> <em>powertek.ini</em> setting.</p>
+
+
+	<p style="padding-left:1em;"><em>columnindex</em>: Integer signifying the index of the column in the matrix page. This is a 1-based index.</p>
+
+
+	<p style="padding-left:1em;"><em>channelname</em>: The name of the channel that is to be associated with the given column. This can be a string stored in a channel or local variable.</p>
+
+
+	<p><strong>Examples</strong><br /><pre>
+SET lclStatus columnchannelset("NewSchedule1.sc2", "Data", 1, vsColumnChanName)
+SET lclStatus columnchannelset("NewSchedule1.sc2", 2, vsColumnChanName)
+</pre><br />&nbsp;</p>
+
+
+	<a name="ColumnIndexGet"></a>
+<h3 >ColumnIndexGet<a href="#ColumnIndexGet" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Gets the column index for the column in a schedule designated by the column title passed as a parameter to this function. The column title is the identifier displayed in the Schedule Viewer tool. This may differ from the name of the channel associated with the column.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+columnindexget(&lt;schedulename&gt;, [pagename], &lt;columntitle&gt;, &lt;resultchannel&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>schedulename</em>: Name of the schedule stored in memory. The &lt;schedulename&gt; parameter requires the <em>.sc2</em> file extension and must match the schedule name originally used with the TableLoad VCL function.</p>
+
+
+	<p style="padding-left:1em;"><em>pagename</em>: Optional parameter. The name of the matrix page. If omitted, the function uses the page name from the <code>TableAndScheduleDataPageName</code> <em>powertek.ini</em> setting.</p>
+
+
+	<p style="padding-left:1em;"><em>columntitle</em>: Title of the column to be searched for on the given matrix page.</p>
+
+
+	<p style="padding-left:1em;"><em>resultchannel</em>: Numeric channel or local variable that is set with the index of the column that matches the given title. Set to 0 if the given title does not match any columns listed on the given schedule's matrix page.</p>
+
+
+	<p><strong>Examples</strong><br /><pre>
+SET lclStatus columnindexget("NewSchedule1.sc2", "Data", "DynoSetpoint", voColumnIndex)
+SET lclStatus columnindexget(vsScheduleName, vsColumnTitle, voColumnIndex)
+</pre><br />&nbsp;</p>
+
+
+	<a name="ColumnTitleGet"></a>
+<h3 >ColumnTitleGet<a href="#ColumnTitleGet" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sets a string channel or local variable to the title of the given column on a schedule's matrix page.  The column title is the name of the column as it is displayed in Schedule Viewer. This may differ from the name of the channel associated with the column.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+columntitleget(&lt;schedulename&gt;, [pagename], &lt;columnindex&gt;, &lt;resultchannel&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>schedulename</em>: Name of the schedule stored in memory. The &lt;schedulename&gt; parameter requires the <em>.sc2</em> file extension and must match the schedule name originally used with the TableLoad VCL function.</p>
+
+
+	<p style="padding-left:1em;"><em>pagename</em>: Optional parameter. The name of the matrix page. If omitted, the function uses the page name from the <code>TableAndScheduleDataPageName</code> <em>powertek.ini</em> setting.</p>
+
+
+	<p style="padding-left:1em;"><em>columnindex</em>: Integer signifying the index of the column in the matrix page. This is a 1-based index.</p>
+
+
+	<p style="padding-left:1em;"><em>resultchannel</em>: String channel or local variable that is set with the title of the given column.</p>
+
+
+	<p><strong>Examples</strong><br /><pre>
+SET lclStatus columntitleget("NewSchedule1.sc2", "Data", 1, vsColumnTitle)
+SET lclStatus columntitleget("NewSchedule1.sc2", 2, vsColumnTitle)
+</pre><br />&nbsp;</p>
+
+
+	<a name="ColumnUnitGet"></a>
+<h3 >ColumnUnitGet<a href="#ColumnUnitGet" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sets a string channel or local variable to the units defined for the given column on a schedule's matrix page.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+columnunitget(&lt;schedulename&gt;, [pagename], &lt;columnindex&gt;, &lt;resultchannel&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>schedulename</em>: Name of the schedule stored in memory. The &lt;schedulename&gt; parameter requires the <em>.sc2</em> file extension and must match the schedule name originally used with the TableLoad VCL function.</p>
+
+
+	<p style="padding-left:1em;"><em>pagename</em>: Optional parameter. The name of the matrix page. If omitted, the function uses the page name from the <code>TableAndScheduleDataPageName</code> <em>powertek.ini</em> setting.</p>
+
+
+	<p style="padding-left:1em;"><em>columnindex</em>: Integer signifying the index of the column in the matrix page. This is a 1-based index.</p>
+
+
+	<p style="padding-left:1em;"><em>resultchannel</em>: String channel or local variable that is set to the units defined for the given column.</p>
+
+
+	<p><strong>Examples</strong><br /><pre>
+SET lclStatus columnunitget("NewSchedule1.sc2", "Data", 1, vsColumnUnits)
+SET lclStatus columnunitget("NewSchedule1.sc2", 2, vsColumnUnits)
+</pre><br />&nbsp;</p>
+
+
+	<a name="PageTitleGet"></a>
+<h3 >PageTitleGet<a href="#PageTitleGet" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Gets the title of the page designated by the given index value. The page title is the label displayed on the tabs in Test Manager and Schedule Viewer.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+pagetitleget(&lt;schedulename&gt;, &lt;pageindex&gt;, &lt;resultchannel&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>schedulename</em>: Name of the schedule stored in memory. The &lt;schedulename&gt; parameter requires the <em>.sc2</em> file extension and must match the schedule name originally used with the TableLoad VCL function.</p>
+
+
+	<p style="padding-left:1em;"><em>pageindex</em>: Integer signifying the index of the page. This is a 1-based index.</p>
+
+
+	<p style="padding-left:1em;"><em>resultchannel</em>: String channel or local variable that is set with the title of the page identified by the given index value.</p>
+
+
+	<p><strong>Examples</strong><br /><pre>
+SET lclStatus pagetitleget("NewSchedule1.sc2", 1, vsPageTitle)
+</pre><br />&nbsp;</p>
+
+
+	<a name="TableClose"></a>
+<h3 >TableClose<a href="#TableClose" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Removes a schedule from memory. After this function is run, the schedule will no longer be available until it is loaded back into memory using the TableLoad VCL function.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+tableclose(&lt;schedulename&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>schedulename</em>: Name of the schedule stored in memory. The &lt;schedulename&gt; parameter requires the <em>.sc2</em> file extension and must match the schedule name originally used with the TableLoad VCL function.</p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET lclStatus tableclose("NewSchedule1.sc2")
+</pre><br />&nbsp;</p>
+
+
+	<a name="TableColumnMax"></a>
+<h3 >TableColumnMax<a href="#TableColumnMax" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sets an iTest channel to the maximum value stored in a schedule's numeric column.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+tablecolumnmax(&lt;schedulename&gt;, &lt;pagename&gt;, &lt;columnindex&gt;, &lt;returnchannel&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>schedulename</em>: Name of the schedule stored in memory. The &lt;schedulename&gt; parameter requires the <em>.sc2</em> file extension and must match the schedule name originally used with the TableLoad VCL function. Array channels can not be used for this parameter.</p>
+
+
+	<p style="padding-left:1em;"><em>pagename</em>: The name of the matrix page.</p>
+
+
+	<p style="padding-left:1em;"><em>columnindex</em>: Integer signifying the index of the column in the matrix page. This is a 1-based index.</p>
+
+
+	<p style="padding-left:1em;"><em>resultchannel</em>: Numeric channel or local variable that is set with the largest value found in the given channel. Array channels can not be used for this parameter.</p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET lclStatus tablecolumnmax("NewSchedule1.sc2", "Data", 1, voColumnMax)
+</pre><br />&nbsp;</p>
+
+
+	<a name="TableColumnMin"></a>
+<h3 >TableColumnMin<a href="#TableColumnMin" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sets an iTest channel to the minimum value stored in a schedule's numeric column.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+tablecolumnmin(&lt;schedulename&gt;, &lt;pagename&gt;, &lt;columnindex&gt;, &lt;returnchannel&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>schedulename</em>: Name of the schedule stored in memory. The &lt;schedulename&gt; parameter requires the <em>.sc2</em> file extension and must match the schedule name originally used with the TableLoad VCL function. Array channels can not be used for this parameter.</p>
+
+
+	<p style="padding-left:1em;"><em>pagename</em>: The name of the matrix page.</p>
+
+
+	<p style="padding-left:1em;"><em>columnindex</em>: Integer signifying the index of the column in the matrix page. This is a 1-based index.</p>
+
+
+	<p style="padding-left:1em;"><em>resultchannel</em>: Numeric channel or local variable that is set with the smallest value found in the given channel. Array channels can not be used for this parameter.</p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET lclStatus tablecolumnmin("NewSchedule1.sc2", "Data", 1, voColumnMin)
+</pre><br />&nbsp;</p>
+
+
+	<a name="TableColumnsGet"></a>
+<h3 >TableColumnsGet<a href="#TableColumnsGet" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Gets the number of columns in a given matrix page for a schedule.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+tablecolumnsget(&lt;schedulename&gt;, [pagename], &lt;resultchannel&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>schedulename</em>: Name of the schedule stored in memory. The &lt;schedulename&gt; parameter requires the <em>.sc2</em> file extension and must match the schedule name originally used with the TableLoad VCL function.</p>
+
+
+	<p style="padding-left:1em;"><em>pagename</em>: Optional parameter. The name of the matrix page. If omitted, the function uses the page name from the <code>TableAndScheduleDataPageName</code> <em>powertek.ini</em> setting.</p>
+
+
+	<p style="padding-left:1em;"><em>resultchannel</em>: Numeric channel or local variable that is set with the number of columns found in the give matrix page.</p>
+
+
+	<p><strong>Examples</strong><br /><pre>
+SET lclStatus tablecolumnsget("NewSchedule1.sc2", "Data", voNumberColumns)
+SET lclStatus tablecolumnsget("NewSchedule1.sc2", voNumberColumns)
+</pre><br />&nbsp;</p>
+
+
+	<a name="TableLoad"></a>
+<h3 >TableLoad<a href="#TableLoad" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Loads an existing schedule (<em>.sc2</em>) into memory. This function must be used prior to any other Schedule VCL function being used; otherwise, a -2 error will be returned by that function.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+tableload(&lt;schedulename&gt;)
+</pre></p>
+
+
+	<p><strong>Parameter</strong></p>
+
+
+	<p style="padding-left:1em;"><em>schedulename</em>: This parameter requires the <em>.sc2</em> file extension and does not support $macro substitution (e.g., $SUPPORTDIR). If no file path is provided, the file path from the <code>TableFilePath</code> <em>powertek.ini</em> setting is used (defaults to <em>$SUPPORTDIR\SchedulesAndTables</em>). If a fully qualified file path is provided, the schedule must always be referred to by the fully qualified path in subsequent function calls.<br />If the <code>TableFilePath</code> <em>powertek.ini</em> setting points to a non-$SUPPORTDIR location (e.g., $SYSTEMDIR or <em>C:\Temp\</em>), then table functions will fail under a 2PC system configuration.</p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET lclStatus tableload("NewSchedule1.sc2")
+</pre><br />&nbsp;</p>
+
+
+	<a name="TablePagesGet"></a>
+<h3 >TablePagesGet<a href="#TablePagesGet" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Gets the number of pages within a schedule.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+tablepagesget(&lt;schedulename&gt;, &lt;resultchannel&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>schedulename</em>: Name of the schedule stored in memory. The &lt;schedulename&gt; parameter requires the <em>.sc2</em> file extension and must match the schedule name originally used with the TableLoad VCL function.</p>
+
+
+	<p style="padding-left:1em;"><em>resultchannel</em>: Numeric channel or local variable that is set with the number of pages found in the schedule.</p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET lclStatus tablepagesget("NewSchedule1.sc2", voPageCount)
+</pre><br />&nbsp;</p>
+
+
+	<a name="TableRowAdd"></a>
+<h3 >TableRowAdd<a href="#TableRowAdd" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Adds an empty row to a matrix page in a schedule. This change is made to the copy of the schedule stored in memory and will not modify the schedule (<em>.sc2</em>) file until the TableStore VCL function is called.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+tablerowadd(&lt;schedulename&gt;, [pagename])
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>schedulename</em>: Name of the schedule stored in memory. The &lt;schedulename&gt; parameter requires the <em>.sc2</em> file extension and must match the schedule name originally used with the TableLoad VCL function.</p>
+
+
+	<p style="padding-left:1em;"><em>pagename</em>: Optional parameter. The name of the matrix page. If omitted, the function uses the page name from the <code>TableAndScheduleDataPageName</code> <em>powertek.ini</em> setting.</p>
+
+
+	<p><strong>Examples</strong><br /><pre>
+SET lclStatus tablerowadd("NewSchedule1.sc2", "Data")
+SET lclStatus tablerowadd("NewSchedule1.sc2")
+</pre><br />&nbsp;</p>
+
+
+	<a name="TableRowDelete"></a>
+<h3 >TableRowDelete<a href="#TableRowDelete" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Deletes a row from a matrix page in a schedule. This change is made to the copy of the schedule stored in memory and will not modify the schedule (<em>.sc2</em>) file until the TableStore VCL function is called.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+tablerowdelete(&lt;schedulename&gt;, [pagename], &lt;row&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>schedulename</em>: Name of the schedule stored in memory. The &lt;schedulename&gt; parameter requires the <em>.sc2</em> file extension and must match the schedule name originally used with the TableLoad VCL function.</p>
+
+
+	<p style="padding-left:1em;"><em>pagename</em>: Optional parameter. The name of the matrix page. If omitted, the function uses the page name from the <code>TableAndScheduleDataPageName</code> <em>powertek.ini</em> setting.</p>
+
+
+	<p style="padding-left:1em;"><em>row</em>: Row number.</p>
+
+
+	<p><strong>Examples</strong><br /><pre>
+SET lclStatus tablerowdelete("NewSchedule1.sc2", "Data", 2)
+SET lclStatus tablerowdelete("NewSchedule1.sc2", voRowNumber)
+</pre><br />&nbsp;</p>
+
+
+	<a name="TableRowInsert"></a>
+<h3 >TableRowInsert<a href="#TableRowInsert" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Inserts an empty row prior to a given row in a matrix page of a schedule. This change is made to the copy of the schedule stored in memory and will not modify the schedule (<em>.sc2</em>) file until the TableStore VCL function is called.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+tablerowinsert(&lt;schedulename&gt;, [pagename], &lt;row&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>schedulename</em>: Name of the schedule stored in memory. The &lt;schedulename&gt; parameter requires the <em>.sc2</em> file extension and must match the schedule name originally used with the TableLoad VCL function.</p>
+
+
+	<p style="padding-left:1em;"><em>pagename</em>: Optional parameter. The name of the matrix page. If omitted, the function uses the page name from the <code>TableAndScheduleDataPageName</code> <em>powertek.ini</em> setting.</p>
+
+
+	<p style="padding-left:1em;"><em>row</em>: Row number that the new row is to be inserted before.</p>
+
+
+	<p><strong>Examples</strong><br /><pre>
+SET lclStatus tablerowinsert("NewSchedule1.sc2", "Data", 2)
+SET lclStatus tablerowinsert("NewSchedule1.sc2", voRowNumber)
+</pre><br />&nbsp;</p>
+
+
+	<a name="TableRowsGet"></a>
+<h3 >TableRowsGet<a href="#TableRowsGet" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Gets the number of rows in a given matrix page for a schedule.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+tablerowsget(&lt;schedulename&gt;, [pagename], &lt;resultchannel&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>schedulename</em>: Name of the schedule stored in memory. The &lt;schedulename&gt; parameter requires the <em>.sc2</em> file extension and must match the schedule name originally used with the TableLoad VCL function.</p>
+
+
+	<p style="padding-left:1em;"><em>pagename</em>: Optional parameter. The name of the matrix page. If omitted, the function uses the page name from the <code>TableAndScheduleDataPageName</code> <em>powertek.ini</em> setting.</p>
+
+
+	<p style="padding-left:1em;"><em>resultchannel</em>: Numeric channel or local variable that is set with the number of rows found in the given matrix page.</p>
+
+
+	<p><strong>Examples</strong><br /><pre>
+SET lclStatus tablerowsget("NewSchedule1.sc2", "Data", voNumberRows)
+SET lclStatus tablerowsget("NewSchedule1.sc2", voNumberRows)
+</pre><br />&nbsp;</p>
+
+
+	<a name="TableRowValuesToDB"></a>
+<h3 >TableRowValuesToDB<a href="#TableRowValuesToDB" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sets an entire group of iTest channel values to the data stored in the row of a matrix page. The iTest channels to set are indicated by the channel associated with each column. Keep in mind that a column’s channel name is not necessarily the column title as displayed in Test Manager.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+tablerowvaluestodb(&lt;schedulename&gt;, [pagename], &lt;row&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>schedulename</em>: Name of the schedule stored in memory. The &lt;schedulename&gt; parameter requires the <em>.sc2</em> file extension and must match the schedule name originally used with the TableLoad VCL function.</p>
+
+
+	<p style="padding-left:1em;"><em>pagename</em>: Optional parameter. The name of the matrix page. If omitted, the function uses the page name from the <code>TableAndScheduleDataPageName</code> <em>powertek.ini</em> setting.</p>
+
+
+	<p style="padding-left:1em;"><em>row</em>: Row number.</p>
+
+
+	<p><strong>Examples</strong><br /><pre>
+SET lclStatus tablerowvaluestodb("NewSchedule1.sc2", "Data", voNumberRows)
+SET lclStatus tablerowvaluestodb("NewSchedule1.sc2", voNumberRows)
+</pre><br />&nbsp;</p>
+
+
+	<a name="TableStore"></a>
+<h3 >TableStore<a href="#TableStore" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Saves the given schedule in memory to disk. This overwrites the content of the existing schedule (<em>.sc2</em>) file.</p>
+
+
+	<p>This function does not support saving the schedule to any location other than the location originally referenced when the schedule was loaded into memory by the TableLoad VCL function.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+tablestore(&lt;schedulename&gt;)
+</pre></p>
+
+
+	<p><strong>Parameter</strong></p>
+
+
+	<p style="padding-left:1em;"><em>schedulename</em>: Name of the schedule stored in memory. The &lt;schedulename&gt; parameter requires the <em>.sc2</em> file extension and must match the schedule name originally used with the TableLoad VCL function.</p>
+
+
+	<p><strong>Example</strong><br /><pre>
+SET lclStatus tablestore("NewSchedule1.sc2")
+</pre><br />&nbsp;</p>
+
+
+	<a name="TableValueGet"></a>
+<h3 >TableValueGet<a href="#TableValueGet" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sets a channel or local variable to the value of an entry on a given matrix or list page in a schedule.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+tablevalueget(&lt;schedulename&gt;, [pagename], &lt;row, column&gt;|&lt;keyword&gt;, &lt;resultchannel&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>schedulename</em>: Name of the schedule stored in memory. The &lt;schedulename&gt; parameter requires the <em>.sc2</em> file extension and must match the schedule name originally used with the TableLoad VCL function.</p>
+
+
+	<p style="padding-left:1em;"><em>pagename</em>: Optional parameter. The name of the page to be searched. If omitted, the function uses the page name from either the <code>TableAndScheduleHeaderPageName</code> or the <code>TableAndScheduleDataPageName</code> <em>powertek.ini</em> setting depending on whether the &lt;keyword&gt; or the &lt;row&gt;,&lt;column&gt; parameters were given.</p>
+
+
+	<p style="padding-left:1em;"><em>row, column</em>: Matrix pages only. The row and column to get the value from on the given matrix page.</p>
+
+
+	<p style="padding-left:1em;"><em>keyword</em>: List pages only. The keyword used to identify the value to get from the given list page.</p>
+
+
+	<p style="padding-left:1em;"><em>resultchannel</em>: iTest channel or local variable that is set with the found value. The found value is -1 if the channel associated with the column is a numeric type and the entry is a string value.</p>
+
+
+	<p><strong>Examples</strong><br /><pre>
+* referencing a matrix page:
+SET lclStatus tablevalueget("NewSchedule1.sc2", "Data", 1, 2, voScheduleValue)
+SET lclStatus tablevalueget("NewSchedule1.sc2", voRow, voColumn, voScheduleValue)
+
+* referencing a list page:
+SET lclStatus tablevalueget("NewSchedule1.sc2", "Header", "ScheduleStatusChannel", vsHeaderStr)
+SET lclStatus tablevalueget("NewSchedule1.sc2", vsKeyword, vsHeaderStr)
+</pre><br />&nbsp;</p>
+
+
+	<a name="TableValueSet"></a>
+<h3 >TableValueSet<a href="#TableValueSet" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Sets the value of an entry on a given matrix or list page in a schedule. Setting both numeric and string values is supported.</p>
+
+
+	<p><strong>Syntax</strong><br /><pre>
+tablevalueset(&lt;schedulename&gt;, [pagename], &lt;row, column&gt;|&lt;keyword&gt;, &lt;newentry&gt;)
+</pre></p>
+
+
+	<p><strong>Parameters</strong></p>
+
+
+	<p style="padding-left:1em;"><em>schedulename</em>: Name of the schedule stored in memory. The &lt;schedulename&gt; parameter requires the <em>.sc2</em> file extension and must match the schedule name originally used with the TableLoad VCL function.</p>
+
+
+	<p style="padding-left:1em;"><em>pagename</em>: Optional parameter. The name of the page to be changed. If omitted, the function uses the page name from either the <code>TableAndScheduleHeaderPageName</code> or the <code>TableAndScheduleDataPageName</code> <em>powertek.ini</em> setting depending on whether or not the &lt;keyword&gt; or the &lt;row&gt;,&lt;column&gt; parameters were given.</p>
+
+
+	<p style="padding-left:1em;"><em>row, column</em>: Matrix pages only. The row and column to be changed on the given matrix page.</p>
+
+
+	<p style="padding-left:1em;"><em>keyword</em>: List pages only. The keyword used to identify the value to set on the given list page.</p>
+
+
+	<p style="padding-left:1em;"><em>newentry</em>: Value or string to set the entry to. When changing a list page, the new entry must be a string even if using numeric characters.</p>
+
+
+	<p><strong>Examples</strong><br /><pre>
+* referencing a matrix page:
+SET lclStatus tablevalueset("NewSchedule1.sc2", "Data", 1, 8, "TransientLog1")
+SET lclStatus tablevalueset("NewSchedule1.sc2", voRow, voColumn, voNewValue)
+
+* referencing a list page:
+SET lclStatus tablevalueset("NewSchedule1.sc2", "Header", "ScheduleStatusChannel", "vsNewStatusChannel")
+SET lclStatus tablevalueset("NewSchedule1.sc2", vsKeyword, vsNewStringValue)
+</pre></p>
+</body>
+</html>

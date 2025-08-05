@@ -1,0 +1,674 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ADT Gauge</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="ADT_Gauge.html">ADT Gauge</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="ADT-Gauge-Object"></a>
+<h1 >ADT Gauge Object<a href="#ADT-Gauge-Object" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#ADT-Gauge-Object">ADT Gauge Object</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Field-Definitions">Field Definitions</a><ul><li><a href="#General-Tab">General Tab</a></li><li><a href="#Scale-Tab">Scale Tab</a></li><li><a href="#Needles-Tab">Needles Tab</a></li><li><a href="#Tics-Tab">Tics Tab</a></li><li><a href="#Rings-Tab">Rings Tab</a></li><li><a href="#Data-Quality-Tab">Data Quality Tab</a></li></ul>
+</li><li><a href="#ADT-Gauge-Object-Properties">ADT Gauge Object Properties</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The ADT Gauge display object will display channel data, target values, data quality, limit state and high/low values.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>ADT Gauge</strong></em></span><br /><img src="attachments/download/6690/adtgauge.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Field-Definitions"></a>
+<h2 >Field Definitions<a href="#Field-Definitions" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="General-Tab"></a>
+<h3 >General Tab<a href="#General-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>General Tab</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Option</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td><strong>Value Channel</strong></td>
+			<td>Click the <strong>...</strong> button to open the Channel Selection dialog, which you can use to select the database channel whose name and value you want to display on the ADTGauge. </td>
+		</tr>
+		<tr>
+			<td><strong>Target Channel</strong></td>
+			<td>Select the database channel that holds the target value for the control.</td>
+		</tr>
+		<tr>
+			<td><strong>Control ID</strong></td>
+			<td>Provides a unique name for the control. This name can be used in mailslot messages to change control properties during runtime on the iTest Console. </td>
+		</tr>
+		<tr>
+			<td><strong>Label Field</strong></td>
+			<td>Select a label for the ADTGauge. The default is <strong>Automatic</strong>. If no alias, description, customer name, or module name was defined for a database channel in its channel definition, the channel name displays by default.</td>
+		</tr>
+		<tr>
+			<td><strong>Gauge Style</strong></td>
+			<td>Select whether you want to display a gauge or a meter.</td>
+		</tr>
+		<tr>
+			<td><strong>Display Units</strong></td>
+			<td>Affects the channel that is defined. This field will only affect the <strong>Value Channel</strong> field.</td>
+		</tr>
+		<tr>
+			<td><strong>Display Precision</strong></td>
+			<td>Allows you to set the precision for the channel.</td>
+		</tr>
+		<tr>
+			<td><strong>Show Border</strong></td>
+			<td>When selected, displays a rectangular border around the ADTGauge.</td>
+		</tr>
+		<tr>
+			<td><strong>Permit Runtime Changes</strong></td>
+			<td>When selected, allows changes to be made programmatically.</td>
+		</tr>
+		<tr>
+			<td><strong>Transparent</strong></td>
+			<td>Picks up the background color of the display in order to give the object a transparent appearance.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Scale-Tab"></a>
+<h3 >Scale Tab<a href="#Scale-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Scale Tab</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Option</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td><strong>Min Value</strong></td>
+			<td>Specify the low end of the ADTGauge range. </td>
+		</tr>
+		<tr>
+			<td><strong>Max Value</strong></td>
+			<td>Specify the high end of the ADTGauge range.</td>
+		</tr>
+		<tr>
+			<td><strong>Start Angle</strong></td>
+			<td>The position, in degrees, of the min value of the gauge. This is measured from 0 degrees on a coordinate plane.</td>
+		</tr>
+		<tr>
+			<td><strong>End Angle</strong></td>
+			<td>The position, in degrees, of the max value of the gauge. This is measured from 0 degrees on a coordinate plane.</td>
+		</tr>
+		<tr>
+			<td><strong>Number Major Tics</strong></td>
+			<td>Specify the number of major tics on the bar. Distance between major tics is calculated by (<strong>Max Value</strong> - <strong>Min Value</strong>) / <strong>Num Major Tics</strong>. For example, if you specify 5 major tics and the Min Value is 0 and the Max Value is 200, then (200-0) / 5 = 40 so major tics will display at 40, 80, 120, 160, and 200. </td>
+		</tr>
+		<tr>
+			<td><strong>Number Minor Tics</strong></td>
+			<td>Specify the number of minor tics between each pair of major tics on the bar.</td>
+		</tr>
+		<tr>
+			<td><strong>Label Every X Tics</strong></td>
+			<td>Indicate how many major tics will be labeled with their value.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Needles-Tab"></a>
+<h3 >Needles Tab<a href="#Needles-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Needles Tab</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Option</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td><strong>Current Value Needle</strong></td>
+			<td>The Current Value Needle is the needle that shows the value of the channel. Select the <strong>Style</strong>, <strong>Width</strong>, <strong>Length</strong>, <strong>Percentage</strong>, and <strong>Color</strong>. The selected color displays in the preview window.</td>
+		</tr>
+		<tr>
+			<td><strong>Target Value Needle</strong></td>
+			<td>The Target Value Needle is the needle that shows the value of the target channel (as specified on <strong>General</strong> tab). Select the <strong>Style</strong>, <strong>Width</strong>, <strong>Length</strong>, <strong>Percentage</strong>, and <strong>Color</strong>. The selected color displays in the preview window.</td>
+		</tr>
+		<tr>
+			<td><strong>High Value Indicator</strong></td>
+			<td>The High Value Indicator is the needle that shows the highest value that the current value channel has ever reached (since the last reset). Select the <strong>Style</strong>, <strong>Width</strong>, <strong>Length</strong>, <strong>Percentage</strong>, and <strong>Color</strong>. The selected color displays in the preview window.</td>
+		</tr>
+		<tr>
+			<td><strong>Low Value Indicator</strong></td>
+			<td>The Low Value Indicator is the needle that shows the lowest value that the current value channel has ever reached (since the last reset). Select the <strong>Style</strong>, <strong>Width</strong>, <strong>Length</strong>, <strong>Percentage</strong>, and <strong>Color</strong>. The selected color displays in the preview window.</td>
+		</tr>
+		<tr>
+			<td><strong>Reset Indicators</strong></td>
+			<td>Reset Indicators clears the high and low values. Select the <strong>Style</strong>, <strong>Width</strong>, <strong>Length</strong>, <strong>Percentage</strong>, and <strong>Color</strong>. The selected color displays in the preview window.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Tics-Tab"></a>
+<h3 >Tics Tab<a href="#Tics-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Tics Tab</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Option</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td>Major</td>
+			<td>This is the style for major tic marks. The choices are <strong>Circle</strong>, <strong>Line</strong>, <strong>Square</strong>, or <strong>None</strong>. Select a color from the list for the associated tic. You can also select a custom color from the list to create a custom color. The color you choose will display in the preview window.</td>
+		</tr>
+		<tr>
+			<td>Minor</td>
+			<td>This is the style for minor tic marks. The choices are <strong>Circle</strong>, <strong>Line</strong>, <strong>Square</strong>, or <strong>None</strong>. Select a color from the list for the associated tic. You can also select a custom color from the list to create a custom color. The color you choose will display in the preview window.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Rings-Tab"></a>
+<h3 >Rings Tab<a href="#Rings-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Use the settings on this tab to alter the look of the rings around the gauge or meter. Values represent a percentage of the radius of the gauge image with the origin at the center point of the ADTGauge control. To determine actual %, multiply the field value by 100. In terms of the meter style, the origin is in the middle of the bottom edge. The rim settings are in layers with the Inner Rim 2 color being displayed on the top, the Inner Rim1 color below that, and the Outer Rim color displayed below all 3 (see example below).</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Ring Overview</strong></em></span><br /><img src="attachments/download/6691/ring.jpg" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p><ins><strong>Example settings:</strong></ins><br /><pre>
+Outer Rim: 0.6
+Inner Rim1: 0.3
+Inner Rim2: 0.1
+Limits Bar: 0.4
+Tic Marks: 0.9
+</pre></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Rings Tab</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Option</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td><strong>Outer Rim Radius (%)</strong></td>
+			<td>Indicates the percent of the total radius of the control. Enter a number between 0 and 1. Type 0 if you do not want the outer rim to display.</td>
+		</tr>
+		<tr>
+			<td><strong>Inner Rim1 Radius (%)</strong></td>
+			<td>Indicates the percent of the total radius of the control. Enter a number between 0 and 1. Type 0 if you do not want the inner rim1 to display.</td>
+		</tr>
+		<tr>
+			<td><strong>Inner Rim2 Radius (%)</strong></td>
+			<td>Indicates the percent of the total radius of the control. Enter a number between 0 and 1. Type 0 if you do not want the inner rim2 to display.</td>
+		</tr>
+		<tr>
+			<td><strong>Limits Bar</strong></td>
+			<td>Indicates the percent of the total radius of the control. Enter a number between 0 and 1. Type 0 if you do not want the limits bar to display.</td>
+		</tr>
+		<tr>
+			<td><strong>Tic Marks</strong></td>
+			<td>Indicates the percent of the total radius of the control. Enter a number between 0 and 1. Type 0 if you do not want the tic marks to display.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Data-Quality-Tab"></a>
+<h3 >Data Quality Tab<a href="#Data-Quality-Tab" class="wiki-anchor">&para;</a></h3>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Data Quality Tab</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><b>Option</b> </td>
+			<td style="text-align:left;"><b>Description</b> </td>
+		</tr>
+		<tr>
+			<td>Show DQ Range</td>
+			<td>Click in the <strong>Show DQ Range</strong> box to view channel data quality (in the same way you would view limits) on the ADTGauge. Selecting this feature will allow you to view data quality in runtime for any channel for which you can define a range. The three Data Quality Types that allow you to define a range are <strong>High/Low</strong>, <strong>Between Tolerance in %</strong>, and <strong>Between Tolerance</strong>.</td>
+		</tr>
+		<tr>
+			<td>Data Quality Arc Color</td>
+			<td>This is the color you use to represent data quality.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="ADT-Gauge-Object-Properties"></a>
+<h2 >ADT Gauge Object Properties<a href="#ADT-Gauge-Object-Properties" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>These properties are useful when issuing the following mailslot message:</p>
+
+
+<pre>
+\\.\mailslot\DisplayName&gt;&gt;$SETITEMPROPERTY ControlID PropertyName PropertyValue
+</pre>
+
+	<p>The following are the names of the properties that can be changed by mailslot message to the display.  These property names may or may not be the same as the property names shown on the display object property setup dialogs.  Most of these property names are self-explanatory.  The first column is the data type of the property.</p>
+
+
+	<p>The int or OLE_COLOR for color is the color RGB values.  “BSTR” means the type of the property is string.  “int”, “float”, “long”, “short”, “double” means the type of the property is number.  “Boolean” means the property value should be 1 or 0.</p>
+
+
+	<p>Font property syntax is complicated.<br />&lt;font name&gt;,&lt;bold&gt;,,&lt;italic&gt;,&lt;font size&gt;,,&lt;strikeout&gt;,&lt;underline&gt;, <br />example: Arial,0,0,0,97500,0,0,0,400</p></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>ADT Gauge Object Properties</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Type</strong></td>
+			<td style="text-align:left;"><strong>Property</strong></td>
+			<td style="text-align:left;"><strong>Notes</strong></td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ShowDQRange</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>DQArcColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>DisplayUnit</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>TargetDisplayUnit</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>ChannelName</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>TargetChannelName</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>LabelField</strong>*</td>
+			<td>values are case-sensitive</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>GaugeStyle</strong></td>
+			<td>values: 11 or 12</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ChangesOK</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>MinVal</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>MaxVal</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>value</strong></td>
+			<td>not implemented</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>CtrlAddr</strong></td>
+			<td>not implemented</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>TicInterval</strong></td>
+			<td>not implemented</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>FontSize</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>NumSubIntervals</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>NumMajorIntervals</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>TicsPerLabel</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>StartAngle</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>EndAngle</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>font</td>
+			<td><strong>ValueFont</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>font</td>
+			<td><strong>LabelFont</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>int</td>
+			<td><strong>GaugeColor</strong></td>
+			<td>not implemented</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>Transparent</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>CurrentStyle</strong>**</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>TargetStyle</strong>**</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>HighStyle</strong>**</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LowStyle</strong>**</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>CurrentWidth</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>TargetWidth</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>HighWidth</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LowWidth</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>CurrentLength</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>TargetLength</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>HighLength</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LowLength</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>CurrentColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>TargetColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>HighColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LowColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>DialTextColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>RimTopColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>RimBottomColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>FaceTopColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>FaceBottomColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LargeTicColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>SmallTicColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>LargeTicStyle</strong>***</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>SmallTicStyle</strong>***</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>ChannelNameTextColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>CurrentValueTextColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>long</td>
+			<td><strong>WindowBkndColor</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ResetIndicators</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>OuterFraction</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>InnerFraction1</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>InnerFraction2</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>LimitFraction</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>TicFraction</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td><strong>DialFraction</strong></td>
+			<td>not implemented</td>
+		</tr>
+		<tr>
+			<td>bool</td>
+			<td><strong>ShowBorder</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>DisplayUnit</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>TargetDisplayUnit</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>string</td>
+			<td><strong>DisplayPrecision</strong></td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+* <span style="font-size:0.90em;">values: Automatic, Channel Name, Customer Name, Module Name, Alias, Description</span><br />** <span style="font-size:0.90em;">values: 100 - none, 101 - line style, 102 - pointer style</span><br />*** <span style="font-size:0.90em;">values: 1001 - circle, 1002 - line, 1003 - square, 1005 - none</span>
+
+	<p>&nbsp;</p>
+</body>
+</html>

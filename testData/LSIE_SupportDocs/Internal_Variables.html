@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Internal Variables</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Internal_Variables.html">Internal Variables</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Internal-Variables"></a>
+<h1 >Internal Variables<a href="#Internal-Variables" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Internal-Variables">Internal Variables</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Using-the-Editor">Using the Editor</a><ul><li><a href="#Right-Click-Options">Right-Click Options</a></li></ul>
+</li><li><a href="#Adding-Bookmarks">Adding Bookmarks</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Internal variables are special channels that do not have any attributes associated with them. These channels can be used and referenced in VCL, calculations, and some mailslot messages but cannot be used on displays or in data logs. Internal variables are stored in the <em>Intervar.dat</em> file located in the $SUPPORTDIR. You can edit this file in SolutionBuilder by navigating to the Internal Variables editor.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Internal Variables Menu Option</strong></em></span><br /><img src="attachments/download/127049/44_InternalVariablesMenuOption.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<a name="Using-the-Editor"></a>
+<h2 >Using the Editor<a href="#Using-the-Editor" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Internal Variables editor is a free-form editor. To edit the internal variables stored in the <em>Intervar.dat</em> file, type the variable followed by an optional variable to be used as the initial value for that value. The variable name follows the same naming convention as channel names and only supports a length up to 32 bytes. You can add  a maximum of 2000 internal variables.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Internal Variables Editor</strong></em></span><br /><img src="attachments/download/115822/43_InternalVariablesEditor.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>To add a comment to the editor, type an asterisk followed by the comment. Selected text can also be commented/uncommented using the <strong>Comment</strong> and <strong>Uncomment</strong> right-click options.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Add Comments</strong></em></span><br /><img src="attachments/download/115823/43_AddComments.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Right-Click-Options"></a>
+<h3 >Right-Click Options<a href="#Right-Click-Options" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following right-click options are available in the editor:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+			<td style="text-align:left;"><strong>Keyboard Shortcut</strong></td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td>Removes the selected text and copies it to the clipboard.</td>
+			<td><strong>CTRL + X</strong></td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td>Copies selected text in the editor.</td>
+			<td><strong>CTRL + V</strong></td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td>Pastes copied/cut text in the editor.</td>
+			<td><strong>CTRL + P</strong></td>
+		</tr>
+		<tr>
+			<td>Find...</td>
+			<td>Launches the Find and Replace dialog with the Find tab displayed.</td>
+			<td><strong>CTRL + F</strong></td>
+		</tr>
+		<tr>
+			<td>Replace...</td>
+			<td>Launches the Find and Replace dialog with the Replace tab displayed.</td>
+			<td><strong>CTRL + H</strong></td>
+		</tr>
+		<tr>
+			<td>Make Uppercase</td>
+			<td>Makes selected text uppercase.</td>
+			<td><strong>CTRL + SHIFT + U</strong></td>
+		</tr>
+		<tr>
+			<td>Make Lowercase</td>
+			<td>Makes selected text lowercase.</td>
+			<td><strong>CTRL + U</strong></td>
+		</tr>
+		<tr>
+			<td>Comment/Uncomment</td>
+			<td>Comments/uncomments out a line of text in the editor. Text does not need to be selected or highlighted to comment it out.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td>Undoes the last action.</td>
+			<td><strong>CTRL + Z</strong></td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td>Redoes the last undone action.</td>
+			<td><strong>CTRL + Y</strong></td>
+		</tr>
+		<tr>
+			<td>Preferences...</td>
+			<td>Launches the Editor Properties dialog, which enables you to modify the appearance of the editor. You can customize the font style and size, display line numbers, and enable outlines for blocks of code.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Adding-Bookmarks"></a>
+<h2 >Adding Bookmarks<a href="#Adding-Bookmarks" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can bookmark lines within the editor  by clicking the line in the left-side margin. Bookmarking allows you to mark lines within the editor and then quickly navigate to them.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Adding Bookmarks</strong></em></span><br /><img src="attachments/download/115824/43_AddBookmarks.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Analog Input Filters</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Analog_Input_Filters.html">Analog Input Filters</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Analog-Input-Filters"></a>
+<h1 >Analog Input Filters<a href="#Analog-Input-Filters" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>The Analog Input filter is used to remove high frequency noise from channels. This is done by applying a software algorithm to the raw or calibrated values, as it is acquired by the hardware or brought into iTest. There are several different types of filters that can be selected in the channel editor. The channel editor is displayed in the following image; each option is described in the table below:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>New Channel</strong></em></span><br /><img src="attachments/download/35618/EditChannelUndefined.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Edit Channels</strong></em></span><br /><img src="attachments/download/35617/ChannelEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The <strong>Average</strong>, <strong>Sliding</strong>, and the <strong>Lowpass Filter</strong> options are only visible in Test Manager if the device driver supports their use.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>The <strong>Number of Filter Samples</strong> field is enabled when the <strong>Average</strong> or <strong>Sliding</strong> option is selected:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Field Enabled</strong></em></span><br /><img src="attachments/download/35619/NumberOfFilters.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Edit Channel Dialog Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Filter Type</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td> 0 - 9</td>
+			<td> An exponential smoothing algorithm is applied. This algorithm combines a weighted average of the current measured value with the previous smoothed value:  <br /><pre>iTestValue = _X_ * NewMeasuredValue + _Y_ * Previous_iTestValue. </pre><br />X and Y are determined by the filter selection as follows: <br /><pre>X = 1 / ((Filter Selection value * sqrt(samplerate/10)) ^2 ) 
+Y = 1 - X.</pre><br />The sample rate is derived from the <code>SystemScanRateHz</code> <em>powertek.ini</em> setting. Newly measured values have less impact on the iTestValue when a higher numbered filter is selected. There is a trade-off between reducing noise (higher filter number) and reacting to change (lower filter number).</td>
+		</tr>
+		<tr>
+			<td> Average </td>
+			<td> An arithmetic function is carried out over several measured values to provide an averaged value. This results in the measurement rate decreasing and the resolution increasing. When using the Average filter, the <strong>Number of Filter Samples</strong> field is enabled. </td>
+		</tr>
+		<tr>
+			<td> Sliding </td>
+			<td> The filter calculates the average value over the last <em>X</em> number of measured values. This option enables the <strong>Number of Filter Samples</strong> field, as <em>X</em> is specified by this setting. The Sliding filter does not decrease the measurement rate.</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<td style="text-align:center;" colspan="2"><strong>Additional Fields</strong> </td>
+		</tr>
+		<tr>
+			<td> Number of Filter Samples </td>
+			<td> This field is used to enter <em>X</em> number of averaging samples, to determine how many measured values are used to calculate one averaged value. </td>
+		</tr>
+		<tr>
+			<td> Lowpass Filter </td>
+			<td> A lowpass-filter ensures that only the low-frequency shares of the signals are evaluated. Higher-frequency photoelectric noise levels are not taken into account. The low-pass-filter is particularly suitable for noise suppression with slowly changing signal forms.</td>
+		</tr>
+		<tr>
+			<td> Frequency-3dB(Hz) </td>
+			<td> The cutoff frequency for the lowpass-filter. This determines the frequency beyond which signals are more heavily attenuated by the filter.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+</body>
+</html>

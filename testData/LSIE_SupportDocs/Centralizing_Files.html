@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Centralizing Files</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="Centralizing_Files.html">Centralizing Files</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Centralizing-Files-with-Moduledefinitionxml"></a>
+<h1 >Centralizing Files with Moduledefinition.xml<a href="#Centralizing-Files-with-Moduledefinitionxml" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Centralizing-Files-with-Moduledefinitionxml">Centralizing Files with Moduledefinition.xml</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Centralizing-Files-Between-Test-Systems">Centralizing Files Between Test Systems</a><ul><li><a href="#Synchronization-Tags">Synchronization Tags</a></li></ul>
+</li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>File synchronization allows you to automatically download solution files from LabCentral. Changes to these files can then be propagated to the station automatically via iTest's <strong>Auto-Patch</strong> feature. This feature is supported by the <em>moduledefinition.xml</em> file located in a station's $SYSTEMDIR or $SUPPORTDIR.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#cc061c;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3741/Warning3.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>WARNING:</b></td>
+			<td style="vertical-align:top;">The <strong>&lt;icentral&gt;</strong> node in the <em>$SYSTEMDIR\moduledefinition.xml</em> file is controlled from LabCentral via its Solution Patches feature. Local changes to this file will be overwritten. Local changes should be made to the <em>$SUPPORTDIR\moduledefinition.xml</em> file, as this file is not maintained by LabCentral.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Centralizing-Files-Between-Test-Systems"></a>
+<h2 >Centralizing Files Between Test Systems<a href="#Centralizing-Files-Between-Test-Systems" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To centralize a file or a group of files between test systems, edit the <strong>iCentral</strong> section of the <em>moduledefinition.xml</em> file.</p>
+
+
+	<p><ins><strong>Example:</strong></ins></p>
+
+
+<pre><code class="XML syntaxhl" data-language="XML"><span class="nt">&lt;icentral&gt;</span>
+    <span class="nt">&lt;sync&gt;</span>
+        <span class="nt">&lt;file&gt;</span>*.sc2<span class="nt">&lt;/file&gt;</span>
+        <span class="nt">&lt;localfolder&gt;</span>$SUPPORTDIR/Schedules<span class="nt">&lt;/localfolder&gt;</span>
+        <span class="nt">&lt;remotefolder&gt;</span>Schedules<span class="nt">&lt;/remotefolder&gt;</span>
+        <span class="nt">&lt;silent&gt;</span>FALSE<span class="nt">&lt;/silent&gt;</span>
+        <span class="nt">&lt;newfiles&gt;</span>TRUE<span class="nt">&lt;/newfiles&gt;</span>
+    <span class="nt">&lt;/sync&gt;</span>
+    <span class="nt">&lt;sync&gt;</span>
+        <span class="nt">&lt;file&gt;</span>*.pkl<span class="nt">&lt;/file&gt;</span>
+        <span class="nt">&lt;localfolder&gt;</span>$SUPPORTDIR/Picklist<span class="nt">&lt;/localfolder&gt;</span>
+        <span class="nt">&lt;remotefolder&gt;</span>Picklists<span class="nt">&lt;/remotefolder&gt;</span>
+        <span class="nt">&lt;silent&gt;</span>FALSE<span class="nt">&lt;/silent&gt;</span>
+    <span class="nt">&lt;/sync&gt;</span>
+    <span class="nt">&lt;sync&gt;</span>
+        <span class="nt">&lt;file&gt;</span>xducer.rng<span class="nt">&lt;/file&gt;</span>
+        <span class="nt">&lt;localfolder&gt;</span>$SYSTEMDIR<span class="nt">&lt;/localfolder&gt;</span>
+        <span class="nt">&lt;remotefolder&gt;</span>Global<span class="nt">&lt;/remotefolder&gt;</span>
+        <span class="nt">&lt;silent&gt;</span>TRUE <span class="nt">&lt;/silent&gt;</span>
+    <span class="nt">&lt;/sync&gt;</span>
+    <span class="nt">&lt;sync&gt;</span>
+        <span class="nt">&lt;file&gt;</span>*.lol<span class="nt">&lt;/file&gt;</span>
+        <span class="nt">&lt;localfolder&gt;</span>$SUPPORTDIR/data<span class="nt">&lt;/localfolder&gt;</span>
+        <span class="nt">&lt;remotefolder&gt;</span>LogLists <span class="nt">&lt;/remotefolder&gt;</span>
+    <span class="nt">&lt;/sync&gt;</span>
+<span class="nt">&lt;/icentral&gt;</span></code></pre>
+
+	<a name="Synchronization-Tags"></a>
+<h3 >Synchronization Tags<a href="#Synchronization-Tags" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following tags are used to define how files are synchronized between multiple systems:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Tag Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Tag</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>&lt;localfolder&gt;</td>
+			<td> The name of the local folder on the test system.</td>
+		</tr>
+		<tr>
+			<td>&lt;remotefolder&gt;</td>
+			<td> The relative path of the remote folder on the LabCentral system.</td>
+		</tr>
+		<tr>
+			<td>&lt;file&gt;</td>
+			<td> A file name filter describing one or more files in the remote folder. Wildcard characters are supported.</td>
+		</tr>
+		<tr>
+			<td>&lt;newfiles&gt;</td>
+			<td> (Optional) When set to TRUE, any files in the remote folder that are not in the local folder will be treated as new files and downloaded. Otherwise, only files that match files in the local folder will be downloaded to the test station. By default, this value is set to FALSE.</td>
+		</tr>
+		<tr>
+			<td>&lt;silent&gt;</td>
+			<td> When set to TRUE, the file is considered necessary and must be downloaded to the test station after triggering auto-patching. This will result in the file not being listed in the Select Patches dialog on the test station. If the <code>AUTOPATCHMODE</code> setting is set to AUTO, then all files are considered necessary and will be downloaded to the test station.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Auto-patching.html">Auto-patching</a></li>
+		<li><a class="wiki-page" href="Interacting_with_LabCentral.html#Synchronizing-Files-with-LabCentral">Interacting with LabCentral</a></li>
+	</ul>
+</body>
+</html>

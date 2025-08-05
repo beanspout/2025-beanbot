@@ -1,0 +1,507 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Managing Master Schedules</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Managing_Master_Schedules.html">Managing Master Schedules</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Managing-Master-Schedules"></a>
+<h1 >Managing Master Schedules<a href="#Managing-Master-Schedules" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Managing-Master-Schedules">Managing Master Schedules</a><ul><li><a href="#Overview">Overview</a><ul><li><a href="#Terminology">Terminology</a></li></ul>
+</li><li><a href="#Using-the-Master-Schedules-Editor">Using the Master Schedules Editor</a></li><li><a href="#Editing-Master-Schedules">Editing Master Schedules</a><ul><li><a href="#Adding-Schedule-Steps">Adding Schedule Steps</a></li><li><a href="#Adding-Procedure-Steps">Adding Procedure Steps</a></li><li><a href="#Adding-Master-Schedule-Steps">Adding Master Schedule Steps</a></li></ul>
+</li><li><a href="#Using-Looping">Using Looping</a></li><li><a href="#Using-Test-Point-Tables">Using Test Point Tables</a></li><li><a href="#Using-Copy-and-Paste">Using Copy and Paste</a></li><li><a href="#Using-Enable-and-Disable">Using Enable and Disable</a></li><li><a href="#Exporting-a-Master-Schedule">Exporting a Master Schedule</a></li><li><a href="#Using-the-Master-Schedule-Panel">Using the Master Schedule Panel</a><ul><li><a href="#Adding-the-Panel">Adding the Panel</a></li><li><a href="#Creating-the-Schedule">Creating the Schedule</a></li><li><a href="#Viewing-Your-Master-Schedule">Viewing Your Master Schedule</a></li><li><a href="#Viewing-the-Master-Schedule-Log">Viewing the Master Schedule Log</a></li></ul>
+</li><li><a href="#Using-the-Master-Schedule-Property-Manager">Using the Master Schedule Property Manager</a></li><li><a href="#Running-Your-Master-Schedule-in-AutomationPanel">Running Your Master Schedule in AutomationPanel</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Master Schedule feature is a tool for creating high-level sequences composed of schedules, procedures, and other master schedules. You can use this feature to create and run complex tests without using script or other programming methods. This feature provides:</p>
+
+
+	<ul>
+	<li>A spreadsheet based editor/view.</li>
+		<li>Step task capability.</li>
+		<li>Runtime edit without rebuild.</li>
+		<li>Built-in looping.</li>
+		<li>Test point tables.</li>
+	</ul>
+
+
+	<p>This document outlines the process for creating, managing, and running master schedules.</p>
+
+
+	<a name="Terminology"></a>
+<h3 >Terminology<a href="#Terminology" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following terms will help you understand the major components of master schedules.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width:800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Value</strong> </td>
+			<td style="text-align:left;"><strong>Value</strong> </td>
+		</tr>
+		<tr>
+			<td>Step</td>
+			<td>A step within a master schedule file. Steps may be schedules, procedures, or other master schedules. Steps can be repeated using loops.</td>
+		</tr>
+		<tr>
+			<td>Schedule Step</td>
+			<td>The name of a schedule designed to run with iTest Schedule Runner (not VCL).</td>
+		</tr>
+		<tr>
+			<td>Procedure Step</td>
+			<td>The name of a procedure containing VCL code.</td>
+		</tr>
+		<tr>
+			<td>Master Schedule Step</td>
+			<td>A master schedule step that may be composed of schedules, procedures, step tasks, etc. Master schedule steps may not contain master schedules within them.</td>
+		</tr>
+		<tr>
+			<td>Step Tasks</td>
+			<td>A step task consists of a condition and an action. The actions are used to perform various tasks within steps.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Using-the-Master-Schedules-Editor"></a>
+<h2 >Using the Master Schedules Editor<a href="#Using-the-Master-Schedules-Editor" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To access the Master Schedules editor, select <strong>Tests > Master Schedules</strong> in SolutionBuilder. The Master Schedules editor displays.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Master Schedules Editor</strong></em></span><br /><img src="attachments/download/127067/44_MasterSchedulesEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>The following right-click options are available in the editor:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2">Left Pane</th>
+		</tr>
+		<tr>
+			<td>Add</td>
+			<td> Adds a new master schedule.</td>
+		</tr>
+		<tr>
+			<td>Remove</td>
+			<td> Removes the selected master schedule.</td>
+		</tr>
+		<tr>
+			<td>Rename...</td>
+			<td> Launches the Rename dialog, which allows you to rename the master schedule.</td>
+		</tr>
+		<tr>
+			<td>Duplicate</td>
+			<td> Duplicates the selected master schedule.</td>
+		</tr>
+		<tr>
+			<td>Export to LabCentral...</td>
+			<td> Export the selected master schedule to LabCentral's Manage Lab Files page. <ins><strong>Note:</strong></ins> You must be connected to LabCentral for this option to be available.</td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td> Removes the selected master schedule and copies it to the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td> Copies the selected master schedule to the clipboard.</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td> Pastes the copied master schedule.</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td> Undoes the last action.</td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td> Redoes the last undone action.</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2">Right Pane</th>
+		</tr>
+		<tr>
+			<td>Insert Schedule Step</td>
+			<td> Inserts a new schedule step into the master schedule. For more information, refer to the <a class="wiki-page" href="#Adding-Schedule-Steps">Adding Schedule Steps</a> section below.</td>
+		</tr>
+		<tr>
+			<td>Insert Procedure Step</td>
+			<td> Inserts a new procedure step into the master schedule. For more information, refer to the <a class="wiki-page" href="#Adding-Procedure-Steps">Adding Procedure Steps</a> section below.</td>
+		</tr>
+		<tr>
+			<td>Insert Master Schedule Step</td>
+			<td> Inserts a new master schedule step into the master schedule. For more information, refer to the <a class="wiki-page" href="#Adding-Master-Schedule-Steps">Adding Master Scehdule Steps</a> section below.</td>
+		</tr>
+		<tr>
+			<td>Insert Loop</td>
+			<td> Inserts a loop into the master schedule. For more information, refer to the <a class="wiki-page" href="#Using-Looping">Using Looping</a> section below.</td>
+		</tr>
+		<tr>
+			<td>Delete Selected Steps</td>
+			<td> Deletes the selected steps from the master schedule.</td>
+		</tr>
+		<tr>
+			<td>Enable/Disable Steps</td>
+			<td> Enables/disables the selected steps in the master schedule. For more information, refer to the <a class="wiki-page" href="#Using-Enable-and-Disable">Using Enable and Disable</a> section below.</td>
+		</tr>
+		<tr>
+			<td>Copy Steps/Copy</td>
+			<td> Copies the selected step(s) or cell value(s) to the clipboard. For more information, refer to the <a class="wiki-page" href="#Using-Copy-and-Paste">Using Copy and Paste</a> section below.</td>
+		</tr>
+		<tr>
+			<td>Paste Steps/Paste</td>
+			<td> Pastes the copied step(s) or cell value(s). For more information, refer to the <a class="wiki-page" href="#Using-Copy-and-Paste">Using Copy and Paste</a> section below.</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td> Undoes the last action.</td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td> Redoes the last undone action.</td>
+		</tr>
+		<tr>
+			<td>Channel Select...</td>
+			<td> Launches the Channel Selection dialog. This dialog allows you to select a channel for procedures with arguments. This option is only available for procedure steps.</td>
+		</tr>
+		<tr>
+			<td>Procedure Select...</td>
+			<td> Launches the Select Procedure dialog. This dialog allows you to select a procedure. This option is only available for procedure steps.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Editing-Master-Schedules"></a>
+<h2 >Editing Master Schedules<a href="#Editing-Master-Schedules" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The following column types are available to customize your master schedule:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Column Types</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Column</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Step Name</td>
+			<td> The name of the step (e.g., Step1).</td>
+		</tr>
+		<tr>
+			<td>Step Parameter</td>
+			<td> The schedule, procedure, or master schedule to use as the step's parameter. The options available are dependent upon the type of step inserted.</td>
+		</tr>
+		<tr>
+			<td>Step Task 1 - 2</td>
+			<td> Launches the Edit Step Task dialog. Master schedules support conditional and unconditional step tasks. For more information, refer to the <a class="wiki-page" href="Step_Tasks.html">Step Tasks</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>Comment</td>
+			<td> Notes for the step (e.g., Run Schedule).</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p>Master Schedules are comprised of different steps that can execute schedule files (<em>.sc2</em>), procedure files (<em>.tsc</em>), and master schedule files (<em>.msf</em>). You can add schedule, procedure, and master schedule steps to your master schedule using their respective <strong>Insert Step</strong> right-click option. The following sections detail each step type. You can also include step tasks and loop counts to further customize your master schedule. The following sections walk you through the process of adding these different step types to create a master schedule that can fulfill your testing needs.</p>
+
+
+	<a name="Adding-Schedule-Steps"></a>
+<h3 >Adding Schedule Steps<a href="#Adding-Schedule-Steps" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Schedule steps allow you to run a pre-configured schedule. Schedules can be configured using SolutionBuilder's Schedules editor. For more information about configuring schedules, refer to the <a class="wiki-page" href="Managing_Schedules.html">Managing Schedules</a> documentation.</p>
+
+
+	<p>The schedule to run is specified in the <strong>Step Parameter</strong> column. Schedule files that are located in the <em>Schedules</em> folder will display in the list of available schedules.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Schedule Step Parameter</strong></em></span><br /><img src="attachments/download/89613/41_MSParameter.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Adding-Procedure-Steps"></a>
+<h3 >Adding Procedure Steps<a href="#Adding-Procedure-Steps" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Procedure steps allow you to run a pre-configured procedure containing VCL code. Procedures can be configured using SolutionBuilder's Procedures editor. For more information about configuring procedures, refer to the <a class="wiki-page" href="Managing_Procedures.html">Managing Procedures</a> documentation.</p>
+
+
+	<p>The procedure to run is specified in the <strong>Step Parameter</strong> column. The drop-down list in this column is limited. To display all solution procedures, use the <strong>Procedure Select...</strong> right-click option to open the Select Procedure dialog.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Select Procedure Right-Click Option</strong></em></span><br /><img src="attachments/download/86186/MS_SelectProcedureRightClickOption.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Select Procedure Dialog</strong></em></span><br /><img src="attachments/download/86187/MS_SelectProcedureDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>For procedures with arguments, you can select a channel to be used via the <strong>Channel Select...</strong> right-click option. This option will open the <strong>Channel Selection</strong> dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Select Channel Right-Click Option</strong></em></span><br /><img src="attachments/download/86189/MS_SelectChannelRightClickOption.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 2em;"> <em><strong>Channel Selection Dialog</strong></em></span><br /><img src="attachments/download/86188/MS_SelectChannelDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Adding-Master-Schedule-Steps"></a>
+<h3 >Adding Master Schedule Steps<a href="#Adding-Master-Schedule-Steps" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Master schedule steps allow you to run a pre-configured master schedule. Note that you cannot insert master schedules that have master schedules embedded within them.</p>
+
+
+	<p>The master schedule to run is specified in the <strong>Step Parameter</strong> column. Master schedule files that are located in the <em>MasterSchedules</em> folder will display in the list of available master schedules.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Master Schedule Step Parameter</strong></em></span><br /><img src="attachments/download/89619/41_MSDropDown.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Using-Looping"></a>
+<h2 >Using Looping<a href="#Using-Looping" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can use the looping feature to repeat steps within your master schedule. During runtime, the loop count is updated in the live viewer representing the total number of loops complete and the total count of loops. To add step loops, perform the following:</p>
+
+
+	<ol>
+	<li>Click the checkbox next to the step you want looped.</li>
+		<li>Right-click and select <strong>Insert Loop</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Insert Loop</strong></em></span><br /><img src="attachments/download/89630/41_MSInsertLoop.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Loop Step</strong></em></span><br /><img src="attachments/download/89631/41_MSLoopStep.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Right-click within the loop to add steps that are run during the loop.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Insert New Step</strong></em></span><br /><img src="attachments/download/89632/41_MSAddLoopSteps.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br />You can also click the icon of an existing step and drag it into the loop. Steps can be inserted beneath, above, or in place of other steps.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Insert Step</strong></em></span><br /><img src="attachments/download/115801/43_SBDrop.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Define the number of iterations for the loop in the <strong>Step Parameter</strong> column. Double-click the value in the <strong>Begin</strong> row and enter a new value.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Repeat Twice</strong></em></span><br /><img src="attachments/download/89634/41_MSRepeat.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<p>When the master schedule is running the loop, the current loop is indicated in the status bar at the bottom of the Master Schedule panel.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Master Schedule Loop Count</strong></em></span><br /><img src="attachments/download/22075/LoopCount.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />You can also set the loop value as a numeric channel, enabling you to parameterize the number of times the loop is repeated. To set the loop as a channel, double-click the cell and click the <img src="attachments/download/32752/dotdotdot.png" alt="" /> button to display the Channel Selection dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Channel Selection Dialog</strong></em></span><br /><img src="attachments/download/89635/41_ChannelSelection.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Loops cannot be embedded within loops.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Using-Test-Point-Tables"></a>
+<h2 >Using Test Point Tables<a href="#Using-Test-Point-Tables" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Test Point tables provide an iterative means for testing and collecting data. The Test Points table is a feature that can be executed within loops; the tables are comprised of channel names and values as defined for specific tests. When a master schedule is running and it enters a loop with a test points table, the channel values are obtained from each row in the Test Points table. The number of rows is equivalent to the iterations of the loop. The table supports a maximum of 20 channels (columns) and 100 values (rows) for each channel.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The Edit Test Points dialog is only editable while the master schedule is in edit mode; otherwise, the dialog is read-only.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>A loop contains two nodes: the <strong>Begin</strong> node and the <strong>End</strong> node. To define the Test Point table associated to the loop, perform the following:</p>
+
+
+	<ol>
+	<li>Click the button located on the <strong>Begin</strong> node.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Edit Test Points Button</strong></em></span><br /><img src="attachments/download/89638/41_MSEditTestPoints.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br />The Edit Test Points dialog displays. It is used to specify the number of test point channels and the number of values for those channels. The number of loop iterations is equivalent to the number of rows in the table. Only numeric channels and values can be added; you cannot assign a channel to the value of another channel.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Edit Test Points Dialog</strong></em></span><br /><img src="attachments/download/89640/41_MSEditTestPointsDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Use the up and down arrows to add channel columns and rows to the table.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Adding Rows and Columns</strong></em></span><br /><img src="attachments/download/89641/41_MSAddingRows.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Enter the channel names in the column headers. You can type the channel values or search for channels using the Channel Select dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Adding Channel Values</strong></em></span><br /><img src="attachments/download/115802/43_AddingChannelValues.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Define the values for each channel in the rows beneath.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Adding Channel Values</strong></em></span><br /><img src="attachments/download/89643/41_MSDefineValues.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<p>You can use the following keyboard shortcuts to expedite the process of completing the table: <strong>CTRL + X</strong>, <strong>CTRL + C</strong>, <strong>CTRL + V</strong>. To copy and paste an entire test points table, you must first add the necessary number of rows and columns to the new table before pasting your values.</p>
+
+
+	<a name="Using-Copy-and-Paste"></a>
+<h2 >Using Copy and Paste<a href="#Using-Copy-and-Paste" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can copy and paste entire step rows, individual cells, and loops in the master schedule.</p>
+
+
+	<p>To copy an entire step row, select the checkbox next to the row(s) you want to copy and then right-click and select the <strong>Copy Steps</strong> option. Right-click within the master schedule and select the <strong>Paste Steps</strong> option to paste them. The new steps will appear at the end of the list of steps. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Copy Steps</strong></em></span><br /><img src="attachments/download/89646/41_MSCopyPaste.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />To copy and paste items such as step parameters, step tasks, or comments, right-click the item and select <strong>Copy</strong>. Right-click and select <strong>Paste</strong> in the location you want to add the copied value. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Copy Item</strong></em></span><br /><img src="attachments/download/89647/41_MSCopyItem.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />Values pasted in the <strong>Step Parameter</strong> column are verified against the list of valid values depending on the row type. If the value is not valid, an error message will display.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Not Valid</strong></em></span><br /><img src="attachments/download/89648/41_MSError.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />If you copy a loop, the test point table values are also copied into the new loop.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Shortcut keys are not supported.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Using-Enable-and-Disable"></a>
+<h2 >Using Enable and Disable<a href="#Using-Enable-and-Disable" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Steps that are marked as disabled will be skipped during runtime. Steps can be enabled and disabled by selecting <strong>Enable/Disable Steps</strong> from the right-click menu:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Enable/Disable Step</strong></em></span><br /><img src="attachments/download/89649/41_EnableDisableSteps.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />When a step is disabled, it will appear with a line through it as shown below:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Disabled Step</strong></em></span><br /><img src="attachments/download/89651/41_DisabledStep.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />To enable a disabled step, right-click on the step and select <strong>Enable/Disable</strong> step. Once enabled, the line through the step will no longer appear.</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#ebd700;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3740/caution.gif" alt="" /></td>
+			<td style="vertical-align:top;"><b>CAUTION:</b></td>
+			<td style="vertical-align:top;">Any &quot;Goto Step&quot; Step Tasks that reference a disabled step will instead go to the step after their intended target.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Exporting-a-Master-Schedule"></a>
+<h2 >Exporting a Master Schedule<a href="#Exporting-a-Master-Schedule" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Master schedules can be exported to LabCentral's Manage Lab Files page using the following steps:</p>
+
+
+	<p><table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Master schedules can only be exported if iTest is connected to LabCentral.</td>
+		</tr>
+	</table></p>
+
+
+	<ol>
+	<li>Right-click on the master schedule you want to upload and select the <strong>Export to LabCentral...</strong> option.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Export to LabCentral</strong></em></span><br /><img src="attachments/download/119218/43_Export.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;</li>
+		<li>You will be prompted to enter a comment to appear with the exported master schedule.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Enter Comment</strong></em></span><br /><img src="attachments/download/114965/42_EnterComment.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;</li>
+		<li>Upon successful upload, the exported master schedule will appear in LabCentral's <em>MasterSchedules</em> folder, which can be accessed through the <strong>Test Systems > Manage Lab Files</strong> page. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Shown in MasterSchedule Folder</strong></em></span><br /><img src="attachments/download/114964/42_ExportedFromSB.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<a name="Using-the-Master-Schedule-Panel"></a>
+<h2 >Using the Master Schedule Panel<a href="#Using-the-Master-Schedule-Panel" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Master Schedule editor exists in SolutionBuilder, where you can perform all necessary configurations. The following sections detail the process for adding, modifying, and using the Master Schedule panel in AutomationPanel.</p>
+
+
+	<a name="Adding-the-Panel"></a>
+<h3 >Adding the Panel<a href="#Adding-the-Panel" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To add the master schedule panel to AutomationPanel, perform the following:</p>
+
+
+	<ol>
+	<li>Click <strong>File > New > Layout</strong> in the main menu to add a new layout. </li>
+		<li>Right-click within the layout and click <strong>New Panel</strong>.</li>
+		<li>Select the Master Schedule panel type and click <strong>OK</strong>.  Note that only one instance of the master schedule panel is allowed per running application.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Master Schedule Panel</strong></em></span><br /><img src="attachments/download/89609/41_MSNewSchedule.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<p>The Master Schedule <a class="wiki-page" href="AutomationPanel_Operators_Guide.html#Menu-Bar">menu bar</a> <strong>Start</strong> and <strong>Stop</strong> buttons are tied to VCL procedures, where each procedure name is stored in the <em>powertek.ini</em> file; refer to the <a class="wiki-page" href="ITest_INI_Options.html#Master-Schedules">Master Schedules INI Options</a> documentation for more information.</p>
+
+
+	<a name="Creating-the-Schedule"></a>
+<h3 >Creating the Schedule<a href="#Creating-the-Schedule" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To begin creating your schedule, select <strong>(new)</strong> and click the <strong>Edit</strong> icon ( <img src="attachments/download/30014/EditIcon.png" alt="" /> ) on the Master Schedule panel tool bar. SolutionBuilder will load in a new window. You will be prompted to enter a name for the schedule. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Name MasterSchedule</strong></em></span><br /><img src="attachments/download/89610/41_RenameMasterScheduleDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />Refer to the <a class="wiki-page" href="#Editing-Master-Schedules">Editing Master Schedules</a> section above for information on how to edit your master schedule.</p>
+
+
+	<a name="Viewing-Your-Master-Schedule"></a>
+<h3 >Viewing Your Master Schedule<a href="#Viewing-Your-Master-Schedule" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To view your Master Schedule in iTest, select <strong>Save</strong> or <strong>Save As</strong> located at the bottom of the editor.</p>
+
+
+	<p>The saved Master Schedule will load in the Master Schedule panel:<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Master Schedule in iTest Panel</strong></em></span><br /><img src="attachments/download/89652/41_MSIniTest.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Viewing-the-Master-Schedule-Log"></a>
+<h3 >Viewing the Master Schedule Log<a href="#Viewing-the-Master-Schedule-Log" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The Master Schedule log records errors and actions completed in Master Schedule. The log can be used to easily investigate and diagnose errors that have occurred when using Master Schedule.</p>
+
+
+	<p>To view the Master Schedule Log, select the <strong>View Log</strong> button from the Master Schedule panel. <br /> &nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>View Log Button</strong></em></span><br /><img src="attachments/download/89653/41_MSLogSelect.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />The Master Schedule log will appear as a <em>.log</em> file.<br /> &nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Master Schedule Log</strong></em></span><br /><img src="attachments/download/57592/MSViewLog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Using-the-Master-Schedule-Property-Manager"></a>
+<h2 >Using the Master Schedule Property Manager<a href="#Using-the-Master-Schedule-Property-Manager" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Property Manager dialog allows you to customize the visual aspects of the panel, such as font type, size, and grid colors. Additionally, you can define the file search criteria for procedures and schedules in the <strong>Procedures Filter</strong> and <strong>Schedules Filter</strong> fields. The available configuration options are detailed in the table below.</p>
+
+
+	<p>To access the Property Manager dialog, select <strong>Tools > Property Manager</strong> from the main menu then right-click the Master Schedule panel. Alternatively, click the hamburger icon ( <img src="attachments/download/32870/HamburgerIcon.png" alt="" /> ) located in the upper-right corner of the panel. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Master Schedule Property Manager Dialog</strong></em></span><br /><img src="attachments/download/97163/42_MSPropertyManager.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />Refer to the <a class="wiki-page" href="AutomationPanel_Operators_Guide.html#Master-Schedule-Panel">Master Schedule Panel</a> for more information on how to customize the Master Schedule panel.</p>
+
+
+	<a name="Running-Your-Master-Schedule-in-AutomationPanel"></a>
+<h2 >Running Your Master Schedule in AutomationPanel<a href="#Running-Your-Master-Schedule-in-AutomationPanel" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Once you have created and customized your master schedule, you can execute it. Master schedules cannot be run in edit mode; to exit edit mode, save your panel and click the <strong>Edit</strong> icon ( <img src="attachments/download/30014/EditIcon.png" alt="" /> ). Click the <strong>Start</strong> button ( <img src="attachments/download/30019/StartIcon.png" alt="" /> ) to initiate the schedule.</p>
+
+
+	<p>If you have configured your solution to incorporate the use of other panels while your master schedule is running, you can view the process of the test and its data values as it is executing.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Test In-Progress</strong></em></span><br /><img src="attachments/download/89655/41_MSRunning.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+</body>
+</html>

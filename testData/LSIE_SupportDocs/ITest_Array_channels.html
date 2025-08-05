@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ITest Array Channels</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="ITest_Application_Development_Guide.html">ITest Application Development Guide</a></li>
+<li><a href="ITest_Channels.html">ITest Channels</a></li>
+<li><a href="ITest_Array_Channels.html">ITest Array Channels</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="iTest-Array-Channels"></a>
+<h1 >iTest Array Channels<a href="#iTest-Array-Channels" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can add and modify the Virtual Output Array and Virtual String Array channel types using the Test Manager channel editor. Up to 100 array channels can be supported in an <em>.fil</em> file, where a maximum of 50 of these channels are Virtual String Arrays. The array indices for these channel types begin at zero. If you attempt to reference an element of an array that is greater than or equal to the size of the array, a special value is returned i.e., numeric arrays return the value "-999" and string arrays return the value "***".</p>
+
+
+	<p>The Virtual Output Array and Virtual String Array channel types are defined in the standard <em>DATA.DEF</em> file. Only the value fields, String value and EU, are indexed.</p>
+
+
+	<a name="Referencing-Array-Elements"></a>
+<h2 >Referencing Array Elements<a href="#Referencing-Array-Elements" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To reference the individual element of an array channel, you will use the standard C/C++/C# method. This means that array indexes start at 0 and increment to N-1 for an array of size N. To reference a specific element of an array use the following format:</p>
+
+
+<pre>
+Channel-name ‘[‘ index ‘]’
+</pre>
+
+	<p>For example, if you define an array channel called “arrayval” and want to access the tenth element, the channel name used would be</p>
+
+
+<pre>
+Arrayval[9]
+</pre>
+
+	<p>The array index value must be a whole number greater or equal to 0 and less than the size of the array, except when used in VCL (see the VCL section) where you could use a numeric channel. If you reference an array channel without using an index, it is assumed that you are referring to the first element of the array. You can reference a non-indexed field of an array channel using a channel name with an index, but the index is ignored. For non-indexed fields, there is only one value that is shared by every channel of that array. For example, if you were to read the “Units Label” field of “arrayval[1]”, it would return the same value as “arrayval[2]” or “arrayval[3]”. Also, if you  were to set the “Units Label” field of “arrayval[1]” to “Hz”, reading the “Units Label” field for “arrayval[2]” or “arrayval[3]” would now return “Hz” also.</p>
+
+
+	<a name="Array-Elements-in-Displays"></a>
+<h2 >Array Elements in Displays<a href="#Array-Elements-in-Displays" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>There are two ways to use array channel names in the display objects of a display: with a static index or without an index.</p>
+
+
+	<a name="Static-Index"></a>
+<h3 >Static Index<a href="#Static-Index" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>When you configure a display object to display an array channel, you can add a static index to the end of the channel name (ie arrayval[2], arrayval[3], etc). When you do this, the display object will always display the value from that index of the array, regardless of any index that the display might have been launched with.</p>
+
+
+	<a name="No-Index"></a>
+<h3 >No Index<a href="#No-Index" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>When specifying an array channel in a display object, you can also choose to not specify an index. You just use the name of the array channel. This has special significance and should only be used when you intend to launch an Indexed Display screen (see below).</p>
+
+
+	<a name="Indexed-Display"></a>
+<h3 >Indexed Display<a href="#Indexed-Display" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>When you launch a display using a softpanel mailslot message, you can also add an index to the name of the display to make it an Indexed display.</p>
+
+
+	<p>For example, if you have a display called MyDisplay, you could launch it with an index using either of the following mailslot messages:</p>
+
+
+<pre>
+$DISPLAY;MyDisplay[2]
+$DISPLAY;MyDisplay[2].dsp
+</pre>
+
+	<p>All mailslot messages for launching displays support this syntax. This sets an index within the display that can be used by any of the display objects. Only display objects which were configured to display an unindexed array channel will use this display index. Display objects which use non-array channels or array channels with a static index will ignore the display index. When a display is launched with an index, the display title changes to show the index. The mailslot name of the display will contain the index as well. For example, create a display called MyDisplay which contains a Gauge where the channel name is set to “arrayval”, an Indicator where the channel name is “arrayval[1]” and a Bar where the channel name is “HS1_SETPOINT”. If you send the message “$DISPLAY;MyDisplay[2]” to the softpanel, then the display would be launched and the title would show “MyDisplay[2]”. The Gauge would display the third value of “arrayval” because it doesn’t have an index and would use the display index the display was launched with, which was 2 in this case. The Indicator would display the value of the second value of the array channel because it contained a static index (the [1] part). The Bar would just ignore the display index and show the normal value of HS1_SETPOINT because HS1_SETPOINT is not an array channel.</p>
+
+
+	<p>To close the display, you would send a DIE message to the mailslot name<br /><pre>
+“\\.\\mailslot\MyDisplay[2]”.
+</pre></p>
+
+
+	<p>Because the mailslot name contains the array index, you can launch multiple copies of the same display at the same time with different indexes. In addition to launching an indexed display from softpanel, you can also use an index when running <em>DspDrv.exe</em> to launch a display. For example, if a display was called <em>MyDisplay.dsp</em> and was located at <em>C:\Displays</em>, you could launch it with an index of 2 using the following command line:</p>
+
+
+<pre>
+DspDrv.exe C:\Displays\MyDisplay[2].dsp
+</pre>
+
+	<p>If you don’t use an index when launching a display and the display contains objects configured with an unindexed channel name, then that object will display the value of the first element of the array. Each display also has a new mailslot command to change the array indices being referenced in the display:</p>
+
+
+<pre>
+$SETARRAYINDEX &lt;new index&gt;
+</pre>
+
+	<p>This message can be sent to displays to change their array index. Doing so changes the mailslot name of the display. So if the display file is <em>test.dsp</em>, and it was launched as: <pre> test[2].dsp</pre>, it would have a mailslot name of \\.\mailslot\test[2]. Sending the message:<br /><pre> MESSAGE "\\.\mailslot\test[2]&gt;&gt;$SETARRAYINDEX 3"</pre><br />would change the display's index to 3 and the mailslot name would become \\.\mailslot\test[3].</p>
+
+
+	<p>A macro has been added to the ADTButton and ADTCombo display objects to help send this variable based mailslot. When constructing a message with these objects, use the Macro - $DISPLAYMAILSLOT$ to represent the current mailslot name.</p>
+
+
+	<a name="Array-Elements-in-VCL"></a>
+<h2 >Array Elements in VCL<a href="#Array-Elements-in-VCL" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The VCL scripting language also supports the use of array channels. Indexed array channels can be used anywhere in VCL where you can use an arithmetic expression. For example, in #if and #while statements, in functions, etc. With the exception of expressions though, most VCL statements do not support the use of array channels where the array value is the one being changed. The following statements are the only ones that support changing array values:</p>
+
+
+<pre>
+SET
+SETFROMSTRING
+RAMP
+</pre>
+
+	<p>When specifying the index for an array channel, you can only use either a numeric constant (1, 2, 3, etc) or another channel name. You can’t use an expression or a function call as the index. If you need to do that, you will need to assign that value to another channel and then use that channel as the index. The following are valid VCL statements using array channels:</p>
+
+
+<pre>
+SET HS1_SETPOINT arrayval[2] + arrayval[1]
+SET arrayva[2] HS1_SETPOINT + arrayval[2]
+RAMP HS1_SETPOINT arrayval[1] arrayval[2]
+</pre>
+
+	<p>You can also pass indexed array channels as arguments to procedures that accept arguments.</p>
+
+
+	<p>The following commands can be used with arrays also:<br /><pre>
+LOADARRAY
+STOREARRAY
+</pre></p>
+
+
+	<p>Instead of an array name, you can now specify the name of an array channel for these commands. The commands will then either load or store the values of that array channel to a text file.</p>
+
+
+	<a name="Array-Channel-Specific-VCL"></a>
+<h3 >Array Channel Specific VCL<a href="#Array-Channel-Specific-VCL" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following VCL functions were added to support the use of array channels:<br /><pre>ArrayMin, ArrayMinIndex, ArrayMax, ArrayMaxIndex, ArrayMean, ArrayStdDev, ArrayInit, ArrayCopy, ArraySum</pre><br />For more information about these functions, refer to the <a class="wiki-page" href="VCL_Array_Functions.html">VCL Array Functions</a> documentation.</p>
+
+
+	<a name="Array-Elements-and-Logging"></a>
+<h2 >Array Elements and Logging<a href="#Array-Elements-and-Logging" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Array channels can be used in data logs and logs can be launched with an array index, similar to the array support with displays. When creating a log order list, you can specify an array channel in two different ways: with a static index or with no index. In most cases, an index must be specified; for more information, reference the <a class="wiki-page" href="#No-Index-2">No Index</a> section below.</p>
+
+
+	<a name="Static-Index-2"></a>
+<h3 >Static Index<a href="#Static-Index-2" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To specify a static index, you would add the array channel name with an index on the end that is a numeric constant (ie arrayval[1], arrayval[2], etc). With respect to logging, this will function the same as any other channel in the system.</p>
+
+
+	<a name="No-Index-2"></a>
+<h3 >No Index<a href="#No-Index-2" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The second way to specify an array channel is with no index. You would just add the name of the array channel itself to the log order list with no index. This has special meaning when a log is started with an index (called an Indexed Log). This option is only available to non-Blackbox log order lists in a battery system.</p>
+
+
+	<a name="Indexed-Log"></a>
+<h3 >Indexed Log<a href="#Indexed-Log" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>When starting a data log (either in VCL or with a mailslot message), you can now add an index to the end of the log. This index will then be used as the index for any array channel in the log order list that doesn’t have an index. Array channels with a static index or channels that are not an array channel will just ignore this index. For example, you could create a log order list containing the following values:<br /><pre>
+arrayval
+arrayval[1]
+HS1_SETPOINT
+</pre></p>
+
+
+	<p>Then you would define a log called MyLog to use this log order list. In VCL you would start a log using the following command:<br /><pre>
+STARTLOG MyLog[2]
+</pre></p>
+
+
+	<p>When the log is finished, the data file would contain the value of arrayval[2] in the first data column (because it was unindexed in the log order list and 2 was passed as the log index), arrayval[1] (because it had a static index and ignored the log index) and HS1_SETPOINT (this is just a regular channel and so it ignores the log index). You could use the following command to stop the log before it had completed:<br /><pre>
+STOPLOG MyLog[2]
+</pre></p>
+
+
+	<table>
+		<tr>
+			<td style="background:#cc061c;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3741/Warning3.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>WARNING:</b></td>
+			<td style="vertical-align:top;">Indexed logs are only supported in BTS when using non-Blackbox logs. This is due to the limitation on log order lists and their use of unindexed array channels. </td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Log-Header-Form-UVL-Files"></a>
+<h3 >Log Header Form (UVL) Files<a href="#Log-Header-Form-UVL-Files" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>You can also specify array channels in UVL files. Again, they can either have a static index or no index. If a static index is used, then that name will be used as is in the header of any data logs using the UVL. If the array channel in the UVL has no index specified, then it will use the index passed to the STARTLOG command. The unindexed channel name will appear in the header of the data log.</p>
+
+
+	<a name="More-array-logging-notes"></a>
+<h3 >More array logging notes<a href="#More-array-logging-notes" class="wiki-anchor">&para;</a></h3>
+
+
+	<ul>
+	<li>You can start multiple data logs at the same time using the same log name with a different index. For example, you could have a log MyLog[1] and MyLog[2] running at the same time and they wouldn’t interfere with each other.</li>
+		<li>When creating the data log in Test Manager, there is a special macro you can use in the FileName field. If you put %INDEX% in the filename field, then that text will be replaced with the index used to start the log. If no index was used when the log was started, then %INDEX% will just be replaced with the empty string “”.</li>
+		<li>The maximum value of the index that you can use when starting a log is determined by the size of the largest array channel specified in the LOL with no index. So if you had two array channels, MyArray and YourArray, and MyArray had 10 elements and YourArray had 20 elements, then the largest value you could use for an index in STARTLOG would be 19 (because YourArray had 20 elements).</li>
+	</ul>
+
+
+	<a name="Other-Array-Notes"></a>
+<h2 >Other Array Notes<a href="#Other-Array-Notes" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li>Array sizes cannot be changed once the system has been started. Changing the “Maximum Elements” field at runtime will have no effect on the size of the array.</li>
+		<li>Array channels are not meant to hold large arrays of values. You can use the disk based legacy arrays for this. Therefore, arrays will be limited to a size of 256 values due to packet size limitations and the need to keep the RDB size reasonable.</li>
+		<li>The first element of all arrays is located at index 0.</li>
+		<li>Data Sourcing with array channels is not supported.</li>
+		<li>The old Diagnostic and Signal List do not support array channels.</li>
+		<li>Limits, data quality, and statistics are not supported for array channels.</li>
+		<li>Array channels cannot be used in control loops, 2D or 1D tables, schedule columns, schedule headers, or any other location not specifically mentioned above.</li>
+	</ul>
+</body>
+</html>

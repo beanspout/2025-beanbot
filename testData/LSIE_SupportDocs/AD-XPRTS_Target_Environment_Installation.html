@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>AD-XPRTS Target Environment Installation</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+ <span style="display: none;">
+
+
+	<p><img src="attachments/download/93003/ADT_LOGO_OUTLINE.png" style="width: 100px;" alt="" /></p>
+
+
+	 </span>
+
+
+	 <div class="CoverPage" class="body">
+
+
+	 <div class="Title">
+
+
+	<p style="text-align:center;"><br /><strong><span style="font-size:30pt;color: #005CAA;">AD-XPRTS Target Environment Installation</span></strong></p>
+
+
+	 </div>
+
+
+	<p style="text-align:center;"><br /><em><span style="font-size:12pt;font-style: italic;">Product Version 4.5</span></em></p>
+
+
+	<p style="text-align:center;"><br /><strong><span style="font-size:16pt;">Prepared By</span></strong><br />ADT Software Engineering</p>
+
+
+	<p style="text-align:center;"><br /><span style="font-size: 10pt;color:red;">A&#38;D Confidential Document Distributable only to A&#38;D Customers</span><br /><span style="font-size: 10pt;color:black;">Copyright A&#38;D Company, Limited<br />A&#38;D Technology Inc.</span></p>
+
+
+	 </div>
+
+
+	 <h1>Table of Contents</h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#AD-XPRTS-Target-Environment-Installation">AD-XPRTS Target Environment Installation</a><ul><li><a href="#Introduction">Introduction</a><ul><li><a href="#Requirements">Requirements</a></li></ul>
+</li><li><a href="#Preparation">Preparation</a><ul><li><a href="#USB-Boot-Media-Preparation">USB Boot Media Preparation</a></li><li><a href="#Host-PC-Preparation">Host PC Preparation</a></li><li><a href="#RTC-Preparation">RTC Preparation</a></li></ul>
+</li><li><a href="#Image-Installation">Image Installation</a><ul><li><a href="#RTC">RTC</a></li></ul>
+</li><li><a href="#Verification">Verification</a><ul><li><a href="#Ping-RTC-from-Host-PC">Ping RTC from Host PC</a></li><li><a href="#Telnet-to-RTC-from-Host-PC">Telnet to RTC from Host PC</a></li><li><a href="#View-directory-structure-on-RTC">View directory structure on RTC</a></li></ul>
+</li><li><a href="#iTest-Xenomai-Management-Tool">iTest Xenomai Management Tool</a></li><li><a href="#Patching-Xenomai-System-on-RTP-PC">Patching Xenomai System on RTP PC</a><ul><li><a href="#Notes">Notes</a></li></ul></li></ul></li></ul></p>
+
+
+	<a name="AD-XPRTS-Target-Environment-Installation"></a>
+<h1 >AD-XPRTS Target Environment Installation<a href="#AD-XPRTS-Target-Environment-Installation" class="wiki-anchor">&para;</a></h1>
+
+
+	<a name="Introduction"></a>
+<h2 >Introduction<a href="#Introduction" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>This document provides the instructions to prepare an AD-XPRTS Real Time Computer (RTC). The sections below describe the process of installing the open source real-time OS – Xenomai and preparing the AD-XPRTS target environment.</p>
+
+
+	<a name="Requirements"></a>
+<h3 >Requirements<a href="#Requirements" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To install an AD-XPRTS target environment, iConnect RTCs require the following:</p>
+
+
+	<ul>
+	<li>Intel Core series CPU</li>
+		<li>RAM 4GB - 32GB</li>
+		<li>HDD 10GB - 1TB</li>
+		<li>USB Drive (Formatted FAT32)</li>
+		<li>NIC with Intel chip
+	<ul>
+	<li>Confirm that NIC is recognized by an OS when it is booted with USB boot media</li>
+	</ul></li>
+	</ul>
+
+
+	<p>iTest Windows Host PC Systems require the following:</p>
+
+
+	<ul>
+	<li>Specification suitable for iTest.Pro </li>
+		<li>Including NIC for connection to RTC</li>
+		<li>RTC boot drive, minimum of 1GB</li>
+	</ul>
+
+
+	<p>The following installation software is required:</p>
+
+
+	<ul>
+	<li>USB image files</li>
+		<li>image-ITEST-XX.XX.XX.wic.xz</li>
+		<li>image-ITEST-XX.XX.XX.usb.zip</li>
+	</ul>
+
+
+	<p>Find the image files available at <em>\\aasvr2.andt.local\SoftwareEngineering\Projects\Xenomai\Images</em>.</p>
+
+
+	<a name="Preparation"></a>
+<h2 >Preparation<a href="#Preparation" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="USB-Boot-Media-Preparation"></a>
+<h3 >USB Boot Media Preparation<a href="#USB-Boot-Media-Preparation" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To prepare USB boot media for the target PC, do the following:</p>
+
+
+	<ol>
+	<li>Extract the <em>image-ITEST-XX.XX.XXl.usb.zip</em> file to the USB drive.</li>
+		<li>Copy <em>image-ITEST-XX.XX.XX.wic.xz</em> to the USB drive.</li>
+		<li>Verify the <em>EFI</em> folder is found on the USB drive root directory.</li>
+		<li>Verify <em>image-ITEST-XX.XX.XX.wic.xz</em> is found on the USB drive root directory.</li>
+	</ol>
+
+
+	<a name="Host-PC-Preparation"></a>
+<h3 >Host PC Preparation<a href="#Host-PC-Preparation" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Configure the network card of your host PC to the 10.102.226.148 static IP address. This will place the host PC and the RTC on the same subnet, allowing for seamless connectivity.</p>
+
+
+	<a name="RTC-Preparation"></a>
+<h3 >RTC Preparation<a href="#RTC-Preparation" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>To prepare your target PC for installation, do the following:</p>
+
+
+	<ol>
+	<li>Connect a keyboard and a monitor to the PC.</li>
+		<li>Attach USB boot media to any USB port of the PC.</li>
+		<li>Power up the PC and enter to BIOS setup.</li>
+		<li>Enter the <strong>CPU Configuration</strong> screen.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>CPU Configuration</strong></em></span><br /><img src="attachments/download/133158/SetupCPU1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Disable <strong>Hyper Threading</strong> and <strong>VT-d</strong>. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Disable Settings</strong></em></span><br /><img src="attachments/download/133159/SetupCPU2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Enter the <strong>CPU - Power Management Control</strong> screen.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>CPU - Power Management Control</strong></em></span><br /><img src="attachments/download/133160/SetupCPU3.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Enter the <strong>CPU - Power Management Control</strong> screen and disable <strong>SpeedStep</strong>, <strong>Speed Shift</strong> and <strong>C States</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Disable Settings</strong></em></span><br /><img src="attachments/download/133161/SetupCPUPower.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Enter the BOOT page and set Boot Option 1 to <strong>USB</strong> and Boot Option 2 to the <strong>hdd/sdd</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Boot Configuration</strong></em></span><br /><img src="attachments/download/133162/SetupBoot.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<a name="Image-Installation"></a>
+<h2 >Image Installation<a href="#Image-Installation" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="RTC"></a>
+<h3 >RTC<a href="#RTC" class="wiki-anchor">&para;</a></h3>
+
+
+	<ol>
+	<li>Insert USB drive into the RTC.  Preferably use a USB 3.0 port for fastest operation.</li>
+		<li>Apply power and wait for USB drive to boot.</li>
+		<li>Select the <strong>Yes</strong> button to both dialogs to start programming the image.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Program Image Prompt</strong></em></span><br /><img src="attachments/download/133163/ProgramImage1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>The progress will display in the following window until completion.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Progress Window</strong></em></span><br /><img src="attachments/download/133164/ProgramImage3.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Acknowledge the Completion dialog.</li>
+		<li>Log into the system as <code>root</code> with the <code>andand</code> password.</li>
+		<li>Use the <strong>poweroff</strong> command to safely power system down.</li>
+		<li>Remove the USB boot media.</li>
+		<li>Attach an Ethernet cable from a PC to the RJ45 to use for the iTest connection.</li>
+		<li>Power the system back on.</li>
+		<li>Log into the system as <code>root</code> with the <code>andand</code> password.</li>
+		<li>Run the following command: <code>itest-setup init</code>.</li>
+		<li>Set the geographic time zone (e.g., US).<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Configure Geographic Time Zone</strong></em></span><br /><img src="attachments/download/133165/ProgramTZ1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Set the local time zone (e.g., Michigan).<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Configure Local Time Zone</strong></em></span><br /><img src="attachments/download/133166/ProgramTZ2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Wait for the setup script to find the iTest connection.</li>
+		<li>Reboot the system with the <strong>reboot</strong> command.</li>
+	</ol>
+
+
+	<a name="Verification"></a>
+<h2 >Verification<a href="#Verification" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Use the following methods to verify the AD-XPRTS installation.</p>
+
+
+	<a name="Ping-RTC-from-Host-PC"></a>
+<h3 >Ping RTC from Host PC<a href="#Ping-RTC-from-Host-PC" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Ping the RTC (i.e., ping 10.102.226.152) using the command window on the host PC.</p>
+
+
+	<a name="Telnet-to-RTC-from-Host-PC"></a>
+<h3 >Telnet to RTC from Host PC<a href="#Telnet-to-RTC-from-Host-PC" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Connect to the Remote System using the Telnet utility on the host PC. The host name is <code>10.102.226.152</code>. Both the user ID and password for login are <code>and</code>.</p>
+
+
+	<a name="View-directory-structure-on-RTC"></a>
+<h3 >View directory structure on RTC<a href="#View-directory-structure-on-RTC" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Navigate the directory structure from the local and remote connections by using the following Linux commands:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Linux Commands</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Command</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td> pwd </td>
+			<td> Print the name of the current working directory.</td>
+		</tr>
+		<tr>
+			<td> cd </td>
+			<td> Change the directory.</td>
+		</tr>
+		<tr>
+			<td> ls </td>
+			<td> List the directory's contents.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="iTest-Xenomai-Management-Tool"></a>
+<h2 >iTest Xenomai Management Tool<a href="#iTest-Xenomai-Management-Tool" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The RTC system is now ready to receive the iTest AD-XPRTS files. The files are transferred from iTest using the iTest Xenomai Management Tool.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Xenomai Management Tool</strong></em></span><br /><img src="attachments/download/133198/45_Xenomai_Tool.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />For further information on the tool, refer to the <a class="wiki-page" href="ITest_Xenomai_Management_Tool.html">iTest Xenomai Management Tool</a> documentation.</p>
+
+
+	<a name="Patching-Xenomai-System-on-RTP-PC"></a>
+<h2 >Patching Xenomai System on RTP PC<a href="#Patching-Xenomai-System-on-RTP-PC" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>When patching a Xenomai system on a RTP PC, the RDBServer will look for the following files in the $EXECUTEDIR:</p>
+
+
+	<ul>
+	<li>*<em>.xenomai</em> (except <em>iTestlisten_64.xenomai</em>)</li>
+		<li><em>libremotedb64.so1.0.0</em></li>
+	</ul>
+
+
+	<p>If any of these files are found, the RDBServer will do the following:</p>
+
+
+	<ol>
+	<li>Copies the files to the RTP PC using FTP.</li>
+		<li>Creates the <em>$EXECUTEDIR\ADXPRTS_RTP_YYYY_MM_DD_MM_SS</em> subfolder, where <strong>YYYY_MM_DD_MM_SS</strong> is <code>Year_Month_Day_Minute_Seconds</code>.</li>
+		<li>Moves the files that were FTP copied to the new subfolder. The transferred files act as a backup and prevent the RDBServer from having to copy them every time patching is done.</li>
+	</ol>
+
+
+	<a name="Notes"></a>
+<h3 >Notes<a href="#Notes" class="wiki-anchor">&para;</a></h3>
+
+
+	<ol>
+	<li>There are some files that are updated using the iTest Xenomai Management Tool that are not individually patched. The iTest Xenomai Management Tool is still utilized during updates. In the event where a patch contains a new <em>\\ADXPRTSDevEnv\\target\itestrt_version</em> and individual files, then the RDBServer will refrain from processing the individual files until the iTest Xenomai Management Tool is executed to process the new <em>aandd_adxprts_itestrt_setup.tar.bz2</em> file. </li>
+		<li>Due to the <em>aandd_adxprts_itestrt_setup.tar.bz2</em> file containing files from the same build, it is possible that this file contains untested versions of components. This can be addressed by copying the untested files from the <em>$EXECUTEDIR\ADXPRTS_RTP_YYYY_MM_DD_MM_SS</em> subfolder back into the $EXECUTEDIR. The <em>aandd_adxprts_itestrt_setup.tar.bz2</em> file may also contain files with different build numbers from tested patched files even though they have not changed. This will not affect functionality, but it should be kept in mind.</li>
+		<li><em>iTestlisten.xenomai</em> cannot be updated on its own due to this file already running, so iTest cannot successfully FTP copy this file. This file must be updated with the iTest Xenomai Management Tool before any future individual patch files can be applied.</li>
+	</ol>
+</body>
+</html>

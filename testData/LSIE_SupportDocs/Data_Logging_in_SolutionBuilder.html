@@ -1,0 +1,618 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>Data Logging in SolutionBuilder</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="Data_Logging_in_SolutionBuilder.html">Data Logging in SolutionBuilder</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="Data-Logging-in-SolutionBuilder"></a>
+<h1 >Data Logging in SolutionBuilder<a href="#Data-Logging-in-SolutionBuilder" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#Data-Logging-in-SolutionBuilder">Data Logging in SolutionBuilder</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Log-Order-Lists">Log Order Lists</a><ul><li><a href="#Blackboxlol-File">Blackbox.lol File</a></li></ul>
+</li><li><a href="#Log-Header-Forms">Log Header Forms</a></li><li><a href="#Data-Log-Editor">Data Log Editor</a><ul><li><a href="#Defining-Log-Actions">Defining Log Actions</a></li><li><a href="#Filtering-Data-Logs">Filtering Data Logs</a></li><li><a href="#Right-Click-Options">Right-Click Options</a></li></ul>
+</li><li><a href="#Blackbox-Settings">Blackbox Settings</a></li><li><a href="#See-Also">See Also</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The iTest data logging feature enables you to create, save, and use data files for reporting and analysis. Data logs are composed of three different parts: information from the data log editor, log order lists, and log header forms. Combined, these elements allow you to create logs customized for your testing needs. The first step to creating a data log is to define the log order list. You can then create a log header form and use the data log editor to combine the different parts that compose a data log.</p>
+
+
+	<p>You can access the Log Order Lists, Log Header Forms, Data Logs, and Blackbox Settings editors in SolutionBuilder by selecting <strong>Data Logging</strong> from SolutionBuilder's main menu.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Data Logging in SolutionBuilder</strong></em></span><br /><img src="attachments/download/127047/SB44_DataLogging.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Log-Order-Lists"></a>
+<h2 >Log Order Lists<a href="#Log-Order-Lists" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>A log order list is a list of channels that are logged to the data file. Each row in the file defines a channel logged to the outputted data file.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Log Order List files use the <em>.lol</em> extension and are stored, by default, in the <em>$SUPPORTDIR/Data</em> folder. This can be modified using the <code>LogListFilePath</code> <em>powertek.ini</em> setting; however, SolutionBuilder treats all files outside of the $SUPPORTDIR as read-only.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>The following steps define the process for developing in the log order list (LOL) file:</p>
+
+
+	<ol>
+	<li>Right-click in the left pane and select the <strong>Add</strong> option to add a new log order list. A blank log order list will open in the editor.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Log Order List</strong></em></span><br /><img src="attachments/download/126062/44_NewLogOrderList.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Right-click in the editor and select the <strong>Insert Before</strong> or <strong>Add to End</strong> option to open the Channel Selection dialog.</li>
+		<li>Select the channel(s) to add to the log order list and click <strong>OK</strong>. Multiple channels can be selected by using <strong>CTRL + Left-click</strong> or <strong>Shift + Left-click</strong> in the Channel Selection dialog. The channel(s) will be added to the log order list.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Channel Row</strong></em></span><br /><img src="attachments/download/126063/44_NewChannelRow.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Define the statistical values you want logged to the data file (i.e., <code>StdDev</code>, <code>Min</code>, <code>Max</code>, <code>Delta</code>, <code>CV</code>, and <code>RMS</code>) by checking the checkbox in each column. For complete descriptions of these options, refer to the table below.</li>
+		<li>To set up data quality logging, check the checkbox in the <strong>Data Quality</strong> column. This field will be disabled if data quality has not been enabled for the iTest channel. For more information about Data Quality, refer to the <a class="wiki-page" href="ITest_Data_Quality.html">iTest Data Quality</a> documentation.</li>
+	</ol>
+
+
+	<p>The following right-click options are available:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+			<td style="text-align:left;"><strong>Shortcut Key</strong></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="3">Left Pane</th>
+		</tr>
+		<tr>
+			<td>Add</td>
+			<td> Adds a new log order list.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Remove</td>
+			<td> Removes the selected log order list.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Rename...</td>
+			<td> Launches the Rename dialog, allowing you to rename the log order list.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Duplicate</td>
+			<td> Duplicates the selected log order list.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td> Removes the selected log order list and copies it to the clipboard.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td> Copies the selected log order list to the clipboard.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Pastes</td>
+			<td> Pastes the copied log order list.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td> Undoes the last action.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td> Redoes the last undone action.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="3">Editor</th>
+		</tr>
+		<tr>
+			<td>Insert Before</td>
+			<td> Launches the Channel Selection dialog, allowing you to select the channel(s) to add to the log order list. These channels are added before the highlighted row.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Add to End</td>
+			<td> Launches the Channel Selection dialog, allowing you to select the channel(s) to add to the log order list. These channels are added to the end of the list.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td> Deletes the highlighted row(s) from the log order list.</td>
+			<td>Delete</td>
+		</tr>
+		<tr>
+			<td>Move Up</td>
+			<td> Moves the selected row up in the log order list.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Move Down</td>
+			<td> Moves the selected row down in the log order list.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td> Copies the selected channel to the clipboard.</td>
+			<td>Ctrl + C</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td> Pastes the copied channel to the <strong>Channel</strong> cell value.</td>
+			<td>Ctrl + V</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td> Undoes the last action.</td>
+			<td>Ctrl + Z</td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td> Redoes the last undone action.</td>
+			<td>Ctrl + Y</td>
+		</tr>
+		<tr>
+			<td>Show Alias/Customer Name</td>
+			<td> Displays either the <strong>Alias</strong> or <strong>Customer Name</strong> column.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Find</td>
+			<td> Launches the Find dialog, allowing you to search for specific text within the log order list. Check the <strong>Match whole word</strong> checkbox to search for only standalone occurrences of the whole string. Check the <strong>Match case</strong> checkbox to search for only standalone occurrences with the matching case-sensitivity of the entered string. </td>
+			<td> Ctrl + F</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>LOL Editor Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Column</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Channel</td>
+			<td>Displays a list of channels to select from. This channel will be added to the outputted data file. <ins><strong>Note</strong></ins>: The value entered in this field reflects what is displayed. If the customer name is entered it will display the customer name. This column is sortable. </td>
+		</tr>
+		<tr>
+			<td>Alias/Customer Name</td>
+			<td>Indicates the selected channel's alias or customer name. You can change the column type by right-clicking anywhere within the editor and selecting the option <strong>Show Customer Name</strong>/ <strong>Show Alias</strong>, as applicable. This column is read-only and cannot be edited. Information will be automatically populated in this column, depending on the channel name selected.</td>
+		</tr>
+		<tr>
+			<td>Module ID</td>
+			<td>Indicates the module ID to which the channel belongs. This column is read-only and cannot be edited.</td>
+		</tr>
+		<tr>
+			<td>StdDev</td>
+			<td>Computes the standard deviation over the average period. In the data file, the StdDev column is labeled as <em>&lt;channelname&gt;_STDDev</em>.</td>
+		</tr>
+		<tr>
+			<td>Min</td>
+			<td>Computes the minimum value detected during the average period. In the data file, the Min column is labeled as <em>&lt;channelname&gt;_Min</em>.</td>
+		</tr>
+		<tr>
+			<td>Max</td>
+			<td>Computes the maximum value detected during the average period. In the data file, the Max column is labeled as <em>&lt;channelname&gt;_Max</em>.</td>
+		</tr>
+		<tr>
+			<td>Delta</td>
+			<td>Displays the difference between the channel value at the start of the log and the channel value at the end of the log. In the data file, the Delta column is labeled as <em>&lt;channelname&gt;_Delta</em>.</td>
+		</tr>
+		<tr>
+			<td>CV</td>
+			<td>The coefficient of variance. In the data file, the CV column is labeled as <em>&lt;channelname&gt;_CV</em>.</td>
+		</tr>
+		<tr>
+			<td>RMS</td>
+			<td>The root mean squared. The CV column is labeled as <em>&lt;channelname&gt;_RMS</em>. The formula is:<br /><img src="attachments/download/86472/RMSFormula.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>Data Quality</td>
+			<td>Enables the logging of high and low data quality values. This adds two new columns to the outputted data file labeled: <em>&lt;channelname&gt;_DQHigh</em> and <em>&lt;channelname&gt;_DQLow</em>. To use this feature, high and low data quality must be enabled for the specified channel via the Edit Channel dialog. If this has not been set up, the checkbox in this column will be disabled. For more information, refer to the <a class="wiki-page" href="ITest_Data_Quality.html">iTest Data Quality</a> documentation.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The statistical values are meaningful only for average logs. Snapshot and transient logs ignore the statistics columns.</td>
+		</tr>
+	</table></p>
+
+
+	<a name="Blackboxlol-File"></a>
+<h3 >Blackbox.lol File<a href="#Blackboxlol-File" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The <em>Blackbox.lol</em> file is a special Log Order List file used specifically for the Blackbox logging feature in iTest. Due to the requirements necessary for Blackbox data logging to succeed, there are a number of differences enforced by the LOL editor.</p>
+
+
+	<ul>
+	<li>Data quality and statistical value logging are not available.</li>
+		<li>String channels cannot be added.</li>
+		<li>The maximum number of entries is reduced. For more information, refer to the  <a class="wiki-page" href="System_Maximums.html">System Maximums</a> documentation.</li>
+	</ul>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Blackbox LOL Editor</strong></em></span><br /><img src="attachments/download/124681/SB44_LOLNewChannelRow_blackbox.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>The properties for the <em>Blackbox.lol</em> file can be managed using the Blackbox Settings editor. For more information, refer to the <a class="wiki-page" href="#Blackbox-Settings">Blackbox Settings</a> section below.</p>
+
+
+	<a name="Log-Header-Forms"></a>
+<h2 >Log Header Forms<a href="#Log-Header-Forms" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Log header forms are used to define the list of channels that appear at the top of the data file known as the header. They can also be used to present a dialog to the operator before starting a test, prompting them to enter data. The log header form is created using the Log Header Forms editor in SolutionBuilder. The log header form files are referred to as user variable list files (UVL) and use the <em>.uvl</em> extension.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Log header form files are stored, by default, in the <em>$SUPPORTDIR/Varlists</em> folder. This can be modified using the <code>UserVariableListPath</code> <em>powertek.ini</em> setting, but SolutionBuilder treats all files outside of the $SUPPORTDIR as read-only.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>To add a new log header, do the following:</p>
+
+
+	<ol>
+	<li>Right-click in the left pane in the <strong>Log Header Forms</strong> editor and select <strong>Add</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add New Log Header Form</strong></em></span><br /><img src="attachments/download/115816/SB43_AddNewLogHeaderForm.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br />A new log header form will be added to the list.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Log Header Form</strong></em></span><br /><img src="attachments/download/115817/SB43_NewLogHeaderForm.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Add a channel to the log header form by right-clicking in the right pane and selecting the <strong>Add to End</strong> option. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add to End</strong></em></span><br /><img src="attachments/download/86475/SB41_LogHeaderAddtoEnd.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br />A new channel row will be added to the end.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Channel Row</strong></em></span><br /><img src="attachments/download/115818/SB43_LogHeaderNewChannelRow.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Use the descriptions in the table below to define each field.<br />&nbsp;</li>
+	</ol>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Log Header Form (UVL) Editor Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Field</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Channel</td>
+			<td>Add a new channel by typing the channel name or right-clicking the channel cell and selecting <strong>Select Channel</strong> (this opens the Channel Select dialog). The channel selected in this field is written to the data file's header.<br />&nbsp;<br /><ins><strong>Array channels:</strong></ins><br />Array channels can be referenced with or without a static index. If the array channel in the UVL file has no index specified, then it will use the index passed to the STARTLOG command. </td>
+		</tr>
+		<tr>
+			<td>Type</td>
+			<td>Indicates how the channel is used and where it is saved. Click the type cell to open the drop-down menu. Values include:<br />&nbsp;<br /><ins><strong>Header:</strong></ins> The <strong>Header</strong> selection saves the channel to the <em>master.ini</em> file and the RDB. It is visible and editable in the dialog that appears before the operator.<br /><ins><strong>Hidden:</strong></ins> When this option is selected, the channel is saved and visible in the data file header. It is not visible in the dialog that appears before the operator.<br /><ins><strong>Read-Only:</strong></ins> When the <strong>Read-Only</strong> option is selected, the channel is visible in the data file header. It is also visible in the dialog that appears before the operator; however, it is not editable.<br /><ins><strong>Control:</strong></ins> This selection causes the channel to appear in the dialog that appears before the operator but does not display in the data file header.</td>
+		</tr>
+		<tr>
+			<td>Format</td>
+			<td>Specifies the format of the collected data. Click the format cell to open the drop-down menu. Format types include:<br />&nbsp;<br /><ins><strong>String:</strong></ins> Sequence of text characters. <br /><ins><strong>Number:</strong></ins> Numeric values.<br /><ins><strong>Memo:</strong></ins> Functions similarly to string. This is a legacy field and is generally no longer used.<br /><ins><strong>Label:</strong></ins> Provides a header row, enabling you to section off parts of the form. A <strong>Label</strong> format does not add an entry to the data file header, regardless of what is defined in the <strong>Type</strong> column. <strong><ins>Note</ins></strong>: This is only relevant when using the $NEWFORM mailslot message.<br /><ins><strong>Empty:</strong></ins> Creates an empty, full-width space for formatting. An <strong>Empty</strong> format will not add an entry to the data file header, regardless of what is defined in the <strong>Type</strong> column. </td>
+		</tr>
+		<tr>
+			<td>Len</td>
+			<td>The maximum number of characters that can be entered in the field. For numeric entries, the decimal point counts against this total. </td>
+		</tr>
+		<tr>
+			<td>Dec</td>
+			<td>The decimal precision for numeric entry fields.</td>
+		</tr>
+		<tr>
+			<td>Picklist</td>
+			<td>Enables you to select a picklist from which the user can select an option from a drop-down list.</td>
+		</tr>
+		<tr>
+			<td>Column Number</td>
+			<td>Indicates the column you are putting the header prompt in (label/prompt and entry field, if applicable). 1 = left column, 2 = right column, 3 = spans both columns. This field is only relevant when using the $NEWFORM mailslot message.</td>
+		</tr>
+		<tr>
+			<td>Form Record</td>
+			<td>An obsolete feature. Do not use.</td>
+		</tr>
+		<tr>
+			<td>Prompt</td>
+			<td>Provides an alternative string prompt for the operator.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Data-Log-Editor"></a>
+<h2 >Data Log Editor<a href="#Data-Log-Editor" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Data Log editor utilizes log order list and log header form files to define the details of the outputted data file. You can use the editor to set the log type, data filename, pre/post logging actions, and more.</p>
+
+
+	<p>To use the Data Log Editor, do the following:</p>
+
+
+	<ol>
+	<li>Select <strong>Data Logging > Data Logs</strong> in SolutionBuilder.</li>
+		<li>Right-click anywhere in the editor and select the <strong>Add to End</strong> option.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add to End</strong></em></span><br /><img src="attachments/download/86480/SB41_DataLogAddtoEnd.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br />The new data log is added to the end.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>New Data Log</strong></em></span><br /><img src="attachments/download/86481/SB41_DataLogNew.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Double-click the name cell to name the data log. Refer to the descriptions in the table below to configure the remaining fields.</li>
+	</ol>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>Data Log Editor Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Value</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Duration</td>
+			<td>The duration is only applicable for transient and average logs. The value defines the duration of the transient log or the amount of time to average for an average log. The value in this field can be set to a channel or number. If the duration is set to a channel name, the channel's value is read when the log starts; after it is started, the value no longer affects the data log.<br />&nbsp;<br />When using a parameterized duration, if the channel value is <= 0 when the log begins, the duration value will default to 1 second.</td>
+		</tr>
+		<tr>
+			<td>Log Order List</td>
+			<td>The Log Order List (LOL) file contains the list of channels logged to the file. Use this field to select a specific LOL file or to log all channels.</td>
+		</tr>
+		<tr>
+			<td>Log Type</td>
+			<td>The log type defines how data is obtained over the course of a running test. There are three options than can be selected for use, including:<br />&nbsp;<br /><ins><strong>Average:</strong></ins> Records the average values for selected channels over a defined period of time and rate, as well as other optional statistics.<br /><ins><strong>Snapshot:</strong></ins> Records a single instance of the selected channels.<br /><ins><strong>Transient:</strong></ins> Continuously records selected channels for a defined period of time and rate.</td>
+		</tr>
+		<tr>
+			<td>Name</td>
+			<td>The name of the data log. For SolutionBuilder, the name is configured using the <strong>Name</strong> column. For Test Manager, the name is configured using the <strong>Rename...</strong> right-click option.</td>
+		</tr>
+		<tr>
+			<td>Output Filename</td>
+			<td>This is the name of the outputted file that data is written to. The name can be a constant name or it can vary based on the value of another iTest channel through the use of substitution. Note that including a subfolder structure as part of the output file name is not supported. This file will always be located in the current project folder. For example, a constant data filename would take the name entered in this field followed by the <em>.dat</em> file type (e.g., <em>myfilename.dat</em>). <br />&nbsp;<br />To create a variable outputted filename, embed an iTest filename in this field using the < and > characters as follows: <code>%ExampleDataFileName>%_Avg.dat</code>. When the log is created, iTest replaces the string <code>%&lt;ExampleDataFileName&gt;%</code> with the value of the channel when the data log is initiated. If the value of <code>ExampleDataFileName</code> is <code>MyLog</code>, the outputted filename would be <em>MyLog_Avg.dat</em>. </td>
+		</tr>
+		<tr>
+			<td>Output Type</td>
+			<td>Defines the data file type. Snapshot and average logs are outputted as DAT files. Transient logs can be outputted as DAT, BIN, MDF, or MDF Multi-rate file types.</td>
+		</tr>
+		<tr>
+			<td>Pre-Log Actions*</td>
+			<td>Pre-log actions are mailslot messages sent prior to starting the data log. You can define up to three pre-log actions.</td>
+		</tr>
+		<tr>
+			<td>Post-Log Actions*</td>
+			<td>Post-log actions are mailslot messages sent after the output file has been created. You can define up to three post-log actions.</td>
+		</tr>
+		<tr>
+			<td>Rate</td>
+			<td>The rate is only applicable for transient and average logs. The value defines the rate (in Hz) that data is sampled at. This field can be set to a channel or a number. If the rate is set to a channel name, the channel's value is read when the log starts. After the log starts, this value will no longer affect the data log. The value can also be set to a number less than 1. For example, if the value is set to 0.5, data will be logged once every two seconds.<br />&nbsp;<br />When using a parameterized rate, if the channel value is <= 0 when the log begins, the rate value will default to 0.1 Hz.</td>
+		</tr>
+		<tr>
+			<td>Time Align Channels</td>
+			<td>This option enables you to time align channels with transport delay for transient logs. This feature causes all channels that are configured with a transport delay time to be delayed by the number of seconds in the <strong>Transport Delay</strong> column of the channel definition editor. This is designed to time-shift slow data such as emissions and allow it to align with instantaneous data such as speed and torque. The resolution of time is dependent on system scan rate for your system. For 100 Hz systems, you can enter a minimum value of .01.</td>
+		</tr>
+		<tr>
+			<td>UVL File</td>
+			<td>The UVL or log header form file that is used to create the header of the data log. The header is a set of name=value pairs located at the top of the data file. The header is only created the first time a data log file is created and it is never updated after the initial creation.</td>
+		</tr>
+		<tr>
+			<td>Wait Channel</td>
+			<td>This feature enables you to synchronize mailslot actions with the start of the log.<br />&nbsp; <br /><strong>Example</strong>: If the mailslot actions command the emissions bench device or other subsystems to prepare for logging, then this channel can be set to a non-zero value when those tasks are complete. The log will then wait for the value to become non-zero before starting the data log.<br />&nbsp;<br />For SolutionBuilder, the Wait Channel is configured in the <strong>Wait Channel</strong> column. For Test Manager, the Wait Channel is configured in the <strong>Channel to wait for before logging starts</strong> field under the Pre-Log Actions.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+* <span style="font-size:0.90em;font-style: italic;">For more information, refer to the <a class="wiki-page" href="#Defining-Log-Actions">Defining Log Actions</a> section below.</span>
+
+	<p>&nbsp;</p>
+
+
+	<a name="Defining-Log-Actions"></a>
+<h3 >Defining Log Actions<a href="#Defining-Log-Actions" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>You can define up to three pre-log actions and up to three post-log actions. These actions are mailslot messages that are sent prior to starting the data log. When configuring the actions, the Actions dialog displays. This dialog is similar to the <a class="wiki-page" href="MessagesEditor.html">MessagesEditor</a>; however, it allows you to define up to three mailslot messages at once.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Actions Dialog</strong></em></span> <br /><img src="attachments/download/118905/43_ActionsDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /> <br />&nbsp;</p>
+
+
+	<a name="Filtering-Data-Logs"></a>
+<h3 >Filtering Data Logs<a href="#Filtering-Data-Logs" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Data Logs can be filtered into four categories using the filter options provided in the left pane of the Data Log editor. The categories include <strong>All</strong>, <strong>Average</strong>, <strong>Snapshot</strong>, and <strong>Transient</strong>. When a filter option is applied, then data logs of that type will appear in the right pane of the editor as well as the pertinent data log settings. For example, if the Average filter option was applied, then any Average type logs will be listed and the following data log settings will appear as columns in the editor: <strong>Name</strong>, <strong>Log Type</strong>, <strong>Output Type</strong>, <strong>Rate (Hz)</strong>, <strong>Duration</strong>, <strong>LOL</strong>, <strong>Output Filename</strong>, <strong>Pre Log Action</strong>, <strong>Post Log Action</strong>, <strong>Wait Channel</strong>, and <strong>UVL File</strong>. Selecting <strong>All</strong> as the filter option will display all data logs and settings available. If a data log setting is not applicable based on a data log's type, then that field will be read-only when using the <strong>All</strong> filter option.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">When adding a new data log, a basic data log will be created with a log type based on the current filter. For example, if the <strong>Average</strong> filter option is applied, then adding a new data log will create a basic Average log. If the <strong>All</strong> filter is applied, then a basic Snapshot log will be created.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Average Data Logs</strong></em></span><br /><img src="attachments/download/102305/SB42_AverageDataLogs.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Right-Click-Options"></a>
+<h3 >Right-Click Options<a href="#Right-Click-Options" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following right-click options are available:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 830px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+			<td style="text-align:left;"><strong>Shortcut Key</strong></td>
+		</tr>
+		<tr>
+			<td>Select Channel</td>
+			<td>Opens the Channel Selection dialog to select a channel. This option is enabled when right-clicking in the <strong>Rate</strong>, <strong>Duration</strong>, and <strong>Wait Channel</strong> columns.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Add to End</td>
+			<td>Adds a new data log to the end of the list.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Delete</td>
+			<td>Deletes the selected data log.</td>
+			<td style="text-align:center;">-</td>
+		</tr>
+		<tr>
+			<td>Cut</td>
+			<td>Removes the selected cells and copies them to the clipboard.</td>
+			<td>Ctrl + X</td>
+		</tr>
+		<tr>
+			<td>Copy</td>
+			<td>Copies the selected cells to the clipboard.</td>
+			<td>Ctrl + C</td>
+		</tr>
+		<tr>
+			<td>Paste</td>
+			<td>Pastes the copied cells.</td>
+			<td>Ctrl + V</td>
+		</tr>
+		<tr>
+			<td>Undo</td>
+			<td>Undoes the previous action.</td>
+			<td>Ctrl + Z</td>
+		</tr>
+		<tr>
+			<td>Redo</td>
+			<td>Redoes the last undone action.</td>
+			<td>Ctrl + Y</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Blackbox-Settings"></a>
+<h2 >Blackbox Settings<a href="#Blackbox-Settings" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Blackbox Settings editor is used to manage the properties of the <em>Blackbox.lol</em> file. To configure these properties, select <strong>Data Logging > Blackbox Settings</strong> in SolutionBuilder and use the descriptions provided in the table below.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Blackbox Settings Editor</strong></em></span><br /><img src="attachments/download/117066/SB43_BlackboxSettingsEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>Blackbox Settings</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Setting</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Log on limits enable, trigger on limit violation</td>
+			<td> When selected, automated Blackbox logging is enabled. In addition, the <strong>Pre-trigger</strong> and <strong>Post-trigger</strong> fields are enabled. When automated Blackbox logging is enabled, iTest will automatically create a Blackbox log file when a channel limit is exceeded. For more information, refer to the <a class="wiki-page" href="Working_with_the_Black_Box.html#Automated-Blackbox-Logging">Automated Blackbox Logging</a> documentation.</td>
+		</tr>
+		<tr>
+			<td>Pre-trigger</td>
+			<td> The number of seconds to save before the limit violation. This field is enabled when the <strong>Log on limits enable, trigger on limit violation</strong> option is selected. The maximum time is 60 seconds if the rate is 1000 Hz; otherwise, the maximum is 3600 seconds. </td>
+		</tr>
+		<tr>
+			<td>Post-trigger</td>
+			<td> The number of seconds to save after the limit violation. This field is enabled when the <strong>Log on limits enable, trigger on limit violation</strong> option is selected. The maximum time is 60 seconds if the rate is 1000 Hz; otherwise, the maximum is 3600 seconds. </td>
+		</tr>
+		<tr>
+			<td>Log on CRS_CONTROL=1, trigger on CRS_CONTROL=0</td>
+			<td> When selected, Blackbox logging is active when <code>CRS_CONTROL=1</code>. In addition, the <strong>File Size</strong> field is enabled.</td>
+		</tr>
+		<tr>
+			<td> File Size </td>
+			<td> Specify the time in minutes over which the Blackbox collects data. Because the Blackbox is a circular file, it overwrites data at the beginning of the file once this value is exceeded. The default time is 5 minutes. The maximum time is 2 minutes if the rate is 1000 Hz; otherwise, the maximum is 60 minutes. This field is enabled when the <strong>Log on CRS_CONTROL=1, trigger on CRS_CONTROL=0</strong> option is selected.</td>
+		</tr>
+		<tr>
+			<td> Save black box on new project creation</td>
+			<td> When selected, the Blackbox data file is copied from the previous project when a new project is created. A new project is created by sending the <code>DataArchive New</code> mailslot message to create a new data folder (project). iTest then copies the old Blackbox file from the previous project. If limits are disabled and Blackbox was running due to limit violation, then a truncated Blackbox file is saved (rather than cancelation of the Blackbox). </td>
+		</tr>
+		<tr>
+			<td> Rate </td>
+			<td> Specify how often (in Hz) to take a Blackbox log. The higher the number, the more often data is taken. The default is 10 Hz. The list will only include the 1000 Hz option if <code>Support1kHz=TRUE</code> is set in the <em>powertek.ini</em> file.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+	<a name="See-Also"></a>
+<h2 >See Also<a href="#See-Also" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><a class="wiki-page" href="Data_Logging_.html">Data Logging in iTest</a></li>
+	</ul>
+</body>
+</html>

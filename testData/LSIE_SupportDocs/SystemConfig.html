@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>SystemConfig</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="SystemConfig.html">SystemConfig</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="SystemConfig"></a>
+<h1 >SystemConfig<a href="#SystemConfig" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>This utility is first run after a new installation of most iTest installs. It can then be run manually at any time to change the global settings for the PC. SystemConfig is available in the Windows Start Menu.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>SystemConfig</strong></em></span><br /><img src="https://aandd.plan.ioattachments/download/97953/42_SystemConfig.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>SystemConfig contains an editor for changing the following system settings. The majority of these settings are written to the <em>Config.ini</em> file which is located in the directory where iTest is installed. You can use SystemConfig to change the following settings:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>SystemConfig Settings</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 900px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Setting</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>iTest GUI Language</td>
+			<td>Use this combo box to change the preferred language for iTest.</td>
+		</tr>
+		<tr>
+			<td>Enable/Disable LabAgent on this machine</td>
+			<td> Enable/disable LabAgent. This setting is changed in the registry. <ins><strong>Note:</strong></ins> Your anti-virus may prohibit <em>SystemConfig.exe</em> from making this change. If it does, you will need to add an exception to your anti-virus for allowing <em>SytemConfig.exe</em> to change the start-up entries in your registry. LabCentral will not be able to communicate with your system if LabAgent is disabled.</td>
+		</tr>
+		<tr>
+			<td>LabAgent Port Number</td>
+			<td> By default, this is 80. It can be changed in this field.</td>
+		</tr>
+		<tr>
+			<td>Automated Patching Mode (and Patch folder)</td>
+			<td>Use these settings to set up a central location for patching iTest binaries (<em>.exe</em>, <em>.dll</em>, <em>.tdaddin</em>, and <em>.ocx</em>). Typically, this would be a LabCentral share name, but it can be any shared drive on your network. This feature allows you to put patches in one location on the network and patch all iTest systems.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>This next group of settings should only be changed if you do not have a LabCentral system. If you have LabCentral, changing these settings will overwrite your LabCentral settings and could possibly break your connection to LabCentral.</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>SystemConfig Settings</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 900px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Setting</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>iTest Module file location</td>
+			<td> This gives you a network share to import and export modules to if you do not have LabCentral.</td>
+		</tr>
+		<tr>
+			<td>Enable iTest Security</td>
+			<td> Enables the login prompt for iTest Console and Test Manager.</td>
+		</tr>
+		<tr>
+			<td>Enable Windows Domain Logins</td>
+			<td> You can have iTest send the username and password to the Windows domain server to have the password verified. When using this feature, you still configure groups in the iTest security editor. However, when the user logs in with their domain username and password, the software checks to see what groups they belong to in the domain. If any of these groups match the iTest-configured groups, those groups define their security level.</td>
+		</tr>
+	</table>
+</body>
+</html>

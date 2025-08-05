@@ -1,0 +1,334 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>AlarmStatus</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Standalone_Tools.html">Standalone Tools</a></li>
+<li><a href="AlarmStatus.html">AlarmStatus</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="AlarmStatus"></a>
+<h1 >AlarmStatus<a href="#AlarmStatus" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#AlarmStatus">AlarmStatus</a><ul><li><a href="#Overview">Overview</a></li><li><a href="#Interface">Interface</a></li><li><a href="#Adding-a-Limit">Adding a Limit</a></li><li><a href="#ActivatingDeactivating-Limits">Activating/Deactivating Limits</a></li><li><a href="#Changing-Limit-and-Warning-Values-for-a-Database-Channel">Changing Limit and Warning Values for a Database Channel</a></li><li><a href="#Adding-and-Editing-Digital-Channel-Limits">Adding and Editing Digital Channel Limits</a></li><li><a href="#Displaying-Database-Channels">Displaying Database Channels</a></li></ul></li></ul>
+
+
+	<a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The AlarmStatus application allows you to view database channels that have limits defined. This application allows for the addition or removal of limits without having to rebuild the test.</p>
+
+
+	<a name="Interface"></a>
+<h2 >Interface<a href="#Interface" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The AlarmStatus interface represents the current status of the database channels. Each column is described in the table below.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>AlarmStatus Interface</strong></em></span><br /><img src="attachments/download/120679/43_AlarmStatusInterface.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>AlarmStatus Column Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Column</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Channel</td>
+			<td> The channel name.</td>
+		</tr>
+		<tr>
+			<td>Alias</td>
+			<td> The alias for the channel. This column is visible if the <code>AlarmStatusDisplayAlias</code> <em>powertek.ini</em> setting is set to TRUE.</td>
+		</tr>
+		<tr>
+			<td>Date/Time</td>
+			<td> The date and time of the last time there was a shift in the limit state. For example, the date/time would be updated when a channel moves from <strong>Low Warning</strong> to <strong>Low Limit</strong>.</td>
+		</tr>
+		<tr>
+			<td>Current</td>
+			<td> The current channel value.</td>
+		</tr>
+		<tr>
+			<td>Extreme</td>
+			<td> The last channel value that caused a shift in the limit state. For example, this value would be updated when a channel moves from <strong>Low Warning</strong> to <strong>Low Limit</strong>.</td>
+		</tr>
+		<tr>
+			<td>L Limit</td>
+			<td> The low limit.</td>
+		</tr>
+		<tr>
+			<td>L Warn</td>
+			<td> The low limit warning.</td>
+		</tr>
+		<tr>
+			<td>H Warn</td>
+			<td> The high warning limit.</td>
+		</tr>
+		<tr>
+			<td>H Limit</td>
+			<td> The high limit.</td>
+		</tr>
+		<tr>
+			<td>LLIT</td>
+			<td> The low limit ignore time.</td>
+		</tr>
+		<tr>
+			<td>HLIT</td>
+			<td> The high limit ignore time.</td>
+		</tr>
+		<tr>
+			<td>Units</td>
+			<td> The channel units.</td>
+		</tr>
+		<tr>
+			<td>State</td>
+			<td> The limit state of the channel (e.g., <strong>Low Warning</strong>, <strong>Low Limit</strong>). This column also indicates if limits are activated globally and/or on an individual channel. An asterisk displays in this column when the channel has limits enabled, but global limits are disabled.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>The following right-click options are available:</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>AlarmStatus Right-Click Options</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr>
+			<td>Filter...</td>
+			<td> Launches the Filter dialog, allowing you to select which limits and channel types you would like to show on the AlarmStatus display. For more information, refer to the <a class="wiki-page" href="#Displaying-Database-Channels">Displaying Database Channels</a> section below.</td>
+		</tr>
+		<tr>
+			<td>Print</td>
+			<td> Launches the Print dialog, allowing you to specify the print properties before printing the Alarm Status Report.</td>
+		</tr>
+		<tr>
+			<td>Deactivate</td>
+			<td> Deactivates limits for the selected channel. For more information, refer to the <a class="wiki-page" href="#ActivatingDeactivating-Limits">Activating/Deactivating Limits</a> section below.</td>
+		</tr>
+		<tr>
+			<td>Activate</td>
+			<td> Activates limits for the selected channel. For more information, refer to the <a class="wiki-page" href="#ActivatingDeactivating-Limits">Activating/Deactivating Limits</a> section below.</td>
+		</tr>
+		<tr>
+			<td>Add...</td>
+			<td> Adds a channel to the limit group. For more information, refer to the <a class="wiki-page" href="#Adding-a-Limit">Adding a Limit</a> section below.</td>
+		</tr>
+		<tr>
+			<td>Edit...</td>
+			<td> Launches the Edit Channel dialog, allowing you to edit the channel's limits. For more information, refer to the <a class="wiki-page" href="#Changing-Limit-and-Warning-Values-for-a-Database-Channel">Changing Limit and Warning Values for a Database Channel</a> section below.</td>
+		</tr>
+		<tr>
+			<td>Remove...</td>
+			<td> Removes the limits for the selected channel.</td>
+		</tr>
+		<tr>
+			<td>Save</td>
+			<td> Saves changes to the selected channel limits.</td>
+		</tr>
+		<tr>
+			<td>Save All</td>
+			<td> Saves changes to all channel limits.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Adding-a-Limit"></a>
+<h2 >Adding a Limit<a href="#Adding-a-Limit" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>By default, channels with defined limits automatically display in the AlarmStatus interface. To add channels, use the <strong>Add...</strong> right-click option to launch the Add Channel dialog. When adding digital channels, the Add Channel dialog is restricted; refer to the <a class="wiki-page" href="#Adding-and-Editing-Digital-Channel-Limits">Adding and Editing Digital Channel Limits</a> section below for more information.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The channel is added to the limit group specified in the <strong>Current Limit Group</strong> drop-down menu.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Add Channel Dialog</strong></em></span><br /><img src="attachments/download/120680/43_AddChannelDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>Click the <img src="attachments/download/120681/43_DotDotDot.png" alt="" /> button to open the Channel Selection dialog. Select a channel to add; note that that the chosen channel cannot have previously defined limits. Once selected, configure the limits, as needed. Each value must be a constant and cannot be a channel. The <strong>Action</strong> drop-down menu allows you to select a procedure from the <em>$SUPPORTDIR\Test\LimitActions</em> folder.</p>
+
+
+	<p>Click <strong>OK</strong> to save the channel limits and add the channel to the AlarmStatus display. The channel definition (FIL) file is updated with the new channel limits. Upon saving changes in the AlarmStatus display, a prompt will display to confirm adding the channel to the limit (LIM) file.</p>
+
+
+	<a name="ActivatingDeactivating-Limits"></a>
+<h2 >Activating/Deactivating Limits<a href="#ActivatingDeactivating-Limits" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To activate/deactivate limits, do the following:</p>
+
+
+	<ol>
+	<li>Set the <code>AlarmStatusLimitControl</code> <em>powertek.ini</em> setting to TRUE.</li>
+		<li>Launch the AlarmStatus utility.</li>
+		<li>To activate/deactivate limits for an individual channel, right-click on the channel and select <strong>Activate</strong> or <strong>Deactivate</strong>. The <strong>State</strong> column is updated to reflect this change.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Activate/Deactivate Limits - Individual Channel</strong></em></span><br /><img src="attachments/download/120682/43_ActivateDeactivateLimitsIndividualChannel.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>To activate/deactivate limits globally, use the drop-down menu next to <strong>Global Limit Status</strong>. This will update the global limits flag to the ON or OFF state. The <strong>State</strong> column is updated to reflect this change.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Activate/Deactivate Global Limits</strong></em></span><br /><img src="attachments/download/120683/43_ActivateDeactivateGlobalLimits.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<a name="Changing-Limit-and-Warning-Values-for-a-Database-Channel"></a>
+<h2 >Changing Limit and Warning Values for a Database Channel<a href="#Changing-Limit-and-Warning-Values-for-a-Database-Channel" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can modify limit settings dynamically during test activities.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The <code>AlarmStatusEdit</code> <em>powertek.ini</em> setting must be set to TRUE in order to edit limit settings. This setting also allows you to make runtime changes to the default limits.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>To modify limit settings, double-click within the limit cell and type in the new value. The new value is checked for validity, where it must fall within an acceptable range. For example. if the lower limit is modified, the value must be less than the lower warning value. If the lower warning is modified, then the value must fall between the lower limit and the high warning values.</p>
+
+
+	<p>To edit the channel's limits, use the <strong>Edit...</strong> right-click option to launch the Edit Channel dialog. When editing digital channels, the Add Channel dialog is restricted; refer to the <a class="wiki-page" href="#Adding-and-Editing-Digital-Channel-Limits">Adding and Editing Digital Channel Limits</a> section below for more information.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Edit Channel Dialog</strong></em></span><br /><img src="attachments/download/120684/43_EditChannelDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>To save modified limit values, right-click on the channel and select <strong>Save</strong> or <strong>Save All</strong>. Selecting the <strong>Save All</strong> option will save changes to all modified channels. The channel definition (FIL) file and limit group (LIM) file are updated with the saved changes.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">The maximum number of active limits that can be saved in the <em>Default.lim</em> file is 200.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+
+
+	<a name="Adding-and-Editing-Digital-Channel-Limits"></a>
+<h2 >Adding and Editing Digital Channel Limits<a href="#Adding-and-Editing-Digital-Channel-Limits" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>When adding or editing digital input/output channels, the Add/Edit Channel dialog is limited to changing the limit ranges, selecting the limit action, and setting the ignore time.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Add Channel Dialog - Digital Channels</strong></em></span><br /><img src="attachments/download/123657/44_AddDigitalChannelDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /></p>
+
+
+	<p>After configuring the digital channel limits, the limit group is updated with the new limits. The channel definition (FIL) file is not updated unless changes were made to the DEFAULT limit group.</p>
+
+
+	<a name="Displaying-Database-Channels"></a>
+<h2 >Displaying Database Channels<a href="#Displaying-Database-Channels" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can limit the number of database channels displayed on the AlarmStatus interface via the <strong>Filter...</strong> right-click option. This option launches the Filter dialog, where you can select which limits and channel types you would like to display.</p>
+
+
+	<p>The checkboxes on the left-hand side filter the database channels according to their current state. At least one alarm level and activity state must be enabled in the list. The checkboxes on the right-hand side are used to specify which channel types to include.</p>
+
+
+	<p><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Filter Dialog</strong></em></span><br /><img src="attachments/download/120685/43_FilterDialog.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p style="font-size: 11px;margin-left: 3em;"><em><strong>Alarm Level and Activity State Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="text-align:left;"><strong>Checkbox</strong></td>
+			<td style="text-align:left;"><strong>Description</strong></td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2">Alarm Level</th>
+		</tr>
+		<tr>
+			<td>Show Normal Limits</td>
+			<td> Displays database channels that are within their normal range.</td>
+		</tr>
+		<tr>
+			<td>Show Yellow/Warning Limits</td>
+			<td> Displays database channels that are within their defined warning range.</td>
+		</tr>
+		<tr>
+			<td>Show Red Limits</td>
+			<td> Displays database channels that have exceeded their limit values.</td>
+		</tr>
+		<tr style="background:#ededed;">
+			<th style="text-align:center;" colspan="2">Activity State</th>
+		</tr>
+		<tr>
+			<td>Show Active Limits</td>
+			<td> Displays database channels with active limits.</td>
+		</tr>
+		<tr>
+			<td>Show InActive Limits</td>
+			<td> Displays database channels with inactive limits.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p>
+</body>
+</html>

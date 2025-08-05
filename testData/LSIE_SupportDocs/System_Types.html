@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>System Types</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Reference_Lists.html">Reference Lists</a></li>
+<li><a href="System_Types.html">System Types</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="System-Types"></a>
+<h1 >System Types<a href="#System-Types" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>The following is a list of supported <em>powertek.ini</em> system types and their use.</p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="background:#cccaca;">
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Use</strong> </td>
+		</tr>
+		<tr>
+			<td>IBS </td>
+			<td> The default system type for use with most solutions intended to run on Windows only such as Simulation, iTest.VSA, and others. </td>
+		</tr>
+		<tr>
+			<td>RTX_DIST </td>
+			<td> For use when the GUI is running on Windows and a separate system for doing real-time control; this is typically an Advantech PC from A&#38;D running INtime. RTX_DIST always assumes INtime is the remote real-time OS.<br />&nbsp;<br />This system type can also be identified as a battery system if <code>BatteryAppUsesArrays=TRUE</code> in the <em>powertek.ini</em> file. </td>
+		</tr>
+		<tr>
+			<td>BATTERY </td>
+			<td>System type for battery test systems using iTest.BTS, must also have <code>BatteryAppUsesArrays=TRUE</code>.</td>
+		</tr>
+		<tr>
+			<td>ADXPRTS_DIST</td>
+			<td> For use when the GUI is running on Windows and a separate system for doing real-time control; this is typically a Dell embedded PC 5000 or an A&#38;D Procyon running Xenomai/Linux. ADXPRTS_DIST always assumes Xenomai/Linux is the remote real-time OS.</td>
+		</tr>
+		<tr>
+			<td>Phoenix  </td>
+			<td>For use when iTest is being used as the GUI for a Phoenix/C3 data acquisition box. Most commonly utilized for combustion analysis. </td>
+		</tr>
+		<tr>
+			<td>WIN_DIST</td>
+			<td> For use when the GUI is running on Windows and real-time control is done on Windows. WIN_DIST always assumes INtime is the remote real-time OS.<br />&nbsp;<br />This system type can also be identified as a battery system if <code>BatteryAppUsesArrays=TRUE</code> in the <em>powertek.ini</em> file. </td>
+		</tr>
+	</table>
+</body>
+</html>

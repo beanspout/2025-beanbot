@@ -1,0 +1,497 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>ITest Data Quality</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="docs_manual.css">
+</head>
+<body><script type="text/javascript" src="highlight.js"></script>
+<script type="text/javascript">
+	function highlightStart() { highlight(); }
+	document.body.onload = highlightStart;
+</script>
+
+<div id="header">
+	<div class="logo"><a href ="Top.html"><img src="ADT_LOGO.png" width="100" height="54" alt="A&amp;D Technology"/></a></div>
+	<div class="name">iTest User's Guide</div>
+	<div id="search-div">
+		<form method="get" action="search.html">
+			<input type="text" name="zoom_query" size="20" />
+			<input type="submit" class="searchbutton" value="Search" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="line-blue"></div><ul id="breadcrumb" >
+<li><a href="Top.html">Home</a></li>
+<li><a href="Developer_Tools.html">Developer Tools</a></li>
+<li><a href="ITest_Data_Quality.html">ITest Data Quality</a></li>
+</ul>
+</div>
+
+<div class="trail"></div>
+
+<a name="iTest-Data-Quality"></a>
+<h1 >iTest Data Quality<a href="#iTest-Data-Quality" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul class="toc right"><li><strong>Table of contents</strong></li><li><a href="#iTest-Data-Quality">iTest Data Quality</a><ul><li><a href="#Overview">Overview</a><ul><li><a href="#Data-Quality-Types">Data Quality Types</a></li></ul>
+</li><li><a href="#Configuring-Data-Quality">Configuring Data Quality</a><ul><li><a href="#Data-Quality-Fields">Data Quality Fields</a></li></ul>
+</li><li><a href="#Creating-Condition-Procedures">Creating Condition Procedures</a></li><li><a href="#Defining-Status-Colors">Defining Status Colors</a></li><li><a href="#Creating-Data-Quality-Groups">Creating Data Quality Groups</a><ul><li><a href="#Requirements">Requirements</a></li><li><a href="#Adding-a-New-Group">Adding a New Group</a></li></ul>
+</li><li><a href="#Configuring-Data-Quality-for-Logged-Data">Configuring Data Quality for Logged Data</a></li><li><a href="#Viewing-Data-Quality-During-Runtime">Viewing Data Quality During Runtime</a><ul><li><a href="#iTest-Console">iTest Console</a><ul><li><a href="#Status-Bar">Status Bar</a></li><li><a href="#Data-Quality-Viewer">Data Quality Viewer</a></li><li><a href="#Gauge-and-Bar-Controls">Gauge and Bar Controls</a></li></ul>
+</li><li><a href="#AutomationPanel">AutomationPanel</a><ul><li><a href="#Status-Bar-2">Status Bar</a></li><li><a href="#Data-Quality-Panel">Data Quality Panel</a></li></ul>
+</li></ul>
+</li><li><a href="#Accepting-or-Rejecting-Data">Accepting or Rejecting Data</a></li><li><a href="#Using-Mailslot-Messages">Using Mailslot Messages</a><ul><li><a href="#Softpanel">Softpanel</a></li><li><a href="#Data_Engine">Data_Engine</a></li></ul></li></ul></li></ul>
+
+
+	<p><a name="Overview"></a>
+<h2 >Overview<a href="#Overview" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Data Quality feature is a runtime verification tool that enables you to define data quality limits for channels in your system. The channels are continuously monitored and if they exceed the defined limit, the violation is communicated via the interface. Data quality limits are different than safety limits, and are used in the following ways:</p>
+
+
+	<ul>
+	<li>To verify that signals are reading reasonable values before continuing a test (e.g., if there is a transducer or thermocouple failure).</li>
+		<li>To verify signals are within a range of tolerance or are in tolerance of other signals (e.g., if there is a transducer failure or bad transducer placement).</li>
+		<li>To verify calculated values are within a range of anticipated values. This may not be reason to terminate a test, although it may be useful for following a model or known profile.</li>
+		<li>To verify that values are reading within a set range of other values (e.g., to check whether all engine cylinder temperatures are within a few degrees of each other).</li>
+	</ul>
+
+
+	<p>iTest continually monitors channels to determine whether their current values match a pre-defined rule. If the channel value violates the rule, the following actions are performed:</p>
+
+
+	<ul>
+	<li>A procedure is called (the default procedure is <code>DQHandlerDefault</code>, although this can be replaced by another procedure)</li>
+		<li>A violation is reported in the data quality viewer/panel</li>
+		<li>The global count for channels out of quality is incremented</li>
+		<li>The data quality status is updated in the status bar</li>
+	</ul>
+
+
+	<a name="Data-Quality-Types"></a>
+<h3 >Data Quality Types<a href="#Data-Quality-Types" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The following evaluations used to determine the quality of the data:</p>
+
+
+	<ul>
+	<li><ins><strong>High/Low:</strong></ins> The high and low limit values. This indicates a range of acceptable channel values.</li>
+		<li><ins><strong>Above:</strong></ins> The data quality high limit. The channel is in violation if it exceeds this value.</li>
+		<li><ins><strong>Below:</strong></ins> The data quality low limit. The channel is in violation if it exceeds this value.</li>
+		<li><ins><strong>Between Tolerance (%):</strong></ins> The percentage value that the channel should remain in, in relation to another channel.</li>
+		<li><ins><strong>Between Tolerance:</strong></ins> The engineering unit value that the channel should remain in, in relation to another channel.</li>
+		<li><ins><strong>Formula Evaluate to TRUE:</strong></ins> If the formula is equal to 0, the channel value is good. If the formula is equal to a non-zero value, the channel value is bad.</li>
+	</ul></p>
+
+
+	<a name="Configuring-Data-Quality"></a>
+<h2 >Configuring Data Quality<a href="#Configuring-Data-Quality" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>To configure and use the Data Quality feature, complete the following procedure using the Test Manager channel definition editor:</p>
+
+
+	<ol>
+	<li>Launch Test Manager and select your solution.</li>
+		<li>Expand the <em>Channels</em> and <em>Channel Definitions</em> folders, then double-click your channel definition file.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Test Manager Tree</strong></em></span><br /><img src="attachments/download/37521/TM38_FolderHierarchy.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Double-click a channel name or right-click a channel and select the <strong>Edit</strong> menu option. The Edit Channel dialog displays.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Edit Channel Dialog</strong></em></span><br /><img src="attachments/download/37522/TM38_EditChannelUnconfigured.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select the <strong>Data Quality Active</strong> checkbox. This adds a new tab to the bottom of the dialog.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Data Quality Active</strong></em></span><br /><img src="attachments/download/37523/TM38_DataQualitySelected.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Use the dialog to select a data quality type. This selection will modify the settings that display on the dialog. For example, if you choose the <strong>Below</strong> option, the next field will be Data Quality Low. Conversely, if you choose <strong>Above</strong>, the next field name will be Data Quality High. If you choose the <strong>High/Low</strong> value you will be required to set the values for both the Data Quality High and Data Quality Low fields. For full descriptions, refer to the <a class="wiki-page" href="#Data-Quality-Types">Data Quality Types</a> section below.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Data Quality Type</strong></em></span><br /><img src="attachments/download/37524/TM38_DataQualityType.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Define the values that will determine whether the channel value is in violation.</li>
+		<li>In the <strong>Data Quality Handler</strong> field, select one of the available procedures using the drop-down menu or type in the name of a procedure to call when the channel violates one of the data quality conditions. Alternatively, select the empty row in the drop-down menu to clear this field. For more information, refer to the <strong>Data Quality Handler</strong> description in the the <a class="wiki-page" href="#Data-Quality-Fields">Data Quality Fields</a> table below.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Data Quality Handler Procedure</strong></em></span><br /><img src="attachments/download/103833/TM42_DataQualityHandlerProcedure.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>When you have finished configuring data quality, click <strong>OK</strong>.</li>
+	</ol>
+
+
+	<a name="Data-Quality-Fields"></a>
+<h3 >Data Quality Fields<a href="#Data-Quality-Fields" class="wiki-anchor">&para;</a></h3>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>Data Quality Fields Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 1000px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Value</strong> </td>
+			<td style="text-align:left;"><strong>Option</strong></td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td rowspan="6">Data Quality Type</td>
+			<td>High/Low</td>
+			<td>This type uses a high and low value to verify that the channel/value is within a certain range.</td>
+		</tr>
+		<tr>
+			<td>Above</td>
+			<td>The value that the channel or value should not go above.</td>
+		</tr>
+		<tr>
+			<td>Below</td>
+			<td>The value that the channel or value should not go below.</td>
+		</tr>
+		<tr>
+			<td>Between Tolerance in %</td>
+			<td>The percent value that the channel is within of another channel/value.</td>
+		</tr>
+		<tr>
+			<td>Between Tolerance</td>
+			<td>The engineering unit value that the channel is within of another channel/value.</td>
+		</tr>
+		<tr>
+			<td>Formula Evaluate to TRUE</td>
+			<td>When this data quality type is selected and the formula=zero, the channel value is good; if the formula=non-zero the channel value is bad.</td>
+		</tr>
+		<tr>
+			<td>Data Quality Low</td>
+			<td>Channel/Numeric Value</td>
+			<td>This value is used to represent the low value for the <strong>Below</strong> and <strong>High/Low</strong> data quality types; it can be either a numeric value, a channel, or a formula. If this value is surpassed, the data quality monitor will inform you that your data quality is out of range.</td>
+		</tr>
+		<tr>
+			<td>Data Quality High</td>
+			<td>Channel/Numeric Value</td>
+			<td>This value is used to represent the high value for the <strong>Above</strong> and <strong>High/Low</strong> data quality types; it can be either a numeric value, a channel, or a formula. If this value is surpassed, the data quality monitor will inform you that your data quality is out of range.</td>
+		</tr>
+		<tr>
+			<td>Data Quality Setpoint</td>
+			<td>Channel/Numeric Value</td>
+			<td>For the Between Tolerance data quality type, this value represents the setpoint or the number the channel value is being compared to.</td>
+		</tr>
+		<tr>
+			<td>Data Quality Tolerance</td>
+			<td>Range</td>
+			<td>For the Between Tolerance data quality type, this value represents the range around the setpoint considered to be within tolerance. Depending on the option selected, this value represents the range of tolerance in either percentage or engineering units.<br />&nbsp;<br /><strong>Example</strong>:<br />Assume you are configuring a quality check on CylTemp1 and you want to verify it is reading within 5% of CylTemp2. The Data Quality Setpoint value would be <strong>CylTemp2</strong> and the Data Quality Tolerance (%) value would be <strong>5</strong>. You could also verify CylTemp1 was reading within 5 degrees of CylTemp2 by selecting the Between Tolerance data quality type instead of Between Tolerance in %.</td>
+		</tr>
+		<tr>
+			<td>Data Quality Formula</td>
+			<td>Formula</td>
+			<td>If the formula evaluates to true (1), the data is in violation. If the formula evaluates to false (0), the data is valid. <br />&nbsp;<br /><strong>Example</strong>:<br />If the formula <code>speed > 100</code> is entered in the Data Quality Formula field and the actual speed of 100 is met or exceeded, a violation for this check will be triggered.</td>
+		</tr>
+		<tr>
+			<td>Data Quality Handler</td>
+			<td>Procedure Name</td>
+			<td>The name of the procedure that is called when the channel violates a data quality condition. This drop-down menu is populated by the <code>DataQualityProcedureFilePath</code> <em>powertek.ini</em> setting if this setting is present. If this setting is not present, then only the default procedure (<code>DQHandlerDefault</code>) is available in the drop-down menu; this procedure reports the name of the channel that has violated the data quality condition and when it was violated to Softpanel.<br />&nbsp;<br />For more information about the <code>DataQualityProcedureFilePath</code> <em>powertek.ini</em> setting, refer to its description in the <a class="wiki-page" href="ITest_INI_Options.html#Data-Quality">Data Quality</a> table.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+	<a name="Creating-Condition-Procedures"></a>
+<h2 >Creating Condition Procedures<a href="#Creating-Condition-Procedures" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Alternatively, you can create different procedures that are called when the channel violates a data quality condition. These procedures can be selected in the <strong>Data Quality Handler</strong> field by either typing the name of the procedure or selecting the procedure from the drop-down menu.</p>
+
+
+	<p>Procedures must accept two arguments, where the first is a string and the second is a number. Any procedures should be similar to the default procedure (<code>DQHandlerDefault</code>) as detailed below:</p>
+
+
+<pre>
+$PROCEDURE DQHandlerDefault level=0
+$RETURN None
+$ARGUMENT Channel,String,ByVal
+$ARGUMENT Value,Number,ByVal
+Begin test message
+MESSAGE "\\.\mailslot\Softpanel&gt;&gt;Begin procedure DQHandlerDefault" 
+
+MESSAGE "\\.\mailslot\Softpanel&gt;&gt; DQHandler channel=%&lt;Channel&gt;%, Value = %&lt;Value&gt;%, violated DQ limits" 
+
+End test message
++0.01 MESSAGE "\\.\mailslot\Softpanel&gt;&gt;End procedure DQHandlerDefault" 
+$END-PROCEDURE
+</pre>
+
+	<a name="Defining-Status-Colors"></a>
+<h2 >Defining Status Colors<a href="#Defining-Status-Colors" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>By default, iTest displays data quality values that are within range in green and values that are out of range in yellow. Alternatively, yellow can be used as a warning range and red can be used to indicate that values are out of range. To use this option, modify the <code>DQStatusThreeColor</code> <em>powertek.ini</em> setting, located in your <em>$SUPPORTDIR</em> folder. Without this option, the range is automatically calculated by 50% green and 50% yellow. The new color setting only affects the display in the iTest Console Data Quality Viewer.</p>
+
+
+	<p><strong>INI Option</strong>:</p>
+
+
+	<p><code>DQStatusThreeColor=TRUE</code></p>
+
+
+	<p>&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Without INI Option</strong></em></span><br /><img src="attachments/download/37537/Color1.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>With INI Option</strong></em></span><br /><img src="attachments/download/37538/Color2.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Creating-Data-Quality-Groups"></a>
+<h2 >Creating Data Quality Groups<a href="#Creating-Data-Quality-Groups" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Data quality groups are used to define different high and low data quality values during various stages of a test. If, for example, your test included a warm-up and cool-down phase, your acceptable range of channel values would vary depending on the current phase. This feature uses a pass/fail mechanism, where the pass and fail ranges change at different operating points of the test. You can also use this feature to deactivate channel data quality. Data Quality groups are enabled with the <code>DQGroupApply</code> Data_Engine mailslot message.</p>
+
+
+	<p><strong>Mailslot Message Syntax</strong>:</p>
+
+
+<pre>\\.\\mailslot\Data_Engine&gt;&gt;DQGroup Apply &lt;GroupName&gt;</pre>
+
+	<a name="Requirements"></a>
+<h3 >Requirements<a href="#Requirements" class="wiki-anchor">&para;</a></h3>
+
+
+	<ul>
+	<li>Data Quality groups can only use High/Low configured data quality channels.</li>
+		<li>Only the group ranges can be modified.</li>
+	</ul>
+
+
+	<a name="Adding-a-New-Group"></a>
+<h3 >Adding a New Group<a href="#Adding-a-New-Group" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Data Quality groups are added, modified, and deleted via the <em>Data Quality Groups</em> folder in Test Manager. To add and configure a group, do the following:</p>
+
+
+	<ol>
+	<li>Expand the <em>Channels</em> and the <em>Data Quality Groups</em> folders.</li>
+		<li>Right-click the <em>Data Quality Groups</em> folder and select <strong>New DataQualityGroup</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add New Group</strong></em></span><br /><img src="attachments/download/37541/TM38_AddNewGroup.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br />A blank editor opens.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Data Quality Group Editor</strong></em></span><br /><img src="attachments/download/37542/TM38_BlankGroupEditor.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>To add channels to the editor, right-click and select <strong>Add to End</strong>.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Add New Row to Editor</strong></em></span><br /><img src="attachments/download/37543/TM38_AddToEnd.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the cell in the <strong>Channel Name</strong> column and then click the drop-down button. This displays a list of all channels that have the <strong>High/Low</strong> data quality feature enabled. Select a channel to use.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select a Channel Name</strong></em></span><br /><img src="attachments/download/37692/TM38_SelectChannel.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the cell in the <strong>Status</strong> column, and then click the drop-down button to define whether the channel's data quality is active or inactive.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Define Status</strong></em></span><br /><img src="attachments/download/37545/TM38_DefineStatus.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>In the <strong>Low</strong> and <strong>High</strong> cells, define the values that will determine the channel's data quality. Supported values include a numeric value, a channel/customer/module name, or a simple expression.</li>
+		<li>Next, define the <strong>Sigma Value</strong>. This field cannot be blank, so if it is unnecessary for your tests, enter 0.000.</li>
+		<li>Repeat for all channels you want in the group and then if necessary, add more groups.</li>
+	</ol>
+
+
+	<p>The following table describes the different columns of the Data Quality Group editor and their purposes.</p>
+
+
+	<p><p style="font-size: 11px;margin-left: 3em;"><em><strong>Data Quality Group Editor Descriptions</strong></em></p>
+
+
+	<table style="margin-left: 2.5em;width: 800px;">
+		<tr style="padding-bottom:1em;background:#cccaca;">
+			<td style="width:125px;text-align:left;"><strong>Column</strong> </td>
+			<td style="text-align:left;"><strong>Description</strong> </td>
+		</tr>
+		<tr>
+			<td>Channel Name</td>
+			<td>The name of the channel in the data quality group. To be displayed in the drop-down of selectable channels, the channel must have data quality already enabled and the high/low setting type defined.</td>
+		</tr>
+		<tr>
+			<td>Status</td>
+			<td>The current status of the channel. Statuses include <strong>Active</strong> or <strong>Inactive</strong>. </td>
+		</tr>
+		<tr>
+			<td>Low</td>
+			<td>The channel's low value. When this value is exceeded, the data quality violation is triggered. Supported values include a numeric value, a channel/customer/module name, or a simple expression.</td>
+		</tr>
+		<tr>
+			<td>High</td>
+			<td>The channel's high value. When this value is exceeded, the data quality violation is triggered. Supported values include a numeric value, a channel/customer/module name, or a simple expression.</td>
+		</tr>
+		<tr>
+			<td>Sigma Value</td>
+			<td>The standard deviation value. This is a reference value used to calculate the low and high values set by external tools. This field cannot be blank; if this value is unnecessary for your tests, enter 0.000.</td>
+		</tr>
+	</table>
+
+
+
+
+	<p>&nbsp;</p></p>
+
+
+	<a name="Configuring-Data-Quality-for-Logged-Data"></a>
+<h2 >Configuring Data Quality for Logged Data<a href="#Configuring-Data-Quality-for-Logged-Data" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can configure and use data quality for logged data files. In order to use this feature, the channel must have data quality enabled via the Edit Channel dialog and be using the High/Low data quality type.</p>
+
+
+	<p>To use this feature, do the following:</p>
+
+
+	<ol>
+	<li>In Test Manager, expand the <em>Data Logging</em> and <em>Log Order Lists</em> folders.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Log Order Lists Folder</strong></em></span><br /><img src="attachments/download/37546/TM38_ExpandLOLFolder.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Double-click the name of the file you want to enable data quality. <br />&nbsp;<br />When your file displays, you can view which channels are setup to use data quality If the checkbox in the <strong>Data Quality</strong> column is disabled, data quality has not been defined for that channel.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>LOL File Editor</strong></em></span><br /><img src="attachments/download/37548/TM38_DQEnabledDisabled.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the checkboxes in the <strong>Data Quality</strong> column for the channels you want to enable data quality.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Data Quality Checked</strong></em></span><br /><img src="attachments/download/37549/TM38_CheckedData.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;<br />If you attempt to activate data quality logging for a channel that does not have data quality active, the following message will display, indicating that high/low limits have not been set up for the channel.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Limits Not Defined</strong></em></span><br /><img src="attachments/download/37550/TM38_LimitsNotDefined.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+	</ol>
+
+
+	<p>When a log is taken that includes channels with the <strong>Data Quality</strong> box checked in the LOL file, vxin_exec updates the system channel <code>voSysLoggedDQStatus</code>. This channel is an accumulation of all data quality range violations in all logs. To determine whether any of the logged data is out of quality, this channel should be set to "0" prior to taking a data quality log.</p>
+
+
+	<table>
+		<tr>
+			<td style="background:#336699;"></td>
+			<td style="vertical-align:top;"><img src="attachments/download/3553/Notepad.png" alt="" /></td>
+			<td style="vertical-align:top;"><b>NOTE:</b></td>
+			<td style="vertical-align:top;">Analyzing a data file for data quality only checks the last row of the file. Not the file as a whole.</td>
+		</tr>
+	</table>
+
+
+
+
+	<a name="Viewing-Data-Quality-During-Runtime"></a>
+<h2 >Viewing Data Quality During Runtime<a href="#Viewing-Data-Quality-During-Runtime" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>You can view data quality statuses, violations, and details in both iTest Console and AutomationPanel.</p>
+
+
+	<a name="iTest-Console"></a>
+<h3 >iTest Console<a href="#iTest-Console" class="wiki-anchor">&para;</a></h3>
+
+
+	<a name="Status-Bar"></a>
+<h4 >Status Bar<a href="#Status-Bar" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The iTest Console status bar, located at the bottom of the application, visually communicates the data quality status of your channels with data quality enabled. If channels are in data quality violation, the number of channels violating data quality will be indicated and the status color will also be reflected. A good status is reflected on the bar in gray. This field is controlled by the channel, <code>voSysDQStatus</code>, which you can use to prevent operators from starting a test if the value is anything other than 0. The status bar remains visible regardless of which layout is open. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Good Data Quality Status</strong></em></span><br /><img src="attachments/download/37618/38_DQStatusGood.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Data Quality in Violation</strong></em></span><br /><img src="attachments/download/37617/38_DQInViolation.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Data-Quality-Viewer"></a>
+<h4 >Data Quality Viewer<a href="#Data-Quality-Viewer" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>You view a more detailed account of the data quality channels, their values, and their status using the Data Quality Viewer. To access this, click <strong>Tools > Data Quality</strong> from the iTest Console main menu.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Navigate to Data Viewer</strong></em></span><br /><img src="attachments/download/37594/38_AccessDataViewer.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />The following view displays in iTest Console, containing the channel information and configured settings.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Data Quality Viewer</strong></em></span><br /><img src="attachments/download/37601/38_DataQualityView.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />By selecting the <strong>Check Logged File</strong> checkbox, a drop-down displays enabling you to view the data quality for logged data. Use the drop-down to choose a file and view its data.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Select a Log File</strong></em></span><br /><img src="attachments/download/37602/38_CheckLoggedFile.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>View Logged File Data</strong></em></span><br /><img src="attachments/download/37603/38_FileSelected.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Gauge-and-Bar-Controls"></a>
+<h4 >Gauge and Bar Controls<a href="#Gauge-and-Bar-Controls" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>You can also view data quality on your display during runtime via the Gauge and Bar controls. To configure these settings, right-click the control to display the Properties dialog. You can then use the Data Quality tab to define the display settings. <br /> &nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Gauge Data Quality Configuration</strong></em></span><br /><img src="attachments/download/37623/38_GaugeDQ.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Gauge Data Quality Range</strong></em></span><br /><img src="attachments/download/37622/38_DQGaugeRange.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Bar Data Quality Configuration</strong></em></span><br /><img src="attachments/download/37624/38_BarDQ.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Bar Data Quality Range</strong></em></span><br /><img src="attachments/download/37626/38_DQBarRange.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="AutomationPanel"></a>
+<h3 >AutomationPanel<a href="#AutomationPanel" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Viewing data quality is similar in AutomationPanel; there are two primary locations where you can quickly view the data quality of the enabled channels: the status bar and the data quality panel.</p>
+
+
+	<a name="Status-Bar-2"></a>
+<h4 >Status Bar<a href="#Status-Bar-2" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The AutomationPanel status bar, located at the bottom of the application, visually communicates the data quality status of your channels with data quality enabled. If channels are in data quality violation, the number of channels violating data quality will be indicated and the status color will also be reflected. A good status is reflected on the bar in black. This field is controlled by the channel, <code>voSysDQStatus</code>, which you can use to prevent operators from starting a test if the value is anything other than 0. The status bar remains visible regardless of which layout is open. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>AutomationPanel Status Bar in Violation</strong></em></span><br /><img src="attachments/download/37628/AP38_DQStatusBar.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>AutomationPanel Status Bar Good</strong></em></span><br /><img src="attachments/download/37629/AP38_DQStatusBarGood.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Data-Quality-Panel"></a>
+<h4 >Data Quality Panel<a href="#Data-Quality-Panel" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>The Data Quality panel enables you to view live or logged channel data quality in table format. The panel displays information such as the DQ low value, current value, high value, units, and status. You can view the number of channels with data quality enabled and the total number of channels that are in violation. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Data Quality Panel</strong></em></span><br /><img src="attachments/download/37842/DataQuality.gif" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />To view logged data, click the circular button next to <strong>File</strong>. Then click the <img src="attachments/download/37635/dotdotdot.png" alt="" /> button to open the file browser.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Status Bar in Violation</strong></em></span><br /><img src="attachments/download/37634/38_SelectFile.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;<br />After you have selected a file, its data displays in the panel.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>Logged File Data Quality</strong></em></span><br /><img src="attachments/download/37636/38_FileData.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<a name="Accepting-or-Rejecting-Data"></a>
+<h2 >Accepting or Rejecting Data<a href="#Accepting-or-Rejecting-Data" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The accept/reject feature enables you to review individual data points in a data file, accept or reject the values, and enter comments. Only the last line in the <em>.dat</em> file is updated with the status and comment, regardless of which data point you are viewing.</p>
+
+
+	<p>To utilize this feature, the following option must be defined in the <em>powertek.ini</em> file, located in <em>$SUPPORTDIR</em>:</p>
+
+
+	<p><code>DQStatusChannels=statschan,commentchan</code></p>
+
+
+	<p><strong>Where</strong>:</p>
+
+
+	<p><em>statschan</em> and <em>commentchan</em> are the channels that hold the channel value and comment when you accept or reject data. These channels must be added to the LOL file designed for your tests.</p>
+
+
+	<p>When <code>DQStatusChannels</code> is present in the <em>powertek.ini</em> file, the <strong>Update Points Status</strong> button and the <strong>View Previous DQ Data</strong> field display in iTest Console's Data Quality viewer. <br />&nbsp;<br /><span style="font-size: 11px;padding-left: 3em;"> <em><strong>New Fields</strong></em></span><br /><img src="attachments/download/45353/38_NewOptions.png" style="padding-top:0.5em;padding-bottom:1em;padding-left: 2.30em;" alt="" /><br />&nbsp;</p>
+
+
+	<p>To accept or reject data in iTest Console, do the following:</p>
+
+
+	<ol>
+	<li>Load the Data Quality viewer and select the <strong>Check Logged File</strong> checkbox.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Data Quality Viewer</strong></em></span><br /><img src="attachments/download/37651/38_NewOptionsDisplay.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Select the <strong>Select a Log File</strong> drop-down list to choose a log file. This will display the data quality channel information for the selected file.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Select Log File</strong></em></span><br /><img src="attachments/download/37646/38_SelectLogFile.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the left and right arrow buttons in the <strong>View Previous DQ Data</strong> field to scroll through data points.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Scroll Through DQ Data Points</strong></em></span><br /><img src="attachments/download/37649/38_ScrollThroughPoints.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Click the <strong>Update Points Status</strong> button to accept or reject the data points in the file. This opens the Data Quality Status dialog.</li>
+		<li>Select the <strong>Status</strong> drop-down list and choose to <strong>Accept</strong> or <strong>Reject</strong> the data.<br />&nbsp;<br /><span style="font-size: 11px;padding-left: 1.5em;"> <em><strong>Data Quality Status and Comments</strong></em></span><br /><img src="attachments/download/37652/38_AcceptOrRejectData.png" style="padding-top:0.5em;padding-bottom:1em;padding-left:1em;" alt="" /><br />&nbsp;</li>
+		<li>Enter a comment in the <strong>Comments</strong> field describing why you accepted/rejected the data and click <strong>OK</strong>.</li>
+	</ol>
+
+
+	<p style="padding-left:2em;">Channels specified in the <code>DQStatusChannels</code> <em>powertek.ini</em> option are updated in the RDB and in the <em>.dat</em> file on the last line of the file.</p>
+
+
+	<a name="Using-Mailslot-Messages"></a>
+<h2 >Using Mailslot Messages<a href="#Using-Mailslot-Messages" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The Data Quality feature utilizes mailslot messages to perform various actions in the iTest and AutomationPanel consoles. You can use them within your VCL procedures or as standalone messages via the Mailer tool. There are three Softpanel messages and one Data_Engine message for the data quality feature.</p>
+
+
+	<a name="Softpanel"></a>
+<h3 >Softpanel<a href="#Softpanel" class="wiki-anchor">&para;</a></h3>
+
+
+	<p><strong>DATAQUALITY</strong></p>
+
+
+	<p>The <code>DATAQUALITY</code> mailslot message opens the Data Quality Viewer in iTest Console. This mailslot message is not compatible with AutomationPanel.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>\\.\\mailslot\Softpanel&gt;&gt;$DATAQUALITY</pre>
+
+	<p>&nbsp;</p>
+
+
+	<p><strong>DATAQUALITYCLOSE</strong></p>
+
+
+	<p>The <code>DATAQUALITYCLOSE</code> mailslot message closes the Data Quality Viewer in iTest Console. This mailslot message is not compatible with AutomationPanel.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>\\.\\mailslot\Softpanel&gt;&gt;$DATAQUALITYCLOSE</pre>
+
+	<p>&nbsp;</p>
+
+
+	<p><strong>DATAQUALITYFILE</strong></p>
+
+
+	<p>The <code>DATAQUALITYFILE</code> message opens the specified file in iTest Console's Data Quality viewer; when this mailslot message is used in AutomationPanel, it opens the specified file in the Data Quality panel.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>\\.\\mailslot\Softpanel&gt;&gt;$DATAQUALITYFILE;&lt;FileName&gt;</pre>
+
+	<p>&nbsp;</p>
+
+
+	<a name="Data_Engine"></a>
+<h3 >Data_Engine<a href="#Data_Engine" class="wiki-anchor">&para;</a></h3>
+
+
+	<p><strong>DQGroup Apply</strong></p>
+
+
+	<p>The <code>DQGroup Apply</code> command enables you to activate different Data Quality Groups during a test. The group name indicated in the command is activated.</p>
+
+
+	<p><strong>Syntax</strong>:</p>
+
+
+<pre>\\.\\mailslot\Data_Engine&gt;&gt;DQGroup Apply &lt;GroupName&gt;</pre>
+</body>
+</html>
