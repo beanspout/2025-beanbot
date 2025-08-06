@@ -11,8 +11,8 @@ import (
 	"fyne.io/fyne/v2/dialog"
 	"fyne.io/fyne/v2/widget"
 
-	"github.com/NZ26RQ_gme/lsie-beanbot/internal/knowledge"
-	"github.com/NZ26RQ_gme/lsie-beanbot/internal/ollama"
+	"github.com/beanspout/2025-beanbot/internal/knowledge"
+	"github.com/beanspout/2025-beanbot/internal/ollama"
 )
 
 // BeanBot represents the main application UI structure
@@ -67,11 +67,15 @@ func (b *BeanBot) createFooter() *fyne.Container {
 	b.statusLabel = status
 
 	// Create dropdown for model selection
-	modelSelect := widget.NewSelect([]string{"⏳ Loading models..."}, func(selected string) {
-		if selected != "" && !strings.Contains(selected, "Loading") && !strings.Contains(selected, "No models") {
-			// Extract model name from dropdown option (remove (current) suffix if present)
-			modelName := strings.TrimSpace(strings.Split(selected, "(")[0])
-			
+	modelSelect := widget.NewSelect([]string{"Loading models..."}, func(selected string) {
+		if selected != "" && !strings.Contains(selected, "Loading") && !strings.Contains(selected, "No models") && !strings.Contains(selected, "Error") && !strings.Contains(selected, "offline") && !strings.Contains(selected, "install") {
+			// Extract model name from dropdown option (remove (current) suffix)
+			modelName := selected
+			// Remove (current) suffix if present
+			if strings.Contains(modelName, "(current)") {
+				modelName = strings.TrimSpace(strings.Split(modelName, "(current)")[0])
+			}
+
 			b.debugLog("Model selected from dropdown: %s", modelName)
 			currentModel := b.ollamaClient.GetCurrentModel()
 			if modelName != currentModel {
@@ -79,10 +83,29 @@ func (b *BeanBot) createFooter() *fyne.Container {
 				b.debugLog("Model changed to: %s", modelName)
 				// Update the status label to reflect the selected model
 				b.statusLabel.SetText(fmt.Sprintf("🤖 BeanBot AI - %s ✅ ready to help!", modelName))
+
+				// Update dropdown options to show new current model
+				go func() {
+					models, err := b.ollamaClient.GetAvailableModels()
+					if err == nil && b.modelSelect != nil {
+						var options []string
+						for _, model := range models {
+							if model == modelName {
+								options = append(options, fmt.Sprintf("%s (current)", model))
+							} else {
+								options = append(options, model)
+							}
+						}
+						b.modelSelect.Options = options
+						b.modelSelect.SetSelected(fmt.Sprintf("%s (current)", modelName))
+						b.modelSelect.Refresh()
+					}
+				}()
 			}
 		}
 	})
 	modelSelect.PlaceHolder = "Select Model"
+	modelSelect.Resize(fyne.NewSize(200, 0)) // Set a fixed width for better layout
 
 	// Store reference to model dropdown
 	b.modelSelect = modelSelect
@@ -99,12 +122,12 @@ func (b *BeanBot) createFooter() *fyne.Container {
 		b.debugLog("Testing Ollama connection...")
 		if b.ollamaClient.TestConnection() {
 			b.debugLog("Ollama connection successful, searching for available models")
-			
+
 			// Get all available models
 			models, err := b.ollamaClient.GetAvailableModels()
 			if err != nil {
 				b.debugLog("Failed to get available models: %v", err)
-				modelSelect.Options = []string{"❌ Error loading models"}
+				modelSelect.Options = []string{"Error loading models"}
 				modelSelect.Refresh()
 				status.SetText("🤖 BeanBot AI ❌ error loading models")
 				return
@@ -119,7 +142,7 @@ func (b *BeanBot) createFooter() *fyne.Container {
 					b.ollamaClient.SetModel(preferredModel)
 					b.debugLog("Set active model to: %s", preferredModel)
 
-					// Populate dropdown with all available models
+					// Populate dropdown with all available models - cleaner format
 					var options []string
 					for _, model := range models {
 						if model == preferredModel {
@@ -135,19 +158,19 @@ func (b *BeanBot) createFooter() *fyne.Container {
 					status.SetText(fmt.Sprintf("🤖 BeanBot AI - %s ✅ ready to help!", preferredModel))
 				} else {
 					b.debugLog("No working models found")
-					modelSelect.Options = []string{"❌ No working models"}
+					modelSelect.Options = []string{"No working models available"}
 					modelSelect.Refresh()
 					status.SetText("🤖 BeanBot AI ❌ no working models")
 				}
 			} else {
 				b.debugLog("No models found")
-				modelSelect.Options = []string{"❌ No models installed"}
+				modelSelect.Options = []string{"No models installed - run: ollama pull llama3.2:1b"}
 				modelSelect.Refresh()
 				status.SetText("🤖 BeanBot AI ❌ no models found - install with: ollama pull llama3.2:1b")
 			}
 		} else {
 			b.debugLog("Ollama connection failed - server offline")
-			modelSelect.Options = []string{"❌ Ollama offline"}
+			modelSelect.Options = []string{"Ollama server offline - start with: ollama serve"}
 			modelSelect.Refresh()
 			status.SetText("🤖 BeanBot AI ❌ offline")
 		}
@@ -233,8 +256,8 @@ func (b *BeanBot) createMainContent() fyne.CanvasObject {
 func (b *BeanBot) handleEngineeringRequest(userInput string, responseEntry *widget.RichText) {
 	if strings.TrimSpace(userInput) == "" {
 		emptyResponse := "Please describe your engineering issue to get started."
-		emptyResponse += "\n\n---\n\n**📚 Sources Referenced:**\n\n"
-		emptyResponse += "*No documents from testData were referenced because no query was provided.*\n"
+		emptyResponse += "\n\n---\n\n## **📚 Sources Referenced:**\n\n"
+		emptyResponse += "- *No documents from testData were referenced because no query was provided.*\n"
 		responseEntry.ParseMarkdown(emptyResponse)
 		return
 	}
@@ -275,13 +298,13 @@ func (b *BeanBot) handleEngineeringRequest(userInput string, responseEntry *widg
 		if strings.Contains(context, "outside my technical troubleshooting expertise") {
 			b.debugLog("Using direct response (outside expertise)")
 			// Always add source information even for direct responses
-			context += "\n\n---\n\n**📚 Sources Referenced:**\n\n"
+			context += "\n\n---\n\n## **📚 Sources Referenced:**\n\n"
 			if len(sources) > 0 {
-				for i, source := range sources {
-					context += fmt.Sprintf("%d. %s\n", i+1, source)
+				for _, source := range sources {
+					context += fmt.Sprintf("- %s\n", source)
 				}
 			} else {
-				context += "*No relevant documents from testData were found for this query. This response indicates the question is outside the scope of available technical documentation.*\n"
+				context += "- *No relevant documents from testData were found for this query. This response indicates the question is outside the scope of available technical documentation.*\n"
 			}
 			responseEntry.ParseMarkdown(context)
 			return
@@ -296,13 +319,13 @@ func (b *BeanBot) handleEngineeringRequest(userInput string, responseEntry *widg
 			log.Printf("Error getting AI response: %v", err)
 			errorResponse := fmt.Sprintf("Error getting AI response: %v", err)
 			// Always add source information even for error responses
-			errorResponse += "\n\n---\n\n**📚 Sources Referenced:**\n\n"
+			errorResponse += "\n\n---\n\n## **📚 Sources Referenced:**\n\n"
 			if len(sources) > 0 {
-				for i, source := range sources {
-					errorResponse += fmt.Sprintf("%d. %s\n", i+1, source)
+				for _, source := range sources {
+					errorResponse += fmt.Sprintf("- %s\n", source)
 				}
 			} else {
-				errorResponse += "*No documents from testData were referenced due to the error. Please try rephrasing your question.*\n"
+				errorResponse += "- *No documents from testData were referenced due to the error. Please try rephrasing your question.*\n"
 			}
 			responseEntry.ParseMarkdown(errorResponse)
 			return
@@ -314,37 +337,39 @@ func (b *BeanBot) handleEngineeringRequest(userInput string, responseEntry *widg
 			b.debugLog("Model was automatically changed from %s to %s during generation", originalModel, currentModel)
 			// Update the status label to reflect the actual model used
 			b.statusLabel.SetText(fmt.Sprintf("🤖 BeanBot AI - %s ✅ ready to help!", currentModel))
-			
+
 			// Update the dropdown to show the new current model
 			if b.modelSelect != nil {
 				// Refresh dropdown options to reflect the current model
-				var updatedOptions []string
-				for _, option := range b.modelSelect.Options {
-					// Remove current marker from all options
-					cleanOption := strings.TrimSpace(strings.Split(option, "(")[0])
-					
-					if cleanOption == currentModel {
-						updatedOptions = append(updatedOptions, fmt.Sprintf("%s (current)", cleanOption))
-					} else {
-						updatedOptions = append(updatedOptions, cleanOption)
+				go func() {
+					models, err := b.ollamaClient.GetAvailableModels()
+					if err == nil {
+						var updatedOptions []string
+						for _, model := range models {
+							if model == currentModel {
+								updatedOptions = append(updatedOptions, fmt.Sprintf("%s (current)", model))
+							} else {
+								updatedOptions = append(updatedOptions, model)
+							}
+						}
+						b.modelSelect.Options = updatedOptions
+						b.modelSelect.SetSelected(fmt.Sprintf("%s (current)", currentModel))
+						b.modelSelect.Refresh()
 					}
-				}
-				b.modelSelect.Options = updatedOptions
-				b.modelSelect.SetSelected(fmt.Sprintf("%s (current)", currentModel))
-				b.modelSelect.Refresh()
+				}()
 			}
 		}
 
 		b.debugLog("Received response from Ollama, length: %d characters", len(response))
 
 		// Always add source references to the response - this is mandatory
-		response += "\n\n---\n\n**📚 Sources Referenced:**\n\n"
+		response += "\n\n---\n\n## **📚 Sources Referenced:**\n\n"
 		if len(sources) > 0 {
-			for i, source := range sources {
-				response += fmt.Sprintf("%d. %s\n", i+1, source)
+			for _, source := range sources {
+				response += fmt.Sprintf("- %s\n", source)
 			}
 		} else {
-			response += "*No documents from testData were referenced for this response. This answer is based on general AI knowledge and may not reflect your specific documentation or procedures.*\n"
+			response += "- *No documents from testData were referenced for this response. This answer is based on general AI knowledge and may not reflect your specific documentation or procedures.*\n"
 		}
 
 		// Display response in the same window
@@ -392,19 +417,19 @@ func (b *BeanBot) handleFileUpload(responseEntry *widget.RichText) {
 
 		// Build response message
 		var message strings.Builder
-		message.WriteString("\n\n\n\n## 📁 File Upload Complete! \n\n")
+		message.WriteString("\n\n\n\n## **📁 File Upload Complete!** \n\n")
 
 		if len(processedFiles) > 0 {
-			message.WriteString("### ✅ Successfully uploaded and processed:\n\n")
-			for i, file := range processedFiles {
+			message.WriteString("### **✅ Successfully uploaded and processed:**\n\n")
+			for _, file := range processedFiles {
 				fileName := filepath.Base(file)
-				message.WriteString(fmt.Sprintf("%d. **%s**\n", i+1, fileName))
+				message.WriteString(fmt.Sprintf("- **%s**\n", fileName))
 			}
 			message.WriteString("\n*These files are now available for your questions and will be included in AI responses.*\n\n")
 		}
 
 		if len(errors) > 0 {
-			message.WriteString("### ❌ Failed to process:\n\n")
+			message.WriteString("### **❌ Failed to process:**\n\n")
 			for _, errMsg := range errors {
 				message.WriteString(errMsg + "\n")
 			}
@@ -414,9 +439,9 @@ func (b *BeanBot) handleFileUpload(responseEntry *widget.RichText) {
 		// Show currently uploaded files
 		uploadedList := b.knowledgeDB.GetUploadedFilesList()
 		if len(uploadedList) > 0 {
-			message.WriteString("### 📋 All uploaded files in this session:\n\n")
-			for i, file := range uploadedList {
-				message.WriteString(fmt.Sprintf("%d. %s\n", i+1, file))
+			message.WriteString("### **📋 All uploaded files in this session:**\n\n")
+			for _, file := range uploadedList {
+				message.WriteString(fmt.Sprintf("- %s\n", file))
 			}
 			message.WriteString("\n*Use 'Clear' button to remove uploaded files and start fresh.*\n")
 		}
@@ -749,18 +774,20 @@ User Issue: %s
 Knowledge Base:
 %s
 
-Provide structured engineering response:
+Provide structured engineering response in markdown format:
 
-1. PROBLEM ANALYSIS: [Identify the core issue: What is failing? What symptoms are described? What system/component is affected?]
+## **1. PROBLEM ANALYSIS**
+[Identify the core issue: What is failing? What symptoms are described? What system/component is affected?]
 
-2. SOLUTION STEPS:
-   - Step 1: [First diagnostic/corrective action]
-   - Step 2: [Next action based on knowledge base]
-   - Step 3: [Additional verification/fix step]
+## **2. SOLUTION STEPS**
+- **Step 1:** [First diagnostic/corrective action]
+- **Step 2:** [Next action based on knowledge base]
+- **Step 3:** [Additional verification/fix step]
 
-3. IF PROBLEM PERSISTS: [Advanced troubleshooting or escalation steps]
+## **3. IF PROBLEM PERSISTS**
+[Advanced troubleshooting or escalation steps]
 
-Important: Base your response on the knowledge base provided. If the knowledge base contains relevant information, reference it in your solution. Analyze the user's description carefully and provide specific, actionable engineering guidance.`, userInput, context)
+Important: Base your response on the knowledge base provided. If the knowledge base contains relevant information, reference it in your solution. Analyze the user's description carefully and provide specific, actionable engineering guidance. Use proper markdown formatting with **bold** text for emphasis.`, userInput, context)
 
 	return prompt
 } // findMostRelevantSection finds the most relevant section of a large text for the given input

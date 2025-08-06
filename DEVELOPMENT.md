@@ -124,7 +124,7 @@ dir internal\
 go build -v ./main.go
 
 # 5. If still failing, try rebuilding the module
-go mod init github.com/NZ26RQ_gme/lsie-beanbot
+go mod init github.com/beanspout/2025-beanbot
 go mod tidy
 go build ./main.go
 ```

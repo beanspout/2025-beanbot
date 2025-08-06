@@ -6,9 +6,9 @@ import (
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 
-	"github.com/NZ26RQ_gme/lsie-beanbot/internal/knowledge"
-	"github.com/NZ26RQ_gme/lsie-beanbot/internal/ollama"
-	"github.com/NZ26RQ_gme/lsie-beanbot/internal/ui"
+	"github.com/beanspout/2025-beanbot/internal/knowledge"
+	"github.com/beanspout/2025-beanbot/internal/ollama"
+	"github.com/beanspout/2025-beanbot/internal/ui"
 )
 
 func main() {
