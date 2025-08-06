@@ -15,11 +15,20 @@ BeanBot is a Go-based desktop application that provides AI-powered engineering s
 git clone https://github.com/beanspout/2025-beanbot.git
 cd 2025-beanbot
 
-# Build the application
+# Build the application (Windows)
 go build -o lsie-beanbot.exe
 
-# Run the application
+# Build the application (Linux/macOS)
+go build -o lsie-beanbot
+
+# Run the application (Windows)
 ./lsie-beanbot.exe
+
+# Run the application (Linux/macOS)
+./lsie-beanbot
+
+# On Windows, the executable will be 'lsie-beanbot.exe':
+# lsie-beanbot.exe
 ```
 
 ## 📁 Codebase Architecture
