@@ -1,185 +1,192 @@
-# BeanBot - iTest Troubleshooting Assistant
+# BeanBot - Engineering Support Assistant
 
-![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white)
-![Fyne](https://img.shields.io/badge/Fyne-GUI-blue?style=for-the-badge)
-![AI](https://img.shields.io/badge/AI-Powered-green?style=for-the-badge)
+BeanBot is a Go-based desktop application that provides AI-powered engineering support using Ollama models. It features a clean GUI interface for troubleshooting technical issues with integrated knowledge base search and file upload capabilities.
 
-BeanBot is an intelligent troubleshooting assistant specifically designed for iTest systems. It combines comprehensive technical documentation with AI-powered analysis to provide expert-level troubleshooting guidance.
+## 🚀 Quick Start
 
-## 🚀 Features
+### Prerequisites
+- Go 1.24+ 
+- [Ollama](https://ollama.ai/) installed and running
+- Recommended model: `ollama pull llama3.2:1b`
 
-### 🧠 AI-Powered Analysis
-- Integration with **Ollama** using the `gemma3:1b` model for intelligent responses
-- Smart context building that prioritizes official iTest documentation
-- Fallback responses when AI service is unavailable
-- Optimized for small language models with intelligent context limiting
-
-### 📚 Comprehensive Knowledge Base
-- **216 iTest Support Documents** - Complete HTML documentation library
-- **Multi-format Support** - JSON, TXT, PDF, DrawIO, and HTML files
-- **Priority-based Search** - Official documentation prioritized over basic error codes
-- **PDF Text Extraction** - Advanced parsing with encoding fixes
-- **Real-time Content Processing** - Dynamic loading of troubleshooting data
-
-### 🖥️ Modern User Interface
-- **Cross-platform GUI** built with Fyne v2.4.5
-- **Resizable Panels** - Adjustable input/response sections with VSplit containers
-- **Word Wrapping & Scrolling** - Responsive text display with proper formatting
-- **Real-time Processing** - Live progress indicators and status updates
-- **Professional Design** - Clean, intuitive interface optimized for technical users
-
-### 🔧 Advanced Technical Capabilities
-- **Professional Go Architecture** - Clean internal package structure
-- **Multi-format Document Processing** - Handles diverse technical documentation
-- **Smart Relevance Matching** - Context-aware content selection
-- **Performance Optimization** - Efficient memory usage and fast response times
-- **Comprehensive Error Handling** - Robust logging and fallback mechanisms
-
-## 📋 Prerequisites
-
-- **Go 1.21 or later**
-- **Ollama** (optional, for AI features)
-- **Windows/Linux/macOS** (cross-platform support)
-
-## 🛠️ Installation
-
-### Option 1: Quick Setup (Recommended)
+### Building & Running
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/BeanBot.git
-cd BeanBot
-
-# Run the setup script (Windows)
-setup.bat
-
-# The script will:
-# - Install Go dependencies
-# - Set up Ollama with gemma3:1b model
-# - Build the application
-# - Launch BeanBot
-```
-
-### Option 2: Manual Installation
-```bash
-# Clone the repository
-git clone https://github.com/YOUR_USERNAME/BeanBot.git
-cd BeanBot
-
-# Install dependencies
-go mod download
+git clone https://github.com/beanspout/2025-beanbot.git
+cd 2025-beanbot
 
 # Build the application
-go build -o beanbot main.go
+go build -o lsie-beanbot.exe
 
-# Install Ollama (optional but recommended)
-# Visit https://ollama.ai/ for installation instructions
-ollama pull gemma3:1b
-
-# Run BeanBot
-./beanbot
+# Run the application
+./lsie-beanbot.exe
 ```
 
-## 🏃‍♂️ Quick Start
+## 📁 Codebase Architecture
 
-1. **Launch BeanBot**
-   ```bash
-   ./beanbot
-   ```
-
-2. **Describe Your Issue**
-   - Enter your iTest problem in the input area
-   - Be specific about error codes, symptoms, or components
-   - Example: "Getting error E1001 when trying to communicate with the device"
-
-3. **Get Expert Guidance**
-   - BeanBot analyzes your issue against the knowledge base
-   - Receives structured troubleshooting steps
-   - Follows priority-based recommendations from official documentation
-
-## 📁 Project Structure
-
+### Core Structure Overview
 ```
-BeanBot/
-├── cmd/
-│   └── beanbot/           # Alternative entry point
-├── internal/              # Private application code
-│   ├── knowledge/         # Knowledge database management
-│   ├── models/           # Data structures and types
-│   ├── ollama/           # AI client integration
-│   └── ui/               # User interface components
-├── pkg/                  # Public packages
-│   └── processors/       # Document processing utilities
-├── testData/             # Knowledge base content
-│   ├── iTest_SupportDocs/ # 216 HTML documentation files
-│   ├── troubleTree/      # Troubleshooting diagrams
-│   └── *.{json,txt,pdf}  # Additional technical resources
-├── main.go               # Application entry point
-├── setup.bat            # Windows setup script
-└── README.md            # This file
+├── main.go                 # Application entry point
+├── internal/               # Private application code
+│   ├── ui/                 # User interface layer
+│   ├── knowledge/          # Knowledge database management
+│   ├── ollama/             # AI model integration
+│   └── models/             # Data structures
+├── pkg/                    # File processing utilities
+├── testData/               # Knowledge base content
+└── output examples/        # Sample outputs
 ```
 
-## 🔬 Technical Architecture
+## 🔧 Key Components & Where to Find Them
 
-### Knowledge Database
-- **Priority System**: iTest documentation → Error codes → Common issues → General content
-- **Smart Caching**: Efficient memory management for large document sets
-- **Relevance Scoring**: Advanced keyword matching with technical term awareness
-- **Multi-format Parsing**: Specialized processors for each document type
+### 🎨 User Interface (`internal/ui/`)
+
+**`app.go`** - Main UI controller (917 lines)
+- **Function: `SetupUI()`** (Line ~38) - Initializes the main window layout
+- **Function: `createFooter()`** (Line ~58) - Status bar and model selection dropdown
+- **Function: `createMainContent()`** (Line ~169) - Chat interface with input/response areas
+- **Function: `handleEngineeringRequest()`** (Line ~240) - Core request processing logic
+- **Function: `buildEngineeringContext()`** (Line ~440) - Knowledge base search and context building
+- **Function: `createEngineeringPrompt()`** (Line ~750) - AI prompt generation for structured responses
+
+**`file_dialog.go`** - Windows file upload dialogs (199 lines)
+- **Function: `ShowFileDialog()`** - Native Windows file picker integration
+- Uses Windows API calls for seamless file selection
+
+### 🧠 Knowledge Management (`internal/knowledge/`)
+
+**`database.go`** - Knowledge base engine (833 lines)
+- **Function: `NewKnowledgeDatabase()`** (Line ~30) - Initializes and loads all knowledge sources
+- **Function: `ProcessUserUpload()`** (Line ~100+) - Handles user file uploads and processing
+- **Function: `IsRelevantContent()`** (Line ~300+) - Smart content relevance detection
+- **File Processing Methods:**
+  - `processTextFiles()` - Handles .txt, .html, .json files
+  - `processPDFFiles()` - Extracts text from PDF documents
+  - `processWordFiles()` - Extracts content from .docx files
+  - `processImageFiles()` - OCR and image content analysis
+
+### 🤖 AI Integration (`internal/ollama/`)
+
+**`client.go`** - Ollama API client (428 lines)
+- **Function: `NewClient()`** (Line ~18) - Creates configured HTTP client with 2-minute timeout
+- **Function: `TestConnection()`** (Line ~29) - Validates Ollama server connectivity
+- **Function: `FindAvailableModel()`** (Line ~37) - Auto-detects best available model
+- **Function: `GenerateResponse()`** (Line ~100+) - Sends prompts and handles AI responses
+- **Function: `GetAvailableModels()`** (Line ~200+) - Lists all installed Ollama models
+
+### 📊 Data Models (`internal/models/`)
+
+**`types.go`** - Core data structures (45 lines)
+- **`TroubleshootingData`** - Main knowledge base structure
+- **`ErrorCode`** - Structured error code definitions with troubleshooting steps
+- **`CommonIssue`** - Frequent problems and their solutions
+- **`OllamaRequest/Response`** - API communication structures
+
+### 🔄 File Processors (`pkg/`)
+
+**Specialized file handlers for different formats:**
+- **`pdf_processor.go`** - PDF text extraction using github.com/ledongthuc/pdf
+- **`windows_image_processor.go`** - OCR processing using Windows APIs
+- **`drawio_processor.go`** - Draw.io diagram processing
+- **`processors/`** - Additional format-specific processors
+
+## 🎯 Key Features & Implementation
+
+### 🔍 Smart Context Building
+**Location:** `internal/ui/app.go` → `buildEngineeringContext()`
+- **Priority System:** User uploads → Error codes → HTML docs → Text files → PDFs
+- **Relevance Detection:** Keyword matching with technical content scoring
+- **Content Limiting:** Prevents context overflow with intelligent truncation
+
+### 💬 Structured AI Responses  
+**Location:** `internal/ui/app.go` → `createEngineeringPrompt()`
+- **Response Format:** Problem Analysis → Solution Steps → Advanced Troubleshooting
+- **Source Attribution:** Always includes referenced knowledge base sources
+- **Markdown Rendering:** Rich text formatting with bold headers and bullet lists
+
+### 📤 File Upload System
+**Location:** `internal/ui/file_dialog.go` + `internal/knowledge/database.go`
+- **Native Windows Dialog:** Uses Windows API for seamless file selection
+- **Multi-format Support:** PDF, Word, images, text files, Draw.io diagrams
+- **Session Management:** User uploads are temporary and cleared with "Clear" button
+
+### 🎛️ Model Management
+**Location:** `internal/ui/app.go` → `createFooter()` + `internal/ollama/client.go`
+- **Auto-detection:** Scans for available Ollama models on startup
+- **Dynamic Switching:** Runtime model switching with UI updates
+- **Fallback Logic:** Tries multiple models if preferred isn't available
+
+## 🚀 Development Guide
+
+### Adding New File Format Support
+1. Create processor in `pkg/processors/[format]_processor.go`
+2. Add processing logic to `internal/knowledge/database.go`
+3. Update file filter in `internal/ui/file_dialog.go`
+
+### Modifying AI Response Format
+1. Edit prompt template in `createEngineeringPrompt()` (`internal/ui/app.go`)
+2. Adjust markdown parsing in `handleEngineeringRequest()`
+3. Update source reference formatting in `buildEngineeringContext()`
+
+### Extending Knowledge Base
+1. Add new data structures to `internal/models/types.go`
+2. Update loading logic in `internal/knowledge/database.go`
+3. Modify context building in `buildEngineeringContext()`
+
+## 📋 Dependencies
+
+### Core Framework
+- **Fyne v2.4.5** - Cross-platform GUI framework
+- **Go 1.24+** - Backend language with modern features
+
+### File Processing
+- **github.com/ledongthuc/pdf** - PDF text extraction
+- **github.com/nguyenthenguyen/docx** - Word document processing
+- **github.com/go-ole/go-ole** - Windows COM/OLE integration for image OCR
 
 ### AI Integration
-- **Ollama Client**: HTTP-based communication with local AI models
-- **Context Optimization**: Intelligent truncation for small model compatibility
-- **Fallback System**: Graceful degradation when AI is unavailable
-- **Response Enhancement**: Structured formatting for technical guidance
+- **Ollama** - Local AI model serving (external dependency)
+- **HTTP Client** - Standard library for API communication
 
-### User Interface
-- **Responsive Design**: Adaptive layout for different screen sizes
-- **Real-time Updates**: Live progress indication and status monitoring
-- **Accessibility**: Keyboard navigation and screen reader support
-- **Cross-platform**: Native look and feel on all supported systems
+## 🎨 UI Architecture
 
-## 🤝 Contributing
+### Layout Pattern
+- **Border Layout:** Fixed footer + scrollable content area
+- **Chat Interface:** Input at bottom, responses above (familiar messaging pattern)
+- **Responsive Design:** Auto-wrapping text and dynamic sizing
 
-We welcome contributions to improve BeanBot! Here's how you can help:
+### State Management
+- **Session-based:** User uploads cleared on "Clear" button
+- **Real-time Updates:** Status bar reflects current model and connection state
+- **Progressive Loading:** Async model detection with UI feedback
 
-1. **Fork the repository**
-2. **Create a feature branch** (`git checkout -b feature/amazing-feature`)
-3. **Commit your changes** (`git commit -m 'Add some amazing feature'`)
-4. **Push to the branch** (`git push origin feature/amazing-feature`)
-5. **Open a Pull Request**
+## 🔧 Configuration
 
-### Development Guidelines
-- Follow Go best practices and conventions
-- Add tests for new functionality
-- Update documentation for API changes
-- Ensure cross-platform compatibility
+### Default Settings (`main.go`)
+- **Window Size:** 450x700 (optimized for chat interface)
+- **Default Model:** llama3.2:1b (lightweight and fast)
+- **Ollama URL:** http://localhost:11434 (standard Ollama port)
+- **Request Timeout:** 120 seconds (allows for larger model responses)
 
-## 📝 License
+### Knowledge Base Location
+- **Primary Data:** `testData/` directory contains all knowledge sources
+- **Error Codes:** `testData/lsie_errors.json` - structured troubleshooting data
+- **Documentation:** `testData/Confluence/` - HTML documentation files
+- **Test Files:** `testData/` - sample text and configuration files
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 🐛 Debugging
 
-## 🆘 Support
+### Debug Mode
+Enable with `bot.EnableDebugMode()` in `main.go` for detailed logging:
+- Model selection and switching events
+- Context building and source selection
+- File processing results
+- Ollama API communication details
 
-- **Issues**: Report bugs or request features via [GitHub Issues](https://github.com/YOUR_USERNAME/BeanBot/issues)
-- **Documentation**: Check the `testData/iTest_SupportDocs/` directory for comprehensive iTest documentation
-- **Community**: Join our discussions in [GitHub Discussions](https://github.com/YOUR_USERNAME/BeanBot/discussions)
-
-## 🔮 Roadmap
-
-- [ ] **Web Interface** - Browser-based access for remote troubleshooting
-- [ ] **API Endpoints** - RESTful API for integration with other tools
-- [ ] **Plugin System** - Extensible architecture for custom processors
-- [ ] **Multiple AI Models** - Support for different language models
-- [ ] **Advanced Analytics** - Usage patterns and troubleshooting effectiveness
-- [ ] **Cloud Deployment** - Docker containers and cloud hosting options
-
-## 🏆 Acknowledgments
-
-- **iTest Documentation Team** - For comprehensive technical documentation
-- **Ollama Project** - For providing accessible local AI capabilities
-- **Fyne Project** - For the excellent cross-platform GUI framework
-- **Go Community** - For the robust programming language and ecosystem
+### Common Issues
+- **Ollama Offline:** Check if `ollama serve` is running
+- **No Models:** Install with `ollama pull llama3.2:1b`
+- **File Processing Errors:** Check file permissions and format support
+- **Response Timeout:** Reduce context size or use smaller model
 
 ---
-
-**Made with ❤️ for the iTest community**
