@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/NZ26RQ_gme/lsie-beanbot/internal/models"
+	"github.com/beanspout/2025-beanbot/internal/models"
 )
 
 // Client handles communication with Ollama

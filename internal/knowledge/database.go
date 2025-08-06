@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/NZ26RQ_gme/lsie-beanbot/internal/models"
+	"github.com/beanspout/2025-beanbot/internal/models"
 	"github.com/go-ole/go-ole"
 	"github.com/ledongthuc/pdf"
 	"github.com/nguyenthenguyen/docx"
@@ -642,29 +642,29 @@ func (kb *KnowledgeDatabase) GetUploadedFilesList() []string {
 func (kb *KnowledgeDatabase) isLogFile(content string) bool {
 	lowerContent := strings.ToLower(content)
 	lines := strings.Split(content, "\n")
-	
+
 	// Check for common log indicators
 	logIndicators := []string{
 		"[debug]", "[info]", "[warn]", "[error]", "[fatal]",
 		"debug:", "info:", "warn:", "error:", "fatal:",
-		"exception", "stack trace", "traceback", 
+		"exception", "stack trace", "traceback",
 		"timestamp", "yyyy-mm-dd", "mm/dd/yyyy",
 		"log level", "severity", "thread", "pid:",
 		"started", "stopped", "failed", "succeeded",
 		"connection", "timeout", "retry", "attempt",
 	}
-	
+
 	indicators := 0
 	timePatterns := 0
-	
+
 	// Count how many lines have log-like patterns
 	for i, line := range lines {
 		if i > 100 { // Don't check entire huge files
 			break
 		}
-		
+
 		lineLower := strings.ToLower(line)
-		
+
 		// Check for log level indicators
 		for _, indicator := range logIndicators {
 			if strings.Contains(lineLower, indicator) {
@@ -672,7 +672,7 @@ func (kb *KnowledgeDatabase) isLogFile(content string) bool {
 				break
 			}
 		}
-		
+
 		// Check for timestamp patterns (basic patterns)
 		if strings.Contains(line, ":") && (strings.Contains(line, "/") || strings.Contains(line, "-")) {
 			// Look for patterns like 2023-08-05 14:30:25 or 08/05/2023 2:30 PM
@@ -681,73 +681,73 @@ func (kb *KnowledgeDatabase) isLogFile(content string) bool {
 			}
 		}
 	}
-	
+
 	// Consider it a log file if we have enough indicators
-	return indicators > 2 || timePatterns > 3 || 
-		   strings.Contains(lowerContent, "log file") ||
-		   strings.Contains(lowerContent, "application log") ||
-		   strings.Contains(lowerContent, "system log")
+	return indicators > 2 || timePatterns > 3 ||
+		strings.Contains(lowerContent, "log file") ||
+		strings.Contains(lowerContent, "application log") ||
+		strings.Contains(lowerContent, "system log")
 }
 
 // parseLogFile extracts meaningful information from log files
 func (kb *KnowledgeDatabase) parseLogFile(content, filename string) string {
 	var parsed strings.Builder
 	lines := strings.Split(content, "\n")
-	
+
 	parsed.WriteString(fmt.Sprintf("=== LOG FILE ANALYSIS: %s ===\n\n", filename))
-	
+
 	// Extract key information
 	errors := []string{}
 	warnings := []string{}
 	exceptions := []string{}
 	importantEvents := []string{}
 	timeRange := []string{}
-	
+
 	for i, line := range lines {
 		if i > 1000 { // Limit processing for very large files
 			parsed.WriteString(fmt.Sprintf("[Log analysis truncated - processed first 1000 lines of %d total lines]\n\n", len(lines)))
 			break
 		}
-		
+
 		lineLower := strings.ToLower(line)
 		trimmedLine := strings.TrimSpace(line)
-		
+
 		if trimmedLine == "" {
 			continue
 		}
-		
+
 		// Extract timestamps for range analysis
-		if len(timeRange) < 10 && (strings.Contains(line, ":") && 
+		if len(timeRange) < 10 && (strings.Contains(line, ":") &&
 			(strings.Contains(line, "/") || strings.Contains(line, "-"))) {
 			timeRange = append(timeRange, trimmedLine[:min(50, len(trimmedLine))])
 		}
-		
+
 		// Categorize log entries
 		if strings.Contains(lineLower, "error") || strings.Contains(lineLower, "failed") ||
-		   strings.Contains(lineLower, "fatal") || strings.Contains(lineLower, "[error]") {
+			strings.Contains(lineLower, "fatal") || strings.Contains(lineLower, "[error]") {
 			if len(errors) < 20 {
 				errors = append(errors, trimmedLine)
 			}
 		} else if strings.Contains(lineLower, "warn") || strings.Contains(lineLower, "warning") ||
-				 strings.Contains(lineLower, "[warn]") {
+			strings.Contains(lineLower, "[warn]") {
 			if len(warnings) < 15 {
 				warnings = append(warnings, trimmedLine)
 			}
 		} else if strings.Contains(lineLower, "exception") || strings.Contains(lineLower, "stack trace") ||
-				 strings.Contains(lineLower, "traceback") || strings.Contains(lineLower, "throw") {
+			strings.Contains(lineLower, "traceback") || strings.Contains(lineLower, "throw") {
 			if len(exceptions) < 10 {
 				exceptions = append(exceptions, trimmedLine)
 			}
 		} else if strings.Contains(lineLower, "started") || strings.Contains(lineLower, "stopped") ||
-				 strings.Contains(lineLower, "connected") || strings.Contains(lineLower, "disconnected") ||
-				 strings.Contains(lineLower, "timeout") || strings.Contains(lineLower, "retry") ||
-				 strings.Contains(lineLower, "config") || strings.Contains(lineLower, "initialization") {
+			strings.Contains(lineLower, "connected") || strings.Contains(lineLower, "disconnected") ||
+			strings.Contains(lineLower, "timeout") || strings.Contains(lineLower, "retry") ||
+			strings.Contains(lineLower, "config") || strings.Contains(lineLower, "initialization") {
 			if len(importantEvents) < 15 {
 				importantEvents = append(importantEvents, trimmedLine)
 			}
 		}
 	}
-	
+
 	// Build summary
 	parsed.WriteString("**LOG SUMMARY:**\n")
 	parsed.WriteString(fmt.Sprintf("- Total lines: %d\n", len(lines)))
@@ -755,7 +755,7 @@ func (kb *KnowledgeDatabase) parseLogFile(content, filename string) string {
 	parsed.WriteString(fmt.Sprintf("- Warnings found: %d\n", len(warnings)))
 	parsed.WriteString(fmt.Sprintf("- Exceptions found: %d\n", len(exceptions)))
 	parsed.WriteString(fmt.Sprintf("- Important events: %d\n\n", len(importantEvents)))
-	
+
 	// Time range
 	if len(timeRange) > 0 {
 		parsed.WriteString("**TIME RANGE:**\n")
@@ -766,7 +766,7 @@ func (kb *KnowledgeDatabase) parseLogFile(content, filename string) string {
 			parsed.WriteString("\n")
 		}
 	}
-	
+
 	// Errors section
 	if len(errors) > 0 {
 		parsed.WriteString("**ERRORS FOUND:**\n")
@@ -775,7 +775,7 @@ func (kb *KnowledgeDatabase) parseLogFile(content, filename string) string {
 		}
 		parsed.WriteString("\n")
 	}
-	
+
 	// Warnings section
 	if len(warnings) > 0 {
 		parsed.WriteString("**WARNINGS FOUND:**\n")
@@ -784,7 +784,7 @@ func (kb *KnowledgeDatabase) parseLogFile(content, filename string) string {
 		}
 		parsed.WriteString("\n")
 	}
-	
+
 	// Exceptions section
 	if len(exceptions) > 0 {
 		parsed.WriteString("**EXCEPTIONS/STACK TRACES:**\n")
@@ -793,7 +793,7 @@ func (kb *KnowledgeDatabase) parseLogFile(content, filename string) string {
 		}
 		parsed.WriteString("\n")
 	}
-	
+
 	// Important events section
 	if len(importantEvents) > 0 {
 		parsed.WriteString("**IMPORTANT EVENTS:**\n")
@@ -802,7 +802,7 @@ func (kb *KnowledgeDatabase) parseLogFile(content, filename string) string {
 		}
 		parsed.WriteString("\n")
 	}
-	
+
 	// Add raw excerpt for context
 	parsed.WriteString("**RAW LOG EXCERPT (last 20 lines):**\n")
 	startLine := max(0, len(lines)-20)
@@ -811,7 +811,7 @@ func (kb *KnowledgeDatabase) parseLogFile(content, filename string) string {
 			parsed.WriteString(fmt.Sprintf("%s\n", lines[i]))
 		}
 	}
-	
+
 	return parsed.String()
 }
 
@@ -823,7 +823,7 @@ func min(a, b int) int {
 	return b
 }
 
-// max returns the maximum of two integers  
+// max returns the maximum of two integers
 func max(a, b int) int {
 	if a > b {
 		return a
