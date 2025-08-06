@@ -257,7 +257,7 @@ func (b *BeanBot) handleEngineeringRequest(userInput string, responseEntry *widg
 	if strings.TrimSpace(userInput) == "" {
 		emptyResponse := "Please describe your engineering issue to get started."
 		emptyResponse += "\n\n---\n\n## **📚 Sources Referenced:**\n\n"
-		emptyResponse += "*No documents from testData were referenced because no query was provided.*\n"
+		emptyResponse += "- *No documents from testData were referenced because no query was provided.*\n"
 		responseEntry.ParseMarkdown(emptyResponse)
 		return
 	}
@@ -300,11 +300,11 @@ func (b *BeanBot) handleEngineeringRequest(userInput string, responseEntry *widg
 			// Always add source information even for direct responses
 			context += "\n\n---\n\n## **📚 Sources Referenced:**\n\n"
 			if len(sources) > 0 {
-				for i, source := range sources {
-					context += fmt.Sprintf("**%d.** %s\n", i+1, source)
+				for _, source := range sources {
+					context += fmt.Sprintf("- %s\n", source)
 				}
 			} else {
-				context += "*No relevant documents from testData were found for this query. This response indicates the question is outside the scope of available technical documentation.*\n"
+				context += "- *No relevant documents from testData were found for this query. This response indicates the question is outside the scope of available technical documentation.*\n"
 			}
 			responseEntry.ParseMarkdown(context)
 			return
@@ -321,11 +321,11 @@ func (b *BeanBot) handleEngineeringRequest(userInput string, responseEntry *widg
 			// Always add source information even for error responses
 			errorResponse += "\n\n---\n\n## **📚 Sources Referenced:**\n\n"
 			if len(sources) > 0 {
-				for i, source := range sources {
-					errorResponse += fmt.Sprintf("**%d.** %s\n", i+1, source)
+				for _, source := range sources {
+					errorResponse += fmt.Sprintf("- %s\n", source)
 				}
 			} else {
-				errorResponse += "*No documents from testData were referenced due to the error. Please try rephrasing your question.*\n"
+				errorResponse += "- *No documents from testData were referenced due to the error. Please try rephrasing your question.*\n"
 			}
 			responseEntry.ParseMarkdown(errorResponse)
 			return
@@ -365,11 +365,11 @@ func (b *BeanBot) handleEngineeringRequest(userInput string, responseEntry *widg
 		// Always add source references to the response - this is mandatory
 		response += "\n\n---\n\n## **📚 Sources Referenced:**\n\n"
 		if len(sources) > 0 {
-			for i, source := range sources {
-				response += fmt.Sprintf("**%d.** %s\n", i+1, source)
+			for _, source := range sources {
+				response += fmt.Sprintf("- %s\n", source)
 			}
 		} else {
-			response += "*No documents from testData were referenced for this response. This answer is based on general AI knowledge and may not reflect your specific documentation or procedures.*\n"
+			response += "- *No documents from testData were referenced for this response. This answer is based on general AI knowledge and may not reflect your specific documentation or procedures.*\n"
 		}
 
 		// Display response in the same window
@@ -421,9 +421,9 @@ func (b *BeanBot) handleFileUpload(responseEntry *widget.RichText) {
 
 		if len(processedFiles) > 0 {
 			message.WriteString("### **✅ Successfully uploaded and processed:**\n\n")
-			for i, file := range processedFiles {
+			for _, file := range processedFiles {
 				fileName := filepath.Base(file)
-				message.WriteString(fmt.Sprintf("**%d.** **%s**\n", i+1, fileName))
+				message.WriteString(fmt.Sprintf("- **%s**\n", fileName))
 			}
 			message.WriteString("\n*These files are now available for your questions and will be included in AI responses.*\n\n")
 		}
@@ -440,8 +440,8 @@ func (b *BeanBot) handleFileUpload(responseEntry *widget.RichText) {
 		uploadedList := b.knowledgeDB.GetUploadedFilesList()
 		if len(uploadedList) > 0 {
 			message.WriteString("### **📋 All uploaded files in this session:**\n\n")
-			for i, file := range uploadedList {
-				message.WriteString(fmt.Sprintf("**%d.** %s\n", i+1, file))
+			for _, file := range uploadedList {
+				message.WriteString(fmt.Sprintf("- %s\n", file))
 			}
 			message.WriteString("\n*Use 'Clear' button to remove uploaded files and start fresh.*\n")
 		}
